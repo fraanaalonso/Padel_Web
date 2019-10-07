@@ -33,7 +33,7 @@
         <a class="nav-link" href="#services">SERVICIOS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#testimonials">TESTIOMONIOS</a>
+        <a class="nav-link" href="#testimonials">TESTIMONIOS</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">UBICACION</a>

@@ -1,4 +1,4 @@
-<?php
+
 
 <form method="post" id="formulario_registro"class="needs-validation" novalidate>
   <div class="form-row">
@@ -91,5 +91,3 @@
 })();
 </script>
 
-
-?>

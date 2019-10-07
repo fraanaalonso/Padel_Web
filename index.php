@@ -1,3 +1,4 @@
+<?php
 <!DOCTYPE html>
 <html>
 <head>
@@ -106,12 +107,8 @@
 
                 <div class="col-md-6">
                     <h2>Acceso</h2>
-					<form action="./Controllers/Register_Controller.php">
-                    <button type="button" class="btn btn-primary" formmethod="post">Registrar</button><br>
-					</form>
-					<form action="./Controllers/Login_Controller.php">
+                    <button type="button" class="btn btn-primary" formmethod="post" action="Controllers/Register_Controller.php">Registrar</button><br>
                     <button type="button" class="btn btn-primary"> Inicio de Sesión</button><br>
-					</form>
                 </div>
                
             </div>
@@ -239,3 +236,5 @@
 
 </body>
 </html>
+
+?php>

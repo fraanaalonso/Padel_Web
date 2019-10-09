@@ -14,19 +14,17 @@
 
 
 
-    <!---Footer------->
+    <!---Footer-->
 
-    <section id="footer">
 
-      <div class="container text-center">
+    <footer class="footer">
+        <div class="container">
 
-        <p>Hecho con <i class="fa fa-heart-o " ></i> Pádel ESEI</p>
-        
-      </div>
-      
-    </section>
+            <p>Hecho con <i class="fa fa-heart-o " ></i> Pádel ESEI</p>
+        </div>
+    </footer>
 
 
 
 </body>
-</html>>
+</html>

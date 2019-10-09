@@ -6,6 +6,11 @@
     <title>Pádel Web
     </title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+       <!--Iconos tipo solid font-awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,6 +19,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <script src='main.js'></script>
+
+
 </head>
 <body>
 
@@ -98,7 +105,7 @@
                 <div class="col-md-6">
                     <h2>El Pádel</h2>
                     <div class="about-content">
-                        Creemos que el deporte reporta muchas beneficios para la salud. Por lo tanto, es de vital importancia promover todo tipo de actividades deportivas. Entre esas actividades, está el pádel. Es un deporte que combina plenitud física y buenos reflejos. Eso combinado con una buena coordinanción con tu compañero de equipo, lo hacen el deporte perfecto para pasar una tarde entretenida.
+                        Creemos que el deporte reporta muchas beneficios para la salud. Por lo tanto, es de vital importancia promover todo tipo de actividades deportivas. Entre esas actividades, está el pádel. Es un deporte que combina plenitud física y buenos reflejos. Eso combinado con una buena coordinanción con tu compañero de equipo, lo hacen el deporte perfecto para pasar una tarde entretenida con amigos y familiaress.
                     </div>
 
                     <button type="button" class="btn btn-primary"> Leer Más>></button>
@@ -106,11 +113,11 @@
 
                 <div class="col-md-6">
                     <h2>Acceso</h2>
-					<form action="./Controllers/Register_Controller.php">
-                    <button type="button" class="btn btn-primary" formmethod="post">Registrar</button><br>
+					<form action="Views/Register_View.php">
+                    <button type="submit" class="btn btn-primary">Registro</button><br>
 					</form>
-					<form action="./Controllers/Login_Controller.php">
-                    <button type="button" class="btn btn-primary"> Inicio de Sesión</button><br>
+					<form action="Views/Login_View.php">
+                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button><br>
 					</form>
                 </div>
                

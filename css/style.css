@@ -19,6 +19,8 @@ body{
 
 }
 
+
+
 .navbar-brand {
 	height: 40px;
 	padding-left: 30px;
@@ -39,7 +41,9 @@ body{
 }
 
 .navbar{
-	background: #fff;
+	background: #fafafa;
+	border-color: grey;
+	border-bottom: 4px solid;
 }
 
 .navbar-toggler{
@@ -361,23 +365,22 @@ blockquote::after{
 
 .main-section{
 	margin: 0 auto;
-	margin-top: 50%;
+	margin-top: 25%;
 	padding: 0;
 }
 .modal-content{
 	background-color: #000;
 	opacity: .85;
 	padding: 0 20px;
-	box-shadow: 0px 0px 6px #848484;
+	box-shadow: 8px 0px 6px #848484;
 }
 
 .form-group input{
 	height: 42px;
 	font-size: 18px;
-	border: 0;
+	border: black 2px solid;
 	padding-left: 54px;
 	border-radius: 5px;
-	border: 
 }
 
 .form-group::before{
@@ -390,7 +393,7 @@ blockquote::after{
 
 /*Iconos internos de los campos de los formularios de registro e inicio de sesión*/
 
-.form-group#user-group::before{
+.form-group#login-group::before{
 	content: "\f007";
 }
 
@@ -410,6 +413,25 @@ blockquote::after{
 
 .form-group#pais-group::before{
 	content: "\f7a2";
+}
+
+.form-group#apellido-group::before{
+	content: "\f007";
+}
+.form-group#user-group::before{
+	content: "\f007";
+}
+.form-group#sexo-group::before{
+	content: "\f228";
+}
+.form-group#telefono-group::before{
+	content: "\f095";
+}
+.form-group#fecha-group::before{
+	content: "\f0ce";
+}
+.form-group#foto-group::before{
+	content: "\f083";
 }
 /*------------------------------------------------------------*/
 

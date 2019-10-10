@@ -1,3 +1,7 @@
+
+<?php
+session_start()
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -113,10 +117,10 @@
 
                 <div class="col-md-6">
                     <h2>Acceso</h2>
-					<form action="Views/Register_View.php">
+					<form action="./Controllers/Register_Controller.php">
                     <button type="submit" class="btn btn-primary">Registro</button><br>
 					</form>
-					<form action="Views/Login_View.php">
+					<form action="./Controllers/Login_Controller.php">
                     <button type="submit" class="btn btn-primary">Iniciar Sesión</button><br>
 					</form>
                 </div>

@@ -7,11 +7,11 @@
     </title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+
        <!--Iconos tipo solid font-awesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
     <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>

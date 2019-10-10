@@ -1,34 +1,67 @@
+
+
+<?php
+session_start();
+include_once '../Models/USER_MODEL.php';
+$login = $_SESSION['login'];
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width" initial-scale=1></meta>
+   <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Pádel Web
+    </title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
 
+       <!--Iconos tipo solid font-awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 
 
-<header class="header">
-	
-	<div class="container logo-nav-container">
-		<a href="#" class="logo">Pádel ESEI</a>
-			
-			<nav class="navigation">
-				<ul>
-					<li> <a href="#">Reservas</a></li>
-					<li> <a href="#">Promociones</a></li>
-					<li> <a href="#">Campeonato</a></li>
-					<li> <a href="#">Liga Regular</a></li>
-				</ul>
-			</nav>
-		
-		
-	</div>
+    <section id="nav-bar">
+        <nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" href="#"><strong>PÁDELESEI</strong><img src="../img/logo.png" width="40" height="40"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-</header>
+
+  <section><h1>Bienvenido <?php echo $login ?></h1></section>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="../index.php?=#about">Reservas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../index.php?=#services">Campeonatos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../index.php?=#testimonials">Liga Regular</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../index.php?=#ubicacion">Escuela Deportiva</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="../Functions/logout.php">Cerrar Sesión</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+        
+    </section>
 
 </body>
 </html>

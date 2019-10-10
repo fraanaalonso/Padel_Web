@@ -34,7 +34,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">INICIO</a>
+        <a class="nav-link" href="../index.php?=#about">INICIO</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="../index.php?=#services">SERVICIOS</a>

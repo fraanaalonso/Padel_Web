@@ -1,8 +1,8 @@
 <?php
 
 
-		include 'Header.php';
-		include 'Menu.php';
+		include 'HeaderPrev.php';
+		//include 'Menu.php';
 
 ?>
 <div class="modal-dialog text-center">
@@ -26,7 +26,10 @@
 		</form>
 
 		<div class="col-12 forgot">
-			<a href="#">Recordar Contraseña</a>
+			<a href="#">¿Recordar Contraseña?</a>
+		</div>
+		<div class="col-12-forgot">
+			<a href="Register_View.php">¿No tienes cuenta?</a>
 		</div>
 
 			

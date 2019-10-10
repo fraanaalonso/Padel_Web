@@ -264,15 +264,8 @@ blockquote::after{
 
 /*Footer*/
 
-#footer{
-	background-color: #333;
-	color: #fff;
-	padding: 12px;
-	bottom: 0;
 
-}
-
-.fa-heart-o{
+.footer fa-heart-o{
 	margin: 3px;
 	color: red;
 
@@ -395,6 +388,8 @@ blockquote::after{
 	padding-top: 4px;
 }
 
+/*Iconos internos de los campos de los formularios de registro e inicio de sesión*/
+
 .form-group#user-group::before{
 	content: "\f007";
 }
@@ -402,6 +397,21 @@ blockquote::after{
 .form-group#contrasena-group::before{
 	content: "\f023";
 }
+
+
+.form-group#dni-group::before{
+	content: "\f2c2";
+}
+
+
+.form-group#email-group::before{
+	content: "\f199";
+}
+
+.form-group#pais-group::before{
+	content: "\f7a2";
+}
+/*------------------------------------------------------------*/
 
 
 button{

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
@@ -20,7 +20,7 @@
     <footer class="footer">
         <div class="container">
 
-            <p>Hecho con <i class="fa fa-heart-o " ></i> Pádel ESEI</p>
+            <p>Hecho con <i class="fa fa-heart-o" ></i> Pádel ESEI</p>
         </div>
     </footer>
 

@@ -1,13 +1,17 @@
 <?php
 
 
-		include 'Header.php';
-		include 'Menu.php';
+		include 'HeaderPrev.php';
+		//include 'MenuLateral.php';
 
 ?>
 <div class="modal-dialog text-center">
 	<div class="col-sm-8 main-section">
 		<div class="modal-content">
+			<div class="col-12 user-img">
+				<img src="../img/iconUser.jpg">
+				
+			</div>
 			
 		<form class="col-12" method="get">
 		  <div class="form-group" id="user-group">
@@ -31,6 +35,11 @@
 		   </div>
 
 		   <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Registrar</button>
+		   <p>
+		   	<div class="col-12-forgot">
+			<a href="Login_View.php">Iniciar Sesión</a>
+		</div>
+		   </p>
 		</form>
 
 			

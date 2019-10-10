@@ -19,7 +19,6 @@
 
     <footer class="footer">
         <div class="container">
-
             <p>Hecho con <i class="fa fa-heart-o" ></i> Pádel ESEI</p>
         </div>
     </footer>

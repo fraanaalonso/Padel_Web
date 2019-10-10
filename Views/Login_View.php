@@ -2,9 +2,9 @@
 
 
 		include 'HeaderPrev.php';
-		//include 'Menu.php';
 
 ?>
+<body class="form_login">
 <div class="modal-dialog text-center">
 	<div class="col-sm-8 main-section">
 		<div class="modal-content">
@@ -40,6 +40,8 @@
 	</div>
 
 </div>
+
+</body>
 
 
 

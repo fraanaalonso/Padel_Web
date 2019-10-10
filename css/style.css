@@ -265,9 +265,18 @@ blockquote::after{
 /*Footer*/
 
 
-.footer fa-heart-o{
+.container fa-heart-o{
 	margin: 3px;
 	color: red;
+
+}
+
+.footer{
+	background: #cacaca;
+	padding: 2.5rem 0;
+	text-align: center;
+	margin-top: 100%;
+	width: 100%;
 
 }
 
@@ -335,16 +344,6 @@ blockquote::after{
 }
 
 
-/*Pie de pagina segunda cabecera*/
-
-.footer{
-	background: #cacaca;
-	padding: 4rem 0;
-	text-align: center;
-	margin-top: 6rem;
-	height: 2px;
-
-}
 /*Login e Inicio de sesión*/
 
 .user-img{
@@ -355,7 +354,7 @@ blockquote::after{
 .user-img img{
 	width: 100px;
 	height: 100px;
-    box-shadow: 0px 0px 3px #848484;
+    box-shadow: 0px 0px 8px #848484;
     border-radius: 50%;
 
 }
@@ -369,7 +368,7 @@ blockquote::after{
 	background-color: #000;
 	opacity: .85;
 	padding: 0 20px;
-	box-shadow: 0px 0px 3px #848484;
+	box-shadow: 0px 0px 6px #848484;
 }
 
 .form-group input{
@@ -378,6 +377,7 @@ blockquote::after{
 	border: 0;
 	padding-left: 54px;
 	border-radius: 5px;
+	border: 
 }
 
 .form-group::before{
@@ -413,6 +413,16 @@ blockquote::after{
 }
 /*------------------------------------------------------------*/
 
+
+/*BackGround de los formularios de inicio y registro*/
+
+.form_login{
+	background-image: url(../img/formLogin.jpg);
+}
+
+.form_registro{
+	background-image: url(../img/formLogin.jpg);
+}
 
 button{
 	width: 60%;

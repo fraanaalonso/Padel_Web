@@ -25,56 +25,100 @@ class Register
 				
 			</div>
 			
-		<form class="col-12" method="post" action="../Controllers/Register_Controller.php">
+		<form class="col-12" method="post" action="../Controllers/Register_Controller.php" onsubmit="return validar();">
 
 		 <div class="form-group" id="login-group">
-		  	<input type="text" name="login" class="form-control" placeholder="Login">
+		  	<input type="text" id="login" name="login" class="form-control" placeholder="Login" >
 		   </div>	
 
 		  <div class="form-group" id="user-group">
-		  	<input type="text" name="nombre" class="form-control" placeholder="Nombre">
+		  	<input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" >
 		   </div>
 
 		   <div class="form-group" id="apellidos-group">
-		  	<input type="text" name="apellido" class="form-control" placeholder="Apellidos">
+		  	<input type="text" id="apellido" name="apellido" class="form-control" placeholder="Apellidos" >
 		   </div>
 
 		   <div class="form-group" id="contrasena-group">
-		  	<input type="passwrod" name="passwrod" class="form-control" placeholder="Contraseña">
+		  	<input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" >
 		   </div>
 
 		   <div class="form-group" id="dni-group">
-		  	<input type="text" name="dni" class="form-control" placeholder="DNI">
+		  	<input type="text" id="dni" name="dni" class="form-control" placeholder="DNI" >
 		   </div>
 
 		   <div class="form-group" id="email-group">
-		  	<input type="text" name="email" class="form-control" placeholder="Email">
+		  	<input type="email" id="email" name="email" class="form-control" placeholder="Email" >
 		   </div>
 
 		   <div class="form-group" id="pais-group">
-		  	<input type="text" name="pais" class="form-control" placeholder="Pais">
+		  	<select name="pais" id="pais" class="form-control" >
+
+		   		<option>España</option>
+
+		   		<option>Francia</option>
+
+		   		<option>Alemania</option>
+
+		   		<option>Italia</option>
+
+		   		<option>Suiza</option>
+
+		   		<option>Reino Unido</option>
+
+		   		<option>Bélgica</option>
+
+		   		<option>Luxemburgo</option>
+
+		   		<option>Polonia</option>
+
+		   		<option>Rusia</option>
+
+		   		<option>EEUU</option>
+
+		   		<option>China</option>
+
+		   		<option>Canada</option>
+
+		   		<option>Japón</option>
+
+		   		<option>India</option>
+
+		   		<option>Brasil</option>
+
+		   		<option>Argentina</option>
+
+		   		<option>Otro</option>
+
+		   	</select>
 		   </div>
 
 		   <div class="form-group" id="sexo-group">
-		  	<input type="text" name="sexo" class="form-control" placeholder="Sexo">
+		   	<select name="sexo" id="sexo" class="form-control">
+
+		   		<option>Hombre</option>
+
+		   		<option>Mujer</option>
+
+		   	</select>
 		   </div>
 
 		    <div class="form-group" id="telefono-group">
-		  	<input type="text" name="telefono" class="form-control" placeholder="Telefono">
+		  	<input type="text" id="telefono" name="telefono" class="form-control" placeholder="Telefono">
 		   </div>
 
 		   <div class="form-group" id="fecha-group">
-		  	<input type="text" name="fecha" class="form-control" placeholder="Fecha de Nacimiento">
+		  	<input type="date" id="fecha" name="fecha" class="form-control" placeholder="Fecha de Nacimiento">
 		   </div>
 
 		   <div class="form-group" id="foto-group">
-		  	<input type="text" name="foto" class="form-control" placeholder="Foto">
+		  	<input type="file" id="foto" name="foto" class="form-control" placeholder="Foto">
 		   </div>
 
 
 		     <div class="form-group">
 			    <div class="form-check">
-			      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+			      <input class="form-check-input" type="checkbox" value="" id="invalidCheck">
 			      <label class="form-check-label" for="invalidCheck">
 			        Acepto los términos y condiciones
 			      </label>

@@ -1,6 +1,9 @@
 
 <?php
+
+include_once './Functions/Autenticacion.php';
 session_start()
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -120,12 +123,18 @@ session_start()
 					<form action="./Controllers/Register_Controller.php">
                     <button type="submit" class="btn btn-primary">Registro</button><br>
 					</form>
+
+
 					<form action="./Controllers/Login_Controller.php">
                     <button type="submit" class="btn btn-primary">Iniciar Sesión</button><br>
 					</form>
+
+
+
                 </div>
                
             </div>
+        
         </div>
     </section>
 

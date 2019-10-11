@@ -1,25 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<?php
-		include 'HeaderPost.php';
-	?>
-</head>
-<body>
+
+<?php
+
+session_start();
+
+include '../Functions/Autenticacion.php';
 
 
-	<div align="center">
-		
+if (!autenticado()){
+	header('Location:../Controllers/Login_Controller.php');
+}
 
-	</div>
+else{
+	header('Location:../Controllers/Index_Controller.php');
+}
 
-</body>
-
-
-
-
-	<?php
-		include 'Footer.php';
-
-	?>
-</html>
+?>

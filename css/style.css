@@ -383,6 +383,16 @@ blockquote::after{
 	border-radius: 5px;
 }
 
+
+.form-group select{
+	height: 42px;
+	font-size: 18px;
+	border: black 2px solid;
+	padding-left: 54px;
+	border-radius: 5px;
+}
+
+
 .form-group::before{
 	font-family: "Font Awesome\ 5 Free";
 	position: absolute;

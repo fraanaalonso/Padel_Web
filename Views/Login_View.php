@@ -26,14 +26,14 @@ class Login
 				
 			</div>
 			
-		<form class="col-12" method="post" action="../Controllers/Login_Controller.php">
+		<form class="col-12" method="post" action="../Controllers/Login_Controller.php" onsubmit="return validar();">
 
 		  <div class="form-group" id="user-group">
-		  	<input type="text" name="login" class="form-control" placeholder="Login">
+		  	<input type="text" id="login" name="login" class="form-control" placeholder="Login" required>
 		   </div>
 
 		   <div class="form-group" id="contrasena-group">
-		  	<input type="passwrod" name="password" class="form-control" placeholder="Contraseña">
+		  	<input type="passwrod" id="password" name="password" class="form-control" placeholder="Contraseña" required>
 		   </div>
 
 		   <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar</button>

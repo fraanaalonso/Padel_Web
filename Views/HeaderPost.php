@@ -1,7 +1,7 @@
 
 
 <?php
-session_start();
+
 include_once '../Models/USER_MODEL.php';
 $login = $_SESSION['login'];
 ?>
@@ -32,14 +32,16 @@ $login = $_SESSION['login'];
 
   <div class="content-menu">
     <li><span class="lnr lnr-home icon1"></span><h4 class="text1">Inicio</h4></li>  
-    <li><span class="lnr lnr-film-play icon2"></span><h4 class="text2">Mis Reservas</h4></li>
-    <li><span class="lnr lnr-picture icon3"></span><h4 class="text3">Pistas</h4></li>
-    <li><span class="lnr lnr-briefcase icon4"></span><h4 class="text4">WCP</h4></li>
+    <li><span class="lnr lnr-dice icon2"></span><h4 class="text2">Mis Reservas</h4></li>
+    <li><span class="lnr lnr-bookmark icon3"></span><h4 class="text3">Pistas</h4></li>
+    <li><span class="lnr lnr-map icon4"></span><h4 class="text4">Campeonatos</h4></li>
     <li><span class="lnr lnr-license icon5"></span><h4 class="text5">Liga regular</h4></li>
-    <li><span class="lnr lnr-envelope icon6"></span><h4 class="text6">Enfrentamiento</h4></li> 
-    <li><span class="lnr lnr-envelope icon7"></span><h4 class="text7">Sobre Nosotros</h4></li> 
+    <li><span class="lnr lnr-eye icon6"></span><h4 class="text6">Enfrentamiento</h4></li> 
+    <li><span class="lnr lnr-heart icon7"></span><h4 class="text7">Sobre Nosotros</h4></li> 
     <li><span class="lnr lnr-envelope icon8"></span><h4 class="text8">FAQ</h4></li> 
-    <li ><a href="../Functions/logout.php"></a><span class="lnr lnr-envelope icon9"></span><h4  class="text9">Salir</h4></li> 
+    <a href="../Functions/Desconect.php"><li ><span class="lnr lnr-exit icon9"></span><h4  class="text9">Salir</h4></li> </a>
+
+
   </div>
   
 </main>

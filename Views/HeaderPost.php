@@ -12,6 +12,8 @@ $login = $_SESSION['login'];
    <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Pádel Web</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/style2.css">
     <link rel="stylesheet" type="text/css" href="../img/icon/style.css">
   
@@ -21,12 +23,8 @@ $login = $_SESSION['login'];
 
 <body>
   
-<header><span class="lnr lnr-menu chusquinhadas"></span>
+<header><span class="lnr lnr-menu show"></span></header>
 
-  <a class="navbar-brand" href="#"><strong>PÁDELESEI</strong><img src="../img/logo.png" width="40" height="40"></a>
-
-<span></span><a class="sesion" href="#"><strong>Bienvenido <?php $_SESSION['login']?></strong><img  width="40" height="40"></a>
-</header>
 <main>
 
 
@@ -40,16 +38,13 @@ $login = $_SESSION['login'];
     <li><span class="lnr lnr-heart icon7"></span><h4 class="text7">Sobre Nosotros</h4></li> 
     <li><span class="lnr lnr-envelope icon8"></span><h4 class="text8">FAQ</h4></li> 
     <a href="../Functions/Desconect.php"><li ><span class="lnr lnr-exit icon9"></span><h4  class="text9">Salir</h4></li> </a>
-
-
   </div>
+
+  <script src="../Functions/js/jquery.js"></script>
+<script src="../Functions/js/script.js"></script>
+  
   
 </main>
 
 
-<script type="text/javascript" src="../Functions/js/query.js"></script>
-<script type="text/javascript" src="../Functions/js/script.js"></script>
         
-
-</body>
-</html>

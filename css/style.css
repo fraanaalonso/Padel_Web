@@ -364,8 +364,7 @@ blockquote::after{
 }
 
 .main-section{
-	margin: 0 auto;
-	margin-top: 25%;
+	position: absolute;
 	padding: 0;
 }
 .modal-content{
@@ -374,6 +373,7 @@ blockquote::after{
 	padding: 0 20px;
 	box-shadow: 8px 0px 6px #848484;
 }
+
 
 .form-group input{
 	height: 42px;

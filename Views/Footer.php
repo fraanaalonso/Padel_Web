@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+
 
 <head>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -10,11 +9,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     </head>
-<body>
+
 
 
 
     <!---Footer-->
+
 
 
     <footer class="footer">
@@ -22,7 +22,6 @@
             <p>Hecho con <i class="fa fa-heart-o" ></i> Pádel ESEI</p>
         </div>
     </footer>
-
 
 
 </body>

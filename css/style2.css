@@ -8,11 +8,22 @@
 }
 
 
+
+
+
+main{
+	width: 100%;
+	display: flex;
+
+}
+
+
 header{
 	width: 100%;
 	height: 60px;
-	background: #227FBC;
+	background: grey;
 }
+
 
 header span{
 	font-size: 30px;
@@ -32,28 +43,11 @@ header span:hover{
 
 
 
-.navbar-brand {
-	height: 40px;
-	padding-left: 30px;
-	color: black;
-}
 
 
-.sesion{
-	height: 40px;
-	padding-right: 40px;
-	color: black;
-}
-
-
-main{
-	width: 100%;
-	display: flex;
-
-}
 
 .content-menu{
-	width: 150px;
+	width: 145px;
 	background: #161616;
 	transition: all 300ms;
 }
@@ -155,9 +149,75 @@ main{
 	transition: all 900ms;
 }
 
-
-
-
-.tabla1{
-	right: 0;
+table{
+	position: absolute;
+	top: 150px;
+	bottom: 150px; 
+	left: 200px;
+	width: 80%;
+	background-color: grey;
+	text-align: left;
+	border-collapse: collapse;
 }
+
+th, td{
+	border: solid 1px black;
+	padding: 20px;
+}
+
+
+/*Encabezado*/
+thead{
+	background-color: #246355;
+	color: white;
+	border-bottom: solid 5px #0F362D;
+}
+
+tr:nth-child(even){
+	background-color: #ddd;
+}
+
+tr:hover td{
+	background-color: #369681;
+	color: white;
+
+}
+
+
+/*Iconos tabla*/
+
+.añadir{
+	font-size: 25px;
+	color: #6A26DF;
+}
+.editar{
+	font-size: 20px;
+	color: #6BF929;
+}
+.borrar{
+	font-size: 20px;
+	color: #760B0B;
+}
+
+.icons{
+  position: absolute;
+	top: 150px;
+	bottom: 100px; 
+	left: 20px;
+}
+
+
+.iconos_superiores{
+	position: absolute;
+	left: 20px;
+	top: 150px;
+}
+
+
+
+
+
+
+
+
+

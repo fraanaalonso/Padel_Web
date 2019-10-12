@@ -64,7 +64,7 @@ Switch ($_REQUEST['action']){
 				
 				}
 				else{
-				 include '../Models/USER_MODEL.php';
+				 include_once '../Models/USER_MODEL.php';
 				  $modelo= new User_Modelo($_REQUEST['login'],$_REQUEST['nombre'],$_REQUEST['apellido'], $_REQUEST['password'], $_REQUEST['dni'], $_REQUEST['email'], $_REQUEST['pais'], $_REQUEST['sexo'], $_REQUEST['telefono'],
 				   $_REQUEST['fecha'], $_FILES['foto']);
 
@@ -96,7 +96,7 @@ Switch ($_REQUEST['action']){
 				}
 
 				else{
-					 include '../Models/USER_MODEL.php';
+					 include_once '../Models/USER_MODEL.php';
 					$modelo= new User_Modelo($_REQUEST['login'],$_REQUEST['nombre'],$_REQUEST['apellido'], $_REQUEST['password'], $_REQUEST['dni'], $_REQUEST['email'], $_REQUEST['pais'], $_REQUEST['sexo'], $_REQUEST['telefono'],
 				   $_REQUEST['fecha'], $_FILES['foto']);
 
@@ -123,7 +123,7 @@ Switch ($_REQUEST['action']){
 
 		case 'EDIT':
 				if (!$_POST) {
-					 include '../Models/USER_MODEL.php';
+					 include_once '../Models/USER_MODEL.php';
 					$modelo= new User_Modelo($_REQUEST['login'],'','', '', '', '', '', '', '','','');
 					$valores= $modelo ->RellenaDatos();
 					new EDIT_VIEW($valores);
@@ -131,7 +131,7 @@ Switch ($_REQUEST['action']){
 
 				else{
 
-					 include '../Models/USER_MODEL.php';
+					 include_once '../Models/USER_MODEL.php';
 					$modelo = new User_Modelo($_REQUEST['login'],$_REQUEST['nombre'],$_REQUEST['apellido'], $_REQUEST['password'], $_REQUEST['dni'], $_REQUEST['email'], $_REQUEST['pais'], $_REQUEST['sexo'], $_REQUEST['telefono'],
 				   $_REQUEST['fecha'], $_FILES['foto']);
 
@@ -153,15 +153,15 @@ Switch ($_REQUEST['action']){
 		case 'DELETE':
 
 				if (!$_POST) {
-					 include '../Models/USER_MODEL.php';
+					 include_once '../Models/USER_MODEL.php';
 					$modelo= new User_Modelo($_REQUEST['login'],'', '', '', '', '', '', '', '', '','');
 					$valores= $modelo ->RellenaDatos();
-					new Usuario_DELETE($valores);
+					new DELETE_VIEW($valores);
 				}
 
 				else{
 
-					 include '../Models/USER_MODEL.php';
+					 include_once '../Models/USER_MODEL.php';
 					$modelo =get_data();
 					$respuesta = $modelo->DELETE();
 					new MESSAGE($respuesta,'./User_Controller.php');
@@ -171,7 +171,7 @@ Switch ($_REQUEST['action']){
 
 
 		case 'SHOWCURRENT':
-				 include '../Models/USER_MODEL.php';
+				 include_once '../Models/USER_MODEL.php';
 			    $modelo = new User_Modelo($_REQUEST['login'],'','', '', '', '', '', '', '', '', '');
 				$valores = $modelo->RellenaDatos();
 
@@ -185,13 +185,17 @@ Switch ($_REQUEST['action']){
 
 				if (!$_POST){
 					include_once '../Models/USER_MODEL.php';
-					$modelo = new User_Modelo('','','', '', '', '', '', '', '', '', '');
+					$modelo = new User_Modelo(' ' ,' ' ,' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ');
 				}
 				else{
 					  include_once '../Models/USER_MODEL.php';
 				}
+
+
 				$datos = $modelo->SEARCH();
 				$lista = array('  Login  ', '  Nombre  ', '  Apellido  ', '  Password  ', '  Dni  ','  Email  ','  Pais  ','  Sexo  ','  Telefono  ','  Fecha  ','  Foto  ', '  Opciones  ');
+
+				
 				new SHOWALL_VIEW($lista, $datos);
 
 		

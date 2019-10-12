@@ -17,7 +17,7 @@ class User_Modelo
  	var $foto;
  	var $sexo;
  	var $pais;
-	var $bd; 
+	//var $bd; 
 
 
 
@@ -160,32 +160,7 @@ class User_Modelo
 
 	function SEARCH()
 { 	// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-    $sql = "select login,
-    				nombre,
-    				apellido,
-    				password,
-    				dni,
-					email,
-					pais,
-					sexo,
-					telefono,
-					fecha,
-					foto
-       	    from USER where 
-
-
-
-       	    		((login = '%$this->login%') &&
-					(nombre = '%$this->nombre%') &&
-					(apellido = '%$this->apellido%') &&
-					(password = '%$this->password%') &&
-					(dni = '%$this->dni%') &&
-					(email = '%$this->email%') &&
-					(pais = '%$this->pais%') &&
-					(sexo = '%$this->sexo%') &&
-					(telefono = '%$this->telefono%') &&
-					(fecha = '%$this->fecha%') &&
-					(foto = '%$this->foto%'))";
+    $sql = "select * from USER";
 
     // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
     if (!($resultado = $this->bd->query($sql))){
@@ -194,6 +169,8 @@ class User_Modelo
     else{ // si la busqueda es correcta devolvemos el recordset resultado
 		return $resultado;
 	}
+
+
 } // fin metodo SEARCH
 
 

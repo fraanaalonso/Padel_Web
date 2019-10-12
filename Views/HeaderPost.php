@@ -31,7 +31,7 @@ $login = $_SESSION['login'];
 
 
   <div class="content-menu">
-    <li><span class="lnr lnr-home icon1"></span><h4 class="text1">Inicio</h4></li>  
+    <a href="../Controllers/User_Controller.php"><li><span class="lnr lnr-home icon1"></span><h4 class="text1">Usuarioa</h4></li></a>  
     <li><span class="lnr lnr-dice icon2"></span><h4 class="text2">Mis Reservas</h4></li>
     <li><span class="lnr lnr-bookmark icon3"></span><h4 class="text3">Pistas</h4></li>
     <li><span class="lnr lnr-map icon4"></span><h4 class="text4">Campeonatos</h4></li>

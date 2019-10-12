@@ -1,27 +1,24 @@
 
 
 <?php
-include_once '../includes/db.php';
 
 
-
-/**
-* 
-*/
-class POST_MODEL
+class COURT_MODEL
 {
-	var $id_noticia;
-	var $titulo;
-	var $subtitulo;
-	var $cuerpo;
+	var $id_pista;
+	var $ubicacion;
+	var $num_pista;
+	var $terreno;
+	var $dimension;
 	var $bd;
 	
-	function __construct($id_noticia,$titulo, $subtitulo, $cuerpo)
+	function __construct($id_pista,$ubicacion, $num_pista, $terreno, $dimension)
 	{
-		$this->id_noticia = $id_noticia;
-		$this->titulo = $titulo;
-		$this->subtitulo = $subtitulo;
-		$this->cuerpo = $cuerpo;
+		$this->id_pista = $id_pista;
+		$this->ubicacion = $ubicacion;
+		$this->num_pista = $num_pista;
+		$this->terreno = $terreno;
+		$this->dimension = $dimension;
 
 		$this->bd = ConectarDB();
 	}
@@ -31,9 +28,9 @@ class POST_MODEL
 
 	function ADD(){
 
-		if (($this->id_noticia <> '')){ 
+		if (($this->id_pista <> '')){ 
 
-        $sql = "SELECT * FROM NEW WHERE (id_noticia = '$this->id_noticia')";
+        $sql = "SELECT * FROM COURT WHERE (id_pista = '$this->id_pista')";
 
 		if (!$result = $this->bd->query($sql)){ 
 			return 'No se ha podido conectar con la base de datos';
@@ -43,17 +40,19 @@ class POST_MODEL
 			if ($result->num_rows == 0){ 
 				
 
-				$sql = "INSERT INTO NEW (
-					id_noticia,
-					titulo,
-					subtitulo,
-					cuerpo
+				$sql = "INSERT INTO COURT (
+					id_pista,
+					ubicacion,
+					num_pista,
+					terreno,
+					dimension
 					) 
 						VALUES (
 						'$this->id_noticia',
 						'$this->titulo',
 						'$this->subtitulo',
-						'$this->cuerpo'
+						'$this->cuerpo',
+						'$this->dimension'
 						)";
 					
 				
@@ -86,7 +85,7 @@ class POST_MODEL
 
 function EDIT(){
 
-	$sql = "SELECT * FROM NEW  WHERE (id_noticia = '$this->id_noticia') ";
+	$sql = "SELECT * FROM COURT  WHERE (id_pista = '$this->id_pista') ";
     
 
     $result = $this->bd->query($sql);
@@ -95,13 +94,14 @@ function EDIT(){
     	
     {	
     	
-		$sql = "UPDATE NEW  SET 
-				id_noticia = '$this->id_noticia',
-				titulo = '$this->titulo',
-				subtitulo = '$this->subtitulo',
-				cuerpo = '$this->cuerpo'
+		$sql = "UPDATE COURT  SET 
+				id_pista = '$this->id_pista',
+				ubicacion = '$this->ubicacion',
+				num_pista = '$this->num_pista',
+				terreno = '$this->terreno',
+				dimension = '$this->dimension'
 				
-				WHERE ( id_noticia = '$this->id_noticia')";
+				WHERE ( id_pista = '$this->id_pista')";
 
         if (!($resultado = $this->bd->query($sql))){
 			return 'Error en la modificación'; 
@@ -124,18 +124,19 @@ function EDIT(){
 function SEARCH(){
 
 	$sql = "select
-					id_noticia,
-					titulo,
-					subtitulo,
-					cuerpo
+					id_pista,
+					ubicacion,
+					num_pista,
+					terreno,
+					dimension
 					
-					FROM NEW WHERE
+					FROM COURT WHERE
 
 					
-						((id_noticia LIKE '$this->id_noticia') &&
-						(titulo LIKE'$this->titulo') &&
-						(subtitulo LIKE'$this->subtitulo')  &&
-						(cuerpo LIKE '$this->cuerpo'))";
+						((id_pista LIKE '$this->id_pista') &&
+						(ubicacion LIKE'$this->ubicacion') &&
+						(num_pista LIKE'$this->num_pista')  &&
+						(terreno LIKE '$this->terreno') &&  (dimension LIKE '$this->dimension'))";
 
    
     if (!($resultado = $this->bd->query($sql))){
@@ -151,16 +152,16 @@ function SEARCH(){
 
 function DELETE()
 		{	
-		   $sql = "SELECT * FROM NEW  WHERE 
-		   (id_noticia = '$this->id_noticia')";
+		   $sql = "SELECT * FROM COURT  WHERE 
+		   (id_pista = '$this->id_pista')";
 		    
 		    $result = $this->bd->query($sql);
 		    
 		    if ($result->num_rows == 1)
 		    {
 		    
-		       $sql = "DELETE FROM NEW  WHERE 
-		       (id_noticia = '$this->id_noticia')";
+		       $sql = "DELETE FROM COURT  WHERE 
+		       (id_pista = '$this->id_pista')";
 		       
 		        $this->bd->query($sql);
 		        
@@ -174,12 +175,12 @@ function DELETE()
 
 function RellenaDatos()
 		{	
-		    $sql = "SELECT * FROM NEW  WHERE (id_noticia = '$this->id_noticia')";
+		    $sql = "SELECT * FROM COURT  WHERE (id_pista = '$this->id_pista')";
 
 		    if (!($resultado = $this->bd->query($sql))){
 				return 'No existe en la base de datos'; 
 			}
-
+			
 		    else{ 
 
 			$result = $resultado->fetch_array();

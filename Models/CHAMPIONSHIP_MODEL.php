@@ -1,27 +1,30 @@
-
-
 <?php
+
 include_once '../includes/db.php';
+
+
 
 
 
 /**
 * 
 */
-class POST_MODEL
+class CHAMPIONSHIP_MODEL
 {
-	var $id_noticia;
-	var $titulo;
-	var $subtitulo;
-	var $cuerpo;
+	var $id_campeonato;
+	var $plazo;
+	var $categoria;
+	var $genero;
+	var $duracion;
 	var $bd;
 	
-	function __construct($id_noticia,$titulo, $subtitulo, $cuerpo)
+	function __construct($id_campeonato,$plazo, $categoria, $genero, $duracion)
 	{
-		$this->id_noticia = $id_noticia;
-		$this->titulo = $titulo;
-		$this->subtitulo = $subtitulo;
-		$this->cuerpo = $cuerpo;
+		$this->id_campeonato = $id_campeonato;
+		$this->plazo = $plazo;
+		$this->categoria = $categoria;
+		$this->genero = $genero;
+		$this->duracion = $duracion;
 
 		$this->bd = ConectarDB();
 	}
@@ -31,9 +34,9 @@ class POST_MODEL
 
 	function ADD(){
 
-		if (($this->id_noticia <> '')){ 
+		if (($this->id_campeonato <> '')){ 
 
-        $sql = "SELECT * FROM NEW WHERE (id_noticia = '$this->id_noticia')";
+        $sql = "SELECT * FROM CHAMPIONSHIP WHERE (id_campeonato = '$this->id_campeonato')";
 
 		if (!$result = $this->bd->query($sql)){ 
 			return 'No se ha podido conectar con la base de datos';
@@ -43,17 +46,19 @@ class POST_MODEL
 			if ($result->num_rows == 0){ 
 				
 
-				$sql = "INSERT INTO NEW (
-					id_noticia,
-					titulo,
-					subtitulo,
-					cuerpo
+				$sql = "INSERT INTO CHAMPIONSHIP (
+					id_campeonato,
+					plazo,
+					categoria,
+					genero,
+					duracion
 					) 
 						VALUES (
 						'$this->id_noticia',
 						'$this->titulo',
 						'$this->subtitulo',
-						'$this->cuerpo'
+						'$this->cuerpo',
+						'$this->duracion'
 						)";
 					
 				
@@ -86,7 +91,7 @@ class POST_MODEL
 
 function EDIT(){
 
-	$sql = "SELECT * FROM NEW  WHERE (id_noticia = '$this->id_noticia') ";
+	$sql = "SELECT * FROM CHAMPIONSHIP  WHERE (id_campeonato = '$this->id_campeonato') ";
     
 
     $result = $this->bd->query($sql);
@@ -95,13 +100,14 @@ function EDIT(){
     	
     {	
     	
-		$sql = "UPDATE NEW  SET 
-				id_noticia = '$this->id_noticia',
-				titulo = '$this->titulo',
-				subtitulo = '$this->subtitulo',
-				cuerpo = '$this->cuerpo'
+		$sql = "UPDATE CHAMPIONSHIP  SET 
+				id_campeonato = '$this->id_campeonato',
+				plazo = '$this->plazo',
+				categoria = '$this->categoria',
+				genero = '$this->genero',
+				duracion = '$this->duracion'
 				
-				WHERE ( id_noticia = '$this->id_noticia')";
+				WHERE ( id_campeonato = '$this->id_campeonato')";
 
         if (!($resultado = $this->bd->query($sql))){
 			return 'Error en la modificación'; 
@@ -124,18 +130,19 @@ function EDIT(){
 function SEARCH(){
 
 	$sql = "select
-					id_noticia,
-					titulo,
-					subtitulo,
-					cuerpo
+					id_campeonato,
+					plazo,
+					categoria,
+					genero,
+					duracion
 					
-					FROM NEW WHERE
+					FROM CHAMPIONSHIP WHERE
 
 					
-						((id_noticia LIKE '$this->id_noticia') &&
-						(titulo LIKE'$this->titulo') &&
-						(subtitulo LIKE'$this->subtitulo')  &&
-						(cuerpo LIKE '$this->cuerpo'))";
+						((id_campeonato LIKE '$this->id_campeonato') &&
+						(plazo LIKE'$this->plazo') &&
+						(categoria LIKE'$this->categoria')  &&
+						(genero LIKE '$this->genero') &&  (duracion LIKE '$this->duracion'))";
 
    
     if (!($resultado = $this->bd->query($sql))){
@@ -151,16 +158,16 @@ function SEARCH(){
 
 function DELETE()
 		{	
-		   $sql = "SELECT * FROM NEW  WHERE 
-		   (id_noticia = '$this->id_noticia')";
+		   $sql = "SELECT * FROM CHAMPIONSHIP  WHERE 
+		   (id_campeonato = '$this->id_campeonato')";
 		    
 		    $result = $this->bd->query($sql);
 		    
 		    if ($result->num_rows == 1)
 		    {
 		    
-		       $sql = "DELETE FROM NEW  WHERE 
-		       (id_noticia = '$this->id_noticia')";
+		       $sql = "DELETE FROM CHAMPIONSHIP  WHERE 
+		       (id_campeonato = '$this->id_campeonato')";
 		       
 		        $this->bd->query($sql);
 		        
@@ -174,12 +181,12 @@ function DELETE()
 
 function RellenaDatos()
 		{	
-		    $sql = "SELECT * FROM NEW  WHERE (id_noticia = '$this->id_noticia')";
+		    $sql = "SELECT * FROM CHAMPIONSHIP  WHERE (id_campeonato = '$this->id_campeonato')";
 
 		    if (!($resultado = $this->bd->query($sql))){
 				return 'No existe en la base de datos'; 
 			}
-
+			
 		    else{ 
 
 			$result = $resultado->fetch_array();

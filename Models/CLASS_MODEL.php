@@ -1,27 +1,23 @@
 
-
 <?php
-include_once '../includes/db.php';
 
 
-
-/**
-* 
-*/
-class POST_MODEL
+class CLASS_MODEL
 {
-	var $id_noticia;
-	var $titulo;
-	var $subtitulo;
-	var $cuerpo;
+	var $id_clase;
+	var $ubicacion;
+	var $num_pista;
+	var $login;
+	var $nivel;
 	var $bd;
 	
-	function __construct($id_noticia,$titulo, $subtitulo, $cuerpo)
+	function __construct($id_clase,$ubicacion, $num_pista, $login, $nivel)
 	{
-		$this->id_noticia = $id_noticia;
-		$this->titulo = $titulo;
-		$this->subtitulo = $subtitulo;
-		$this->cuerpo = $cuerpo;
+		$this->id_clase = $id_clase;
+		$this->ubicacion = $ubicacion;
+		$this->num_pista = $num_pista;
+		$this->login = $login;
+		$this->nivel = $nivel;
 
 		$this->bd = ConectarDB();
 	}
@@ -31,9 +27,9 @@ class POST_MODEL
 
 	function ADD(){
 
-		if (($this->id_noticia <> '')){ 
+		if (($this->id_clase <> '')){ 
 
-        $sql = "SELECT * FROM NEW WHERE (id_noticia = '$this->id_noticia')";
+        $sql = "SELECT * FROM CLASS WHERE (id_clase = '$this->id_clase')";
 
 		if (!$result = $this->bd->query($sql)){ 
 			return 'No se ha podido conectar con la base de datos';
@@ -43,17 +39,19 @@ class POST_MODEL
 			if ($result->num_rows == 0){ 
 				
 
-				$sql = "INSERT INTO NEW (
-					id_noticia,
-					titulo,
-					subtitulo,
-					cuerpo
+				$sql = "INSERT INTO CLASS (
+					id_clase,
+					ubicacion,
+					num_pista,
+					login,
+					nivel
 					) 
 						VALUES (
 						'$this->id_noticia',
 						'$this->titulo',
 						'$this->subtitulo',
-						'$this->cuerpo'
+						'$this->cuerpo',
+						'$this->nivel'
 						)";
 					
 				
@@ -86,7 +84,7 @@ class POST_MODEL
 
 function EDIT(){
 
-	$sql = "SELECT * FROM NEW  WHERE (id_noticia = '$this->id_noticia') ";
+	$sql = "SELECT * FROM CLASS  WHERE (id_clase = '$this->id_clase') ";
     
 
     $result = $this->bd->query($sql);
@@ -95,13 +93,14 @@ function EDIT(){
     	
     {	
     	
-		$sql = "UPDATE NEW  SET 
-				id_noticia = '$this->id_noticia',
-				titulo = '$this->titulo',
-				subtitulo = '$this->subtitulo',
-				cuerpo = '$this->cuerpo'
+		$sql = "UPDATE CLASS  SET 
+				id_clase = '$this->id_clase',
+				ubicacion = '$this->ubicacion',
+				num_pista = '$this->num_pista',
+				login = '$this->login',
+				nivel = '$this->nivel'
 				
-				WHERE ( id_noticia = '$this->id_noticia')";
+				WHERE ( id_clase = '$this->id_clase')";
 
         if (!($resultado = $this->bd->query($sql))){
 			return 'Error en la modificación'; 
@@ -124,18 +123,19 @@ function EDIT(){
 function SEARCH(){
 
 	$sql = "select
-					id_noticia,
-					titulo,
-					subtitulo,
-					cuerpo
+					id_clase,
+					ubicacion,
+					num_pista,
+					login,
+					nivel
 					
-					FROM NEW WHERE
+					FROM CLASS WHERE
 
 					
-						((id_noticia LIKE '$this->id_noticia') &&
-						(titulo LIKE'$this->titulo') &&
-						(subtitulo LIKE'$this->subtitulo')  &&
-						(cuerpo LIKE '$this->cuerpo'))";
+						((id_clase LIKE '$this->id_clase') &&
+						(ubicacion LIKE'$this->ubicacion') &&
+						(num_pista LIKE'$this->num_pista')  &&
+						(login LIKE '$this->login') &&  (nivel LIKE '$this->nivel'))";
 
    
     if (!($resultado = $this->bd->query($sql))){
@@ -151,16 +151,16 @@ function SEARCH(){
 
 function DELETE()
 		{	
-		   $sql = "SELECT * FROM NEW  WHERE 
-		   (id_noticia = '$this->id_noticia')";
+		   $sql = "SELECT * FROM CLASS  WHERE 
+		   (id_clase = '$this->id_clase')";
 		    
 		    $result = $this->bd->query($sql);
 		    
 		    if ($result->num_rows == 1)
 		    {
 		    
-		       $sql = "DELETE FROM NEW  WHERE 
-		       (id_noticia = '$this->id_noticia')";
+		       $sql = "DELETE FROM CLASS  WHERE 
+		       (id_clase = '$this->id_clase')";
 		       
 		        $this->bd->query($sql);
 		        
@@ -174,12 +174,12 @@ function DELETE()
 
 function RellenaDatos()
 		{	
-		    $sql = "SELECT * FROM NEW  WHERE (id_noticia = '$this->id_noticia')";
+		    $sql = "SELECT * FROM CLASS  WHERE (id_clase = '$this->id_clase')";
 
 		    if (!($resultado = $this->bd->query($sql))){
 				return 'No existe en la base de datos'; 
 			}
-
+			
 		    else{ 
 
 			$result = $resultado->fetch_array();
@@ -189,5 +189,7 @@ function RellenaDatos()
 
 
 
+
+?>
 
 ?>

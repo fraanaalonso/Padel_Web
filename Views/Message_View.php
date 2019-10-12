@@ -2,12 +2,15 @@
 <link rel="stylesheet" type="text/css" href="../css/style2.css">
 <?php
 
-include_once '../Models/USER_MODEL.php';
-$login = new USER_MODEL($_REQUEST['login'],'','','','','','','','','','');
 
-class MESSAGE_VIEW
+
+
+include_once '../Models/USER_MODEL.php';
+
+
+class MESSAGE
 {
-	private $mensaje
+	private $mensaje;
 	private $retroceder;
 	
 	function __construct($mensaje, $retroceder)

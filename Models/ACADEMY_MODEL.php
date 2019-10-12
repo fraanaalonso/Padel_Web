@@ -8,20 +8,20 @@ include_once '../includes/db.php';
 /**
 * 
 */
-class POST_MODEL
+class ACADEMY_MODEL
 {
-	var $id_noticia;
-	var $titulo;
-	var $subtitulo;
-	var $cuerpo;
+	var $nif;
+	var $ubicacion;
+	var $num_pistas;
+	var $calle;
 	var $bd;
 	
-	function __construct($id_noticia,$titulo, $subtitulo, $cuerpo)
+	function __construct($nif,$ubicacion, $num_pistas, $calle)
 	{
-		$this->id_noticia = $id_noticia;
-		$this->titulo = $titulo;
-		$this->subtitulo = $subtitulo;
-		$this->cuerpo = $cuerpo;
+		$this->nif = $nif;
+		$this->ubicacion = $ubicacion;
+		$this->num_pistas = $num_pistas;
+		$this->calle = $calle;
 
 		$this->bd = ConectarDB();
 	}
@@ -31,9 +31,9 @@ class POST_MODEL
 
 	function ADD(){
 
-		if (($this->id_noticia <> '')){ 
+		if (($this->nif <> '')){ 
 
-        $sql = "SELECT * FROM NEW WHERE (id_noticia = '$this->id_noticia')";
+        $sql = "SELECT * FROM ACADEMY WHERE (nif = '$this->nif')";
 
 		if (!$result = $this->bd->query($sql)){ 
 			return 'No se ha podido conectar con la base de datos';
@@ -43,17 +43,17 @@ class POST_MODEL
 			if ($result->num_rows == 0){ 
 				
 
-				$sql = "INSERT INTO NEW (
-					id_noticia,
-					titulo,
-					subtitulo,
-					cuerpo
+				$sql = "INSERT INTO ACADEMY (
+					nif,
+					ubicacion,
+					num_pistas,
+					calle
 					) 
 						VALUES (
-						'$this->id_noticia',
-						'$this->titulo',
-						'$this->subtitulo',
-						'$this->cuerpo'
+						'$this->nif',
+						'$this->ubicacion',
+						'$this->num_pistas',
+						'$this->calle'
 						)";
 					
 				
@@ -86,7 +86,7 @@ class POST_MODEL
 
 function EDIT(){
 
-	$sql = "SELECT * FROM NEW  WHERE (id_noticia = '$this->id_noticia') ";
+	$sql = "SELECT * FROM ACADEMY  WHERE (nif = '$this->nif') ";
     
 
     $result = $this->bd->query($sql);
@@ -95,13 +95,13 @@ function EDIT(){
     	
     {	
     	
-		$sql = "UPDATE NEW  SET 
-				id_noticia = '$this->id_noticia',
-				titulo = '$this->titulo',
-				subtitulo = '$this->subtitulo',
-				cuerpo = '$this->cuerpo'
+		$sql = "UPDATE ACADEMY  SET 
+				nif = '$this->nif',
+				ubicacion = '$this->ubicacion',
+				num_pistas = '$this->num_pistas',
+				calle = '$this->calle'
 				
-				WHERE ( id_noticia = '$this->id_noticia')";
+				WHERE ( nif = '$this->nif')";
 
         if (!($resultado = $this->bd->query($sql))){
 			return 'Error en la modificación'; 
@@ -124,18 +124,18 @@ function EDIT(){
 function SEARCH(){
 
 	$sql = "select
-					id_noticia,
-					titulo,
-					subtitulo,
-					cuerpo
+					nif,
+					ubicacion,
+					num_pistas,
+					calle
 					
-					FROM NEW WHERE
+					FROM ACADEMY WHERE
 
 					
-						((id_noticia LIKE '$this->id_noticia') &&
-						(titulo LIKE'$this->titulo') &&
-						(subtitulo LIKE'$this->subtitulo')  &&
-						(cuerpo LIKE '$this->cuerpo'))";
+						((nif LIKE '$this->nif') &&
+						(ubicacion LIKE'$this->ubicacion') &&
+						(num_pistas LIKE'$this->num_pistas')  &&
+						(calle LIKE '$this->calle'))";
 
    
     if (!($resultado = $this->bd->query($sql))){
@@ -151,16 +151,16 @@ function SEARCH(){
 
 function DELETE()
 		{	
-		   $sql = "SELECT * FROM NEW  WHERE 
-		   (id_noticia = '$this->id_noticia')";
+		   $sql = "SELECT * FROM ACADEMY  WHERE 
+		   (nif = '$this->nif')";
 		    
 		    $result = $this->bd->query($sql);
 		    
 		    if ($result->num_rows == 1)
 		    {
 		    
-		       $sql = "DELETE FROM NEW  WHERE 
-		       (id_noticia = '$this->id_noticia')";
+		       $sql = "DELETE FROM ACADEMY  WHERE 
+		       (nif = '$this->nif')";
 		       
 		        $this->bd->query($sql);
 		        
@@ -174,7 +174,7 @@ function DELETE()
 
 function RellenaDatos()
 		{	
-		    $sql = "SELECT * FROM NEW  WHERE (id_noticia = '$this->id_noticia')";
+		    $sql = "SELECT * FROM ACADEMY  WHERE (nif = '$this->nif')";
 
 		    if (!($resultado = $this->bd->query($sql))){
 				return 'No existe en la base de datos'; 

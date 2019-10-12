@@ -1,8 +1,9 @@
 <?php
-include_once '../includes/db.php';
 
 
-class USER_MODEL {
+
+class User_Modelo
+{
 
 
 	var $login;
@@ -38,8 +39,8 @@ class USER_MODEL {
 
 
 
-		
-		$this->mysqli = ConectarDB();
+		include_once '../includes/db.php';
+		$this->bd = ConectarDB();
 	}
 
 
@@ -51,7 +52,7 @@ class USER_MODEL {
 
         $sql = "SELECT * FROM USER WHERE (login = '$this->login')";
 
-		if (!$result = $this->mysqli->query($sql)){ 
+		if (!$result = $this->bd->query($sql)){ 
 			return 'No se ha podido conectar con la base de datos';
 		}
 		else { 
@@ -87,7 +88,7 @@ class USER_MODEL {
 						)";
 					
 				
-				if (!$this->mysqli->query($sql)) { 
+				if (!$this->bd->query($sql)) { 
 					return 'Error en la inserción';
 				}
 				else{ 
@@ -107,37 +108,40 @@ class USER_MODEL {
 
 	}
 
-/*
+
 
 	function EDIT()
 {
 	// se construye la sentencia de busqueda de la tupla en la bd
     $sql = "SELECT * FROM USER  WHERE (login = '$this->login') ";
     // se ejecuta la query
-    $result = $this->mysqli->query($sql);
+    $result = $this->bd->query($sql);
     // si el numero de filas es igual a uno es que lo encuentra
     
     if ($result->num_rows == 1)
     	
     {	// se construye la sentencia de modificacion en base a los atributos de la clase
     	
-		$sql = "UPDATE USUARIO  SET 
-						login = '$this->login',
-						password = '$this->password',
-					    dni = '$this->dni',
-						nombre = '$this->nombre',
-						apellidos = '$this->apellidos',
-						telefono = '$this->telefono',
-						email = '$this->email',
-						FechaNacimiento = '$this->FechaNacimiento',
-						fotopersonal = '$this->fotopersonal',
-						sexo = '$this->sexo'
+		$sql = "UPDATE USER  SET 
+						
+
+					login = '$this->login',
+					nombre = '$this->nombre',
+					apellido = '$this->apellido',
+					password = '$this->password',
+					dni = '$this->dni',
+					email = '$this->email',
+					pais = '$this->pais',
+					sexo = '$this->sexo',
+					telefono = '$this->telefono',
+					fecha = '$this->fecha',
+					foto = '$this->foto'
 				
 				WHERE ( login = '$this->login')";
 
 
 		// si hay un problema con la query se envia un mensaje de error en la modificacion
-        if (!($resultado = $this->mysqli->query($sql))){
+        if (!($resultado = $this->bd->query($sql))){
 			return 'Error en la modificación'; 
 		}
 		else{ // si no hay problemas con la modificación se indica que se ha modificado
@@ -157,30 +161,34 @@ class USER_MODEL {
 	function SEARCH()
 { 	// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
     $sql = "select login,
+    				nombre,
+    				apellido,
     				password,
     				dni,
-                    nombre,
-					apellidos,
-					telefono,
 					email,
-					FechaNacimiento,
-					fotopersonal,
-					sexo
-       	    from USUARIO where 
+					pais,
+					sexo,
+					telefono,
+					fecha,
+					foto
+       	    from USER where 
 
-    				((dni LIKE '%$this->dni%') &&
-    				(login LIKE '%$this->login%') &&
-    				(password LIKE '%$this->password%') &&
-	 				(nombre LIKE '%$this->nombre%') &&
-	 				(apellidos LIKE '%$this->apellidos%') &&
-	 				(telefono LIKE '%$this->telefono%') &&
-	 				(email LIKE '%$this->email%') &&
-	 				(FechaNacimiento LIKE '%$this->FechaNacimiento%') &&
-	 				(fotopersonal LIKE '%$this->fotopersonal%') &&
-	 				(sexo LIKE '%$this->sexo%'))";
+
+
+       	    		((login = '%$this->login%') &&
+					(nombre = '%$this->nombre%') &&
+					(apellido = '%$this->apellido%') &&
+					(password = '%$this->password%') &&
+					(dni = '%$this->dni%') &&
+					(email = '%$this->email%') &&
+					(pais = '%$this->pais%') &&
+					(sexo = '%$this->sexo%') &&
+					(telefono = '%$this->telefono%') &&
+					(fecha = '%$this->fecha%') &&
+					(foto = '%$this->foto%'))";
 
     // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
-    if (!($resultado = $this->mysqli->query($sql))){
+    if (!($resultado = $this->bd->query($sql))){
 		return 'Error en la consulta sobre la base de datos';
 	}
     else{ // si la busqueda es correcta devolvemos el recordset resultado
@@ -197,16 +205,16 @@ class USER_MODEL {
 		// se manda un mensaje de que ese valor de clave no existe
 		function DELETE()
 		{	// se construye la sentencia sql de busqueda con los atributos de la clase
-		    $sql = "SELECT * FROM USUARIO  WHERE (login = '$this->login') ";
+		    $sql = "SELECT * FROM USER  WHERE (login = '$this->login') ";
 		    // se ejecuta la query
-		    $result = $this->mysqli->query($sql);
+		    $result = $this->bd->query($sql);
 		    // si existe una tupla con ese valor de clave
 		    if ($result->num_rows == 1)
 		    {
 		    	// se construye la sentencia sql de borrado
-		        $sql = "DELETE FROM USUARIO  WHERE (login = '$this->login')";
+		        $sql = "DELETE FROM USER  WHERE (login = '$this->login')";
 		        // se ejecuta la query
-		        $this->mysqli->query($sql);
+		        $this->bd->query($sql);
 		        // se devuelve el mensaje de borrado correcto
 		    	return "Borrado correctamente";
 		    } // si no existe el login a borrar se devuelve el mensaje de que no existe
@@ -219,9 +227,9 @@ class USER_MODEL {
 		// en el atributo de la clase
 		function RellenaDatos()
 		{	// se construye la sentencia de busqueda de la tupla
-		    $sql = "SELECT * FROM USUARIO  WHERE (login = '$this->login')";
+		    $sql = "SELECT * FROM USER  WHERE (login = '$this->login')";
 		    // Si la busqueda no da resultados, se devuelve el mensaje de que no existe
-		    if (!($resultado = $this->mysqli->query($sql))){
+		    if (!($resultado = $this->bd->query($sql))){
 				return 'No existe en la base de datos'; // 
 			}
 		    else{ // si existe se devuelve la tupla resultado
@@ -233,12 +241,12 @@ class USER_MODEL {
 
 
 
-		// funcion login: realiza la comprobación de si existe el usuario en la bd y despues si la pass
-// es correcta para ese usuario. Si es asi devuelve true, en cualquier otro caso devuelve el 
+		// funcion login: realiza la comprobación de si existe el USER en la bd y despues si la pass
+// es correcta para ese USER. Si es asi devuelve true, en cualquier otro caso devuelve el 
 // error correspondiente
 
 
-*/
+
 function loginExiste(){
 
 	
@@ -247,7 +255,7 @@ function loginExiste(){
 			WHERE (
 				(login = '$this->login') 
 			)";
-	$resultado = $this->mysqli->query($sql);
+	$resultado = $this->bd->query($sql);
 	if ($resultado->num_rows == 0){
 		return 'El login no existe';
 	}
@@ -257,7 +265,7 @@ function loginExiste(){
 			return true;
 		}
 		else{
-			return 'La contraseña para este usuario no es correcta';
+			return 'La contraseña para este USER no es correcta';
 		}
 	}
 }
@@ -270,12 +278,12 @@ function register(){
 
 		$sql = "select * from USER where login = '".$this->login."'";
 
-		$result = $this->mysqli->query($sql);
-		if ($result->num_rows == 1){  // existe el usuario
-				return 'El usuario ya existe';
+		$result = $this->bd->query($sql);
+		if ($result->num_rows == 1){  // existe el USER
+				return 'El USER ya existe';
 			}
 		else{
-	    		return true; //no existe el usuario
+	    		return true; //no existe el USER
 		}
 
 	}
@@ -310,7 +318,7 @@ function registrar(){
 						'$this->foto'
 						)";
 			
-		if (!$this->mysqli->query($sql)) {
+		if (!$this->bd->query($sql)) {
 			return 'Error en la inserción';
 		}
 		else{

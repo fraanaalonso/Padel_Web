@@ -158,11 +158,6 @@ main{
 
 
 
-article{
-	padding: 20px;
-}
-
-article{
-	font-size: 20px;
-	text-align: right;
+.tabla1{
+	right: 0;
 }

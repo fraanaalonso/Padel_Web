@@ -8,20 +8,20 @@ include_once '../includes/db.php';
 /**
 * 
 */
-class POST_MODEL
+class RESERVATION
 {
-	var $id_noticia;
-	var $titulo;
-	var $subtitulo;
-	var $cuerpo;
+	var $id_reserva;
+	var $id_pista;
+	var $login;
+	var $hora;
 	var $bd;
 	
-	function __construct($id_noticia,$titulo, $subtitulo, $cuerpo)
+	function __construct($id_reserva,$id_pista, $login, $hora)
 	{
-		$this->id_noticia = $id_noticia;
-		$this->titulo = $titulo;
-		$this->subtitulo = $subtitulo;
-		$this->cuerpo = $cuerpo;
+		$this->id_reserva = $id_reserva;
+		$this->id_pista = $id_pista;
+		$this->login = $login;
+		$this->hora = $hora;
 
 		$this->bd = ConectarDB();
 	}
@@ -31,9 +31,9 @@ class POST_MODEL
 
 	function ADD(){
 
-		if (($this->id_noticia <> '')){ 
+		if (($this->id_reserva <> '')){ 
 
-        $sql = "SELECT * FROM NEW WHERE (id_noticia = '$this->id_noticia')";
+        $sql = "SELECT * FROM RESERVATION WHERE (id_reserva = '$this->id_reserva')";
 
 		if (!$result = $this->bd->query($sql)){ 
 			return 'No se ha podido conectar con la base de datos';
@@ -43,17 +43,17 @@ class POST_MODEL
 			if ($result->num_rows == 0){ 
 				
 
-				$sql = "INSERT INTO NEW (
-					id_noticia,
-					titulo,
-					subtitulo,
-					cuerpo
+				$sql = "INSERT INTO RESERVATION (
+					id_reserva,
+					id_pista,
+					login,
+					hora
 					) 
 						VALUES (
-						'$this->id_noticia',
-						'$this->titulo',
-						'$this->subtitulo',
-						'$this->cuerpo'
+						'$this->id_reserva',
+						'$this->id_pista',
+						'$this->login',
+						'$this->hora'
 						)";
 					
 				
@@ -86,7 +86,7 @@ class POST_MODEL
 
 function EDIT(){
 
-	$sql = "SELECT * FROM NEW  WHERE (id_noticia = '$this->id_noticia') ";
+	$sql = "SELECT * FROM RESERVATION  WHERE (id_reserva = '$this->id_reserva') ";
     
 
     $result = $this->bd->query($sql);
@@ -95,13 +95,13 @@ function EDIT(){
     	
     {	
     	
-		$sql = "UPDATE NEW  SET 
-				id_noticia = '$this->id_noticia',
-				titulo = '$this->titulo',
-				subtitulo = '$this->subtitulo',
-				cuerpo = '$this->cuerpo'
+		$sql = "UPDATE RESERVATION  SET 
+				id_reserva = '$this->id_reserva',
+				id_pista = '$this->id_pista',
+				login = '$this->login',
+				hora = '$this->hora'
 				
-				WHERE ( id_noticia = '$this->id_noticia')";
+				WHERE ( id_reserva = '$this->id_reserva')";
 
         if (!($resultado = $this->bd->query($sql))){
 			return 'Error en la modificación'; 
@@ -124,18 +124,18 @@ function EDIT(){
 function SEARCH(){
 
 	$sql = "select
-					id_noticia,
-					titulo,
-					subtitulo,
-					cuerpo
+					id_reserva,
+					id_pista,
+					login,
+					hora
 					
-					FROM NEW WHERE
+					FROM RESERVATION WHERE
 
 					
-						((id_noticia LIKE '$this->id_noticia') &&
-						(titulo LIKE'$this->titulo') &&
-						(subtitulo LIKE'$this->subtitulo')  &&
-						(cuerpo LIKE '$this->cuerpo'))";
+						((id_reserva LIKE '$this->id_reserva') &&
+						(id_pista LIKE'$this->id_pista') &&
+						(login LIKE'$this->login')  &&
+						(hora LIKE '$this->hora'))";
 
    
     if (!($resultado = $this->bd->query($sql))){
@@ -151,16 +151,16 @@ function SEARCH(){
 
 function DELETE()
 		{	
-		   $sql = "SELECT * FROM NEW  WHERE 
-		   (id_noticia = '$this->id_noticia')";
+		   $sql = "SELECT * FROM RESERVATION  WHERE 
+		   (id_reserva = '$this->id_reserva')";
 		    
 		    $result = $this->bd->query($sql);
 		    
 		    if ($result->num_rows == 1)
 		    {
 		    
-		       $sql = "DELETE FROM NEW  WHERE 
-		       (id_noticia = '$this->id_noticia')";
+		       $sql = "DELETE FROM RESERVATION  WHERE 
+		       (id_reserva = '$this->id_reserva')";
 		       
 		        $this->bd->query($sql);
 		        
@@ -174,7 +174,7 @@ function DELETE()
 
 function RellenaDatos()
 		{	
-		    $sql = "SELECT * FROM NEW  WHERE (id_noticia = '$this->id_noticia')";
+		    $sql = "SELECT * FROM RESERVATION  WHERE (id_reserva = '$this->id_reserva')";
 
 		    if (!($resultado = $this->bd->query($sql))){
 				return 'No existe en la base de datos'; 

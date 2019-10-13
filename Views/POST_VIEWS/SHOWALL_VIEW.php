@@ -20,11 +20,10 @@ class SHOWALL_VIEW
 ?>
 
 
- <div class="icons">
-    <a href=""><img src="../../img/user3.png"></a>
-    <a href="../Controllers/Post_Controller.php?action=ADD"><span class="lnr lnr-add añadir"></span></a>
-    <a href="../Controllers/Post_Controller.php?action=SEARCH"><span class="lnr lnr-search añadir"></span></a>
-    <a href="../Controllers/Post_Controller.php"><span class="lnr lnr-eye añadir"></span></a>
+ <div class="iconos_superiores">
+    <a href="../Controllers/Post_Controller.php?action=ADD"><span class="lnr lnr-add "></span></a>
+    <a href="../Controllers/Post_Controller.php?action=SEARCH"><span class="lnr lnr-search"></span></a>
+    <a href="../Controllers/Post_Controller.php"><span class="lnr lnr-eye"></span></a>
 </div>
 
 <table>

@@ -207,8 +207,11 @@ tr:hover td{
 
 .iconos_superiores{
 	position: absolute;
-	left: 20px;
 	top: 150px;
+	bottom: 150px;
+	left: 500px;
+	font-size: 50px;
+	text-align: center;
 }
 
 .mensaje{

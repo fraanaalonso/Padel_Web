@@ -534,3 +534,9 @@ button{
 .forgot a{
 	color: black;
 }
+
+
+
+body .form_registro{
+	bottom: 200px;
+}

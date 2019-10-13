@@ -30,60 +30,26 @@ class EDIT_VIEW
 				
 			</div>
 			
-		<form class="col-12" method="post" action="../Controllers/User_Controller.php?action=SEARCH" onsubmit="return validar();">
+		<form class="col-12" method="post" action="../Controllers/Post_Controller.php?action=EDIT" onsubmit="return validar();">
 
 		 <div class="form-group" id="login-group">
-		  	<input type="text" id="login" name="login" class="form-control" value="<?php echo $valores['login']; ?>" >
+		  	<input type="text" id="id_noticia" name="id_noticia" class="form-control" readonly value="<?php echo $valores['id_noticia']; ?>">
 		   </div>	
 
 		  <div class="form-group" id="user-group">
-		  	<input type="text" id="nombre" name="nombre" class="form-control" value="<?php echo $valores['nombre']; ?>" >
+		  	<input type="text" id="titulo" name="titulo" class="form-control" value="<?php echo $valores['titulo']; ?>" >
 		   </div>
 
 		   <div class="form-group" id="apellidos-group">
-		  	<input type="text" id="apellido" name="apellido" class="form-control" value="<?php echo $valores['apellido']; ?>" >
+		  	<input type="text" id="subtitulo" name="subtitulo" class="form-control" value="<?php echo $valores['subtitulo']; ?>" >
 		   </div>
 
 		   <div class="form-group" id="contrasena-group">
-		  	<input type="password" id="password" name="password" class="form-control" value="<?php echo $valores['password']; ?>">
+		  	<input type="text" id="cuerpo" name="cuerpo" class="form-control" value="<?php echo $valores['cuerpo']; ?>">
 		   </div>
 
 		   <div class="form-group" id="dni-group">
-		  	<input type="text" id="dni" name="dni" class="form-control" value="<?php echo $valores['dni']; ?>" >
-		   </div>
-
-		   <div class="form-group" id="email-group">
-		  	<input type="email" id="email" name="email" class="form-control" value="<?php echo $valores['email']; ?>" >
-		   </div>
-
-		   <div class="form-group" id="pais-group">
-		  	<select name="pais" id="pais" class="form-control">
-
-		   		<option value="value="<?php echo $valores['pais']; ?>""></option>
-
-		   	</select>
-		   </div>
-
-		   <div class="form-group" id="sexo-group">
-		   	<select name="sexo" id="sexo" class="form-control">
-
-		   		<option value="<?php echo $valores['sexo']; ?>"></option>
-
-		   		
-
-		   	</select>
-		   </div>
-
-		    <div class="form-group" id="telefono-group">
-		  	<input type="text" id="telefono" name="telefono" class="form-control" value="value="<?php echo $valores['telefono']; ?>"">
-		   </div>
-
-		   <div class="form-group" id="fecha-group">
-		  	<input type="date" id="fecha" name="fecha" class="form-control" value="value="<?php echo $valores['fecha']; ?>"">
-		   </div>
-
-		   <div class="form-group" id="foto-group">
-		  	<input type="file" id="foto" name="foto" class="form-control" value="value="<?php echo $valores['foto']; ?>"">
+		  	<input type="text" id="login" name="login" class="form-control" value="<?php echo $valores['login']; ?>" >
 		   </div>
 
 

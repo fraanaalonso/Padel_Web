@@ -211,6 +211,21 @@ tr:hover td{
 	top: 150px;
 }
 
+.mensaje{
+
+	position: absolute;
+	top: 150px;
+	bottom: 150px; 
+	left: 500px;
+	width: 30%;
+	height: 10%;
+	background-color:white;
+	text-align: center;
+	border: solid 3px black;
+
+
+}
+
 
 
 

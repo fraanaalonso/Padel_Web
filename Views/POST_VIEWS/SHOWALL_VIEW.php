@@ -80,9 +80,9 @@ class SHOWALL_VIEW
 
 
       <td>
-        <a href="../Controllers/Post_Controller.php?action=SHOWCURRENT&login=<?php  echo $fila['id_noticia'] ?>"><span class="lnr lnr-eye añadir"></span></a>
-        <a href="../Controllers/Post_Controller.php?action=EDIT&login=<?php  echo $fila['id_noticia'] ?>"><span class="lnr lnr-pencil editar"></span></a>
-        <a href="../Controllers/Post_Controller.php?action=DELETE&login=<?php  echo $fila['id_noticia'] ?>"><span class="lnr lnr-trash borrar"></span></a>
+        <a href="../Controllers/Post_Controller.php?action=SHOWCURRENT&id_noticia=<?php  echo $fila['id_noticia'] ?>"><span class="lnr lnr-eye añadir"></span></a>
+        <a href="../Controllers/Post_Controller.php?action=EDIT&id_noticia=<?php  echo $fila['id_noticia'] ?>"><span class="lnr lnr-pencil editar"></span></a>
+        <a href="../Controllers/Post_Controller.php?action=DELETE&id_noticia=<?php  echo $fila['id_noticia'] ?>"><span class="lnr lnr-trash borrar"></span></a>
       
       </td>
 

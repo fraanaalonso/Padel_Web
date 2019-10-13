@@ -103,10 +103,10 @@ Switch ($_REQUEST['action']){
 
 				else{
 
-					 include_once '../Models/POST_MODEL.php';
+					 include '../Models/POST_MODEL.php';
 					$modelo = new POST_MODEL($_REQUEST['id_noticia'],$_REQUEST['titulo'],$_REQUEST['subtitulo'], $_REQUEST['cuerpo'], $_REQUEST['login']);
 
-					  $respuesta = $modelo->EDIT();
+					$respuesta = $modelo->EDIT();
 					new MESSAGE($respuesta, './Post_Controller.php');
 				}
 						

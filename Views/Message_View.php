@@ -5,9 +5,6 @@
 
 
 
-include_once '../Models/USER_MODEL.php';
-
-
 class MESSAGE
 {
 	private $mensaje;
@@ -22,14 +19,8 @@ class MESSAGE
 
 	function execute(){
 
-		if ($_SESSION['login'] == $login){
-
-		include 'HeaderPost.php';
-
-		}
-		else{
-			include 'HeaderPrev.php';
-		}
+	include 'HeaderPost.php';
+		
 
 
 ?>
@@ -38,9 +29,10 @@ class MESSAGE
 <div class="mensaje">
 	
 	<?php
-	$retroceder = '../img/retroceder.jpg';
+	$retroceder = '../img/salir.png';
 
-	 echo '<a href=\'' . $this->retroceder . "'>" . "<img src=\"$retroceder\"  width=\"60\" />";
+	 echo '<a href=\'' . $this->retroceder . "'>" . "<img src=\"$retroceder\"  width=\"50\" />";
+
 
 
 	?>

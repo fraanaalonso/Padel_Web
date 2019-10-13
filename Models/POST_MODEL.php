@@ -1,27 +1,26 @@
 
 
 <?php
-include_once '../includes/db.php';
 
 
-
-/**
-* 
-*/
 class POST_MODEL
 {
 	var $id_noticia;
 	var $titulo;
 	var $subtitulo;
 	var $cuerpo;
-	var $bd;
+	var $login;
 	
-	function __construct($id_noticia,$titulo, $subtitulo, $cuerpo)
+	function __construct($id_noticia,$titulo, $subtitulo, $cuerpo, $login)
 	{
 		$this->id_noticia = $id_noticia;
 		$this->titulo = $titulo;
 		$this->subtitulo = $subtitulo;
 		$this->cuerpo = $cuerpo;
+		$this->login = $login;
+
+
+		include_once '../includes/db.php';
 
 		$this->bd = ConectarDB();
 	}
@@ -47,13 +46,15 @@ class POST_MODEL
 					id_noticia,
 					titulo,
 					subtitulo,
-					cuerpo
+					cuerpo, 
+					login
 					) 
 						VALUES (
 						'$this->id_noticia',
 						'$this->titulo',
 						'$this->subtitulo',
-						'$this->cuerpo'
+						'$this->cuerpo',
+						'$this->login'
 						)";
 					
 				
@@ -80,7 +81,7 @@ class POST_MODEL
 
 
 
-}
+
 
 
 
@@ -99,7 +100,8 @@ function EDIT(){
 				id_noticia = '$this->id_noticia',
 				titulo = '$this->titulo',
 				subtitulo = '$this->subtitulo',
-				cuerpo = '$this->cuerpo'
+				cuerpo = '$this->cuerpo',
+				login = '$this->login'
 				
 				WHERE ( id_noticia = '$this->id_noticia')";
 
@@ -127,15 +129,10 @@ function SEARCH(){
 					id_noticia,
 					titulo,
 					subtitulo,
-					cuerpo
+					cuerpo,
+					login
 					
-					FROM NEW WHERE
-
-					
-						((id_noticia LIKE '$this->id_noticia') &&
-						(titulo LIKE'$this->titulo') &&
-						(subtitulo LIKE'$this->subtitulo')  &&
-						(cuerpo LIKE '$this->cuerpo'))";
+					FROM NEW";
 
    
     if (!($resultado = $this->bd->query($sql))){
@@ -188,6 +185,6 @@ function RellenaDatos()
 		}
 
 
-
+}
 
 ?>

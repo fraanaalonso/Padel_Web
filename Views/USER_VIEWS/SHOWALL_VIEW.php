@@ -36,8 +36,7 @@ class SHOWALL_VIEW
     <th></th>
     <th></th>
     <th>
-      <a href="../Controllers/User_Controller.php?action=ADD"><span class="lnr lnr-search añadir"></span></a>
-      
+        <img src="../img/user3.png">      
     </th>
     <th></th>
     <th></th>

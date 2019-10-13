@@ -1,31 +1,36 @@
 <?php
+
+
+
+
+
 /**
 * 
 */
-class Register
+class SEARCH_VIEW
 {
 	
-	function __construct()
-	{
-		$this->execute();
+	function __construct(){
+		$this->execution();
 	}
 
-	function execute(){
 
-		include 'HeaderPrev.php';
-		//include 'MenuLateral.php';
+	function execution(){
+		include '../Views/HeaderPost.php';
 
 ?>
+
+
 <body class="form_registro">
 <div class="modal-dialog text-center">
-	<div class="col-sm-28 main-section">
+	<div class="col-sm-15 main-section">
 		<div class="modal-content">
-			<div class="col-17 user-img">
+			<div class="col-12 user-img">
 				<img src="../img/iconUser.jpg">
 				
 			</div>
 			
-		<form class="col-12" method="post" action="../Controllers/Register_Controller.php" onsubmit="return validar();">
+		<form class="col-12" method="post" action="../Controllers/User_Controller.php?action=SEARCH" onsubmit="return validar();">
 
 		 <div class="form-group" id="login-group">
 		  	<input type="text" id="login" name="login" class="form-control" placeholder="Login" >
@@ -111,41 +116,13 @@ class Register
 		  	<input type="date" id="fecha" name="fecha" class="form-control" placeholder="Fecha de Nacimiento">
 		   </div>
 
-		 <div class="photo">
-		  	
-		  <label for="foto">Foto Personal</label>
-
-		  	<div class="prevPhoto">
-		  		<span class="delPhoto notBlock"></span>
-		  		<label for="foto"></label>
-		  	</div>
-		  	<div class="upimg">
-		  		<input type="file" name="foto" id="foto">
-		  	</div>
-		  	<div id="form-alert"></div>
-		  </div>
-		   
+		   <div class="form-group" id="foto-group">
+		  	<input type="file" id="foto" name="foto" class="form-control" placeholder="Foto">
+		   </div>
 
 
-		     <div class="form-group">
-			    <div class="form-check">
-			      <input class="form-check-input" type="checkbox" value="" id="invalidCheck">
-			      <label class="form-check-label" for="invalidCheck">
-			        Acepto los términos y condiciones
-			      </label>
-			      <div class="invalid-feedback">
-			        Debes estar de acuerdo ante de registrarte
-			      </div>
-			    </div>
-			  </div>
-
-
-		   <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Registrar</button>
-		   <p>
-		   	<div class="col-12-forgot">
-			<a href="../Controllers/Login_Controller.php">Iniciar Sesión</a>
-		</div>
-		   </p>
+		   <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Buscar</button>
+		  
 		</form>
 
 			
@@ -160,7 +137,7 @@ class Register
 
 </body>
 <?php
-include 'Footer.php';
+include '../Views/Footer.php';
 ?>
 
 
@@ -169,5 +146,5 @@ include 'Footer.php';
 }
 }
 
-?>
 
+?>

@@ -9,8 +9,7 @@ if (!autenticado()){
 }
 //esta autenticado
 else{
-	include '../Views/USER_Index.php';
-	new Index();
+	header('Location: ./Post_Controller.php');
 }
 
 ?>

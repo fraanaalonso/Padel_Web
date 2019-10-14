@@ -18,6 +18,12 @@ class ADD_VIEW
 
 ?>
 
+<div class="iconos-superiores">
+
+    <a href="../Controllers/Post_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+
+</div>
+
 
 <div class="modal-dialog text-center">
 	<div class="col-sm-15 main-section2">
@@ -27,7 +33,7 @@ class ADD_VIEW
 
 			<br>
 			<br>
-			
+
 		 <div class="form-group" id="login-group">
 
 		 	<div class="form-group" id="apellidos-group">
@@ -50,6 +56,9 @@ class ADD_VIEW
 
 		   <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>Publicar</button>
 		  
+
+		  <br>
+		  <br>
 		</form>
 
 			

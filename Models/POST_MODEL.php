@@ -46,7 +46,7 @@ class POST_MODEL
 					id_noticia,
 					titulo,
 					subtitulo,
-					cuerpo, 
+					cuerpo
 		
 					) 
 						VALUES (

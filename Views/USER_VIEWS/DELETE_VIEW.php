@@ -20,47 +20,87 @@ class DELETE_VIEW
      
 ?>
 
+
+
+<div class="iconos-superiores">
+      
+   
+    
+
+         <form name="x" method="post" action="../Controllers/User_Controller.php?action=DELETE">
+
+           <input type="hidden" name="login" value="<?php echo $valores[0];?>">
+          
+        </form>
+
+
+
+        
+            <button type="submit" onclick="x.submit()"> <a href="#"><span class="lnr lnr-trash" style="font-size: 35px"></span></a></button>
+            <a href="../Controllers/User_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+
+</div>
+
+
+
         <table>
            <tr>
             <th>Login</th>
             <td><?php echo $valores[0];?></td>
           </tr>
            <tr>
-            <th>Password</th>
+            <th>Nombre</th>
             <td><?php echo $valores[1];?></td>
           </tr>
+
+          <tr>
+            <th>Apellidos</th>
+            <td><?php echo $valores[2];?></td>
+            </tr>
+           <tr>
+
+            <tr>
+            <th>Password</th>
+            <td><?php echo $valores[3];?></td>
+            </tr>
+           <tr>
+
            <tr>
             <th>DNI</th>
-            <td><?php echo $valores[2];?></td>
-          </tr>
-           <tr>
-            <th>Nombre</th>
-            <td><?php echo $valores[3];?></td>
-          </tr>
-           <tr>
-            <th>Apellidos</th>
             <td><?php echo $valores[4];?></td>
-            </tr>
+          </tr>
            <tr>
-            <th>Telefono</th>
+            <th>E-mail</th>
             <td><?php echo $valores[5];?></td>
-            </tr>
-           <tr>
-            <th>Email</th>
+          </tr>
+
+          <tr>
+            <th>Pais</th>
             <td><?php echo $valores[6];?></td>
             </tr>
            <tr>
-            <th>Fecha de Nacimiento</th>
+           
+            <th>Sexo</th>
             <td><?php echo $valores[7];?></td>
             </tr>
-           <tr>
-            <th>Foto</th>
+           
+            <th>Telefono</th>
             <td><?php echo $valores[8];?></td>
+            </tr>
+           <tr>
+            <th>Fecha de Nacimiento</th>
+            <td><?php echo $valores[9];?></td>
             </tr> 
            <tr>
-            <th>Sexo</th>
-            <td><?php echo $valores[9];?></td>
+            <th>Foto</th>
+            <td><?php echo $valores[10];?></td>
             </tr>
+
+            <tr>
+            <th> Rol del Usuario</th>
+            <td><?php echo $valores[11];?></td>
+            </tr>
+           <tr>
         </table>
 
 

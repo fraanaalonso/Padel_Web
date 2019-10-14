@@ -13,6 +13,10 @@ class SHOWALL_VIEW
 	
 	function mostrarDatos($fila, $resultado){
     include '../Views/HeaderPost.php';
+
+
+
+
   
    
 
@@ -20,36 +24,19 @@ class SHOWALL_VIEW
 ?>
 
 
- <div class="icons">
-    <a href=""><img src="../../img/user3.png"></a>
-    <a href="../Controllers/User_Controller.php?action=ADD"><span class="lnr lnr-add añadir"></span></a>
-    <a href="../Controllers/User_Controller.php?action=SEARCH"><span class="lnr lnr-search añadir"></span></a>
-    <a href="../Controllers/User_Controller.php"><span class="lnr lnr-eye añadir"></span></a>
+<div class="iconos-superiores">
+      
+    <a href="../Controllers/User_Controller.php?action=ADD"><span class="lnr lnr-file-add" style="font-size: 35px"></span></a>
+    <a href="../Controllers/User_Controller.php?action=SEARCH"><span class="lnr lnr-magnifier" style="font-size: 35px"></span></a>
+    <a href="../Controllers/Post_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+
 </div>
 
-<table>
-<tr>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th>
-        <img src="../img/user3.png">      
-    </th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
 
-</tr>
-</table>
  
 
 
-  <table border="1">
+ <table border="1">
   <thead>
   <tr>
     <th>Login    </th>
@@ -63,6 +50,7 @@ class SHOWALL_VIEW
     <th>Telefono </th>
     <th>Fecha    </th>
     <th>Foto     </th>
+    <th>Rol del Usuario</th>
     <th>Opciones </th>
    
 
@@ -87,6 +75,7 @@ class SHOWALL_VIEW
       echo "<td>".$fila["telefono"]."</td>";
       echo "<td>".$fila["fecha"]."</td>";
       echo "<td><a href = \"../../img/" . $fila["foto"]. "\">". $fila["foto"] . " </a></td>";
+      echo "<td>".$fila["rol_id"]."</td>";
     
 ?>
 

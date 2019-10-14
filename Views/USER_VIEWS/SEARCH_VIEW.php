@@ -21,16 +21,22 @@ class SEARCH_VIEW
 ?>
 
 
-<body class="form_registro">
+
+<div class="iconos-superiores">
+
+    <a href="../Controllers/User_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+
+</div>
+
 <div class="modal-dialog text-center">
-	<div class="col-sm-15 main-section">
+	<div class="col-sm-15 main-section2" style="padding-top: 10px">
 		<div class="modal-content">
 			<div class="col-12 user-img">
 				<img src="../img/iconUser.jpg">
 				
 			</div>
 			
-		<form class="col-12" method="post" action="../Controllers/User_Controller.php?action=SEARCH" onsubmit="return validar();">
+		<form class="col-12" method="post" action="../Controllers/User_Controller.php?action=SEARCH" >
 
 		 <div class="form-group" id="login-group">
 		  	<input type="text" id="login" name="login" class="form-control" placeholder="Login" >
@@ -116,14 +122,33 @@ class SEARCH_VIEW
 		  	<input type="date" id="fecha" name="fecha" class="form-control" placeholder="Fecha de Nacimiento">
 		   </div>
 
-		   <div class="form-group" id="foto-group">
-		  	<input type="file" id="foto" name="foto" class="form-control" placeholder="Foto">
+		   <div class="photo">
+		  	
+		  <label for="foto">Foto Personal</label>
+
+		  	<div class="prevPhoto">
+		  		<span class="delPhoto notBlock"></span>
+		  		<label for="foto"></label>
+		  	</div>
+		  	<div class="upimg">
+		  		<input type="file" name="foto" id="foto">
+		  	</div>
+		  	
+		  </div>
+		  <br>
+		  <br>
+
+		    <div class="form-group" id="telefono-group">
+		  	<input type="text" id="rol_id" name="rol_id" class="form-control" placeholder="Rol">
 		   </div>
 
 
 		   <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Buscar</button>
 		  
 		</form>
+
+		<br>
+		<br>
 
 			
 			
@@ -135,7 +160,6 @@ class SEARCH_VIEW
 </div>
 
 
-</body>
 <?php
 include '../Views/Footer.php';
 ?>

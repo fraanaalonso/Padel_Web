@@ -17,6 +17,7 @@ $login = $_SESSION['login'];
     <link rel="stylesheet" type="text/css" href="../css/style2.css">
     <link rel="stylesheet" type="text/css" href="../img/icon/style.css">
     <script src="../Functions/js/foto.js"></script>
+    <script src="../Functions/js/validaciones.js"></script>
   
 </head>
 
@@ -30,7 +31,7 @@ $login = $_SESSION['login'];
 
 
   <div class="content-menu">
-    <a href="../Controllers/User_Controller.php"><li><span class="lnr lnr-home icon1"></span><h4 class="text1">Usuarioa</h4></li></a>  
+    <a href="../Controllers/User_Controller.php"><li><span class="lnr lnr-home icon1"></span><h4 class="text1">Deportistas</h4></li></a>  
     <li><span class="lnr lnr-dice icon2"></span><h4 class="text2">Mis Reservas</h4></li>
     <li><span class="lnr lnr-bookmark icon3"></span><h4 class="text3">Pistas</h4></li>
     <li><span class="lnr lnr-map icon4"></span><h4 class="text4">Campeonatos</h4></li>
@@ -46,6 +47,10 @@ $login = $_SESSION['login'];
   
   
 </main>
+
+
+</body>
+</html>
 
 
         

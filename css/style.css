@@ -365,16 +365,19 @@ blockquote::after{
 
 .main-section{
 	position: absolute;
-	padding: 0;
-	top: 80px;
-
+	top: 170px;
+	bottom: 150px; 
+	left: 30px;
 	width: 100%;
+	border: black 2px solid;
+
 }
 .modal-content{
 	background-color: #000;
 	opacity: .85;
 	padding: 0 20px;
 	box-shadow: 8px 0px 6px #848484;
+	border: 6px;
 }
 
 
@@ -453,7 +456,7 @@ blockquote::after{
     border: 1px solid #CCC;
     position: relative;
     cursor: pointer;
-    background: url(../images/uploads/user.png);
+    background: url(../img/user1.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -513,13 +516,7 @@ blockquote::after{
 
 /*BackGround de los formularios de inicio y registro*/
 
-.form_login{
-	background-image: url(../img/formLogin.jpg);
-}
 
-.form_registro{
-	background-image: url(../img/formLogin.jpg);
-}
 
 button{
 	width: 60%;

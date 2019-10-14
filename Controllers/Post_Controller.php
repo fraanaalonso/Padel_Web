@@ -29,7 +29,6 @@ function get_data(){
 	$titulo ='';
 	$subtitulo = '';
 	$cuerpo ='';
-	$login = '';
 	$action = $_REQUEST['action'];
 
 	$NEW = new POST_MODEL(
@@ -37,7 +36,6 @@ function get_data(){
 		$titulo,
 		$subtitulo,
 		$cuerpo,
-		$login,
 		$action
 	);
 
@@ -56,7 +54,7 @@ Switch ($_REQUEST['action']){
 				}
 				else{
 				 include_once '../Models/POST_MODEL.php';
-				  $modelo= new POST_MODEL($_REQUEST['id_noticia'],$_REQUEST['titulo'],$_REQUEST['subtitulo'], $_REQUEST['cuerpo'], $_REQUEST['login']);
+				  $modelo= new POST_MODEL($_REQUEST['id_noticia'],$_REQUEST['titulo'],$_REQUEST['subtitulo'], $_REQUEST['cuerpo']);
 
 					$respuesta = $modelo->ADD();
 					new MESSAGE($respuesta,'./Post_Controller.php');
@@ -77,11 +75,11 @@ Switch ($_REQUEST['action']){
 
 				else{
 					 include_once '../Models/POST_MODEL.php';
-					$modelo= new POST_MODEL($_REQUEST['id_noticia'],$_REQUEST['titulo'],$_REQUEST['subtitulo'], $_REQUEST['cuerpo'], $_REQUEST['login']);
+					$modelo= new POST_MODEL($_REQUEST['id_noticia'],$_REQUEST['titulo'],$_REQUEST['subtitulo'], $_REQUEST['cuerpo']);
 
 					
                      $respuesta = $modelo->SEARCH();
-					$lista = array('Código', 'Titulo ', 'Subtitulo ', 'Contenido ', 'Login');
+					$lista = array('Código', 'Titulo ', 'Subtitulo ', 'Contenido ');
 					new SHOWALL_VIEW($lista, $respuesta);
 					
 				}
@@ -96,7 +94,7 @@ Switch ($_REQUEST['action']){
 		case 'EDIT':
 				if (!$_POST) {
 					 include_once '../Models/POST_MODEL.php';
-					$modelo= new POST_MODEL($_REQUEST['id_noticia'],'','', '', '');
+					$modelo= new POST_MODEL($_REQUEST['id_noticia'],'', '', '');
 					$valores= $modelo ->RellenaDatos();
 					new EDIT_VIEW($valores);
 				}
@@ -104,7 +102,7 @@ Switch ($_REQUEST['action']){
 				else{
 
 					 include '../Models/POST_MODEL.php';
-					$modelo = new POST_MODEL($_REQUEST['id_noticia'],$_REQUEST['titulo'],$_REQUEST['subtitulo'], $_REQUEST['cuerpo'], $_REQUEST['login']);
+					$modelo = new POST_MODEL($_REQUEST['id_noticia'],$_REQUEST['titulo'],$_REQUEST['subtitulo'], $_REQUEST['cuerpo']);
 
 					$respuesta = $modelo->EDIT();
 					new MESSAGE($respuesta, './Post_Controller.php');
@@ -117,7 +115,7 @@ Switch ($_REQUEST['action']){
 
 				if (!$_POST) {
 					 include_once '../Models/POST_MODEL.php';
-					$modelo= new POST_MODEL($_REQUEST['id_noticia'],'', '', '', '');
+					$modelo= new POST_MODEL($_REQUEST['id_noticia'],'', '', '');
 					$valores= $modelo ->RellenaDatos();
 					new DELETE_VIEW($valores);
 				}
@@ -135,7 +133,7 @@ Switch ($_REQUEST['action']){
 
 		case 'SHOWCURRENT':
 				 include_once '../Models/POST_MODEL.php';
-			    $modelo = new POST_MODEL($_REQUEST['id_noticia'],'','', '','');
+			    $modelo = new POST_MODEL($_REQUEST['id_noticia'],'','','');
 				$valores = $modelo->RellenaDatos();
 
 				new SHOWCURRENT_VIEW($valores);
@@ -156,7 +154,7 @@ Switch ($_REQUEST['action']){
 
 
 				$datos = $modelo->SEARCH();
-				$lista = array('  Código  ', '  Titulo  ', '  Subtitulo  ', '  Contenido  ', 'Login' ,'  Opciones  ');
+				$lista = array('  Código  ', '  Titulo  ', '  Subtitulo  ', '  Contenido  ','  Opciones  ');
 
 				
 				new SHOWALL_VIEW($lista, $datos);

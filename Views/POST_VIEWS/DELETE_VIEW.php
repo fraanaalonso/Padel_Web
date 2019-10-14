@@ -20,9 +20,26 @@ class DELETE_VIEW
 
      
 ?>
-    <div class="iconos_superiores">
-      <a href="../Controllers/Post_Controller.php"><span class="lnr lnr-undo icon7"></span></a>
-    </div>
+    
+<div class="iconos-superiores">
+      
+   
+    
+
+         <form name="x" method="post" action="../Controllers/Post_Controller.php?action=DELETE">
+
+           <input type="hidden" name="id_noticia" value="<?php echo $valores[0];?>">
+          
+        </form>
+
+
+
+        
+            <button type="submit" onclick="x.submit()"> <a href="#"><span class="lnr lnr-trash" style="font-size: 35px"></span></a></button>
+            <a href="../Controllers/Post_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+
+</div>
+
         <table>
            <tr>
             <th>Codigo</th>
@@ -40,10 +57,6 @@ class DELETE_VIEW
             <th>Contenido</th>
             <td><?php echo $valores[3];?></td>
           </tr>
-           <tr>
-            <th>Login</th>
-            <td><?php echo $valores[4];?></td>
-            </tr>
       
         </table>
 

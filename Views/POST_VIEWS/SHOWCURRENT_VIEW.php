@@ -20,9 +20,15 @@ class SHOWCURRENT_VIEW
 
      
 ?>
-    <div class="iconos_superiores">
-      <a href="../Controllers/Post_Controller.php"><span class="lnr lnr-undo icon7"></span></a>
-    </div>
+   
+  
+<div class="iconos-superiores">
+
+    <a href="../Controllers/Post_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+
+</div>
+
+
         <table>
            <tr>
             <th>Codigo</th>
@@ -40,10 +46,6 @@ class SHOWCURRENT_VIEW
             <th>Contenido</th>
             <td><?php echo $valores[3];?></td>
           </tr>
-           <tr>
-            <th>Login</th>
-            <td><?php echo $valores[4];?></td>
-            </tr>
       
         </table>
 

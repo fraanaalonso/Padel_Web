@@ -151,7 +151,7 @@ header span:hover{
 
 table{
 	position: absolute;
-	top: 150px;
+	top: 170px;
 	bottom: 150px; 
 	left: 200px;
 	width: 80%;
@@ -184,6 +184,26 @@ tr:hover td{
 }
 
 
+
+.main-section2{
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	bottom: 0;
+	margin: 0;
+}
+
+
+
+
+.main-section3{
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	bottom: 0;
+	margin: 0;
+}
+
 /*Iconos tabla*/
 
 .añadir{
@@ -205,12 +225,11 @@ tr:hover td{
 }
 
 
-.iconos_superiores{
+.iconos-superiores{
 	position: absolute;
-	top: 150px;
-	bottom: 150px;
-	left: 500px;
-	font-size: 50px;
+	top: 100px;
+	bottom: 40px;
+	left: 825px;
 	text-align: center;
 }
 

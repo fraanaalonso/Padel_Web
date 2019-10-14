@@ -13,7 +13,7 @@ session_start();
   else{
     
   include '../Models/USER_MODEL.php';
-   $usuario = new User_Modelo($_REQUEST['login'],$_REQUEST['nombre'],$_REQUEST['apellido'],$_REQUEST['password'], $_REQUEST['dni'],$_REQUEST['email'],$_REQUEST['pais'],$_REQUEST['sexo'],$_REQUEST['telefono'],$_REQUEST['fecha'],$_REQUEST['foto']);
+   $usuario = new User_Modelo($_REQUEST['login'],$_REQUEST['nombre'],$_REQUEST['apellido'],$_REQUEST['password'], $_REQUEST['dni'],$_REQUEST['email'],$_REQUEST['pais'],$_REQUEST['sexo'],$_REQUEST['telefono'],$_REQUEST['fecha'],$_REQUEST['foto'], $_REQUEST['rol_id']);
 
      $respuesta = $usuario->register();
 

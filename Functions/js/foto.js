@@ -1,5 +1,5 @@
 
-$(document).ready(function(){
+document.ready(function(){
 
     //--------------------- SELECCIONAR FOTO PRODUCTO ---------------------
     $("#foto").on("change",function(){
@@ -12,7 +12,7 @@ $(document).ready(function(){
             {
                 var type = foto[0].type;
                 var name = foto[0].name;
-                if(type != 'image/jpeg' && type != 'image/jpg' && type != 'image/png')
+                if(type != '../../img/jpeg' && type != '../../image/jpg' && type != '../../image/png')
                 {
                     contactAlert.innerHTML = '<p class="errorArchivo">El archivo no es válido.</p>';                        
                     $("#img").remove();

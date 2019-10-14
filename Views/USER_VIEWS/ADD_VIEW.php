@@ -2,7 +2,6 @@
 
 <?php
 
-
 /**
 * 
 */
@@ -20,9 +19,16 @@ class ADD_VIEW
 ?>
 
 
-<body class="form_registro">
+<div class="iconos-superiores">
+
+    <a href="../Controllers/User_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+
+</div>
+
+
+
 <div class="modal-dialog text-center">
-	<div class="col-sm-15 main-section">
+	<div class="col-sm-15 main-section2">
 		<div class="modal-content">
 			<div class="col-12 user-img">
 				<img src="../img/iconUser.jpg">
@@ -115,26 +121,32 @@ class ADD_VIEW
 		  	<input type="date" id="fecha" name="fecha" class="form-control" placeholder="Fecha de Nacimiento">
 		   </div>
 
-		   <div class="form-group" id="foto-group">
-		  	<input type="file" id="foto" name="foto" class="form-control" placeholder="Foto">
-		   </div>
+		 <div class="photo">
+		  	
+		  <label for="foto">Foto Personal</label>
 
+		  	<div class="prevPhoto">
+		  		<span class="delPhoto notBlock"></span>
+		  		<label for="foto"></label>
+		  	</div>
+		  	<div class="upimg">
+		  		<input type="file" name="foto" id="foto">
+		  	</div>
+		  	
+		  </div>
 
-		     <div class="form-group">
-			    <div class="form-check">
-			      <input class="form-check-input" type="checkbox" value="" id="invalidCheck">
-			      <label class="form-check-label" for="invalidCheck">
-			        Acepto los términos y condiciones
-			      </label>
-			      <div class="invalid-feedback">
-			        Debes estar de acuerdo ante de registrarte
-			      </div>
-			    </div>
-			  </div>
+		 <div class="form-group">
+		   <input type="hidden" name="rol_id" value="2">
+		</div>
 
+		
 
 		   <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Añadir</button>
+		   <p>
 		  
+		   </p>
+		   <br>
+		   <br>
 		</form>
 
 			
@@ -147,7 +159,8 @@ class ADD_VIEW
 </div>
 
 
-</body>
+
+
 <?php
 include '../Views/Footer.php';
 ?>

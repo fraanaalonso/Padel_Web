@@ -22,6 +22,7 @@ include '../Views/Message_View.php';
 
 
 function get_data(){
+	
 	$login = $_REQUEST['login'];
 	$nombre ='';
 	$apellido = '';
@@ -33,6 +34,7 @@ function get_data(){
 	$telefono = '';
 	$fecha = '';
 	$foto = '';
+	$rol_id = '';
 	$action = $_REQUEST['action'];
 
 	$USER = new User_Modelo(
@@ -47,6 +49,7 @@ function get_data(){
 		$telefono,
 		$fecha,
 		$foto,
+		$rol_id,
 		$action
 	);
 
@@ -66,18 +69,9 @@ Switch ($_REQUEST['action']){
 				else{
 				 include_once '../Models/USER_MODEL.php';
 				  $modelo= new User_Modelo($_REQUEST['login'],$_REQUEST['nombre'],$_REQUEST['apellido'], $_REQUEST['password'], $_REQUEST['dni'], $_REQUEST['email'], $_REQUEST['pais'], $_REQUEST['sexo'], $_REQUEST['telefono'],
-				   $_REQUEST['fecha'], $_FILES['foto']);
+				   $_REQUEST['fecha'], $_REQUEST['foto'], $_REQUEST['rol_id']);
 
-				  /*Proceso para subir la imagen*/
-
-				  $img = substr(strrchr($_FILES['foto']['name'], "."), 1);
-				  $ruta = md5(rand() * time()) . ".$img";
-
-				  $origen = $_FILES['foto']['tmp_name'];
-				  $dir = "../img/";
-				  $uploadfile = $dir . $ruta;
-
-				  	$modelo->fotopersonal = $uploadfile;
+	
 					$respuesta = $modelo->ADD();
 					new MESSAGE($respuesta,'./User_Controller.php');
 					
@@ -98,18 +92,10 @@ Switch ($_REQUEST['action']){
 				else{
 					 include_once '../Models/USER_MODEL.php';
 					$modelo= new User_Modelo($_REQUEST['login'],$_REQUEST['nombre'],$_REQUEST['apellido'], $_REQUEST['password'], $_REQUEST['dni'], $_REQUEST['email'], $_REQUEST['pais'], $_REQUEST['sexo'], $_REQUEST['telefono'],
-				   $_REQUEST['fecha'], $_FILES['foto']);
+				   $_REQUEST['fecha'], $_REQUEST['foto'], $_REQUEST['rol_id']);
 
-					  $img = substr(strrchr($_FILES['foto']['name'], "."), 1);
-					  $ruta = md5(rand() * time()) . ".$img";
-
-					  $origen = $_FILES['foto']['tmp_name'];
-					  $dir = "../img/";
-					  $uploadfile = $dir . $ruta;
-
-				  	 $modelo->fotopersonal = $uploadfile;
                      $respuesta = $modelo->SEARCH();
-					$lista = array('Login ', 'Nombre ', 'Apellido ', 'Password ', 'Dni ','Email ','Pais ','Telefono ','Email ','Pais ','Sexo ', 'Telefono ', 'Fecha ', 'Opciones ');
+					$lista = array('Login ', 'Nombre ', 'Apellido ', 'Password ', 'Dni ','Email ','Pais ','Telefono ','Email ','Pais ','Sexo ', 'Telefono ', 'Fecha ', 'Foto', 'Rol del Usuario', 'Opciones ');
 					new SHOWALL_VIEW($lista, $respuesta);
 					
 				}
@@ -124,7 +110,7 @@ Switch ($_REQUEST['action']){
 		case 'EDIT':
 				if (!$_POST) {
 					 include_once '../Models/USER_MODEL.php';
-					$modelo= new User_Modelo($_REQUEST['login'],'','', '', '', '', '', '', '','','');
+					$modelo= new User_Modelo($_REQUEST['login'],'','', '', '', '', '', '', '','','','');
 					$valores= $modelo ->RellenaDatos();
 					new EDIT_VIEW($valores);
 				}
@@ -133,16 +119,8 @@ Switch ($_REQUEST['action']){
 
 					 include_once '../Models/USER_MODEL.php';
 					$modelo = new User_Modelo($_REQUEST['login'],$_REQUEST['nombre'],$_REQUEST['apellido'], $_REQUEST['password'], $_REQUEST['dni'], $_REQUEST['email'], $_REQUEST['pais'], $_REQUEST['sexo'], $_REQUEST['telefono'],
-				   $_REQUEST['fecha'], $_FILES['foto']);
+				   $_REQUEST['fecha'], $_REQUEST['foto'], $_REQUEST['rol_id']);
 
-					  $img = substr(strrchr($_FILES['foto']['name'], "."), 1);
-					  $ruta = md5(rand() * time()) . ".$img";
-
-					  $origen = $_FILES['foto']['tmp_name'];
-					  $dir = "../img/";
-					  $uploadfile = $dir . $ruta;
-
-				  	  $modelo->foto = $uploadfile;
 					  $respuesta = $modelo->EDIT();
 					new MESSAGE($respuesta, './User_Controller.php');
 				}
@@ -154,7 +132,7 @@ Switch ($_REQUEST['action']){
 
 				if (!$_POST) {
 					 include_once '../Models/USER_MODEL.php';
-					$modelo= new User_Modelo($_REQUEST['login'],'', '', '', '', '', '', '', '', '','');
+					$modelo= get_data();
 					$valores= $modelo ->RellenaDatos();
 					new DELETE_VIEW($valores);
 				}
@@ -172,7 +150,7 @@ Switch ($_REQUEST['action']){
 
 		case 'SHOWCURRENT':
 				 include_once '../Models/USER_MODEL.php';
-			    $modelo = new User_Modelo($_REQUEST['login'],'','', '', '', '', '', '', '', '', '');
+			    $modelo = new User_Modelo($_REQUEST['login'],'','', '', '', '', '', '', '', '', '','');
 				$valores = $modelo->RellenaDatos();
 
 				new SHOWCURRENT_VIEW($valores);
@@ -185,7 +163,7 @@ Switch ($_REQUEST['action']){
 
 				if (!$_POST){
 					include_once '../Models/USER_MODEL.php';
-					$modelo = new User_Modelo(' ' ,' ' ,' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ');
+					$modelo = new User_Modelo(' ' ,' ' ,' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ');
 				}
 				else{
 					  include_once '../Models/USER_MODEL.php';
@@ -193,7 +171,7 @@ Switch ($_REQUEST['action']){
 
 
 				$datos = $modelo->SEARCH();
-				$lista = array('  Login  ', '  Nombre  ', '  Apellido  ', '  Password  ', '  Dni  ','  Email  ','  Pais  ','  Sexo  ','  Telefono  ','  Fecha  ','  Foto  ', '  Opciones  ');
+				$lista = array('  Login  ', '  Nombre  ', '  Apellido  ', '  Password  ', '  Dni  ','  Email  ','  Pais  ','  Sexo  ','  Telefono  ','  Fecha  ','  Foto  ', 'Rol del Usuario', '  Opciones  ');
 
 				
 				new SHOWALL_VIEW($lista, $datos);

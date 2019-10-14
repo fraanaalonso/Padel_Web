@@ -16,7 +16,13 @@ class Register
 		//include 'MenuLateral.php';
 
 ?>
-<body class="form_registro">
+
+<div class="iconos-superiores">
+
+    <a href="../Controllers/Login_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+
+</div>
+
 <div class="modal-dialog text-center">
 	<div class="col-sm-28 main-section">
 		<div class="modal-content">
@@ -122,9 +128,14 @@ class Register
 		  	<div class="upimg">
 		  		<input type="file" name="foto" id="foto">
 		  	</div>
-		  	<div id="form-alert"></div>
+		  	
 		  </div>
-		   
+
+		 <div class="form-group">
+		   <input type="hidden" name="rol_id" value="2">
+		</div>
+
+		   <div id="form-alert">
 
 
 		     <div class="form-group">
@@ -138,7 +149,7 @@ class Register
 			      </div>
 			    </div>
 			  </div>
-
+			  	</div>
 
 		   <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Registrar</button>
 		   <p>
@@ -158,7 +169,6 @@ class Register
 </div>
 
 
-</body>
 <?php
 include 'Footer.php';
 ?>

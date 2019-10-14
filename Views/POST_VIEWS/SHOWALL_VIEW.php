@@ -20,32 +20,14 @@ class SHOWALL_VIEW
 ?>
 
 
- <div class="iconos_superiores">
-    <a href="../Controllers/Post_Controller.php?action=ADD"><span class="lnr lnr-add "></span></a>
-    <a href="../Controllers/Post_Controller.php?action=SEARCH"><span class="lnr lnr-search"></span></a>
-    <a href="../Controllers/Post_Controller.php"><span class="lnr lnr-eye"></span></a>
+<div class="iconos-superiores">
+      
+    <a href="../Controllers/Post_Controller.php?action=ADD"><span class="lnr lnr-file-add" style="font-size: 35px"></span></a>
+    <a href="../Controllers/Post_Controller.php?action=SEARCH"><span class="lnr lnr-magnifier" style="font-size: 35px"></span></a>
+    <a href="../Controllers/Post_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+
 </div>
 
-<table>
-<tr>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th>
-        <img src="../img/user3.png">      
-    </th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-
-</tr>
-</table>
- 
 
 
   <table border="1">
@@ -55,7 +37,6 @@ class SHOWALL_VIEW
     <th>Titulo</th>
     <th>Subtitulo</th>
     <th>Cuerpo</th>
-    <th>Autor</th>
     <th>Opciones </th>
    
 
@@ -73,15 +54,15 @@ class SHOWALL_VIEW
       echo "<td>".$fila["titulo"]."</td>";
       echo "<td>".$fila["subtitulo"]."</td>";
       echo "<td>".$fila["cuerpo"]."</td>";
-      echo "<td>".$fila["login"]."</td>";
+    
     
 ?>
 
 
       <td>
-        <a href="../Controllers/Post_Controller.php?action=SHOWCURRENT&id_noticia=<?php  echo $fila['id_noticia'] ?>"><span class="lnr lnr-eye añadir"></span></a>
-        <a href="../Controllers/Post_Controller.php?action=EDIT&id_noticia=<?php  echo $fila['id_noticia'] ?>"><span class="lnr lnr-pencil editar"></span></a>
-        <a href="../Controllers/Post_Controller.php?action=DELETE&id_noticia=<?php  echo $fila['id_noticia'] ?>"><span class="lnr lnr-trash borrar"></span></a>
+        <a href="../Controllers/Post_Controller.php?action=SHOWCURRENT&id_noticia=<?php  echo $fila['id_noticia'] ?>"><span class="lnr lnr-eye"></span></a>
+        <a href="../Controllers/Post_Controller.php?action=EDIT&id_noticia=<?php  echo $fila['id_noticia'] ?>"><span class="lnr lnr-pencil"></span></a>
+        <a href="../Controllers/Post_Controller.php?action=DELETE&id_noticia=<?php  echo $fila['id_noticia'] ?>"><span class="lnr lnr-trash"></span></a>
       
       </td>
 

@@ -26,7 +26,7 @@ class ADD_VIEW
 
 
 <div class="modal-dialog text-center">
-	<div class="col-sm-15 main-section2">
+	<div class="col-sm-15 main-section2" style="position: absolute;">
 		<div class="modal-content">
 			
 		<form class="col-12" method="post" action="../Controllers/Post_Controller.php?action=ADD" onsubmit="return validar();">

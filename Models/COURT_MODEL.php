@@ -9,19 +9,40 @@ class COURT_MODEL
 	var $ubicacion;
 	var $num_pista;
 	var $terreno;
-	var $dimension;
+	var $precio;
+	var $estado;
 	var $bd;
 	
-	function __construct($id_pista,$ubicacion, $num_pista, $terreno, $dimension)
+	function __construct($id_pista,$ubicacion, $num_pista, $terreno, $precio, $estado)
 	{
 		$this->id_pista = $id_pista;
 		$this->ubicacion = $ubicacion;
 		$this->num_pista = $num_pista;
 		$this->terreno = $terreno;
-		$this->dimension = $dimension;
+		$this->precio = $precio;
+		$this->estado = $estado;
+
+		
+		include_once '../includes/db.php';
 
 		$this->bd = ConectarDB();
 	}
+
+
+	function generarCodigo($longitud){
+
+		$key='';
+		$pattern = '1234567890abcdefghijklmnopqrstuvwxyz';
+		$max = strlen($pattern)-1;
+
+		for ($i=0; $i < $longitud ; $i++) $key .= $pattern {mt_rand(0, $max)};
+
+		return $key;	
+	}
+
+
+
+	
 
 
 
@@ -45,14 +66,16 @@ class COURT_MODEL
 					ubicacion,
 					num_pista,
 					terreno,
-					dimension
+					precio, 
+					estado
 					) 
 						VALUES (
-						'$this->id_noticia',
-						'$this->titulo',
-						'$this->subtitulo',
-						'$this->cuerpo',
-						'$this->dimension'
+						'$this->id_pista',
+						'$this->ubicacion',
+						'$this->num_pista',
+						'$this->terreno',
+						'$this->precio',
+						'$this->estado'
 						)";
 					
 				
@@ -79,7 +102,7 @@ class COURT_MODEL
 
 
 
-}
+
 
 
 
@@ -99,7 +122,8 @@ function EDIT(){
 				ubicacion = '$this->ubicacion',
 				num_pista = '$this->num_pista',
 				terreno = '$this->terreno',
-				dimension = '$this->dimension'
+				precio = '$this->precio',
+				estado = '$this->$estado'
 				
 				WHERE ( id_pista = '$this->id_pista')";
 
@@ -124,20 +148,11 @@ function EDIT(){
 function SEARCH(){
 
 	$sql = "select
-					id_pista,
-					ubicacion,
-					num_pista,
-					terreno,
-					dimension
+					*
 					
-					FROM COURT WHERE
+					FROM COURT";
 
-					
-						((id_pista LIKE '$this->id_pista') &&
-						(ubicacion LIKE'$this->ubicacion') &&
-						(num_pista LIKE'$this->num_pista')  &&
-						(terreno LIKE '$this->terreno') &&  (dimension LIKE '$this->dimension'))";
-
+   
    
     if (!($resultado = $this->bd->query($sql))){
 		return 'Error en la consulta sobre la base de datos';
@@ -188,6 +203,42 @@ function RellenaDatos()
 			}
 		}
 
+
+
+
+function ocupadaPista(){
+
+	$sql = "UPDATE Pista SET `estado` = '2' WHERE HERE (id_pista = '$this->id_pista')";
+			
+			$resultado = $this->bd->query($sql);
+			
+			if(!$resultado){
+					return "Error en la modificación";
+				}else{
+					return "Modificado correctamente";
+				}
+
+
+
+}
+
+
+function librePista(){
+	$sql = "UPDATE COURT SET `estado` = '1'  WHERE id_pista = '".$this-> id_pista."'";
+
+
+		$resultado = $this->bd->query($sql);
+			
+		if(!$resultado){
+			return "Error en la modificación";
+		}else{
+			return "Modificado correctamente";
+			}
+
+
+}	
+
+}
 
 
 

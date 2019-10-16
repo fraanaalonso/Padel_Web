@@ -1,11 +1,8 @@
-
-
 <?php
 
-/**
-* 
-*/
-class ADD_VIEW
+
+
+class SEARCH_VIEW
 {
 	
 	function __construct(){
@@ -32,7 +29,7 @@ class ADD_VIEW
 		<div class="modal-content">
 			
 			
-		<form class="col-12" method="post" action="../Controllers/Court_Controller.php?action=ADD" onsubmit="return validar();">
+		<form class="col-12" method="post" action="../Controllers/Court_Controller.php?action=SEARCH" >
 
 		 <div class="form-group">
 		  	<input type="text" id="id_pista" name="id_pista" class="form-control" placeholder="Identificador de Pista" >
@@ -46,28 +43,25 @@ class ADD_VIEW
 		  	<input type="text" id="num_pista" name="num_pista" class="form-control" placeholder="Número de Pista" >
 		   </div>
 
-		   <div class="form-group" >
-		  	<input type="text" id="terreno" name="terreno" class="form-control" placeholder="Terreno" >
-		   </div>
-
-		   <div class="form-group" >
-		  	<input type="text" id="precio" name="precio" class="form-control" placeholder="Precio" >
-		   </div>
-
 		    <div class="form-group" >
-		   	<select name="estado" id="estado"  class="form-control">
+		   	<select name="terreno" id="terreno"  class="form-control">
 
-		   		<option>1</option>
+		   		<option>Sintética</option>
 
-		   		<option>2</option>
+		   		<option>Hierba</option>
 
 		   	</select>
 		   </div>
 
+		   <div class="form-group">
+		  	<input type="text" id="dimension" name="dimension" class="form-control" placeholder="Dimension" >
+		   </div>
+
+
 		
 		
 
-		   <button type="submit" class="btn btn-light"><i class="fas fa-sign-in-alt"></i><span class="lnr lnr-file-add" style="font-size: 35px;"></span></button>
+		   <button type="submit" class="btn btn-light"><i class="fas fa-sign-in-alt"></i><span class="lnr lnr-magnifier" style="font-size: 35px;"></span></button>
 		   <p>
 		  
 		   </p>
@@ -85,8 +79,6 @@ class ADD_VIEW
 </div>
 
 
-
-
 <?php
 include '../Views/Footer.php';
 ?>
@@ -96,5 +88,6 @@ include '../Views/Footer.php';
 
 }
 }
+
 
 ?>

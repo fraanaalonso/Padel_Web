@@ -2,29 +2,35 @@
 
 <?php
 include_once '../includes/db.php';
-
+include_once '../Models/COURT_MODEL.php';
 
 
 /**
 * 
 */
-class RESERVATION
+class RESERVATION_MODEL
 {
 	var $id_reserva;
 	var $id_pista;
 	var $login;
-	var $hora;
 	var $bd;
 	
-	function __construct($id_reserva,$id_pista, $login, $hora)
+	function __construct($id_reserva,$id_pista, $login)
 	{
 		$this->id_reserva = $id_reserva;
 		$this->id_pista = $id_pista;
 		$this->login = $login;
-		$this->hora = $hora;
+	
 
 		$this->bd = ConectarDB();
 	}
+
+
+	
+
+
+
+
 
 
 
@@ -46,14 +52,13 @@ class RESERVATION
 				$sql = "INSERT INTO RESERVATION (
 					id_reserva,
 					id_pista,
-					login,
-					hora
+					login
+					
 					) 
 						VALUES (
 						'$this->id_reserva',
 						'$this->id_pista',
-						'$this->login',
-						'$this->hora'
+						'$this->login'
 						)";
 					
 				
@@ -80,7 +85,7 @@ class RESERVATION
 
 
 
-}
+
 
 
 
@@ -98,8 +103,7 @@ function EDIT(){
 		$sql = "UPDATE RESERVATION  SET 
 				id_reserva = '$this->id_reserva',
 				id_pista = '$this->id_pista',
-				login = '$this->login',
-				hora = '$this->hora'
+				login = '$this->login'
 				
 				WHERE ( id_reserva = '$this->id_reserva')";
 
@@ -126,16 +130,15 @@ function SEARCH(){
 	$sql = "select
 					id_reserva,
 					id_pista,
-					login,
-					hora
+					login
+					
 					
 					FROM RESERVATION WHERE
 
 					
 						((id_reserva LIKE '$this->id_reserva') &&
 						(id_pista LIKE'$this->id_pista') &&
-						(login LIKE'$this->login')  &&
-						(hora LIKE '$this->hora'))";
+						(login LIKE'$this->login'))";
 
    
     if (!($resultado = $this->bd->query($sql))){
@@ -189,5 +192,32 @@ function RellenaDatos()
 
 
 
+	
+
+
+	function AÑADIRRESERVA(){
+
+
+		
+		$sql = "INSERT INTO RESERVATION 
+							(id_reserva, id_pista, login) 
+				VALUES 
+							('$this->id_reserva', '$this->id_pista', '$this->login')";
+
+
+		if(!$this->bd->query($sql)){
+					return "Error al realizar la reserva";
+		}else{
+					return "Reserva realizada";
+						}
+
+
+
+
+
+	}
+
+
+}
 
 ?>

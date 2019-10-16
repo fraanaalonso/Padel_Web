@@ -31,14 +31,13 @@ $login = $_SESSION['login'];
 
 
   <div class="content-menu">
-    <a href="../Controllers/User_Controller.php"><li><span class="lnr lnr-home icon1"></span><h4 class="text1">Deportistas</h4></li></a>  
-    <li><span class="lnr lnr-dice icon2"></span><h4 class="text2">Mis Reservas</h4></li>
-    <li><span class="lnr lnr-bookmark icon3"></span><h4 class="text3">Pistas</h4></li>
-    <li><span class="lnr lnr-map icon4"></span><h4 class="text4">Campeonatos</h4></li>
-    <li><span class="lnr lnr-license icon5"></span><h4 class="text5">Liga regular</h4></li>
-    <li><span class="lnr lnr-eye icon6"></span><h4 class="text6">Enfrentamiento</h4></li> 
+    <a href="../Controllers/User_Controller.php"><li><span class="lnr lnr-users icon1"></span><h4 class="text1">Deportistas</h4></li></a>  
+    <a href="../Controllers/Court_Controller.php"><li><span class="lnr lnr-page-break icon2"></span><h4 class="text2">Pistas</h4></li></a>
+    <li><span class="lnr lnr-book icon3"></span><h4 class="text3">Reservas</h4></li>
+    <li><span class="lnr lnr-license icon4"></span><h4 class="text4">Campeonatos</h4></li>
+    <li><span class="lnr lnr-diceicon6"></span><h4 class="text6">Enfrentamiento</h4></li> 
     <li><span class="lnr lnr-heart icon7"></span><h4 class="text7">Sobre Nosotros</h4></li> 
-    <li><span class="lnr lnr-envelope icon8"></span><h4 class="text8">FAQ</h4></li> 
+    <li><span class="lnr lnr-question-circle icon8"></span><h4 class="text8">FAQ</h4></li> 
     <a href="../Functions/Desconect.php"><li ><span class="lnr lnr-exit icon9"></span><h4  class="text9">Salir</h4></li> </a>
   </div>
 

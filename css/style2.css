@@ -164,6 +164,10 @@ th, td{
 	border: solid 1px black;
 	padding: 20px;
 }
+td{
+	max-height: 1px;
+	max-width: 20px;
+}
 
 
 /*Encabezado*/
@@ -246,6 +250,26 @@ tr:hover td{
 	border: solid 3px black;
 
 
+}
+
+
+/*Noticia*/
+
+.noticia{
+	padding: 20px;
+
+	top: 100px;
+	left: 500px;
+
+	position: absolute;
+
+}
+
+
+.card-img-top{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
 }
 
 

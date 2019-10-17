@@ -28,31 +28,39 @@ class SHOWCURRENT_VIEW
 
 </div>
 
+<div class="noticia">
 
-        <table>
-           <tr>
-            <th>Codigo</th>
-            <td><?php echo $valores[0];?></td>
-          </tr>
-           <tr>
-            <th>Titulo</th>
-            <td><?php echo $valores[1];?></td>
-          </tr>
-           <tr>
-            <th>Subtitulo</th>
-            <td><?php echo $valores[2];?></td>
-          </tr>
-           <tr>
-            <th>Contenido</th>
-            <td><?php echo $valores[3];?></td>
-          </tr>
-      
-        </table>
+<div class="titulo">
+  <strong style="font-size: 50px">
+  <?php
+    echo $valores[1];
+  ?>
+</strong>
+</div>
 
 
+<div class="subtitulo">
+  <strong style="font-size: 30px">
+  <?php
+    echo $valores[2];
+  ?>
+</strong>
+  
 
-       
-       
+</div>
+
+
+<div class="cuerpo">
+  
+  <strong style="font-size: 30px">
+  <?php
+    echo $valores[3];
+  ?>
+</strong>
+</div>
+
+
+</div>           
   
 
 

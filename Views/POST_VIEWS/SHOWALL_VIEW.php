@@ -53,7 +53,7 @@ class SHOWALL_VIEW
       echo "<td>".$fila['id_noticia']."</td>";
       echo "<td>".$fila["titulo"]."</td>";
       echo "<td>".$fila["subtitulo"]."</td>";
-      echo "<td>".$fila["cuerpo"]."</td>";
+      echo "<td>".substr($fila["cuerpo"], 0, 20)."</td>";
     
     
 ?>

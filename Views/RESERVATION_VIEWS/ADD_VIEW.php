@@ -5,7 +5,7 @@
 /**
 * 
 */
-
+include_once '../Models/RESERVATION_MODEL.php';
 
 class ADD_VIEW
 
@@ -40,7 +40,7 @@ class ADD_VIEW
 		<form class="col-12" method="post" action="../Controllers/Reservation_Controller.php?action=ADD" onsubmit="return validar();">
 
 		 <div class="form-group">
-		  	<input type="hidden" id="id_reserva" name="id_reserva" class="form-control"  >
+		  	<input type="hidden" id="id_reserva" name="id_reserva" value="" class="form-control"  >
 		   </div>	
 
 		  <div class="form-group">

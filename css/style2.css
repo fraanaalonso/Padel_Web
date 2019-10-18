@@ -235,6 +235,7 @@ tr:hover td{
 	bottom: 40px;
 	left: 825px;
 	text-align: center;
+	height: 2%;
 }
 
 .mensaje{
@@ -256,21 +257,53 @@ tr:hover td{
 /*Noticia*/
 
 .noticia{
-	padding: 20px;
 
-	top: 100px;
-	left: 500px;
-
+	top: 400px;
+	left: 250px;
+	height: 100%;
+	width: 60%;
 	position: absolute;
 
 }
 
 
-.card-img-top{
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
+.lineanegra{
+	position: absolute;
+	top: 150px;
+	width: 77%;
+	left: 200px;
+	height: 20px;
+	background-color: black;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
+
+.lineanegra2{
+	position: absolute;
+	top: 350px;
+	width: 77%;
+	left: 200px;
+	height: 50px;
+	background-color: grey;
+
+}
+
+
+
+.cabecera{
+	position: absolute;
+	left: 500px;
+	top: 200px;
+	font-size: 15vh;
+	margin: 0 auto;
+	width: 50%;
+	text-align: center;
+
+
+}
+
+
+
 
 
 

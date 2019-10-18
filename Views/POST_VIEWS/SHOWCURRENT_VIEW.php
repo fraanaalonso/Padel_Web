@@ -28,10 +28,25 @@ class SHOWCURRENT_VIEW
 
 </div>
 
+
+<div class="lineanegra"></div>
+
+<h2 class="cabecera">Pádel Times</h2>
+
+
+<div class="lineanegra2">
+  
+  <ul>
+    <li >Fecha: </li>
+    <li >Autor: </li>
+  </ul>
+
+</div>
+
 <div class="noticia">
 
-<div class="titulo">
-  <strong style="font-size: 50px">
+<div id="titulo">
+  <strong>
   <?php
     echo $valores[1];
   ?>

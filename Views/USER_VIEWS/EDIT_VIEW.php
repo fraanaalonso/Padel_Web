@@ -98,9 +98,6 @@ class EDIT_VIEW
 		  	<input type="date" id="fecha" name="fecha" class="form-control" value="<?php echo $valores['fecha']; ?>">
 		   </div>
 
-		   <div class="form-group" id="foto-group">
-		  	<input type="file" id="foto" name="foto" class="form-control" value="<?php echo $valores['foto']; ?>">
-		   </div>
 
 		    <div class="form-group" id="telefono-group">
 		  	<input type="text" id="rol_id" name="rol_id" class="form-control" value="<?php echo $valores['rol_id']; ?>">

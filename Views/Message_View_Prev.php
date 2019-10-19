@@ -5,7 +5,7 @@
 
 
 
-class MESSAGE
+class MESSAGE_Prev
 {
 	private $mensaje;
 	private $retroceder;
@@ -19,7 +19,7 @@ class MESSAGE
 
 	function execute(){
 
-	include 'HeaderPost.php';
+	include 'HeaderPrev.php';
 		
 
 

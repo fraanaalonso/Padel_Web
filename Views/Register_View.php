@@ -19,7 +19,7 @@ class Register
 
 <div class="iconos-superiores">
 
-    <a href="../Controllers/Login_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+    <a href="../Controllers/Register_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
 
 </div>
 
@@ -117,19 +117,7 @@ class Register
 		  	<input type="date" id="fecha" name="fecha" class="form-control" placeholder="Fecha de Nacimiento">
 		   </div>
 
-		 <div class="photo">
-		  	
-		  <label for="foto">Foto Personal</label>
-
-		  	<div class="prevPhoto">
-		  		<span class="delPhoto notBlock"></span>
-		  		<label for="foto"></label>
-		  	</div>
-		  	<div class="upimg">
-		  		<input type="file" name="foto" id="foto">
-		  	</div>
-		  	
-		  </div>
+	
 
 		 <div class="form-group">
 		   <input type="hidden" name="rol_id" value="2">

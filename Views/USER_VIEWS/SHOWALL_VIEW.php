@@ -49,7 +49,6 @@ class SHOWALL_VIEW
     <th>Sexo     </th>
     <th>Telefono </th>
     <th>Fecha    </th>
-    <th>Foto     </th>
     <th>Rol del Usuario</th>
     <th>Opciones </th>
    
@@ -74,7 +73,6 @@ class SHOWALL_VIEW
       echo "<td>".$fila["sexo"]."</td>";
       echo "<td>".$fila["telefono"]."</td>";
       echo "<td>".$fila["fecha"]."</td>";
-      echo "<td><a href = \"../../img/" . $fila["foto"]. "\">". $fila["foto"] . " </a></td>";
       echo "<td>".$fila["rol_id"]."</td>";
     
 ?>

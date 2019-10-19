@@ -14,7 +14,6 @@ class User_Modelo
  	var $telefono;
  	var $email;
  	var $fecha;
- 	var $foto;
  	var $sexo;
  	var $pais;
  	var $rol_id;
@@ -24,7 +23,7 @@ class User_Modelo
 
 
 
-	function __construct($login, $nombre, $apellido, $password, $dni, $email, $pais, $sexo, $telefono, $fecha, $foto, $rol_id){
+	function __construct($login, $nombre, $apellido, $password, $dni, $email, $pais, $sexo, $telefono, $fecha, $rol_id){
 
 		$this->login = $login;
 		$this->nombre = $nombre;
@@ -36,7 +35,6 @@ class User_Modelo
 		$this->sexo = $sexo;
 		$this->telefono = $telefono;
 		$this->fecha = $fecha;
-		$this->foto = $foto;
 		$this->rol_id = $rol_id;
 
 
@@ -73,7 +71,6 @@ class User_Modelo
 					sexo,
 					telefono,
 					fecha,
-					foto,
 					rol_id
 					) 
 						VALUES (
@@ -87,7 +84,6 @@ class User_Modelo
 						'$this->sexo',
 						'$this->telefono',
 						'$this->fecha',
-						'$this->foto',
 						'$this->rol_id'
 						)";
 					
@@ -139,7 +135,6 @@ class User_Modelo
 					sexo = '$this->sexo',
 					telefono = '$this->telefono',
 					fecha = '$this->fecha',
-					foto = '$this->foto',
 					rol_id = '$this->rol_id'
 				
 				WHERE ( login = '$this->login')";
@@ -284,7 +279,6 @@ function registrar(){
 					sexo,
 					telefono,
 					fecha,
-					foto,
 					rol_id
 					) 
 						VALUES (
@@ -298,7 +292,6 @@ function registrar(){
 						'$this->sexo',
 						'$this->telefono',
 						'$this->fecha',
-						'$this->foto',
 						'$this->rol_id'
 						)";
 			
@@ -309,6 +302,7 @@ function registrar(){
 			return 'Inserción realizada con éxito'; //operacion de insertado correcta
 		}		
 	}
+
 
 
 

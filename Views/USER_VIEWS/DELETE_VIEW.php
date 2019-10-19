@@ -91,14 +91,10 @@ class DELETE_VIEW
             <th>Fecha de Nacimiento</th>
             <td><?php echo $valores[9];?></td>
             </tr> 
-           <tr>
-            <th>Foto</th>
-            <td><?php echo $valores[10];?></td>
-            </tr>
 
             <tr>
             <th> Rol del Usuario</th>
-            <td><?php echo $valores[11];?></td>
+            <td><?php echo $valores[10];?></td>
             </tr>
            <tr>
         </table>

@@ -121,19 +121,7 @@ class ADD_VIEW
 		  	<input type="date" id="fecha" name="fecha" class="form-control" placeholder="Fecha de Nacimiento">
 		   </div>
 
-		 <div class="photo">
-		  	
-		  <label for="foto">Foto Personal</label>
-
-		  	<div class="prevPhoto">
-		  		<span class="delPhoto notBlock"></span>
-		  		<label for="foto"></label>
-		  	</div>
-		  	<div class="upimg">
-		  		<input type="file" name="foto" id="foto">
-		  	</div>
-		  	
-		  </div>
+		
 
 		 <div class="form-group">
 		   <input type="hidden" name="rol_id" value="2">

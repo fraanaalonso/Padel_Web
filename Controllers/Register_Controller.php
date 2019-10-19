@@ -13,18 +13,24 @@ session_start();
   else{
     
   include '../Models/USER_MODEL.php';
-   $usuario = new User_Modelo($_REQUEST['login'],$_REQUEST['nombre'],$_REQUEST['apellido'],$_REQUEST['password'], $_REQUEST['dni'],$_REQUEST['email'],$_REQUEST['pais'],$_REQUEST['sexo'],$_REQUEST['telefono'],$_REQUEST['fecha'],$_REQUEST['foto'], $_REQUEST['rol_id']);
+   $usuario = new User_Modelo($_REQUEST['login'],$_REQUEST['nombre'],$_REQUEST['apellido'],$_REQUEST['password'], $_REQUEST['dni'],$_REQUEST['email'],$_REQUEST['pais'],$_REQUEST['sexo'],$_REQUEST['telefono'],$_REQUEST['fecha'], $_REQUEST['rol_id']);
 
+
+
+          
      $respuesta = $usuario->register();
 
             
           if ( $respuesta == true) {
 
             $respuesta = $usuario->registrar();
-            header("Location: Login_Controller.php");
+
+            include '../Views/Message_View_Prev.php';
+            new MESSAGE_Prev($respuesta, './Login_Controller.php');
                       }
           else{
-            header("Location: Login_Controller.php");
+            include '../Views/Message_View_Prev.php';
+            new MESSAGE_Prev($respuesta, './Login_Controller.php');
           }
 
 }

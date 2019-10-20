@@ -29,12 +29,12 @@ class ADD_VIEW
 
 
 
-	<div class="col-sm-15 main-section3">
+	
 		<div class="formulario">
 			<br>
 			<br>
 			
-		<form class="col-20" method="post" action="../Controllers/Post_Controller.php?action=ADD" onsubmit="return validar();">
+		<form  method="post" action="../Controllers/Post_Controller.php?action=ADD" onsubmit="return validar();">
 
 			<br>
 			<br>
@@ -66,7 +66,7 @@ class ADD_VIEW
 		  <br>
 		</form>
 
-			<div>
+			
 		
 
 		

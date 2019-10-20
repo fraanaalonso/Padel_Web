@@ -29,12 +29,11 @@ class SEARCH_VIEW
 
 
 
-	<div class="col-sm-15 main-section3">
 		<div class="formulario">
 			<br>
 			<br>
 			
-		<form class="col-20" method="post" action="../Controllers/Post_Controller.php?action=SEARCH">
+		<form  method="post" action="../Controllers/Post_Controller.php?action=SEARCH">
 
 			<br>
 			<br>
@@ -64,7 +63,7 @@ class SEARCH_VIEW
 		  <br>
 		</form>
 
-			<div>
+		
 		
 
 		

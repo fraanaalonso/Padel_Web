@@ -28,12 +28,11 @@ class EDIT_VIEW
 
 
 
-	<div class="col-sm-15 main-section3">
 		<div class="formulario">
 			<br>
 			<br>
 			
-		<form class="col-20" method="post" action="../Controllers/Post_Controller.php?action=EDIT" onsubmit="return validar();">
+		<form  method="post" action="../Controllers/Post_Controller.php?action=EDIT" onsubmit="return validar();">
 
 			<br>
 			<br>
@@ -66,7 +65,7 @@ class EDIT_VIEW
 		  <br>
 		</form>
 
-			<div>
+		
 		
 
 		

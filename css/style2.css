@@ -111,6 +111,10 @@ header span:hover{
 	color: #FFF;
 }
 
+
+.icon10{
+	color: #F5A9A9;
+}
 .content-menu:hover .text1{
 	transform: translateX(0px);
 	transition: all 100ms;

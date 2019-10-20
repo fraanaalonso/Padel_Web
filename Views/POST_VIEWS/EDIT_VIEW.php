@@ -27,46 +27,51 @@ class EDIT_VIEW
 </div>
 
 
-<div class="modal-dialog text-center">
+
 	<div class="col-sm-15 main-section3">
-		<div class="modal-content">
+		<div class="formulario">
+			<br>
+			<br>
 			
-			
-		<form class="col-12" method="post" action="../Controllers/Post_Controller.php?action=EDIT" onsubmit="return validar();">
+		<form class="col-20" method="post" action="../Controllers/Post_Controller.php?action=EDIT" onsubmit="return validar();">
 
 			<br>
 			<br>
-		 <div class="form-group" id="login-group">
-		  	<input type="text" id="id_noticia" name="id_noticia" class="form-control" readonly value="<?php echo $valores['id_noticia']; ?>">
+
+			<div class="form-group" id="titulo-group">
+		  	<input type="text" id="id_noticia" name="id_noticia" class="form-control" readonly value="<?php echo $valores[0]?>" >
+		   </div>	
+		 	
+
+		   <div class="form-group" id="titulo-group">
+		  	<input type="text" id="titulo" name="titulo" class="form-control" value="<?php echo $valores[1]?>" >
 		   </div>	
 
-		  <div class="form-group" id="user-group">
-		  	<input type="text" id="titulo" name="titulo" class="form-control" value="<?php echo $valores['titulo']; ?>" >
+		  <div class="form-group" id="subtitulo-group">
+		  	<input type="text" id="subtitulo" name="subtitulo" class="form-control" value="<?php echo $valores[2]?>" >
 		   </div>
 
-		   <div class="form-group" id="apellidos-group">
-		  	<input type="text" id="subtitulo" name="subtitulo" class="form-control" value="<?php echo $valores['subtitulo']; ?>" >
-		   </div>
-
-		   <div class="form-group" id="contrasena-group">
-		  	<input type="text" id="cuerpo" name="cuerpo" class="form-control" value="<?php echo $valores['cuerpo']; ?>">
+		   <div class="form-group" id="cuerpo-group">
+		  	
+		  	<textarea name="cuerpo" id="cuerpo" rows="25" cols="165" maxlength="1000"><?php echo $valores['cuerpo']?></textarea>
 		   </div>
 
 
-		   <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>Editar Publicación</button>
-		 
-		 <br>
-		 <br> 
+
+
+		  <button type="submit" class="btn btn-light"><i class="fas fa-sign-in-alt"></i><span class="lnr lnr-pencil" style="font-size: 35px; text-align: center;"></span></button>
+		  
+
+		  <br>
+		  <br>
 		</form>
 
-			
-			
-		</div>
+			<div>
+		
 
 		
 	</div>
 
-</div>
 
 
 <?php

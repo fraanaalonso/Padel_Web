@@ -195,18 +195,12 @@ tr:hover td{
 	text-align: center;
 	bottom: 0;
 	margin: 0;
+	top: 100px;
 }
 
 
 
 
-.main-section3{
-	position: absolute;
-	width: 100%;
-	text-align: center;
-	bottom: 0;
-	margin: 0;
-}
 
 /*Iconos tabla*/
 
@@ -278,29 +272,11 @@ tr:hover td{
 	margin-bottom: 20px;
 }
 
-.lineanegra2{
-	position: absolute;
-	top: 350px;
-	width: 77%;
-	left: 200px;
-	height: 50px;
-	background-color: grey;
-
-}
 
 
 
-.cabecera{
-	position: absolute;
-	left: 500px;
-	top: 200px;
-	font-size: 15vh;
-	margin: 0 auto;
-	width: 50%;
-	text-align: center;
 
 
-}
 
 
 

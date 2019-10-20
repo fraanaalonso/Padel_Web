@@ -15,10 +15,9 @@ $login = $_SESSION['login'];
 
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/style2.css">
+    <link rel="stylesheet" type="text/css" href="../css/style3.css">
     <link rel="stylesheet" type="text/css" href="../img/icon/style.css">
-    <script src="../Functions/js/foto.js"></script>
     <script src="../Functions/js/validaciones.js"></script>
-  
 </head>
 
 

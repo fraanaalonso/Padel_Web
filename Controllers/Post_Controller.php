@@ -48,8 +48,12 @@ Switch ($_REQUEST['action']){
 	
 		case 'ADD':
 				if (!$_POST){
-					
-					new ADD_VIEW();
+					include_once '../Models/POST_MODEL.php';
+					$modelo = new POST_MODEL('','','','');
+					$valor = $modelo->generarCodigo(8);
+
+					new ADD_VIEW($valor);
+
 				
 				}
 				else{

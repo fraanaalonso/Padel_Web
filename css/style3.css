@@ -1,0 +1,22 @@
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+textarea .cuerpo{
+	resize: none;
+	vertical-align: baseline;
+	border: 2px;
+}
+
+.main-section3{
+	position: absolute;
+	top: 120px;
+	left: 300px;
+
+}
+
+
+
+

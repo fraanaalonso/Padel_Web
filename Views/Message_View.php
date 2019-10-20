@@ -30,8 +30,8 @@ class MESSAGE
 	
 	<?php
 	$retroceder = '../img/salir.png';
-
-	 echo '<a href=\'' . $this->mensaje . $this->retroceder . "'>" . "<img src=\"$retroceder\"  width=\"50\" />";
+	 echo $this->mensaje;
+	 echo '<a href=\'' . $this->retroceder . "'>" . "<img src=\"$retroceder\"  width=\"50\" />";
 
 
 

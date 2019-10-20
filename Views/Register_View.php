@@ -139,7 +139,7 @@ class Register
 			  </div>
 			  	</div>
 
-		   <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Registrar</button>
+		   <button type="submit" class="btn btn-light"><i class="fas fa-sign-in-alt"></i><span class="lnr lnr-file-add" style="font-size: 35px;"></span></button>
 		   <p>
 		   	<div class="col-12-forgot">
 			<a href="../Controllers/Login_Controller.php">Iniciar Sesión</a>

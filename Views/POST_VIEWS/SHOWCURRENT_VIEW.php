@@ -34,19 +34,10 @@ class SHOWCURRENT_VIEW
 <h2 class="cabecera">Pádel Times</h2>
 
 
-<div class="lineanegra2">
-  
-  <ul>
-    <li >Fecha: </li>
-    <li >Autor: </li>
-  </ul>
-
-</div>
-
 <div class="noticia">
 
 <div id="titulo">
-  <strong>
+  <strong style="font-size: 30px">
   <?php
     echo $valores[1];
   ?>
@@ -55,7 +46,7 @@ class SHOWCURRENT_VIEW
 
 
 <div class="subtitulo">
-  <strong style="font-size: 30px">
+  <strong style="font-size: 20px">
   <?php
     echo $valores[2];
   ?>
@@ -67,11 +58,11 @@ class SHOWCURRENT_VIEW
 
 <div class="cuerpo">
   
-  <strong style="font-size: 30px">
+  <h1 style="font-size: 15px">
   <?php
     echo $valores[3];
   ?>
-</strong>
+</h1>
 </div>
 
 

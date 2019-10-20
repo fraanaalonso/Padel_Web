@@ -22,11 +22,10 @@ class EDIT_VIEW
 
 
 
-<div class="modal-dialog text-center">
-	<div class="col-sm-15 main-section2">
-		<div class="modal-content">
-			<div class="col-12 user-img">
-				<img src="../img/iconUser.jpg">
+<div class="formulario">
+	
+			<div class="col-12 user-img" style="text-align: center;">
+				<img src="../img/iconUser.jpg" >
 				
 			</div>
 			
@@ -105,7 +104,7 @@ class EDIT_VIEW
 
 
 
-		   <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>Editar</button>
+		   <button type="submit" class="btn btn-light"><i class="fas fa-sign-in-alt"></i><span class="lnr lnr-pencil" style="font-size: 35px; text-align: center;"></span></button>
 		  
 
 		  <br>
@@ -121,11 +120,6 @@ class EDIT_VIEW
 
 
 			
-			
-		</div>
-
-		
-	</div>
 
 </div>
 

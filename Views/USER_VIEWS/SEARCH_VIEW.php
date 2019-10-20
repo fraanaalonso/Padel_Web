@@ -28,10 +28,9 @@ class SEARCH_VIEW
 
 </div>
 
-<div class="modal-dialog text-center">
-	<div class="col-sm-15 main-section2" style="padding-top: 10px">
-		<div class="modal-content">
-			<div class="col-12 user-img">
+<div class="formulario">
+
+			<div class="col-12 user-img" style="text-align: center;">
 				<img src="../img/iconUser.jpg">
 				
 			</div>
@@ -122,16 +121,14 @@ class SEARCH_VIEW
 		  	<input type="date" id="fecha" name="fecha" class="form-control" placeholder="Fecha de Nacimiento">
 		   </div>
 
-		  
-		  <br>
-		  <br>
+		
 
 		    <div class="form-group" id="telefono-group">
 		  	<input type="text" id="rol_id" name="rol_id" class="form-control" placeholder="Rol">
 		   </div>
 
 
-		   <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Buscar</button>
+		   <button type="submit" class="btn btn-light"><i class="fas fa-sign-in-alt"></i><span class="lnr lnr-magnifier" style="font-size: 35px; text-align: center;"></span></button>
 		  
 		</form>
 
@@ -140,10 +137,7 @@ class SEARCH_VIEW
 
 			
 			
-		</div>
-
-		
-	</div>
+	
 
 </div>
 

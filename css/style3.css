@@ -8,6 +8,8 @@ textarea .cuerpo{
 	resize: none;
 	vertical-align: baseline;
 	border: 2px;
+	overflow: auto;
+	display: block;
 }
 
 .main-section3{
@@ -15,6 +17,17 @@ textarea .cuerpo{
 	top: 120px;
 	left: 300px;
 
+}
+
+
+.formulario{
+	position: absolute;
+	top: 250px;
+	left: 400px;
+	width: 60%;
+	margin: 0 auto;
+	resize: none
+	border: black 2px solid;
 }
 
 

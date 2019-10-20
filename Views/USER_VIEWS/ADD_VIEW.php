@@ -27,15 +27,15 @@ class ADD_VIEW
 
 
 
-<div class="modal-dialog text-center">
-	<div class="col-sm-15 main-section2">
-		<div class="modal-content">
-			<div class="col-12 user-img">
+
+	<div class="formulario" >
+		
+			<div class="col-12 user-img" style="text-align: center;">
 				<img src="../img/iconUser.jpg">
 				
 			</div>
 			
-		<form class="col-12" method="post" action="../Controllers/User_Controller.php?action=ADD" onsubmit="return validar();">
+		<form  method="post" action="../Controllers/User_Controller.php?action=ADD" onsubmit="return validar();">
 
 		 <div class="form-group" id="login-group">
 		  	<input type="text" id="login" name="login" class="form-control" placeholder="Login" >
@@ -129,7 +129,7 @@ class ADD_VIEW
 
 		
 
-		  <button type="submit" class="btn btn-light"><i class="fas fa-sign-in-alt"></i><span class="lnr lnr-file-add" style="font-size: 35px;"></span></button>
+		  <button type="submit" class="btn btn-light"><i class="fas fa-sign-in-alt" style="text-align: center;"></i><span class="lnr lnr-file-add" style="font-size: 35px;"></span></button>
 		   <p>
 		  
 		   </p>
@@ -138,13 +138,12 @@ class ADD_VIEW
 		</form>
 
 			
-			
-		</div>
+		
 
 		
 	</div>
 
-</div>
+
 
 
 

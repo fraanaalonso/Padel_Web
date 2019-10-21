@@ -40,20 +40,20 @@ class ADD_VIEW
 			<br>
 
 		 	<div class="form-group" id="id_noticia-group">
-		  	<input type="hidden"  id="id_noticia" name="id_noticia" class="form-control" value="<?php echo 0?>" >
+		  	<input type="hidden"  id="id_noticia" name="id_noticia" class="form-control" value="<?php echo 0?>" required>
 		   </div>	
 
 		   <div class="form-group" id="titulo-group">
-		  	<input type="text" id="titulo" name="titulo" class="form-control" placeholder="Titulo" >
+		  	<input type="text" id="titulo" name="titulo" class="form-control" placeholder="Titulo" required>
 		   </div>	
 
 		  <div class="form-group" id="subtitulo-group">
-		  	<input type="text" id="subtitulo" name="subtitulo" class="form-control" placeholder="Subtitulo" >
+		  	<input type="text" id="subtitulo" name="subtitulo" class="form-control" placeholder="Subtitulo" required >
 		   </div>
 
 		   <div class="form-group" id="cuerpo-group">
 		  	
-		  	<textarea name="cuerpo" id="cuerpo" rows="25" cols="165" maxlength="1000" placeholder="Escribe aquí una entrada"></textarea>
+		  	<textarea name="cuerpo" id="cuerpo" rows="25" cols="155" maxlength="1000" placeholder="Escribe aquí una entrada" style="resize: none;" required></textarea>
 		   </div>
 
 

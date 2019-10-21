@@ -38,21 +38,21 @@ class EDIT_VIEW
 			<br>
 
 			<div class="form-group" id="titulo-group">
-		  	<input type="text" id="id_noticia" name="id_noticia" class="form-control" readonly value="<?php echo $valores[0]?>" >
+		  	<input type="text" id="id_noticia" name="id_noticia" class="form-control" readonly required value="<?php echo $valores[0]?>"  >
 		   </div>	
 		 	
 
 		   <div class="form-group" id="titulo-group">
-		  	<input type="text" id="titulo" name="titulo" class="form-control" value="<?php echo $valores[1]?>" >
+		  	<input type="text" id="titulo" name="titulo" class="form-control" required value="<?php echo $valores[1]?>" >
 		   </div>	
 
 		  <div class="form-group" id="subtitulo-group">
-		  	<input type="text" id="subtitulo" name="subtitulo" class="form-control" value="<?php echo $valores[2]?>" >
+		  	<input type="text" id="subtitulo" name="subtitulo" class="form-control" required value="<?php echo $valores[2]?>" >
 		   </div>
 
 		   <div class="form-group" id="cuerpo-group">
 		  	
-		  	<textarea name="cuerpo" id="cuerpo" rows="25" cols="165" maxlength="1000"><?php echo $valores['cuerpo']?></textarea>
+		  	<textarea name="cuerpo" id="cuerpo" required rows="25" cols="165" maxlength="1000"><?php echo $valores['cuerpo']?></textarea>
 		   </div>
 
 

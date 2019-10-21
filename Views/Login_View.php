@@ -36,6 +36,11 @@ class Login
 		  	<input type="passwrod" id="password" name="password" class="form-control" placeholder="Contraseña" required>
 		   </div>
 
+		   
+		   <div>
+		  	<input type="hidden" id="rol_id" name="rol_id" value="1">
+		   </div>
+
 		   <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar</button>
 		</form>
 

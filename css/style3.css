@@ -12,12 +12,6 @@ textarea .cuerpo{
 	display: block;
 }
 
-.main-section3{
-	position: absolute;
-	top: 120px;
-	left: 300px;
-
-}
 
 
 .formulario{
@@ -30,6 +24,15 @@ textarea .cuerpo{
 	border: black 2px solid;
 }
 
+
+
+/*Cabecera de la publicación*/
+
+
+.cabecera{
+	position: absolute;
+
+}
 
 
 

@@ -44,6 +44,11 @@ class User_Modelo
 	}
 
 
+	function getIdRol(){
+		return $this->rol_id;
+	}
+
+
 
 	function ADD(){
 
@@ -246,6 +251,33 @@ function loginExiste(){
 		}
 	}
 }
+
+
+
+	function comprobarAdmin()
+		{	// se construye la sentencia de busqueda de la tupla
+		    $sql = "SELECT * FROM USER  WHERE (rol_id = '$this->rol_id')";
+		    // Si la busqueda no da resultados, se devuelve el mensaje de que no existe
+		   $resultado = $this->bd->query($sql);
+			$result = $resultado->fetch_array();
+
+			if($result[10] == 1){
+				return true;
+				
+			
+				}
+
+			else{
+				return false;
+			}
+		}		
+
+
+
+
+
+
+
 	
 
 
@@ -302,9 +334,6 @@ function registrar(){
 			return 'Inserción realizada con éxito'; //operacion de insertado correcta
 		}		
 	}
-
-
-
 
 
 

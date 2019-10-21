@@ -9,7 +9,9 @@ if (!autenticado()){
 }
 //esta autenticado
 else{
+
 	header('Location: ./Post_Controller.php');
+		
 }
 
 ?>

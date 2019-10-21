@@ -56,14 +56,13 @@ class SHOWCURRENT_VIEW
 </div>
 
 
-<div class="cuerpo">
+<textarea class="cuerpo" style="resize: none;" rows="30" cols="185">
   
-  <h1 style="font-size: 15px">
   <?php
     echo $valores[3];
   ?>
-</h1>
-</div>
+
+</textarea>
 
 
 </div>           

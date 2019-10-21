@@ -16,15 +16,10 @@ function validar() {
 	foto = document.getElementById("foto").value;
 	telefono = document.getElementById("telefono").value;
 	pais = document.getElementById("pais").value;
-	id_noticia = document.getElementById("id_noticia").value;
-	titulo = document.getElementById("titulo").value;
-	subtitulo = document.getElementById("subtitulo").value;
-	cuerpo = document.getElementById("cuerpo").value;
 	expresion = /\w+@\w+\.+[a-z]/;
 
 
-	if(nombre === "" || apellido === "" || email === "" || password === "" || login === "" || dni === "" || sexo === "" || fecha === "" || foto === "" || telefono === "" || pais === "" ||
-		id_noticia === "" || titulo === "" || subtitulo === "" || cuerpo === ""){
+	if(nombre === "" || apellido === "" || email === "" || password === "" || login === "" || dni === "" || sexo === "" || fecha === "" || foto === "" || telefono === "" || pais === ""){
 		alert("Todos los campos son obligatorios");
 		return false;
 	}

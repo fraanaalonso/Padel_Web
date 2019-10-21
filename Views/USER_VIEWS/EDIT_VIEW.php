@@ -32,32 +32,32 @@ class EDIT_VIEW
 		<form class="col-12" method="post" action="../Controllers/User_Controller.php?action=SEARCH"  onsubmit="return validar();">
 
 		 <div class="form-group" id="login-group">
-		  	<input type="text" id="login" name="login" class="form-control" readonly value="<?php echo $valores['login']; ?>"  >
+		  	<input type="text" id="login" name="login" required class="form-control" readonly value="<?php echo $valores['login']; ?>"  >
 		   </div>	
 
 		  <div class="form-group" id="user-group">
-		  	<input type="text" id="nombre" name="nombre" class="form-control" value="<?php echo $valores['nombre']; ?>" >
+		  	<input type="text" id="nombre" name="nombre" required class="form-control" value="<?php echo $valores['nombre']; ?>" >
 		   </div>
 
 		   <div class="form-group" id="apellidos-group">
-		  	<input type="text" id="apellido" name="apellido" class="form-control" value="<?php echo $valores['apellido']; ?>" >
+		  	<input type="text" id="apellido" name="apellido" required class="form-control" value="<?php echo $valores['apellido']; ?>" >
 		   </div>
 
 		   <div class="form-group" id="contrasena-group">
-		  	<input type="password" id="password" name="password" class="form-control" value="<?php echo $valores['password']; ?>">
+		  	<input type="password" id="password" name="password" required class="form-control" value="<?php echo $valores['password']; ?>" >
 		   </div>
 
 		   <div class="form-group" id="dni-group">
-		  	<input type="text" id="dni" name="dni" class="form-control" value="<?php echo $valores['dni']; ?>" >
+		  	<input type="text" id="dni" name="dni" required class="form-control" value="<?php echo $valores['dni']; ?>" >
 		   </div>
 
 		   <div class="form-group" id="email-group">
-		  	<input type="email" id="email" name="email" class="form-control" value="<?php echo $valores['email']; ?>" >
+		  	<input type="email" id="email" name="email" required class="form-control" value="<?php echo $valores['email']; ?>" >
 		   </div>
 
 
 		   <div class="form-group" id="pais-group">    
-              <select  id="pais" name ="pais" class="form-control">
+              <select  id="pais" name ="pais" required class="form-control" >
               <option  value="<?php echo $valores['pais'];?>" selected>Seleccione el pais</option>
               <option value = 'España' <?php if ($valores['pais'] == 'España') echo 'selected'; ?>>España</option><br>
               <option value = 'Francia' <?php if ($valores['pais'] == 'Francia') echo 'selected'; ?>>Francia</option><br>
@@ -82,7 +82,7 @@ class EDIT_VIEW
 
 
 		     <div class="form-group" id="sexo-group">    
-              <select  id="sexo" name ="sexo" class="form-control">
+              <select  id="sexo" name ="sexo" required class="form-control" >
               <option  value="<?php echo $valores['sexo'];?>" selected>Seleccione el sexo</option>
               <option value = 'Hombre' <?php if ($valores['sexo'] == 'Hombre') echo 'selected'; ?>>Hombre</option><br>
               <option value = 'Mujer' <?php if ($valores['sexo'] == 'Mujer') echo 'selected'; ?>>Mujer</option><br>
@@ -90,16 +90,16 @@ class EDIT_VIEW
               </div>
 
 		    <div class="form-group" id="telefono-group">
-		  	<input type="text" id="telefono" name="telefono" class="form-control" value="<?php echo $valores['telefono']; ?>">
+		  	<input type="text" id="telefono" name="telefono" class="form-control" required value="<?php echo $valores['telefono']; ?>" >
 		   </div>
 
 		   <div class="form-group" id="fecha-group">
-		  	<input type="date" id="fecha" name="fecha" class="form-control" value="<?php echo $valores['fecha']; ?>">
+		  	<input type="date" id="fecha" name="fecha" class="form-control" required value="<?php echo $valores['fecha']; ?>" >
 		   </div>
 
 
 		    <div class="form-group" id="telefono-group">
-		  	<input type="text" id="rol_id" name="rol_id" class="form-control" value="<?php echo $valores['rol_id']; ?>">
+		  	<input type="text" id="rol_id" name="rol_id" class="form-control" required value="<?php echo $valores['rol_id']; ?>" >
 		   </div>
 
 

@@ -72,14 +72,14 @@ session_start()
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img s class="d-block w-100" src="img/banner1.jpg">
+      <img s class="d-block w-100" src="./img/banner1.jpg">
       <div class="carousel-caption">
           <h5>Aprende a Jugar</h5>
       </div>
     </div>
     
     <div class="carousel-item">
-      <img  class="d-block w-100" src="img/banner2.jpg">
+      <img  class="d-block w-100" src="./img/banner2.jpg">
             <div class="carousel-caption">
           <h5>Recibe Clases</h5>
       </div>

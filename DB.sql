@@ -24,56 +24,6 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `court`
---
-
-CREATE TABLE `court` (
-  `id_pista` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
-  `ubicacion` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `num_pista` varchar(2) COLLATE utf8_spanish_ci NOT NULL,
-  `terreno` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
-  `precio` varchar(2) COLLATE utf8_spanish_ci NOT NULL,
-  `estado` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `new`
---
-
-CREATE TABLE `new` (
-  `id_noticia` tinyint(4) NOT NULL,
-  `titulo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `subtitulo` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
-  `cuerpo` mediumtext COLLATE utf8_spanish_ci NOT NULL,
-  `login` varchar(20) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `new`
---
-
-INSERT INTO `new` (`id_noticia`, `titulo`, `subtitulo`, `cuerpo`, `login`) VALUES
-(1, 'As Cousas de Ramón Lamote', 'Denantes mortas que escravas', 'A pradeira ruxía verde e leda', 'sominho'),
-(2, 'Dooousss', 'Mañá é nadal', 'Veñen os reises e papá noel', 'En Ourense cidade te');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `schedule`
---
-
-CREATE TABLE `schedule` (
-  `id_pista` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
-  `id_horario` varchar(2) COLLATE utf8_spanish_ci NOT NULL,
-  `inicio` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
-  `fin` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
-  `fecha` varchar(10) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `user`
@@ -90,8 +40,307 @@ CREATE TABLE `user` (
   `sexo` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `telefono` int(11) NOT NULL,
   `fecha` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
-  `rol_id` enum('administrador','deportista','entrenador','usuario') COLLATE utf8_spanish_ci NOT NULL
+  `rol_id` enum('administrador','deportista','entrenador','usuario') COLLATE utf8_spanish_ci NOT NULL,
+   PRIMARY KEY (`login`),
+   UNIQUE KEY `email` (`email`),
+   UNIQUE KEY `dni` (`dni`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+--
+-- Estructura de tabla para la tabla `new`
+--
+
+CREATE TABLE `new` (
+  `id_noticia` tinyint(10) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `subtitulo` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
+  `cuerpo` mediumtext COLLATE utf8_spanish_ci NOT NULL,
+  `login` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id_noticia`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+--
+-- Estructura de tabla para la tabla `court`
+--
+
+CREATE TABLE `court` (
+  `id_pista` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+  `ubicacion` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `num_pista` varchar(2) COLLATE utf8_spanish_ci NOT NULL,
+  `terreno` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
+  `precio` varchar(2) COLLATE utf8_spanish_ci NOT NULL,
+  `estado` int(1) NOT NULL,
+
+  PRIMARY KEY (`id_pista`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+
+
+--
+-- Estructura de tabla para la tabla `court`
+--
+
+CREATE TABLE `match` (
+  `id_partido` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+  `id_pista` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+  `hora_inicio` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
+  `hora_fin` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha` varchar(8) COLLATE utf8_spanish_ci NOT NULL,
+
+  PRIMARY KEY (`id_partido`),
+  FOREIGN KEY (`id_pista`) REFERENCES COURT(`id_pista`) ON DELETE CASCADE
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+
+
+--
+-- Estructura de tabla para la tabla `user_match`
+--
+
+CREATE TABLE `user_match` (
+  `login` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `id_partido` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+
+
+  PRIMARY KEY (`login`, `id_partido`),
+  FOREIGN KEY (`login`) REFERENCES USER(`login`) ON DELETE CASCADE
+  FOREIGN KEY (`id_partido`) REFERENCES MATCH(`id_partido`) ON DELETE CASCADE
+
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+
+--
+-- Estructura de tabla para la tabla `court`
+--
+
+CREATE TABLE `reservation` (
+  `id_reserva` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+  `id_pista` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+  `login` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha` varchar(8) COLLATE utf8_spanish_ci NOT NULL,
+
+  PRIMARY KEY (`id_reserva`, `id_pista`,`login`),
+  FOREIGN KEY (`id_pista`) REFERENCES COURT(`id_pista`) ON DELETE CASCADE,
+  FOREIGN KEY (`login`) REFERENCES USER(`login`) ON DELETE CASCADE,
+  FOREIGN KEY (`id_partido`) REFERENCES MATCH(`id_partido`) ON DELETE CASCADE
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+
+--
+-- Estructura de tabla para la tabla `user_match`
+--
+
+CREATE TABLE `user_match` (
+  `login` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `id_partido` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+
+
+  PRIMARY KEY (`login`, `id_partido`),
+  FOREIGN KEY (`login`) REFERENCES USER(`login`) ON DELETE CASCADE,
+  FOREIGN KEY (`id_partido`) REFERENCES MATCH(`id_partido`) ON DELETE CASCADE
+
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+
+
+
+--
+-- Estructura de tabla para la tabla `rule`
+--
+
+CREATE TABLE `rule` (
+  `id_normativa` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+  `bases`  mediumtext COLLATE utf8_spanish_ci NOT NULL,,
+
+  PRIMARY KEY (`id_normativa`),
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+--
+-- Estructura de tabla para la tabla `championship`
+--
+
+
+
+CREATE TABLE `championship` (
+  `id_campeonato` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+  `id_pista` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+  `fecha_inicio` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_limite` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `nivel` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `id_normativa` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+
+  PRIMARY KEY (`id_campeonato`),
+   FOREIGN KEY (`id_normativa`) REFERENCES RULE(`id_normativa`) ON DELETE CASCADE
+
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+
+
+
+--
+-- Estructura de tabla para la tabla `group`
+--
+
+CREATE TABLE `group` (
+  `id_grupo` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+  `grupo` enum('principiante','intermedio','avanzado') COLLATE utf8_spanish_ci NOT NULL,
+
+  PRIMARY KEY (`id_grupo`)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+
+--
+-- Estructura de tabla para la tabla `rank`
+--
+
+CREATE TABLE `rank` (
+  `id_categoria` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+  `categoria` enum('masculino','femenino','mixto') COLLATE utf8_spanish_ci NOT NULL,
+
+  PRIMARY KEY (`id_categoria`)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+--
+-- Estructura de tabla para la tabla `couple`
+--
+
+
+CREATE TABLE `couple` (
+  `id_pareja` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+  `id_categoria` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+  `id_grupo` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+  `login1` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `login2` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+
+  PRIMARY KEY (`id_pareja`),
+  FOREIGN KEY (`login1`) REFERENCES USER(`login`) on DELETE CASCADE,
+  FOREIGN KEY (`login2`) REFERENCES USER(`login`) on DELETE CASCADE,
+  FOREIGN KEY (`id_categoria`) REFERENCES RANK(`id_categoria`) on DELETE CASCADE,
+  FOREIGN KEY (`id_grupo`) REFERENCES GROUP(`id_grupo`) on DELETE CASCADE
+
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+--
+-- Estructura de tabla para la tabla `championship-couple`
+--
+
+CREATE TABLE `championship_couple` (
+  `id_pareja` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+  `id_campeonato` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+
+  PRIMARY KEY (`id_pareja`,`id_campeonato`),
+  FOREIGN KEY (`id_pareja`) REFERENCES COUPLE(`id_pareja`) on DELETE CASCADE,
+  FOREIGN KEY (`id_campeonato`) REFERENCES CHAMPIONSHIP(`id_campeonato`) on DELETE CASCADE
+
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+
+
+--
+-- Estructura de tabla para la tabla `clash`
+--
+
+CREATE TABLE `clash` (
+  `id_enfrentamiento` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+  `id_pareja1` tinyint NOT NULL,
+  `id_pareja2` tinyint NOT NULL,
+  `numSetsPareja1` int(1) NOT NULL,
+  `numSetsPareja2` int(1) NOT NULL,
+  `id_grupo` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `id_categoria` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `hora_inicio` varchar(8) COLLATE utf8_spanish_ci NOT NULL,
+
+
+  PRIMARY KEY (`id_enfrentamiento`),
+  FOREIGN KEY (`id_pareja1`) REFERENCES COUPLE(`id_pareja`) on DELETE CASCADE,
+  FOREIGN KEY (`id_pareja2`) REFERENCES COUPLE(`id_pareja`) on DELETE CASCADE,
+  FOREIGN KEY (`id_grupo`) REFERENCES GROUP(`id_grupo`) on DELETE CASCADE
+  FOREIGN KEY (`id_categoria`) REFERENCES RANK(`id_categoria`) on DELETE CASCADE
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+
+
+--
+-- Estructura de tabla para la tabla `payment`
+--
+
+CREATE TABLE `payment` (
+  `id_pago` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+  `concepto` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `login` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+
+
+  PRIMARY KEY (`id_pago`),
+  FOREIGN KEY (`login`) REFERENCES USER(`login`) on DELETE CASCADE,
+
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+--
+-- Estructura de tabla para la tabla `ranking`
+--
+
+CREATE TABLE `ranking` (
+  `codigo` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+  `id_pareja` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+  `partidos_jugados` int(2) NOT NULL,
+  `partidos_ganados` int(2) NOT NULL,
+  `partidos_perdidos`int(2) NOT NULL,
+  `partidos_empatados` int(2) NOT NULL,
+  `puntos` int(3) NOT NULL,
+
+  PRIMARY KEY (`codigo`),
+  FOREIGN KEY (`id_pareja`) REFERENCES COUPLE(`id_pareja`) on DELETE CASCADE
+
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+
+
+
+--
+-- Estructura de tabla para la tabla `ranking`
+--
+
+CREATE TABLE `results` (
+  `codigo` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+  `id_pareja` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+  `id_enfrentamiento` tinyint COLLATE utf8_spanish_ci NOT NULL AUTO_INCREMENT,
+  `resultado` varchar(3) NOT NULL
+
+  PRIMARY KEY (`codigo`),
+  FOREIGN KEY (`id_pareja`) REFERENCES COUPLE(`id_pareja`) on DELETE CASCADE,
+  FOREIGN KEY (`id_enfrentamiento`) REFERENCES CLASH(`id_enfrentamiento`) on DELETE CASCADE
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
 
 --
 -- Volcado de datos para la tabla `user`
@@ -108,56 +357,14 @@ INSERT INTO `user` (`login`, `nombre`, `apellido`, `password`, `dni`, `email`, `
 ('somo', 'njunjjn', 'inikjnj', 'somo', '3456789', 'mjikji@niuji.com', 'España', 'Hombre', 4567890, '1997-09-15', 'deportista');
 
 --
--- Índices para tablas volcadas
+-- Volcado de datos para la tabla `new`
 --
 
---
--- Indices de la tabla `court`
---
-ALTER TABLE `court`
-  ADD PRIMARY KEY (`id_pista`);
+INSERT INTO `new` (`id_noticia`, `titulo`, `subtitulo`, `cuerpo`, `login`) VALUES
+(1, 'As Cousas de Ramón Lamote', 'Denantes mortas que escravas', 'A pradeira ruxía verde e leda', 'sominho'),
+(2, 'Dooousss', 'Mañá é nadal', 'Veñen os reises e papá noel', 'En Ourense cidade te');
 
---
--- Indices de la tabla `new`
---
-ALTER TABLE `new`
-  ADD PRIMARY KEY (`id_noticia`);
+-- --------------------------------------------------------
 
---
--- Indices de la tabla `schedule`
---
-ALTER TABLE `schedule`
-  ADD PRIMARY KEY (`id_pista`,`id_horario`);
 
---
--- Indices de la tabla `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`login`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `dni` (`dni`);
 
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `new`
---
-ALTER TABLE `new`
-  MODIFY `id_noticia` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `schedule`
---
-ALTER TABLE `schedule`
-  ADD CONSTRAINT `schedule_ibfk_1` FOREIGN KEY (`id_pista`) REFERENCES `court` (`id_pista`) ON DELETE CASCADE;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

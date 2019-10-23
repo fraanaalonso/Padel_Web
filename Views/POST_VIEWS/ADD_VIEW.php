@@ -53,13 +53,13 @@ class ADD_VIEW
 
 		   <div class="form-group" id="cuerpo-group">
 		  	
-		  	<textarea name="cuerpo" id="cuerpo" rows="25" cols="155" maxlength="1000" placeholder="Escribe aquí una entrada" style="resize: none;" required></textarea>
+		  	<textarea name="cuerpo" id="cuerpo" rows="25" cols="155" maxlength="1000" placeholder="Escribe aquí una entrada" style="resize: none; max-width: 1000px;" required></textarea>
 		   </div>
 
 
 
 
-		  <button type="submit" class="btn btn-light"><i class="fas fa-sign-in-alt"></i><span class="lnr lnr-file-add" style="font-size: 35px; text-align: center;"></span></button>
+		  <button type="submit" class="btn btn-light"><i></i><span class="lnr lnr-file-add" style="font-size: 35px; text-align: center;"></span></button>
 		  
 
 		  <br>

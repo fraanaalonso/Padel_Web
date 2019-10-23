@@ -129,7 +129,7 @@ class ADD_VIEW
 
 		
 
-		  <button type="submit" class="btn btn-light"><i class="fas fa-sign-in-alt" style="text-align: center;"></i><span class="lnr lnr-file-add" style="font-size: 35px;"></span></button>
+		  <button type="submit" class="btn btn-light"><i style="text-align: center;"></i><span class="lnr lnr-file-add" style="font-size: 35px; max-width: 1000px"></span></button>
 		   <p>
 		  
 		   </p>

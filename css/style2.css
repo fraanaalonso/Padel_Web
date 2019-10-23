@@ -163,15 +163,18 @@ table{
 	text-align: left;
 	border-collapse: collapse;
 	border-spacing: 10px 5px;
+	min-width: 800px;
+	overflow-x: auto;
 }
 
 th, td{
-	border: solid 1px black;
+	border: solid 2px black;
 	padding: 20px;
+	border-bottom: 1px solid rgba($secondary-color,.5);
 }
 td{
 	max-height: 1px;
-	max-width: 20px;
+	min-width: 40px;
 }
 
 

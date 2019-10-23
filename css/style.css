@@ -363,21 +363,9 @@ blockquote::after{
 
 }
 
-.main-section{
-	position: absolute;
-	top: 170px;
-	bottom: 150px; 
-	left: 30px;
-	width: 100%;
-
-
-}
-.modal-content{
-	background-color: #000;
-	opacity: .85;
-	padding: 0 20px;
-	box-shadow: 8px 0px 6px #848484;
-	border: 6px;
+.formulario{
+	margin-right: auto;
+	margin-left: auto;
 }
 
 
@@ -475,4 +463,5 @@ button{
 
 body .form_registro{
 	bottom: 200px;
+	background-image: url("../img/banner1.jpg");
 }

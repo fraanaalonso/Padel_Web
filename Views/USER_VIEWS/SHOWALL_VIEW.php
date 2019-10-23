@@ -23,10 +23,16 @@ class SHOWALL_VIEW
   
 ?>
 
-
+<?php
+if(comprobarPermisos($_SESSION['login'])==1){
+?>
 <div class="iconos-superiores">
       
     <a href="../Controllers/User_Controller.php?action=ADD"><span class="lnr lnr-file-add" style="font-size: 35px"></span></a>
+
+<?php
+}
+?>
     <a href="../Controllers/User_Controller.php?action=SEARCH"><span class="lnr lnr-magnifier" style="font-size: 35px"></span></a>
     <a href="../Controllers/User_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
 
@@ -78,6 +84,10 @@ class SHOWALL_VIEW
 ?>
 
 
+<?php
+if(comprobarPermisos($_SESSION['login'])==1){
+?>
+
       <td>
         <a href="../Controllers/User_Controller.php?action=SHOWCURRENT&login=<?php  echo $fila['login'] ?>"><span class="lnr lnr-eye añadir"></span></a>
         <a href="../Controllers/User_Controller.php?action=EDIT&login=<?php  echo $fila['login'] ?>"><span class="lnr lnr-pencil editar"></span></a>
@@ -85,6 +95,10 @@ class SHOWALL_VIEW
       
       </td>
 
+
+<?php
+}
+?>
 <?php
 
 

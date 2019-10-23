@@ -179,6 +179,31 @@ class User_Modelo
 } // fin metodo SEARCH
 
 
+function getDBDatos($login){
+
+	$sql = "SELECT * FROM USER WHERE login = '".$login."'";
+
+	if (!($resultado = $this->bd->query($sql))){
+		return 'Error en la consulta sobre la base de datos';
+	}
+
+	else{
+		$sominho = $this->bd->query($sql);
+		$delinha = mysqli_fetch_assoc($sominho);
+
+		return [$delinha['login'],
+				$delinha['nombre'],
+				$delinha['apellido'],
+				$delinha['password'],
+				$delinha['dni'],
+				$delinha['email'],
+				$delinha['pais'],
+				$delinha['sexo'],
+				$delinha['telefono'],
+				$delinha['fecha'],
+				$delinha['rol_id'],];
+	}
+}
 
 
 

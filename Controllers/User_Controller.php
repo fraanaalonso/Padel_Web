@@ -47,7 +47,6 @@ function get_data(){
 		$sexo,
 		$telefono,
 		$fecha,
-		$foto,
 		$rol_id,
 		$action
 	);

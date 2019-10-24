@@ -29,7 +29,7 @@ class EDIT_VIEW
 				
 			</div>
 			
-		<form class="col-12" method="post" action="../Controllers/User_Controller.php?action=SEARCH"  onsubmit="return validar();">
+		<form class="col-12" method="post" action="../Controllers/User_Controller.php?action=EDIT"  onsubmit="return validar();">
 
 		 <div class="form-group" id="login-group">
 		  	<input type="text" id="login" name="login" required class="form-control" readonly value="<?php echo $valores['login']; ?>"  >
@@ -84,8 +84,8 @@ class EDIT_VIEW
 		     <div class="form-group" id="sexo-group">    
               <select  id="sexo" name ="sexo" required class="form-control" >
               <option  value="<?php echo $valores['sexo'];?>" selected>Seleccione el sexo</option>
-              <option value = 'Hombre' <?php if ($valores['sexo'] == 'Hombre') echo 'selected'; ?>>Hombre</option><br>
-              <option value = 'Mujer' <?php if ($valores['sexo'] == 'Mujer') echo 'selected'; ?>>Mujer</option><br>
+              <option value = 'Masculino' <?php if ($valores['sexo'] == 'Masculino') echo 'selected'; ?>>Masculino</option><br>
+              <option value = 'Femenino' <?php if ($valores['sexo'] == 'Femenino') echo 'selected'; ?>>Femenino</option><br>
               </select>
               </div>
 
@@ -98,13 +98,13 @@ class EDIT_VIEW
 		   </div>
 
 
-		    <div class="form-group" id="telefono-group">
+		    <div class="form-group" id="login-group">
 		  	<input type="text" id="rol_id" name="rol_id" class="form-control" required value="<?php echo $valores['rol_id']; ?>" >
 		   </div>
 
 
 
-		   <button type="submit" class="btn btn-light"><i class="fas fa-sign-in-alt"></i><span class="lnr lnr-pencil" style="font-size: 35px; text-align: center;"></span></button>
+		   <button type="submit" class="btn btn-light"><span class="lnr lnr-pencil" style="font-size: 35px; text-align: center;"></span></button>
 		  
 
 		  <br>

@@ -38,27 +38,31 @@ class SHOWCURRENT_VIEW
             <th>Identificador de Pista</th>
             <td><?php echo $valores[0];?></td>
           </tr>
-           <tr>
-            <th>Ubicación</th>
+          <tr>
+            <th>Descripción</th>
             <td><?php echo $valores[1];?></td>
+            </tr>
+           
+          <tr>
+            <th>Ubicación</th>
+            <td><?php echo $valores[2];?></td>
           </tr>
 
           <tr>
-            <th>Número de Pista</th>
-            <td><?php echo $valores[2];?></td>
-            </tr>
-           <tr>
-
-            <tr>
-            <th>Terreno</th>
+            <th>Precio</th>
             <td><?php echo $valores[3];?></td>
             </tr>
            <tr>
 
-           <tr>
-            <th>Dimensión</th>
+            <tr>
+            <th>Estado</th>
             <td><?php echo $valores[4];?></td>
-          </tr>
+            </tr>
+           <tr>
+
+
+          
+
      
         </table>
 

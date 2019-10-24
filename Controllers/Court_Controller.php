@@ -26,18 +26,16 @@ include '../Views/Message_View.php';
 
 function get_data(){
 	$id_pista = $_REQUEST['id_pista'];
+	$descripcion ='';
 	$ubicacion ='';
-	$num_pista = '';
-	$terreno ='';
 	$precio = '' ;
 	$estado='';
 	$action = $_REQUEST['action'];
 
 	$COURT = new COURT_MODEL(
 		$id_pista, 
+		$descripcion,
 		$ubicacion,
-		$num_pista,
-		$terreno,
 		$precio,
 		$estado,
 		$action
@@ -58,7 +56,7 @@ Switch ($_REQUEST['action']){
 				}
 				else{
 				 include_once '../Models/COURT_MODEL.php';
-				  $modelo= new COURT_MODEL($_REQUEST['id_pista'],$_REQUEST['ubicacion'],$_REQUEST['num_pista'], $_REQUEST['terreno'], $_REQUEST['precio'], $_REQUEST['estado']);
+				  $modelo= new COURT_MODEL($_REQUEST['id_pista'],$_REQUEST['descripcion'], $_REQUEST['ubicacion'],$_REQUEST['precio'], $_REQUEST['estado']);
 
 					$respuesta = $modelo->ADD();
 					new MESSAGE($respuesta,'./Court_Controller.php');
@@ -79,11 +77,11 @@ Switch ($_REQUEST['action']){
 
 				else{
 					 include_once '../Models/COURT_MODEL.php';
-					$modelo= new COURT_MODEL($_REQUEST['id_pista'],$_REQUEST['ubicacion'],$_REQUEST['num_pista'], $_REQUEST['terreno'], $_REQUEST['dimension']);
+					$modelo= new COURT_MODEL($_REQUEST['id_pista'],$_REQUEST['descripcion'], $_REQUEST['ubicacion'],$_REQUEST['precio'], $_REQUEST['estado']);
 
 					
                      $respuesta = $modelo->SEARCH();
-					$lista = array('Identificador de Pista', 'Ubicacion ', 'Numero de Pista ', 'Terreno', 'Dimensiones');
+					$lista = array('Identificador de Pista','Descripcion', 'Ubicacion ', 'Precio', 'Estado');
 					new SHOWALL_VIEW($lista, $respuesta);
 					
 				}
@@ -106,7 +104,7 @@ Switch ($_REQUEST['action']){
 				else{
 
 					 include '../Models/COURT_MODEL.php';
-					$modelo = new COURT_MODEL($_REQUEST['id_pista'],$_REQUEST['ubicacion'],$_REQUEST['num_pista'], $_REQUEST['terreno'], $_REQUEST['precio'], $_REQUEST['estado']);
+					$modelo = new COURT_MODEL($_REQUEST['id_pista'],$_REQUEST['descripcion'], $_REQUEST['ubicacion'],$_REQUEST['precio'], $_REQUEST['estado']);
 
 					$respuesta = $modelo->EDIT();
 					new MESSAGE($respuesta, './Court_Controller.php');
@@ -150,7 +148,7 @@ Switch ($_REQUEST['action']){
 
 				if (!$_POST){
 					include_once '../Models/COURT_MODEL.php';
-					$modelo = new COURT_MODEL(' ' ,' ' ,' ', ' ', ' ','');
+					$modelo = new COURT_MODEL(' ' ,' ' ,' ', ' ', ' ');
 				}
 				else{
 					  include_once '../Models/COURT_MODEL.php';
@@ -158,7 +156,7 @@ Switch ($_REQUEST['action']){
 
 
 				$datos = $modelo->SEARCH();
-				$lista = array('Identificador de Pista', 'Ubicacion ', 'Numero de Pista ', 'Terreno', 'Precio', 'Estado', 'Opciones');
+				$lista = array('Identificador de Pista','Descripcion', 'Ubicacion ', 'Precio', 'Estado');
 
 				
 				new SHOWALL_VIEW($lista, $datos);

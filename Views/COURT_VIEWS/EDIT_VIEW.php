@@ -22,34 +22,23 @@ class EDIT_VIEW
 
 
 
-<div class="modal-dialog text-center">
-	<div class="col-sm-15 main-section2">
-		<div class="modal-content">
+<div class="formulario">
 			
 			
 	<form class="col-12" method="post" action="../Controllers/Court_Controller.php?action=EDIT" >
 
 		 <div class="form-group">
 		  	<input type="text" id="id_pista" name="id_pista" class="form-control" readonly value="<?php echo $valores['id_pista'];?>" >
+		   </div>
+
+		   <div class="form-group">
+		  	<input type="text" id="descripcion" name="descripcion" class="form-control" readonly value="<?php echo $valores['descripcion'];?>" >
 		   </div>	
 
 		  <div class="form-group">
 		  	<input type="text" id="ubica" name="ubicacion" class="form-control" value="<?php echo $valores['ubicacion'];?>">
 		   </div>
 
-		   <div class="form-group" >
-		  	<input type="text" id="num_pista" name="num_pista" class="form-control" value="<?php echo $valores['num_pista'];?>" >
-		   </div>
-
-		    <div class="form-group" >
-		   	<select name="terreno" id="terreno"  class="form-control">
-
-		   	  <option  value="<?php echo $valores['terreno'];?>" selected>Seleccione terreno</option>
-              <option value = 'Hierba' <?php if ($valores['terreno'] == 'Hierba') echo 'selected'; ?>>Hierba</option><br>
-              <option value = 'Sintetico' <?php if ($valores['terreno'] == 'Sintetico') echo 'selected'; ?>>Sintetico</option><br>
-
-		   	</select>
-		   </div>
 
 
 		    <div class="form-group">
@@ -61,7 +50,7 @@ class EDIT_VIEW
 		  	<input type="text" id="estado" name="estado" class="form-control" value="<?php echo $valores['estado'];?>" placeholder="Estado" >
 		   </div>
 
-		   <button type="submit" class="btn btn-light"><i class="fas fa-sign-in-alt"></i><span class="lnr lnr-pencil" style="font-size: 35px;"></span></button>
+		   <button type="submit" class="btn btn-light"><span class="lnr lnr-pencil" style="font-size: 35px;"></span></button>
 		  
 
 		  <br>
@@ -78,10 +67,7 @@ class EDIT_VIEW
 
 			
 			
-		</div>
 
-		
-	</div>
 
 </div>
 

@@ -1,6 +1,6 @@
 <?php
 
-include_once '../includes/db.php';
+
 
 
 
@@ -12,20 +12,24 @@ include_once '../includes/db.php';
 class CHAMPIONSHIP_MODEL
 {
 	var $id_campeonato;
-	var $plazo;
-	var $categoria;
-	var $genero;
-	var $duracion;
+	var $fecha_inicio;
+	var $fecha_limite;
+	var $id_normativa;
+	var $id_grupo;
+	var $id_categoria;
 	var $bd;
 	
-	function __construct($id_campeonato,$plazo, $categoria, $genero, $duracion)
+	function __construct($id_campeonato,$fecha_inicio, $fecha_limite, $id_normativa, $id_grupo, $id_categoria)
 	{
 		$this->id_campeonato = $id_campeonato;
-		$this->plazo = $plazo;
-		$this->categoria = $categoria;
-		$this->genero = $genero;
-		$this->duracion = $duracion;
+		$this->fecha_inicio = $fecha_inicio;
+		$this->fecha_limite = $fecha_limite;
+		$this->id_normativa = $id_normativa;
+		$this->id_grupo = $id_grupo;
+		$this->id_categoria = $id_categoria;
 
+
+		include_once '../includes/db.php';
 		$this->bd = ConectarDB();
 	}
 
@@ -48,17 +52,19 @@ class CHAMPIONSHIP_MODEL
 
 				$sql = "INSERT INTO CHAMPIONSHIP (
 					id_campeonato,
-					plazo,
-					categoria,
-					genero,
-					duracion
+					fecha_inicio,
+					fecha_limite,
+					id_normativa,
+					id_grupo,
+					id_categoria
 					) 
 						VALUES (
 						'$this->id_noticia',
 						'$this->titulo',
 						'$this->subtitulo',
 						'$this->cuerpo',
-						'$this->duracion'
+						'$this->id_grupo',
+						'$this->id_categoria'
 						)";
 					
 				
@@ -85,7 +91,7 @@ class CHAMPIONSHIP_MODEL
 
 
 
-}
+
 
 
 
@@ -102,10 +108,11 @@ function EDIT(){
     	
 		$sql = "UPDATE CHAMPIONSHIP  SET 
 				id_campeonato = '$this->id_campeonato',
-				plazo = '$this->plazo',
-				categoria = '$this->categoria',
-				genero = '$this->genero',
-				duracion = '$this->duracion'
+				fecha_inicio = '$this->fecha_inicio',
+				fecha_limite = '$this->fecha_limite',
+				id_normativa = '$this->id_normativa',
+				id_grupo = '$this->id_grupo',
+				id_categoria = '$this->id_categoria'
 				
 				WHERE ( id_campeonato = '$this->id_campeonato')";
 
@@ -130,19 +137,9 @@ function EDIT(){
 function SEARCH(){
 
 	$sql = "select
-					id_campeonato,
-					plazo,
-					categoria,
-					genero,
-					duracion
+					*
 					
-					FROM CHAMPIONSHIP WHERE
-
-					
-						((id_campeonato LIKE '$this->id_campeonato') &&
-						(plazo LIKE'$this->plazo') &&
-						(categoria LIKE'$this->categoria')  &&
-						(genero LIKE '$this->genero') &&  (duracion LIKE '$this->duracion'))";
+					FROM CHAMPIONSHIP";
 
    
     if (!($resultado = $this->bd->query($sql))){
@@ -193,6 +190,9 @@ function RellenaDatos()
 				return $result;
 			}
 		}
+
+
+	}
 
 
 

@@ -314,7 +314,7 @@ function register(){
 
 		$result = $this->bd->query($sql);
 		if ($result->num_rows == 1){  // existe el USER
-				return 'El USER ya existe';
+				return 'El usuario'.$login.'ya existe';
 			}
 		else{
 	    		return true; //no existe el USER

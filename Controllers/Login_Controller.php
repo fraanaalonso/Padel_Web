@@ -21,7 +21,8 @@ else{
 		header('Location: ../Views/PaginaPrincipal.php');
 	}
 	else{
-		header('Location: ./Login_Controller.php');
+		include_once '../Views/Message_View.php';
+		new MESSAGE($respuesta, './Login_Controller.php');
 	}
 
 }

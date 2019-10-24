@@ -6,19 +6,17 @@
 class COURT_MODEL
 {
 	var $id_pista;
+	var $descripcion;
 	var $ubicacion;
-	var $num_pista;
-	var $terreno;
 	var $precio;
 	var $estado;
 	var $bd;
 	
-	function __construct($id_pista,$ubicacion, $num_pista, $terreno, $precio, $estado)
+	function __construct($id_pista,$descripcion, $ubicacion, $precio, $estado)
 	{
 		$this->id_pista = $id_pista;
+		$this->descripcion = $descripcion;
 		$this->ubicacion = $ubicacion;
-		$this->num_pista = $num_pista;
-		$this->terreno = $terreno;
 		$this->precio = $precio;
 		$this->estado = $estado;
 
@@ -63,17 +61,15 @@ class COURT_MODEL
 
 				$sql = "INSERT INTO COURT (
 					id_pista,
+					descripcion,
 					ubicacion,
-					num_pista,
-					terreno,
 					precio, 
 					estado
 					) 
 						VALUES (
 						'$this->id_pista',
+						'$this->descripcion',
 						'$this->ubicacion',
-						'$this->num_pista',
-						'$this->terreno',
 						'$this->precio',
 						'$this->estado'
 						)";
@@ -119,9 +115,8 @@ function EDIT(){
     	
 		$sql = "UPDATE COURT  SET 
 				id_pista = '$this->id_pista',
+				descripcion = '$this->descripcion',
 				ubicacion = '$this->ubicacion',
-				num_pista = '$this->num_pista',
-				terreno = '$this->terreno',
 				precio = '$this->precio',
 				estado = '$this->$estado'
 				

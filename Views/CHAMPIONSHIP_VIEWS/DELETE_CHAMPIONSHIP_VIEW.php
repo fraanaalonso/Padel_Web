@@ -1,6 +1,6 @@
 <?php
 
-class DELETE_VIEW
+class DELETE_CHAMPIONSHIP_VIEW
 {
   
   function __construct($valores)
@@ -27,7 +27,7 @@ class DELETE_VIEW
    
     
 
-         <form name="x" method="post" action="../Controllers/Court_Controller.php?action=DELETE">
+         <form name="x" method="post" action="../Controllers/Championship_Controller.php?action=DELETE">
 
            <input type="hidden" name="id_pista" value="<?php echo $valores[0];?>">
           
@@ -35,7 +35,7 @@ class DELETE_VIEW
 
 
           <button type="submit" onclick="x.submit()" class="btn btn-light"><a href="#"><span class="lnr lnr-trash" style="font-size: 35px"></span></a></button>
-          <a href="../Controllers/Court_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+          <a href="../Controllers/Championship_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
 
 </div>
 
@@ -43,31 +43,36 @@ class DELETE_VIEW
 
       <table>
            <tr>
-            <th>Identificador de Pista</th>
+            <th>Identificador Campeonato</th>
             <td><?php echo $valores[0];?></td>
           </tr>
 
            <tr>
-            <th>Descripción</th>
+            <th>Fecha Inicio</th>
             <td><?php echo $valores[1];?></td>
             </tr>
            <tr>
 
 
            <tr>
-            <th>Ubicación</th>
+            <th>Fecha Límite</th>
             <td><?php echo $valores[2];?></td>
           </tr>
 
 
            <tr>
-            <th>Precio</th>
+            <th>ID Normativa</th>
             <td><?php echo $valores[3];?></td>
           </tr>
 
            <tr>
-            <th>Estado</th>
+            <th>ID Grupo</th>
             <td><?php echo $valores[4];?></td>
+          </tr>
+
+          <tr>
+            <th>ID Categoria</th>
+            <td><?php echo $valores[5];?></td>
           </tr>
      
         </table>

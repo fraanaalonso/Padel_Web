@@ -33,7 +33,7 @@ class Login
 		   </div>
 
 		   <div class="form-group" id="contrasena-group">
-		  	<input type="passwrod" id="password" name="password" class="form-control" placeholder="Contraseña" required>
+		  	<input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required>
 		   </div>
 
 		   

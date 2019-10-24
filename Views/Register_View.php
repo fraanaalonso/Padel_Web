@@ -19,7 +19,7 @@ class Register
 
 <div class="iconos-superiores">
 
-    <a href="../Controllers/Register_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+    <a href="../index.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
 
 </div>
 

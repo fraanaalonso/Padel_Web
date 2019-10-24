@@ -5,7 +5,7 @@
 /**
 * 
 */
-class ADD_VIEW
+class SEARCH_VIEW
 {
 	
 	function __construct(){
@@ -29,7 +29,7 @@ class ADD_VIEW
 <div class="formulario">
 			
 			
-		<form class="col-12" method="post" action="../Controllers/Championship_Controller.php?action=ADD" onsubmit="return validar();">
+		<form class="col-12" method="post" action="../Controllers/Championship_Controller.php?action=SEARCH">
 
 		 <div class="form-group">
 		  	<input type="text" id="id_campeonato" name="id_campeonato" class="form-control" placeholder="Identificador Campeonato" >

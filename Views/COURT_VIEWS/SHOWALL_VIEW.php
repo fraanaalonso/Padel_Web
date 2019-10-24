@@ -28,7 +28,7 @@ class SHOWALL_VIEW
       
     <a href="../Controllers/Court_Controller.php?action=ADD"><span class="lnr lnr-file-add" style="font-size: 35px"></span></a>
     <a href="../Controllers/Court_Controller.php?action=SEARCH"><span class="lnr lnr-magnifier" style="font-size: 35px"></span></a>
-    <a href="../Controllers/Post_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+    <a href="../Controllers/Court_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
 
 </div>
 
@@ -40,9 +40,8 @@ class SHOWALL_VIEW
   <thead>
   <tr>
     <th>Identificador de Pista</th>
+    <th>Descripcion</th>
     <th>Ubicación</th>
-    <th>Número de Pista</th>
-    <th>Terreno</th>
     <th>Precio</th>
     <th>Estado</th>
     <th>Opciones </th>
@@ -59,9 +58,8 @@ class SHOWALL_VIEW
   {
       echo "<tr>";
       echo "<td>".$fila['id_pista']."</td>";
+      echo "<td>".$fila["descripcion"]."</td>";
       echo "<td>".$fila["ubicacion"]."</td>";
-      echo "<td>".$fila["num_pista"]."</td>";
-      echo "<td>".$fila["terreno"]."</td>";
       echo "<td>".$fila["precio"]."</td>";
       echo "<td>".$fila["estado"]."</td>";
     

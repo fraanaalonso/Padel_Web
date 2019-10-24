@@ -28,16 +28,18 @@ class MESSAGE
 
 <div class="mensaje">
 	
+	
 	<?php
 	$retroceder = '../img/salir.png';
 	 echo $this->mensaje;
+	 echo "<br>";
+	 echo "<br>";
 	 echo '<a href=\'' . $this->retroceder . "'>" . "<img src=\"$retroceder\"  width=\"50\" />";
 
 
 
 	?>
 </div>
-
 
 <?php
 

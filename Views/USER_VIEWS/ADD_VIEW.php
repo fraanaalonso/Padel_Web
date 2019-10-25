@@ -128,7 +128,7 @@ class ADD_VIEW
 		
 
 		 <div class="form-group">
-		   <input type="hidden" name="rol_id" value="2" required>
+		   <input type="text" name="rol_id" required>
 		</div>
 
 		

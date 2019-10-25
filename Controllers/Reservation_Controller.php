@@ -29,12 +29,16 @@ function get_data(){
 	$id_reserva = $_REQUEST['id_reserva'];
 	$id_pista ='';
 	$login = '';
+	$hora_inicio = '';
+	$fecha = '';
 	$action = $_REQUEST['action'];
 
 	$RESERVATION = new RESERVATION_MODEL(
 		$id_reserva, 
 		$id_pista,
 		$login,
+		$hora_inicio,
+		$fecha,
 		$action
 	);
 
@@ -45,34 +49,49 @@ function get_data(){
 Switch ($_REQUEST['action']){
 
 		/*Reservamos una pista*/
-		case 'ADD':
+		case 'RESERVAR':
 
 
 			if(!$_POST){
 
+				include_once '../Models/COURT_MODEL.php';
+				$modelo = new COURT_MODEL($_REQUEST['id_pista'],'','','','');
+				$clave = $modelo->RellenaDatos();
+
 				
-				new ADD_VIEW();
+				new ADD_VIEW($clave);
+				
 			}
 
 			include_once '../Models/RESERVATION_MODEL.php';
 				
 
+			$reserva = new RESERVATION_MODEL('', $_REQUEST['id_pista'], $_SESSION['login'],$_REQUEST['hora_inicio'],$_REQUEST['fecha']);
 
-			$pista = new COURT_MODEL($_REQUEST['id_pista'],'','','','','');
-			$pista->ocupadaPista();
-
-			$id_reserva = new COURT_MODEL('','','','','','');
-			$id_reserva->generarCodigo(6);
-
-			$reserva = new RESERVATION_MODEL($_REQUEST['id_reserva'], $_REQUEST['id_pista'], $_SESSION['login']);
-
-				$resultado = $reserva->AÑADIRRESERVA();
+			$resultado = $reserva->ADD();
 
 
-				new MESSAGE($resultado, '../Controllers/Reservation_Controller.php');
+			new MESSAGE($resultado, '../Controllers/Reservation_Controller.php');
 
 				
 							
+				break;
+
+
+		case 'ADD':
+				if (!$_POST){
+					
+					new ADD_VIEW();
+				
+				}
+				else{
+				 include_once '../Models/RESERVATION_MODEL.php';
+				  $modelo= new RESERVATION_MODEL('',$_REQUEST['id_pista'], $_REQUEST['login'], $_REQUEST['hora_inicio'], $_REQUEST['fecha']);
+
+					$respuesta = $modelo->ADD();
+					new MESSAGE($respuesta,'./Reservation_Controller.php');
+					
+				}
 				break;
 
 			  
@@ -88,7 +107,7 @@ Switch ($_REQUEST['action']){
 
 				else{
 					 include_once '../Models/RESERVATION_MODEL.php';
-					$modelo= new RESERVATION_MODEL($_REQUEST['id_reserva'],$_REQUEST['id_pista'],$_REQUEST['login'], $_REQUEST['fecha'], $_REQUEST['hora']);
+					$modelo= new RESERVATION_MODEL($_REQUEST['id_reserva'],$_REQUEST['id_pista'],$_REQUEST['login'], $_REQUEST['hora_inicio'], $_REQUEST['fecha']);
 
 					
                      $respuesta = $modelo->SEARCH();
@@ -107,7 +126,7 @@ Switch ($_REQUEST['action']){
 		case 'EDIT':
 				if (!$_POST) {
 					 include_once '../Models/RESERVATION_MODEL.php';
-					$modelo= new RESERVATION_MODEL($_REQUEST['id_reserva'],'', '', '');
+					$modelo= new RESERVATION_MODEL($_REQUEST['id_reserva'],'', '', '','');
 					$valores= $modelo ->RellenaDatos();
 					new EDIT_VIEW($valores);
 				}
@@ -115,7 +134,7 @@ Switch ($_REQUEST['action']){
 				else{
 
 					 include '../Models/RESERVATION_MODEL.php';
-					$modelo = new RESERVATION_MODEL($_REQUEST['id_reserva'],$_REQUEST['id_pista'],$_REQUEST['login'], $_REQUEST['fecha'], $_REQUEST['hora']);
+					$modelo = new RESERVATION_MODEL($_REQUEST['id_reserva'],$_REQUEST['id_pista'],$_REQUEST['login'], $_REQUEST['hora_inicio'], $_REQUEST['fecha']);
 
 					$respuesta = $modelo->EDIT();
 					new MESSAGE($respuesta, './Reservation_Controller.php');
@@ -159,7 +178,7 @@ Switch ($_REQUEST['action']){
 
 				if (!$_POST){
 					include_once '../Models/RESERVATION_MODEL.php';
-					$modelo = new RESERVATION_MODEL(' ' ,' ' ,' ');
+					$modelo = new RESERVATION_MODEL(' ' ,' ' ,' ','','');
 				}
 				else{
 					  include_once '../Models/RESERVATION_MODEL.php';
@@ -167,7 +186,7 @@ Switch ($_REQUEST['action']){
 
 
 				$datos = $modelo->SEARCH();
-				$lista = array('  Código de Reserva  ', 'Identificador de Pista', '  Login  ');
+				$lista = array('  Código de Reserva  ', 'Identificador de Pista', '  Login  ', 'Comienzo Partido', 'Fecha del Partido');
 
 				
 				new SHOWALLL_VIEW($lista, $datos);

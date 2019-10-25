@@ -58,7 +58,8 @@ CREATE TABLE `user` (
   `sexo` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `telefono` int(11) NOT NULL,
   `fecha` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
-  `rol_id` tinyint COLLATE utf8_spanish_ci NOT NULL,
+  `foto` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `rol_id` tinyint(4) NOT NULL,
    PRIMARY KEY (`login`),
    UNIQUE KEY `email` (`email`),
    UNIQUE KEY `dni` (`dni`),
@@ -326,24 +327,24 @@ INSERT INTO `rol` (`id_rol`, `rol`) VALUES
 -- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`login`, `nombre`, `apellido`, `password`, `dni`, `email`, `pais`, `sexo`, `telefono`, `fecha`, `rol_id`) VALUES
-('admin', 'Francisco', 'Alonso', 'admin', '46110791T', 'flalonso17@esei.uvigo.es', 'Alemania', 'Hombre', 666133017, '1997-09-15', 1),
-('anita32', 'Ana', 'Fernandez', 'root', '44294260D', 'anafer_32@outlook.com', 'España', 'Femenino', 733861201, '12-08-1995', 2),
-('antia12', 'Antia', 'Vazquez', 'root', '05561102R', 'antiavazquez@hotmail.com', 'España', 'Femenino', 698224591, '12/07/1992', 2),
-('antonio_v', 'Antonio', 'Velazquez', 'root', '22751863X', 'antonio_v@outlook.com', 'España', 'Masculino', 754291002, '12-08-1995', 2),
-('carlosm', 'Carlos', 'Alonso', 'root', '30584021R', 'carlosm@gmail.com', 'Portugal', 'Masculino', 773299121, '12/08/1995', 2),
-('csmartinez', 'Carlos Enrique', 'Somoza', 'csmartinez', '00289370F', 'csmartinez@gmail.com', 'Grecia', 'masculino', 672341220, '15-10-1994', 4),
-('delinha', 'Miguel', 'Atrio', 'delinha', '24156629M', 'mdatrio@gmail.com', 'Suiza', 'Hombre', 658932456, '1997-03-12', 3),
-('fer_rv', 'Fernanda', 'Pereira', 'root', '10997721H', 'fernanda_pereira@yahoo.es', 'España', 'Femenino', 665229012, '16/01/1998', 2),
-('Graham', 'Benjamin', 'Graham', 'root', '74995099B', 'graham16@gmail.com', 'Suiza', 'Masculino', 666522181, '12/03/2001', 2),
-('jmartinez', 'Jose', 'Martinez', 'root', '28000300P', 'jmartinez@gmail.com', 'Francia', 'Masculino', 664923810, '1996-03-12', 2),
-('lucia_atm', 'Lucia', 'Puga', 'root', '35340416L', 'luciatm@gmail.com', 'España', 'Femenino', 655399823, '12-08-1991', 2),
-('mdolores', 'Maria Dolores', 'Lopez', 'root', '89925329', 'mdolores@gmail.com', 'España', 'femenino', 672199222, '12-10-1992', 2),
-('mvarela', 'Manuel', 'Varela', 'root', '96413471R', 'mvarela@gmail.com', 'España', 'masculino', 773452198, '21-12-1996', 2),
-('root', 'Javier', 'Alonso', 'root', '45159031A', 'paco150997@hotmail.com', 'España', 'masculino', 673322161, '15-09-1997', 1),
-('sormaria', 'Maria', 'de la Concepcion', 'root', '78836661K', 'maria_barral@gmail.com', 'España', 'Femenino', 666723402, '12/03/1970', 2);
-
-
+INSERT INTO `user` (`login`, `nombre`, `apellido`, `password`, `dni`, `email`, `pais`, `sexo`, `telefono`, `fecha`, `foto`, `rol_id`) VALUES
+('admin', 'Francisco', 'Alonso', 'admin', '46110791T', 'flalonso17@esei.uvigo.es', 'Alemania', 'Hombre', 666133017, '1997-09-15', 'user1.jpg', 1),
+('anita32', 'Ana', 'Fernandez', 'root', '44294260D', 'anafer_32@outlook.com', 'España', 'Femenino', 733861201, '1997-09-15', 'banner2.jpg', 2),
+('antia12', 'Antia', 'Vazquez', 'root', '05561102R', 'antiavazquez@hotmail.com', 'España', 'Femenino', 698224591, '1998-12-13', 'user2.jpg', 2),
+('antiavazquez', 'Antia', 'Vazquez', 'root', '17219555F', 'antiavaz@outlook.es', 'España', 'Femenino', 659224908, '1997-06-04', 'banner2.jpg', 2),
+('antonio_v', 'Antonio', 'Velazquez', 'root', '22751863X', 'antonio_v@outlook.com', 'España', 'Masculino', 754291002, '1997-09-12', 'iconUser.jpg', 2),
+('carlosm', 'Carlos', 'Alonso', 'root', '30584021R', 'carlosm@gmail.com', 'Portugal', 'Masculino', 773299121, '2012-12-12', 'user3.jpg', 2),
+('charlie', 'jnjn', 'jnknk', 'root', '234567', 'jnjnj@nbjnj.com', 'España', 'Hombre', 673322567, '1997-09-15', 'banner2.jpg', 2),
+('csmartinez', 'Carlos Enrique', 'Somoza', 'csmartinez', '00289370F', 'csmartinez@gmail.com', 'Grecia', 'masculino', 672341220, '1996-10-23', 'user1.jpg', 4),
+('delinha', 'Miguel', 'Atrio', 'delinha', '24156629M', 'mdatrio@gmail.com', 'Suiza', 'Hombre', 658932456, '1997-03-12', 'user3.jpg', 3),
+('fer_rv', 'Fernanda', 'Pereira', 'root', '10997721H', 'fernanda_pereira@yahoo.es', 'España', 'Femenino', 665229012, '1998-03-12', 'user2.jpg', 2),
+('Graham', 'Benjamin', 'Graham', 'root', '74995099B', 'graham16@gmail.com', 'Suiza', 'Masculino', 666522181, '1998-03-12', 'user3.jpg', 2),
+('jmartinez', 'Jose', 'Martinez', 'root', '28000300P', 'jmartinez@gmail.com', 'Francia', 'Masculino', 664923810, '1996-03-12', 'iconUser.jpg', 2),
+('lucia_atm', 'Lucia', 'Puga', 'root', '35340416L', 'luciatm@gmail.com', 'España', 'Femenino', 655399823, '1994-12-20', 'banner2.jpg', 2),
+('mdolores', 'Maria Dolores', 'Lopez', 'root', '89925329', 'mdolores@gmail.com', 'España', 'femenino', 672199222, '1993-12-11', 'user2.jpg', 2),
+('mvarela', 'Manuel', 'Varela', 'root', '96413471R', 'mvarela@gmail.com', 'España', 'masculino', 773452198, '1988-12-12', 'iconUser.jpg', 2),
+('root', 'Javier', 'Alonso', 'root', '45159031A', 'paco150997@hotmail.com', 'España', 'masculino', 673322161, '1998-12-12', 'iconUser.jpg', 2),
+('sormaria', 'Maria', 'de la Concepcion', 'root', '78836661K', 'maria_barral@gmail.com', 'España', 'Femenino', 666723402, '1998-12-11', 'banner2.jpg', 2);
 
 --
 -- Volcado de datos para la tabla `new`
@@ -384,14 +385,12 @@ INSERT INTO `court` (`id_pista`,`descripcion`, `ubicacion`, `precio`, `estado`) 
 --
 
 INSERT INTO `game` (`id_partido`, `id_pista`, `hora_inicio`, `hora_fin`, `fecha`) VALUES
-(1, 'P1', '17:50','18:50', '17-12-2019'),
 (2, 'P2', '18:50', '20:10', '18-12-2019'),
 (3, 'P3', '14:10', '15:30', '14-12-2019'),
 (4, 'P4', '15:30', '16:30', '19-12-2019'),
 (5, 'P3', '09:45', '10:50', '17-12-2019'),
 (6, 'P6', '19:25', '20:25', '11-12-2019'),
-(7, 'P7', '12:35','13:35', '10-12-2019'),
-(8, 'P1', '11:30', '12:35', '13-12-2019');
+(7, 'P7', '12:35', '13:35', '10-12-2019');
 
 
 
@@ -400,17 +399,15 @@ INSERT INTO `game` (`id_partido`, `id_pista`, `hora_inicio`, `hora_fin`, `fecha`
 -- Volcado de datos para la tabla `user_game`
 --
 
-/*
 
 INSERT INTO `user_game` (`login`, `id_partido`) VALUES
-('fer_rv', 1),
-('csmartinez', 2),
-('antiavazquez', 3),
-('anita32', 4),
-('sominho', 5),
-('somo', 6);
+('carlosm', 3),
+('fer_rv', 2),
+('jmartinez', 6),
+('mdolores', 4),
+('mvarela', 5);
 
-*/
+
 
 
 
@@ -419,24 +416,23 @@ INSERT INTO `user_game` (`login`, `id_partido`) VALUES
 --
 
 INSERT INTO `reservation` (`id_reserva`, `id_pista`, `login`,`hora_inicio`, `fecha`) VALUES
-(1, 'P1', 'root', '19:00',  '17-12-2019'),
-(2, 'P2', 'somo', '10:00', '18-12-2019'),
-(3, 'P3', 'sominho' , '09:00', '14-12-2019'),
-(4, 'P4', 'sormaria','11:00', '19-12-2019'),
-(5, 'P3', 'delinha', '15:00', '17-12-2019'),
-(6, 'P6', 'antonio_v','09:30', '11-12-2019'),
-(7, 'P7', 'anafer_32','17:10', '10-12-2019'),
-(8, 'P1', 'antia12','09:55', '13-12-2019');
+(1, 'P2', 'root', '19:00',  '17-12-2019'),
+(2, 'P3', 'admin', '10:00', '18-12-2019'),
+(3, 'P4', 'anita32' , '09:00', '14-12-2019'),
+(4, 'P3', 'sormaria','11:00', '19-12-2019'),
+(5, 'P6', 'delinha', '15:00', '17-12-2019'),
+(6, 'P7', 'antonio_v','09:30', '11-12-2019');
+
 
  --
 -- Volcado de datos para la tabla `rule`
 --
 
 INSERT INTO `rule` (`id_normativa`, `bases`) VALUES
-(1, 'Mayores de 18 años, masculino y nivel avanzado'),
-(2, 'Entre 12 y 15 años, mixto y principiante'),
-(3, 'Entre 16 y 18 años, femenino y nievel intermedio'),
-(4, 'Mayores de 55 años, femenino y nivel principiante');
+(1, 'Mayores de 18 años masculino y nivel avanzado'),
+(2, 'Entre 12 y 15 años mixto y principiante'),
+(3, 'Entre 16 y 18 años femenino y nievel intermedio'),
+(4, 'Mayores de 55 años femenino y nivel principiante');
 
 
 
@@ -492,7 +488,7 @@ INSERT INTO `couple` (`id_pareja`, `id_categoria`, `id_grupo`, `login1`, `login2
 (1, 1,1, 'root', 'admin'),
 (2, 1,1, 'anita32', 'antia12'),
 (3, 1,1, 'antonio_v', 'antiavazquez'),
-(4,1,1, 'mvarela', 'carlosm'),
+(4,1,1, 'mvarela', 'root'),
 (5, 1,1, 'lucia_atm', 'csmartinez'),
 (6, 1,1, 'sormaria', 'Graham'),
 (7,1,1, 'fer_rv', 'delinha'),
@@ -504,7 +500,7 @@ INSERT INTO `couple` (`id_pareja`, `id_categoria`, `id_grupo`, `login1`, `login2
 (13, 1,1, 'fer_rv', 'lucia_atm'),
 (14,1,1,'jmartinez','csmartinez'),
 (15,1,1,'mvarela','carlosm'),
-(16,1,1,'root','admin');
+(16,1,1,'lucia_atm','antiavazquez');
 
 
 --
@@ -535,15 +531,15 @@ INSERT INTO `championship_couple` (`id_pareja`,`id_campeonato`) VALUES
 -- Volcado de datos para la tabla `clash`
 --
 
-INSERT INTO `clash` (`id_enfrentamiento`,`id_campeonato`, `id_pareja1`, `id_pareja2`, `numSetsPareja1`,`numSetsPareja2`, `id_grupo`,`id_categoria`, `hora_inicio`) VALUES
-(1, 1, 1, 2, 2, 1, 1, 1, '18:50'),
-(2, 1, 3, 4, 2, 1, 1, 1, '18:50'),
-(3, 1, 5, 6, 2, 1, 1, 1, '18:50'),
-(4, 1, 7, 8, 2, 1, 1, 1, '18:50'),
-(5, 1, 9, 10, 2, 1, 1, 1, '18:50'),
-(6, 1, 11, 12, 2, 1, 1, 1, '18:50'),
-(7, 1, 13, 14, 2, 1, 1, 1, '18:50'),
-(8, 1, 15, 16, 2, 1, 1, 1, '18:50');
+INSERT INTO `clash` (`id_enfrentamiento`, `id_pareja1`, `id_pareja2`, `numSetsPareja1`,`numSetsPareja2`, `id_grupo`,`id_categoria`, `hora_inicio`) VALUES
+(1, 1, 2, 2, 1, 1, 1, '18:50'),
+(2, 3, 4, 2, 1, 1, 1, '18:50'),
+(3, 5, 6, 2, 1, 1, 1, '18:50'),
+(4, 7, 8, 2, 1, 1, 1, '18:50'),
+(5, 9, 10, 2, 1, 1, 1, '18:50'),
+(6, 11, 12, 2, 1, 1, 1, '18:50'),
+(7, 13, 14, 2, 1, 1, 1, '18:50'),
+(8, 15, 16, 2, 1, 1, 1, '18:50');
 
 
 

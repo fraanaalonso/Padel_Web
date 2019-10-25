@@ -13,14 +13,17 @@ class RESERVATION_MODEL
 	var $id_reserva;
 	var $id_pista;
 	var $login;
+	var $hora_inicio;
+	var $fecha;
 	var $bd;
 	
-	function __construct($id_reserva,$id_pista, $login)
+	function __construct($id_reserva,$id_pista, $login, $hora_inicio, $fecha)
 	{
 		$this->id_reserva = $id_reserva;
 		$this->id_pista = $id_pista;
 		$this->login = $login;
-	
+		$this->hora_inicio = $hora_inicio;
+		$this->fecha = $fecha;
 
 		$this->bd = ConectarDB();
 	}
@@ -52,13 +55,17 @@ class RESERVATION_MODEL
 				$sql = "INSERT INTO RESERVATION (
 					id_reserva,
 					id_pista,
-					login
+					login,
+					hora_inicio,
+					fecha
 					
 					) 
 						VALUES (
 						'$this->id_reserva',
 						'$this->id_pista',
-						'$this->login'
+						'$this->login',
+						'$this->hora_inicio',
+						'$this->fecha'
 						)";
 					
 				
@@ -103,7 +110,9 @@ function EDIT(){
 		$sql = "UPDATE RESERVATION  SET 
 				id_reserva = '$this->id_reserva',
 				id_pista = '$this->id_pista',
-				login = '$this->login'
+				login = '$this->login',
+				hora_inicio = '$this->hora_inicio',
+				fecha = '$this->fecha'
 				
 				WHERE ( id_reserva = '$this->id_reserva')";
 
@@ -128,17 +137,10 @@ function EDIT(){
 function SEARCH(){
 
 	$sql = "select
-					id_reserva,
-					id_pista,
-					login
+					*
 					
 					
-					FROM RESERVATION WHERE
-
-					
-						((id_reserva LIKE '$this->id_reserva') &&
-						(id_pista LIKE'$this->id_pista') &&
-						(login LIKE'$this->login'))";
+					FROM RESERVATION";
 
    
     if (!($resultado = $this->bd->query($sql))){

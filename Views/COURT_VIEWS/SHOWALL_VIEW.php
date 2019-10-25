@@ -25,8 +25,17 @@ class SHOWALL_VIEW
 
 
 <div class="iconos-superiores">
+
+  <?php
+  if(comprobarPermisos($_SESSION['login'])==1){
+      
+  ?>
       
     <a href="../Controllers/Court_Controller.php?action=ADD"><span class="lnr lnr-file-add" style="font-size: 35px"></span></a>
+
+<?php
+}
+?>
     <a href="../Controllers/Court_Controller.php?action=SEARCH"><span class="lnr lnr-magnifier" style="font-size: 35px"></span></a>
     <a href="../Controllers/Court_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
 
@@ -68,9 +77,17 @@ class SHOWALL_VIEW
 
       <td>
         <a href="../Controllers/Court_Controller.php?action=SHOWCURRENT&id_pista=<?php  echo $fila['id_pista'] ?>"><span class="lnr lnr-eye añadir"></span></a>
+        <?php
+          if(comprobarPermisos($_SESSION['login'])==1){
+        ?>
         <a href="../Controllers/Court_Controller.php?action=EDIT&id_pista=<?php  echo $fila['id_pista'] ?>"><span class="lnr lnr-pencil editar"></span></a>
-        <a href="../Controllers/Reservation_Controller.php?action=ADD&id_pista=<?php  echo $fila['id_pista'] ?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 20px"></span></a>
         <a href="../Controllers/Court_Controller.php?action=DELETE&id_pista=<?php  echo $fila['id_pista'] ?>"><span class="lnr lnr-trash borrar"></span></a>
+     <?php   
+      }
+
+      ?>
+        <a href="../Controllers/Reservation_Controller.php?action=RESERVAR&id_pista=<?php  echo $fila['id_pista'] ?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 20px"></span></a>
+        
       
       </td>
 

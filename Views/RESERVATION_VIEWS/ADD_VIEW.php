@@ -12,12 +12,12 @@ class ADD_VIEW
 {
 
 	
-	function __construct(){
-		$this->execution();
+	function __construct($clave){
+		$this->execution($clave);
 	}
 
 
-	function execution(){
+	function execution($clave){
 		include '../Views/HeaderPost.php';
 		
 	
@@ -32,23 +32,28 @@ class ADD_VIEW
 </div>
 
 
-
-<div class="modal-dialog text-center">
-	<div class="col-sm-15 main-section2">
-		<div class="modal-content">
+<div class="formulario">
 			
 		<form class="col-12" method="post" action="../Controllers/Reservation_Controller.php?action=ADD" onsubmit="return validar();">
 
 		 <div class="form-group">
-		  	<input type="hidden" id="id_reserva" name="id_reserva" value="" class="form-control"  >
+		  	<input type="text" id="id_reserva" name="id_reserva" value="0" readonly class="form-control"  >
 		   </div>	
 
 		  <div class="form-group">
-		  	<input type="text" id="id_pista" name="id_pista" class="form-control" readonly value="<?php echo $_REQUEST['id_pista']?>" >
+		  	<input type="text" id="id_pista" name="id_pista" class="form-control" readonly value="<?php echo $clave[0]?>" >
 		   </div>
 
 		   <div class="form-group" >
 		  	<input type="text" id="login" name="login" class="form-control" readonly value="<?php echo $_SESSION['login']; ?>">
+		   </div>
+
+		   <div class="form-group" >
+		  	<input type="text" id="hora_inicio" name="hora_inicio" class="form-control"  >
+		   </div>
+
+		   <div class="form-group" >
+		  	<input type="date" id="fecha" name="fecha" class="form-control"  >
 		   </div>
 
 
@@ -56,7 +61,7 @@ class ADD_VIEW
 
 		
 
-		   <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>Reservar</button>
+		   <button type="submit" class="btn btn-primary">Reservar</button>
 		   <p>
 		  
 		   </p>
@@ -66,10 +71,7 @@ class ADD_VIEW
 
 			
 			
-		</div>
-
-		
-	</div>
+	
 
 </div>
 

@@ -93,8 +93,13 @@ class DELETE_VIEW
             </tr> 
 
             <tr>
-            <th> Rol del Usuario</th>
+            <th>Foto de Perfil</th>
             <td><?php echo $valores[10];?></td>
+            </tr> 
+
+            <tr>
+            <th> Rol del Usuario</th>
+            <td><?php echo $valores[11];?></td>
             </tr>
            <tr>
         </table>

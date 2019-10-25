@@ -29,7 +29,7 @@ class EDIT_VIEW
 				
 			</div>
 			
-		<form class="col-12" method="post" action="../Controllers/User_Controller.php?action=EDIT"  onsubmit="return validar();">
+		<form class="col-12" method="post" action="../Controllers/User_Controller.php?action=EDIT" enctype="multipart/form-data"  onsubmit="return validar();">
 
 		 <div class="form-group" id="login-group">
 		  	<input type="text" id="login" name="login" required class="form-control" readonly value="<?php echo $valores['login']; ?>"  >
@@ -95,6 +95,10 @@ class EDIT_VIEW
 
 		   <div class="form-group" id="fecha-group">
 		  	<input type="date" id="fecha" name="fecha" class="form-control" required value="<?php echo $valores['fecha']; ?>" >
+		   </div>
+
+		   <div class="form-group" id="login-group">
+		  	<input type="file" id="foto" name="foto" class="form-control" required value="<?php echo $valores['foto']; ?>" >
 		   </div>
 
 

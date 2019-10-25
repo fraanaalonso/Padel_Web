@@ -35,7 +35,7 @@ class ADD_VIEW
 				
 			</div>
 			
-		<form  method="post" action="../Controllers/User_Controller.php?action=ADD" onsubmit="return validar();">
+		<form  method="post" action="../Controllers/User_Controller.php?action=ADD" enctype="multipart/form-data" onsubmit="return validar();">
 
 		 <div class="form-group" id="login-group">
 		  	<input type="text" id="login" name="login" class="form-control" placeholder="Login" required>
@@ -119,6 +119,10 @@ class ADD_VIEW
 
 		   <div class="form-group" id="fecha-group">
 		  	<input type="date" id="fecha" name="fecha" class="form-control" placeholder="Fecha de Nacimiento" required>
+		   </div>
+
+		   <div class="form-group" id="fecha-group">
+		  	<input type="file" id="foto" name="foto" class="form-control" placeholder="Foto Perfil" required>
 		   </div>
 
 		

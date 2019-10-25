@@ -55,6 +55,7 @@ if(comprobarPermisos($_SESSION['login'])==1){
     <th>Sexo     </th>
     <th>Telefono </th>
     <th>Fecha    </th>
+    <th>Foto de Perfil</th>
     <th>Rol del Usuario</th>
     <th>Opciones </th>
    
@@ -79,8 +80,29 @@ if(comprobarPermisos($_SESSION['login'])==1){
       echo "<td>".$fila["sexo"]."</td>";
       echo "<td>".$fila["telefono"]."</td>";
       echo "<td>".$fila["fecha"]."</td>";
+  ?>
+  <div class="ventana" id="vent">
+    <div id="cerrar"><img src="./img/cancel.png">
+  <?php
+      echo "<td><a href=\"../img/fotosPerfil/" . $fila["foto"]. "\">". $fila["foto"] . " </a></td>";
+
+  ?>
+  </div>
+</div>
+
+<script type="text/javascript">
+  
+  function abrir(){
+    document.getElementById("vent").style.display="block";
+
+  }
+</script>
+  <?php    
       echo "<td>".$fila["rol_id"]."</td>";
     
+
+
+
 ?>
 
 
@@ -124,6 +146,8 @@ include '../Views/Footer.php';
 
 ?>
 </div>
+
+
 <?php
 
   } 

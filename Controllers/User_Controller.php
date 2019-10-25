@@ -33,6 +33,7 @@ function get_data(){
 	$sexo = '';
 	$telefono = '';
 	$fecha = '';
+	$foto = '';
 	$rol_id = '';
 	$action = $_REQUEST['action'];
 
@@ -47,6 +48,7 @@ function get_data(){
 		$sexo,
 		$telefono,
 		$fecha,
+		$foto,
 		$rol_id,
 		$action
 	);
@@ -67,8 +69,19 @@ Switch ($_REQUEST['action']){
 				else{
 				 include_once '../Models/USER_MODEL.php';
 				  $modelo= new User_Modelo($_REQUEST['login'],$_REQUEST['nombre'],$_REQUEST['apellido'], $_REQUEST['password'], $_REQUEST['dni'], $_REQUEST['email'], $_REQUEST['pais'], $_REQUEST['sexo'], $_REQUEST['telefono'],
-				   $_REQUEST['fecha'], $_REQUEST['rol_id']);
+				   $_REQUEST['fecha'],$_FILES['foto']['name'], $_REQUEST['rol_id']);
 
+
+
+
+					$nombre_foto = $_FILES['foto']['name'];
+					$archivo = $_FILES['foto']['tmp_name'];
+					$ruta = "../img/fotosPerfil";
+
+
+					$ruta =$ruta."/".$nombre_foto; //img/nombre.jpg
+
+					move_uploaded_file($archivo, $ruta);
 	
 					$respuesta = $modelo->ADD();
 					new MESSAGE($respuesta,'./User_Controller.php');
@@ -90,10 +103,10 @@ Switch ($_REQUEST['action']){
 				else{
 					 include_once '../Models/USER_MODEL.php';
 					$modelo= new User_Modelo($_REQUEST['login'],$_REQUEST['nombre'],$_REQUEST['apellido'], $_REQUEST['password'], $_REQUEST['dni'], $_REQUEST['email'], $_REQUEST['pais'], $_REQUEST['sexo'], $_REQUEST['telefono'],
-				   $_REQUEST['fecha'], $_REQUEST['rol_id']);
+				   $_REQUEST['fecha'], $_FILES['foto']['name'],  $_REQUEST['rol_id']);
 
                      $respuesta = $modelo->SEARCH();
-					$lista = array('Login ', 'Nombre ', 'Apellido ', 'Password ', 'Dni ','Email ','Pais ','Telefono ','Email ','Pais ','Sexo ', 'Telefono ', 'Fecha', 'Rol del Usuario', 'Opciones ');
+					$lista = array('Login ', 'Nombre ', 'Apellido ', 'Password ', 'Dni ','Email ','Pais ','Telefono ','Email ','Pais ','Sexo ', 'Telefono ', 'Fecha', 'Foto de Perfil', 'Rol del Usuario', 'Opciones ');
 					new SHOWALL_VIEW($lista, $respuesta);
 					
 				}
@@ -108,7 +121,7 @@ Switch ($_REQUEST['action']){
 		case 'EDIT':
 				if (!$_POST) {
 					 include_once '../Models/USER_MODEL.php';
-					$modelo= new User_Modelo($_REQUEST['login'],'','', '', '', '', '', '', '','','');
+					$modelo= new User_Modelo($_REQUEST['login'],'','', '', '', '', '', '', '','','','');
 					$valores= $modelo ->RellenaDatos();
 					new EDIT_VIEW($valores);
 				}
@@ -117,7 +130,16 @@ Switch ($_REQUEST['action']){
 
 					 include_once '../Models/USER_MODEL.php';
 					$modelo = new User_Modelo($_REQUEST['login'],$_REQUEST['nombre'],$_REQUEST['apellido'], $_REQUEST['password'], $_REQUEST['dni'], $_REQUEST['email'], $_REQUEST['pais'], $_REQUEST['sexo'], $_REQUEST['telefono'],
-				   $_REQUEST['fecha'], $_REQUEST['rol_id']);
+				   $_REQUEST['fecha'],$_FILES['foto']['name'], $_REQUEST['rol_id']);
+
+					$nombre_foto = $_FILES['foto']['name'];
+					$archivo = $_FILES['foto']['tmp_name'];
+					$ruta = "../img/fotosPerfil";
+
+
+					$ruta =$ruta."/".$nombre_foto; //img/nombre.jpg
+
+					move_uploaded_file($archivo, $ruta);
 
 					  $respuesta = $modelo->EDIT();
 					new MESSAGE($respuesta, './User_Controller.php');
@@ -148,7 +170,7 @@ Switch ($_REQUEST['action']){
 
 		case 'SHOWCURRENT':
 				 include_once '../Models/USER_MODEL.php';
-			    $modelo = new User_Modelo($_REQUEST['login'],'','', '', '', '', '', '', '', '','');
+			    $modelo = new User_Modelo($_REQUEST['login'],'','', '', '', '', '', '', '', '','','','');
 				$valores = $modelo->RellenaDatos();
 
 				new SHOWCURRENT_VIEW($valores);
@@ -161,7 +183,7 @@ Switch ($_REQUEST['action']){
 
 				if (!$_POST){
 					include_once '../Models/USER_MODEL.php';
-					$modelo = new User_Modelo(' ' ,' ' ,' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ');
+					$modelo = new User_Modelo(' ' ,' ' ,' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '');
 				}
 				else{
 					  include_once '../Models/USER_MODEL.php';
@@ -169,7 +191,7 @@ Switch ($_REQUEST['action']){
 
 
 				$datos = $modelo->SEARCH();
-				$lista = array('  Login  ', '  Nombre  ', '  Apellido  ', '  Password  ', '  Dni  ','  Email  ','  Pais  ','  Sexo  ','  Telefono  ','  Fecha  ', 'Rol del Usuario', '  Opciones  ');
+				$lista = array('  Login  ', '  Nombre  ', '  Apellido  ', '  Password  ', '  Dni  ','  Email  ','  Pais  ','  Sexo  ','  Telefono  ','  Fecha  ', 'Foto de Perfil', 'Rol del Usuario', '  Opciones  ');
 
 				
 				new SHOWALL_VIEW($lista, $datos);

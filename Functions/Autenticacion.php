@@ -7,11 +7,11 @@
 
 function comprobarPermisos($login){
 	include_once '../Models/USER_MODEL.php';
-	$user = new User_Modelo('','','','','','','','','','','');
+	$user = new User_Modelo('','','','','','','','','','','','');
 	$respuesta = $user->getDBDatos($login);
 
 	
-	return $respuesta[10];
+	return $respuesta[11];
 }
 
 

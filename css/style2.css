@@ -198,6 +198,26 @@ tr:hover td{
 
 }
 
+.ventana{
+	background: white;
+	width: 70%;
+	min-height: 800px;
+	text-align: center;padding: 33px;
+	border-radius: 22px;
+	position: absolute;
+	left: 40%;
+	top: 35%;
+	display: none;
+}
+
+.cerrar{
+	position: absolute;
+	right: 0;
+	top: 4px;
+	width: 5%;
+	height: 5%;
+}
+
 
 
 .main-section{

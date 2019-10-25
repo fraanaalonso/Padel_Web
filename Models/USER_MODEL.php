@@ -16,6 +16,7 @@ class User_Modelo
  	var $fecha;
  	var $sexo;
  	var $pais;
+ 	var $foto;
  	var $rol_id;
 	//var $bd; 
 
@@ -23,7 +24,7 @@ class User_Modelo
 
 
 
-	function __construct($login, $nombre, $apellido, $password, $dni, $email, $pais, $sexo, $telefono, $fecha, $rol_id){
+	function __construct($login, $nombre, $apellido, $password, $dni, $email, $pais, $sexo, $telefono, $fecha, $foto, $rol_id){
 
 		$this->login = $login;
 		$this->nombre = $nombre;
@@ -35,6 +36,7 @@ class User_Modelo
 		$this->sexo = $sexo;
 		$this->telefono = $telefono;
 		$this->fecha = $fecha;
+		$this->foto = $foto;
 		$this->rol_id = $rol_id;
 
 
@@ -76,6 +78,7 @@ class User_Modelo
 					sexo,
 					telefono,
 					fecha,
+					foto,
 					rol_id
 					) 
 						VALUES (
@@ -89,8 +92,11 @@ class User_Modelo
 						'$this->sexo',
 						'$this->telefono',
 						'$this->fecha',
+						'$this->foto',
 						'$this->rol_id'
 						)";
+
+
 					
 				
 				if (!$this->bd->query($sql)) { 
@@ -140,6 +146,7 @@ class User_Modelo
 					sexo = '$this->sexo',
 					telefono = '$this->telefono',
 					fecha = '$this->fecha',
+					foto = '$this->foto',
 					rol_id = '$this->rol_id'
 				
 				WHERE ( login = '$this->login')";
@@ -201,6 +208,7 @@ function getDBDatos($login){
 				$delinha['sexo'],
 				$delinha['telefono'],
 				$delinha['fecha'],
+				$delinha['foto'],
 				$delinha['rol_id'],];
 	}
 }

@@ -24,7 +24,7 @@ class SEARCH_VIEW
 
 <div class="iconos-superiores">
 
-    <a href="../Controllers/User_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+    <a href="../Controllers/User_Controller.php"><span class="lnr lnr-exit"  style="font-size: 35px"></span></a>
 
 </div>
 
@@ -35,7 +35,7 @@ class SEARCH_VIEW
 				
 			</div>
 			
-		<form class="col-12" method="post" action="../Controllers/User_Controller.php?action=SEARCH" >
+		<form class="col-12" method="post" action="../Controllers/User_Controller.php?action=SEARCH" enctype="multipart/form-data" >
 
 		 <div class="form-group" id="login-group">
 		  	<input type="text" id="login" name="login" class="form-control" placeholder="Login" >
@@ -121,11 +121,16 @@ class SEARCH_VIEW
 		  	<input type="date" id="fecha" name="fecha" class="form-control" placeholder="Fecha de Nacimiento">
 		   </div>
 
-		
+		   <div class="form-group" id="telefono-group">
+		  	<input type="file" id="foto" name="foto" class="form-control" placeholder="Foto de Perfil">
+		   </div>
 
 		    <div class="form-group" id="telefono-group">
 		  	<input type="text" id="rol_id" name="rol_id" class="form-control" placeholder="Rol">
 		   </div>
+		
+
+		    
 
 
 		   <button type="submit" class="btn btn-light"><i class="fas fa-sign-in-alt"></i><span class="lnr lnr-magnifier" style="font-size: 35px; text-align: center;"></span></button>

@@ -127,9 +127,20 @@ class ADD_VIEW
 
 		
 
-		 <div class="form-group">
-		   <input type="text" name="rol_id" required>
-		</div>
+		  <div class="form-group" id="login-group">
+		  	<select name="rol_id" id="rol_id"  class="form-control"  required>
+
+		   		<option>Administrador</option>
+
+		   		<option>Deportista</option>
+
+		   		<option>Entrenador</option>
+
+		   		<option>Usuario</option>
+
+
+		   	</select>
+		   </div>
 
 		
 

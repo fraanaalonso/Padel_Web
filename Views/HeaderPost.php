@@ -48,7 +48,7 @@ if(autenticado()){
 
 <body>
   
-<header><span class="lnr lnr-menu show"></span></header>
+<header>PÁDEL ESEI</header>
 
 <main>
 
@@ -59,7 +59,7 @@ if(autenticado()){
     <a href="../Controllers/Post_Controller.php"><li><span class="lnr lnr-earth icon10"></span><h4 class="text1">Novedades</h4></li></a> 
     <a href="../Controllers/User_Controller.php"><li><span class="lnr lnr-users icon1"></span><h4 class="text1">Deportistas</h4></li></a>  
     <a href="../Controllers/Court_Controller.php"><li><span class="lnr lnr-page-break icon2"></span><h4 class="text2">Pistas</h4></li></a>
-     <a href="../Controllers/Reservation_Controller.php"><li><span class="lnr lnr-book icon3"></span><h4 class="text3">Reservas</h4></li></a>
+     <a href="../Controllers/Reservation_Controller.php"><li><span class="lnr lnr-book icon3"></span><h4 class="text3">Reservas Activas</h4></li></a>
     <a href="../Controllers/Championship_Controller.php"><li><span class="lnr lnr-license icon4"></span><h4 class="text4">Campeonatos</h4></li></a>
     <li><span class="lnr lnr-rocket icon6"></span><h4 class="text6">Enfrentamiento</h4></li> 
     <li><span class="lnr lnr-heart icon7"></span><h4 class="text7">Sobre Nosotros</h4></li> 
@@ -87,7 +87,7 @@ if(comprobarPermisos($_SESSION['login'])==2){
 
 <body>
   
-<header><span class="lnr lnr-menu show"></span></header>
+<header><strong>PÁDEL ESEI</strong></header>
 
 <main>
 
@@ -98,7 +98,7 @@ if(comprobarPermisos($_SESSION['login'])==2){
 
     
     
-      <a href="../Controllers/Reservation_Controller.php"><li><span class="lnr lnr-book icon3"></span><h4 class="text3">Reservas</h4></li></a>
+      <a href="../Controllers/Reservation_Controller.php"><li><span class="lnr lnr-book icon3"></span><h4 class="text3">Reservas Activas</h4></li></a>
 
 
      
@@ -132,15 +132,11 @@ if(comprobarPermisos($_SESSION['login'])==2){
   <div class="content-menu">
      <a href="../Controllers/Post_Controller.php"><li><span class="lnr lnr-earth icon10"></span><h4 class="text1">Novedades</h4></li></a> 
      <a href="../Controllers/Court_Controller.php"><li><span class="lnr lnr-page-break icon2"></span><h4 class="text2">Pistas</h4></li></a>
-     <?php
-        if($_SESSION['login']){
-     ?>
-     <li><span class="lnr lnr-book icon3"></span><h4 class="text3">Reservas</h4></li>
+    
+     <li><span class="lnr lnr-book icon3"></span><h4 class="text3">Reservas Activas</h4></li>
 
 
-     <?php
-        }
-     ?>
+     
      <a href="../Controllers/Championship_Controller.php"><li><span class="lnr lnr-license icon4"></span><h4 class="text4">Campeonatos</h4></li></a>
      <li><span class="lnr lnr-rocket icon6"></span><h4 class="text6">Enfrentamiento</h4></li>
      <li><span class="lnr lnr-heart icon7"></span><h4 class="text7">Sobre Nosotros</h4></li> 

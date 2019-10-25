@@ -59,6 +59,7 @@ if(comprobarPermisos($_SESSION['login']) == 1){
     <th>Login</th>
     <th>Comienzo del Partido</th>
     <th>Fecha de Reserva</th>
+    <th>Precio Pista</th>
 
 
     <th>Opciones </th>
@@ -70,23 +71,28 @@ if(comprobarPermisos($_SESSION['login']) == 1){
 
 <?php
  
+ if( comprobarPermisos($_SESSION['login'] == 1)){
   
   while ($fila = $resultado->fetch_assoc())
   {
-    if($_SESSION['login'] == $fila['login'] || comprobarPermisos($_SESSION['login'] == 1)){
+    
       echo "<tr>";
 
-      if(comprobarPermisos($_SESSION['login']) == 1){
+      
       echo "<td>".$fila['id_reserva']."</td>";
       echo "<td>".$fila["id_pista"]."</td>";
-    }
+    
       echo "<td>".$fila["login"]."</td>";
       echo "<td>".$fila["hora_inicio"]."</td>";
       echo "<td>".$fila["fecha"]."</td>";
-
+      echo "<td>".$fila["precio"]."</td>";
 
     
 ?>
+
+
+
+
 
 
       <td>
@@ -98,9 +104,6 @@ if(comprobarPermisos($_SESSION['login']) == 1){
             
       </td>
 
-     <?php
-     }
-     ?> 
 
 <?php
 
@@ -110,6 +113,60 @@ if(comprobarPermisos($_SESSION['login']) == 1){
     
 
      }
+   }
+
+else{
+
+  
+      while ($fila = $resultado->fetch_assoc())
+  {
+
+    
+     
+      echo "<tr>";
+
+     
+      
+      if(comprobarPermisos($_SESSION['login']) == 1)
+      {
+      echo "<td>".$fila['id_reserva']."</td>";
+      echo "<td>".$fila["id_pista"]."</td>";
+      }
+
+      if($_SESSION['login'] == $fila['login'] || comprobarPermisos($_SESSION['login']) == 1){
+      echo "<td>".$fila["login"]."</td>";
+      echo "<td>".$fila["hora_inicio"]."</td>";
+      echo "<td>".$fila["fecha"]."</td>";
+      echo "<td>".$fila["precio"]."</td>";
+    
+?>
+   <td>
+
+
+        <a href="../Controllers/Reservation_Controller.php?action=SHOWCURRENT&id_reserva=<?php  echo $fila['id_reserva'] ?>"><span class="lnr lnr-eye añadir"></span></a>
+        <a href="../Controllers/Reservation_Controller.php?action=EDIT&id_reserva=<?php  echo $fila['id_reserva'] ?>"><span class="lnr lnr-pencil editar"></span></a>
+        <a href="../Controllers/Reservation_Controller.php?action=DELETE&id_reserva=<?php  echo $fila['id_reserva'] ?>"><span class="lnr lnr-trash borrar"></span></a>
+            
+      </td>
+<?php
+
+}
+?>
+
+      <?php
+
+      echo "</tr>";
+    
+
+    }
+  }
+      ?>
+
+
+
+
+
+   }
 
 
  

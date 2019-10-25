@@ -15,16 +15,17 @@ class RESERVATION_MODEL
 	var $login;
 	var $hora_inicio;
 	var $fecha;
+	var $precio;
 	var $bd;
 	
-	function __construct($id_reserva,$id_pista, $login, $hora_inicio, $fecha)
+	function __construct($id_reserva,$id_pista, $login, $hora_inicio, $fecha, $precio)
 	{
 		$this->id_reserva = $id_reserva;
 		$this->id_pista = $id_pista;
 		$this->login = $login;
 		$this->hora_inicio = $hora_inicio;
 		$this->fecha = $fecha;
-
+		$this->precio = $precio;
 		$this->bd = ConectarDB();
 	}
 
@@ -57,7 +58,8 @@ class RESERVATION_MODEL
 					id_pista,
 					login,
 					hora_inicio,
-					fecha
+					fecha,
+					precio
 					
 					) 
 						VALUES (
@@ -65,7 +67,8 @@ class RESERVATION_MODEL
 						'$this->id_pista',
 						'$this->login',
 						'$this->hora_inicio',
-						'$this->fecha'
+						'$this->fecha',
+						'$this->precio'
 						)";
 					
 				
@@ -112,7 +115,8 @@ function EDIT(){
 				id_pista = '$this->id_pista',
 				login = '$this->login',
 				hora_inicio = '$this->hora_inicio',
-				fecha = '$this->fecha'
+				fecha = '$this->fecha',
+				precio = '$this->precio'
 				
 				WHERE ( id_reserva = '$this->id_reserva')";
 

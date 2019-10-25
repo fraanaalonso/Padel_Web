@@ -56,17 +56,16 @@ class ADD_VIEW
 		  	<input type="date" id="fecha" name="fecha" class="form-control"  >
 		   </div>
 
+		    <div class="form-group" >
+		  	<input type="text" id="precio" name="precio" value="<?php echo $clave['precio'] ?>" class="form-control" placeholder="Precio" readonly  >
+		   </div>
 
 
 
 		
 
-		   <button type="submit" class="btn btn-primary">Reservar</button>
-		   <p>
-		  
-		   </p>
-		   <br>
-		   <br>
+		   <div><button type="submit" class="btn btn-primary" style="width: 100%; ">Procesar Pago</button></div>>
+		   
 		</form>
 
 			

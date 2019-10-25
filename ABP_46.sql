@@ -302,20 +302,22 @@ CREATE TABLE `reservation` (
   `id_pista` varchar(3) COLLATE utf8_spanish_ci NOT NULL,
   `login` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `hora_inicio` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
-  `fecha` varchar(10) COLLATE utf8_spanish_ci NOT NULL
+  `fecha` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `precio` varchar(5) COLLATE utf8_spanish_ci NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `reservation`
 --
 
-INSERT INTO `reservation` (`id_reserva`, `id_pista`, `login`, `hora_inicio`, `fecha`) VALUES
-(1, 'P2', 'root', '19:00', '17-12-2019'),
-(2, 'P3', 'admin', '10:00', '18-12-2019'),
-(3, 'P4', 'anita32', '09:00', '14-12-2019'),
-(4, 'P3', 'sormaria', '11:00', '19-12-2019'),
-(5, 'P6', 'delinha', '15:00', '17-12-2019'),
-(6, 'P7', 'antonio_v', '09:30', '11-12-2019');
+INSERT INTO `reservation` (`id_reserva`, `id_pista`, `login`, `hora_inicio`, `fecha`, `precio`) VALUES
+(1, 'P2', 'root', '19:00', '17-12-2019', '5.5'),
+(2, 'P3', 'admin', '10:00', '18-12-2019', '5.5'),
+(3, 'P4', 'anita32', '09:00', '14-12-2019', '5.5'),
+(4, 'P3', 'sormaria', '11:00', '19-12-2019', '5.5'),
+(5, 'P6', 'delinha', '15:00', '17-12-2019', '5.5'),
+(6, 'P7', 'antonio_v', '09:30', '11-12-2019', '5.5');
 
 -- --------------------------------------------------------
 

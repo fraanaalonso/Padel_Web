@@ -43,14 +43,14 @@ class POST_MODEL
 				
 
 				$sql = "INSERT INTO NEW (
-					id_noticia,
+
 					titulo,
 					subtitulo,
 					cuerpo
 		
 					) 
 						VALUES (
-						'$this->id_noticia',
+						
 						'$this->titulo',
 						'$this->subtitulo',
 						'$this->cuerpo'

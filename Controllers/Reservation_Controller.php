@@ -66,7 +66,7 @@ Switch ($_REQUEST['action']){
 			include_once '../Models/RESERVATION_MODEL.php';
 				
 
-			$reserva = new RESERVATION_MODEL('', $_REQUEST['id_pista'], $_SESSION['login'],$_REQUEST['hora_inicio'],$_REQUEST['fecha']);
+			$reserva = new RESERVATION_MODEL(' ', $_REQUEST['id_pista'], $_SESSION['login'],$_REQUEST['hora_inicio'],$_REQUEST['fecha']);
 
 			$resultado = $reserva->ADD();
 
@@ -78,21 +78,6 @@ Switch ($_REQUEST['action']){
 				break;
 
 
-		case 'ADD':
-				if (!$_POST){
-					
-					new ADD_VIEW();
-				
-				}
-				else{
-				 include_once '../Models/RESERVATION_MODEL.php';
-				  $modelo= new RESERVATION_MODEL('',$_REQUEST['id_pista'], $_REQUEST['login'], $_REQUEST['hora_inicio'], $_REQUEST['fecha']);
-
-					$respuesta = $modelo->ADD();
-					new MESSAGE($respuesta,'./Reservation_Controller.php');
-					
-				}
-				break;
 
 			  
 

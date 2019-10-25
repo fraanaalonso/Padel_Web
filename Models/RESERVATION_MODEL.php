@@ -53,7 +53,7 @@ class RESERVATION_MODEL
 				
 
 				$sql = "INSERT INTO RESERVATION (
-					id_reserva,
+					
 					id_pista,
 					login,
 					hora_inicio,
@@ -61,7 +61,7 @@ class RESERVATION_MODEL
 					
 					) 
 						VALUES (
-						'$this->id_reserva',
+						
 						'$this->id_pista',
 						'$this->login',
 						'$this->hora_inicio',

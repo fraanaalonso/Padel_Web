@@ -40,7 +40,7 @@ class ADD_VIEW
 			<br>
 
 		 	<div class="form-group" id="id_noticia-group">
-		  	<input type="hidden"  id="id_noticia" name="id_noticia" class="form-control" value="<?php echo 0?>" required>
+		  	<input type="hidden"  id="id_noticia" name="id_noticia" class="form-control"  required>
 		   </div>	
 
 		   <div class="form-group" id="titulo-group">

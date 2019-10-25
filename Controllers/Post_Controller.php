@@ -58,7 +58,7 @@ Switch ($_REQUEST['action']){
 				}
 				else{
 				 include_once '../Models/POST_MODEL.php';
-				  $modelo= new POST_MODEL($_REQUEST['id_noticia'],$_REQUEST['titulo'],$_REQUEST['subtitulo'], $_REQUEST['cuerpo']);
+				  $modelo= new POST_MODEL(' ',$_REQUEST['titulo'],$_REQUEST['subtitulo'], $_REQUEST['cuerpo']);
 
 					$respuesta = $modelo->ADD();
 					new MESSAGE($respuesta,'./Post_Controller.php');

@@ -34,10 +34,10 @@ class ADD_VIEW
 
 <div class="formulario">
 			
-		<form class="col-12" method="post" action="../Controllers/Reservation_Controller.php?action=ADD" onsubmit="return validar();">
+		<form class="col-12" method="post" action="../Controllers/Reservation_Controller.php?action=RESERVAR" onsubmit="return validar();">
 
 		 <div class="form-group">
-		  	<input type="text" id="id_reserva" name="id_reserva" value="0" readonly class="form-control"  >
+		  	<input type="text" id="id_reserva" name="id_reserva"  readonly class="form-control"  >
 		   </div>	
 
 		  <div class="form-group">

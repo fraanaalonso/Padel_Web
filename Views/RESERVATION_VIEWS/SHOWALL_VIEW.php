@@ -29,7 +29,6 @@ class SHOWALLL_VIEW
      <?php 
       if(comprobarPermisos($_SESSION['login']) == 1){
      ?>
-    <a href="../Controllers/Reservation_Controller.php?action=ADD"><span class="lnr lnr-file-add" style="font-size: 35px"></span></a>
     <a href="../Controllers/Reservation_Controller.php?action=SEARCH"><span class="lnr lnr-magnifier" style="font-size: 35px"></span></a>
 
 

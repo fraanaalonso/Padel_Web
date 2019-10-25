@@ -44,13 +44,13 @@ class MATCH_MODEL
 				
 
 				$sql = "INSERT INTO MATCH (
-					id_partido,
+					
 					fecha,
 					hora,
 					id_pista
 					) 
 						VALUES (
-						'$this->id_partido',
+						
 						'$this->fecha',
 						'$this->hora',
 						'$this->id_pista'

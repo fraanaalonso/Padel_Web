@@ -48,7 +48,14 @@ class SHOWALL_VIEW
  <table border="1">
   <thead>
   <tr>
+   <?php
+   if(comprobarPermisos($_SESSION['login']) == 1){
+   ?> 
     <th>Identificador de Pista</th>
+
+    <?php
+      }
+    ?>
     <th>Descripcion</th>
     <th>Ubicación</th>
     <th>Precio</th>
@@ -66,7 +73,9 @@ class SHOWALL_VIEW
   while ($fila = $resultado->fetch_assoc())
   {
       echo "<tr>";
+      if(comprobarPermisos($_SESSION['login']) == 1){
       echo "<td>".$fila['id_pista']."</td>";
+    }
       echo "<td>".$fila["descripcion"]."</td>";
       echo "<td>".$fila["ubicacion"]."</td>";
       echo "<td>".$fila["precio"]."</td>";

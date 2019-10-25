@@ -32,7 +32,7 @@ class ADD_VIEW
 		<form class="col-12" method="post" action="../Controllers/Championship_Controller.php?action=ADD" onsubmit="return validar();">
 
 		 <div class="form-group">
-		  	<input type="text" id="id_campeonato" name="id_campeonato" class="form-control" placeholder="Identificador Campeonato" >
+		  	<input type="hidden" id="id_campeonato" name="id_campeonato" class="form-control" placeholder="Identificador Campeonato" >
 		   </div>	
 
 		  <div class="form-group">

@@ -46,8 +46,16 @@ class SHOWALLL_VIEW
  <table border="1">
   <thead>
   <tr>
+
+<?php 
+if(comprobarPermisos($_SESSION['login']) == 1){
+?>   
     <th>Identificador de Reserva</th>
     <th>Identificador de Pista</th>
+<?php
+
+}
+?>
     <th>Login</th>
     <th>Comienzo del Partido</th>
     <th>Fecha de Reserva</th>
@@ -67,8 +75,11 @@ class SHOWALLL_VIEW
   {
     if($_SESSION['login'] == $fila['login'] || comprobarPermisos($_SESSION['login'] == 1)){
       echo "<tr>";
+
+      if(comprobarPermisos($_SESSION['login']) == 1){
       echo "<td>".$fila['id_reserva']."</td>";
       echo "<td>".$fila["id_pista"]."</td>";
+    }
       echo "<td>".$fila["login"]."</td>";
       echo "<td>".$fila["hora_inicio"]."</td>";
       echo "<td>".$fila["fecha"]."</td>";
@@ -84,13 +95,9 @@ class SHOWALLL_VIEW
         <a href="../Controllers/Reservation_Controller.php?action=SHOWCURRENT&id_reserva=<?php  echo $fila['id_reserva'] ?>"><span class="lnr lnr-eye añadir"></span></a>
         <a href="../Controllers/Reservation_Controller.php?action=EDIT&id_reserva=<?php  echo $fila['id_reserva'] ?>"><span class="lnr lnr-pencil editar"></span></a>
 
-        <?php
-          if(comprobarPermisos($_SESSION['login']) == 1){
-        ?>
+       
         <a href="../Controllers/Reservation_Controller.php?action=DELETE&id_reserva=<?php  echo $fila['id_reserva'] ?>"><span class="lnr lnr-trash borrar"></span></a>
-        <?php
-          }
-        ?>      
+            
       </td>
 
      <?php

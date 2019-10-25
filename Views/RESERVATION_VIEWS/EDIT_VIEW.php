@@ -20,12 +20,7 @@ class EDIT_VIEW
 
 </div>
 
-
-
-<div class="modal-dialog text-center">
-	<div class="col-sm-15 main-section2">
-		<div class="modal-content">
-			
+<div class="formulario">
 		<form class="col-12" method="post" action="../Controllers/Reservation_Controller.php?action=EDIT"  onsubmit="return validar();">
 
 		 <div class="form-group" >
@@ -54,7 +49,7 @@ class EDIT_VIEW
 
 
 
-		   <button type="submit"><i class="fas fa-sign-in-alt"></i><span class="lnr lnr-pencil" style="font-size: 35px;"></span></button>
+		   <button type="submit"><span class="lnr lnr-pencil" style="font-size: 35px;"></span></button>
 		  
 
 		  <br>
@@ -71,10 +66,7 @@ class EDIT_VIEW
 
 			
 			
-		</div>
 
-		
-	</div>
 
 </div>
 

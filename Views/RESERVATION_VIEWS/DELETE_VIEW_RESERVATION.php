@@ -1,8 +1,8 @@
 
 
 <?php
-/*
-class DELETE_VIEW
+
+class DELETE_VIEW_RESERVATION
 {
   
   function __construct($valores)
@@ -63,18 +63,14 @@ class DELETE_VIEW
            <tr>
 
             <tr>
-            <th>Fecha</th>
+            <th>Comienzo Partido</th>
             <td><?php echo $valores[3];?></td>
             </tr>
            <tr>
 
            <tr>
-            <th>Hora de Reserva</th>
+            <th>Fecha</th>
             <td><?php echo $valores[4];?></td>
-          </tr>
-           <tr>
-            <th>Tiempo</th>
-            <td><?php echo $valores[5];?></td>
           </tr>
 
         </table>
@@ -98,7 +94,7 @@ include '../Views/Footer.php';
 
   } 
 }
-*/
+
 
 ?>
 

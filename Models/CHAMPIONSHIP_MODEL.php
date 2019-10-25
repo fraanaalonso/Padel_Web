@@ -51,7 +51,6 @@ class CHAMPIONSHIP_MODEL
 				
 
 				$sql = "INSERT INTO CHAMPIONSHIP (
-					id_campeonato,
 					fecha_inicio,
 					fecha_limite,
 					id_normativa,
@@ -59,10 +58,9 @@ class CHAMPIONSHIP_MODEL
 					id_categoria
 					) 
 						VALUES (
-						'$this->id_noticia',
-						'$this->titulo',
-						'$this->subtitulo',
-						'$this->cuerpo',
+						'$this->fecha_inicio',
+						'$this->fecha_limite',
+						'$this->id_normativa',
 						'$this->id_grupo',
 						'$this->id_categoria'
 						)";

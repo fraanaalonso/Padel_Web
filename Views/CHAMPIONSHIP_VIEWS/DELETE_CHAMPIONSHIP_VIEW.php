@@ -29,7 +29,7 @@ class DELETE_CHAMPIONSHIP_VIEW
 
          <form name="x" method="post" action="../Controllers/Championship_Controller.php?action=DELETE">
 
-           <input type="hidden" name="id_pista" value="<?php echo $valores[0];?>">
+           <input type="hidden" name="id_campeonato" value="<?php echo $valores[0];?>">
           
         </form>
 

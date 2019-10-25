@@ -58,7 +58,7 @@ Switch ($_REQUEST['action']){
 				}
 				else{
 				 include_once '../Models/CHAMPIONSHIP_MODEL.php';
-				  $modelo= new CHAMPIONSHIP_MODEL($_REQUEST['id_campeonato'],$_REQUEST['fecha_inicio'], $_REQUEST['fecha_limite'],$_REQUEST['id_normativa'], $_REQUEST['id_grupo'], $_REQUEST['id_categoria']);
+				  $modelo= new CHAMPIONSHIP_MODEL(' ',$_REQUEST['fecha_inicio'], $_REQUEST['fecha_limite'],$_REQUEST['id_normativa'], $_REQUEST['id_grupo'], $_REQUEST['id_categoria']);
 
 					$respuesta = $modelo->ADD();
 					new MESSAGE($respuesta,'./Championship_Controller.php');

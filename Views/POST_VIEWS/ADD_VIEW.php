@@ -7,14 +7,14 @@
 class ADD_VIEW
 {
 	
-	function __construct($valor){
-		$this->execution($valor);
+	function __construct(){
+		$this->execution();
 	}
 
 
 
 
-	function execution($valor){
+	function execution(){
 
 
 		include '../Views/HeaderPost.php';

@@ -37,7 +37,7 @@ class ADD_VIEW
 		<form class="col-12" method="post" action="../Controllers/Reservation_Controller.php?action=RESERVAR" onsubmit="return validar();">
 
 		 <div class="form-group">
-		  	<input type="text" id="id_reserva" name="id_reserva"  readonly class="form-control"  >
+		  	<input type="hidden" id="id_reserva" name="id_reserva"  readonly class="form-control"  >
 		   </div>	
 
 		  <div class="form-group">

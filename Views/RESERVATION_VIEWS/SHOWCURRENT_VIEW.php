@@ -1,6 +1,6 @@
 <?php
 
-class DELETE_VIEW
+class SHOWCURRENT_VIEW
 {
   
   function __construct($valores)
@@ -54,10 +54,6 @@ class DELETE_VIEW
            <tr>
             <th>Hora de Reserva</th>
             <td><?php echo $valores[4];?></td>
-          </tr>
-           <tr>
-            <th>Tiempo</th>
-            <td><?php echo $valores[5];?></td>
           </tr>
 
         </table>

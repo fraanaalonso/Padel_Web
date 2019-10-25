@@ -19,7 +19,7 @@ include '../Views/RESERVATION_VIEWS/SHOWALL_VIEW.php';
 include '../Views/RESERVATION_VIEWS/ADD_VIEW.php';
 include '../Views/RESERVATION_VIEWS/SEARCH_VIEW.php';
 include '../Views/RESERVATION_VIEWS/SHOWCURRENT_VIEW.php';
-include '../Views/RESERVATION_VIEWS/DELETE_VIEW.php';
+include '../Views/RESERVATION_VIEWS/DELETE_VIEW_RESERVATION.php';
 include '../Views/RESERVATION_VIEWS/EDIT_VIEW.php';
 include '../Views/Message_View.php';
 
@@ -66,7 +66,7 @@ Switch ($_REQUEST['action']){
 			include_once '../Models/RESERVATION_MODEL.php';
 				
 
-			$reserva = new RESERVATION_MODEL(' ', $_REQUEST['id_pista'], $_SESSION['login'],$_REQUEST['hora_inicio'],$_REQUEST['fecha']);
+			$reserva = new RESERVATION_MODEL(' ', $_REQUEST['id_pista'],$_REQUEST['login'], $_REQUEST['hora_inicio'],$_REQUEST['fecha']);
 
 			$resultado = $reserva->ADD();
 
@@ -134,7 +134,7 @@ Switch ($_REQUEST['action']){
 					 include_once '../Models/RESERVATION_MODEL.php';
 					$modelo= get_data();
 					$valores= $modelo ->RellenaDatos();
-					new DELETE_VIEW($valores);
+					new DELETE_VIEW_RESERVATION($valores);
 				}
 
 				else{

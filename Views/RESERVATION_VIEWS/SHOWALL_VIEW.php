@@ -74,7 +74,7 @@ class SHOWALLL_VIEW
       echo "<td>".$fila["hora_inicio"]."</td>";
       echo "<td>".$fila["fecha"]."</td>";
 
-}
+
     
 ?>
 
@@ -93,6 +93,10 @@ class SHOWALLL_VIEW
           }
         ?>      
       </td>
+
+     <?php
+     }
+     ?> 
 
 <?php
 

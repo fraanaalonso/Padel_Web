@@ -21,7 +21,7 @@ include '../Views/POST_VIEWS/SHOWCURRENT_VIEW.php';
 include '../Views/POST_VIEWS/DELETE_VIEW.php';
 include '../Views/POST_VIEWS/EDIT_VIEW.php';
 include '../Views/Message_View.php';
-
+include '../Views/ALERT.php';
 
 
 function get_data(){
@@ -146,6 +146,8 @@ Switch ($_REQUEST['action']){
 
 
 		 default:
+		 include_once '../Functions/funciones.php';
+		 if(!comprobarTablaNoticias()){
 
 				if (!$_POST){
 					include_once '../Models/POST_MODEL.php';
@@ -161,7 +163,11 @@ Switch ($_REQUEST['action']){
 
 				
 				new SHOWALL_VIEW($lista, $datos);
+		}
 
+		else{
+			new ALERT('No hay Noticias en la Plataforma');
+		}
 		
 
 }

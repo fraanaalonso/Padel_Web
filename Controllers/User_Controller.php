@@ -165,7 +165,7 @@ Switch ($_REQUEST['action']){
 					new MESSAGE($respuesta,'./User_Controller.php');
 				}
 					
-					break;
+			break;
 
 
 		case 'SHOWCURRENT':
@@ -181,6 +181,7 @@ Switch ($_REQUEST['action']){
 
 		 default:
 
+
 				if (!$_POST){
 					include_once '../Models/USER_MODEL.php';
 					$modelo = new User_Modelo(' ' ,' ' ,' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '');
@@ -195,8 +196,8 @@ Switch ($_REQUEST['action']){
 
 				
 				new SHOWALL_VIEW($lista, $datos);
-
-		
+			
+			
 
 }
 

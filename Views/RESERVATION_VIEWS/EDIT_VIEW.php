@@ -28,7 +28,7 @@ class EDIT_VIEW
 		   </div>	
 
 		  <div class="form-group">
-		  	<input type="text" id="id_pista" name="id_pista" class="form-control" value="<?php echo $valores['id_pista']; ?>" >
+		  	<input type="text" id="id_pista" name="id_pista" class="form-control" readonly value="<?php echo $valores['id_pista']; ?>" >
 		   </div>
 
 		   <div class="form-group" >
@@ -36,16 +36,14 @@ class EDIT_VIEW
 		   </div>
 
 		   <div class="form-group" >
-		  	<input type="fecha" id="fecha" name="fecha" class="form-control" value="<?php echo $valores['fecha']; ?>">
+		  	<input type="fecha" id="hora_inicio" name="hora_inicio" class="form-control" value="<?php echo $valores['hora_inicio']; ?>">
 		   </div>
 
 		   <div class="form-group" >
-		  	<input type="text" id="hora" name="hora" class="form-control" value="<?php echo $valores['hora']; ?>" >
+		  	<input type="text" id="fecha" name="fecha" class="form-control" value="<?php echo $valores['fecha']; ?>" >
 		   </div>
 
-		   <div class="form-group" >
-		  	<input type="number" id="tiempo_maximo" name="tiempo_maximo" class="form-control" value="<?php echo $valores['tiempo_maximo']; ?>" >
-		   </div>
+
 
 
 

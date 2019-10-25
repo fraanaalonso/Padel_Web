@@ -118,7 +118,7 @@ Switch ($_REQUEST['action']){
 
 				else{
 
-					 include '../Models/RESERVATION_MODEL.php';
+					 include_once '../Models/RESERVATION_MODEL.php';
 					$modelo = new RESERVATION_MODEL($_REQUEST['id_reserva'],$_REQUEST['id_pista'],$_REQUEST['login'], $_REQUEST['hora_inicio'], $_REQUEST['fecha']);
 
 					$respuesta = $modelo->EDIT();
@@ -160,6 +160,9 @@ Switch ($_REQUEST['action']){
 
 
 		 default:
+		 include_once '../Functions/funciones.php';
+
+		 if(!comprobarTabla()){
 
 				if (!$_POST){
 					include_once '../Models/RESERVATION_MODEL.php';
@@ -168,14 +171,18 @@ Switch ($_REQUEST['action']){
 				else{
 					  include_once '../Models/RESERVATION_MODEL.php';
 				}
+				
 
+				
 
 				$datos = $modelo->SEARCH();
 				$lista = array('  Código de Reserva  ', 'Identificador de Pista', '  Login  ', 'Comienzo Partido', 'Fecha del Partido');
-
-				
 				new SHOWALLL_VIEW($lista, $datos);
-
+		}
+		else{
+					new MESSAGE('No tiene reservas activas', '../Controllers/Court_Controller.php');
+				
+			}
 		
 
 }

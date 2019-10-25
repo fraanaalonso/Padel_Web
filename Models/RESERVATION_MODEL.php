@@ -73,7 +73,7 @@ class RESERVATION_MODEL
 					return 'Error en la inserción';
 				}
 				else{ 
-					return 'Inserción realizada con éxito'; 
+					return 'Reserva Realizada'; 
 				}
 				
 			}
@@ -171,9 +171,11 @@ function DELETE()
 		        
 		    	return "Borrado correctamente";
 		    } 
-		    else
+		    else{
 		        return "No existe";
+		    }
 		} 
+
 
 
 

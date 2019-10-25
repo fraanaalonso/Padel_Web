@@ -21,7 +21,7 @@ include '../Views/CHAMPIONSHIP_VIEWS/SHOWCURRENT_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/DELETE_CHAMPIONSHIP_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/EDIT_VIEW.php';
 include '../Views/Message_View.php';
-
+include '../Views/ALERT.php';
 
 
 function get_data(){
@@ -148,6 +148,12 @@ Switch ($_REQUEST['action']){
 
 		 default:
 
+		 include_once '../Functions/funciones.php';
+
+		 if(!comprobarTablaCampeonato()){
+
+			
+
 				if (!$_POST){
 					include_once '../Models/CHAMPIONSHIP_MODEL.php';
 					$modelo = new CHAMPIONSHIP_MODEL(' ' ,' ' ,' ', ' ', ' ',' ');
@@ -162,6 +168,12 @@ Switch ($_REQUEST['action']){
 
 				
 				new SHOWALL_VIEW($lista, $datos);
+
+		}	
+
+		else{
+			new ALERT('No hay campeonatos activos');
+		}
 
 		
 

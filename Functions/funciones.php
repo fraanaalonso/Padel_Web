@@ -65,11 +65,15 @@ function comprobarTablaNoticias(){
  		return false;
  	}
 
+ }
 
 
 
 
-}
+
+
+
+
 
 
 

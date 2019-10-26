@@ -5,15 +5,15 @@
 /**
 * 
 */
-class ADD_VIEW
+class SEARCH_VIEW
 {
 	
-	function __construct($clave){
-		$this->execution($clave);
+	function __construct(){
+		$this->execution();
 	}
 
 
-	function execution($clave){
+	function execution(){
 		include '../Views/HeaderPost.php';
 
 ?>
@@ -25,18 +25,17 @@ class ADD_VIEW
 
 </div>
 
-
 <div class="formulario">
 			
 			
-		<form class="col-12" method="post" action="../Controllers/Match_Controller.php?action=PROMOCIONAR" onsubmit="return validar();">
+		<form class="col-12" method="post" action="../Controllers/Match_Controller.php?action=SEARCH">
 
 		 <div class="form-group">
-		  	<input type="hidden" id="id_partido" name="id_partido"  class="form-control" placeholder="Identificador Partido" >
+		  	<input type="hidden" id="id_partido" name="id_partido" class="form-control" placeholder="Identificador Partido" >
 		   </div>	
 
 		  <div class="form-group">
-		  	<input type="text" id="id_pista" name="id_pista" value="<?php echo $clave ?>" class="form-control" placeholder="Identificador Pista" >
+		  	<input type="text" id="id_pista" name="id_pista" class="form-control" placeholder="Identificador Pista" >
 		   </div> 
 
 		  <div class="form-group">
@@ -49,7 +48,7 @@ class ADD_VIEW
 		   </div>
 
 		   <div class="form-group" >
-		  	<input type="date" id="fecha" name="fecha" class="form-control" placeholder="Fecha" >
+		  	<input type="text" id="fecha" name="fecha" class="form-control" placeholder="Fecha" >
 		   </div>
 
 		   

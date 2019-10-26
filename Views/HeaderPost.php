@@ -61,7 +61,7 @@ if(autenticado()){
     <a href="../Controllers/Court_Controller.php"><li><span class="lnr lnr-page-break icon2"></span><h4 class="text2">Pistas</h4></li></a>
      <a href="../Controllers/Reservation_Controller.php"><li><span class="lnr lnr-book icon3"></span><h4 class="text3">Reservas Activas</h4></li></a>
     <a href="../Controllers/Championship_Controller.php"><li><span class="lnr lnr-license icon4"></span><h4 class="text4">Campeonatos</h4></li></a>
-    <li><span class="lnr lnr-rocket icon6"></span><h4 class="text6">Enfrentamiento</h4></li> 
+     <a href="../Controllers/Match_Controller.php"><li><span class="lnr lnr-rocket icon6"></span><h4 class="text6">Promociones Activas</h4></li></a> 
     <li><span class="lnr lnr-heart icon7"></span><h4 class="text7">Sobre Nosotros</h4></li> 
     <li><span class="lnr lnr-question-circle icon8"></span><h4 class="text8">FAQ</h4></li> 
     <a href="../Functions/Desconect.php"><li ><span class="lnr lnr-exit icon9"></span><h4  class="text9">Salir</h4></li> </a>
@@ -103,7 +103,7 @@ if(comprobarPermisos($_SESSION['login'])==2){
 
      
     <a href="../Controllers/Championship_Controller.php"><li><span class="lnr lnr-license icon4"></span><h4 class="text4">Campeonatos</h4></li></a>
-     <li><span class="lnr lnr-rocket icon6"></span><h4 class="text6">Enfrentamiento</h4></li>
+    <a href="../Controllers/Match_Controller.php"><li><span class="lnr lnr-rocket icon6"></span><h4 class="text6">Promociones Activas</h4></li></a>
      <li><span class="lnr lnr-heart icon7"></span><h4 class="text7">Sobre Nosotros</h4></li> 
     <li><span class="lnr lnr-question-circle icon8"></span><h4 class="text8">FAQ</h4></li> 
     <a href="../Functions/Desconect.php"><li ><span class="lnr lnr-exit icon9"></span><h4  class="text9">Salir</h4></li> </a>
@@ -138,7 +138,7 @@ if(comprobarPermisos($_SESSION['login'])==2){
 
      
      <a href="../Controllers/Championship_Controller.php"><li><span class="lnr lnr-license icon4"></span><h4 class="text4">Campeonatos</h4></li></a>
-     <li><span class="lnr lnr-rocket icon6"></span><h4 class="text6">Enfrentamiento</h4></li>
+     <a href="../Controllers/Match_Controller.php"><li><span class="lnr lnr-rocket icon6"></span><h4 class="text6">Promociones Activas</h4></li></a>
      <li><span class="lnr lnr-heart icon7"></span><h4 class="text7">Sobre Nosotros</h4></li> 
     <li><span class="lnr lnr-question-circle icon8"></span><h4 class="text8">FAQ</h4></li> 
     <a href="../Functions/Desconect.php"><li ><span class="lnr lnr-exit icon9"></span><h4  class="text9">Salir</h4></li> </a>

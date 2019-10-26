@@ -12,12 +12,12 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-DROP DATABASE IF EXISTS `padelweb`;
-CREATE DATABASE `padelweb` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
+DROP DATABASE IF EXISTS `abp46`;
+CREATE DATABASE `abp46` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
 --
 -- SELECCIONAMOS PARA USAR
 --
-USE `padelweb`;
+USE `abp46`;
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -26,7 +26,7 @@ USE `padelweb`;
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `padelweb`
+-- Base de datos: `abp46`
 --
 
 -- --------------------------------------------------------

@@ -1,6 +1,6 @@
 <?php
 
-class SHOWCURRENT
+class DELETE_MATCH_VIEW
 {
   
   function __construct($valores)
@@ -24,7 +24,18 @@ class SHOWCURRENT
 
 <div class="iconos-superiores">
       
-   <a href="../Controllers/Match_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+   
+    
+
+         <form name="x" method="post" action="../Controllers/Match_Controller.php?action=DELETE">
+
+           <input type="hidden" name="id_campeonato" value="<?php echo $valores[0];?>">
+          
+        </form>
+
+
+          <button type="submit" onclick="x.submit()" class="btn btn-light"><a href="#"><span class="lnr lnr-trash" style="font-size: 35px"></span></a></button>
+          <a href="../Controllers/Match_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
 
 </div>
 

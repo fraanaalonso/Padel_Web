@@ -96,6 +96,7 @@ class SHOWALL_VIEW
 
       ?>
         <a href="../Controllers/Reservation_Controller.php?action=RESERVAR&id_pista=<?php  echo $fila['id_pista'] ?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 20px"></span></a>
+        <a href="../Controllers/Match_Controller.php?action=PROMOCIONAR&id_pista=<?php  echo $fila['id_pista'] ?>"><span class="lnr lnr-plus-circle" style="font-size: 20px"></span></a>
         
       
       </td>

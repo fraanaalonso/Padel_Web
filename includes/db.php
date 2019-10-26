@@ -13,7 +13,7 @@
 	function ConectarDB()
 	{
 
-	    $bd = new mysqli("localhost", "root", "root", "padelweb"); //maquina, user, pass, bd
+	    $bd = new mysqli("localhost", "root", "root", "abp46"); //maquina, user, pass, bd
 		// si hay error en la conexión se muestra el mensaje de error
 		if ($bd->connect_errno) {
 			echo "Fallo al conectar a MySQL";

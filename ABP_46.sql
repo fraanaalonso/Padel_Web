@@ -177,6 +177,7 @@ CREATE TABLE `court` (
 --
 
 INSERT INTO `court` (`id_pista`, `descripcion`, `ubicacion`, `precio`, `estado`) VALUES
+('P0', 'Cubierta y cristaleras de 50 metros', 'Ala Norte', '5.5', 1),
 ('P1', 'Cubierta y cristaleras de 50 metros', 'Ala Norte', '5.5', 1),
 ('P2', 'Descubierta y reglamentaria', 'Ala Sur', '5.5', 1),
 ('P3', 'Hierba natural', 'Ala Norte', '5.5', 1),
@@ -427,6 +428,81 @@ INSERT INTO `user_game` (`login`, `id_partido`) VALUES
 ('mdolores', 4),
 ('mvarela', 5);
 
+
+
+
+--
+-- Estructura de tabla para la tabla `schedule`
+--
+
+CREATE TABLE `schedule` (
+  `id_horario` tinyint NOT NULL,
+  `id_pista` varchar(3) COLLATE utf8_spanish_ci NOT NULL,
+  `hora_inicio` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
+  `hora_fin` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_inicio` varchar(10) COLLATE utf8_spanish_ci NOT NULL
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+INSERT INTO `schedule`(`id_horario`, `id_pista`,`hora_inicio`, `hora_fin`, `fecha_inicio`) VALUES 
+ ('0','P0','09:00','10:30','26/11/2019'),
+ ('1','P0','10:30','12:00','30/11/2019'),
+ ('2','P0','12:00','13:30','02/12/2019'),
+ ('3','P0','13:30','15:00','08/12/2019'),
+ ('4','P0','20:00','21:30','12/12/2019'),
+
+ ('0','P1','09:00','10:30','26/11/2019'),
+ ('1','P1','10:30','12:00','30/11/2019'),
+ ('2','P1','12:00','13:30','02/12/2019'),
+ ('3','P1','13:30','15:00','08/12/2019'),
+ ('4','P1','20:00','21:30','12/12/2019'),
+
+ ('0','P2','09:00','10:30','26/11/2019'),
+ ('1','P2','10:30','12:00','30/11/2019'),
+ ('2','P2','12:00','13:30','02/12/2019'),
+ ('3','P2','13:30','15:00','08/12/2019'),
+ ('4','P2','20:00','21:30','12/12/2019'),
+
+ ('0','P3','09:00','10:30','26/11/2019'),
+ ('1','P3','10:30','12:00','30/11/2019'),
+ ('2','P3','12:00','13:30','02/12/2019'),
+ ('3','P3','13:30','15:00','08/12/2019'),
+ ('4','P3','20:00','21:30','12/12/2019'),
+
+ ('0','P4','09:00','10:30','26/11/2019'),
+ ('1','P4','10:30','12:00','30/11/2019'),
+ ('2','P4','12:00','13:30','02/12/2019'),
+ ('3','P4','13:30','15:00','08/12/2019'),
+ ('4','P4','20:00','21:30','12/12/2019'),
+
+ ('0','P5','09:00','10:30','26/11/2019'),
+ ('1','P5','10:30','12:00','30/11/2019'),
+ ('2','P5','12:00','13:30','02/12/2019'),
+ ('3','P5','13:30','15:00','08/12/2019'),
+ ('4','P5','20:00','21:30','12/12/2019'),
+
+ ('0','P6','09:00','10:30','26/11/2019'),
+ ('1','P6','10:30','12:00','30/11/2019'),
+ ('2','P6','12:00','13:30','02/12/2019'),
+ ('3','P6','13:30','15:00','08/12/2019'),
+ ('4','P6','20:00','21:30','12/12/2019'),
+
+ ('0','P7','09:00','10:30','26/11/2019'),
+ ('1','P7','10:30','12:00','30/11/2019'),
+ ('2','P7','12:00','13:30','02/12/2019'),
+ ('3','P7','13:30','15:00','08/12/2019'),
+ ('4','P7','20:00','21:30','12/12/2019'),
+
+ ('0','P8','09:00','10:30','26/11/2019'),
+ ('1','P8','10:30','12:00','30/11/2019'),
+ ('2','P8','12:00','13:30','02/12/2019'),
+ ('3','P8','13:30','15:00','08/12/2019'),
+ ('4','P8','20:00','21:30','12/12/2019');
+
+
+
+
 --
 -- Índices para tablas volcadas
 --
@@ -541,6 +617,12 @@ ALTER TABLE `user_game`
   ADD PRIMARY KEY (`login`,`id_partido`),
   ADD KEY `id_partido` (`id_partido`);
 
+
+
+
+ALTER TABLE `schedule`
+  ADD PRIMARY KEY(`id_horario`,`id_pista`),
+  ADD KEY `id_pista` (`id_pista`);
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
@@ -611,6 +693,12 @@ ALTER TABLE `rol`
 ALTER TABLE `rule`
   MODIFY `id_normativa` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
+
+
+
+
+
+
 --
 -- Restricciones para tablas volcadas
 --
@@ -672,6 +760,14 @@ ALTER TABLE `reservation`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`rol_id`) REFERENCES `rol` (`id_rol`) ON DELETE CASCADE;
+
+
+--
+-- Filtros para la tabla `user`
+--
+ALTER TABLE `schedule`
+  ADD CONSTRAINT `schedule_ibfk_1` FOREIGN KEY (`id_pista`) REFERENCES `court` (`id_pista`) ON DELETE CASCADE;
+
 
 --
 -- Filtros para la tabla `user_game`

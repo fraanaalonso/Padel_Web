@@ -84,7 +84,7 @@ class ADD_VIEW
 			
 
 				<?php
-					if(validarHoraReserva("09:00", $clave[0])){
+					if(validarHoraReserva("09:00", $clave[0], "fecha")){
 				?>
 				<tr>
 					<th>
@@ -106,7 +106,7 @@ class ADD_VIEW
 					}
 				?>
 				<?php
-					if(validarHoraReserva("10:30", $clave[0])){
+					if(validarHoraReserva("10:30", $clave[0], "fecha")){
 				?>
 				<tr>
 					<th>
@@ -129,7 +129,7 @@ class ADD_VIEW
 				?>
 
 				<?php
-					if(validarHoraReserva("12:00", $clave[0])){
+					if(validarHoraReserva("12:00", $clave[0], "fecha")){
 				?>
 				<tr>
 					<th>
@@ -151,7 +151,7 @@ class ADD_VIEW
 					}
 				?>
 				<?php
-					if(validarHoraReserva("13:30", $clave[0])){
+					if(validarHoraReserva("13:30", $clave[0], "fecha")){
 				?>
 				<tr>
 					<th>
@@ -173,7 +173,7 @@ class ADD_VIEW
 					}
 				?>
 				<?php
-					if(validarHoraReserva("17:00", $clave[0])){
+					if(validarHoraReserva("17:00", $clave[0], "fecha")){
 				?>
 				<tr>
 					<th>
@@ -195,7 +195,7 @@ class ADD_VIEW
 					}
 				?>
 				<?php
-					if(validarHoraReserva("18:30", $clave[0])){
+					if(validarHoraReserva("18:30", $clave[0], "fecha")){
 				?>
 				<tr>
 					<th>
@@ -217,7 +217,7 @@ class ADD_VIEW
 					}
 				?>
 				<?php
-					if(validarHoraReserva("20:00", $clave[0])){
+					if(validarHoraReserva("20:00", $clave[0], "fecha")){
 				?>
 				<tr>
 					<th>
@@ -239,7 +239,7 @@ class ADD_VIEW
 					}
 				?>
 				<?php
-					if(validarHoraReserva("21:30", $clave[0])){
+					if(validarHoraReserva("21:30", $clave[0], "fecha")){
 				?>
 				<tr>
 					<th>

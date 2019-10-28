@@ -20,6 +20,8 @@ include '../Views/CHAMPIONSHIP_VIEWS/SEARCH_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/SHOWCURRENT_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/DELETE_CHAMPIONSHIP_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/EDIT_VIEW.php';
+include '../Views/CHAMPIONSHIP_VIEWS/InscribirCampeonatoView.php';
+include '../Views/CHAMPIONSHIP_VIEWS/SHOW_COUPLE.php';
 include '../Views/Message_View.php';
 include '../Views/ALERT.php';
 
@@ -65,6 +67,66 @@ Switch ($_REQUEST['action']){
 					
 				}
 				break;
+
+
+
+
+		case 'REGISTRAR':
+
+
+			if(!$_POST){
+
+				include_once '../Models/CHAMPIONSHIP_MODEL.php';
+					$modelo= get_data();
+					$valores= $modelo ->RellenaDatos();
+
+				
+
+					new InscribirCampeonatoView($valores);
+			}
+
+			include_once '../Models/COUPLE_MODEL.php';
+
+			$pareja = new COUPLE_MODEL(' ', $_REQUEST['id_categoria'], $_REQUEST['id_grupo'], $_REQUEST['login1'], $_REQUEST['login2']);
+
+
+			$resultado = $pareja->REGISTRARPAREJA();
+
+			$valor = $pareja->RellenaDatos();
+
+
+	
+
+			
+			$resultado = $pareja->INSCRIBIRCAMPEONATO($valor[0],  $_REQUEST['id_campeonato']);
+
+			new MESSAGE($resultado, './Championship_Controller.php?action=SHOWCOUPLES');
+
+
+			
+		break;
+
+		case 'SHOWCOUPLES':
+
+
+				if (!$_POST){
+					include_once '../Models/COUPLE_MODEL.php';
+					$modelo = new COUPLE_MODEL(' ' ,' ' ,' ', ' ', ' ','');
+				}
+				else{
+					  include_once '../Models/COUPLE_MODEL.php';
+				}
+
+
+				$datos = $modelo->SEARCH();
+				$lista = array('ID Pareja','ID Categoría', 'ID Grupo', 'ID Normativa', 'Login Capitán', 'Login Acompañante');
+
+				
+				new SHOWALL_COUPLE($lista, $datos);
+
+
+
+		break;
 
 			  
 

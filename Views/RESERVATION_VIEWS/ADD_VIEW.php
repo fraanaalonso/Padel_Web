@@ -84,51 +84,51 @@ class ADD_VIEW
 
 				<tr>
 					<th>
-							<input type="checkbox" name="hora_inicio">	
+							<input type="checkbox" name="hora_inicio" value="09:00">	
 							09:00 / 10:30
 					</th>
 				</tr>
 				<tr>
 					<th>
-							<input type="checkbox" name="hora_inicio">	
+							<input type="checkbox" name="hora_inicio" value="10:30">	
 							10:30 / 12:00
 					</th>
 				</tr>
 
 				<tr>
 					<th>
-							<input type="checkbox" name="hora_inicio">	
+							<input type="checkbox" name="hora_inicio" value="12:00">	
 							12:00 / 13:30
 					</th>
 				</tr>
 				<tr>
 					<th>
-							<input type="checkbox" name="hora_inicio">	
+							<input type="checkbox" name="hora_inicio" value="13:30">	
 							13:30 / 15:00
 					</th>
 				</tr>
 				<tr>
 					<th>
-							<input type="checkbox" name="hora_inicio">	
+							<input type="checkbox" name="hora_inicio" value="17:00">	
 							17:00 / 18:30
 					</th> 
 				</tr>
 				<tr>
 					<th>
-							<input type="checkbox" name="hora_inicio">	
+							<input type="checkbox" name="hora_inicio" value="18:30">	
 							18:30 / 20:00
 					</th>
 				</tr>
 				<tr>
 					
 					<th>
-							<input type="checkbox" name="hora_inicio">	
+							<input type="checkbox" name="hora_inicio" value="20:00">	
 							20:00 / 21:30
 					</th>
 				</tr>
 				<tr>
 					<th>
-							<input type="checkbox" name="hora_inicio">	
+							<input type="checkbox" name="hora_inicio" value="21:30">	
 							21:30 / 23:00
 					</th>					
 

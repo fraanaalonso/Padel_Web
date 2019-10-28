@@ -32,7 +32,8 @@ class DELETE_VIEW_RESERVATION
          <form name="x" method="post" action="../Controllers/Reservation_Controller.php?action=DELETE">
 
            <input type="hidden" name="id_reserva" value="<?php echo $valores[0];?>">
-          
+            <input type="hidden" name="id_pista" value="<?php echo $valores[1];?>">
+
            <button type="submit" onclick="x.submit()"> <a href="#"><span class="lnr lnr-trash" style="font-size: 35px"></span></a></button>
             <a href="../Controllers/Reservation_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
         </form>

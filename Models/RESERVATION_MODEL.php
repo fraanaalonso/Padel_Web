@@ -43,7 +43,7 @@ class RESERVATION_MODEL
 
 		if (($this->id_reserva <> '')){ 
 
-        $sql = "SELECT * FROM RESERVATION WHERE (id_reserva = '$this->id_reserva')";
+        $sql = "SELECT * FROM RESERVATION WHERE (id_reserva = '$this->id_reserva') AND (id_pista = '$this->id_pista')";
 
 		if (!$result = $this->bd->query($sql)){ 
 			return 'No se ha podido conectar con la base de datos';
@@ -101,7 +101,7 @@ class RESERVATION_MODEL
 
 function EDIT(){
 
-	$sql = "SELECT * FROM RESERVATION  WHERE (id_reserva = '$this->id_reserva') ";
+	$sql = "SELECT * FROM RESERVATION  WHERE (id_reserva = '$this->id_reserva') AND (id_pista = '$this->id_pista') ";
     
 
     $result = $this->bd->query($sql);
@@ -118,7 +118,7 @@ function EDIT(){
 				fecha = '$this->fecha',
 				precio = '$this->precio'
 				
-				WHERE ( id_reserva = '$this->id_reserva')";
+				WHERE ( id_reserva = '$this->id_reserva') AND (id_pista = '$this->id_pista')";
 
         if (!($resultado = $this->bd->query($sql))){
 			return 'Error en la modificación'; 
@@ -161,7 +161,7 @@ function SEARCH(){
 function DELETE()
 		{	
 		   $sql = "SELECT * FROM RESERVATION  WHERE 
-		   (id_reserva = '$this->id_reserva')";
+		   (id_reserva = '$this->id_reserva') AND (id_pista = '$this->id_pista')";
 		    
 		    $result = $this->bd->query($sql);
 		    
@@ -169,7 +169,7 @@ function DELETE()
 		    {
 		    
 		       $sql = "DELETE FROM RESERVATION  WHERE 
-		       (id_reserva = '$this->id_reserva')";
+		       (id_reserva = '$this->id_reserva') AND (id_pista = '$this->id_pista')";
 		       
 		        $this->bd->query($sql);
 		        
@@ -185,7 +185,7 @@ function DELETE()
 
 function RellenaDatos()
 		{	
-		    $sql = "SELECT * FROM RESERVATION  WHERE (id_reserva = '$this->id_reserva')";
+		    $sql = "SELECT * FROM RESERVATION  WHERE (id_reserva = '$this->id_reserva') AND (id_pista = '$this->id_pista')";
 
 		    if (!($resultado = $this->bd->query($sql))){
 				return 'No existe en la base de datos'; 

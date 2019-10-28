@@ -27,7 +27,7 @@ include '../Views/Message_View.php';
 
 function get_data(){
 	$id_reserva = $_REQUEST['id_reserva'];
-	$id_pista ='';
+	$id_pista = $_REQUEST['id_pista'];
 	$login = '';
 	$hora_inicio = '';
 	$fecha = '';
@@ -113,7 +113,7 @@ Switch ($_REQUEST['action']){
 		case 'EDIT':
 				if (!$_POST) {
 					 include_once '../Models/RESERVATION_MODEL.php';
-					$modelo= new RESERVATION_MODEL($_REQUEST['id_reserva'],'', '', '','','');
+					$modelo= get_data();
 					$valores= $modelo ->RellenaDatos();
 					new EDIT_VIEW($valores);
 				}

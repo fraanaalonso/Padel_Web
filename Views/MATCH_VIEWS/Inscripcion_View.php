@@ -1,9 +1,6 @@
 
 <?php
 
-/**
-* 
-*/
 class Inscripcion_View
 {
 	

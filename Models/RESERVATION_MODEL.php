@@ -203,28 +203,6 @@ function RellenaDatos()
 	
 
 
-	function AÑADIRRESERVA(){
-
-
-		
-		$sql = "INSERT INTO RESERVATION 
-							(id_reserva, id_pista, login) 
-				VALUES 
-							('$this->id_reserva', '$this->id_pista', '$this->login')";
-
-
-		if(!$this->bd->query($sql)){
-					return "Error al realizar la reserva";
-		}else{
-					return "Reserva realizada";
-						}
-
-
-
-
-
-	}
-
 
 }
 

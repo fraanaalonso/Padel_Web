@@ -5,7 +5,8 @@
 /**
 * 
 */
-include_once '../Models/RESERVATION_MODEL.php';
+
+//include_once '../Functions/funciones.php';
 
 class ADD_VIEW
 
@@ -19,6 +20,7 @@ class ADD_VIEW
 
 	function execution($clave){
 		include '../Views/HeaderPost.php';
+		require_once '../Functions/funciones.php';
 		
 	
 
@@ -81,58 +83,183 @@ class ADD_VIEW
 
 			
 
-
+				<?php
+					if(validarHoraReserva("09:00", $clave[0])){
+				?>
 				<tr>
 					<th>
 							<input type="checkbox" name="hora_inicio" value="09:00">	
 							09:00 / 10:30
 					</th>
 				</tr>
+				<?php
+				}
+				else{
+				?>
+				<tr>
+					<th>
+							09:00 / 10:30
+					</th>
+				</tr>
+
+				<?php
+					}
+				?>
+				<?php
+					if(validarHoraReserva("10:30", $clave[0])){
+				?>
 				<tr>
 					<th>
 							<input type="checkbox" name="hora_inicio" value="10:30">	
 							10:30 / 12:00
 					</th>
 				</tr>
+				<?php
+				}
+				else{
+				?>
+				<tr>
+					<th>
+							10:30 / 12:00
+					</th>
+				</tr>
 
+				<?php
+					}
+				?>
+
+				<?php
+					if(validarHoraReserva("12:00", $clave[0])){
+				?>
 				<tr>
 					<th>
 							<input type="checkbox" name="hora_inicio" value="12:00">	
 							12:00 / 13:30
 					</th>
 				</tr>
+				<?php
+				}
+				else{
+				?>
+				<tr>
+					<th>
+							12:00 / 13:30
+					</th>
+				</tr>
+
+				<?php
+					}
+				?>
+				<?php
+					if(validarHoraReserva("13:30", $clave[0])){
+				?>
 				<tr>
 					<th>
 							<input type="checkbox" name="hora_inicio" value="13:30">	
 							13:30 / 15:00
 					</th>
 				</tr>
+				<?php
+				}
+				else{
+				?>
+				<tr>
+					<th>
+							13:30 / 15:00
+					</th>
+				</tr>
+
+				<?php
+					}
+				?>
+				<?php
+					if(validarHoraReserva("17:00", $clave[0])){
+				?>
 				<tr>
 					<th>
 							<input type="checkbox" name="hora_inicio" value="17:00">	
 							17:00 / 18:30
-					</th> 
+					</th>
 				</tr>
+				<?php
+				}
+				else{
+				?>
+				<tr>
+					<th>
+							17:00 / 18:30
+					</th>
+				</tr>
+
+				<?php
+					}
+				?>
+				<?php
+					if(validarHoraReserva("18:30", $clave[0])){
+				?>
 				<tr>
 					<th>
 							<input type="checkbox" name="hora_inicio" value="18:30">	
 							18:30 / 20:00
 					</th>
 				</tr>
+				<?php
+				}
+				else{
+				?>
 				<tr>
-					
+					<th>
+							18:30 / 20:00
+					</th>
+				</tr>
+
+				<?php
+					}
+				?>
+				<?php
+					if(validarHoraReserva("20:00", $clave[0])){
+				?>
+				<tr>
 					<th>
 							<input type="checkbox" name="hora_inicio" value="20:00">	
 							20:00 / 21:30
 					</th>
 				</tr>
+				<?php
+				}
+				else{
+				?>
+				<tr>
+					<th>
+							20:00 / 21:30
+					</th>
+				</tr>
+
+				<?php
+					}
+				?>
+				<?php
+					if(validarHoraReserva("21:30", $clave[0])){
+				?>
 				<tr>
 					<th>
 							<input type="checkbox" name="hora_inicio" value="21:30">	
 							21:30 / 23:00
-					</th>					
-
+					</th>
 				</tr>
+				<?php
+				}
+				else{
+				?>
+				<tr>
+					<th>
+							21:30/23:00
+					</th>
+				</tr>
+
+				<?php
+					}
+				?>
 
 				
 				

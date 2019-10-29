@@ -75,7 +75,7 @@ function validarHoraReserva($hora_inicio, $id_pista, $fecha){
 			$bd;
 			$bd = ConectarDB();
 
-			$sql = "SELECT hora_inicio, id_pista FROM RESERVATION WHERE (hora_inicio = '".$hora_inicio."') AND (id_pista = '".$id_pista."' AND (fecha = '".$fecha."'))";
+			$sql = "SELECT hora_inicio, id_pista, fecha FROM RESERVATION WHERE (hora_inicio = '".$hora_inicio."') AND (id_pista = '".$id_pista."' AND (fecha = '".$fecha."'))";
 			$result = $bd->query($sql);
 			if($result->num_rows == 0){
 		return true;

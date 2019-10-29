@@ -1,28 +1,23 @@
+
+
 <?php
-
-
 
 
 
 /**
 * 
 */
-class COUPLE_MODEL
+class COUPLE_CHAMPIONSHIP_MODEL
 {
 	var $id_pareja;
-	var $id_grupo;
-	var $login1;
-	var $id_categoria;
-	var $login2;
+	var $id_campeonato;
 	var $bd;
 	
-	function __construct($id_pareja,$id_categoria, $id_grupo, $login1, $login2)
+	function __construct($id_pareja,$id_campeonato)
 	{
 		$this->id_pareja = $id_pareja;
-		$this->id_categoria = $id_categoria;
-		$this->id_grupo = $id_grupo;
-		$this->login1 = $login1;
-		$this->login2 = $login2;
+		$this->id_campeonato = $id_campeonato;
+	
 
 
 		include_once '../includes/db.php';
@@ -33,11 +28,11 @@ class COUPLE_MODEL
 
 
 
-	function REGISTRARPAREJA(){
+	function ADD(){
 
 		if (($this->id_pareja <> '')){ 
 
-        $sql = "SELECT * FROM COUPLE WHERE (id_pareja = '$this->id_pareja')";
+        $sql = "SELECT * FROM CHAMPIONSHIP_COUPLE WHERE (id_pareja = '$this->id_pareja') AND (id_campeonato = '$this->id_campeonato')";
 
 		if (!$result = $this->bd->query($sql)){ 
 			return 'No se ha podido conectar con la base de datos';
@@ -47,19 +42,14 @@ class COUPLE_MODEL
 			if ($result->num_rows == 0){ 
 				
 
-				$sql = "INSERT INTO COUPLE (
-
-					id_categoria,
-					id_grupo,
-					login1,
-					login2
+				$sql = "INSERT INTO CHAMPIONSHIP_COUPLE (
+					id_pareja,
+					id_campeonato,
 					) 
 						VALUES (
-
-						'$this->id_categoria',
-						'$this->id_grupo',
-						'$this->login1',
-						'$this->login2'
+						'$this->id_pareja',
+						'$this->id_campeonato'
+						
 						)";
 					
 				
@@ -84,7 +74,6 @@ class COUPLE_MODEL
 	}
 
 
-	
 
 
 	function SEARCH(){

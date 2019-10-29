@@ -49,6 +49,29 @@ function get_data(){
 }
 
 
+function get_data_couple_championship(){
+	include_once '../Models/COUPLE_CHAMPIONSHIP_MODEL.php';
+	$id_pareja = '';
+	$id_campeonato = '';
+
+	if($_POST){
+
+		if(isset($_POST['id_pareja'])) $id_pareja = $_POST['id_pareja'];
+		if(isset($_POST['id_campeonato'])) $id_campeonato = $_POST['id_campeonato'];
+
+		return new COUPLE_CHAMPIONSHIP_MODEL($id_pareja,$id_campeonato);
+
+	} else {
+
+		if(isset($_GET['id_pareja'])) $id_pareja = $_GET['id_pareja'];
+		if(isset($_GET['id_campeonato'])) $id_campeonato = $_GET['id_campeonato'];
+
+		return new COUPLE_CHAMPIONSHIP_MODEL($id_pareja,$id_campeonato);
+
+	}
+}
+
+
 Switch ($_REQUEST['action']){
 
 	
@@ -85,22 +108,25 @@ Switch ($_REQUEST['action']){
 					new InscribirCampeonatoView($valores);
 			}
 
+			include_once '../Models/COUPLE_CHAMPIONSHIP_MODEL.php';
 			include_once '../Models/COUPLE_MODEL.php';
 
 			$pareja = new COUPLE_MODEL(' ', $_REQUEST['id_categoria'], $_REQUEST['id_grupo'], $_REQUEST['login1'], $_REQUEST['login2']);
 
+			$result = $pareja->REGISTRARPAREJA();
+			echo $result[0];
 
-			$resultado = $pareja->REGISTRARPAREJA();
+			/*
+			$modelo = get_data_couple_championship();
+			*/
 
-			$valor = $pareja->RellenaDatos();
-
-
-	
+			$porca = new COUPLE_CHAMPIONSHIP_MODEL(' ', $_POST['id_campeonato'] );
 
 			
-			$resultado = $pareja->INSCRIBIRCAMPEONATO($valor[0],  $_REQUEST['id_campeonato']);
 
-			new MESSAGE($resultado, './Championship_Controller.php?action=SHOWCOUPLES');
+			$respuesta = $porca->ADD();
+
+			new MESSAGE($respuesta, './Championship_Controller.php?action=SHOWCOUPLES');
 
 
 			

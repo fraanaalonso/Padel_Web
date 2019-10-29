@@ -65,6 +65,9 @@ class InscribirCampeonatoView
 		   </div>
 		
 
+		   <div class="form-group" >
+		  	<input type="hidden" id="id_pareja" name="id_pareja" class="form-control"   placeholder="Login Participante 2" >
+		   </div>
 
 		   <button type="submit" class="btn btn-light"><span class="lnr lnr-file-add" style="font-size: 35px;"></span></button>
 		   <p>

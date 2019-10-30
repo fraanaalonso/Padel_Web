@@ -130,13 +130,13 @@ class ADD_VIEW
 		  <div class="form-group" id="login-group">
 		  	<select name="rol_id" id="rol_id"  class="form-control"  required>
 
-		   		<option>Administrador</option>
+		   		<option>1</option>
 
-		   		<option>Deportista</option>
+		   		<option>2</option>
 
-		   		<option>Entrenador</option>
+		   		<option>3</option>
 
-		   		<option>Usuario</option>
+		   		<option>4</option>
 
 
 		   	</select>

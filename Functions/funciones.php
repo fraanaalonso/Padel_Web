@@ -93,8 +93,31 @@ function validarHoraReserva($hora_inicio, $id_pista, $fecha){
 
 
 
+function obtenerFoto($foto){
+
+	include_once'../Models/USER_MODEL.php';
+
+	$getvalue = $_SESSION['login']; // session get
 
 
+	if ( file_exists("../img/$foto") ) {
+
+?>
+
+<?php
+	   echo "<img src='../img/$foto' height='250' width='250' /> ";
+?>
+<?php	
+
+	} else {
+	   // possibly display a placeholder image?
+	}
+    
+  
+
+	
+
+}
 
 
 

@@ -48,7 +48,16 @@ if(autenticado()){
 
 <body>
   
-<header>PÁDEL ESEI</header>
+<header>
+
+    <strong>PÁDEL ESEI</strong>
+
+    <a style="right: 0; padding-right: 2px; position: absolute;top: 1px; font-size: 20px;"><strong>Bienvenido <?php echo $_SESSION['login']?></strong></a><a href="../Controllers/User_Controller.php?action=SHOWPROFILE" style="right: 0; position: absolute;top: 1px; padding-right: 1px; "><span class="lnr lnr-user icon11"></span><h4 class="text1"></h4></a>
+
+
+
+
+</header>
 
 <main>
 
@@ -87,7 +96,11 @@ if(comprobarPermisos($_SESSION['login'])==2){
 
 <body>
   
-<header><strong>PÁDEL ESEI</strong></header>
+<header><strong>PÁDEL ESEI</strong>
+
+<a style="right: 0; padding-right: 2px; position: absolute;top: 1px; font-size: 20px;"><strong>Bienvenido <?php echo $_SESSION['login']?></strong></a><a href="../Controllers/User_Controller.php?action=SHOWPROFILE" style="right: 0; position: absolute;top: 1px; padding-right: 1px; "><span class="lnr lnr-user icon11"></span><h4 class="text1"></h4></a>
+
+</header>
 
 <main>
 

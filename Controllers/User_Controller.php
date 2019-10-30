@@ -17,6 +17,7 @@ include '../Views/USER_VIEWS/SEARCH_VIEW.php';
 include '../Views/USER_VIEWS/SHOWCURRENT_VIEW.php';
 include '../Views/USER_VIEWS/DELETE_VIEW.php';
 include '../Views/USER_VIEWS/EDIT_VIEW.php';
+include '../Views/USER_VIEWS/Profile_View.php';
 include '../Views/Message_View.php';
 
 
@@ -177,6 +178,19 @@ Switch ($_REQUEST['action']){
 
 
 				break;
+
+
+
+		case 'SHOWPROFILE':
+		
+		include_once '../Models/USER_MODEL.php';
+
+		 $modelo = new User_Modelo($_SESSION['login'],'','', '', '', '', '', '', '', '','','','');
+		 $valores = $modelo->RellenaDatos();
+
+		 new Profile_View($valores);
+
+		break;
 
 
 		 default:

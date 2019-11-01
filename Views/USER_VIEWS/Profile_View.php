@@ -19,7 +19,7 @@ class Profile_View
 
 ?>
 
-<div  style="text-align: center; position: absolute; top: 80px; left: 30px; width: 100%; height: 40%">
+<div  style="text-align: center; position: absolute; top: 80px; left: 90px; width: 100%; height: 40%">
 
 <?php
  obtenerFoto($datos_usuario['foto']);
@@ -36,6 +36,10 @@ class Profile_View
 	margin: 0 auto;
 	resize: none
 	border: black 2px solid;">
+
+ <strong style="font-size: 20px;">Mis Datos</strong>
+ <br>
+ <br>
 <form method="post" action="../Controllers/User_Controller.php?action=SHOWPROFILE" class="edicion" enctype="multipart/form-data">
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -130,7 +134,7 @@ class Profile_View
   </div>
 
 
-<div class="form-group col-md-4">
+<div class="form-group col-md-12" style="top: 150px; text-align: center;">
   <button type="submit" class="btn btn-primary">Actualizar</button>
  </div>
 </form>

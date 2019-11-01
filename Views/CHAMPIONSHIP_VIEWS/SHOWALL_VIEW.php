@@ -60,9 +60,9 @@ class SHOWALL_VIEW
       echo "<td>".$fila['id_campeonato']."</td>";
       echo "<td>".$fila["fecha_inicio"]."</td>";
       echo "<td>".$fila["fecha_limite"]."</td>";
-      echo "<td>".$fila["id_normativa"]."</td>";
-      echo "<td>".$fila["id_grupo"]."</td>";
-     echo "<td>".$fila["id_categoria"]."</td>";
+     echo "<td> <a href=\"../Controllers/Championship_Controller.php?action=SHOWNORMATIVA&id_normativa=" . $fila['id_normativa'] . "\"> " . $fila['id_normativa'] . " </a> </td>";
+      echo "<td> <a href=\"../Controllers/Championship_Controller.php?action=SHOWGRUPO&id_grupo=" . $fila['id_grupo'] . "\"> " . $fila['id_grupo'] . " </a> </td>";
+     echo "<td> <a href=\"../Controllers/Championship_Controller.php?action=SHOWCATEGORIA&id_categoria=" . $fila['id_categoria'] . "\"> " . $fila['id_categoria'] . " </a> </td>";
 ?>
 
 

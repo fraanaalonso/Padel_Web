@@ -22,6 +22,9 @@ include '../Views/CHAMPIONSHIP_VIEWS/DELETE_CHAMPIONSHIP_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/EDIT_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/InscribirCampeonatoView.php';
 include '../Views/CHAMPIONSHIP_VIEWS/SHOW_COUPLE.php';
+include '../Views/CHAMPIONSHIP_VIEWS/SHOW_GENDER.php';
+include '../Views/CHAMPIONSHIP_VIEWS/SHOW_GROUP.php';
+include '../Views/RULE_VIEWS/SHOWRULE.php';
 include '../Views/Message_View.php';
 include '../Views/ALERT.php';
 
@@ -153,6 +156,43 @@ Switch ($_REQUEST['action']){
 
 
 		break;
+
+
+		case 'SHOWNORMATIVA':
+			 include_once '../Models/RULE_MODEL.php';
+
+			    $modelo = new RULE_MODEL($_REQUEST['id_normativa'], '');
+				$valores = $modelo->RellenaDatos();
+
+				new SHOWRULE($valores);
+
+
+		break;
+
+		case 'SHOWCATEGORIA':
+			 include_once '../Models/GENDER_MODEL.php';
+
+			    $modelo = new GENDER_MODEL($_REQUEST['id_categoria'], '');
+				$valores = $modelo->RellenaDatos();
+
+				new SHOWGENDER($valores);
+
+
+		break;
+
+		case 'SHOWGRUPO':
+			 include_once '../Models/GROUP_MODEL.php';
+
+			    $modelo = new GROUP_MODEL($_REQUEST['id_grupo'], '');
+				$valores = $modelo->RellenaDatos();
+
+				new SHOWGROUP($valores);
+
+
+		break;
+
+
+	
 
 			  
 

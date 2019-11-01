@@ -17,13 +17,9 @@ class Register
 
 ?>
 
-<div class="iconos-superiores">
 
-    <a href="../index.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
-
-</div>
-
-<div class="modal-dialog text-center">
+<body class="form_login" style="background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/2bcefa56103745.59a0373e6707e.png);">
+<div class="modal-dialog text-center" style="top: 100px;">
 	<div class="col-sm-28 main-section">
 		<div class="modal-content">
 			<div class="col-17 user-img">
@@ -41,7 +37,7 @@ class Register
 		  	<input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" required>
 		   </div>
 
-		   <div class="form-group" id="apellidos-group">
+		   <div class="form-group" id="login-group">
 		  	<input type="text" id="apellido" name="apellido" class="form-control" placeholder="Apellidos" required>
 		   </div>
 
@@ -155,7 +151,7 @@ class Register
 	</div>
 
 </div>
-
+</body>
 
 <?php
 include 'Footer.php';

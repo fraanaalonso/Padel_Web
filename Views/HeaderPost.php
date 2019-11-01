@@ -36,8 +36,14 @@ if (session_status() == PHP_SESSION_NONE) {//Sino existe la sesion, se comienza
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</head>
 
+</head>
+<?php
+require_once '../Functions/funciones.php';
+require_once '../Models/USER_MODEL.php';
+$modelo = new User_Modelo($_SESSION['login'],'','', '', '', '', '', '', '', '','','','');
+ $meu = $modelo->RellenaDatos();
+?>
 
 
 <?php
@@ -53,7 +59,7 @@ if(autenticado()){
 
     <strong>PÁDEL ESEI</strong>
 
-    <a style="right: 0; padding-right: 2px; position: absolute;top: 1px; font-size: 20px;"><strong>Bienvenido <?php echo $_SESSION['login']?></strong></a><a href="../Controllers/User_Controller.php?action=SHOWPROFILE" style="right: 0; position: absolute;top: 1px; padding-right: 1px; "><span class="lnr lnr-user icon11"></span><h4 class="text1"></h4></a>
+   <a href="../Controllers/User_Controller.php?action=SHOWPROFILE&login=<?php echo $meu['login'] ?>" style="right: 0; position: absolute; top: 0; "><span style="top: 0;"><?php obtenerFotoReducida($meu['foto']);?></span></a>
 
 
 
@@ -99,8 +105,7 @@ if(comprobarPermisos($_SESSION['login'])==2){
   
 <header><strong>PÁDEL ESEI</strong>
 
-<a style="right: 0; padding-right: 2px; position: absolute;top: 1px; font-size: 20px;"><strong>Bienvenido <?php echo $_SESSION['login']?></strong></a><a href="../Controllers/User_Controller.php?action=SHOWPROFILE" style="right: 0; position: absolute;top: 1px; padding-right: 1px; "><span class="lnr lnr-user icon11"></span><h4 class="text1"></h4></a>
-
+<a href="../Controllers/User_Controller.php?action=SHOWPROFILE&login=<?php echo $meu['login'] ?>" style="right: 0; position: absolute; top: 0; "><span style="top: 0;"><?php obtenerFotoReducida($meu['foto']);?></span></a>
 </header>
 
 <main>
@@ -138,7 +143,7 @@ if(comprobarPermisos($_SESSION['login'])==2){
 
 <body>
   
-<header><span class="lnr lnr-menu show"></span></header>
+<header><a href="../Controllers/User_Controller.php?action=SHOWPROFILE&login=<?php echo $meu['login'] ?>" style="right: 0; position: absolute; top: 0; "><span style="top: 0;"><?php obtenerFotoReducida($meu['foto']);?></span></a>></header>
 
 <main>
 

@@ -31,7 +31,7 @@ class SHOWCURRENT_VIEW
 
 <div class="lineanegra"></div>
 
-<h2 class="cabecera">Pádel Times</h2>
+<h2 class="cabecera" style="top: 200px; text-align: center; padding-left: 700px;"><strong style="font-size: 100px;">Pádel Times</strong></h2>
 
 
 <div class="noticia">
@@ -39,7 +39,7 @@ class SHOWCURRENT_VIEW
 <div id="titulo">
   <strong style="font-size: 30px">
   <?php
-    echo $valores[1];
+    echo $valores['titulo'];
   ?>
 </strong>
 </div>
@@ -48,7 +48,7 @@ class SHOWCURRENT_VIEW
 <div class="subtitulo">
   <strong style="font-size: 20px">
   <?php
-    echo $valores[2];
+    echo $valores['subtitulo'];
   ?>
 </strong>
   
@@ -56,13 +56,13 @@ class SHOWCURRENT_VIEW
 </div>
 
 
-<textarea class="cuerpo" style="resize: none;" rows="30" cols="185">
+<p class="cuerpo" style="resize: none;" rows="30" cols="185">
   
   <?php
-    echo $valores[3];
+    echo $valores['cuerpo'];
   ?>
 
-</textarea>
+</p>
 
 
 </div>           

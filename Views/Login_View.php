@@ -17,8 +17,8 @@ class Login
 
 
 ?>
-<body class="form_login">
-<div class="modal-dialog text-center">
+<body class="form_login" style="background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/1400/d4b56564984937.5ae47441bb155.jpg);">
+<div class="modal-dialog text-center" style="top: 100px;">
 	<div class="col-sm-12 main-section">
 		<div class="modal-content">
 			<div class="col-12 user-img">
@@ -34,11 +34,6 @@ class Login
 
 		   <div class="form-group" id="contrasena-group">
 		  	<input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required>
-		   </div>
-
-		   
-		   <div>
-		  	<input type="hidden" id="rol_id" name="rol_id" value="1">
 		   </div>
 
 		   <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar</button>

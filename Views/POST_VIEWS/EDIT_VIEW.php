@@ -52,13 +52,13 @@ class EDIT_VIEW
 
 		   <div class="form-group" id="cuerpo-group">
 		  	
-		  	<textarea name="cuerpo" id="cuerpo" required rows="25" cols="165" maxlength="1000"><?php echo $valores['cuerpo']?></textarea>
+		  	<textarea name="cuerpo" id="cuerpo" required rows="25" cols="165"><?php echo $valores['cuerpo']?></textarea>
 		   </div>
 
 
 
 
-		  <button type="submit" class="btn btn-light"><i class="fas fa-sign-in-alt"></i><span class="lnr lnr-pencil" style="font-size: 35px; text-align: center;"></span></button>
+		  <button type="submit" class="btn btn-light"><span class="lnr lnr-pencil" style="font-size: 35px; text-align: center;"></span></button>
 		  
 
 		  <br>

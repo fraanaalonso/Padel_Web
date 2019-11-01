@@ -120,6 +120,32 @@ function obtenerFoto($foto){
 }
 
 
+function obtenerFotoReducida($foto){
+
+	include_once'../Models/USER_MODEL.php';
+
+	$getvalue = $_SESSION['login']; // session get
+
+
+	if ( file_exists("../img/fotosPerfil/$foto") ) {
+
+?>
+
+<?php
+	   echo "<img src='../img/fotosPerfil/$foto' text-align:'rigt' height='60' width='70' /> ";
+?>
+<?php	
+
+	} else {
+	   echo "Sin imagen";
+	}
+    
+  
+
+	
+
+}
+
 
 
 ?>

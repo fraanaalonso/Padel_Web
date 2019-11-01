@@ -122,7 +122,7 @@ class ADD_VIEW
 		   </div>
 
 		   <div class="form-group" id="fecha-group">
-		  	<input type="file" id="foto" name="foto" class="form-control" placeholder="Foto Perfil" required>
+		  	<input type="file" id="foto" name="foto" class="form-control" placeholder="Foto Perfil" accept="image/jpeg" required>
 		   </div>
 
 		

@@ -25,6 +25,18 @@ textarea .cuerpo{
 }
 
 
+.perfil{
+	position: absolute;
+	top: 500px;
+	left: 400px;
+	width: 80%;
+	margin: 0 auto;
+	resize: none
+	border: black 2px solid;
+}
+
+
+
 
 /*Cabecera de la publicación*/
 
@@ -41,6 +53,9 @@ textarea .cuerpo{
 	text-align: center;
 	min-width: 100%;
 }
+
+
+
 
 
 

@@ -27,6 +27,7 @@ if (session_status() == PHP_SESSION_NONE) {//Sino existe la sesion, se comienza
     <link rel="stylesheet" type="text/css" href="../css/style3.css">
     <link rel="stylesheet" type="text/css" href="../img/icon/style.css">
     <script src="../Functions/js/validaciones.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
     <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>

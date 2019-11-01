@@ -86,6 +86,7 @@ if(comprobarPermisos($_SESSION['login'])==1){
   <?php
       echo "<td><a href=\"../img/fotosPerfil/" . $fila["foto"]. "\">". $fila["foto"] . " </a></td>";
 
+
   ?>
   </div>
 </div>

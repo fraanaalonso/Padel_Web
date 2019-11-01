@@ -172,7 +172,7 @@ class User_Modelo
 
 	function SEARCH()
 { 	// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-    $sql = "select * from USER";
+    $sql = "select * from USER ";
 
     // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
     if (!($resultado = $this->bd->query($sql))){
@@ -184,6 +184,49 @@ class User_Modelo
 
 
 } // fin metodo SEARCH
+
+
+
+	function BUSCAR()
+{ 	// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
+    $sql = "select login,
+					nombre,
+					apellido,
+					password,
+					dni,
+					email,
+					pais,
+					sexo,
+					telefono,
+					fecha,
+					foto,
+					rol_id from USER WHERE
+
+   					((login LIKE '%$this->login%') &&
+   					(nombre LIKE '%$this->nombre%') &&
+   					(apellido LIKE '%$this->apellido%') &&
+   					(password LIKE '%$this->password%') &&
+   					(dni LIKE '%$this->dni%') &&
+    				(email LIKE '%$this->email%') &&
+    				(pais LIKE '%$this->pais%') &&
+	 				(sexo LIKE '%$this->sexo%') &&
+	 				(telefono LIKE '%$this->telefono%') &&
+	 				(fecha LIKE '%$this->fecha%') &&
+	 				(foto LIKE '%$this->foto%') &&
+	 				(rol_id LIKE '%$this->rol_id%'))";
+
+    // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+    if (!($resultado = $this->bd->query($sql))){
+		return 'Error en la consulta sobre la base de datos';
+	}
+    else{ // si la busqueda es correcta devolvemos el recordset resultado
+		return $resultado;
+	}
+
+
+} // fin metodo SEARCH
+
+
 
 
 function getDBDatos($login){

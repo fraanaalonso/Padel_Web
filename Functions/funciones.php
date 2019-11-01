@@ -100,17 +100,17 @@ function obtenerFoto($foto){
 	$getvalue = $_SESSION['login']; // session get
 
 
-	if ( file_exists("../img/$foto") ) {
+	if ( file_exists("../img/fotosPerfil/$foto") ) {
 
 ?>
 
 <?php
-	   echo "<img src='../img/$foto' height='250' width='250' /> ";
+	   echo "<img src='../img/fotosPerfil/$foto' text-align:'center' height='350' width='350' style='border-radius: 50%'  /> ";
 ?>
 <?php	
 
 	} else {
-	   // possibly display a placeholder image?
+	   echo "Sin imagen";
 	}
     
   

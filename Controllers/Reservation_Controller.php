@@ -65,6 +65,7 @@ Switch ($_REQUEST['action']){
 				
 			}
 
+			else{
 			include_once '../Models/RESERVATION_MODEL.php';
 				
 
@@ -73,9 +74,12 @@ Switch ($_REQUEST['action']){
 			$resultado = $reserva->ADD();
 
 
+			
+
+
 			new MESSAGE($resultado, '../Controllers/Reservation_Controller.php');
 
-				
+				}
 							
 				break;
 

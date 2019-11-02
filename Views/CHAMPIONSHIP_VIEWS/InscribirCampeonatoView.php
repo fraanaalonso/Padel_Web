@@ -57,7 +57,7 @@ class InscribirCampeonatoView
 		   </div>
 
 		   <div class="form-group" >
-		  	<input type="text" id="login1" name="login1" class="form-control"  placeholder="Login Participante 1" >
+		  	<input type="text" id="login1" name="login1" class="form-control" readonly value="<?php echo $_SESSION['login'] ?>"  placeholder="Login Participante 1" >
 		   </div>
 
 		   <div class="form-group" >

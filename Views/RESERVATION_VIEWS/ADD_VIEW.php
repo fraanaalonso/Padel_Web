@@ -73,7 +73,7 @@ class ADD_VIEW
 			<!--HORARIO DE SELECCIÓN-->
 
 
-			<table class="horarios" style="width: 100%; position: sticky; text-align: center;">
+			<table class="horarios" style=" top: 225px; left: 0; " >
 				<tr style="background-color: yellow">
 					<th>
 						<?php echo $clave[0]; ?>
@@ -84,11 +84,11 @@ class ADD_VIEW
 			
 
 				<?php
-					if(validarHoraReserva("09:00", $clave[0], "fecha")){
+					if(validarHoraReserva("09:00", $clave[0])){
 				?>
 				<tr>
 					<th>
-							<input type="checkbox" name="hora_inicio" value="09:00">	
+							<input type="checkbox"  name="hora_inicio" value="09:00">	
 							09:00 / 10:30
 					</th>
 				</tr>
@@ -106,7 +106,7 @@ class ADD_VIEW
 					}
 				?>
 				<?php
-					if(validarHoraReserva("10:30", $clave[0], "fecha")){
+					if(validarHoraReserva("10:30", $clave[0])){
 				?>
 				<tr>
 					<th>
@@ -129,7 +129,7 @@ class ADD_VIEW
 				?>
 
 				<?php
-					if(validarHoraReserva("12:00", $clave[0], "fecha")){
+					if(validarHoraReserva("12:00", $clave[0])){
 				?>
 				<tr>
 					<th>
@@ -151,7 +151,7 @@ class ADD_VIEW
 					}
 				?>
 				<?php
-					if(validarHoraReserva("13:30", $clave[0], "fecha")){
+					if(validarHoraReserva("13:30", $clave[0])){
 				?>
 				<tr>
 					<th>
@@ -173,7 +173,7 @@ class ADD_VIEW
 					}
 				?>
 				<?php
-					if(validarHoraReserva("17:00", $clave[0], "fecha")){
+					if(validarHoraReserva("17:00", $clave[0])){
 				?>
 				<tr>
 					<th>
@@ -195,7 +195,7 @@ class ADD_VIEW
 					}
 				?>
 				<?php
-					if(validarHoraReserva("18:30", $clave[0], "fecha")){
+					if(validarHoraReserva("18:30", $clave[0])){
 				?>
 				<tr>
 					<th>
@@ -217,7 +217,7 @@ class ADD_VIEW
 					}
 				?>
 				<?php
-					if(validarHoraReserva("20:00", $clave[0], "fecha")){
+					if(validarHoraReserva("20:00", $clave[0])){
 				?>
 				<tr>
 					<th>
@@ -239,7 +239,7 @@ class ADD_VIEW
 					}
 				?>
 				<?php
-					if(validarHoraReserva("21:30", $clave[0], "fecha")){
+					if(validarHoraReserva("21:30", $clave[0])){
 				?>
 				<tr>
 					<th>

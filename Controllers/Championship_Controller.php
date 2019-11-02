@@ -111,6 +111,8 @@ Switch ($_REQUEST['action']){
 					new InscribirCampeonatoView($valores);
 			}
 
+			else{
+
 			include_once '../Models/COUPLE_CHAMPIONSHIP_MODEL.php';
 			include_once '../Models/COUPLE_MODEL.php';
 
@@ -131,7 +133,7 @@ Switch ($_REQUEST['action']){
 
 			new MESSAGE($respuesta, './Championship_Controller.php?action=SHOWCOUPLES');
 
-
+		}
 			
 		break;
 

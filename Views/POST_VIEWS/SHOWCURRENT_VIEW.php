@@ -31,7 +31,7 @@ class SHOWCURRENT_VIEW
 
 <div class="lineanegra"></div>
 
-<h2 class="cabecera" style="top: 200px; text-align: center; padding-left: 700px;"><strong style="font-size: 100px;">Pádel Times</strong></h2>
+<h2 class="cabecera" style="position: absolute; top: 200px;  padding-left: 500px;"><strong style="font-size: 100px;">Pádel Times</strong></h2>
 
 
 <div class="noticia">

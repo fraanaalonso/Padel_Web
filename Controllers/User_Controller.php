@@ -215,7 +215,7 @@ Switch ($_REQUEST['action']){
 
 		 new Profile_View($valores);
 		}
-/*
+		else{
 		 include_once '../Models/USER_MODEL.php';
 					$modelo = new User_Modelo($_REQUEST['login'],$_REQUEST['nombre'],$_REQUEST['apellido'], $_REQUEST['password'], $_REQUEST['dni'], $_REQUEST['email'], $_REQUEST['pais'], $_REQUEST['sexo'], $_REQUEST['telefono'],
 				   $_REQUEST['fecha'],$_FILES['foto']['name'], $_REQUEST['rol_id']);
@@ -232,7 +232,7 @@ Switch ($_REQUEST['action']){
 					  $respuesta = $modelo->EDIT();
 			new MESSAGE($respuesta, './Post_Controller.php');
 
-*/
+		}
 
 		break;
 

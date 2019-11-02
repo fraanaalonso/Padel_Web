@@ -40,7 +40,7 @@ class Profile_View
  <strong style="font-size: 20px;">Mis Datos</strong>
  <br>
  <br>
-<form method="post"  class="edicion" enctype="multipart/form-data">
+<form method="post"  class="edicion" action="../Controllers/User_Controller.php?action=SHOWPROFILE" enctype="multipart/form-data">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Login</label>
@@ -135,7 +135,7 @@ class Profile_View
 
 
 <div class="form-group col-md-12" style="top: 150px; text-align: center;">
-  <button type="text"  class="btn btn-primary" >Volver</button>
+  <button type="submit"  class="btn btn-primary" >Actualizar</button>
  </div>
 </form>
 

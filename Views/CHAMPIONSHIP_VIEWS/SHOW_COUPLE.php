@@ -49,7 +49,7 @@ class SHOWALL_COUPLE
   
   while ($fila = $resultado->fetch_assoc())
   {
-    if($_SESSION['login'] == $fila['login1'] || $_SESSION['login'] == $fila['login2']){
+    if($_SESSION['login'] == $fila['login1'] || $_SESSION['login'] == $fila['login2'] || comprobarPermisos($_SESSION['login']) == 1){
 
       echo "<tr>";
 
@@ -65,14 +65,16 @@ class SHOWALL_COUPLE
 ?>
 
 
-      <td>
-       
+       <td>
+        <a href="../Controllers/Championship_Controller.php?action=SHOWCURRENT&id_pareja=<?php  echo $fila['id_pareja'] ?>"><span class="lnr lnr-eye añadir"></span></a>
+        <a href="../Controllers/Championship_Controller.php?action=EDIT&id_pareja=<?php  echo $fila['id_pareja'] ?>"><span class="lnr lnr-pencil editar"></span></a>
+        <a href="../Controllers/Championship_Controller.php?action=DELETE&id_pareja=<?php  echo $fila['id_pareja'] ?>"><span class="lnr lnr-trash borrar"></span></a>
       
       </td>
 
 <?php
 
-
+    
 
       echo "</tr>";
     }

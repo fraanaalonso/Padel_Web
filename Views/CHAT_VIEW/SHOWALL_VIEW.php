@@ -74,9 +74,9 @@ while ($fila = $resultado->fetch_assoc()){
                   <p><?php echo  $fila['mensaje']?></p>
                   <a href="../Controllers/Chat_Controller.php?action=SHOWCURRENT&id_chat=<?php  echo $fila['id_chat'] ?>"><span class="lnr lnr-eye añadir"></span>
                   <?php
-                    if($_SESSION['login']){
+                    if($_SESSION['login'] == $fila['login']){
                    ?>
-                    <a href="../Controllers/Chat_Controller.php?action=DELETE&id_chat=<?php  echo $fila['id_chat'] ?>"><span class="lnr lnr-trash añadir"></span></a>
+                    <a href="../Controllers/Chat_Controller.php?action=DELETE&id_chat=<?php  echo $fila['id_chat'] ?>"><span class="lnr lnr-trash borrar"></span></a>
 
                     <?php
                   }

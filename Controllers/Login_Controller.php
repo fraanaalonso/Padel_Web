@@ -22,7 +22,7 @@ else{
 	}
 	else{
 		include_once '../Views/Message_View.php';
-		new MESSAGE($respuesta, './Login_Controller.php');
+		new MESSAGE($respuesta, 'Login_Controller.php');
 	}
 
 }

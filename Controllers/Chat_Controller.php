@@ -52,10 +52,20 @@ Switch ($_REQUEST['action']){
 				}
 				else{
 				 include_once '../Models/CHAT_MODEL.php';
+				  include_once '../Models/USER_MODEL.php';
 				  $modelo= new CHAT_MODEL(' ',$_REQUEST['login'], $_REQUEST['mensaje'],$_REQUEST['fecha_mensaje'], $_REQUEST['hora_mensaje']);
 
 					$respuesta = $modelo->ADD();
-					new MESSAGE($respuesta,'./Championship_Controller.php');
+					$modelo2= new CHAT_MODEL('','','','','');
+
+					
+                     $respuesta2 = $modelo2->SEARCH();
+
+                     $obj = new User_Modelo($_SESSION['login'],'','', '', '', '', '', '', '','','','');
+					$respuesta2 = $modelo2->SEARCH();
+					$valor = $obj->RellenaDatos();
+					$lista = array('ID Chat','Login', 'Mensaje', 'Fecha', 'Hora');
+					new SHOWALL_VIEW($lista, $respuesta2, $valor);
 					
 				}
 				break;
@@ -88,42 +98,28 @@ Switch ($_REQUEST['action']){
 
 
 
-		case 'EDIT':
-				if (!$_POST) {
-					 include_once '../Models/CHAT_MODEL.php';
-					$modelo= get_data();
-					$valores= $modelo ->RellenaDatos();
-					new EDIT_VIEW($valores);
-				}
-
-				else{
-
-					 include '../Models/CHAT_MODEL.php';
-					$modelo = new CHAT_MODEL($_REQUEST['id_chat'],$_REQUEST['login'], $_REQUEST['mensaje'],$_REQUEST['fecha_mensaje'], $_REQUEST['hora_mensaje']);
-
-					$respuesta = $modelo->EDIT();
-					new MESSAGE($respuesta, './Championship_Controller.php');
-				}
-						
-				break;	
 
 
 		case 'DELETE':
 
-				if (!$_POST) {
-					 include_once '../Models/CHAT_MODEL.php';
-					$modelo= get_data();
-					$valores= $modelo ->RellenaDatos();
-					new DELETE_CHAT_VIEW($valores);
-				}
+				
 
-				else{
+			
 
 					 include_once '../Models/CHAT_MODEL.php';
+					 include_once '../Models/USER_MODEL.php';
 					$modelo =get_data();
 					$respuesta = $modelo->DELETE();
-					new MESSAGE($respuesta,'./Championship_Controller.php');
-				}
+					$modelo2= new CHAT_MODEL('','','','','');
+
+					
+                     $respuesta2 = $modelo2->SEARCH();
+
+                     $obj = new User_Modelo($_SESSION['login'],'','', '', '', '', '', '', '','','','');
+					$respuesta2 = $modelo2->SEARCH();
+					$valor = $obj->RellenaDatos();
+					$lista = array('ID Chat','Login', 'Mensaje', 'Fecha', 'Hora');
+					new SHOWALL_VIEW($lista, $respuesta2, $valor);
 					
 					break;
 

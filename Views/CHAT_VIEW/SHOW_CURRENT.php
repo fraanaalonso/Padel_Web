@@ -49,7 +49,7 @@ class SHOWCURRENT_VIEW
     <a href="../Controllers/Chat_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px;"></span></a>
 
 </div>
-         <div class="mesgs" style="position: absolute; top: 0; padding-top: 200px; left: 500px;">
+         <div class="mesgs" style="position: absolute; top: 150px; padding-top: 200px; left: 500px;">
 
           <div class="msg_history">
 

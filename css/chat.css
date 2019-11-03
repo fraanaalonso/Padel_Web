@@ -114,7 +114,9 @@ img{ max-width:100%;}
   width: 100%;
 }
 
-.type_msg {border-top: 1px solid #c4c4c4;position: relative;}
+.type_msg {border-top: 2px solid #c4c4c4;position: relative;
+
+border-bottom: 2px solid #c4c4c4; top:0;}
 .msg_send_btn {
   background: #05728f none repeat scroll 0 0;
   border: medium none;

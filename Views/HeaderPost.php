@@ -28,6 +28,7 @@ if (session_status() == PHP_SESSION_NONE) {//Sino existe la sesion, se comienza
     <link rel="stylesheet" type="text/css" href="../img/icon/style.css">
     <link rel="stylesheet" type="text/css" href="../css/chat.css">
     <script src="../Functions/js/validaciones.js"></script>
+    <script src="../Functions/js/chat.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
@@ -124,7 +125,7 @@ if(comprobarPermisos($_SESSION['login'])==2){
      
     <a href="../Controllers/Championship_Controller.php"><li><span class="lnr lnr-license icon4"></span><h4 class="text4">Campeonatos</h4></li></a>
     <a href="../Controllers/Match_Controller.php"><li><span class="lnr lnr-rocket icon6"></span><h4 class="text6">Promociones Activas</h4></li></a>
-     <a href="../Views/Chat_View.php"><li><span class="lnr lnr-envelope icon7"></span><h4 class="text7">Mensajes</h4></li> </a>
+     <a href="../Controllers/Chat_Controller.php"><li><span class="lnr lnr-envelope icon7"></span><h4 class="text7">Mensajes</h4></li> </a>
     <li><span class="lnr lnr-question-circle icon8"></span><h4 class="text8">FAQ</h4></li> 
     <a href="../Functions/Desconect.php"><li ><span class="lnr lnr-exit icon9"></span><h4  class="text9">Salir</h4></li> </a>
 

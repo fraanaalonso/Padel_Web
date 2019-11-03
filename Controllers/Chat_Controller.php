@@ -14,7 +14,6 @@ if (!isset($_REQUEST['action'])){
 
 
 include '../Views/CHAT_VIEW/SHOWALL_VIEW.php';
-include '../Views/CHAT_VIEW/SHOW_CURRENT.php';
 include '../Views/Message_View.php';
 
 function get_data(){
@@ -52,20 +51,18 @@ Switch ($_REQUEST['action']){
 				}
 				else{
 				 include_once '../Models/CHAT_MODEL.php';
-				  include_once '../Models/USER_MODEL.php';
+				 
 				  $modelo= new CHAT_MODEL(' ',$_REQUEST['login'], $_REQUEST['mensaje'],$_REQUEST['fecha_mensaje'], $_REQUEST['hora_mensaje']);
 
 					$respuesta = $modelo->ADD();
-					$modelo2= new CHAT_MODEL('','','','','');
+					$all= new CHAT_MODEL('','','','','');
 
 					
-                     $respuesta2 = $modelo2->SEARCH();
-
-                     $obj = new User_Modelo($_SESSION['login'],'','', '', '', '', '', '', '','','','');
-					$respuesta2 = $modelo2->SEARCH();
-					$valor = $obj->RellenaDatos();
+                     $datos = $all->SEARCH();
 					$lista = array('ID Chat','Login', 'Mensaje', 'Fecha', 'Hora');
-					new SHOWALL_VIEW($lista, $respuesta2, $valor);
+
+				
+				new SHOWALL_VIEW($lista, $datos);
 					
 				}
 				break;
@@ -102,24 +99,19 @@ Switch ($_REQUEST['action']){
 
 		case 'DELETE':
 
-				
-
-			
-
 					 include_once '../Models/CHAT_MODEL.php';
-					 include_once '../Models/USER_MODEL.php';
+					
 					$modelo =get_data();
 					$respuesta = $modelo->DELETE();
-					$modelo2= new CHAT_MODEL('','','','','');
+					$all= new CHAT_MODEL('','','','','');
 
 					
-                     $respuesta2 = $modelo2->SEARCH();
-
-                     $obj = new User_Modelo($_SESSION['login'],'','', '', '', '', '', '', '','','','');
-					$respuesta2 = $modelo2->SEARCH();
-					$valor = $obj->RellenaDatos();
+                     $datos = $all->SEARCH();
 					$lista = array('ID Chat','Login', 'Mensaje', 'Fecha', 'Hora');
-					new SHOWALL_VIEW($lista, $respuesta2, $valor);
+
+				
+					new SHOWALL_VIEW($lista, $datos);
+					
 					
 					break;
 
@@ -148,14 +140,11 @@ Switch ($_REQUEST['action']){
 
 				}
 
-				include_once '../Models/USER_MODEL.php';
-				$obj = new User_Modelo($_SESSION['login'],'','', '', '', '', '', '', '','','','');
 				$datos = $all->SEARCH();
-				$valor = $obj->RellenaDatos();
 				$lista = array('ID Chat','Login', 'Mensaje', 'Fecha', 'Hora');
 
 				
-				new SHOWALL_VIEW($lista, $datos, $valor);
+				new SHOWALL_VIEW($lista, $datos);
 
 		
 

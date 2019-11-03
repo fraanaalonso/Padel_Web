@@ -2,19 +2,18 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <?php
-  /**
-   * 
-   */
+
+
   class SHOWALL_VIEW
   {
     
-    function __construct($fila, $resultado, $valor)
+    function __construct($fila, $resultado)
     {
-     $this->execution($fila, $resultado, $valor); 
+     $this->execution($fila, $resultado); 
 
     }
 
-    function execution($fila, $resultado, $valor){
+    function execution($fila, $resultado){
       include '../Views/HeaderPost.php';
 
 ?>
@@ -55,7 +54,9 @@ while ($fila = $resultado->fetch_assoc()){
                 <div class="incoming_msg_img"><?php echo $fila['login']; ?> </div>
                 <div class="received_withd_msg">
                   <p><?php echo $fila['mensaje'] ?></p>
-                  <span class="time_date">  <?php echo $fila['hora_mensaje'] ?>   |  <?php echo $fila['fecha_mensaje'] ?> </span></div>
+                  <span class="time_date">  <?php echo $fila['hora_mensaje'] ?>   |  <?php echo $fila['fecha_mensaje'] ?> </span>
+
+                </div>
               </div>
 
 
@@ -71,7 +72,8 @@ else{
               <div class="sent_msg">
                 <div class="incoming_msg_img" style="width: 5%; right: 0;"><?php echo $fila['login']; ?> </div>
                 <p><?php echo $fila['mensaje'] ?></p>
-                <span class="time_date"> <?php echo $fila['hora_mensaje'] ?>    |     <?php echo $fila['fecha_mensaje'] ?></span>
+                <span class="time_date"> <?php echo $fila['hora_mensaje'] ?>    |     <?php echo $fila['fecha_mensaje'] ?>  |  <a href="../Controllers/Chat_Controller.php?action=DELETE&id_chat=<?php  echo $fila['id_chat'] ?>"><span style="font-size: 15px; position: absolute;" class="lnr lnr-trash borrar"></span></a></span>
+
                  </div>
             </div>
 
@@ -84,7 +86,7 @@ else{
             
         </div>
 
-          <div class="type_msg" style="width: 50%; left: 500px; top:0;">
+          <div class="type_msg" style="width: 50%; left: 500px; top:70px;">
             <div class="input_msg_write">
               <form method="post" action="../Controllers/Chat_Controller.php?action=ADD">
                 <input type="hidden"  name="id_chat" value="" />
@@ -101,10 +103,19 @@ else{
 
         </div>
 
+<script>
+var chatBox;
 
+chatBox = document.querySelector('.inbox_chat > .content');
+
+// cuando exista un nuevo mensaje
+chatBox.scrollTop = chatBox.scrollHeight;
+</script>
 
 
 <?php
+
+
 
   include '../Views/Footer.php';
 

@@ -53,6 +53,14 @@ class SEARCH_VIEW
 		  	<textarea name="cuerpo" id="cuerpo" rows="25" cols="165" maxlength="1000" placeholder="Escribe aquí una entrada"></textarea>
 		   </div>
 
+		   <div class="form-group" id="subtitulo-group">
+		  	<input type="hidden" id="fecha" name="fecha" class="form-control" placeholder="Fecha"   >
+		   </div>
+
+		   <div class="form-group" id="subtitulo-group">
+		  	<input type="hidden" id="hora" name="hora" class="form-control" placeholder="Hora"   >
+		   </div>
+
 
 
 

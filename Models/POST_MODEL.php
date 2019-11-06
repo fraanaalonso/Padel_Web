@@ -9,14 +9,18 @@ class POST_MODEL
 	var $titulo;
 	var $subtitulo;
 	var $cuerpo;
+	var $fecha;
+	var $hora;
 	
 	
-	function __construct($id_noticia,$titulo, $subtitulo, $cuerpo)
+	function __construct($id_noticia,$titulo, $subtitulo, $cuerpo, $fecha, $hora)
 	{
 		$this->id_noticia = $id_noticia;
 		$this->titulo = $titulo;
 		$this->subtitulo = $subtitulo;
 		$this->cuerpo = $cuerpo;
+		$this->fecha = $fecha;
+		$this->hora = $hora;
 	
 
 
@@ -46,14 +50,18 @@ class POST_MODEL
 
 					titulo,
 					subtitulo,
-					cuerpo
+					cuerpo,
+					fecha,
+					hora
 		
 					) 
 						VALUES (
 						
 						'$this->titulo',
 						'$this->subtitulo',
-						'$this->cuerpo'
+						'$this->cuerpo',
+						'$this->fecha',
+						'$this->hora'
 						)";
 					
 				
@@ -99,7 +107,9 @@ function EDIT(){
 				id_noticia = '$this->id_noticia',
 				titulo = '$this->titulo',
 				subtitulo = '$this->subtitulo',
-				cuerpo = '$this->cuerpo'
+				cuerpo = '$this->cuerpo',
+				fecha = '$this->fecha',
+				hora = '$this->hora'
 				
 				WHERE ( id_noticia = '$this->id_noticia')";
 
@@ -124,10 +134,7 @@ function EDIT(){
 function SEARCH(){
 
 	$sql = "select
-					id_noticia,
-					titulo,
-					subtitulo,
-					cuerpo
+					*
 		
 					
 					FROM NEW";

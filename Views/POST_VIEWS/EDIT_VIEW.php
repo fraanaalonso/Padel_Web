@@ -55,6 +55,13 @@ class EDIT_VIEW
 		  	<textarea name="cuerpo" id="cuerpo" required rows="25" cols="165"><?php echo $valores['cuerpo']?></textarea>
 		   </div>
 
+		   <div class="form-group" id="subtitulo-group">
+		  	<input type="hidden" id="fecha" name="fecha" class="form-control" placeholder="Fecha" value="<?php echo date("d/m/Y", time())?>" required >
+		   </div>
+
+		   <div class="form-group" id="subtitulo-group">
+		  	<input type="hidden" id="hora" name="hora" class="form-control" placeholder="Hora" value="<?php echo date('G:i');?>" required >
+		   </div>
 
 
 

@@ -19,7 +19,6 @@ class SHOWALL_VIEW
   
 ?>
 
-
 <div class="iconos-superiores">
 <?php
 if(comprobarPermisos($_SESSION['login'])==1){
@@ -35,39 +34,17 @@ if(comprobarPermisos($_SESSION['login'])==1){
 </div>
 
 
+<div class="container" style="position: absolute; top: 150px; left: 300px;">
+<div class="col-md-12">
+<?php 
 
-  <table border="1">
-  <thead>
-  <tr>
-    <th>Código</th>
-    <th>Titulo</th>
-    <th>Subtitulo</th>
-    <th>Cuerpo</th>
-    <th>Opciones </th>
-   
-
-  </tr>
-
-</thead>
-
-<?php
- 
-  
-  while ($fila = $resultado->fetch_assoc())
-  {
-      echo "<tr>";
-      echo "<td>".$fila['id_noticia']."</td>";
-      echo "<td>".$fila["titulo"]."</td>";
-      echo "<td>".$fila["subtitulo"]."</td>";
-      echo "<td>".substr($fila["cuerpo"], 0, 20)."</td>";
-    
-    
+while($fila = $resultado->fetch_assoc()){
 ?>
-
-
-    <td>
-        <a href="../Controllers/Post_Controller.php?action=SHOWCURRENT&id_noticia=<?php  echo $fila['id_noticia'] ?>"><span class="lnr lnr-eye añadir"></span></a>
-        <?php
+    <h1><?php echo $fila['titulo']; ?></h1>
+    <h2><?php echo $fila['subtitulo']; ?></h2>
+    <p><?php echo substr($fila["cuerpo"], 0, 120) ?></p>
+    <div>
+<span class="badge">Publicado <?php echo $fila['fecha']?> <?php echo $fila['hora']?></span><div class="pull-right"><a href="../Controllers/Post_Controller.php?action=SHOWCURRENT&id_noticia=<?php  echo $fila['id_noticia'] ?>"><span class="lnr lnr-eye añadir"></span></a> <?php
         if(comprobarPermisos($_SESSION['login'])==1){
         ?>
         <a href="../Controllers/Post_Controller.php?action=EDIT&id_noticia=<?php  echo $fila['id_noticia'] ?>"><span class="lnr lnr-pencil editar"></span></a>
@@ -75,29 +52,27 @@ if(comprobarPermisos($_SESSION['login'])==1){
 
         <?php
       }
-        ?>
-      
-      </td>
+        ?></div>         
+     </div>
+    <hr>
+
+
+        
+
+
+
 
 <?php
-
-
-
-      echo "</tr>";
-
-     }
-
-
- 
-   
+}
 ?>
+</div>
+</div>
 
 
-  </table>
 
 
 
- 
+
 <div>
 <?php
 include '../Views/Footer.php';

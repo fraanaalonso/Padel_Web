@@ -56,6 +56,14 @@ class ADD_VIEW
 		  	<textarea name="cuerpo" id="cuerpo" rows="25" cols="155" maxlength="1000" placeholder="Escribe aquí una entrada" style="resize: none; max-width: 1000px;" required></textarea>
 		   </div>
 
+		   <div class="form-group" id="subtitulo-group">
+		  	<input type="hidden" id="fecha" name="fecha" class="form-control" placeholder="Fecha" value="<?php echo date("d/m/Y", time())?>" required >
+		   </div>
+
+		   <div class="form-group" id="subtitulo-group">
+		  	<input type="hidden" id="hora" name="hora" class="form-control" placeholder="Hora" value="<?php echo date('G:i');?>" required >
+		   </div>
+
 
 
 

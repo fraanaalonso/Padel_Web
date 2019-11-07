@@ -13,7 +13,7 @@ class SHOWALL_VIEW
 	
 	function mostrarDatos($fila, $resultado){
     include '../Views/HeaderPost.php';
-
+    require_once '../Functions/funciones.php';
 
 
 
@@ -69,7 +69,20 @@ class SHOWALL_VIEW
         <a href="../Controllers/Match_Controller.php?action=SHOWCURRENT&id_partido=<?php  echo $fila['id_partido'] ?>"><span class="lnr lnr-eye añadir"></span></a>
         <a href="../Controllers/Match_Controller.php?action=EDIT&id_partido=<?php  echo $fila['id_partido'] ?>"><span class="lnr lnr-pencil editar"></span></a>
         <a href="../Controllers/Match_Controller.php?action=DELETE&id_partido=<?php  echo $fila['id_partido'] ?>"><span class="lnr lnr-trash borrar"></span></a>
+
+
+        <?php
+
+        if(!comprobarNumeroInscritos($fila['id_partido'])){
+
+        ?>
         <a href="../Controllers/Match_Controller.php?action=INSCRIBIR&id_partido=<?php echo $fila['id_partido']?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 20px"></span></a>
+
+<?php
+
+      }
+
+?>
         <a href="../Controllers/Match_Controller.php?action=SHOWINSCRITOS&id_partido=<?php  echo $fila['id_partido'] ?>"><span class="lnr lnr-users editar" style="font-size: 20px"></span></a>
       </td>
 

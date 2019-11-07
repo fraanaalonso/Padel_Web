@@ -58,7 +58,7 @@ class SHOWCURRENT_PROMOTIONS
 
 
       <td>
-        <a href="../Controllers/Match_Controller.php?action=DELETE&id_partido=<?php  echo $fila['id_partido'] ?>"><span class="lnr lnr-trash borrar"></span></a>
+        <a href="../Controllers/Match_Controller.php?action=DELETEMYPROMOTION&login=<?php  echo $fila['login'] ?>&id_partido=<?php  echo $fila['id_partido'] ?>"><span class="lnr lnr-trash borrar"></span></a>
       </td>
 
 <?php

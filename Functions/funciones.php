@@ -148,6 +148,55 @@ function obtenerFotoReducida($foto){
 
 
 
+function comprobarNumeroInscritos($id_partido){
+
+	include_once '../includes/db.php';
+	$bd;
+	$bd = ConectarDB();
+
+	$sql = "SELECT * FROM user_game  WHERE (id_partido = '".$id_partido."')";
+
+	$resultado = $bd->query($sql);
+	
+
+	if($resultado->num_rows == 4){
+		return true;
+	}
+
+	else{
+		return false;
+	}
+	
+		
+		
+
+}
+
+
+
+function comprobarLoginInscrito($login){
+
+	include_once '../includes/db.php';
+	$bd;
+	$bd = ConectarDB();
+
+	$sql = "SELECT * FROM user_game  WHERE (login = '".$login."')";
+
+	$resultado = $bd->query($sql);
+	
+
+	if($resultado->num_rows == 0)
+	{
+		return true;
+	}
+
+	else{
+		return false;
+	}
+}
+
+
+
 
 
 

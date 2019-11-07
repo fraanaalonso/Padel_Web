@@ -13,6 +13,7 @@ if (!isset($_REQUEST['action'])){
 }
 
 
+require_once '../Functions/funciones.php';
 
 include '../Views/MATCH_VIEWS/SHOWALL_VIEW.php';
 include '../Views/MATCH_VIEWS/ADD_VIEW.php';
@@ -70,6 +71,9 @@ Switch ($_REQUEST['action']){
 				break;
 
 		case 'INSCRIBIR':
+
+
+	
 			
 			if(!$_POST){
 				include_once '../Models/MATCH_MODEL.php';
@@ -95,6 +99,9 @@ Switch ($_REQUEST['action']){
 
 			new MESSAGE($respuesta, './Match_Controller.php?action=SHOWMYPROMOTIONS');
 		}
+
+
+	
 
 
 		break;		
@@ -199,6 +206,26 @@ Switch ($_REQUEST['action']){
 					$respuesta = $modelo->DELETE();
 					new MESSAGE($respuesta,'./Match_Controller.php');
 				}
+					
+					break;
+
+
+		case 'DELETEMYPROMOTION':
+
+					 include_once '../Models/USER_GAME_MODEL.php';
+					 include_once '../Models/MATCH_MODEL.php';
+
+					$modelo = new USER_GAME_MODEL($_REQUEST['login'], $_REQUEST['id_partido']);
+					$respuesta = $modelo->DELETEMYPROMOTION();
+					$all = new MATCH_MODEL(' ' ,' ' ,' ', ' ', ' ');
+
+					
+                     $datos = $all->SEARCHMYPROMOTIONS();
+					$lista = array('ID Partido','Login');
+
+				
+					new SHOWCURRENT_PROMOTIONS($lista, $datos);
+					
 					
 					break;
 

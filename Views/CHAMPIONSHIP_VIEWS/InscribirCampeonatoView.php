@@ -196,7 +196,7 @@ class InscribirCampeonatoView
 
 		?>
 		   
-0
+
 		
 	</select>
 	</div>

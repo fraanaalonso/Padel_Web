@@ -81,7 +81,7 @@ class COUPLE_CHAMPIONSHIP_MODEL
 	$sql = "select
 					*
 					
-					FROM COUPLE";
+					FROM CHAMPIONSHIP_COUPLE";
 
    
    
@@ -98,17 +98,14 @@ class COUPLE_CHAMPIONSHIP_MODEL
 
 function RellenaDatos()
 		{	
-		    $sql = "SELECT * FROM COUPLE  WHERE (id_pareja = '$this->id_pareja')";
+		    $sql = "SELECT * FROM CHAMPIONSHIP_COUPLE  WHERE (id_campeonato = '$this->id_campeonato')";
 
 		    if (!($resultado = $this->bd->query($sql))){
-				return 'No existe en la base de datos'; 
-			}
-			
-		    else{ 
-
-			$result = $resultado->fetch_array();
-				return $result;
-			}
+		return 'Error en la consulta sobre la base de datos';
+	}
+    else{ 
+		return $resultado;
+	}
 		}
 
 

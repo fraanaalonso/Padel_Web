@@ -119,7 +119,7 @@ Switch ($_REQUEST['action']){
 
 			
 
-			new MESSAGE($result2, './Championship_Controller.php?action=SHOWCOUPLES');
+			new MESSAGE($result, './Championship_Controller.php');
 
 
 		}
@@ -130,16 +130,15 @@ Switch ($_REQUEST['action']){
 
 
 				if (!$_POST){
-					include_once '../Models/COUPLE_MODEL.php';
-					$modelo = new COUPLE_MODEL(' ' ,' ' ,' ', ' ', ' ','');
+					include_once '../Models/COUPLE_CHAMPIONSHIP_MODEL.php';
+					$modelo = new COUPLE_CHAMPIONSHIP_MODEL(' ' ,$_REQUEST['id_campeonato']);
 				}
 				else{
-					  include_once '../Models/COUPLE_MODEL.php';
+					  include_once '../Models/COUPLE_CHAMPIONSHIP_MODEL.php';
 				}
 
-
-				$datos = $modelo->SEARCH();
-				$lista = array('ID Pareja','ID Categoría', 'ID Grupo', 'ID Normativa', 'Login Capitán', 'Login Acompañante');
+				$datos = $modelo->RellenaDatos();
+				$lista = array('ID Pareja','ID Campeonato');
 
 				
 				new SHOWALL_COUPLE($lista, $datos);

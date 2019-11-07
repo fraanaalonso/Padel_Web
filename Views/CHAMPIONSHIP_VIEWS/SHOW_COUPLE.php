@@ -33,11 +33,7 @@ class SHOWALL_COUPLE
  <table border="1">
   <thead>
   <tr>
-    <th>ID  Pareja </th>
-     <th>Categoria</th>
-    <th>Grupo</th>
-    <th>Login Capitán</th>
-    <th>Acompañante</th>
+     <th>ID  Pareja</th>
     <th>Opciones</th>
 
   </tr>
@@ -49,16 +45,11 @@ class SHOWALL_COUPLE
   
   while ($fila = $resultado->fetch_assoc())
   {
-    if($_SESSION['login'] == $fila['login1'] || $_SESSION['login'] == $fila['login2'] || comprobarPermisos($_SESSION['login']) == 1){
-
+    
       echo "<tr>";
 
 
-      echo "<td>".$fila['id_pareja']."</td>";
-      echo "<td>".$fila["id_categoria"]."</td>";
-      echo "<td>".$fila["id_grupo"]."</td>";
-      echo "<td>".$fila["login1"]."</td>";
-      echo "<td>".$fila["login2"]."</td>";
+      echo "<td>".$fila["id_pareja"]."</td>";
     
 
 
@@ -77,7 +68,7 @@ class SHOWALL_COUPLE
     
 
       echo "</tr>";
-    }
+    
 
      }
 

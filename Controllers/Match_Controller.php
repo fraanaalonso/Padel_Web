@@ -24,6 +24,8 @@ include '../Views/Message_View.php';
 include '../Views/ALERT.php';
 include '../Views/MATCH_VIEWS/Inscripcion_View.php';
 include '../Views/MATCH_VIEWS/SHOWCURRENT_PROMOTIONS.php';
+include '../Views/MATCH_VIEWS/SHOWINSCRITOS.php';
+
 function get_data(){
 	$id_partido = $_REQUEST['id_partido'];
 	$id_pista ='';
@@ -113,6 +115,21 @@ Switch ($_REQUEST['action']){
 
 				
 				new SHOWCURRENT_PROMOTIONS($lista, $datos);
+
+
+		break;
+
+
+		case 'SHOWINSCRITOS':
+
+			 include '../Models/MATCH_MODEL.php';
+					$modelo = get_data();
+
+					
+
+					$respuesta = $modelo->SEARCHINSCRITOS();
+
+					new SHOWINSCRITOS($respuesta);
 
 
 		break;

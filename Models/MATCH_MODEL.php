@@ -131,6 +131,16 @@ class MATCH_MODEL
 
 
 
+	function SEARCHINSCRITOS(){
+
+		$sql = "select * FROM user_game where id_partido = '$this->id_partido' ";
+	    $resultado = $this->bd->query($sql);
+	    return $resultado;
+
+	}
+
+
+
 
 
 

@@ -70,6 +70,7 @@ class SHOWALL_VIEW
         <a href="../Controllers/Match_Controller.php?action=EDIT&id_partido=<?php  echo $fila['id_partido'] ?>"><span class="lnr lnr-pencil editar"></span></a>
         <a href="../Controllers/Match_Controller.php?action=DELETE&id_partido=<?php  echo $fila['id_partido'] ?>"><span class="lnr lnr-trash borrar"></span></a>
         <a href="../Controllers/Match_Controller.php?action=INSCRIBIR&id_partido=<?php echo $fila['id_partido']?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 20px"></span></a>
+        <a href="../Controllers/Match_Controller.php?action=SHOWINSCRITOS&id_partido=<?php  echo $fila['id_partido'] ?>"><span class="lnr lnr-users editar" style="font-size: 20px"></span></a>
       </td>
 
 <?php

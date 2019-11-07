@@ -57,9 +57,8 @@ class SHOWALL_COUPLE
 
 
        <td>
-        <a href="../Controllers/Championship_Controller.php?action=SHOWCURRENT&id_pareja=<?php  echo $fila['id_pareja'] ?>"><span class="lnr lnr-eye añadir"></span></a>
-        <a href="../Controllers/Championship_Controller.php?action=EDIT&id_pareja=<?php  echo $fila['id_pareja'] ?>"><span class="lnr lnr-pencil editar"></span></a>
-        <a href="../Controllers/Championship_Controller.php?action=DELETE&id_pareja=<?php  echo $fila['id_pareja'] ?>"><span class="lnr lnr-trash borrar"></span></a>
+        <a href="../Controllers/Couple_Controller.php?action=SHOWCURRENT&id_pareja=<?php  echo $fila['id_pareja'] ?>"><span class="lnr lnr-eye añadir"></span></a>
+        <a href="../Controllers/Couple_Controller.php?action=DELETE&id_pareja=<?php  echo $fila['id_pareja'] ?>"><span class="lnr lnr-trash borrar"></span></a>
       
       </td>
 

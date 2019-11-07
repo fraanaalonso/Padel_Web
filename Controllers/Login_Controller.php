@@ -2,6 +2,12 @@
 
 
 session_start();
+
+include_once '../Functions/Autenticacion.php';
+if(autenticado()){
+	header('Location: ../Views/PaginaPrincipal.php');
+}
+
 if(!isset($_REQUEST['login']) && !(isset($_REQUEST['password']))){
 	include '../Views/Login_View.php';
 	$login = new Login();
@@ -22,7 +28,7 @@ else{
 	}
 	else{
 		include_once '../Views/Message_View.php';
-		new MESSAGE($respuesta, 'Login_Controller.php');
+		new MESSAGE($respuesta, './Login_Controller.php');
 	}
 
 }

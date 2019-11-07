@@ -308,24 +308,23 @@ function getDBDatos($login){
 function loginExiste(){
 
 	
-	$sql = "SELECT *
-			FROM USER
-			WHERE (
-				(login = '$this->login') 
-			)";
-	$resultado = $this->bd->query($sql);
-	if ($resultado->num_rows == 0){
-		return 'El login no existe';
-	}
-	else{
-		$tupla = $resultado->fetch_array();
-		if ($tupla['password'] == $this->password){
-			return true;
+	$login = mysqli_real_escape_string($this->bd, $this->login);	
+		
+		$sql = "SELECT password FROM USER WHERE login = '$login'";
+		
+		$resultado = $this->bd->query($sql);
+		
+		if(!$resultado){
+			return 'No se ha podido conectar con la BD';
+		}else if($resultado->num_rows == 0){
+			return 'Login incorrecto';
+		}else{
+			if($this->password == $resultado->fetch_assoc()["password"]){
+				return 'true';
+			}else{
+				return 'Contraseña incorrecta';
+			}
 		}
-		else{
-			return 'La contraseña para este USER no es correcta';
-		}
-	}
 }
 
 
@@ -411,6 +410,19 @@ function registrar(){
 		}		
 	}
 
+
+
+
+
+function getDBDatosUser(){
+
+	include_once '../Models/USER_MODEL.php';
+
+	$sql = "SELECT * FROM USER";		
+	$resultado = $this->bd->query($sql);
+
+	return $resultado;
+}
 
 
 

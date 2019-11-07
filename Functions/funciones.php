@@ -148,4 +148,7 @@ function obtenerFotoReducida($foto){
 
 
 
+
+
+
 ?>

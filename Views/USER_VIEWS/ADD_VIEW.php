@@ -106,9 +106,9 @@ class ADD_VIEW
 		   <div class="form-group" id="sexo-group">
 		   	<select name="sexo" id="sexo" class="form-control" required>
 
-		   		<option>Hombre</option>
+		   		<option>Masculino</option>
 
-		   		<option>Mujer</option>
+		   		<option>Femenino</option>
 
 		   	</select>
 		   </div>

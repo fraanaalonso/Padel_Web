@@ -52,27 +52,6 @@ function get_data(){
 }
 
 
-function get_data_couple_championship(){
-	include_once '../Models/COUPLE_CHAMPIONSHIP_MODEL.php';
-	$id_pareja = '';
-	$id_campeonato = '';
-
-	if($_POST){
-
-		if(isset($_POST['id_pareja'])) $id_pareja = $_POST['id_pareja'];
-		if(isset($_POST['id_campeonato'])) $id_campeonato = $_POST['id_campeonato'];
-
-		return new COUPLE_CHAMPIONSHIP_MODEL($id_pareja,$id_campeonato);
-
-	} else {
-
-		if(isset($_GET['id_pareja'])) $id_pareja = $_GET['id_pareja'];
-		if(isset($_GET['id_campeonato'])) $id_campeonato = $_GET['id_campeonato'];
-
-		return new COUPLE_CHAMPIONSHIP_MODEL($id_pareja,$id_campeonato);
-
-	}
-}
 
 
 Switch ($_REQUEST['action']){
@@ -103,12 +82,17 @@ Switch ($_REQUEST['action']){
 			if(!$_POST){
 
 				include_once '../Models/CHAMPIONSHIP_MODEL.php';
+				include_once '../Models/USER_MODEL.php';
 					$modelo= get_data();
+					$aux = new User_Modelo('','','','','','','','','','','','');
+					$toret = new CHAMPIONSHIP_MODEL('','','','','','');
 					$valores= $modelo ->RellenaDatos();
+					$datos = $toret->getDBDatosCampeonato($valores['id_campeonato']);
+					$consulta = $aux->getDBDatosUser();
 
 				
 
-					new InscribirCampeonatoView($valores);
+					new InscribirCampeonatoView($valores,$datos, $consulta);
 			}
 
 			else{
@@ -121,9 +105,7 @@ Switch ($_REQUEST['action']){
 			$result = $pareja->REGISTRARPAREJA();
 			echo $result[0];
 
-			/*
-			$modelo = get_data_couple_championship();
-			*/
+		
 
 			$porca = new COUPLE_CHAMPIONSHIP_MODEL(' ', $_POST['id_campeonato'] );
 

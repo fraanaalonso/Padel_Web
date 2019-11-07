@@ -190,9 +190,39 @@ function RellenaDatos()
 		}
 
 
+
+function getDBDatosCampeonato($id_campeonato){
+
+		
+
+		$sql = "SELECT * FROM CHAMPIONSHIP WHERE id_campeonato = '".$id_campeonato."'";
+
+	if (!($resultado = $this->bd->query($sql))){
+		return 'Error en la consulta sobre la base de datos';
+	}
+
+	else{
+		$sominho = $this->bd->query($sql);
+		$delinha = mysqli_fetch_assoc($sominho);
+
+		return [$delinha['id_campeonato'],
+				$delinha['fecha_inicio'],
+				$delinha['fecha_limite'],
+				$delinha['id_normativa'],
+				$delinha['id_grupo'],
+				$delinha['id_categoria'],];
+	}
 	}
 
 
 
+	
+
+
+
+	
+
+
+}
 
 ?>

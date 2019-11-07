@@ -386,6 +386,7 @@ function registrar(){
 					sexo,
 					telefono,
 					fecha,
+					foto,
 					rol_id
 					) 
 						VALUES (
@@ -399,6 +400,7 @@ function registrar(){
 						'$this->sexo',
 						'$this->telefono',
 						'$this->fecha',
+						'$this->foto',
 						'$this->rol_id'
 						)";
 			

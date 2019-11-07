@@ -18,7 +18,7 @@ class Register
 ?>
 
 
-<body class="form_login" style="background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/2bcefa56103745.59a0373e6707e.png);">
+<body class="form" style="background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/2bcefa56103745.59a0373e6707e.png);">
 <div class="modal-dialog text-center" style="top: 100px;">
 	<div class="col-sm-28 main-section">
 		<div class="modal-content">
@@ -27,7 +27,7 @@ class Register
 				
 			</div>
 			
-		<form class="col-12" method="post" action="../Controllers/Register_Controller.php" onsubmit="return validar();">
+		<form class="col-12" method="post" action="../Controllers/Register_Controller.php" enctype="multipart/form-data" onsubmit="return validar();">
 
 		 <div class="form-group" id="login-group">
 		  	<input type="text" id="login" name="login" class="form-control" placeholder="Login" required>
@@ -113,6 +113,10 @@ class Register
 		  	<input type="date" id="fecha" name="fecha" class="form-control" placeholder="Fecha de Nacimiento" required>
 		   </div>
 
+		   <div class="form-group" id="foto-group">
+		  	<input type="file" id="foto" name="foto" class="form-control" placeholder="Foto de Perfil" required>
+		   </div>
+
 	
 
 		 <div class="form-group">
@@ -135,7 +139,7 @@ class Register
 			  </div>
 			  	</div>
 
-		   <button type="submit" class="btn btn-light"><i class="fas fa-sign-in-alt"></i><span class="lnr lnr-file-add" style="font-size: 35px;"></span></button>
+		   <button type="submit" class="btn btn-light"><i class="fas fa-sign-in-alt"></i>Registrar</button>
 		   <p>
 		   	<div class="col-12-forgot">
 			<a href="../Controllers/Login_Controller.php">Iniciar Sesión</a>

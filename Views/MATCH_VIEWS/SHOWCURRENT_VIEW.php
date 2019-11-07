@@ -1,6 +1,6 @@
 <?php
 
-class SHOWCURRENT
+class SHOWCURRENT_VIEW
 {
   
   function __construct($valores)

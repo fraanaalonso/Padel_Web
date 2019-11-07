@@ -25,16 +25,17 @@ class MATCH_MODEL
 		$this->hora_fin = $hora_fin;
 		$this->id_pista = $id_pista;
 
+		include_once '../includes/db.php';
 		$this->bd = ConectarDB();
 	}
 
 
-	function inscribirPromocion($x){
-		include_once '../Models/USER_MODEL.php';
+	function inscribirPromocion($login){
+		
 
-			if (($this->id_partido <> '')){ 
+	if (($this->id_partido <> '')){ 
 
-        $sql = "SELECT game.id_partido, user.login FROM game,user WHERE (game.id_partido = '$this->id_partido' AND user.login = '$this->login')";
+        $sql = "SELECT * FROM user_game WHERE (login = '".$login."') AND (id_partido = '$this->id_partido')";
 
 		if (!$result = $this->bd->query($sql)){ 
 			return 'No se ha podido conectar con la base de datos';
@@ -46,13 +47,13 @@ class MATCH_MODEL
 
 				$sql = "INSERT INTO user_game (
 					
-					game.id_partido,
-					user.login
+					login,
+					id_partido
 					) 
 						VALUES (
 						
-						'$this->id_partido',
-						'$this->".$x."'
+						'".$login."',
+						'$this->id_partido'
 						)";
 					
 				
@@ -190,6 +191,21 @@ function SEARCH(){
 }
 
 
+function SEARCHMYPROMOTIONS(){
+
+	$sql = "select
+					*
+					
+					FROM user_game where login = '".$_SESSION['login']."'";
+
+   
+    if (!($resultado = $this->bd->query($sql))){
+		return 'Error en la consulta sobre la base de datos';
+	}
+    else{ 
+		return $resultado;
+	}
+}
 
 
 function DELETE()

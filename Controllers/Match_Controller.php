@@ -23,7 +23,7 @@ include '../Views/MATCH_VIEWS/EDIT_VIEW.php';
 include '../Views/Message_View.php';
 include '../Views/ALERT.php';
 include '../Views/MATCH_VIEWS/Inscripcion_View.php';
-
+include '../Views/MATCH_VIEWS/SHOWCURRENT_PROMOTIONS.php';
 function get_data(){
 	$id_partido = $_REQUEST['id_partido'];
 	$id_pista ='';
@@ -32,7 +32,7 @@ function get_data(){
 	$fecha='';
 	$action = $_REQUEST['action'];
 
-	$CHAMPIONSHIP = new MATCH_MODEL(
+	$MATCH = new MATCH_MODEL(
 		$id_partido, 
 		$id_pista,
 		$hora_inicio,
@@ -41,7 +41,7 @@ function get_data(){
 		$action
 	);
 
-	return $CHAMPIONSHIP;
+	return $MATCH;
 }
 
 
@@ -78,16 +78,21 @@ Switch ($_REQUEST['action']){
 
 
 			}
+			else{
 
 			include_once '../Models/MATCH_MODEL.php';
 			include_once '../Models/USER_MODEL.php';
-			$modelo = new MATCH_MODEL($_REQUEST['id_partido'],'', '','','');
-			$usuario = new USER_Modelo($_REQUEST['login'],'','','','','','','','','','','');
 
-			$respuesta = $modelo->inscribirPromocion($usuario);
+			$id_partido = $_POST['id_partido'];
+			$modelo = new MATCH_MODEL($id_partido,'','','','');
+			
 
-			new MESSAGE($respuesta, './Match_Controller.php?actionSHOWMYPROMOTIONS');
 
+			$respuesta = $modelo->inscribirPromocion($_SESSION['login']);
+
+
+			new MESSAGE($respuesta, './Match_Controller.php?action=SHOWMYPROMOTIONS');
+		}
 
 
 		break;		
@@ -107,7 +112,7 @@ Switch ($_REQUEST['action']){
 				$lista = array('ID Partido','Login');
 
 				
-				new SHOWCURRENTS_PROMOTIONS($lista, $datos);
+				new SHOWCURRENT_PROMOTIONS($lista, $datos);
 
 
 		break;

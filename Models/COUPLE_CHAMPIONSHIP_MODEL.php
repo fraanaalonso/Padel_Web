@@ -44,7 +44,7 @@ class COUPLE_CHAMPIONSHIP_MODEL
 
 				$sql = "INSERT INTO CHAMPIONSHIP_COUPLE (
 					id_pareja,
-					id_campeonato,
+					id_campeonato
 					) 
 						VALUES (
 						'$this->id_pareja',
@@ -57,7 +57,7 @@ class COUPLE_CHAMPIONSHIP_MODEL
 					return 'Error en la inserción';
 				}
 				else{ 
-					return 'Pareja registrada con éxito'; 
+					return 'Pareja registrada e inscrita en el campeonato.'; 
 				}
 				
 			}

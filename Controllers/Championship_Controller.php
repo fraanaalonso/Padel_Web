@@ -100,20 +100,27 @@ Switch ($_REQUEST['action']){
 			include_once '../Models/COUPLE_CHAMPIONSHIP_MODEL.php';
 			include_once '../Models/COUPLE_MODEL.php';
 
-			$pareja = new COUPLE_MODEL(' ', $_REQUEST['id_categoria'], $_REQUEST['id_grupo'], $_REQUEST['login1'], $_REQUEST['login2']);
-
+			$id_pareja = $_POST['id_pareja'];
+			$id_campeonato = $_POST['id_campeonato'];
+			$pareja = new COUPLE_MODEL($id_pareja, $_REQUEST['id_categoria'], $_REQUEST['id_grupo'], $_REQUEST['login1'], $_REQUEST['login2']);
 			$result = $pareja->REGISTRARPAREJA();
-			echo $result[0];
+
+			$obj = new COUPLE_MODEL('','','','','');
+			$dato = $obj->obtenerUltimoInscrito();
+	
+			$pareja_campeonato = new COUPLE_CHAMPIONSHIP_MODEL($dato[0],$id_campeonato);
+			
+
+		
+			$result2 = $pareja_campeonato->ADD();
+			
 
 		
 
-			$porca = new COUPLE_CHAMPIONSHIP_MODEL(' ', $_POST['id_campeonato'] );
-
 			
 
-			$respuesta = $porca->ADD();
+			new MESSAGE($result2, './Championship_Controller.php?action=SHOWCOUPLES');
 
-			new MESSAGE($respuesta, './Championship_Controller.php?action=SHOWCOUPLES');
 
 		}
 			

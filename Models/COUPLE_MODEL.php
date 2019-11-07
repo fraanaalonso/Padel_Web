@@ -124,6 +124,21 @@ function RellenaDatos()
 
 
 
+function obtenerUltimoInscrito(){
+	$sql = "SELECT id_pareja FROM COUPLE ORDER BY id_pareja DESC LIMIT 1";
+	if (!($resultado = $this->bd->query($sql))){
+				return 'No existe en la base de datos'; 
+			}
+			
+		    else{ 
+
+			$result = $resultado->fetch_array();
+				return $result;
+			}
+}
+
+
+
 
 
 

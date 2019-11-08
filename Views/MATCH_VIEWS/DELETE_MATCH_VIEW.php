@@ -29,7 +29,7 @@ class DELETE_MATCH_VIEW
 
          <form name="x" method="post" action="../Controllers/Match_Controller.php?action=DELETE">
 
-           <input type="hidden" name="id_campeonato" value="<?php echo $valores[0];?>">
+           <input type="hidden" name="id_partido" value="<?php echo $valores[0];?>">
           
         </form>
 

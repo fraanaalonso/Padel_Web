@@ -197,6 +197,26 @@ function comprobarLoginInscrito($login){
 
 
 
+function comprobarSexo($login){
+	include_once '../Models/USER_MODEL.php';
+	$user = new User_Modelo('','','','','','','','','','','','');
+	$respuesta = $user->getDBDatos($login);
+
+	
+	return $respuesta[7];
+}
+
+
+
+function categoriaCampeonato($id_campeonato){
+	include_once '../Models/CHAMPIONSHIP_MODEL.php';
+	$user = new CHAMPIONSHIP_MODEL('','','','','','');
+	$respuesta = $user->getDBDatosCampeonato($id_campeonato);
+
+	
+	return $respuesta[5];
+}
+
 
 
 

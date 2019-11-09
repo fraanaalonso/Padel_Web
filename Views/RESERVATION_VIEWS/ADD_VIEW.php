@@ -56,7 +56,7 @@ class ADD_VIEW
 		  </div>
 
 		  	<div class="form-group" >
-		  	<input type="date" id="fecha" name="fecha" class="form-control"  >
+		  	<input type="date" readonly id="fecha" name="fecha" class="form-control"  >
 		   </div>
 		   
 

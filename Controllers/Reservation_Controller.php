@@ -19,7 +19,6 @@ include '../Views/RESERVATION_VIEWS/SHOWALL_VIEW.php';
 include '../Views/RESERVATION_VIEWS/ADD_VIEW.php';
 include '../Views/RESERVATION_VIEWS/SEARCH_VIEW.php';
 include '../Views/RESERVATION_VIEWS/SHOWCURRENT_VIEW.php';
-include '../Views/RESERVATION_VIEWS/DELETE_VIEW_RESERVATION.php';
 include '../Views/RESERVATION_VIEWS/EDIT_VIEW.php';
 include '../Views/Message_View.php';
 
@@ -136,22 +135,20 @@ Switch ($_REQUEST['action']){
 
 		case 'DELETE':
 
-				if (!$_POST) {
-					 include_once '../Models/RESERVATION_MODEL.php';
-					$modelo= get_data();
-					$valores= $modelo ->RellenaDatos();
-					new DELETE_VIEW_RESERVATION($valores);
-				}
-
-				else{
-
-					 include_once '../Models/RESERVATION_MODEL.php';
-					$modelo =get_data();
+				include_once '../Models/RESERVATION_MODEL.php';
+				$modelo = get_data();
 					$respuesta = $modelo->DELETE();
-					new MESSAGE($respuesta,'./Reservation_Controller.php');
-				}
+					$all = new RESERVATION_MODEL(' ' ,' ' ,' ', ' ', ' ','');
+
 					
+                     $datos = $all->SEARCH();
+					$lista =  array('  Código de Reserva  ', 'Identificador de Pista', '  Login  ', 'Comienzo Partido','Hora Partido','Fecha del Partido', 'Precio', 'Opciones');
+
+				
+					new SHOWALLl_VIEW($lista, $datos);
 					break;
+					
+				
 
 
 		case 'SHOWCURRENT':

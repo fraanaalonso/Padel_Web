@@ -68,8 +68,16 @@ class SHOWALL_VIEW
 
       <td>
         <a href="../Controllers/Championship_Controller.php?action=SHOWCURRENT&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-eye añadir"></span></a>
+
+<?php
+  if(comprobarPermisos($_SESSION['login']) == 1){
+?>
         <a href="../Controllers/Championship_Controller.php?action=EDIT&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-pencil editar"></span></a>
         <a href="../Controllers/Championship_Controller.php?action=DELETE&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-trash borrar"></span></a>
+
+<?php
+}
+?>
         <a href="../Controllers/Championship_Controller.php?action=REGISTRAR&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 20px"></span></a>
         <a href="../Controllers/Championship_Controller.php?action=SHOWCOUPLES&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-users editar" style="font-size: 20px"></span></a>
       

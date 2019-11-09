@@ -18,7 +18,6 @@ include '../Views/POST_VIEWS/SHOWALL_VIEW.php';
 include '../Views/POST_VIEWS/ADD_VIEW.php';
 include '../Views/POST_VIEWS/SEARCH_VIEW.php';
 include '../Views/POST_VIEWS/SHOWCURRENT_VIEW.php';
-include '../Views/POST_VIEWS/DELETE_VIEW.php';
 include '../Views/POST_VIEWS/EDIT_VIEW.php';
 include '../Views/Message_View.php';
 include '../Views/ALERT.php';
@@ -119,22 +118,18 @@ Switch ($_REQUEST['action']){
 
 
 		case 'DELETE':
-
-				if (!$_POST) {
 					 include_once '../Models/POST_MODEL.php';
-					$modelo= new POST_MODEL($_REQUEST['id_noticia'],'', '', '','','');
-					$valores= $modelo ->RellenaDatos();
-					new DELETE_VIEW($valores);
-				}
 
-				else{
-
-					 include_once '../Models/POST_MODEL.php';
-					$modelo =get_data();
+					$modelo = get_data();
 					$respuesta = $modelo->DELETE();
-					new MESSAGE($respuesta,'./Post_Controller.php');
-				}
+					$all = new POST_MODEL(' ' ,' ' ,' ', ' ', ' ','');
+
 					
+                     $datos = $all->SEARCH();
+					$lista = array('  Código  ', '  Titulo  ', '  Subtitulo  ', '  Contenido  ', 'Fecha de Publicación','Hora','  Opciones  ');
+
+				
+					new SHOWALL_VIEW($lista, $datos);
 					break;
 
 

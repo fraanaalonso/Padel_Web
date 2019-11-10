@@ -94,8 +94,18 @@ Switch ($_REQUEST['action']){
 		$clave = $modelo->RellenaDatos();
 		$fechaSeleccionada = $_POST['fecha'];
 
-		new SHOWSCHEDULE($clave, $fechaSeleccionada);
+		$currentDate = strtotime(date("Y-m-d", time()));
 
+		if ($currentDate > strtotime($fechaSeleccionada)){
+			new MESSAGE("La fecha seleccionada corresponde a un día ya transcurrido","../Controllers/Reservation_Controller.php?action=INSERTAR&id_pista=$clave[0]");
+		}
+		/*elseif(strtotime($fechaSeleccionada."+ 7 days")){
+			new MESSAGE("Se permiten reservas con un rango máximo de 7 días a partir de la fecha actual", "../Controllers/Reservation_Controller.php?action=INSERTAR&id_pista=$clave[0]");
+		}*/
+		else{
+
+		new SHOWSCHEDULE($clave, $fechaSeleccionada);
+		}
 
 
 		break;

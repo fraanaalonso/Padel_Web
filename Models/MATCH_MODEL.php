@@ -243,7 +243,7 @@ function DELETE()
 
 function RellenaDatos()
 		{	
-		    $sql = "SELECT * FROM game  WHERE (id_partido = '$this->id_partido')";
+		    $sql = "SELECT * FROM court  WHERE (id_pista = '$this->id_pista')";
 
 		    if (!($resultado = $this->bd->query($sql))){
 				return 'No existe en la base de datos'; 

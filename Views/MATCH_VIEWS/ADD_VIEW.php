@@ -29,15 +29,17 @@ class ADD_VIEW
 <div class="formulario">
 			
 			
-		<form class="col-12" method="post" action="../Controllers/Match_Controller.php?action=PROMOCIONAR" onsubmit="return validar();">
+		<form class="col-12" method="post" action="../Controllers/Match_Controller.php?action=INSERTAR" onsubmit="return validar();">
 
 		 <div class="form-group">
 		  	<input type="hidden" id="id_partido" name="id_partido"  class="form-control" placeholder="Identificador Partido" >
 		   </div>	
 
 		  <div class="form-group">
-		  	<input type="text" id="id_pista" name="id_pista" value="<?php echo $clave ?>" class="form-control" placeholder="Identificador Pista" >
+		  	<input type="text" id="id_pista" name="id_pista" readonly value="<?php echo $clave[0] ?>"  class="form-control" placeholder="Identificador Pista" >
 		   </div> 
+
+<!--
 
 		  <div class="form-group">
 		  	<input type="text" id="hora_inicio" name="hora_inicio" class="form-control" placeholder="Inicio del Partido" >
@@ -47,8 +49,8 @@ class ADD_VIEW
 		   <div class="form-group" >
 		  	<input type="text" id="hora_fin" name="hora_fin" class="form-control" placeholder="Hora Fin" >
 		   </div>
-
-		   <div class="form-group" >
+-->
+		   <div class="form-group" >Selecciona la fecha de promoción
 		  	<input type="date" id="fecha" name="fecha" class="form-control" placeholder="Fecha" >
 		   </div>
 
@@ -56,7 +58,7 @@ class ADD_VIEW
 		
 		
 
-		   <button type="submit" class="btn btn-light"><span class="lnr lnr-file-add" style="font-size: 35px;"></span></button>
+		   <button type="submit" class="btn btn-light">Consultar Horarios</span></button>
 		   <p>
 		  
 		   </p>

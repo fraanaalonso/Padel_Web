@@ -52,22 +52,20 @@ Switch ($_REQUEST['action']){
 
 	
 		case 'PROMOCIONAR':
-				if (!$_POST){
-					include_once '../Models/COURT_MODEL.php';
-					$clave = $_REQUEST['id_pista'];
-
-					
-					new ADD_VIEW($clave);
 				
-				}
-				else{
-				 include_once '../Models/MATCH_MODEL.php';
-				  $modelo= new MATCH_MODEL(' ',$_REQUEST['id_pista'], $_REQUEST['hora_inicio'],$_REQUEST['hora_fin'], $_REQUEST['fecha']);
 
-					$respuesta = $modelo->añadirPromocion();
-					new MESSAGE($respuesta,'./Match_Controller.php');
-					
-				}
+				if(!$_POST){
+
+				include_once '../Models/MATCH_MODEL.php';
+				$modelo = new MATCH_MODEL(' ',$_REQUEST['id_pista'], '','', '');
+				$clave = $modelo->RellenaDatos();
+
+				
+				new ADD_VIEW($clave);
+				
+			}
+			
+				
 				break;
 
 		case 'INSCRIBIR':

@@ -29,7 +29,7 @@ class ADD_VIEW
 <div class="formulario">
 			
 			
-		<form class="col-12" method="post" action="../Controllers/Match_Controller.php?action=INSERTAR" onsubmit="return validar();">
+		<form class="col-12" method="post" action="../Controllers/Reservation_Controller.php?action=SHOWSCHEDULE" onsubmit="return validar();">
 
 		 <div class="form-group">
 		  	<input type="hidden" id="id_partido" name="id_partido"  class="form-control" placeholder="Identificador Partido" >
@@ -58,7 +58,7 @@ class ADD_VIEW
 		
 		
 
-		   <button type="submit" class="btn btn-light">Consultar Horarios</span></button>
+		   <div style="position: absolute; top: 150px; min-width: 100%; text-align: center;"><button type="submit" class="btn btn-primary">Consultar Horarios</button></div>
 		   <p>
 		  
 		   </p>

@@ -64,8 +64,15 @@ class SHOWALL_COUPLE
 
        <td>
         <a href="../Controllers/Couple_Controller.php?action=SHOWCURRENT&id_pareja=<?php  echo $fila['id_pareja'] ?>&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-eye añadir"></span></a>
+
+<?php
+if(comprobarPermisos($_SESSION['login']) == 1){
+?>
         <a href="../Controllers/Couple_Controller.php?action=DELETE&id_pareja=<?php  echo $fila['id_pareja'] ?>&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-trash borrar"></span></a>
       
+<?php
+}
+?>
       </td>
 
 <?php

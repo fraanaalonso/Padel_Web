@@ -83,7 +83,17 @@ class SHOWALL_VIEW
 <?php
 if(comprobarSexo($_SESSION['login']) == 'Femenino' && (categoriaCampeonato($fila['id_campeonato']) == 3 || categoriaCampeonato($fila['id_campeonato']) == 2)){
 ?>
+
+<?php
+if(!esInscrito($_SESSION['login'], $_SESSION['login'], $fila['id_campeonato'])){
+?>
+
         <a href="../Controllers/Championship_Controller.php?action=REGISTRAR&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 20px"></span></a>
+
+
+<?php
+}
+?>
 
 <?php
 }

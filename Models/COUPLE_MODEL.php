@@ -104,12 +104,41 @@ class COUPLE_MODEL
 	}
 }
 
+function SEARCHCURRENTCOUPLES($id_campeonato){
+
+
+	 $sql = "SELECT t.* FROM ( SELECT A.id_pareja, A.login1, A.login2, B.id_campeonato FROM COUPLE A INNER JOIN (SELECT id_pareja, id_campeonato FROM championship_couple GROUP BY id_pareja, id_campeonato) B ON B.id_pareja = A.id_pareja AND B.id_campeonato = '".$id_campeonato."' ) t";
+
+
+	  if (!($resultado = $this->bd->query($sql))){
+		return 'Error en la consulta sobre la base de datos';
+	}
+    else{ 
+		return $resultado;
+	}
+}
 
 
 
-function RellenaDatos()
+function SEARCHMYCHAMPIONSHIPS(){
+
+
+	 $sql = "SELECT t.* FROM ( SELECT A.id_pareja, A.login1, A.login2, B.id_campeonato FROM COUPLE A INNER JOIN (SELECT id_pareja, id_campeonato FROM championship_couple GROUP BY id_pareja, id_campeonato) B ON B.id_pareja = A.id_pareja AND (A.login1='".$_SESSION['login']."' || A.login2='".$_SESSION['login']."') ) t";
+
+
+	  if (!($resultado = $this->bd->query($sql))){
+		return 'Error en la consulta sobre la base de datos';
+	}
+    else{ 
+		return $resultado;
+	}
+}
+
+
+
+function RellenaDatos($id_campeonato)
 		{	
-		    $sql = "SELECT * FROM COUPLE  WHERE (id_pareja = '$this->id_pareja')";
+		    $sql = "SELECT t.* FROM ( SELECT A.id_pareja, A.login1, A.login2, B.id_campeonato FROM COUPLE A INNER JOIN (SELECT id_pareja, id_campeonato FROM championship_couple GROUP BY id_pareja, id_campeonato) B ON B.id_pareja = A.id_pareja AND B.id_campeonato = '".$id_campeonato."' AND B.id_pareja = '$this->id_pareja' ) t";
 
 		    if (!($resultado = $this->bd->query($sql))){
 				return 'No existe en la base de datos'; 
@@ -140,11 +169,44 @@ function obtenerUltimoInscrito(){
 
 
 
+function joinCouples($id_campeonato){
+	$sql= "SELECT A.id_pareja, A.login1, A.login2, B.id_campeonato FROM COUPLE A INNER JOIN (SELECT id_pareja, id_campeonato FROM championship_couple GROUP BY id_pareja, id_campeonato) B ON B.id_pareja = A.id_pareja AND B.id_campeonato = '".$id_campeonato."'";
+
+
+	  if (!($resultado = $this->bd->query($sql))){
+		return 'Error en la consulta sobre la base de datos';
+	}
+    else{ 
+		return $resultado;
+	}
+}
 
 
 
 
 
+
+
+function DELETE()
+		{	
+		   $sql = "SELECT * FROM COUPLE  WHERE 
+		   (id_pareja = '$this->id_pareja')";
+		    
+		    $result = $this->bd->query($sql);
+		    
+		    if ($result->num_rows == 1)
+		    {
+		    
+		       $sql = "DELETE FROM COUPLE  WHERE 
+		       (id_pareja = '$this->id_pareja')";
+		       
+		        $this->bd->query($sql);
+		        
+		    	return "Borrado correctamente";
+		    } 
+		    else
+		        return "No existe";
+		} 
 
 
 

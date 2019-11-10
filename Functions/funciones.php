@@ -219,5 +219,30 @@ function categoriaCampeonato($id_campeonato){
 
 
 
+function esInscrito($login1, $login2, $id_campeonato){
+
+	include_once '../includes/db.php';
+	$bd;
+	$bd = ConectarDB();
+
+	$sql = "SELECT t.login1, t.login2, t.id_campeonato FROM ( SELECT A.id_pareja, A.login1, A.login2, B.id_campeonato FROM COUPLE A INNER JOIN (SELECT id_pareja, id_campeonato FROM championship_couple GROUP BY id_pareja, id_campeonato) B ON B.id_pareja = A.id_pareja) t WHERE (t.login1 = '".$login1."' || t.login2 = '".$login2."') && t.id_campeonato = '".$id_campeonato."'";
+
+
+	$resultado = $bd->query($sql);
+	
+	if($resultado->num_rows == 0)
+	{
+		return false;
+	}
+
+	else{
+		return true;
+	}
+
+
+}
+
+
+
 
 ?>

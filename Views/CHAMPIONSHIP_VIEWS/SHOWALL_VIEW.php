@@ -28,8 +28,8 @@ class SHOWALL_VIEW
       
     <a href="../Controllers/Championship_Controller.php?action=ADD"><span class="lnr lnr-file-add" style="font-size: 35px"></span></a>
     <a href="../Controllers/Championship_Controller.php?action=SEARCH"><span class="lnr lnr-magnifier" style="font-size: 35px"></span></a>
-    
-    <a href="../Controllers/Championship_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+    <a href="../Controllers/Couple_Controller.php?action=SHOWMYCHAMPIONSHIPS"><span class="lnr lnr-list" style="font-size: 35px"></span></a>
+   <a href="../Controllers/Championship_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
 
 </div>
 
@@ -93,15 +93,23 @@ if(comprobarSexo($_SESSION['login']) == 'Femenino' && (categoriaCampeonato($fila
 <?php
 if(comprobarSexo($_SESSION['login']) == 'Masculino' && (categoriaCampeonato($fila['id_campeonato']) == 3 || categoriaCampeonato($fila['id_campeonato']) == 1)){
 ?>
+
+<?php
+if(!esInscrito($_SESSION['login'], $_SESSION['login'], $fila['id_campeonato'])){
+?>
         <a href="../Controllers/Championship_Controller.php?action=REGISTRAR&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 20px"></span></a>
 
+
+<?php
+}
+?>
 <?php
 }
 ?>
 
 
 
-        <a href="../Controllers/Championship_Controller.php?action=SHOWCOUPLES&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-users editar" style="font-size: 20px"></span></a>
+        <a href="../Controllers/Couple_Controller.php?action=SHOWCOUPLES&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-users editar" style="font-size: 20px"></span></a>
       
       </td>
 

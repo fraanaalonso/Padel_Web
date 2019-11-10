@@ -23,17 +23,20 @@ class SHOWALL_COUPLE
   
 ?>
 
+<div class="iconos-superiores">
 
-
-
+<a href="../Controllers/Championship_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
 
  
-
+</div>
 
  <table border="1">
   <thead>
   <tr>
      <th>ID  Pareja</th>
+     <th>ID  Campeonato</th>
+     <th>Login Capitan</th>
+     <th>Login Acompañante</th>
     <th>Opciones</th>
 
   </tr>
@@ -50,6 +53,9 @@ class SHOWALL_COUPLE
 
 
       echo "<td>".$fila["id_pareja"]."</td>";
+      echo "<td>".$fila["id_campeonato"]."</td>";
+      echo "<td>".$fila["login1"]."</td>";
+      echo "<td>".$fila["login2"]."</td>";
     
 
 
@@ -57,8 +63,8 @@ class SHOWALL_COUPLE
 
 
        <td>
-        <a href="../Controllers/Couple_Controller.php?action=SHOWCURRENT&id_pareja=<?php  echo $fila['id_pareja'] ?>"><span class="lnr lnr-eye añadir"></span></a>
-        <a href="../Controllers/Couple_Controller.php?action=DELETE&id_pareja=<?php  echo $fila['id_pareja'] ?>"><span class="lnr lnr-trash borrar"></span></a>
+        <a href="../Controllers/Couple_Controller.php?action=SHOWCURRENT&id_pareja=<?php  echo $fila['id_pareja'] ?>&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-eye añadir"></span></a>
+        <a href="../Controllers/Couple_Controller.php?action=DELETE&id_pareja=<?php  echo $fila['id_pareja'] ?>&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-trash borrar"></span></a>
       
       </td>
 

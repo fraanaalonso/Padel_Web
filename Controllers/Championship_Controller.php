@@ -21,7 +21,6 @@ include '../Views/CHAMPIONSHIP_VIEWS/SHOWCURRENT_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/DELETE_CHAMPIONSHIP_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/EDIT_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/InscribirCampeonatoView.php';
-include '../Views/CHAMPIONSHIP_VIEWS/SHOW_COUPLE.php';
 include '../Views/CHAMPIONSHIP_VIEWS/SHOW_GENDER.php';
 include '../Views/CHAMPIONSHIP_VIEWS/SHOW_GROUP.php';
 include '../Views/RULE_VIEWS/SHOWRULE.php';
@@ -126,26 +125,7 @@ Switch ($_REQUEST['action']){
 			
 		break;
 
-		case 'SHOWCOUPLES':
 
-
-				if (!$_POST){
-					include_once '../Models/COUPLE_CHAMPIONSHIP_MODEL.php';
-					$modelo = new COUPLE_CHAMPIONSHIP_MODEL(' ' ,$_REQUEST['id_campeonato']);
-				}
-				else{
-					  include_once '../Models/COUPLE_CHAMPIONSHIP_MODEL.php';
-				}
-
-				$datos = $modelo->RellenaDatos();
-				$lista = array('ID Pareja','ID Campeonato');
-
-				
-				new SHOWALL_COUPLE($lista, $datos);
-
-
-
-		break;
 
 
 		case 'SHOWNORMATIVA':

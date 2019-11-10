@@ -21,21 +21,38 @@ class SHOWCURRENT_COUPLE
 ?>
 
 
+<div class="iconos-superiores">
+
+<a href="../Controllers/Championship_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+
+ 
+</div>
 
 
 
 
       <table>
+
+         <tr>
+            <th>ID Pareja</th>
+            <td><?php echo $valores[0];?></td>
+          </tr>
+
+
+           <tr>
+            <th>ID Campeonato</th>
+            <td><?php echo $valores[1];?></td>
+          </tr>
            
 
            <tr>
-            <th>Capitán</th>
-            <td><?php echo $valores[3];?></td>
+            <th>Login Capitán</th>
+            <td><?php echo $valores[2];?></td>
           </tr>
 
           <tr>
-            <th>Socio</th>
-            <td><?php echo $valores[4];?></td>
+            <th>Login Acompañante</th>
+            <td><?php echo $valores[3];?></td>
           </tr>
      
         </table>

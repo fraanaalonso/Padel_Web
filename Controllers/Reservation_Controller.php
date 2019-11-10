@@ -17,6 +17,7 @@ include_once '../Models/COURT_MODEL.php';
 include '../Views/COURT_VIEWS/SHOWALL_VIEW.php';
 include '../Views/RESERVATION_VIEWS/SHOWALL_VIEW.php';
 include '../Views/RESERVATION_VIEWS/ADD_VIEW.php';
+include '../Views/RESERVATION_VIEWS/SHOWSCHEDULE.php';
 include '../Views/RESERVATION_VIEWS/SEARCH_VIEW.php';
 include '../Views/RESERVATION_VIEWS/SHOWCURRENT_VIEW.php';
 include '../Views/RESERVATION_VIEWS/EDIT_VIEW.php';
@@ -50,7 +51,7 @@ function get_data(){
 Switch ($_REQUEST['action']){
 
 		/*Reservamos una pista*/
-		case 'RESERVAR':
+		case 'INSERTAR':
 
 
 			if(!$_POST){
@@ -62,9 +63,11 @@ Switch ($_REQUEST['action']){
 				
 				new ADD_VIEW($clave);
 				
-			}
+			}		
+				break;
 
-			else{
+		case 'RESERVAR':
+
 			include_once '../Models/RESERVATION_MODEL.php';
 				
 
@@ -78,13 +81,24 @@ Switch ($_REQUEST['action']){
 
 			new MESSAGE($resultado, '../Controllers/Reservation_Controller.php');
 
-				}
-							
-				break;
+		break;
 
 
 
-			  
+		
+		case 'SHOWSCHEDULE':
+
+
+		include_once '../Models/COURT_MODEL.php';
+		$modelo = new COURT_MODEL($_REQUEST['id_pista'],'','','','', '');
+		$clave = $modelo->RellenaDatos();
+		$fechaSeleccionada = $_POST['fecha'];
+
+		new SHOWSCHEDULE($clave, $fechaSeleccionada);
+
+
+
+		break;
 
 
 

@@ -45,11 +45,7 @@ s
 
 
 		   <div class="form-group" >
-		  	<input type="text" id="hora_fin" name="hora_fin" class="form-control" value="<?php echo $valores[3] ?>" placeholder="Hora Fin" >
-		   </div>
-
-		   <div class="form-group" >
-		  	<input type="text" id="fecha" name="fecha" class="form-control" value="<?php echo $valores[4] ?>" placeholder="Fecha" >
+		  	<input type="text" id="fecha" name="fecha" class="form-control" value="<?php echo $valores[3] ?>" placeholder="Fecha" >
 		   </div>
 
 		   

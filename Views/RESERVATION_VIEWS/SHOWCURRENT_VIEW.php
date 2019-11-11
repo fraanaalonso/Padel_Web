@@ -46,15 +46,22 @@ class SHOWCURRENT_VIEW
            <tr>
 
             <tr>
-            <th>Fecha</th>
+            <th>Hora de Reserva</th>
             <td><?php echo $valores[3];?></td>
+          </tr>
+
+            <tr>
+            <th>Fecha</th>
+            <td><?php echo $valores[4];?></td>
             </tr>
            <tr>
 
-           <tr>
-            <th>Hora de Reserva</th>
-            <td><?php echo $valores[4];?></td>
+            <tr>
+            <th>Precio</th>
+            <td><?php echo $valores[5];?></td>
           </tr>
+
+           
 
         </table>
 

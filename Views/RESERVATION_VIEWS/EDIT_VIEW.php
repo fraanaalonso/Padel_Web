@@ -43,7 +43,9 @@ class EDIT_VIEW
 		  	<input type="text" id="fecha" name="fecha" class="form-control" value="<?php echo $valores['fecha']; ?>" >
 		   </div>
 
-
+		    <div class="form-group" >
+		  	<input type="text" id="precio" name="precio" class="form-control" value="<?php echo $valores['precio']; ?>" >
+		   </div>
 
 
 

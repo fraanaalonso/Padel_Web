@@ -13,16 +13,14 @@ class MATCH_MODEL
 	var $id_partido;
 	var $id_pista;
 	var $hora_inicio;
-	var $hora_fin;
 	var $fecha;
 	var $bd;
 	
-	function __construct($id_partido, $id_pista, $hora_inicio, $hora_fin, $fecha)
+	function __construct($id_partido, $id_pista, $hora_inicio, $fecha)
 	{
 		$this->id_partido = $id_partido;
 		$this->fecha = $fecha;
 		$this->hora_inicio = $hora_inicio;
-		$this->hora_fin = $hora_fin;
 		$this->id_pista = $id_pista;
 
 		include_once '../includes/db.php';
@@ -97,14 +95,12 @@ class MATCH_MODEL
 					
 					id_pista,
 					hora_inicio,
-					hora_fin,
 					fecha
 					) 
 						VALUES (
 						
 						'$this->id_pista',
 						'$this->hora_inicio',
-						'$this->hora_fin',
 						'$this->fecha'
 						)";
 					
@@ -161,7 +157,6 @@ function EDIT(){
 				id_partido = '$this->id_partido',
 				id_pista = '$this->id_pista',
 				hora_inicio = '$this->hora_inicio',
-				hora_fin = '$this->hora_fin',
 				fecha = '$this->fecha
 				
 				WHERE ( id_partido = '$this->id_partido')";
@@ -243,7 +238,7 @@ function DELETE()
 
 function RellenaDatos()
 		{	
-		    $sql = "SELECT * FROM court  WHERE (id_pista = '$this->id_pista')";
+		    $sql = "SELECT * FROM game  WHERE (id_partido = '$this->id_partido')";
 
 		    if (!($resultado = $this->bd->query($sql))){
 				return 'No existe en la base de datos'; 
@@ -259,6 +254,12 @@ function RellenaDatos()
 
 
 }
+
+
+
+
+
+
 
 
 

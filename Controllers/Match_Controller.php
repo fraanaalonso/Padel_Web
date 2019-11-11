@@ -26,12 +26,12 @@ include '../Views/ALERT.php';
 include '../Views/MATCH_VIEWS/Inscripcion_View.php';
 include '../Views/MATCH_VIEWS/SHOWCURRENT_PROMOTIONS.php';
 include '../Views/MATCH_VIEWS/SHOWINSCRITOS.php';
+include '../Views/MATCH_VIEWS/SCHEDULEPROMOTION.php';
 
 function get_data(){
 	$id_partido = $_REQUEST['id_partido'];
 	$id_pista ='';
 	$hora_inicio ='';
-	$hora_fin = '' ;
 	$fecha='';
 	$action = $_REQUEST['action'];
 
@@ -39,7 +39,6 @@ function get_data(){
 		$id_partido, 
 		$id_pista,
 		$hora_inicio,
-		$hora_fin,
 		$fecha,
 		$action
 	);
@@ -51,13 +50,13 @@ function get_data(){
 Switch ($_REQUEST['action']){
 
 	
-		case 'PROMOCIONAR':
+		case 'INSERTAR':
 				
 
 				if(!$_POST){
 
-				include_once '../Models/MATCH_MODEL.php';
-				$modelo = new MATCH_MODEL(' ',$_REQUEST['id_pista'], '','', '');
+				include_once '../Models/COURT_MODEL.php';
+				$modelo = new COURT_MODEL($_REQUEST['id_pista'],'','','','');
 				$clave = $modelo->RellenaDatos();
 
 				
@@ -67,6 +66,64 @@ Switch ($_REQUEST['action']){
 			
 				
 				break;
+
+
+		case 'PROMOCIONAR':
+
+
+		if (!isset($_REQUEST['hora_inicio'])){
+		$_REQUEST['hora_inicio'] = '';
+		}
+
+
+
+		if($_REQUEST['hora_inicio'] != ""){
+
+			include_once '../Models/MATCH_MODEL.php';
+			$game = new MATCH_MODEL(' ', $_REQUEST['id_pista'],$_REQUEST['hora_inicio'],$_REQUEST['fecha']);
+			$resultado = $game->añadirPromocion();
+
+
+			
+
+
+			new MESSAGE($resultado, '../Controllers/Match_Controller.php');
+		}else{
+
+			include_once '../Models/COURT_MODEL.php';
+				$modelo = new COURT_MODEL($_REQUEST['id_pista'],'','','','');
+				$clave = $modelo->RellenaDatos();
+
+
+			new MESSAGE("Debe seleccionar una hora", "../Controllers/Match_Controller.php?action=INSERTAR&id_pista=$clave[0]");
+		}
+
+		break;
+
+
+		case 'SHOWSCHEDULE':
+
+		include_once '../Models/COURT_MODEL.php';
+		$modelo = new COURT_MODEL($_REQUEST['id_pista'],'','','','');
+		$clave = $modelo->RellenaDatos();
+		$fechaSeleccionada = $_POST['fecha'];
+
+		$currentDate = strtotime(date("Y-m-d", time()));
+		$currentDate2 = date("Y-m-d");
+
+		if ($currentDate > strtotime($fechaSeleccionada)){
+			new MESSAGE("La fecha seleccionada corresponde a un día ya transcurrido","../Controllers/Reservation_Controller.php?action=INSERTAR&id_pista=$clave[0]");
+		}
+		/*
+		elseif(strtotime($currentDate2."+ 7 days") == strtotime(date($fechaSeleccionada))){
+			new MESSAGE("Se permiten reservas con un rango máximo de 7 días a partir de la fecha actual", "../Controllers/Reservation_Controller.php?action=INSERTAR&id_pista=$clave[0]");
+		}*/
+		else{
+
+		new SCHEDULEPROMOTION($clave, $fechaSeleccionada);
+		}
+
+		break;
 
 		case 'INSCRIBIR':
 
@@ -88,7 +145,7 @@ Switch ($_REQUEST['action']){
 			include_once '../Models/USER_MODEL.php';
 
 			$id_partido = $_POST['id_partido'];
-			$modelo = new MATCH_MODEL($id_partido,'','','','');
+			$modelo = new MATCH_MODEL($id_partido,'','','');
 			
 
 
@@ -108,7 +165,7 @@ Switch ($_REQUEST['action']){
 
 		if (!$_POST){
 					include_once '../Models/MATCH_MODEL.php';
-					$modelo = new MATCH_MODEL(' ' ,' ' ,' ', ' ', ' ');
+					$modelo = new MATCH_MODEL(' ' ,' ' ,' ', ' ');
 				}
 				else{
 					  include_once '../Models/MATCH_MODEL.php';
@@ -152,11 +209,11 @@ Switch ($_REQUEST['action']){
 
 				else{
 					 include_once '../Models/MATCH_MODEL.php';
-					$modelo= new MATCH_MODEL($_REQUEST['id_partido'],$_REQUEST['id_pista'], $_REQUEST['hora_inicio'],$_REQUEST['hora_fin'], $_REQUEST['fecha']);
+					$modelo= new MATCH_MODEL($_REQUEST['id_partido'],$_REQUEST['id_pista'], $_REQUEST['hora_inicio'], $_REQUEST['fecha']);
 
 					
                      $respuesta = $modelo->SEARCH();
-					$lista = array('Identificador Partido','Identificador de Pista', 'Hora Inicio', 'Hora Fin', 'Fecha Promoción');
+					$lista = array('Identificador Partido','Identificador de Pista', 'Hora Inicio', 'Fecha Promoción');
 					new SHOWALL_VIEW($lista, $respuesta);
 					
 				}
@@ -179,7 +236,7 @@ Switch ($_REQUEST['action']){
 				else{
 
 					 include '../Models/MATCH_MODEL.php';
-					$modelo = new MATCH_MODEL($_REQUEST['id_partido'],$_REQUEST['id_pista'], $_REQUEST['hora_inicio'],$_REQUEST['hora_fin'], $_REQUEST['fecha']);
+					$modelo = new MATCH_MODEL($_REQUEST['id_partido'],$_REQUEST['id_pista'], $_REQUEST['hora_inicio'], $_REQUEST['fecha']);
 
 					$respuesta = $modelo->EDIT();
 					new MESSAGE($respuesta, './Match_Controller.php');
@@ -247,7 +304,7 @@ Switch ($_REQUEST['action']){
 
 				if (!$_POST){
 					include_once '../Models/MATCH_MODEL.php';
-					$modelo = new MATCH_MODEL(' ' ,' ' ,' ', ' ', ' ');
+					$modelo = new MATCH_MODEL(' ' ,' ' ,' ', ' ');
 				}
 				else{
 					  include_once '../Models/MATCH_MODEL.php';
@@ -255,7 +312,7 @@ Switch ($_REQUEST['action']){
 
 
 				$datos = $modelo->SEARCH();
-				$lista = array('Identificador Partido','Identificador de Pista', 'Hora Inicio', 'Hora Fin', 'Fecha Promoción');
+				$lista = array('Identificador Partido','Identificador de Pista', 'Hora Inicio', 'Fecha Promoción');
 
 				
 				new SHOWALL_VIEW($lista, $datos);

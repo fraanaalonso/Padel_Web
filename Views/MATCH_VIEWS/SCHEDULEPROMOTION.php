@@ -5,7 +5,7 @@
 /**
  * 
  */
- class SHOWSCHEDULE{
+ class SCHEDULEPROMOTION{
 
 	function __construct($clave, $fecha){
 		$this->execute($clave, $fecha);
@@ -21,7 +21,7 @@
 
 <div class="iconos-superiores">
 
-    <a href="../Controllers/Reservation_Controller.php?action=INSERTAR&id_pista=<?php echo $clave[0]?>"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+    <a href="../Controllers/Match_Controller.php?action=INSERTAR&id_pista=<?php echo $clave[0]?>"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
 
 </div>
 	
@@ -31,7 +31,7 @@
 		<div class="form-group" >Día Seleccionado
 		  	<input type="text" style="width: 80%;" readonly id="fecha" name="fecha" value="<?php echo $fecha ?>" class="form-control"  >
 		</div>	
-		<form class="col-12" method="post" action="../Controllers/Reservation_Controller.php?action=RESERVAR" onsubmit="return validar();">
+		<form class="col-12" method="post" action="../Controllers/Match_Controller.php?action=PROMOCIONAR" onsubmit="return validar();">
 
 		 <div class="form-group">
 		  	<input type="hidden" id="id_reserva" name="id_reserva"  readonly class="form-control"  >
@@ -263,7 +263,7 @@
 
 		
 
-		   <div style="position: absolute; top: 550px; min-width: 100%; text-align: center;"><button type="submit" class="btn btn-primary"  style="font-size: 20px;">Reservar Pista</button></div>
+		   <div style="position: absolute; top: 550px; min-width: 100%; text-align: center;"><button type="submit" class="btn btn-primary"  style="font-size: 20px;">Promocionar Pista</button></div>
 		   
 		</form>
 

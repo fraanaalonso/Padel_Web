@@ -22,7 +22,7 @@ include '../Views/RESERVATION_VIEWS/SEARCH_VIEW.php';
 include '../Views/RESERVATION_VIEWS/SHOWCURRENT_VIEW.php';
 include '../Views/RESERVATION_VIEWS/EDIT_VIEW.php';
 include '../Views/Message_View.php';
-
+require_once '../Functions/funciones.php';
 
 
 function get_data(){
@@ -68,19 +68,40 @@ Switch ($_REQUEST['action']){
 
 		case 'RESERVAR':
 
-			include_once '../Models/RESERVATION_MODEL.php';
-				
+		if (!isset($_REQUEST['hora_inicio'])){
+		$_REQUEST['hora_inicio'] = '';
+		}
 
+
+
+		if($_REQUEST['hora_inicio'] != ""){
+
+			include_once '../Models/RESERVATION_MODEL.php';
+			
 			$reserva = new RESERVATION_MODEL(' ', $_REQUEST['id_pista'],$_REQUEST['login'], $_REQUEST['hora_inicio'],$_REQUEST['fecha'], $_REQUEST['precio']);
 
 			$resultado = $reserva->ADD();
 
 
+			$promoCoincidentes = consultarPromocion();
+
+			include_once '../Models/MATCH_MODEL.php';
+			$borrado = new MATCH_MODEL($promoCoincidentes[0], '','','');
+			$respuesta = $borrado->DELETE();
+
 			
 
 
 			new MESSAGE($resultado, '../Controllers/Reservation_Controller.php');
+		}else{
 
+			include_once '../Models/COURT_MODEL.php';
+				$modelo = new COURT_MODEL($_REQUEST['id_pista'],'','','','', '');
+				$clave = $modelo->RellenaDatos();
+
+
+			new MESSAGE("Debe seleccionar una hora", "../Controllers/Reservation_Controller.php?action=INSERTAR&id_pista=$clave[0]");
+		}
 		break;
 
 
@@ -95,11 +116,13 @@ Switch ($_REQUEST['action']){
 		$fechaSeleccionada = $_POST['fecha'];
 
 		$currentDate = strtotime(date("Y-m-d", time()));
+		$currentDate2 = date("Y-m-d");
 
 		if ($currentDate > strtotime($fechaSeleccionada)){
 			new MESSAGE("La fecha seleccionada corresponde a un día ya transcurrido","../Controllers/Reservation_Controller.php?action=INSERTAR&id_pista=$clave[0]");
 		}
-		/*elseif(strtotime($fechaSeleccionada."+ 7 days")){
+		/*
+		elseif(strtotime($currentDate2."+ 7 days") == strtotime(date($fechaSeleccionada))){
 			new MESSAGE("Se permiten reservas con un rango máximo de 7 días a partir de la fecha actual", "../Controllers/Reservation_Controller.php?action=INSERTAR&id_pista=$clave[0]");
 		}*/
 		else{

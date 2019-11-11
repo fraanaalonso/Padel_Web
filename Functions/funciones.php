@@ -243,6 +243,25 @@ function esInscrito($login1, $login2, $id_campeonato){
 }
 
 
+function consultarPromocion(){
+
+	include_once '../includes/db.php';
+	$bd;
+	$bd = ConectarDB();
+	$sql = "SELECT G.id_partido, R.hora_inicio, R.fecha FROM game G, reservation R where G.hora_inicio = R.hora_inicio AND G.fecha=R.fecha";
+
+	
+	if (!($resultado = $bd->query($sql))){
+		return 'No existe en la base de datos'; 
+	}
+
+    else{ 
+
+	$result = $resultado->fetch_array();
+		return $result;
+	}
+
+}
 
 
 ?>

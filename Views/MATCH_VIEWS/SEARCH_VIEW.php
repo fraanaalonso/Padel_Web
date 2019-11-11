@@ -43,9 +43,7 @@ class SEARCH_VIEW
 		   </div>
 
 
-		   <div class="form-group" >
-		  	<input type="text" id="hora_fin" name="hora_fin" class="form-control" placeholder="Hora Fin" >
-		   </div>
+		  
 
 		   <div class="form-group" >
 		  	<input type="text" id="fecha" name="fecha" class="form-control" placeholder="Fecha" >

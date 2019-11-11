@@ -49,14 +49,10 @@ class SHOWCURRENT_VIEW
           </tr>
 
 
-           <tr>
-            <th>Hora Fin</th>
-            <td><?php echo $valores[3];?></td>
-          </tr>
 
            <tr>
             <th>Fecha</th>
-            <td><?php echo $valores[4];?></td>
+            <td><?php echo $valores[3];?></td>
           </tr>
 
           

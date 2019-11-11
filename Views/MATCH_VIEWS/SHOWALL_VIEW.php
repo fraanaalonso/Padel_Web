@@ -45,7 +45,6 @@ class SHOWALL_VIEW
     <th>Identificador Partido</th>
     <th>Identificador de Pista</th>
     <th>Hora Inicio</th>
-    <th>Hora Fin</th>
     <th>Fecha</th>
     <th>Opciones</th>
 
@@ -62,7 +61,6 @@ class SHOWALL_VIEW
       echo "<td>".$fila['id_partido']."</td>";
       echo "<td>".$fila["id_pista"]."</td>";
       echo "<td>".$fila["hora_inicio"]."</td>";
-      echo "<td>".$fila["hora_fin"]."</td>";
       echo "<td>".$fila["fecha"]."</td>";
 ?>
 

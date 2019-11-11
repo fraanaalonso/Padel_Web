@@ -73,6 +73,7 @@ class SHOWALL_VIEW
   while ($fila = $resultado->fetch_assoc())
   {
       echo "<tr>";
+
       if(comprobarPermisos($_SESSION['login']) == 1){
       echo "<td>".$fila['id_pista']."</td>";
     }
@@ -96,7 +97,7 @@ class SHOWALL_VIEW
 
       ?>
         <a href="../Controllers/Reservation_Controller.php?action=INSERTAR&id_pista=<?php  echo $fila['id_pista'] ?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 20px"></span></a>
-        <a href="../Controllers/Match_Controller.php?action=PROMOCIONAR&id_pista=<?php  echo $fila['id_pista'] ?>"><span class="lnr lnr-plus-circle" style="font-size: 20px"></span></a>
+        <a href="../Controllers/Match_Controller.php?action=INSERTAR&id_pista=<?php  echo $fila['id_pista'] ?>"><span class="lnr lnr-plus-circle" style="font-size: 20px"></span></a>
         
       
       </td>

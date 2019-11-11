@@ -45,6 +45,20 @@ function RellenaDatos()
 		}
 
 
+
+function getDBDatosGrupos(){
+
+
+
+	$sql = "SELECT * FROM GRUPO";		
+	$resultado = $this->bd->query($sql);
+
+	return $resultado;
+}
+
+
+
+
 }
 
 ?>

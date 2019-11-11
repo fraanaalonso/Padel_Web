@@ -8,12 +8,12 @@
 class EDIT_VIEW
 {
 	
-	function __construct($valores){
-		$this->execution($valores);
+	function __construct($valores, $normativa, $grupo, $categoria){
+		$this->execution($valores, $normativa, $grupo, $categoria);
 	}
 
 
-	function execution($valores){
+	function execution($valores, $normativa, $grupo, $categoria){
 		include '../Views/HeaderPost.php';
 
 ?>
@@ -36,29 +36,89 @@ class EDIT_VIEW
 		   </div>	
 
 		  <div class="form-group">
-		  	<input type="text" id="fecha_inicio" name="fecha_inicio" required class="form-control" value="<?php echo $valores[1] ?>" placeholder="Inicio del Campeonato" >
+		  	<input type="date" id="fecha_inicio" name="fecha_inicio" required class="form-control" value="<?php echo $valores[1] ?>" placeholder="Inicio del Campeonato" >
 		   </div> 
 
 		  <div class="form-group">
-		  	<input type="text" id="fecha_limite" name="fecha_limite" required class="form-control" value="<?php echo $valores[2] ?>" placeholder="Límite de Inscripción" >
+		  	<input type="date" id="fecha_limite" name="fecha_limite" required class="form-control" value="<?php echo $valores[2] ?>" placeholder="Límite de Inscripción" >
 		   </div>
 
 
-		   <div class="form-group" >
-		  	<input type="text" id="id_normativa" name="id_normativa" required class="form-control" value="<?php echo $valores[3] ?>" placeholder="ID NOrmativa" >
+		      <div class="form-group" >
+		  	<select id="id_normativa" name="id_normativa" class="form-control" required>
+			<option>Seleccion Normativa</option>
+
+		   	<?php 
+		   			
+		   			while(($toret = mysqli_fetch_array($normativa))){	
+
+		   			
+		   			$selected = 'selected';
+		   			
+		   	
+		   	
+		  			echo '<option value = "'.$toret[0].'" '.$selected.'>'. $toret[1].'</option>';
+
+		  		
+		  	
+			}
+			?>
+		   
+		
+
+		
+	</select>
 		   </div>
 
 		   <div class="form-group" >
-		  	<input type="text" id="id_grupo" name="id_grupo" required class="form-control" value="<?php echo $valores[4] ?>" placeholder="ID Grupo" >
+		  	<select id="id_categoria" name="id_categoria" class="form-control" required>
+			<option>Selecciona Categoria</option>
+
+		  
+		   	<?php 
+		   			
+		   			while(($toret2 = mysqli_fetch_array($categoria))){	
+		   			$selected = 'selected';
+		   	
+		  			echo '<option value = "'.$toret2[0].'" '.$selected.'>'. $toret2[1].'</option>';
+
+		  		
+		  	
+			}
+			?>
+		   
+		
+
+		
+	</select>
 		   </div>
 
 		   <div class="form-group" >
-		  	<input type="text" id="id_categoria" name="id_categoria" required  class="form-control" value="<?php echo $valores[5] ?>" placeholder="ID Categoria" >
+		  	<select id="id_grupo" name="id_grupo" class="form-control" required>
+			<option>Selecciona Grupo</option>
+
+		  
+		   	<?php 
+		   			
+		   			while(($toret3 = mysqli_fetch_array($grupo))){	
+		   	
+		   			$selected = 'selected';
+		  			echo '<option value = "'.$toret3[0].'"  '.$selected.'>'. $toret3[1] .'</option>';
+
+		  		
+		  	
+			}
+			?>
+		   
+		
+
+		
+	</select>
 		   </div>
 		
 		
 
-		   <button type="submit" class="btn btn-light"><span class="lnr lnr-file-add" style="font-size: 35px;"></span></button>
+		   <button type="submit" class="btn btn-light"><span class="lnr lnr-pencil" style="font-size: 35px;"></span></button>
 		   <p>
 		  
 		   </p>

@@ -45,6 +45,18 @@ function RellenaDatos()
 		}
 
 
+
+function getDBDatosCategorias(){
+
+
+	$sql = "SELECT * FROM GENDER";		
+	$resultado = $this->bd->query($sql);
+
+	return $resultado;
+}
+
+
+
 }
 
 ?>

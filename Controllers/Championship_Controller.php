@@ -27,6 +27,7 @@ include '../Views/RULE_VIEWS/SHOWRULE.php';
 include '../Views/Message_View.php';
 include '../Views/ALERT.php';
 
+require_once '../Functions/funciones.php';
 
 function get_data(){
 	$id_campeonato = $_REQUEST['id_campeonato'];
@@ -58,14 +59,28 @@ Switch ($_REQUEST['action']){
 	
 		case 'ADD':
 				if (!$_POST){
+
+			
+				 include_once '../Models/GENDER_MODEL.php';
+				 include_once '../Models/GROUP_MODEL.php';
+				 include_once '../Models/RULE_MODEL.php';
+				  
+				  	$aux1 = new GENDER_MODEL('','');
+				  	$aux2 = new GROUP_MODEL('','');
+				  	$aux3 = new RULE_MODEL('','');
+
+				  	$consultaNormativas = $aux3->getDBDatosNormativas();
+				  	$consultaCategorias = $aux1->getDBDatosCategorias();
+				  	$consultaGrupos = $aux2->getDBDatosGrupos();
 					
-					new ADD_VIEW();
+					new ADD_VIEW($consultaNormativas,$consultaCategorias,$consultaGrupos);
 				
 				}
 				else{
-				 include_once '../Models/CHAMPIONSHIP_MODEL.php';
-				  $modelo= new CHAMPIONSHIP_MODEL(' ',$_REQUEST['fecha_inicio'], $_REQUEST['fecha_limite'],$_REQUEST['id_normativa'], $_REQUEST['id_grupo'], $_REQUEST['id_categoria']);
 
+					include_once '../Models/CHAMPIONSHIP_MODEL.php';
+				 
+					$modelo= new CHAMPIONSHIP_MODEL(' ',$_REQUEST['fecha_inicio'], $_REQUEST['fecha_limite'],$_REQUEST['id_normativa'], $_REQUEST['id_grupo'], $_REQUEST['id_categoria']);
 					$respuesta = $modelo->ADD();
 					new MESSAGE($respuesta,'./Championship_Controller.php');
 					
@@ -195,10 +210,23 @@ Switch ($_REQUEST['action']){
 
 		case 'EDIT':
 				if (!$_POST) {
-					 include_once '../Models/CHAMPIONSHIP_MODEL.php';
+
+					include_once '../Models/CHAMPIONSHIP_MODEL.php';
+					include_once '../Models/GENDER_MODEL.php';
+				 	include_once '../Models/GROUP_MODEL.php';
+				 	include_once '../Models/RULE_MODEL.php';
 					$modelo= get_data();
-					$valores= $modelo ->RellenaDatos();
-					new EDIT_VIEW($valores);
+					$aux1 = new GENDER_MODEL('','');
+				  	$aux2 = new GROUP_MODEL('','');
+				  	$aux3 = new RULE_MODEL('','');
+
+					$valores= $modelo ->RellenaDatos();  	
+
+				  	$consultaNormativas = $aux3->getDBDatosNormativas();
+				  	$consultaCategorias = $aux1->getDBDatosCategorias();
+				  	$consultaGrupos = $aux2->getDBDatosGrupos();
+
+					new EDIT_VIEW($valores, $consultaNormativas, $consultaGrupos, $consultaCategorias);
 				}
 
 				else{

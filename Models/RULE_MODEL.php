@@ -46,6 +46,14 @@ function RellenaDatos()
 
 
 
+function getDBDatosNormativas(){
+
+
+	$sql = "SELECT * FROM RULE";		
+	$resultado = $this->bd->query($sql);
+
+	return $resultado;
+}
 
 
 

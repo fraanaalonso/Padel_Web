@@ -5,7 +5,7 @@ session_start();
 include '../Functions/Autenticacion.php';
 
 if (!autenticado()){
-	header('Location: ../Controllers/Login_Controller.php');
+	header('Location: ./Login_Controller.php');
 }
 
 else{

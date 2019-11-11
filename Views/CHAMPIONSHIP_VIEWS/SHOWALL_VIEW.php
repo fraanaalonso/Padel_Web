@@ -80,6 +80,16 @@ class SHOWALL_VIEW
 }
 ?>
 
+
+
+
+<?php
+
+$valor = $fila['fecha_limite'];
+$currentDate = strtotime(date("Y-m-d", time()));
+
+if($currentDate <= strtotime($valor)){
+?>
 <?php
 if(comprobarSexo($_SESSION['login']) == 'Femenino' && (categoriaCampeonato($fila['id_campeonato']) == 3 || categoriaCampeonato($fila['id_campeonato']) == 2)){
 ?>
@@ -99,6 +109,9 @@ if(!esInscrito($_SESSION['login'], $_SESSION['login'], $fila['id_campeonato'])){
 }
 ?>
 
+<?php
+}
+?>
 
 <?php
 if(comprobarSexo($_SESSION['login']) == 'Masculino' && (categoriaCampeonato($fila['id_campeonato']) == 3 || categoriaCampeonato($fila['id_campeonato']) == 1)){

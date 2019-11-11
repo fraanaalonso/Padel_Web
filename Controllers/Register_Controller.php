@@ -21,36 +21,18 @@ session_start();
           $tamanho_imagen = $_FILES['foto']['size'];
           $ruta = "../img/fotosPerfil";
 
-          if($tamanho_imagen<=3000000 )
-          {
-
-          if($tipo_imagen=="image/jpeg" || $tipo_imagen=="image/jpg" || $tipo_imagen=="image/png" || $tipo_imagen=="image/gif")
-
-          {
+          
 
           $ruta =$ruta."/".$nombre_foto; //img/nombre.jpg
 
           move_uploaded_file($archivo, $ruta);
-          }
-          else{
-            echo "Sólo se puede subir imágenes jpg/jpeg/gif/png";
-          }
-
-
-          }
+         
 
           
-
-
-          else {
-            echo "El tamaño es demasiado grande";
-          }
-
-          
-     $respuesta = $usuario->register();
+        $respuesta = $usuario->register();
 
             
-          if ( $respuesta == true) {
+          if ($respuesta == true) {
 
             $respuesta = $usuario->registrar();
 

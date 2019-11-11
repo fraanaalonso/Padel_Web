@@ -51,7 +51,7 @@ class ADD_VIEW
 		   </div>
 -->
 		   <div class="form-group" >Selecciona la fecha de promoción
-		  	<input type="date" id="fecha" name="fecha" class="form-control" placeholder="Fecha" >
+		  	<input type="date" id="fecha" name="fecha" required class="form-control" placeholder="Fecha" >
 		   </div>
 
 		   

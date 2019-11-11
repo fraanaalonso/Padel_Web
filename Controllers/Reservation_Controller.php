@@ -114,6 +114,7 @@ Switch ($_REQUEST['action']){
 		$modelo = new COURT_MODEL($_REQUEST['id_pista'],'','','','', '');
 		$clave = $modelo->RellenaDatos();
 		$fechaSeleccionada = $_POST['fecha'];
+		
 
 		$currentDate = strtotime(date("Y-m-d", time()));
 		$currentDate2 = date("Y-m-d");

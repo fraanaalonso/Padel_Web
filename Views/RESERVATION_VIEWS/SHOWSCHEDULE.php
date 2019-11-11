@@ -55,6 +55,7 @@
 		   </div>
 
 
+
 			
 		  	
 
@@ -72,6 +73,7 @@
 
 				<?php
 					if(validarHoraReserva("09:00", $clave[0], $fecha)){
+						if(!cerrarPromocion($clave[0], $fecha, "09:00")){
 				?>
 				<tr style="background-color: #6EFF33">
 					<th>
@@ -83,6 +85,23 @@
 					</th>
 				</tr>
 				<?php
+				}
+
+				else{
+
+					?>
+				<tr style="background-color: #FA3434">
+					<th>
+							<strong>09:00 / 10:30</strong>
+					</th>
+				</tr>
+
+				<?php
+
+
+
+				}
+
 				}
 				else{
 				?>
@@ -97,6 +116,7 @@
 				?>
 				<?php
 					if(validarHoraReserva("10:30", $clave[0], $fecha)){
+						if(!cerrarPromocion($clave[0], $fecha, "10:30")){
 				?>
 				<tr style="background-color: #6EFF33">
 					<th>
@@ -105,6 +125,23 @@
 					</th>
 				</tr>
 				<?php
+				}
+
+				else{
+
+					?>
+				<tr style="background-color: #FA3434">
+					<th>
+							<strong>10:30 / 12:00</strong>
+					</th>
+				</tr>
+
+				<?php
+
+
+
+				}
+
 				}
 				else{
 				?>
@@ -120,6 +157,7 @@
 
 				<?php
 					if(validarHoraReserva("12:00", $clave[0], $fecha)){
+						if(!cerrarPromocion($clave[0], $fecha, "12:00")){
 				?>
 				<tr style="background-color: #6EFF33">
 					<th>
@@ -128,6 +166,22 @@
 					</th>
 				</tr>
 				<?php
+				}
+
+				else{
+
+					?>
+				<tr style="background-color: #FA3434">
+					<th>
+							<strong>12:00 / 13:30</strong>
+					</th>
+				</tr>
+
+				<?php
+
+
+
+				}
 				}
 				else{
 				?>
@@ -142,6 +196,7 @@
 				?>
 				<?php
 					if(validarHoraReserva("13:30", $clave[0], $fecha)){
+						if(!cerrarPromocion($clave[0], $fecha, "13:30")){
 				?>
 				<tr style="background-color: #6EFF33">
 					<th>
@@ -150,6 +205,23 @@
 					</th>
 				</tr>
 				<?php
+				}
+
+				else{
+
+					?>
+				<tr style="background-color: #FA3434">
+					<th>
+							<strong>13:30 / 15:00</strong>
+					</th>
+				</tr>
+
+				<?php
+
+
+
+				}
+
 				}
 				else{
 				?>
@@ -164,6 +236,7 @@
 				?>
 				<?php
 					if(validarHoraReserva("17:00", $clave[0], $fecha)){
+						if(!cerrarPromocion($clave[0], $fecha, "17:00")){
 				?>
 				<tr style="background-color: #6EFF33">
 					<th>
@@ -172,6 +245,22 @@
 					</th>
 				</tr>
 				<?php
+				}
+
+				else{
+
+					?>
+				<tr style="background-color: #FA3434">
+					<th>
+							<strong>17:00 / 18:30</strong>
+					</th>
+				</tr>
+
+				<?php
+
+
+
+				}
 				}
 				else{
 				?>
@@ -186,6 +275,7 @@
 				?>
 				<?php
 					if(validarHoraReserva("18:30", $clave[0], $fecha)){
+						if(!cerrarPromocion($clave[0], $fecha, "18:30")){
 				?>
 				<tr style="background-color: #6EFF33">
 					<th>
@@ -194,6 +284,23 @@
 					</th>
 				</tr>
 				<?php
+				}
+
+				else{
+
+					?>
+				<tr style="background-color: #FA3434">
+					<th>
+							<strong>18:30 / 20:00</strong>
+					</th>
+				</tr>
+
+				<?php
+
+
+
+				}
+
 				}
 				else{
 				?>
@@ -207,7 +314,9 @@
 					}
 				?>
 				<?php
-					if(validarHoraReserva("20:00", $clave[0], $fecha)){
+					if(validarHoraReserva("20:00", $clave[0], $fecha) ){
+						if(!cerrarPromocion($clave[0], $fecha, "20:00")){
+						
 				?>
 				<tr style="background-color: #6EFF33">
 					<th>
@@ -216,6 +325,22 @@
 					</th>
 				</tr>
 				<?php
+				}
+
+				else{
+
+					?>
+				<tr style="background-color: #FA3434">
+					<th>
+							<strong>20:00 / 21:30</strong>
+					</th>
+				</tr>
+
+				<?php
+
+
+
+				}
 				}
 				else{
 				?>
@@ -230,6 +355,7 @@
 				?>
 				<?php
 					if(validarHoraReserva("21:30", $clave[0], $fecha)){
+						if(!cerrarPromocion($clave[0], $fecha, "21:30")){
 				?>
 				<tr style="background-color: #6EFF33">
 					<th>
@@ -238,6 +364,23 @@
 					</th>
 				</tr>
 				<?php
+				}
+
+				else{
+
+					?>
+				<tr style="background-color: #FA3434">
+					<th>
+							<strong>21:30 / 23:00</strong>
+					</th>
+				</tr>
+
+				<?php
+
+
+
+				}
+
 				}
 				else{
 				?>

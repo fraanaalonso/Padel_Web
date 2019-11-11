@@ -264,4 +264,30 @@ function consultarPromocion(){
 }
 
 
+function cerrarPromocion($id_pista, $fecha, $hora){
+
+	include_once '../includes/db.php';
+	$bd;
+	$bd = ConectarDB();
+
+	$sql = "SELECT G.id_pista, G.hora_inicio, G.fecha, U.id_partido from game G, user_game U WHERE G.id_pista = '".$id_pista."' AND G.id_partido = u.id_partido AND G.fecha='".$fecha."' AND G.hora_inicio = '".$hora."'";
+
+
+	$resultado = $bd->query($sql);
+	
+	if($resultado->num_rows == 4)
+	{
+		return true;
+	}
+
+	else{
+		return false;
+	}
+
+
+}
+
+
+
+
 ?>

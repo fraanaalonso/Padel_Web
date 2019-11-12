@@ -113,9 +113,25 @@ Switch ($_REQUEST['action']){
 
 			include_once '../Models/COUPLE_CHAMPIONSHIP_MODEL.php';
 			include_once '../Models/COUPLE_MODEL.php';
+			include_once '../Models/USER_MODEL.php';
+			include_once '../Models/CHAMPIONSHIP_MODEL.php';
 
 			$id_pareja = $_POST['id_pareja'];
 			$id_campeonato = $_POST['id_campeonato'];
+			$championship = new CHAMPIONSHIP_MODEL($id_campeonato,'','','','','');
+			$currentChamp = $championship->RellenaDatos();
+
+			$user = new User_Modelo($_REQUEST['login2'],'','',$_REQUEST['password'],'','','','','','','','');
+
+			$respuesta = $user->loginExiste();
+
+			if($respuesta != 'true'){
+				new MESSAGE("La contraseña para ".$_REQUEST['login2']." es incorrecta ", "./Championship_Controller.php?action=REGISTRAR&id_campeonato=$currentChamp[0]");
+			}
+
+			else{
+
+
 			$pareja = new COUPLE_MODEL($id_pareja, $_REQUEST['id_categoria'], $_REQUEST['id_grupo'], $_REQUEST['login1'], $_REQUEST['login2']);
 			$result = $pareja->REGISTRARPAREJA();
 
@@ -135,7 +151,7 @@ Switch ($_REQUEST['action']){
 
 			new MESSAGE($result, './Championship_Controller.php');
 
-
+		}
 		}
 			
 		break;

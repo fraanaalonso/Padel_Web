@@ -48,15 +48,15 @@ class InscribirCampeonatoView
 		  	<input type="text" id="id_normativa" name="id_normativa" class="form-control" readonly value="<?php echo $valores[3] ?>" placeholder="ID Normativa" >
 		   </div>
 
-		   <div class="form-group" >
+		   <div class="form-group">
 		  	<input type="text" id="id_grupo" name="id_grupo" class="form-control" readonly value="<?php echo $valores[4] ?>" placeholder="ID Grupo" >
 		   </div>
 
-		   <div class="form-group" >
+		   <div class="form-group" id="sexo-group">
 		  	<input type="text" id="id_categoria" name="id_categoria" class="form-control" readonly value="<?php echo $valores[5] ?>" placeholder="ID Categoria" >
 		   </div>
 
-		   <div class="form-group" >
+		   <div class="form-group" id="user-group">
 		  	<input type="text" id="login1" name="login1" class="form-control" readonly value="<?php echo $_SESSION['login'] ?>"  placeholder="Login Participante 1" >
 		   </div>
 
@@ -83,6 +83,7 @@ class InscribirCampeonatoView
 		   	?>
 
 		   	<?php
+		   	if(!esInscrito($user[0], $user[0], $valores[0])){
 		   			if($user['sexo'] == 'Masculino' && $user['login']!=$_SESSION['login']){
 		   	
 
@@ -94,6 +95,8 @@ class InscribirCampeonatoView
 
 
 		  		}
+
+		  	}
 		  	?>
 
 
@@ -109,6 +112,10 @@ class InscribirCampeonatoView
 		
 	</select>
 	</div>
+
+	<div class="form-group" >
+		<input type="password" id="password" name="password" class="form-control" required  placeholder="Password Login Acompañante" >
+    </div>
 
 
 		
@@ -131,7 +138,10 @@ class InscribirCampeonatoView
 		   	?>
 
 		   	<?php
+
+		   	if(!esInscrito($user[0], $user[0], $valores[0])){
 		   			if($user['sexo'] == 'Femenino'  && $user['login']!=$_SESSION['login']){
+
 		   	
 
 
@@ -142,6 +152,9 @@ class InscribirCampeonatoView
 
 
 		  		}
+
+		  	}
+
 		  	?>
 
 
@@ -157,6 +170,10 @@ class InscribirCampeonatoView
 		
 	</select>
 	</div>
+
+	<div class="form-group" >
+		<input type="password" id="password" name="password" class="form-control"  placeholder="Password Login Acompañante" >
+    </div>
 		<?php
 		}
 		elseif($datos[5] == 3){
@@ -175,7 +192,9 @@ class InscribirCampeonatoView
 		   	?>
 
 		   	<?php
-		   			
+
+
+		   	if(!esInscrito($user[0], $user[0], $valores[0])){		
 		   	
 
 		   		if($user['login']!=$_SESSION['login']){
@@ -185,7 +204,7 @@ class InscribirCampeonatoView
 
 
 
-		  		
+		  		}
 		  	?>
 
 
@@ -200,6 +219,10 @@ class InscribirCampeonatoView
 		
 	</select>
 	</div>
+
+	<div class="form-group" >
+		<input type="password" id="password" name="password" class="form-control"  placeholder="Password Login Acompañante" >
+    </div>
 
 		<?php
 			}

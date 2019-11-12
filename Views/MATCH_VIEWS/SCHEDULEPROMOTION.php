@@ -58,6 +58,7 @@
 			
 		  	
 
+
 		  	<table  style=" top: 0; text-align: center; width: 80%;" >
 				<tr style="background-color: yellow">
 					<th>
@@ -67,6 +68,15 @@
 				</tr>
 
 
+
+
+
+
+
+
+<?php
+if(checkDeadLine($fecha, date("Y-m-d")) != 0){
+?>
 
 			
 
@@ -95,6 +105,75 @@
 				<?php
 					}
 				?>
+
+
+
+<?php
+
+}
+
+else{
+	$diferencias = strtotime(date('G:i')) - strtotime("09:00");
+	if($diferencias <= 0){
+
+?>	
+
+
+<?php
+			if(validarHoraReserva("09:00", $clave[0], $fecha)){
+				?>
+				<tr style="background-color: #6EFF33">
+					<th>
+
+				
+							<input type="radio"  name="hora_inicio" value="09:00">	
+							<strong>09:00 / 10:30</strong>
+					
+					</th>
+				</tr>
+				<?php
+				}
+				else{
+				?>
+				<tr style="background-color: #FA3434">
+					<th>
+							<strong>09:00 / 10:30</strong>
+					</th>
+				</tr>
+
+				<?php
+					}
+				?>	
+
+<?php
+	}
+
+	else{
+
+?>
+		<tr style="background-color: #FA3434">
+					<th>
+							<strong>09:00 / 10:30</strong>
+					</th>
+		</tr>
+
+<?php
+	}
+}
+?>
+
+
+
+
+
+
+
+
+
+
+<?php
+if(checkDeadLine($fecha, date("Y-m-d")) != 0){
+?>
 				<?php
 					if(validarHoraReserva("10:30", $clave[0], $fecha)){
 				?>
@@ -118,6 +197,66 @@
 					}
 				?>
 
+<?php
+
+}
+
+else{
+	$diferencias = strtotime(date('G:i')) - strtotime("10:30");
+	if($diferencias <= 0){
+
+?>	
+
+
+<?php
+			if(validarHoraReserva("10:30", $clave[0], $fecha)){
+				?>
+				<tr style="background-color: #6EFF33">
+					<th>
+
+				
+							<input type="radio"  name="hora_inicio" value="10:30">	
+							<strong>10:30 / 12:00</strong>
+					
+					</th>
+				</tr>
+				<?php
+				}
+				else{
+				?>
+				<tr style="background-color: #FA3434">
+					<th>
+							<strong>10:30 / 12:00</strong>
+					</th>
+				</tr>
+
+				<?php
+					}
+				?>	
+
+<?php
+	}
+
+	else{
+
+?>
+		<tr style="background-color: #FA3434">
+					<th>
+							<strong>10:30 / 12:00</strong>
+					</th>
+		</tr>
+
+<?php
+	}
+}
+?>
+
+
+
+
+<?php
+if(checkDeadLine($fecha, date("Y-m-d")) != 0){
+?>
 				<?php
 					if(validarHoraReserva("12:00", $clave[0], $fecha)){
 				?>
@@ -140,6 +279,69 @@
 				<?php
 					}
 				?>
+
+
+
+<?php
+
+}
+
+else{
+	$diferencias = strtotime(date('G:i')) - strtotime("12:00");
+	if($diferencias <= 0){
+
+?>	
+
+
+<?php
+			if(validarHoraReserva("12:00", $clave[0], $fecha)){
+				?>
+				<tr style="background-color: #6EFF33">
+					<th>
+
+				
+							<input type="radio"  name="hora_inicio" value="12:00">	
+							<strong>12:00 / 13:30</strong>
+					
+					</th>
+				</tr>
+				<?php
+				}
+				else{
+				?>
+				<tr style="background-color: #FA3434">
+					<th>
+							<strong>12:00 / 13:30</strong>
+					</th>
+				</tr>
+
+				<?php
+					}
+				?>	
+
+<?php
+	}
+
+	else{
+
+?>
+		<tr style="background-color: #FA3434">
+					<th>
+						<strong>12:00 / 13:30</strong>
+					</th>
+		</tr>
+
+<?php
+	}
+}
+?>
+
+
+<?php
+if(checkDeadLine($fecha, date("Y-m-d")) != 0){
+?>
+
+
 				<?php
 					if(validarHoraReserva("13:30", $clave[0], $fecha)){
 				?>
@@ -162,6 +364,68 @@
 				<?php
 					}
 				?>
+
+
+<?php
+
+}
+
+else{
+	$diferencias = strtotime(date('G:i')) - strtotime("13:30");
+	if($diferencias <= 0){
+
+?>	
+
+
+<?php
+			if(validarHoraReserva("13:30", $clave[0], $fecha)){
+				?>
+				<tr style="background-color: #6EFF33">
+					<th>
+
+				
+							<input type="radio"  name="hora_inicio" value="13:30">	
+							<strong>13:30 / 15:00</strong>
+					
+					</th>
+				</tr>
+				<?php
+				}
+				else{
+				?>
+				<tr style="background-color: #FA3434">
+					<th>
+							<strong>13:30 / 15:00</strong>
+					</th>
+				</tr>
+
+				<?php
+					}
+				?>	
+
+<?php
+	}
+
+	else{
+
+?>
+		<tr style="background-color: #FA3434">
+					<th>
+							<strong>13:30 / 15:00</strong>
+					</th>
+		</tr>
+
+<?php
+	}
+}
+?>
+
+
+<?php
+if(checkDeadLine($fecha, date("Y-m-d")) != 0){
+?>
+
+
 				<?php
 					if(validarHoraReserva("17:00", $clave[0], $fecha)){
 				?>
@@ -184,6 +448,67 @@
 				<?php
 					}
 				?>
+
+
+<?php
+
+}
+
+else{
+	$diferencias = strtotime(date('G:i')) - strtotime("17:00");
+	if($diferencias <= 0){
+
+?>	
+
+
+<?php
+			if(validarHoraReserva("17:00", $clave[0], $fecha)){
+				?>
+				<tr style="background-color: #6EFF33">
+					<th>
+
+				
+							<input type="radio"  name="hora_inicio" value="17:00">	
+							<strong>17:00 / 18:30</strong>
+					
+					</th>
+				</tr>
+				<?php
+				}
+				else{
+				?>
+				<tr style="background-color: #FA3434">
+					<th>
+							<strong>17:00 / 18:30</strong>
+					</th>
+				</tr>
+
+				<?php
+					}
+				?>	
+
+<?php
+	}
+
+	else{
+
+?>
+		<tr style="background-color: #FA3434">
+					<th>
+							<strong>17:00 / 18:30</strong>
+					</th>
+		</tr>
+
+<?php
+	}
+}
+?>
+
+<?php
+if(checkDeadLine($fecha, date("Y-m-d")) != 0){
+?>
+
+
 				<?php
 					if(validarHoraReserva("18:30", $clave[0], $fecha)){
 				?>
@@ -206,6 +531,68 @@
 				<?php
 					}
 				?>
+
+
+<?php
+
+}
+
+else{
+	$diferencias = strtotime(date('G:i')) - strtotime("18:30");
+	if($diferencias <= 0){
+
+?>	
+
+
+<?php
+			if(validarHoraReserva("18:30", $clave[0], $fecha)){
+				?>
+				<tr style="background-color: #6EFF33">
+					<th>
+
+				
+							<input type="radio"  name="hora_inicio" value="18:30">	
+							<strong>18:30 / 20:00</strong>
+					
+					</th>
+				</tr>
+				<?php
+				}
+				else{
+				?>
+				<tr style="background-color: #FA3434">
+					<th>
+							<strong>18:30 / 20:00</strong>
+					</th>
+				</tr>
+
+				<?php
+					}
+				?>	
+
+<?php
+	}
+
+	else{
+
+?>
+		<tr style="background-color: #FA3434">
+					<th>
+						<strong>18:30 / 20:00</strong>
+					</th>
+		</tr>
+
+<?php
+	}
+}
+?>
+
+
+<?php
+if(checkDeadLine($fecha, date("Y-m-d")) != 0){
+?>
+
+
 				<?php
 					if(validarHoraReserva("20:00", $clave[0], $fecha)){
 				?>
@@ -228,6 +615,67 @@
 				<?php
 					}
 				?>
+
+<?php
+
+}
+
+else{
+	$diferencias = strtotime(date('G:i')) - strtotime("20:00");
+	if($diferencias <= 0){
+
+?>	
+
+
+<?php
+			if(validarHoraReserva("20:00", $clave[0], $fecha)){
+				?>
+				<tr style="background-color: #6EFF33">
+					<th>
+
+				
+							<input type="radio"  name="hora_inicio" value="20:00">	
+							<strong>20:00 / 21:30</strong>
+					
+					</th>
+				</tr>
+				<?php
+				}
+				else{
+				?>
+				<tr style="background-color: #FA3434">
+					<th>
+							<strong>20:00 / 21:30</strong>
+					</th>
+				</tr>
+
+				<?php
+					}
+				?>	
+
+<?php
+	}
+
+	else{
+
+?>
+		<tr style="background-color: #FA3434">
+					<th>
+							<strong>20:00 / 21:30</strong>
+					</th>
+		</tr>
+
+<?php
+	}
+}
+?>
+
+<?php
+if(checkDeadLine($fecha, date("Y-m-d")) != 0){
+?>
+
+
+
 				<?php
 					if(validarHoraReserva("21:30", $clave[0], $fecha)){
 				?>
@@ -250,6 +698,60 @@
 				<?php
 					}
 				?>
+
+<?php
+
+}
+
+else{
+	$diferencias = strtotime(date('G:i')) - strtotime("21:30");
+	if($diferencias <= 0){
+
+?>	
+
+
+<?php
+			if(validarHoraReserva("21:30", $clave[0], $fecha)){
+				?>
+				<tr style="background-color: #6EFF33">
+					<th>
+
+				
+							<input type="radio"  name="hora_inicio" value="21:30">	
+							<strong>21:30 / 23:00</strong>
+					
+					</th>
+				</tr>
+				<?php
+				}
+				else{
+				?>
+				<tr style="background-color: #FA3434">
+					<th>
+							<strong>21:30 / 23:00</strong>
+					</th>
+				</tr>
+
+				<?php
+					}
+				?>	
+
+<?php
+	}
+
+	else{
+
+?>
+		<tr style="background-color: #FA3434">
+					<th>
+							<strong>21:30 / 23:00</strong>
+					</th>
+		</tr>
+
+<?php
+	}
+}
+?>
 
 				
 				

@@ -337,4 +337,26 @@ function getNumReservas($login){
 
 
 
+function maxCouplesAllowed($id_campeonato){
+
+	include_once '../includes/db.php';
+	$bd;
+	$bd = ConectarDB();
+
+	$sql= "SELECT A.id_pareja, A.login1, A.login2, B.id_campeonato FROM COUPLE A INNER JOIN (SELECT id_pareja, id_campeonato FROM championship_couple GROUP BY id_pareja, id_campeonato) B ON B.id_pareja = A.id_pareja AND B.id_campeonato = '".$id_campeonato."'";
+
+
+
+	$resultado = $bd->query($sql);
+
+	if($resultado->num_rows == 12){
+		return false;
+	}
+	else{
+		return true;
+	}
+
+
+}
+
 ?>

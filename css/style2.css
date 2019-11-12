@@ -243,6 +243,11 @@ tr:hover td{
 	color: #760B0B;
 }
 
+.iconCalendar{
+	font-size: 20px;
+	color: #48D32D;
+}
+
 .icons{
   position: absolute;
 	

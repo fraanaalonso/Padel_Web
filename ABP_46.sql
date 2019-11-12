@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2019 a las 14:31:36
+-- Tiempo de generación: 12-11-2019 a las 22:20:55
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.10
 
@@ -11,7 +11,6 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
-
 
 
 DROP DATABASE IF EXISTS `abp46`;
@@ -48,13 +47,13 @@ CREATE TABLE `championship` (
 --
 
 INSERT INTO `championship` (`id_campeonato`, `fecha_inicio`, `fecha_limite`, `id_normativa`, `id_grupo`, `id_categoria`) VALUES
-(1, '17-12-2019', '15-12-2019', 2, 1, 1),
-(2, '21-12-2019', '18-12-2019', 1, 3, 3),
-(3, '11-11-2019', '09-11-2019', 4, 2, 3),
-(4, '22-12-2019', '20-12-2019', 3, 2, 2),
-(5, '13-01-2020', '10-01-2020', 3, 2, 2),
-(6, '13-02-2020', '10-02-2020', 1, 1, 2),
-(7, '15-03-2020', '13-03-2020', 1, 1, 2);
+(1, '2019-12-17', '2019-12-15', 2, 1, 1),
+(2, '2019-12-21', '2019-12-18', 1, 3, 3),
+(3, '2019-11-11', '2019-11-09', 4, 2, 3),
+(4, '2019-12-22', '2019-12-20', 3, 2, 2),
+(5, '2020-01-13', '2019-01-10', 3, 2, 2),
+(6, '2020-02-13', '2020-02-10', 1, 1, 2),
+(7, '2020-03-15', '2020-03-13', 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -80,7 +79,8 @@ INSERT INTO `championship_couple` (`id_pareja`, `id_campeonato`) VALUES
 (14, 1),
 (15, 1),
 (22, 4),
-(23, 2);
+(23, 2),
+(24, 1);
 
 -- --------------------------------------------------------
 
@@ -118,22 +118,22 @@ INSERT INTO `chat` (`id_chat`, `login`, `mensaje`, `fecha_mensaje`, `hora_mensaj
 
 CREATE TABLE `clash` (
   `id_enfrentamiento` tinyint(4) NOT NULL,
+  `id_campeonato` tinyint(4) NOT NULL,
   `id_pareja1` tinyint(4) NOT NULL,
   `id_pareja2` tinyint(4) NOT NULL,
   `numSetsPareja1` int(1) NOT NULL,
   `numSetsPareja2` int(1) NOT NULL,
-  `id_grupo` tinyint(4) NOT NULL,
-  `id_categoria` tinyint(4) NOT NULL,
-  `hora_inicio` varchar(8) COLLATE utf8_spanish_ci NOT NULL
+  `hora_inicio` varchar(8) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha` varchar(10) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `clash`
 --
 
-INSERT INTO `clash` (`id_enfrentamiento`, `id_pareja1`, `id_pareja2`, `numSetsPareja1`, `numSetsPareja2`, `id_grupo`, `id_categoria`, `hora_inicio`) VALUES
-(4, 7, 8, 2, 1, 1, 1, '18:50'),
-(7, 13, 14, 2, 1, 1, 1, '18:50');
+INSERT INTO `clash` (`id_enfrentamiento`, `id_campeonato`, `id_pareja1`, `id_pareja2`, `numSetsPareja1`, `numSetsPareja2`, `hora_inicio`, `fecha`) VALUES
+(4, 1, 7, 8, 2, 1, '18:50', ''),
+(7, 1, 13, 14, 2, 1, '18:50', '');
 
 -- --------------------------------------------------------
 
@@ -163,7 +163,8 @@ INSERT INTO `couple` (`id_pareja`, `id_categoria`, `id_grupo`, `login1`, `login2
 (15, 1, 1, 'mvarela', 'carlosm'),
 (18, 3, 1, 'admin', 'charlie'),
 (22, 2, 2, 'antiavazquez', 'lucia_atm'),
-(23, 3, 3, 'antiavazquez', 'delinha');
+(23, 3, 3, 'antiavazquez', 'delinha'),
+(24, 1, 1, 'admin', 'antonio_v');
 
 -- --------------------------------------------------------
 
@@ -175,24 +176,23 @@ CREATE TABLE `court` (
   `id_pista` varchar(3) COLLATE utf8_spanish_ci NOT NULL,
   `descripcion` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
   `ubicacion` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `precio` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
-  `estado` int(1) NOT NULL
+  `precio` varchar(5) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `court`
 --
 
-INSERT INTO `court` (`id_pista`, `descripcion`, `ubicacion`, `precio`, `estado`) VALUES
-('P0', 'Cubierta y cristaleras de 50 metros', 'Ala Norte', '5.5', 1),
-('P1', 'Cubierta y cristaleras de 50 metros', 'Ala Norte', '5.5', 1),
-('P2', 'Descubierta y reglamentaria', 'Ala Sur', '5.5', 1),
-('P3', 'Hierba natural', 'Ala Norte', '5.5', 1),
-('P4', 'Hierba artificial', 'Ala Oeste', '5.5', 2),
-('P5', 'Ancho y largo reglamentario. Bancos exteriores para descanso de los jugadores', 'Ala Este', '5.5', 2),
-('P6', 'Otra descripcion', 'Ala Oeste', '5.5', 1),
-('P7', 'Con vistas a la ciudad', 'Ala Norte', '5.5', 1),
-('P8', 'Escasez de arena', 'Ala Sur', '5.5', 2);
+INSERT INTO `court` (`id_pista`, `descripcion`, `ubicacion`, `precio`) VALUES
+('P0', 'Cubierta y cristaleras de 50 metros', 'Ala Norte', '5.5'),
+('P1', 'Cubierta y cristaleras de 50 metros', 'Ala Norte', '5.5'),
+('P2', 'Descubierta y reglamentaria', 'Ala Sur', '5.5'),
+('P3', 'Hierba natural', 'Ala Norte', '5.5'),
+('P4', 'Hierba artificial', 'Ala Oeste', '5.5'),
+('P5', 'Ancho y largo reglamentario. Bancos exteriores para descanso de los jugadores', 'Ala Este', '5.5'),
+('P6', 'Otra descripcion', 'Ala Oeste', '5.5'),
+('P7', 'Con vistas a la ciudad', 'Ala Norte', '5.5'),
+('P8', 'Escasez de arena', 'Ala Sur', '5.5');
 
 -- --------------------------------------------------------
 
@@ -204,7 +204,6 @@ CREATE TABLE `game` (
   `id_partido` tinyint(4) NOT NULL,
   `id_pista` varchar(3) COLLATE utf8_spanish_ci NOT NULL,
   `hora_inicio` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
-  `hora_fin` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
   `fecha` varchar(10) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -212,13 +211,13 @@ CREATE TABLE `game` (
 -- Volcado de datos para la tabla `game`
 --
 
-INSERT INTO `game` (`id_partido`, `id_pista`, `hora_inicio`, `hora_fin`, `fecha`) VALUES
-(2, 'P2', '18:50', '20:10', '18-12-2019'),
-(3, 'P3', '14:10', '15:30', '14-12-2019'),
-(4, 'P4', '15:30', '16:30', '19-12-2019'),
-(5, 'P3', '09:45', '10:50', '17-12-2019'),
-(6, 'P6', '19:25', '20:25', '11-12-2019'),
-(7, 'P7', '12:35', '13:35', '10-12-2019');
+INSERT INTO `game` (`id_partido`, `id_pista`, `hora_inicio`, `fecha`) VALUES
+(2, 'P2', '09:00', '2019-12-18'),
+(3, 'P3', '17:00', '2019-12-14'),
+(4, 'P4', '10:30', '2019-11-14'),
+(5, 'P3', '20:00', '2019-12-17'),
+(6, 'P6', '21:30', '2019-11-17'),
+(7, 'P7', '18:30', '2019-12-10');
 
 -- --------------------------------------------------------
 
@@ -542,11 +541,10 @@ ALTER TABLE `chat`
 -- Indices de la tabla `clash`
 --
 ALTER TABLE `clash`
-  ADD PRIMARY KEY (`id_enfrentamiento`),
+  ADD PRIMARY KEY (`id_enfrentamiento`,`id_campeonato`),
   ADD KEY `id_pareja1` (`id_pareja1`),
   ADD KEY `id_pareja2` (`id_pareja2`),
-  ADD KEY `id_grupo` (`id_grupo`),
-  ADD KEY `id_categoria` (`id_categoria`);
+  ADD KEY `clash_ibfk_0` (`id_campeonato`);
 
 --
 -- Indices de la tabla `couple`
@@ -659,13 +657,13 @@ ALTER TABLE `chat`
 -- AUTO_INCREMENT de la tabla `clash`
 --
 ALTER TABLE `clash`
-  MODIFY `id_enfrentamiento` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_enfrentamiento` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `couple`
 --
 ALTER TABLE `couple`
-  MODIFY `id_pareja` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_pareja` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `game`
@@ -701,7 +699,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT de la tabla `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id_reserva` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_reserva` tinyint(4) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -738,10 +736,9 @@ ALTER TABLE `championship_couple`
 -- Filtros para la tabla `clash`
 --
 ALTER TABLE `clash`
+  ADD CONSTRAINT `clash_ibfk_0` FOREIGN KEY (`id_campeonato`) REFERENCES `championship` (`id_campeonato`) ON DELETE CASCADE,
   ADD CONSTRAINT `clash_ibfk_1` FOREIGN KEY (`id_pareja1`) REFERENCES `couple` (`id_pareja`) ON DELETE CASCADE,
-  ADD CONSTRAINT `clash_ibfk_2` FOREIGN KEY (`id_pareja2`) REFERENCES `couple` (`id_pareja`) ON DELETE CASCADE,
-  ADD CONSTRAINT `clash_ibfk_3` FOREIGN KEY (`id_grupo`) REFERENCES `grupo` (`id_grupo`) ON DELETE CASCADE,
-  ADD CONSTRAINT `clash_ibfk_4` FOREIGN KEY (`id_categoria`) REFERENCES `gender` (`id_categoria`) ON DELETE CASCADE;
+  ADD CONSTRAINT `clash_ibfk_2` FOREIGN KEY (`id_pareja2`) REFERENCES `couple` (`id_pareja`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `couple`

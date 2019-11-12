@@ -75,7 +75,7 @@ class SHOWALL_VIEW
 ?>
         <a href="../Controllers/Championship_Controller.php?action=EDIT&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-pencil editar"></span></a>
         <a href="../Controllers/Championship_Controller.php?action=DELETE&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-trash borrar"></span></a>
-
+        
 <?php
 }
 ?>
@@ -154,6 +154,7 @@ if(!esInscrito($_SESSION['login'], $_SESSION['login'], $fila['id_campeonato'])){
 ?>
 
         <a href="../Controllers/Couple_Controller.php?action=SHOWCOUPLES&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-users editar" style="font-size: 20px"></span></a>
+        <a href="../Controllers/Clash_Controller.php?action=GENERARCALENDARIO&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-calendar-full iconCalendar"></span></a>
       
       </td>
 

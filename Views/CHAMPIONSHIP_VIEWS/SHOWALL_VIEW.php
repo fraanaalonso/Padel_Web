@@ -85,10 +85,7 @@ class SHOWALL_VIEW
 
 <?php
 
-$valor = $fila['fecha_limite'];
-$currentDate = strtotime(date("Y-m-d", time()));
-
-if($currentDate <= strtotime($valor)){
+if(checkDeadLine($fila['fecha_limite'], date("Y-m-d")) >= 0){
 ?>
 <?php
 if(comprobarSexo($_SESSION['login']) == 'Femenino' && (categoriaCampeonato($fila['id_campeonato']) == 3 || categoriaCampeonato($fila['id_campeonato']) == 2)){
@@ -114,6 +111,14 @@ if(!esInscrito($_SESSION['login'], $_SESSION['login'], $fila['id_campeonato'])){
 ?>
 
 <?php
+
+if(checkDeadLine($fila['fecha_limite'], date("Y-m-d")) >= 0){
+
+?>
+
+
+
+<?php
 if(comprobarSexo($_SESSION['login']) == 'Masculino' && (categoriaCampeonato($fila['id_campeonato']) == 3 || categoriaCampeonato($fila['id_campeonato']) == 1)){
 ?>
 
@@ -130,7 +135,9 @@ if(!esInscrito($_SESSION['login'], $_SESSION['login'], $fila['id_campeonato'])){
 }
 ?>
 
-
+<?php
+}
+?>
 
         <a href="../Controllers/Couple_Controller.php?action=SHOWCOUPLES&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-users editar" style="font-size: 20px"></span></a>
       

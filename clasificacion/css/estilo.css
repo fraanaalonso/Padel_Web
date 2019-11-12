@@ -1,0 +1,48 @@
+*{
+	margin: 0;
+	padding:0;
+}
+body{
+	background-color:#FFF5EE;
+	font-family: Arial;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th{
+	padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  background-color: #A3F05A;
+
+}
+th:hover{background-color:#1CE6D5;}
+
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  background-color: #BCCCAC;
+}
+
+
+td:hover {background-color:#f5f5f5;}
+
+/*#resultados{
+	margin:150 px auto;
+	width:600px;
+	border: solid 1px black;
+	padding:20px;
+}
+table{
+	background-color: white;
+	text-align: left;
+	width:100%; 
+	border-collapse: collapse;
+}
+th,td{
+	
+}*/

@@ -316,5 +316,25 @@ function checkDeadLine($primera, $segunda)
 
 
 
+function getNumReservas($login){
+
+	include_once '../includes/db.php';
+	$bd;
+	$bd = ConectarDB();
+
+	$sql = "SELECT login FROM RESERVATION WHERE login = '".$login."'";
+
+	$resultado = $bd->query($sql);
+
+	if($resultado->num_rows == 5){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
+
+
 
 ?>

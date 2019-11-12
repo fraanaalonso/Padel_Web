@@ -117,7 +117,6 @@ Switch ($_REQUEST['action']){
 		
 
 		$currentDate = strtotime(date("Y-m-d", time()));
-		$currentDate2 = date("Y-m-d");
 
 		if ($currentDate > strtotime($fechaSeleccionada)){
 			new MESSAGE("La fecha seleccionada corresponde a un día ya transcurrido","../Controllers/Reservation_Controller.php?action=INSERTAR&id_pista=$clave[0]");

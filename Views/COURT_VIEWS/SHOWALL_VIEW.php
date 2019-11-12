@@ -48,14 +48,8 @@ class SHOWALL_VIEW
  <table border="1">
   <thead>
   <tr>
-   <?php
-   if(comprobarPermisos($_SESSION['login']) == 1){
-   ?> 
+   
     <th>Identificador de Pista</th>
-
-    <?php
-      }
-    ?>
     <th>Descripcion</th>
     <th>Ubicación</th>
     <th>Precio</th>
@@ -74,9 +68,8 @@ class SHOWALL_VIEW
   {
       echo "<tr>";
 
-      if(comprobarPermisos($_SESSION['login']) == 1){
-      echo "<td>".$fila['id_pista']."</td>";
-    }
+
+      echo "<td>".$fila['id_pista']."</td>";    
       echo "<td>".$fila["descripcion"]."</td>";
       echo "<td>".$fila["ubicacion"]."</td>";
       echo "<td>".$fila["precio"]."</td>";
@@ -96,7 +89,18 @@ class SHOWALL_VIEW
       }
 
       ?>
+      <!--RESERVAR PARTIDO-->
+      <?php
+      if(getNumReservas($_SESSION['login'])){
+      ?>
         <a href="../Controllers/Reservation_Controller.php?action=INSERTAR&id_pista=<?php  echo $fila['id_pista'] ?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 20px"></span></a>
+
+        <?php
+       }
+        ?>
+
+
+        <!--PROMOCIONAR PARTIDO-->
         <a href="../Controllers/Match_Controller.php?action=INSERTAR&id_pista=<?php  echo $fila['id_pista'] ?>"><span class="lnr lnr-plus-circle" style="font-size: 20px"></span></a>
         
       

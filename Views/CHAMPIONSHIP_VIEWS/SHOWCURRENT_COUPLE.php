@@ -34,25 +34,35 @@ class SHOWCURRENT_COUPLE
       <table>
 
          <tr>
-            <th>ID Pareja</th>
+            <th>ID Categoria</th>
             <td><?php echo $valores[0];?></td>
           </tr>
 
 
            <tr>
-            <th>ID Campeonato</th>
+            <th>ID Pareja</th>
             <td><?php echo $valores[1];?></td>
+          </tr>
+
+          <tr>
+            <th>ID Campeonato</th>
+            <td><?php echo $valores[2];?></td>
           </tr>
            
 
            <tr>
             <th>Login Capitán</th>
-            <td><?php echo $valores[2];?></td>
+            <td><?php echo $valores[3];?></td>
           </tr>
 
           <tr>
             <th>Login Acompañante</th>
-            <td><?php echo $valores[3];?></td>
+            <td><?php echo $valores[4];?></td>
+          </tr>
+
+          <tr>
+            <th>ID Grupo</th>
+            <td><?php echo $valores[5];?></td>
           </tr>
      
         </table>

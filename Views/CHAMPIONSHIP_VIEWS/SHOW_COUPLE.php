@@ -37,6 +37,8 @@ class SHOWALL_COUPLE
      <th>ID  Campeonato</th>
      <th>Login Capitan</th>
      <th>Login Acompañante</th>
+     <th>ID Categoria</th>
+     <th>ID Grupo</th>
     <th>Opciones</th>
 
   </tr>
@@ -56,7 +58,8 @@ class SHOWALL_COUPLE
       echo "<td>".$fila["id_campeonato"]."</td>";
       echo "<td>".$fila["login1"]."</td>";
       echo "<td>".$fila["login2"]."</td>";
-    
+      echo "<td>".$fila["id_categoria"]."</td>";
+      echo "<td>".$fila["id_grupo"]."</td>";
 
 
 ?>

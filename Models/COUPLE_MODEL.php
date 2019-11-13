@@ -162,7 +162,9 @@ function obtenerUltimoInscrito(){
 
 
 function joinCouples($id_campeonato){
-	$sql= "SELECT A.id_pareja, A.login1, A.login2, B.id_campeonato FROM COUPLE A INNER JOIN (SELECT id_pareja, id_campeonato FROM championship_couple GROUP BY id_pareja, id_campeonato) B ON B.id_pareja = A.id_pareja AND B.id_campeonato = '".$id_campeonato."'";
+	/*$sql= "SELECT A.id_pareja, A.login1, A.login2, B.id_campeonato FROM COUPLE A INNER JOIN (SELECT id_pareja, id_campeonato FROM championship_couple GROUP BY id_pareja, id_campeonato) B ON B.id_pareja = A.id_pareja AND B.id_campeonato = '".$id_campeonato."'";*/
+
+	$sql = "SELECT couple_categoria.id_categoria, couple_categoria.id_pareja, couple_categoria.id_campeonato, COUPLE.login1, COUPLE.login2, couple_grupo.id_grupo FROM couple_categoria INNER JOIN couple ON couple.id_pareja=couple_categoria.id_pareja INNER JOIN couple_grupo ON couple_grupo.id_pareja=couple_categoria.id_pareja AND couple_categoria.id_campeonato='".$id_campeonato."'";
 
 
 	  if (!($resultado = $this->bd->query($sql))){

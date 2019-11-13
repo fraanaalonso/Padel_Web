@@ -53,7 +53,6 @@ class SHOWALL_VIEW
     <th>Descripcion</th>
     <th>Ubicación</th>
     <th>Precio</th>
-    <th>Estado</th>
     <th>Opciones </th>
    
 
@@ -73,7 +72,6 @@ class SHOWALL_VIEW
       echo "<td>".$fila["descripcion"]."</td>";
       echo "<td>".$fila["ubicacion"]."</td>";
       echo "<td>".$fila["precio"]."</td>";
-      echo "<td>".$fila["estado"]."</td>";
     
 ?>
 

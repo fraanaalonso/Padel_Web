@@ -48,15 +48,8 @@ class ADD_VIEW
 		  	<input type="text" id="precio" name="precio" class="form-control" placeholder="Precio" >
 		   </div>
 
-		    <div class="form-group" >
-		   	<select name="estado" id="estado"  class="form-control">
-
-		   		<option>1</option>
-
-		   		<option>2</option>
-
-		   	</select>
-		   </div>
+		    
+		  
 
 		
 		

@@ -54,11 +54,7 @@ class SHOWCURRENT_VIEW
             </tr>
            <tr>
 
-            <tr>
-            <th>Estado</th>
-            <td><?php echo $valores[4];?></td>
-            </tr>
-           <tr>
+           
 
 
           

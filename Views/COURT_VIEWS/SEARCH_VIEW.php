@@ -45,9 +45,7 @@ class SEARCH_VIEW
 		   </div>
 
 
-		   <div class="form-group">
-		  	<input type="text" id="estado" name="estado" class="form-control" placeholder="Dimension" >
-		   </div>
+		
 
 
 		

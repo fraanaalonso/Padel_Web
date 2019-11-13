@@ -65,10 +65,7 @@ class DELETE_VIEW
             <td><?php echo $valores[3];?></td>
           </tr>
 
-           <tr>
-            <th>Estado</th>
-            <td><?php echo $valores[4];?></td>
-          </tr>
+           
      
         </table>
 

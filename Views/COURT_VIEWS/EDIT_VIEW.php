@@ -46,9 +46,7 @@ class EDIT_VIEW
 		   </div>
 
 
-		   <div class="form-group">
-		  	<input type="text" id="estado" name="estado" class="form-control" value="<?php echo $valores['estado'];?>" placeholder="Estado" >
-		   </div>
+		
 
 		   <button type="submit" class="btn btn-light"><span class="lnr lnr-pencil" style="font-size: 35px;"></span></button>
 		  

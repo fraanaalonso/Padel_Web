@@ -9,16 +9,14 @@ class COURT_MODEL
 	var $descripcion;
 	var $ubicacion;
 	var $precio;
-	var $estado;
 	var $bd;
 	
-	function __construct($id_pista,$descripcion, $ubicacion, $precio, $estado)
+	function __construct($id_pista,$descripcion, $ubicacion, $precio)
 	{
 		$this->id_pista = $id_pista;
 		$this->descripcion = $descripcion;
 		$this->ubicacion = $ubicacion;
 		$this->precio = $precio;
-		$this->estado = $estado;
 
 		
 		include_once '../includes/db.php';
@@ -63,15 +61,13 @@ class COURT_MODEL
 					id_pista,
 					descripcion,
 					ubicacion,
-					precio, 
-					estado
+					precio
 					) 
 						VALUES (
 						'$this->id_pista',
 						'$this->descripcion',
 						'$this->ubicacion',
-						'$this->precio',
-						'$this->estado'
+						'$this->precio'
 						)";
 					
 				
@@ -117,8 +113,7 @@ function EDIT(){
 				id_pista = '$this->id_pista',
 				descripcion = '$this->descripcion',
 				ubicacion = '$this->ubicacion',
-				precio = '$this->precio',
-				estado = '$this->$estado'
+				precio = '$this->precio'
 				
 				WHERE ( id_pista = '$this->id_pista')";
 
@@ -201,37 +196,6 @@ function RellenaDatos()
 
 
 
-function ocupadaPista(){
-
-	$sql = "UPDATE Pista SET `estado` = '2' WHERE HERE (id_pista = '$this->id_pista')";
-			
-			$resultado = $this->bd->query($sql);
-			
-			if(!$resultado){
-					return "Error en la modificación";
-				}else{
-					return "Modificado correctamente";
-				}
-
-
-
-}
-
-
-function librePista(){
-	$sql = "UPDATE COURT SET `estado` = '1'  WHERE id_pista = '".$this-> id_pista."'";
-
-
-		$resultado = $this->bd->query($sql);
-			
-		if(!$resultado){
-			return "Error en la modificación";
-		}else{
-			return "Modificado correctamente";
-			}
-
-
-}	
 
 }
 

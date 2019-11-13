@@ -29,7 +29,6 @@ function get_data(){
 	$descripcion ='';
 	$ubicacion ='';
 	$precio = '' ;
-	$estado='';
 	$action = $_REQUEST['action'];
 
 	$COURT = new COURT_MODEL(
@@ -37,7 +36,6 @@ function get_data(){
 		$descripcion,
 		$ubicacion,
 		$precio,
-		$estado,
 		$action
 	);
 
@@ -56,7 +54,7 @@ Switch ($_REQUEST['action']){
 				}
 				else{
 				 include_once '../Models/COURT_MODEL.php';
-				  $modelo= new COURT_MODEL($_REQUEST['id_pista'],$_REQUEST['descripcion'], $_REQUEST['ubicacion'],$_REQUEST['precio'], $_REQUEST['estado']);
+				  $modelo= new COURT_MODEL($_REQUEST['id_pista'],$_REQUEST['descripcion'], $_REQUEST['ubicacion'],$_REQUEST['precio']);
 
 					$respuesta = $modelo->ADD();
 					new MESSAGE($respuesta,'./Court_Controller.php');
@@ -77,7 +75,7 @@ Switch ($_REQUEST['action']){
 
 				else{
 					 include_once '../Models/COURT_MODEL.php';
-					$modelo= new COURT_MODEL($_REQUEST['id_pista'],$_REQUEST['descripcion'], $_REQUEST['ubicacion'],$_REQUEST['precio'], $_REQUEST['estado']);
+					$modelo= new COURT_MODEL($_REQUEST['id_pista'],$_REQUEST['descripcion'], $_REQUEST['ubicacion'],$_REQUEST['precio']);
 
 					
                      $respuesta = $modelo->SEARCH();
@@ -104,7 +102,7 @@ Switch ($_REQUEST['action']){
 				else{
 
 					 include '../Models/COURT_MODEL.php';
-					$modelo = new COURT_MODEL($_REQUEST['id_pista'],$_REQUEST['descripcion'], $_REQUEST['ubicacion'],$_REQUEST['precio'], $_REQUEST['estado']);
+					$modelo = new COURT_MODEL($_REQUEST['id_pista'],$_REQUEST['descripcion'], $_REQUEST['ubicacion'],$_REQUEST['precio']);
 
 					$respuesta = $modelo->EDIT();
 					new MESSAGE($respuesta, './Court_Controller.php');
@@ -148,7 +146,7 @@ Switch ($_REQUEST['action']){
 
 				if (!$_POST){
 					include_once '../Models/COURT_MODEL.php';
-					$modelo = new COURT_MODEL(' ' ,' ' ,' ', ' ', ' ');
+					$modelo = new COURT_MODEL(' ' ,' ' ,' ', ' ');
 				}
 				else{
 					  include_once '../Models/COURT_MODEL.php';
@@ -156,7 +154,7 @@ Switch ($_REQUEST['action']){
 
 
 				$datos = $modelo->SEARCH();
-				$lista = array('Identificador de Pista','Descripcion', 'Ubicacion ', 'Precio', 'Estado');
+				$lista = array();
 
 				
 				new SHOWALL_VIEW($lista, $datos);

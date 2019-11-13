@@ -34,8 +34,6 @@ function get_data(){
 	$fecha_inicio ='';
 	$fecha_limite ='';
 	$id_normativa = '' ;
-	$id_grupo='';
-	$id_categoria='';
 	$action = $_REQUEST['action'];
 
 	$CHAMPIONSHIP = new CHAMPIONSHIP_MODEL(
@@ -43,8 +41,6 @@ function get_data(){
 		$fecha_inicio,
 		$fecha_limite,
 		$id_normativa,
-		$id_grupo,
-		$id_categoria,
 		$action
 	);
 
@@ -60,27 +56,23 @@ Switch ($_REQUEST['action']){
 		case 'ADD':
 				if (!$_POST){
 
-			
-				 include_once '../Models/GENDER_MODEL.php';
-				 include_once '../Models/GROUP_MODEL.php';
+		
 				 include_once '../Models/RULE_MODEL.php';
 				  
-				  	$aux1 = new GENDER_MODEL('','');
-				  	$aux2 = new GROUP_MODEL('','');
+	
 				  	$aux3 = new RULE_MODEL('','');
 
 				  	$consultaNormativas = $aux3->getDBDatosNormativas();
-				  	$consultaCategorias = $aux1->getDBDatosCategorias();
-				  	$consultaGrupos = $aux2->getDBDatosGrupos();
+				  	
 					
-					new ADD_VIEW($consultaNormativas,$consultaCategorias,$consultaGrupos);
+					new ADD_VIEW($consultaNormativas);
 				
 				}
 				else{
 
 					include_once '../Models/CHAMPIONSHIP_MODEL.php';
 				 
-					$modelo= new CHAMPIONSHIP_MODEL(' ',$_REQUEST['fecha_inicio'], $_REQUEST['fecha_limite'],$_REQUEST['id_normativa'], $_REQUEST['id_grupo'], $_REQUEST['id_categoria']);
+					$modelo= new CHAMPIONSHIP_MODEL(' ',$_REQUEST['fecha_inicio'], $_REQUEST['fecha_limite'],$_REQUEST['id_normativa']);
 					$respuesta = $modelo->ADD();
 					new MESSAGE($respuesta,'./Championship_Controller.php');
 					
@@ -97,16 +89,18 @@ Switch ($_REQUEST['action']){
 
 				include_once '../Models/CHAMPIONSHIP_MODEL.php';
 				include_once '../Models/USER_MODEL.php';
+				include_once '../Models/GROUP_MODEL.php';
+				include_once '../Models/GENDER_MODEL.php';
 					$modelo= get_data();
+					$modelo2 = new GROUP_MODEL('','');
+					$modelo3 = new GENDER_MODEL('','');
 					$aux = new User_Modelo('','','','','','','','','','','','');
-					$toret = new CHAMPIONSHIP_MODEL('','','','','','');
-					$valores= $modelo ->RellenaDatos();
-					$datos = $toret->getDBDatosCampeonato($valores['id_campeonato']);
-					$consulta = $aux->getDBDatosUser();
 
-				
+					$grupos = $modelo2->getDBDatosGrupos();
+					$categorias = $modelo3->getDBDatosCategorias();
+					$valores= $modelo ->RellenaDatos(); 
 
-					new InscribirCampeonatoView($valores,$datos, $consulta);
+					new InscribirCampeonatoView($valores,$grupos, $categorias);
 			}
 
 			else{
@@ -115,13 +109,20 @@ Switch ($_REQUEST['action']){
 			include_once '../Models/COUPLE_MODEL.php';
 			include_once '../Models/USER_MODEL.php';
 			include_once '../Models/CHAMPIONSHIP_MODEL.php';
+			include_once '../Models/COUPLE_CATEGORIA_MODEL.php';
+			include_once '../Models/COUPLE_GRUPO_MODEL.php';
 
 			$id_pareja = $_POST['id_pareja'];
 			$id_campeonato = $_POST['id_campeonato'];
+			$capitan = $_POST['login1'];
+			$socio = $_POST['login2'];
+			$grupoSeleccionado = $_POST['id_grupo'];
+			$categoriaSeleccionada = $_POST['id_categoria'];
+
 			$championship = new CHAMPIONSHIP_MODEL($id_campeonato,'','','','','');
 			$currentChamp = $championship->RellenaDatos();
 
-			$user = new User_Modelo($_REQUEST['login2'],'','',$_REQUEST['password'],'','','','','','','','');
+			$user = new User_Modelo($socio,'','',$_REQUEST['password'],'','','','','','','','');
 
 			$respuesta = $user->loginExiste();
 
@@ -132,24 +133,27 @@ Switch ($_REQUEST['action']){
 			else{
 
 
-			$pareja = new COUPLE_MODEL($id_pareja, $_REQUEST['id_categoria'], $_REQUEST['id_grupo'], $_REQUEST['login1'], $_REQUEST['login2']);
+			$pareja = new COUPLE_MODEL($id_pareja, $capitan, $socio);
 			$result = $pareja->REGISTRARPAREJA();
 
 			$obj = new COUPLE_MODEL('','','','','');
 			$dato = $obj->obtenerUltimoInscrito();
 	
 			$pareja_campeonato = new COUPLE_CHAMPIONSHIP_MODEL($dato[0],$id_campeonato);
-			
-
-		
 			$result2 = $pareja_campeonato->ADD();
-			
 
+
+			$pareja_categoria = new COUPLE_CATEGORIA_MODEL($categoriaSeleccionada, $dato[0], $id_campeonato);
+			$result3 = $pareja_categoria->ADD();
+
+			
+			$pareja_grupo = new COUPLE_GRUPO_MODEL($dato[0], $grupoSeleccionado);
+			$result4 = $pareja_grupo->ADD();
 		
 
 			
 
-			new MESSAGE($result, './Championship_Controller.php');
+			new MESSAGE($result4, './Championship_Controller.php');
 
 		}
 		}
@@ -208,11 +212,11 @@ Switch ($_REQUEST['action']){
 
 				else{
 					 include_once '../Models/CHAMPIONSHIP_MODEL.php';
-					$modelo= new CHAMPIONSHIP_MODEL($_REQUEST['id_campeonato'],$_REQUEST['fecha_inicio'], $_REQUEST['fecha_limite'],$_REQUEST['id_normativa'], $_REQUEST['id_grupo'], $_REQUEST['id_categoria']);
+					$modelo= new CHAMPIONSHIP_MODEL($_REQUEST['id_campeonato'],$_REQUEST['fecha_inicio'], $_REQUEST['fecha_limite'],$_REQUEST['id_normativa']);
 
 					
                      $respuesta = $modelo->SEARCH();
-					$lista = array('Identificador de Pista','Inicio Campeonato', 'Límite de Inscripción', 'ID Normativa', 'ID Grupo');
+					$lista = array('Identificador de Pista','Inicio Campeonato', 'Límite de Inscripción', 'ID Normativa');
 					new SHOWALL_VIEW($lista, $respuesta);
 					
 				}
@@ -228,27 +232,21 @@ Switch ($_REQUEST['action']){
 				if (!$_POST) {
 
 					include_once '../Models/CHAMPIONSHIP_MODEL.php';
-					include_once '../Models/GENDER_MODEL.php';
-				 	include_once '../Models/GROUP_MODEL.php';
 				 	include_once '../Models/RULE_MODEL.php';
 					$modelo= get_data();
-					$aux1 = new GENDER_MODEL('','');
-				  	$aux2 = new GROUP_MODEL('','');
 				  	$aux3 = new RULE_MODEL('','');
 
 					$valores= $modelo ->RellenaDatos();  	
 
 				  	$consultaNormativas = $aux3->getDBDatosNormativas();
-				  	$consultaCategorias = $aux1->getDBDatosCategorias();
-				  	$consultaGrupos = $aux2->getDBDatosGrupos();
 
-					new EDIT_VIEW($valores, $consultaNormativas, $consultaGrupos, $consultaCategorias);
+					new EDIT_VIEW($valores, $consultaNormativas);
 				}
 
 				else{
 
 					 include '../Models/CHAMPIONSHIP_MODEL.php';
-					$modelo = new CHAMPIONSHIP_MODEL($_REQUEST['id_campeonato'],$_REQUEST['fecha_inicio'], $_REQUEST['fecha_limite'],$_REQUEST['id_normativa'], $_REQUEST['id_grupo'], $_REQUEST['id_categoria']);
+					$modelo = new CHAMPIONSHIP_MODEL($_REQUEST['id_campeonato'],$_REQUEST['fecha_inicio'], $_REQUEST['fecha_limite'],$_REQUEST['id_normativa']);
 
 					$respuesta = $modelo->EDIT();
 					new MESSAGE($respuesta, './Championship_Controller.php');
@@ -298,7 +296,7 @@ Switch ($_REQUEST['action']){
 
 				if (!$_POST){
 					include_once '../Models/CHAMPIONSHIP_MODEL.php';
-					$modelo = new CHAMPIONSHIP_MODEL(' ' ,' ' ,' ', ' ', ' ',' ');
+					$modelo = new CHAMPIONSHIP_MODEL(' ' ,' ' ,' ', ' ');
 				}
 				else{
 					  include_once '../Models/CHAMPIONSHIP_MODEL.php';
@@ -306,7 +304,7 @@ Switch ($_REQUEST['action']){
 
 
 				$datos = $modelo->SEARCH();
-				$lista = array('Identificador de Pista','Inicio Campeonato', 'Límite de Inscripción', 'ID Normativa', 'ID Grupo');
+				$lista = array('Identificador de Pista','Inicio Campeonato', 'Límite de Inscripción', 'ID Normativa');
 
 				
 				new SHOWALL_VIEW($lista, $datos);

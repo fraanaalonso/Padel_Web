@@ -15,18 +15,14 @@ class CHAMPIONSHIP_MODEL
 	var $fecha_inicio;
 	var $fecha_limite;
 	var $id_normativa;
-	var $id_grupo;
-	var $id_categoria;
 	var $bd;
 	
-	function __construct($id_campeonato,$fecha_inicio, $fecha_limite, $id_normativa, $id_grupo, $id_categoria)
+	function __construct($id_campeonato,$fecha_inicio, $fecha_limite, $id_normativa)
 	{
 		$this->id_campeonato = $id_campeonato;
 		$this->fecha_inicio = $fecha_inicio;
 		$this->fecha_limite = $fecha_limite;
 		$this->id_normativa = $id_normativa;
-		$this->id_grupo = $id_grupo;
-		$this->id_categoria = $id_categoria;
 
 
 		include_once '../includes/db.php';
@@ -53,16 +49,12 @@ class CHAMPIONSHIP_MODEL
 				$sql = "INSERT INTO CHAMPIONSHIP (
 					fecha_inicio,
 					fecha_limite,
-					id_normativa,
-					id_grupo,
-					id_categoria
+					id_normativa
 					) 
 						VALUES (
 						'$this->fecha_inicio',
 						'$this->fecha_limite',
-						'$this->id_normativa',
-						'$this->id_grupo',
-						'$this->id_categoria'
+						'$this->id_normativa'
 						)";
 					
 				
@@ -108,9 +100,7 @@ function EDIT(){
 				id_campeonato = '$this->id_campeonato',
 				fecha_inicio = '$this->fecha_inicio',
 				fecha_limite = '$this->fecha_limite',
-				id_normativa = '$this->id_normativa',
-				id_grupo = '$this->id_grupo',
-				id_categoria = '$this->id_categoria'
+				id_normativa = '$this->id_normativa'
 				
 				WHERE ( id_campeonato = '$this->id_campeonato')";
 
@@ -208,9 +198,7 @@ function getDBDatosCampeonato($id_campeonato){
 		return [$delinha['id_campeonato'],
 				$delinha['fecha_inicio'],
 				$delinha['fecha_limite'],
-				$delinha['id_normativa'],
-				$delinha['id_grupo'],
-				$delinha['id_categoria'],];
+				$delinha['id_normativa'],];
 	}
 	}
 
@@ -225,14 +213,18 @@ function obtenerParejas($id_campeonato){
 	$sql = "SELECT A.id_pareja, A.login1, A.login2, B.id_campeonato FROM COUPLE A INNER JOIN (SELECT id_pareja, id_campeonato FROM championship_couple GROUP BY id_pareja, id_campeonato) B ON B.id_pareja = A.id_pareja AND B.id_campeonato = '".$id_campeonato."'";
 
 	if (!($resultado = $this->bd->query($sql))){
-		return 'Error en la consulta sobre la base de datos';
-	}
-    else{ 
-		return $resultado;
-	}
+				return 'No existe en la base de datos'; 
+			}
+			
+		    else{ 
+
+			$result = $resultado->fetch_array();
+				return $result;
+			}
+		}
 
 
-}
+
 
 	
 

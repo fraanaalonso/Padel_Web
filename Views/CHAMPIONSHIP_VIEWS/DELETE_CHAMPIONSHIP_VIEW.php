@@ -64,16 +64,6 @@ class DELETE_CHAMPIONSHIP_VIEW
             <th>ID Normativa</th>
             <td><?php echo $valores[3];?></td>
           </tr>
-
-           <tr>
-            <th>ID Grupo</th>
-            <td><?php echo $valores[4];?></td>
-          </tr>
-
-          <tr>
-            <th>ID Categoria</th>
-            <td><?php echo $valores[5];?></td>
-          </tr>
      
         </table>
 

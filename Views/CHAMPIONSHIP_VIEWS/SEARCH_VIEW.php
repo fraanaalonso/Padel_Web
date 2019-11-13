@@ -48,13 +48,7 @@ class SEARCH_VIEW
 		  	<input type="text" id="id_normativa" name="id_normativa" class="form-control" placeholder="ID NOrmativa" >
 		   </div>
 
-		   <div class="form-group" >
-		  	<input type="text" id="id_grupo" name="id_grupo" class="form-control" placeholder="ID Grupo" >
-		   </div>
-
-		   <div class="form-group" >
-		  	<input type="text" id="id_categoria" name="id_categoria" class="form-control" placeholder="ID Categoria" >
-		   </div>
+		   
 		
 		
 

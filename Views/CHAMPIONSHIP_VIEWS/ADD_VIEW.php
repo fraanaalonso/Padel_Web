@@ -8,12 +8,12 @@
 class ADD_VIEW
 {
 	
-	function __construct($normativa, $categoria, $grupo){
-		$this->execution($normativa, $categoria, $grupo);
+	function __construct($normativa){
+		$this->execution($normativa);
 	}
 
 
-	function execution($normativa, $categoria, $grupo ){
+	function execution($normativa){
 		include '../Views/HeaderPost.php';
 
 ?>
@@ -65,55 +65,7 @@ class ADD_VIEW
 
 		
 	</select>
-		   </div>
-
-		   <div class="form-group" >
-		  	<select id="id_categoria" name="id_categoria" class="form-control" required>
-			<option>Selecciona Categoria</option>
-
 		  
-		   	<?php 
-		   			
-		   			while(($toret2 = mysqli_fetch_array($categoria))){	
-		   	
-		   	
-		  			echo '<option value = "'.$toret2[0].'">'. $toret2[1].'</option>';
-
-		  		
-		  	
-			}
-			?>
-		   
-		
-
-		
-	</select>
-		   </div>
-
-		   <div class="form-group" >
-		  	<select id="id_grupo" name="id_grupo" class="form-control" required>
-			<option>Selecciona Grupo</option>
-
-		  
-		   	<?php 
-		   			
-		   			while(($toret3 = mysqli_fetch_array($grupo))){	
-		   	
-		   	
-		  			echo '<option value = "'.$toret3[0].'">'. $toret3[1] .'</option>';
-
-		  		
-		  	
-			}
-			?>
-		   
-		
-
-		
-	</select>
-		   </div>
-		
-		
 
 		   <button type="submit" class="btn btn-light"><span class="lnr lnr-file-add" style="font-size: 35px;"></span></button>
 		   <p>

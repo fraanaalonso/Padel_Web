@@ -44,8 +44,6 @@ class SHOWALL_VIEW
     <th>Fecha Inicio</th>
     <th>Fecha Límite</th>
     <th>ID Normativa</th>
-    <th>ID Grupo</th>
-    <th>ID Categoría</th>
     <th>Opciones</th>
 
   </tr>
@@ -62,8 +60,6 @@ class SHOWALL_VIEW
       echo "<td>".$fila["fecha_inicio"]."</td>";
       echo "<td>".$fila["fecha_limite"]."</td>";
      echo "<td> <a href=\"../Controllers/Championship_Controller.php?action=SHOWNORMATIVA&id_normativa=" . $fila['id_normativa'] . "\"> " . $fila['id_normativa'] . " </a> </td>";
-      echo "<td> <a href=\"../Controllers/Championship_Controller.php?action=SHOWGRUPO&id_grupo=" . $fila['id_grupo'] . "\"> " . $fila['id_grupo'] . " </a> </td>";
-     echo "<td> <a href=\"../Controllers/Championship_Controller.php?action=SHOWCATEGORIA&id_categoria=" . $fila['id_categoria'] . "\"> " . $fila['id_categoria'] . " </a> </td>";
 ?>
 
 
@@ -78,6 +74,8 @@ class SHOWALL_VIEW
         
 <?php
 }
+
+/*
 ?>
 
 
@@ -101,8 +99,7 @@ if(!esInscrito($_SESSION['login'], $_SESSION['login'], $fila['id_campeonato'])){
 
         <a href="../Controllers/Championship_Controller.php?action=REGISTRAR&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 20px"></span></a>
 
-
-<?php
+<?php/*
 }
 ?>
 
@@ -116,7 +113,11 @@ if(!esInscrito($_SESSION['login'], $_SESSION['login'], $fila['id_campeonato'])){
 
 <?php
 }
-?>
+
+/*?>
+
+
+
 
 <?php
 
@@ -134,11 +135,12 @@ if(comprobarSexo($_SESSION['login']) == 'Masculino' && (categoriaCampeonato($fil
 
 <?php
 if(!esInscrito($_SESSION['login'], $_SESSION['login'], $fila['id_campeonato'])){
-?>
-        <a href="../Controllers/Championship_Controller.php?action=REGISTRAR&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 20px"></span></a>
+?>*/
+
+       
 
 
-<?php
+/*<?php
 }
 ?>
 <?php
@@ -151,7 +153,10 @@ if(!esInscrito($_SESSION['login'], $_SESSION['login'], $fila['id_campeonato'])){
 
 <?php
 }
+?>*/
 ?>
+
+         <a href="../Controllers/Championship_Controller.php?action=REGISTRAR&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 20px"></span></a>
 
         <a href="../Controllers/Couple_Controller.php?action=SHOWCOUPLES&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-users editar" style="font-size: 20px"></span></a>
         <a href="../Controllers/Clash_Controller.php?action=GENERARCALENDARIO&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-calendar-full iconCalendar"></span></a>

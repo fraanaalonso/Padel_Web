@@ -8,12 +8,12 @@
 class EDIT_VIEW
 {
 	
-	function __construct($valores, $normativa, $grupo, $categoria){
-		$this->execution($valores, $normativa, $grupo, $categoria);
+	function __construct($valores, $normativa){
+		$this->execution($valores, $normativa);
 	}
 
 
-	function execution($valores, $normativa, $grupo, $categoria){
+	function execution($valores, $normativa){
 		include '../Views/HeaderPost.php';
 
 ?>
@@ -68,53 +68,8 @@ class EDIT_VIEW
 
 		
 	</select>
-		   </div>
-
-		   <div class="form-group" >
-		  	<select id="id_categoria" name="id_categoria" class="form-control" required>
-			<option>Selecciona Categoria</option>
-
 		  
-		   	<?php 
-		   			
-		   			while(($toret2 = mysqli_fetch_array($categoria))){	
-		   			$selected = 'selected';
-		   	
-		  			echo '<option value = "'.$toret2[0].'" '.$selected.'>'. $toret2[1].'</option>';
-
-		  		
-		  	
-			}
-			?>
 		   
-		
-
-		
-	</select>
-		   </div>
-
-		   <div class="form-group" >
-		  	<select id="id_grupo" name="id_grupo" class="form-control" required>
-			<option>Selecciona Grupo</option>
-
-		  
-		   	<?php 
-		   			
-		   			while(($toret3 = mysqli_fetch_array($grupo))){	
-		   	
-		   			$selected = 'selected';
-		  			echo '<option value = "'.$toret3[0].'"  '.$selected.'>'. $toret3[1] .'</option>';
-
-		  		
-		  	
-			}
-			?>
-		   
-		
-
-		
-	</select>
-		   </div>
 		
 		
 

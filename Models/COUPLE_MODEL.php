@@ -10,17 +10,13 @@
 class COUPLE_MODEL
 {
 	var $id_pareja;
-	var $id_grupo;
 	var $login1;
-	var $id_categoria;
 	var $login2;
 	var $bd;
 	
-	function __construct($id_pareja,$id_categoria, $id_grupo, $login1, $login2)
+	function __construct($id_pareja, $login1, $login2)
 	{
 		$this->id_pareja = $id_pareja;
-		$this->id_categoria = $id_categoria;
-		$this->id_grupo = $id_grupo;
 		$this->login1 = $login1;
 		$this->login2 = $login2;
 
@@ -49,15 +45,11 @@ class COUPLE_MODEL
 
 				$sql = "INSERT INTO COUPLE (
 
-					id_categoria,
-					id_grupo,
 					login1,
 					login2
 					) 
 						VALUES (
-
-						'$this->id_categoria',
-						'$this->id_grupo',
+						
 						'$this->login1',
 						'$this->login2'
 						)";

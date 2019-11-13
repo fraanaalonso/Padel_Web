@@ -37,23 +37,17 @@ CREATE TABLE `championship` (
   `id_campeonato` tinyint(4) NOT NULL,
   `fecha_inicio` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `fecha_limite` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
-  `id_normativa` tinyint(4) NOT NULL,
-  `id_grupo` tinyint(4) NOT NULL,
-  `id_categoria` tinyint(4) NOT NULL
+  `id_normativa` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `championship`
 --
 
-INSERT INTO `championship` (`id_campeonato`, `fecha_inicio`, `fecha_limite`, `id_normativa`, `id_grupo`, `id_categoria`) VALUES
-(1, '2019-12-17', '2019-12-15', 2, 1, 1),
-(2, '2019-12-21', '2019-12-18', 1, 3, 3),
-(3, '2019-11-11', '2019-11-09', 4, 2, 3),
-(4, '2019-12-22', '2019-12-20', 3, 2, 2),
-(5, '2020-01-13', '2019-01-10', 3, 2, 2),
-(6, '2020-02-13', '2020-02-10', 1, 1, 2),
-(7, '2020-03-15', '2020-03-13', 1, 1, 2);
+INSERT INTO `championship` (`id_campeonato`, `fecha_inicio`, `fecha_limite`, `id_normativa`) VALUES
+(1, '2019-12-17', '2019-12-15', 2),
+(2, '2019-12-21', '2019-12-18', 1),
+(3, '2019-11-11', '2019-11-09', 4);
 
 -- --------------------------------------------------------
 
@@ -71,16 +65,94 @@ CREATE TABLE `championship_couple` (
 --
 
 INSERT INTO `championship_couple` (`id_pareja`, `id_campeonato`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
 (7, 1),
 (8, 1),
 (9, 1),
-(11, 1),
-(13, 1),
-(14, 1),
-(15, 1),
-(22, 4),
-(23, 2),
-(24, 1);
+(10,1);
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `couple_categoria`
+--
+
+CREATE TABLE `couple_categoria` (
+  `id_categoria` tinyint(4) NOT NULL,
+  `id_pareja` tinyint(4) NOT NULL,
+  `id_campeonato` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+
+INSERT INTO `couple_categoria` (`id_categoria`,`id_pareja`, `id_campeonato`) VALUES
+(1, 1, 1),
+(1, 2, 1),
+(1, 3, 1),
+(1, 4, 1),
+(1, 5, 1),
+(1, 6, 1),
+(1, 7, 1),
+(1, 8, 1),
+(1, 9, 1),
+(1, 10, 1);
+
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `couple_grupo`
+--
+
+CREATE TABLE `couple_grupo` (
+  `id_grupo` tinyint(4) NOT NULL,
+  `id_pareja` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+
+INSERT INTO `couple_grupo` (`id_grupo`,`id_pareja`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(1, 10);
+
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `couple_grupo`
+--
+
+CREATE TABLE `championship_categoria` (
+  `id_campeonato` tinyint(4) NOT NULL,
+  `id_categoria` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+
+INSERT INTO `championship_categoria` (`id_campeonato`,`id_categoria`) VALUES
+(1, 1),
+(1, 2),
+(1, 3);
+
+
 
 -- --------------------------------------------------------
 
@@ -132,8 +204,8 @@ CREATE TABLE `clash` (
 --
 
 INSERT INTO `clash` (`id_enfrentamiento`, `id_campeonato`, `id_pareja1`, `id_pareja2`, `numSetsPareja1`, `numSetsPareja2`, `hora_inicio`, `fecha`) VALUES
-(4, 1, 7, 8, 2, 1, '18:50', ''),
-(7, 1, 13, 14, 2, 1, '18:50', '');
+(1, 1, 1, 3, 2, 1, '09:00', '2019-12-11'),
+(2, 1, 2, 4, 2, 1, '10:30', '2019-12-11');
 
 -- --------------------------------------------------------
 
@@ -143,8 +215,6 @@ INSERT INTO `clash` (`id_enfrentamiento`, `id_campeonato`, `id_pareja1`, `id_par
 
 CREATE TABLE `couple` (
   `id_pareja` tinyint(4) NOT NULL,
-  `id_categoria` tinyint(4) NOT NULL,
-  `id_grupo` tinyint(4) NOT NULL,
   `login1` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `login2` varchar(20) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -153,18 +223,18 @@ CREATE TABLE `couple` (
 -- Volcado de datos para la tabla `couple`
 --
 
-INSERT INTO `couple` (`id_pareja`, `id_categoria`, `id_grupo`, `login1`, `login2`) VALUES
-(7, 1, 1, 'fer_rv', 'delinha'),
-(8, 1, 1, 'mdolores', 'jmartinez'),
-(9, 1, 1, 'mdolores', 'root'),
-(11, 1, 1, 'anita32', 'mvarela'),
-(13, 1, 1, 'fer_rv', 'lucia_atm'),
-(14, 1, 1, 'jmartinez', 'csmartinez'),
-(15, 1, 1, 'mvarela', 'carlosm'),
-(18, 3, 1, 'admin', 'charlie'),
-(22, 2, 2, 'antiavazquez', 'lucia_atm'),
-(23, 3, 3, 'antiavazquez', 'delinha'),
-(24, 1, 1, 'admin', 'antonio_v');
+INSERT INTO `couple` (`id_pareja`, `login1`, `login2`) VALUES
+(1, 'fer_rv', 'delinha'),
+(2, 'mdolores', 'jmartinez'),
+(3, 'mdolores', 'root'),
+(4, 'anita32', 'mvarela'),
+(5, 'fer_rv', 'lucia_atm'),
+(6, 'jmartinez', 'csmartinez'),
+(7, 'mvarela', 'carlosm'),
+(8, 'admin', 'charlie'),
+(9, 'antiavazquez', 'lucia_atm'),
+(10, 'antiavazquez', 'delinha'),
+(11, 'admin', 'antonio_v');
 
 -- --------------------------------------------------------
 
@@ -225,7 +295,7 @@ INSERT INTO `game` (`id_partido`, `id_pista`, `hora_inicio`, `fecha`) VALUES
 -- Estructura de tabla para la tabla `gender`
 --
 
-CREATE TABLE `gender` (
+CREATE TABLE `categoria` (
   `id_categoria` tinyint(4) NOT NULL,
   `categoria` enum('Masculino','Femenino','Mixto') COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -234,7 +304,7 @@ CREATE TABLE `gender` (
 -- Volcado de datos para la tabla `gender`
 --
 
-INSERT INTO `gender` (`id_categoria`, `categoria`) VALUES
+INSERT INTO `categoria` (`id_categoria`, `categoria`) VALUES
 (1, 'Masculino'),
 (2, 'Femenino'),
 (3, 'Mixto');
@@ -247,17 +317,18 @@ INSERT INTO `gender` (`id_categoria`, `categoria`) VALUES
 
 CREATE TABLE `grupo` (
   `id_grupo` tinyint(4) NOT NULL,
-  `grupo` enum('Principiante','Intermedio','Avanzado') COLLATE utf8_spanish_ci NOT NULL
+  `id_categoria` tinyint(4) NOT NULL,
+  `id_campeonato` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `grupo`
 --
 
-INSERT INTO `grupo` (`id_grupo`, `grupo`) VALUES
-(1, 'Principiante'),
-(2, 'Intermedio'),
-(3, 'Avanzado');
+INSERT INTO `grupo` (`id_grupo`, `id_categoria`, `id_campeonato`) VALUES
+(1, 3, 1),
+(2, 3, 1),
+(3, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -520,9 +591,7 @@ INSERT INTO `user_game` (`login`, `id_partido`) VALUES
 --
 ALTER TABLE `championship`
   ADD PRIMARY KEY (`id_campeonato`),
-  ADD KEY `id_normativa` (`id_normativa`),
-  ADD KEY `id_grupo` (`id_grupo`),
-  ADD KEY `id_categoria` (`id_categoria`);
+  ADD KEY `id_normativa` (`id_normativa`);
 
 --
 -- Indices de la tabla `championship_couple`
@@ -530,6 +599,21 @@ ALTER TABLE `championship`
 ALTER TABLE `championship_couple`
   ADD PRIMARY KEY (`id_pareja`,`id_campeonato`),
   ADD KEY `id_campeonato` (`id_campeonato`);
+
+--
+-- Indices de la tabla `couple_categoria`
+--
+
+ALTER TABLE `couple_categoria`
+  ADD PRIMARY KEY (`id_categoria`,`id_pareja`,`id_campeonato`);
+
+
+ALTER TABLE `championship_categoria`
+  ADD PRIMARY KEY (`id_campeonato`,`id_categoria`);
+
+
+ALTER TABLE `couple_grupo`
+  ADD PRIMARY KEY (`id_grupo`,`id_pareja`);
 
 --
 -- Indices de la tabla `chat`
@@ -552,9 +636,7 @@ ALTER TABLE `clash`
 ALTER TABLE `couple`
   ADD PRIMARY KEY (`id_pareja`),
   ADD KEY `login1` (`login1`),
-  ADD KEY `login2` (`login2`),
-  ADD KEY `id_categoria` (`id_categoria`),
-  ADD KEY `id_grupo` (`id_grupo`);
+  ADD KEY `login2` (`login2`);
 
 --
 -- Indices de la tabla `court`
@@ -572,7 +654,7 @@ ALTER TABLE `game`
 --
 -- Indices de la tabla `gender`
 --
-ALTER TABLE `gender`
+ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id_categoria`);
 
 --
@@ -645,7 +727,7 @@ ALTER TABLE `user_game`
 -- AUTO_INCREMENT de la tabla `championship`
 --
 ALTER TABLE `championship`
-  MODIFY `id_campeonato` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_campeonato` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `chat`
@@ -663,7 +745,7 @@ ALTER TABLE `clash`
 -- AUTO_INCREMENT de la tabla `couple`
 --
 ALTER TABLE `couple`
-  MODIFY `id_pareja` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_pareja` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `game`
@@ -672,9 +754,9 @@ ALTER TABLE `game`
   MODIFY `id_partido` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT de la tabla `gender`
+-- AUTO_INCREMENT de la tabla `categoria`
 --
-ALTER TABLE `gender`
+ALTER TABLE `categoria`
   MODIFY `id_categoria` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
@@ -717,13 +799,17 @@ ALTER TABLE `rule`
 -- Restricciones para tablas volcadas
 --
 
+
+ALTER TABLE `grupo`
+  ADD CONSTRAINT `grupo_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE CASCADE,
+  ADD CONSTRAINT `grupo_ibfk_2` FOREIGN KEY (`id_campeonato`) REFERENCES `championship` (`id_campeonato`) ON DELETE CASCADE;
+
+
 --
 -- Filtros para la tabla `championship`
 --
 ALTER TABLE `championship`
-  ADD CONSTRAINT `championship_ibfk_1` FOREIGN KEY (`id_normativa`) REFERENCES `rule` (`id_normativa`) ON DELETE CASCADE,
-  ADD CONSTRAINT `championship_ibfk_2` FOREIGN KEY (`id_grupo`) REFERENCES `grupo` (`id_grupo`) ON DELETE CASCADE,
-  ADD CONSTRAINT `championship_ibfk_3` FOREIGN KEY (`id_categoria`) REFERENCES `gender` (`id_categoria`) ON DELETE CASCADE;
+  ADD CONSTRAINT `championship_ibfk_1` FOREIGN KEY (`id_normativa`) REFERENCES `rule` (`id_normativa`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `championship_couple`
@@ -731,6 +817,32 @@ ALTER TABLE `championship`
 ALTER TABLE `championship_couple`
   ADD CONSTRAINT `championship_couple_ibfk_1` FOREIGN KEY (`id_pareja`) REFERENCES `couple` (`id_pareja`) ON DELETE CASCADE,
   ADD CONSTRAINT `championship_couple_ibfk_2` FOREIGN KEY (`id_campeonato`) REFERENCES `championship` (`id_campeonato`) ON DELETE CASCADE;
+
+
+
+
+ALTER TABLE `championship_categoria`
+  ADD CONSTRAINT `championship_categoria_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE CASCADE,
+  ADD CONSTRAINT `championship_categoria_ibfk_2` FOREIGN KEY (`id_campeonato`) REFERENCES `championship` (`id_campeonato`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `couple_categoria`
+--
+
+ALTER TABLE `couple_categoria`
+  ADD CONSTRAINT `couple_categoria_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE CASCADE,
+  ADD CONSTRAINT `couple_categoria_ibfk_2` FOREIGN KEY (`id_pareja`) REFERENCES `couple` (`id_pareja`) ON DELETE CASCADE,
+  ADD CONSTRAINT `couple_categoria_ibfk_3` FOREIGN KEY (`id_campeonato`) REFERENCES `championship` (`id_campeonato`) ON DELETE CASCADE;
+
+
+--
+-- Filtros para la tabla `couple_grupo`
+--
+
+ALTER TABLE `couple_grupo`
+  ADD CONSTRAINT `couple_grupo_ibfk_1` FOREIGN KEY (`id_grupo`) REFERENCES `grupo` (`id_grupo`) ON DELETE CASCADE,
+  ADD CONSTRAINT `couple_grupo_ibfk_2` FOREIGN KEY (`id_pareja`) REFERENCES `couple` (`id_pareja`) ON DELETE CASCADE;
+
 
 --
 -- Filtros para la tabla `clash`
@@ -745,9 +857,7 @@ ALTER TABLE `clash`
 --
 ALTER TABLE `couple`
   ADD CONSTRAINT `couple_ibfk_1` FOREIGN KEY (`login1`) REFERENCES `user` (`login`) ON DELETE CASCADE,
-  ADD CONSTRAINT `couple_ibfk_2` FOREIGN KEY (`login2`) REFERENCES `user` (`login`) ON DELETE CASCADE,
-  ADD CONSTRAINT `couple_ibfk_3` FOREIGN KEY (`id_categoria`) REFERENCES `gender` (`id_categoria`) ON DELETE CASCADE,
-  ADD CONSTRAINT `couple_ibfk_4` FOREIGN KEY (`id_grupo`) REFERENCES `grupo` (`id_grupo`) ON DELETE CASCADE;
+  ADD CONSTRAINT `couple_ibfk_2` FOREIGN KEY (`login2`) REFERENCES `user` (`login`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `game`

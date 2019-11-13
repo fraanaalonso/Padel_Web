@@ -8,12 +8,12 @@
 class InscribirCampeonatoView
 {
 	
-	function __construct($valores, $datos, $sexo){
-		$this->execution($valores,$datos, $sexo);
+	function __construct($valores, $grupos, $categorias){
+		$this->execution($valores, $grupos, $categorias);
 	}
 
 
-	function execution($valores, $datos, $sexo){
+	function execution($valores, $grupos, $categorias){
 		include '../Views/HeaderPost.php';
 			require_once '../Functions/funciones.php';
 ?>
@@ -31,202 +31,69 @@ class InscribirCampeonatoView
 			
 		<form class="col-12" method="post" action="../Controllers/Championship_Controller.php?action=REGISTRAR" onsubmit="return validar();">
 
-		 <div class="form-group">
-		  	<input type="hidden" id="id_campeonato" name="id_campeonato" class="form-control" readonly  value="<?php echo $valores[0] ?>"  placeholder="Identificador Campeonato" >
+		 <div class="form-group">Campeonato Seleccionado
+		  	<input type="text" id="id_campeonato" name="id_campeonato" class="form-control" readonly  value="<?php echo $valores[0] ?>"  placeholder="Identificador Campeonato" >
 		   </div>	
 
-		  <div class="form-group">
+		  <div class="form-group">Fecha Comienzo
 		  	<input type="text" id="fecha_inicio" name="fecha_inicio" class="form-control" readonly value="<?php echo $valores[1] ?>" placeholder="Inicio del Campeonato" >
 		   </div> 
 
-		  <div class="form-group">
+		  <div class="form-group">Límite de Inscripcion
 		  	<input type="text" id="fecha_limite" name="fecha_limite" class="form-control" readonly value="<?php echo $valores[2] ?>" placeholder="Límite de Inscripción" >
 		   </div>
 
 
-		   <div class="form-group" >
+		   <div class="form-group" >Normativa Campeonato
 		  	<input type="text" id="id_normativa" name="id_normativa" class="form-control" readonly value="<?php echo $valores[3] ?>" placeholder="ID Normativa" >
 		   </div>
 
-		   <div class="form-group">
-		  	<input type="text" id="id_grupo" name="id_grupo" class="form-control" readonly value="<?php echo $valores[4] ?>" placeholder="ID Grupo" >
-		   </div>
 
-		   <div class="form-group" id="sexo-group">
-		  	<input type="text" id="id_categoria" name="id_categoria" class="form-control" readonly value="<?php echo $valores[5] ?>" placeholder="ID Categoria" >
-		   </div>
-
-		   <div class="form-group" id="user-group">
+		   <div class="form-group" >Login Capitán
 		  	<input type="text" id="login1" name="login1" class="form-control" readonly value="<?php echo $_SESSION['login'] ?>"  placeholder="Login Participante 1" >
 		   </div>
 
-		<?php
-		if($datos[5] == 1){
-		?>
+<div class="form-group">Seleccione Grupo
+<select id="id_grupo" name="id_grupo" class="form-control" required="">
 
+<?php
+while ($grupo = mysqli_fetch_array($grupos)){
 
-	
-
-
-
-	<div class="form-group" id="pais-group">
-	<select id="login2" name="login2" class="form-control" required>
-			<option>Seleccion Participante</option>
-
-		   
-
-	
 		  
-		   	<?php 
-		   			
-		   			while(($user = mysqli_fetch_array($sexo))){	
-		   	?>
+echo '<option value = "'.$grupo[0].'">'.$grupo[0].'</option>';
 
-		   	<?php
-		   	if(!esInscrito($user[0], $user[0], $valores[0])){
-		   			if($user['sexo'] == 'Masculino' && $user['login']!=$_SESSION['login']){
-		   	
+}
+?>
+</select>
+</div>
 
 
-		  		
-		  			echo '<option value = "'.$user[0].'">'. $user[0].'</option>';
-		  	
+<div class="form-group">Seleccione Categoria
+<select id="id_categoria" name="id_categoria" class="form-control" required="">
 
+<?php
+while ($categoria = mysqli_fetch_array($categorias)){
 
-
-		  		}
-
-		  	}
-		  	?>
-
-
-		  	<?php
-
-			}
-			
-
-		?>
-		   
-		
-
-		
-	</select>
-	</div>
-
-	<div class="form-group" >
-		<input type="password" id="password" name="password" class="form-control" required  placeholder="Password Login Acompañante" >
-    </div>
-
-
-		
-
-		<?php
-	   }elseif($datos[5] == 2){
-		?>
-
-			<div class="form-group" id="pais-group">
-	<select id="login2" name="login2" class="form-control" required>
-			<option>Seleccion Participante</option>
-
-		   
-
-	
 		  
-		   	<?php 
-		   			
-		   			while(($user = mysqli_fetch_array($sexo))){	
-		   	?>
+echo '<option value = "'.$categoria[0].'">'.$categoria[1].'</option>';
 
-		   	<?php
-
-		   	if(!esInscrito($user[0], $user[0], $valores[0])){
-		   			if($user['sexo'] == 'Femenino'  && $user['login']!=$_SESSION['login']){
-
-		   	
+}
+?>
+</select>
+</div>	   
 
 
-		  		
-		  			echo '<option value = "'.$user[0].'">'. $user[0].'</option>';
-		  	
-
-
-
-		  		}
-
-		  	}
-
-		  	?>
-
-
-		  	<?php
-
-			}
-			
-
-		?>
-		   
-		
+			<div class="form-group" >Login Acompañante
+		  	<input type="text" id="login2" name="login2" class="form-control" placeholder="Login Participante 2" >
+		   </div>
 
 		
-	</select>
-	</div>
 
-	<div class="form-group" >
-		<input type="password" id="password" name="password" class="form-control"  placeholder="Password Login Acompañante" >
-    </div>
-		<?php
-		}
-		elseif($datos[5] == 3){
-		?>
-			<div class="form-group" id="pais-group">
-	<select id="login2" name="login2" class="form-control" required>
-			<option>Seleccion Participante</option>
-
-		   
-
-	
-		  
-		   	<?php 
-		   			
-		   			while(($user = mysqli_fetch_array($sexo))){	
-		   	?>
-
-		   	<?php
-
-
-		   	if(!esInscrito($user[0], $user[0], $valores[0])){		
-		   	
-
-		   		if($user['login']!=$_SESSION['login']){
-		  		
-		  			echo '<option value = "'.$user[0].'">'. $user[0].'</option>';
-		  			}
-
-
-
-		  		}
-		  	?>
-
-
-		  	<?php
-
-			}
-			
-
-		?>
-		   
+			<div class="form-group" >
+				<input type="password" id="password" name="password" class="form-control"  placeholder="Password Login Acompañante" >
+		    </div>
 
 		
-	</select>
-	</div>
-
-	<div class="form-group" >
-		<input type="password" id="password" name="password" class="form-control"  placeholder="Password Login Acompañante" >
-    </div>
-
-		<?php
-			}
-		?>
 
 
 		   <div class="form-group" >

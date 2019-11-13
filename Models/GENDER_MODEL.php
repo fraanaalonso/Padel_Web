@@ -31,7 +31,7 @@ class GENDER_MODEL
 
 function RellenaDatos()
 		{	
-		    $sql = "SELECT * FROM GENDER  WHERE (id_categoria = '$this->id_categoria')";
+		    $sql = "SELECT * FROM categoria  WHERE (id_categoria = '$this->id_categoria')";
 
 		    if (!($resultado = $this->bd->query($sql))){
 				return 'No existe en la base de datos'; 
@@ -47,12 +47,9 @@ function RellenaDatos()
 
 
 function getDBDatosCategorias(){
-
-
-	$sql = "SELECT * FROM GENDER";		
-	$resultado = $this->bd->query($sql);
-
-	return $resultado;
+	$sql = "SELECT * FROM categoria";
+	 $resultado = $this->bd->query($sql);
+	 return $resultado;
 }
 
 

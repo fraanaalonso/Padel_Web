@@ -81,6 +81,8 @@ class SHOWALL_VIEW
 
 if(checkDeadLine($fila['fecha_limite'], date("Y-m-d")) >= 0){
 
+
+
 ?>
 
 <?php
@@ -96,9 +98,18 @@ if(!esInscrito($_SESSION['login'], $_SESSION['login'], $fila['id_campeonato'])){
 ?>
 <?php
 }
+else{
+
+?>
+  <a href="../Controllers/Championship_Controller.php?action=GENERARGRUPOS&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-upload" style="font-size: 20px"></span></a>  
+
+<?php
+}
 ?>
         <a href="../Controllers/Couple_Controller.php?action=SHOWCOUPLES&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-users editar" style="font-size: 20px"></span></a>
         <a href="../Controllers/Championship_Controller.php?action=GENERARCALENDARIO&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-calendar-full iconCalendar"></span></a>
+
+        <a href="../Controllers/Championship_Controller.php?action=GENERARGRUPOS&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-upload" style="font-size: 20px"></span></a>
       
       </td>
 

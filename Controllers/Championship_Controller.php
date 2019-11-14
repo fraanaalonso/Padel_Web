@@ -22,6 +22,7 @@ include '../Views/CHAMPIONSHIP_VIEWS/DELETE_CHAMPIONSHIP_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/EDIT_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/InscribirCampeonatoView.php';
 include '../Views/CHAMPIONSHIP_VIEWS/GENERARCALENDARIO_View.php';
+include '../Views/CHAMPIONSHIP_VIEWS/SHOWGRUPOS_CAMPEONATO.php';
 include '../Views/RULE_VIEWS/SHOWRULE.php';
 include '../Views/Message_View.php';
 include '../Views/ALERT.php';
@@ -110,6 +111,26 @@ Switch ($_REQUEST['action']){
 
 			}
 
+
+		break;
+
+		case 'GENERARGRUPOS':
+
+		if(!$_POST){
+		  
+		  $grupo1 = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], 'Principiante', 'Masculino');
+		  $grupo2 = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], 'Intermedio', 'Masculino');
+		  $grupo3 = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], 'Avanzado', 'Masculino');
+		  $grupo4 = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], 'Principiante', 'Femenino');
+		  $grupo5 = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], 'Intermedio', 'Femenino');
+		  $grupo6 = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], 'Avanzado', 'Femenino');
+		  $grupo7 = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], 'Principiante', 'Mixto');
+		  $grupo8 = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], 'Intermedio', 'Mixto');
+		  $grupo9 = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], 'Avanzado', 'Mixto');
+
+		  $lista = array();
+		  new SHOWGRUPOS_CAMPEONATO($lista, $grupo1, $grupo2, $grupo3, $grupo4, $grupo5, $grupo6, $grupo7, $grupo8, $grupo9);
+		}
 
 		break;
 
@@ -317,8 +338,13 @@ Switch ($_REQUEST['action']){
 				}
 
 
+
+
+
 				$datos = $modelo->SEARCH();
 				$lista = array('Identificador de Pista','Inicio Campeonato', 'Límite de Inscripción', 'ID Normativa');
+
+				
 
 				
 				new SHOWALL_VIEW($lista, $datos);

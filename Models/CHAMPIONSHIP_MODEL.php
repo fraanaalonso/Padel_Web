@@ -245,6 +245,12 @@ function getDBDatosCampeonato($id_campeonato){
 
 
 
+
+
+
+
+
+
 function obtenerUltimoCampeonato(){
 	$sql = "SELECT id_campeonato FROM CHAMPIONSHIP ORDER BY id_campeonato DESC LIMIT 1";
 	if (!($resultado = $this->bd->query($sql))){

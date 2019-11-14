@@ -186,6 +186,10 @@ function joinCouples($id_campeonato){
 
 
 
+
+
+
+
 function DELETE()
 		{	
 		   $sql = "SELECT * FROM COUPLE  WHERE 

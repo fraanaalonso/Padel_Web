@@ -179,7 +179,13 @@ CREATE TABLE `championship_categoria` (
 INSERT INTO `championship_categoria` (`id_campeonato`,`id_categoria`) VALUES
 (1, 1),
 (1, 2),
-(1, 3);
+(1, 3),
+(2, 1),
+(2, 2),
+(2, 3),
+(3, 1),
+(3, 2),
+(3, 3);
 
 
 
@@ -200,7 +206,13 @@ CREATE TABLE `championship_nivel` (
 INSERT INTO `championship_nivel` (`id_campeonato`,`id_nivel`) VALUES
 (1, 1),
 (1, 2),
-(1, 3);
+(1, 3),
+(2, 1),
+(2, 2),
+(2, 3),
+(3, 1),
+(3, 2),
+(3, 3);
 
 
 -- --------------------------------------------------------

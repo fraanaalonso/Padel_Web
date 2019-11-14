@@ -73,6 +73,7 @@ Switch ($_REQUEST['action']){
 					include_once '../Models/CHAMPIONSHIP_MODEL.php';
 				 	$aux = new CHAMPIONSHIP_MODEL('','','','');
 				 	$aux2 = new CHAMPIONSHIP_MODEL('','','','');
+				 	$aux3 = new CHAMPIONSHIP_MODEL('','','','');
 					$modelo= new CHAMPIONSHIP_MODEL(' ',$_REQUEST['fecha_inicio'], $_REQUEST['fecha_limite'],$_REQUEST['id_normativa']);
 					$respuesta = $modelo->ADD();
 
@@ -86,6 +87,18 @@ Switch ($_REQUEST['action']){
 					$nivel1 = $aux2->añadirNiveles($dato[0], 1);
 					$nivel2 = $aux2->añadirNiveles($dato[0], 2);	
 					$nivel3 = $aux2->añadirNiveles($dato[0], 3);
+
+					$grupo1 = $aux3->generarGruposInscripcion('1','1', $dato[0]);
+					$grupo2 = $aux3->generarGruposInscripcion('1','2', $dato[0]);
+					$grupo3 = $aux3->generarGruposInscripcion('1','3', $dato[0]);
+					$grupo4 = $aux3->generarGruposInscripcion('2','1', $dato[0]);
+					$grupo5 = $aux3->generarGruposInscripcion('2','2', $dato[0]);
+					$grupo6 = $aux3->generarGruposInscripcion('2','3', $dato[0]);
+					$grupo7 = $aux3->generarGruposInscripcion('3','1', $dato[0]);
+					$grupo8 = $aux3->generarGruposInscripcion('3','2', $dato[0]);
+					$grupo9 = $aux3->generarGruposInscripcion('3','3', $dato[0]);
+
+
 
 					new MESSAGE($respuesta,'./Championship_Controller.php');
 					

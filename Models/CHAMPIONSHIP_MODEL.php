@@ -71,6 +71,30 @@ class CHAMPIONSHIP_MODEL
 	}
 
 
+	function generarGruposInscripcion($id_categoria, $id_nivel, $id_campeonato){
+
+		$sql = "INSERT INTO grupo (
+					id_grupo,
+					id_categoria,
+					id_nivel,
+					id_campeonato
+					) 
+						VALUES (
+						DEFAULT,
+						'".$id_categoria."',
+						'".$id_nivel."',
+						'".$id_campeonato."'
+						)";
+
+		if (!$this->bd->query($sql)) { 
+					return 'Error en la inserción';
+				}
+				else{ 
+					return 'Inserción realizada con éxito'; 
+				}
+	}
+
+
 
 
 	function ADD(){

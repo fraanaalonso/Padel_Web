@@ -36,7 +36,7 @@ class SHOWGRUPOS_CAMPEONATO
      <th>Login Acompañante</th>
      <th>ID Categoria</th>
      <th>ID Nivel</th>
-	</tr>
+     <th>Calendario</th>
 
 
 	<?php
@@ -50,15 +50,33 @@ class SHOWGRUPOS_CAMPEONATO
       echo "<td>".$fila["login2"]."</td>";
       echo "<td>".$fila["categoria"]."</td>";
       echo "<td>".$fila["nivel"]."</td>";
-      echo "<tr>";
 
-      echo "<br />";
-		
-	}
 ?>
-	<br>
-	<br>
-	<br>
+
+
+
+<td colspan="12">
+  <a href="../Controllers/Championship_Controller.php?action=GENERARcalendario&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-calendar-full iconCalendar"></span></a>
+</span></a>
+</td>
+
+
+
+
+
+<?php
+
+echo "</tr>";
+ 		
+	}
+
+
+ 
+?>
+
+
+
+	
 	<tr style="background-color: #2DCCD3">
 	 <th>ID  Pareja</th>
      <th>ID  Campeonato</th>
@@ -66,6 +84,7 @@ class SHOWGRUPOS_CAMPEONATO
      <th>Login Acompañante</th>
      <th>ID Categoria</th>
      <th>ID Nivel</th>
+     <th>Calendario</th>
 	</tr>
 <?php
 	while ($fila = $grupo2->fetch_assoc()) {
@@ -77,7 +96,17 @@ class SHOWGRUPOS_CAMPEONATO
       echo "<td>".$fila["login2"]."</td>";
       echo "<td>".$fila["categoria"]."</td>";
       echo "<td>".$fila["nivel"]."</td>";
-      echo "<tr>";
+
+
+?>
+
+<td colspan="12">
+  <a href="../Controllers/Championship_Controller.php?action=GENERARcalendario&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-calendar-full iconCalendar"></span></a>
+</span></a>
+</td>
+<?php
+
+echo "</tr>";
 		
 	}
 
@@ -90,6 +119,7 @@ class SHOWGRUPOS_CAMPEONATO
      <th>Login Acompañante</th>
      <th>ID Categoria</th>
      <th>ID Nivel</th>
+     <th>Categoría</th>
 	</tr>
 <?php
 	while ($fila = $grupo3->fetch_assoc()) {
@@ -101,7 +131,17 @@ class SHOWGRUPOS_CAMPEONATO
       echo "<td>".$fila["login2"]."</td>";
       echo "<td>".$fila["categoria"]."</td>";
       echo "<td>".$fila["nivel"]."</td>";
-      echo "<tr>";
+    
+
+?>
+
+<td colspan="12">
+  <a href="../Controllers/Championship_Controller.php?action=GENERARcalendario&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-calendar-full iconCalendar"></span></a>
+</span></a>
+</td>
+<?php
+
+echo "</tr>";
 		
 	}
 
@@ -114,6 +154,7 @@ class SHOWGRUPOS_CAMPEONATO
      <th>Login Acompañante</th>
      <th>ID Categoria</th>
      <th>ID Nivel</th>
+     <th>Calendario</th>
 	</tr>
 <?php
 	while ($fila = $grupo4->fetch_assoc()) {
@@ -125,7 +166,17 @@ class SHOWGRUPOS_CAMPEONATO
       echo "<td>".$fila["login2"]."</td>";
       echo "<td>".$fila["categoria"]."</td>";
       echo "<td>".$fila["nivel"]."</td>";
-      echo "<tr>";
+      
+
+?>
+
+<td colspan="12">
+  <a href="../Controllers/Championship_Controller.php?action=GENERARcalendario&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-calendar-full iconCalendar"></span></a>
+</span></a>
+</td>
+<?php
+
+echo "</tr>";
 		
 	}
 
@@ -139,6 +190,7 @@ class SHOWGRUPOS_CAMPEONATO
      <th>Login Acompañante</th>
      <th>ID Categoria</th>
      <th>ID Nivel</th>
+     <th>Calendario</th>
 	</tr>
 <?php
 	while ($fila = $grupo5->fetch_assoc()) {
@@ -150,7 +202,17 @@ class SHOWGRUPOS_CAMPEONATO
       echo "<td>".$fila["login2"]."</td>";
       echo "<td>".$fila["categoria"]."</td>";
       echo "<td>".$fila["nivel"]."</td>";
-      echo "<tr>";
+      
+
+?>
+
+<td colspan="12">
+  <a href="../Controllers/Championship_Controller.php?action=GENERARcalendario&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-calendar-full iconCalendar"></span></a>
+</span></a>
+</td>
+<?php
+
+echo "</tr>";
 		
 	}
 
@@ -163,6 +225,7 @@ class SHOWGRUPOS_CAMPEONATO
      <th>Login Acompañante</th>
      <th>ID Categoria</th>
      <th>ID Nivel</th>
+     <th>Calendario</th>
 	</tr>
 <?php
 	while ($fila = $grupo6->fetch_assoc()) {
@@ -174,7 +237,17 @@ class SHOWGRUPOS_CAMPEONATO
       echo "<td>".$fila["login2"]."</td>";
       echo "<td>".$fila["categoria"]."</td>";
       echo "<td>".$fila["nivel"]."</td>";
-      echo "<tr>";
+
+
+?>
+
+<td colspan="12">
+  <a href="../Controllers/Championship_Controller.php?action=GENERARcalendario&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-calendar-full iconCalendar"></span></a>
+</span></a>
+</td>
+<?php
+
+echo "</tr>";
 		
 	}
 
@@ -187,6 +260,7 @@ class SHOWGRUPOS_CAMPEONATO
      <th>Login Acompañante</th>
      <th>ID Categoria</th>
      <th>ID Nivel</th>
+     <th>Calendario</th>
 	</tr>
 <?php
 	while ($fila = $grupo7->fetch_assoc()) {
@@ -198,7 +272,17 @@ class SHOWGRUPOS_CAMPEONATO
       echo "<td>".$fila["login2"]."</td>";
       echo "<td>".$fila["categoria"]."</td>";
       echo "<td>".$fila["nivel"]."</td>";
-      echo "<tr>";
+      
+
+?>
+
+<td colspan="12">
+  <a href="../Controllers/Championship_Controller.php?action=GENERARcalendario&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-calendar-full iconCalendar"></span></a>
+</span></a>
+</td>
+<?php
+
+echo "</tr>";
 		
 	}
 
@@ -211,6 +295,7 @@ class SHOWGRUPOS_CAMPEONATO
      <th>Login Acompañante</th>
      <th>ID Categoria</th>
      <th>ID Nivel</th>
+     <th>Calendario</th>
 	</tr>
 <?php
 	while ($fila = $grupo8->fetch_assoc()) {
@@ -222,8 +307,17 @@ class SHOWGRUPOS_CAMPEONATO
       echo "<td>".$fila["login2"]."</td>";
       echo "<td>".$fila["categoria"]."</td>";
       echo "<td>".$fila["nivel"]."</td>";
-      echo "<tr>";
-		
+      
+
+?>
+
+<td colspan="12">
+  <a href="../Controllers/Championship_Controller.php?action=GENERARcalendario&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-calendar-full iconCalendar"></span></a>
+</span></a>
+</td>
+<?php
+
+echo "</tr>";
 	}
 
 	?>
@@ -236,6 +330,7 @@ class SHOWGRUPOS_CAMPEONATO
      <th>Login Acompañante</th>
      <th>ID Categoria</th>
      <th>ID Nivel</th>
+     <th>Calendario</th>
 	</tr>
 <?php
 	while ($fila = $grupo9->fetch_assoc()) {
@@ -247,7 +342,17 @@ class SHOWGRUPOS_CAMPEONATO
       echo "<td>".$fila["login2"]."</td>";
       echo "<td>".$fila["categoria"]."</td>";
       echo "<td>".$fila["nivel"]."</td>";
-      echo "<tr>";
+      
+
+?>
+
+<td colspan="12">
+  <a href="../Controllers/Championship_Controller.php?action=GENERARcalendario&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-calendar-full iconCalendar"></span></a>
+</span></a>
+</td>
+<?php
+
+echo "</tr>";
 		
 	}
 

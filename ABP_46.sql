@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-11-2019 a las 19:18:37
+-- Tiempo de generación: 14-11-2019 a las 23:25:34
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.10
 
@@ -18,10 +18,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-
-DROP DATABASE IF EXISTS `abp46`;
-CREATE DATABASE `abp46` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
-USE `abp46`;
 --
 -- Base de datos: `abp46`
 --
@@ -65,8 +61,7 @@ CREATE TABLE `championship` (
 
 INSERT INTO `championship` (`id_campeonato`, `fecha_inicio`, `fecha_limite`, `id_normativa`) VALUES
 (1, '2019-12-17', '2019-12-15', 2),
-(2, '2019-12-21', '2019-12-18', 1),
-(3, '2019-11-11', '2019-11-09', 4);
+(5, '2019-11-14', '2019-11-25', 3);
 
 -- --------------------------------------------------------
 
@@ -87,12 +82,9 @@ INSERT INTO `championship_categoria` (`id_campeonato`, `id_categoria`) VALUES
 (1, 1),
 (1, 2),
 (1, 3),
-(2, 1),
-(2, 2),
-(2, 3),
-(3, 1),
-(3, 2),
-(3, 3);
+(5, 1),
+(5, 2),
+(5, 3);
 
 -- --------------------------------------------------------
 
@@ -144,12 +136,9 @@ INSERT INTO `championship_nivel` (`id_campeonato`, `id_nivel`) VALUES
 (1, 1),
 (1, 2),
 (1, 3),
-(2, 1),
-(2, 2),
-(2, 3),
-(3, 1),
-(3, 2),
-(3, 3);
+(5, 1),
+(5, 2),
+(5, 3);
 
 -- --------------------------------------------------------
 
@@ -255,17 +244,17 @@ CREATE TABLE `couple_categoria` (
 
 INSERT INTO `couple_categoria` (`id_categoria`, `id_pareja`, `id_campeonato`) VALUES
 (1, 1, 1),
-(1, 2, 1),
-(1, 3, 1),
-(1, 4, 1),
-(1, 5, 1),
 (1, 6, 1),
 (1, 7, 1),
 (1, 8, 1),
-(1, 9, 1),
-(1, 10, 1),
 (1, 12, 1),
 (1, 15, 1),
+(2, 9, 1),
+(3, 2, 1),
+(3, 3, 1),
+(3, 4, 1),
+(3, 5, 1),
+(3, 10, 1),
 (3, 13, 1),
 (3, 14, 1);
 
@@ -399,9 +388,24 @@ CREATE TABLE `grupo` (
 --
 
 INSERT INTO `grupo` (`id_grupo`, `id_categoria`, `id_nivel`, `id_campeonato`) VALUES
-(1, 3, 1, 1),
-(2, 3, 1, 1),
-(3, 3, 1, 1);
+(1, 1, 1, 1),
+(2, 1, 2, 1),
+(3, 1, 3, 1),
+(4, 2, 1, 1),
+(5, 2, 2, 1),
+(6, 2, 3, 1),
+(7, 3, 1, 1),
+(8, 3, 2, 1),
+(9, 3, 3, 1),
+(10, 1, 1, 5),
+(11, 1, 2, 5),
+(12, 1, 3, 5),
+(13, 2, 1, 5),
+(14, 2, 2, 5),
+(15, 2, 3, 5),
+(16, 3, 1, 5),
+(17, 3, 2, 5),
+(18, 3, 3, 5);
 
 -- --------------------------------------------------------
 
@@ -866,7 +870,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `championship`
 --
 ALTER TABLE `championship`
-  MODIFY `id_campeonato` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_campeonato` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `chat`
@@ -896,7 +900,7 @@ ALTER TABLE `game`
 -- AUTO_INCREMENT de la tabla `grupo`
 --
 ALTER TABLE `grupo`
-  MODIFY `id_grupo` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_grupo` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `new`

@@ -115,7 +115,7 @@ function RellenaDatos()
 
 
 
-function obtenerParejasCategorias($id_campeonato){
+function obtenerParejasCategoriasNivel($id_campeonato){
 
 	$sql = "SELECT PA.id_pareja, PA.login1, PA.login2, PC.*, CA.categoria as nombreCategoria FROM couple_categoria PC, championship_categoria CC, categoria CA, couple PA WHERE CC.id_campeonato = '".$id_campeonato."' AND CC.id_categoria = PC.id_categoria AND PC.id_campeonato = '".$id_campeonato."' AND PC.id_categoria = CA.id_categoria AND PC.id_pareja = PA.id_pareja ORDER BY PC.id_categoria";
 

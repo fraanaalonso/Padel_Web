@@ -70,9 +70,22 @@ Switch ($_REQUEST['action']){
 				else{
 
 					include_once '../Models/CHAMPIONSHIP_MODEL.php';
-				 
+				 	$aux = new CHAMPIONSHIP_MODEL('','','','');
+				 	$aux2 = new CHAMPIONSHIP_MODEL('','','','');
 					$modelo= new CHAMPIONSHIP_MODEL(' ',$_REQUEST['fecha_inicio'], $_REQUEST['fecha_limite'],$_REQUEST['id_normativa']);
 					$respuesta = $modelo->ADD();
+
+					$obj = new CHAMPIONSHIP_MODEL('','','','');
+					$dato =$obj->obtenerUltimoCampeonato();
+
+					$masculino= $aux->añadirCategoria($dato[0], 1);
+					$femenino=$aux->añadirCategoria($dato[0], 2);
+					$mixto=$aux->añadirCategoria($dato[0], 3);
+
+					$nivel1 = $aux2->añadirNiveles($dato[0], 1);
+					$nivel2 = $aux2->añadirNiveles($dato[0], 2);	
+					$nivel3 = $aux2->añadirNiveles($dato[0], 3);
+
 					new MESSAGE($respuesta,'./Championship_Controller.php');
 					
 				}

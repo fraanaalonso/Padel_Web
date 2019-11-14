@@ -31,6 +31,47 @@ class CHAMPIONSHIP_MODEL
 
 
 
+	function añadirCategoria($id_campeonato, $id_categoria){
+		$sql = "INSERT INTO CHAMPIONSHIP_CATEGORIA (
+					id_campeonato,
+					id_categoria
+					) 
+						VALUES (
+						'".$id_campeonato."',
+						'".$id_categoria."'
+						)";
+
+		if (!$this->bd->query($sql)) { 
+					return 'Error en la inserción';
+				}
+				else{ 
+					return 'Inserción realizada con éxito'; 
+				}
+
+
+	}
+
+
+	function añadirNiveles($id_campeonato, $id_nivel){
+		$sql = "INSERT INTO CHAMPIONSHIP_NIVEL (
+					id_campeonato,
+					id_nivel
+					) 
+						VALUES (
+						'".$id_campeonato."',
+						'".$id_nivel."'
+						)";
+
+		if (!$this->bd->query($sql)) { 
+					return 'Error en la inserción';
+				}
+				else{ 
+					return 'Inserción realizada con éxito'; 
+				}
+	}
+
+
+
 
 	function ADD(){
 
@@ -204,6 +245,18 @@ function getDBDatosCampeonato($id_campeonato){
 
 
 
+function obtenerUltimoCampeonato(){
+	$sql = "SELECT id_campeonato FROM CHAMPIONSHIP ORDER BY id_campeonato DESC LIMIT 1";
+	if (!($resultado = $this->bd->query($sql))){
+				return 'No existe en la base de datos'; 
+			}
+			
+		    else{ 
+
+			$result = $resultado->fetch_array();
+				return $result;
+			}
+}
 	
 
 

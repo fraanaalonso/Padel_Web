@@ -226,6 +226,13 @@ function obtenerParejas($id_campeonato){
 
 
 
+function getDataChampionship($id_campeonato){
+	$sql = "SELECT * FROM CHAMPIONSHIP WHERE id_campeonato = '".$id_campeonato."'";
+		$resultado = $this->bd->query($sql);
+		if($resultado->num_rows > 0) return $resultado->fetch_array();
+		else return false;
+}
+
 	
 
 

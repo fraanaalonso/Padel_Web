@@ -21,6 +21,7 @@ include '../Views/CHAMPIONSHIP_VIEWS/SHOWCURRENT_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/DELETE_CHAMPIONSHIP_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/EDIT_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/InscribirCampeonatoView.php';
+include '../Views/CHAMPIONSHIP_VIEWS/GENERARCALENDARIO_View.php';
 include '../Views/RULE_VIEWS/SHOWRULE.php';
 include '../Views/Message_View.php';
 include '../Views/ALERT.php';
@@ -77,6 +78,28 @@ Switch ($_REQUEST['action']){
 				}
 				break;
 
+		case 'GENERARCALENDARIO':
+
+			if(!$_POST){
+
+			include_once '../Models/CHAMPIONSHIP_MODEL.php';
+			include_once '../Models/COUPLE_CATEGORIA_MODEL.php';
+
+			$currentChampinship = gatherDataCampeonato();
+			$coupleCategoria = gatherDataParejaCategoria();
+
+			$championshipData = $currentChampinship->getDataChampionship($_REQUEST['id_campeonato']);
+			$coupleCategoriaData = $coupleCategoria->obtenerParejasCategorias($_GET['id_campeonato']);
+
+			new GENERARCALENDARIO_View($currentChampinship, $coupleCategoriaData);
+
+
+
+			}
+
+
+		break;
+
 
 
 
@@ -94,11 +117,11 @@ Switch ($_REQUEST['action']){
 					$modelo3 = new GENDER_MODEL('','');
 					$aux = new User_Modelo('','','','','','','','','','','','');
 
-					$grupos = $modelo2->getDBDatosGrupos();
+					$niveles = $modelo2->getDBDatosNivel();
 					$categorias = $modelo3->getDBDatosCategorias();
 					$valores= $modelo ->RellenaDatos(); 
 
-					new InscribirCampeonatoView($valores,$grupos, $categorias);
+					new InscribirCampeonatoView($valores,$niveles, $categorias);
 			}
 
 			else{
@@ -108,16 +131,17 @@ Switch ($_REQUEST['action']){
 			include_once '../Models/USER_MODEL.php';
 			include_once '../Models/CHAMPIONSHIP_MODEL.php';
 			include_once '../Models/COUPLE_CATEGORIA_MODEL.php';
-			include_once '../Models/COUPLE_GRUPO_MODEL.php';
+			//include_once '../Models/COUPLE_GRUPO_MODEL.php';
+			include_once '../Models/COUPLE_NIVEL_MODEL.php';
 
 			$id_pareja = $_POST['id_pareja'];
 			$id_campeonato = $_POST['id_campeonato'];
 			$capitan = $_POST['login1'];
 			$socio = $_POST['login2'];
-			$grupoSeleccionado = $_POST['id_grupo'];
+			$nivelSeleccionado = $_POST['id_nivel'];
 			$categoriaSeleccionada = $_POST['id_categoria'];
 
-			$championship = new CHAMPIONSHIP_MODEL($id_campeonato,'','','','','');
+			$championship = new CHAMPIONSHIP_MODEL($id_campeonato,'','','');
 			$currentChamp = $championship->RellenaDatos();
 
 			$user = new User_Modelo($socio,'','',$_REQUEST['password'],'','','','','','','','');
@@ -144,10 +168,11 @@ Switch ($_REQUEST['action']){
 			$pareja_categoria = new COUPLE_CATEGORIA_MODEL($categoriaSeleccionada, $dato[0], $id_campeonato);
 			$result3 = $pareja_categoria->ADD();
 
-			
-			$pareja_grupo = new COUPLE_GRUPO_MODEL($dato[0], $grupoSeleccionado);
-			$result4 = $pareja_grupo->ADD();
 		
+			
+			$parejaNivel = new COUPLE_NIVEL_MODEL($nivelSeleccionado, $dato[0], $id_campeonato);
+			$result4 = $parejaNivel->ADD();
+			
 
 			
 

@@ -46,8 +46,8 @@ function RellenaDatos()
 
 
 
-function getDBDatosGrupos(){
-	 $sql = "SELECT * FROM GRUPO";
+function getDBDatosNivel(){
+	 $sql = "SELECT * FROM nivel";
 	 $resultado = $this->bd->query($sql);
 	 return $resultado;
 }

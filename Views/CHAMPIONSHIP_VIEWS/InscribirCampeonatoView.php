@@ -8,12 +8,12 @@
 class InscribirCampeonatoView
 {
 	
-	function __construct($valores, $grupos, $categorias){
-		$this->execution($valores, $grupos, $categorias);
+	function __construct($valores, $niveles, $categorias){
+		$this->execution($valores, $niveles, $categorias);
 	}
 
 
-	function execution($valores, $grupos, $categorias){
+	function execution($valores, $niveles, $categorias){
 		include '../Views/HeaderPost.php';
 			require_once '../Functions/funciones.php';
 ?>
@@ -53,14 +53,14 @@ class InscribirCampeonatoView
 		  	<input type="text" id="login1" name="login1" class="form-control" readonly value="<?php echo $_SESSION['login'] ?>"  placeholder="Login Participante 1" >
 		   </div>
 
-<div class="form-group">Seleccione Grupo
-<select id="id_grupo" name="id_grupo" class="form-control" required="">
+<div class="form-group">Seleccione Nivel
+<select id="id_nivel" name="id_nivel" class="form-control" required="">
 
 <?php
-while ($grupo = mysqli_fetch_array($grupos)){
+while ($nivel = mysqli_fetch_array($niveles)){
 
 		  
-echo '<option value = "'.$grupo[0].'">'.$grupo[0].'</option>';
+echo '<option value = "'.$nivel[0].'">'.$nivel[1].'</option>';
 
 }
 ?>

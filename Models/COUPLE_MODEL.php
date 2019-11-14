@@ -115,7 +115,7 @@ function SEARCHCURRENTCOUPLES($id_campeonato){
 function SEARCHMYCHAMPIONSHIPS(){
 
 
-	 $sql = "SELECT couple_categoria.id_categoria, couple_categoria.id_pareja, couple_categoria.id_campeonato, COUPLE.login1, COUPLE.login2, couple_grupo.id_grupo FROM couple_categoria INNER JOIN couple ON couple.id_pareja=couple_categoria.id_pareja INNER JOIN couple_grupo ON couple_grupo.id_pareja=couple_categoria.id_pareja AND couple_categoria.id_campeonato='1' AND (couple.login1='".$_SESSION['login']."' || couple.login2='".$_SESSION['login']."')";
+	 $sql = "SELECT categoria.categoria, nivel.nivel, couple_categoria.id_pareja, couple_categoria.id_campeonato, COUPLE.login1, COUPLE.login2 FROM couple_categoria INNER JOIN couple ON couple.id_pareja=couple_categoria.id_pareja INNER JOIN couple_nivel ON couple_nivel.id_pareja=couple_categoria.id_pareja INNER JOIN categoria on categoria.id_categoria=couple_categoria.id_categoria INNER JOIN nivel on nivel.id_nivel=couple_nivel.id_nivel  AND (couple.login1='".$_SESSION['login']."' || couple.login2='".$_SESSION['login']."')";
 
 
 
@@ -132,10 +132,10 @@ function SEARCHMYCHAMPIONSHIPS(){
 
 function RellenaDatos($id_campeonato)
 		{	
-			/*
-		    $sql = "SELECT t.* FROM ( SELECT A.id_pareja, A.login1, A.login2, B.id_campeonato FROM COUPLE A INNER JOIN (SELECT id_pareja, id_campeonato FROM championship_couple GROUP BY id_pareja, id_campeonato) B ON B.id_pareja = A.id_pareja AND B.id_campeonato = '".$id_campeonato."' AND B.id_pareja = '$this->id_pareja' ) t";
-	*/
-	$sql = "SELECT couple_categoria.id_categoria, couple_categoria.id_pareja, couple_categoria.id_campeonato, COUPLE.login1, COUPLE.login2, couple_grupo.id_grupo FROM couple_categoria INNER JOIN couple ON couple.id_pareja=couple_categoria.id_pareja INNER JOIN couple_grupo ON couple_grupo.id_pareja=couple_categoria.id_pareja AND couple_categoria.id_campeonato='".$id_campeonato."'";
+	/*
+	$sql = "SELECT couple_categoria.id_categoria, couple_categoria.id_pareja, couple_categoria.id_campeonato, COUPLE.login1, COUPLE.login2, couple_grupo.id_grupo FROM couple_categoria INNER JOIN couple ON couple.id_pareja=couple_categoria.id_pareja INNER JOIN couple_grupo ON couple_grupo.id_pareja=couple_categoria.id_pareja AND couple_categoria.id_campeonato='".$id_campeonato."'";*/
+
+	$sql = "SELECT categoria.categoria, nivel.nivel, couple_categoria.id_pareja, couple_categoria.id_campeonato, COUPLE.login1, COUPLE.login2 FROM couple_categoria INNER JOIN couple ON couple.id_pareja=couple_categoria.id_pareja INNER JOIN couple_nivel ON couple_nivel.id_pareja=couple_categoria.id_pareja INNER JOIN categoria on categoria.id_categoria=couple_categoria.id_categoria INNER JOIN nivel on nivel.id_nivel=couple_nivel.id_nivel and couple_categoria.id_campeonato='".$id_campeonato."'";
 
 		    if (!($resultado = $this->bd->query($sql))){
 				return 'No existe en la base de datos'; 
@@ -169,7 +169,7 @@ function obtenerUltimoInscrito(){
 function joinCouples($id_campeonato){
 	/*$sql= "SELECT A.id_pareja, A.login1, A.login2, B.id_campeonato FROM COUPLE A INNER JOIN (SELECT id_pareja, id_campeonato FROM championship_couple GROUP BY id_pareja, id_campeonato) B ON B.id_pareja = A.id_pareja AND B.id_campeonato = '".$id_campeonato."'";*/
 
-	$sql = "SELECT couple_categoria.id_categoria, couple_categoria.id_pareja, couple_categoria.id_campeonato, COUPLE.login1, COUPLE.login2, couple_grupo.id_grupo FROM couple_categoria INNER JOIN couple ON couple.id_pareja=couple_categoria.id_pareja INNER JOIN couple_grupo ON couple_grupo.id_pareja=couple_categoria.id_pareja AND couple_categoria.id_campeonato='".$id_campeonato."'";
+	$sql = "SELECT categoria.categoria, nivel.nivel, couple_categoria.id_pareja, couple_categoria.id_campeonato, COUPLE.login1, COUPLE.login2 FROM couple_categoria INNER JOIN couple ON couple.id_pareja=couple_categoria.id_pareja INNER JOIN couple_nivel ON couple_nivel.id_pareja=couple_categoria.id_pareja INNER JOIN categoria on categoria.id_categoria=couple_categoria.id_categoria INNER JOIN nivel on nivel.id_nivel=couple_nivel.id_nivel and couple_categoria.id_campeonato='".$id_campeonato."'";
 
 
 	  if (!($resultado = $this->bd->query($sql))){
@@ -205,7 +205,12 @@ function DELETE()
 		    } 
 		    else
 		        return "No existe";
-		} 
+		}
+
+
+
+
+
 
 
 

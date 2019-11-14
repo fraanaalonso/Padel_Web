@@ -106,6 +106,35 @@ INSERT INTO `couple_categoria` (`id_categoria`,`id_pareja`, `id_campeonato`) VAL
 
 
 
+--
+-- Estructura de tabla para la tabla `couple_categoria`
+--
+
+CREATE TABLE `couple_nivel` (
+  `id_nivel` tinyint(4) NOT NULL,
+  `id_pareja` tinyint(4) NOT NULL,
+  `id_campeonato` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+
+INSERT INTO `couple_nivel` (`id_nivel`,`id_pareja`, `id_campeonato`) VALUES
+(1, 1, 1),
+(1, 2, 1),
+(1, 3, 1),
+(1, 4, 1),
+(1, 5, 1),
+(1, 6, 1),
+(1, 7, 1),
+(1, 8, 1),
+(1, 9, 1),
+(1, 10, 1);
+
+
+
+
+
+
 -- --------------------------------------------------------
 
 --
@@ -152,6 +181,26 @@ INSERT INTO `championship_categoria` (`id_campeonato`,`id_categoria`) VALUES
 (1, 2),
 (1, 3);
 
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `couple_grupo`
+--
+
+CREATE TABLE `championship_nivel` (
+  `id_campeonato` tinyint(4) NOT NULL,
+  `id_nivel` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+
+INSERT INTO `championship_nivel` (`id_campeonato`,`id_nivel`) VALUES
+(1, 1),
+(1, 2),
+(1, 3);
 
 
 -- --------------------------------------------------------
@@ -309,6 +358,29 @@ INSERT INTO `categoria` (`id_categoria`, `categoria`) VALUES
 (2, 'Femenino'),
 (3, 'Mixto');
 
+
+
+--
+-- Estructura de tabla para la tabla `nivel`
+--
+
+CREATE TABLE `nivel` (
+  `id_nivel` tinyint(4) NOT NULL,
+  `nivel` enum('Principiante','Intermedio','Avanzado') COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `gender`
+--
+
+INSERT INTO `nivel` (`id_nivel`, `nivel`) VALUES
+(1, 'Principiante'),
+(2, 'Intermedio'),
+(3, 'Avanzado');
+
+
+
+
 -- --------------------------------------------------------
 
 --
@@ -318,6 +390,7 @@ INSERT INTO `categoria` (`id_categoria`, `categoria`) VALUES
 CREATE TABLE `grupo` (
   `id_grupo` tinyint(4) NOT NULL,
   `id_categoria` tinyint(4) NOT NULL,
+  `id_nivel` tinyint(4) NOT NULL,
   `id_campeonato` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -325,10 +398,10 @@ CREATE TABLE `grupo` (
 -- Volcado de datos para la tabla `grupo`
 --
 
-INSERT INTO `grupo` (`id_grupo`, `id_categoria`, `id_campeonato`) VALUES
-(1, 3, 1),
-(2, 3, 1),
-(3, 3, 1);
+INSERT INTO `grupo` (`id_grupo`, `id_categoria`,`id_nivel`, `id_campeonato`) VALUES
+(1, 3, 1, 1),
+(2, 3, 1, 1),
+(3, 3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -557,7 +630,16 @@ INSERT INTO `user` (`login`, `nombre`, `apellido`, `password`, `dni`, `email`, `
 ('mdolores', 'Maria Dolores', 'Lopez', 'root', '89925329', 'mdolores@gmail.com', 'España', 'Femenino', 672199222, '1993-12-11', 'user2.jpg', 2),
 ('mvarela', 'Manuel', 'Varela', 'root', '96413471R', 'mvarela@gmail.com', 'España', 'Masculino', 773452198, '1988-12-12', 'iconUser.jpg', 2),
 ('root', 'Javier', 'Alonso', 'root', '45159031A', 'paco150997@hotmail.com', 'España', 'Masculino', 673322161, '1998-12-12', 'iconUser.jpg', 2),
-('sormaria', 'Maria', 'de la Concepcion', 'root', '78836661K', 'maria_barral@gmail.com', 'España', 'Femenino', 666723402, '1998-12-11', 'banner2.jpg', 2);
+('sormaria', 'Maria', 'de la Concepcion', 'root', '78836661K', 'maria_barral@gmail.com', 'España', 'Femenino', 666723402, '1998-12-11', 'banner2.jpg', 2),
+('santi_abascal', 'Santiago', 'Abascal', 'root', '78836661L', 'santi_barral@gmail.com', 'España', 'Masculino', 636723402, '1998-12-11', 'banner2.jpg', 2),
+('ivan_espinosa', 'Ivan', 'de la Concepcion', 'root', '78816661Z', 'ivanito_espi@gmail.com', 'España', 'Masculino', 6667333402, '1998-12-11', 'banner2.jpg', 2),
+('merxearz', 'Mertxe', 'Arzallus', 'root', '78836651K', 'mertxe_arzallus@gmail.com', 'España', 'Femenino', 666723442, '1948-12-11', 'banner2.jpg', 2),
+('josefa_barea', 'Josefa', 'Barea', 'root', '78325661S', 'josefi_barral@gmail.com', 'España', 'Femenino', 266724402, '1970-12-11', 'banner2.jpg', 2),
+('laura_borras', 'Laura', 'Borras', 'root', '78836661D', 'laura_barral@gmail.com', 'España', 'Femenino', 366723402, '1998-12-11', 'banner2.jpg', 2),
+('joan_roda', 'Joan', 'Roda', 'root', '78836661M', 'joan_roda_barral@gmail.com', 'España', 'Masculino', 466723402, '1998-12-11', 'banner2.jpg', 2),
+('laura_vega', 'Laura', 'Vega', 'root', '28836661K', 'laura_vega_barral@gmail.com', 'España', 'Femenino', 566723402, '1998-12-11', 'banner2.jpg', 2),
+('santos_leon', 'Santos', 'Leon', 'root', '78836661G', 'santos_leon_barral@gmail.com', 'España', 'Masculino', 866723402, '1998-12-11', 'banner2.jpg', 2),
+('Luis_Clemente_Guadilla', 'Luis', 'Clemente', 'root', '78836661S', 'luis_guadilla_rral@gmail.com', 'España', 'Masculino', 966723402, '1998-12-11', 'banner2.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -608,9 +690,14 @@ ALTER TABLE `couple_categoria`
   ADD PRIMARY KEY (`id_categoria`,`id_pareja`,`id_campeonato`);
 
 
+ALTER TABLE `couple_nivel`
+  ADD PRIMARY KEY (`id_nivel`,`id_pareja`,`id_campeonato`);
+
 ALTER TABLE `championship_categoria`
   ADD PRIMARY KEY (`id_campeonato`,`id_categoria`);
 
+ALTER TABLE `championship_nivel`
+  ADD PRIMARY KEY (`id_campeonato`,`id_nivel`);
 
 ALTER TABLE `couple_grupo`
   ADD PRIMARY KEY (`id_grupo`,`id_pareja`);
@@ -656,6 +743,10 @@ ALTER TABLE `game`
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id_categoria`);
+
+ALTER TABLE `nivel`
+  ADD PRIMARY KEY (`id_nivel`);
+
 
 --
 -- Indices de la tabla `grupo`
@@ -759,6 +850,11 @@ ALTER TABLE `game`
 ALTER TABLE `categoria`
   MODIFY `id_categoria` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
+
+ALTER TABLE `nivel`
+  MODIFY `id_nivel` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+
 --
 -- AUTO_INCREMENT de la tabla `grupo`
 --
@@ -802,7 +898,8 @@ ALTER TABLE `rule`
 
 ALTER TABLE `grupo`
   ADD CONSTRAINT `grupo_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE CASCADE,
-  ADD CONSTRAINT `grupo_ibfk_2` FOREIGN KEY (`id_campeonato`) REFERENCES `championship` (`id_campeonato`) ON DELETE CASCADE;
+  ADD CONSTRAINT `grupo_ibfk_2` FOREIGN KEY (`id_nivel`) REFERENCES `nivel` (`id_nivel`) ON DELETE CASCADE,
+  ADD CONSTRAINT `grupo_ibfk_3` FOREIGN KEY (`id_campeonato`) REFERENCES `championship` (`id_campeonato`) ON DELETE CASCADE;
 
 
 --
@@ -825,6 +922,12 @@ ALTER TABLE `championship_categoria`
   ADD CONSTRAINT `championship_categoria_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE CASCADE,
   ADD CONSTRAINT `championship_categoria_ibfk_2` FOREIGN KEY (`id_campeonato`) REFERENCES `championship` (`id_campeonato`) ON DELETE CASCADE;
 
+ALTER TABLE `championship_nivel`
+  ADD CONSTRAINT `championship_nivel_ibfk_1` FOREIGN KEY (`id_nivel`) REFERENCES `nivel` (`id_nivel`) ON DELETE CASCADE,
+  ADD CONSTRAINT `championship_nivel_ibfk_2` FOREIGN KEY (`id_campeonato`) REFERENCES `championship` (`id_campeonato`) ON DELETE CASCADE;
+
+
+
 --
 -- Filtros para la tabla `couple_categoria`
 --
@@ -833,6 +936,13 @@ ALTER TABLE `couple_categoria`
   ADD CONSTRAINT `couple_categoria_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`) ON DELETE CASCADE,
   ADD CONSTRAINT `couple_categoria_ibfk_2` FOREIGN KEY (`id_pareja`) REFERENCES `couple` (`id_pareja`) ON DELETE CASCADE,
   ADD CONSTRAINT `couple_categoria_ibfk_3` FOREIGN KEY (`id_campeonato`) REFERENCES `championship` (`id_campeonato`) ON DELETE CASCADE;
+
+
+
+ALTER TABLE `couple_nivel`
+  ADD CONSTRAINT `couple_nivel_ibfk_1` FOREIGN KEY (`id_nivel`) REFERENCES `nivel` (`id_nivel`) ON DELETE CASCADE,
+  ADD CONSTRAINT `couple_nivel_ibfk_2` FOREIGN KEY (`id_pareja`) REFERENCES `couple` (`id_pareja`) ON DELETE CASCADE,
+  ADD CONSTRAINT `couple_nivel_ibfk_3` FOREIGN KEY (`id_campeonato`) REFERENCES `championship` (`id_campeonato`) ON DELETE CASCADE;
 
 
 --

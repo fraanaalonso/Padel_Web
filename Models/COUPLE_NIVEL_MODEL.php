@@ -1,5 +1,4 @@
 
-
 <?php
 
 
@@ -7,16 +6,16 @@
 /**
 * 
 */
-class COUPLE_CATEGORIA_MODEL
+class COUPLE_NIVEL_MODEL
 {
-	var $id_categoria;
+	var $id_nivel;
 	var $id_pareja;
 	var $id_campeonato;
 	var $bd;
 	
-	function __construct($id_categoria, $id_pareja,$id_campeonato)
+	function __construct($id_nivel, $id_pareja,$id_campeonato)
 	{
-		$this->id_categoria = $id_categoria;
+		$this->id_nivel = $id_nivel;
 		$this->id_pareja = $id_pareja;
 		$this->id_campeonato = $id_campeonato;
 	
@@ -32,9 +31,9 @@ class COUPLE_CATEGORIA_MODEL
 
 	function ADD(){
 
-		if (($this->id_pareja <> '') && ($this->id_categoria <> '') && ($this->id_campeonato <> '')){ 
+		if (($this->id_pareja <> '') && ($this->id_nivel <> '') && ($this->id_campeonato <> '')){ 
 
-        $sql = "SELECT * FROM COUPLE_CATEGORIA WHERE (id_categoria = '$this->id_categoria') and (id_pareja = '$this->id_pareja') AND (id_campeonato = '$this->id_campeonato')";
+        $sql = "SELECT * FROM COUPLE_NIVEL WHERE (id_nivel = '$this->id_nivel') AND (id_pareja = '$this->id_pareja') AND (id_campeonato = '$this->id_campeonato')";
 
 		if (!$result = $this->bd->query($sql)){ 
 			return 'No se ha podido conectar con la base de datos';
@@ -44,13 +43,13 @@ class COUPLE_CATEGORIA_MODEL
 			if ($result->num_rows == 0){ 
 				
 
-				$sql = "INSERT INTO COUPLE_CATEGORIA (
-					id_categoria,
+				$sql = "INSERT INTO COUPLE_NIVEL (
+					id_nivel,
 					id_pareja,
 					id_campeonato
 					) 
 						VALUES (
-						'$this->id_categoria',
+						'$this->id_nivel',
 						'$this->id_pareja',
 						'$this->id_campeonato'
 						
@@ -85,7 +84,7 @@ class COUPLE_CATEGORIA_MODEL
 	$sql = "select
 					*
 					
-					FROM COUPLE_CATEGORIA";
+					FROM COUPLE_NIVEL";
 
    
    
@@ -102,7 +101,7 @@ class COUPLE_CATEGORIA_MODEL
 
 function RellenaDatos()
 		{	
-		    $sql = "SELECT * FROM COUPLE_CATEGORIA  WHERE (id_campeonato = '$this->id_categoria') AND (id_campeonato = '$this->id_pareja') AND (id_campeonato = '$this->id_campeonato')";
+		    $sql = "SELECT * FROM COUPLE_NIVEL  WHERE (id_campeonato = '$this->id_nivel') AND (id_campeonato = '$this->id_pareja') AND (id_campeonato = '$this->id_campeonato')";
 
 		    if (!($resultado = $this->bd->query($sql))){
 		return 'Error en la consulta sobre la base de datos';
@@ -115,13 +114,6 @@ function RellenaDatos()
 
 
 
-function obtenerParejasCategorias($id_campeonato){
-
-	$sql = "SELECT PA.id_pareja, PA.login1, PA.login2, PC.*, CA.categoria as nombreCategoria FROM couple_categoria PC, championship_categoria CC, categoria CA, couple PA WHERE CC.id_campeonato = '".$id_campeonato."' AND CC.id_categoria = PC.id_categoria AND PC.id_campeonato = '".$id_campeonato."' AND PC.id_categoria = CA.id_categoria AND PC.id_pareja = PA.id_pareja ORDER BY PC.id_categoria";
-
-	$resultado = $this->bd->query($sql);
-	return $resultado;
-} 
 
 
 

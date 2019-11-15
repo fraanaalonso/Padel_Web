@@ -23,18 +23,21 @@ class EDIT_VIEW
 
 
 <div class="iconos-superiores">
-            <a href="./Championship_Controller.php?action=GENERARCALENDARIO&id_enfrentamiento=<?php echo $valores[0] ?>&id_campeonato=<?php echo $valores[1] ?>&categoria=<?php echo $valores[8] ?>&nivel=<?php echo $valores[9] ?>"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>          
+            <a href="./Championship_Controller.php?action=GENERARCALENDARIO&id_enfrentamiento=<?php echo $valores[0] ?>&id_campeonato=<?php echo $valores[1] ?>&categoria=<?php echo $valores[8] ?>&nivel=<?php echo $valores[9] ?>"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+
+
 
 </div>
 
 
 
-        <table>
+        <form method="post" action="../Controllers/Clash_Controller.php?action=EDIT">
+          <table>
            <tr>
             <th>ID Entrenamiento</th>
             <td>
 
-              <?php echo $valores[0] ?>
+              <input type="text"  name="id_enfrentamiento" value="<?php echo $valores[0] ?>">
               
             </td>
           </tr>
@@ -42,7 +45,7 @@ class EDIT_VIEW
             <th>ID Campeonato</th>
             <td>
 
-                <?php echo $valores[1] ?>
+                <input type="text"  name="id_campeonato" value="<?php echo $valores[1] ?>">
               
             </td>
           </tr>
@@ -51,7 +54,7 @@ class EDIT_VIEW
             <th>Pareja 1</th>
             <td>
 
-                <?php echo $valores[2] ?>
+               <input type="text"  name="id_pareja1" value="<?php echo $valores[2] ?>">
               
             </td>
           </tr>
@@ -60,7 +63,7 @@ class EDIT_VIEW
             <th>Pareja 2</th>
             <td>
 
-                <?php echo $valores[3] ?>
+                <input type="text"  name="id_pareja2" value="<?php echo $valores[3] ?>">
               
             </td>
           </tr>
@@ -87,7 +90,7 @@ class EDIT_VIEW
             <th>Hora Comienzo</th>
             <td>
 
-                <?php echo $valores[4] ?>
+                <input type="text"  name="hora_inicio" value="<?php echo $valores[4] ?>">
             </td>
           </tr>
 
@@ -95,7 +98,7 @@ class EDIT_VIEW
             <th>Fecha</th>
             <td>
 
-               <?php echo $valores[5] ?>
+               <input type="text"  name="fecha" value="<?php echo $valores[5] ?>">
             </td>
           </tr>
 
@@ -103,7 +106,7 @@ class EDIT_VIEW
             <th>Categoria</th>
             <td>
 
-                <?php echo $valores[8] ?>
+                <input type="text"  name="categoria" value="<?php echo $valores[8] ?>">
             </td>
           </tr>
 
@@ -112,13 +115,25 @@ class EDIT_VIEW
             <th>Nivel</th>
             <td>
 
-                <?php echo $valores[9] ?>
+                <input type="text"  name="nivel" value="<?php echo $valores[9] ?>">
             </td>
           </tr>
 
+
+
+
+
+          <button type="submit" class="btn btn-light"><span class="lnr lnr-file-pencil" style="font-size: 35px;"></span></button>
+
            
 
-        </table>
+        </form>
+      </table>
+
+
+         <button type="submit" style=" width: 20%; position: absolute; top: 800px; left: 700px; " class="btn btn-light"><span class="lnr lnr-pencil" style="font-size: 35px; text-align: center;"></span></button>
+              
+
 
 
 

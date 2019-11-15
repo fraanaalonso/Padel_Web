@@ -83,8 +83,8 @@ class CLASH_MODEL
 					numSetsPareja2,
 					hora_inicio,
 					fecha,
-					id_categoria,
-					id_nivel
+					categoria,
+					nivel
 					) 
 						VALUES (
 						'$this->id_enfrentamiento',
@@ -122,7 +122,7 @@ class CLASH_MODEL
 	function EDIT()
 {
 	// se construye la sentencia de busqueda de la tupla en la bd
-    $sql = "SELECT * FROM CLASH  WHERE (id_enfrentamiento = '$this->id_enfrentamiento') ";
+    $sql = "SELECT * FROM CLASH  WHERE (id_enfrentamiento = '$this->id_enfrentamiento') && (id_campeonato = '$this->id_campeonato') ";
     // se ejecuta la query
     $result = $this->bd->query($sql);
     // si el numero de filas es igual a uno es que lo encuentra
@@ -142,9 +142,9 @@ class CLASH_MODEL
 					numSetsPareja2 = '$this->numSetsPareja2',
 					hora_inicio = '$this->hora_inicio',
 					fecha = '$this->fecha',
-					id_categoria = '$this->id_categoria',
-					id_categoria = '$this->id_categoria'
-				WHERE ( id_enfrentamiento = '$this->id_enfrentamiento')";
+					categoria = '$this->id_categoria',
+					nivel = '$this->id_nivel'
+				WHERE ( id_enfrentamiento = '$this->id_enfrentamiento') && (id_campeonato = '$this->id_campeonato') ";
 
 
 		// si hay un problema con la query se envia un mensaje de error en la modificacion

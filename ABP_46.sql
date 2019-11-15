@@ -18,6 +18,12 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+
+DROP DATABASE IF EXISTS `abp46`;
+CREATE DATABASE `abp46` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
+USE `abp46`;
+
+
 --
 -- Base de datos: `abp46`
 --

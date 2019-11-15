@@ -360,57 +360,6 @@ function maxCouplesAllowed($id_campeonato){
 }
 
 
-function gatherDataCampeonato(){
-
-	$id_campeonato = '';
-	$fecha_inicio = '';
-	$fecha_limite = '';
-	$id_normativa = '';
-
-	if($_POST){
-
-		if(isset($_POST['id_campeonato'])) $id_campeonato = $_POST['id_campeonato'];
-		if(isset($_POST['fecha_inicio'])) $fecha_inicio = $_POST['fecha_inicio'];
-		if(isset($_POST['fecha_limite'])) $fecha_limite = $_POST['fecha_limite'];
-		if(isset($_POST['id_normativa'])) $id_normativa = $_POST['id_normativa'];
-
-		return new CHAMPIONSHIP_MODEL($id_campeonato,$fecha_inicio,$fecha_limite,$id_normativa);
-
-	} else {
-
-		if(isset($_GET['id_campeonato'])) $id_campeonato = $_GET['id_campeonato'];
-		if(isset($_GET['fecha_inicio'])) $fecha_inicio = $_GET['fecha_inicio'];
-		if(isset($_GET['fecha_limite'])) $fecha_limite = $_GET['fecha_limite'];
-		if(isset($_GET['id_normativa'])) $id_normativa = $_GET['id_normativa'];
-
-		return new CHAMPIONSHIP_MODEL($id_campeonato,$fecha_inicio,$fecha_limite,$id_normativa);
-
-	}
-
-}
-
-function gatherDataParejaCategoria(){
-
-	$id_pareja = '';
-	$id_categoria = '';
-	$id_campeonato = '';
-	if($_POST){
-
-		if(isset($_POST['id_pareja'])) $id_pareja = $_POST['id_pareja'];
-		if(isset($_POST['id_categoria'])) $id_categoria = $_POST['id_categoria'];
-
-		return new COUPLE_CATEGORIA_MODEL($id_pareja,$id_categoria,$id_campeonato);
-
-	} else {
-
-		if(isset($_GET['id_pareja'])) $id_pareja = $_GET['id_pareja'];
-		if(isset($_GET['id_categoria'])) $id_categoria = $_GET['id_categoria'];
-
-		return new COUPLE_CATEGORIA_MODEL($id_pareja,$id_categoria, $id_campeonato);
-
-	}
-
-}
 
 
 function obtenerGrupoCampeonato($id_campeonato, $nivel, $categoria){
@@ -430,6 +379,10 @@ function obtenerGrupoCampeonato($id_campeonato, $nivel, $categoria){
 		return $resultado;
 	}
 }
+
+
+
+
 
 
 

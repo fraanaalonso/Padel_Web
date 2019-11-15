@@ -112,17 +112,24 @@ Switch ($_REQUEST['action']){
 			include_once '../Models/CHAMPIONSHIP_MODEL.php';
 			include_once '../Models/COUPLE_CATEGORIA_MODEL.php';
 
-			$currentChampinship = gatherDataCampeonato();
-			$coupleCategoria = gatherDataParejaCategoria();
+			$currentChampinship = new CHAMPIONSHIP_MODEL('','','','');
 
 			$championshipData = $currentChampinship->getDataChampionship($_REQUEST['id_campeonato']);
-			$coupleCategoriaData = $coupleCategoria->obtenerParejasCategorias($_GET['id_campeonato']);
+			$coupleCategoriaNivelData = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
 
-			new GENERARCALENDARIO_View($currentChampinship, $coupleCategoriaData);
+			new GENERARCALENDARIO_View($championshipData, $coupleCategoriaNivelData);
 
 
 
 			}
+
+			else{
+
+				
+			}
+
+
+
 
 
 		break;
@@ -201,6 +208,27 @@ Switch ($_REQUEST['action']){
 
 			else{
 
+			$getChampionship = new CHAMPIONSHIP_MODEL('','','','');
+			$currentGroupSelected = $getChampionship->testNumMaxMembers($id_campeonato, $nivelSeleccionado, $categoriaSeleccionada);
+
+			if($currentChamp == 'true'){
+
+				new MESSAGE('Se ha llegado al número máximo de inscritos', "./Championship_Controller.php?action=REGISTRAR&id_campeonato=$currentChamp[0]");
+			}
+
+			else{
+
+			$user1 = new User_Modelo($capitan, '','','','','','','','','','','');
+			$user2 = new User_Modelo($socio, '','','','','','','','','','','');
+
+			$sexoCapitan = $user1->RellenaDatos();
+			$sexoSocio = $user2->RellenaDatos();
+
+			if(($sexoCapitan[7] == 'Masculino' && $categoriaSeleccionada == '2') || ($sexoSocio[7] == 'Masculino' && $categoriaSeleccionada == '2') || ($sexoSocio[7]== 'Femenino' && $categoriaSeleccionada=='1') || ($sexoCapitan[7]=='Femenino' && $categoriaSeleccionada=='1')){
+				new MESSAGE('Categorias Erróneas', "./Championship_Controller.php?action=REGISTRAR&id_campeonato=$currentChamp[0]");
+			}
+
+			else{
 
 			$pareja = new COUPLE_MODEL($id_pareja, $capitan, $socio);
 			$result = $pareja->REGISTRARPAREJA();
@@ -224,6 +252,8 @@ Switch ($_REQUEST['action']){
 			
 
 			new MESSAGE($result4, './Championship_Controller.php');
+		}
+		}
 
 		}
 		}

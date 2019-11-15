@@ -53,14 +53,13 @@ class SHOWALL_COUPLE
     
       echo "<tr>";
 
-
       echo "<td>".$fila["id_pareja"]."</td>";
       echo "<td>".$fila["id_campeonato"]."</td>";
       echo "<td>".$fila["login1"]."</td>";
       echo "<td>".$fila["login2"]."</td>";
       echo "<td>".$fila["categoria"]."</td>";
       echo "<td>".$fila["nivel"]."</td>";
-
+    
 
 ?>
 
@@ -71,7 +70,7 @@ class SHOWALL_COUPLE
 <?php
 if(comprobarPermisos($_SESSION['login']) == 1){
 ?>
-        <a href="../Controllers/Couple_Controller.php?action=DELETE&id_pareja=<?php  echo $fila['id_pareja'] ?>&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-trash borrar"></span></a>
+        <a href="../Controllers/Couple_Controller.php?action=DELETE&id_pareja=<?php  echo $fila['id_pareja'] ?>&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-trash borrar"></span></a>
       
 <?php
 }

@@ -23,8 +23,7 @@ class CLASH_SHOWALL
 
 
 
-<div class="resutado">
-	<table id="resutados" border ="1">
+	<table border ="1">
 
 
 
@@ -35,6 +34,7 @@ class CLASH_SHOWALL
 
 		<tr>
 			<th>Fecha</th>
+			<th>ID Campeonato</th>>
 			<th>ID Enfrentamiento</th>
 			<th>Pareja 1</th>
 			<th>Num Sets Pareja1</th>
@@ -55,6 +55,11 @@ while($fila = $resultado->fetch_assoc()){
 				<td cowspan="1">
 					11-10-19
 				</td>
+
+				<td cowspan="1">
+					<?php	echo $fila['id_campeonato'] ?>
+				</td>
+
 
 
 				<td cowspan="1">
@@ -102,7 +107,7 @@ while($fila = $resultado->fetch_assoc()){
 
 				<td>
 					
-				 <a href="../Controllers/Clash_Controller.php?action=EDIT&id_enfrentamiento=<?php  echo $fila['id_enfrentamiento'] ?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 20px"></span></a>
+				 <a href="../Controllers/Clash_Controller.php?action=EDIT&id_enfrentamiento=<?php  echo $fila['id_enfrentamiento'] ?>&id_campeonato=<?php echo $fila['id_campeonato']?>"><span class="lnr lnr-pencil" style="font-size: 20px"></span></a>
 				</td>
 
 			</tr>
@@ -118,7 +123,7 @@ while($fila = $resultado->fetch_assoc()){
 
 
 	</table>
-	</div>
+
 
 
 

@@ -21,7 +21,6 @@ include '../Views/CHAMPIONSHIP_VIEWS/SHOWCURRENT_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/DELETE_CHAMPIONSHIP_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/EDIT_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/InscribirCampeonatoView.php';
-include '../Views/CHAMPIONSHIP_VIEWS/GENERARCALENDARIO_View.php';
 include '../Views/CHAMPIONSHIP_VIEWS/SHOWGRUPOS_CAMPEONATO.php';
 include '../Views/RULE_VIEWS/SHOWRULE.php';
 include '../Views/Message_View.php';

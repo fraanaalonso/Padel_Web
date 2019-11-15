@@ -221,30 +221,11 @@ class CLASH_MODEL
 
 		
 
-		function DELETE()
-		{	
-		    $sql = "SELECT * FROM CLASH  WHERE (id_enfrentamiento = '$this->id_enfrentamiento') ";
-		    // se ejecuta la query
-		    $result = $this->bd->query($sql);
-		    // si existe una tupla con ese valor de clave
-		    if ($result->num_rows == 1)
-		    {
-		    	// se construye la sentencia sql de borrado
-		        $sql = "DELETE FROM CLASH  WHERE (id_enfrentamiento = '$this->id_enfrentamiento')";
-		        // se ejecuta la query
-		        $this->bd->query($sql);
-		        // se devuelve el mensaje de borrado correcto
-		    	return "Borrado correctamente";
-		    } 
-		    else
-		        return "No existe";
-		} 
-
 	
 
 		function RellenaDatos()
 		{	// se construye la sentencia de busqueda de la tupla
-		    $sql = "SELECT * FROM CLASH  WHERE (id_enfrentamiento = '$this->id_enfrentamiento')";
+		    $sql = "SELECT * FROM CLASH  WHERE (id_enfrentamiento = '$this->id_enfrentamiento') &&  (id_campeonato = '$this->id_campeonato')";
 		    // Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		    if (!($resultado = $this->bd->query($sql))){
 				return 'No existe en la base de datos'; // 

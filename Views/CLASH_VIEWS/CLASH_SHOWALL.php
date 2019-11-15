@@ -22,6 +22,11 @@ class CLASH_SHOWALL
 
 
 
+<div class="iconos-superiores">
+   <a href="../Controllers/Championship_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+
+</div>
+
 
 	<table border ="1">
 

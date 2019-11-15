@@ -382,6 +382,69 @@ function obtenerGrupoCampeonato($id_campeonato, $nivel, $categoria){
 
 
 
+function getGruposDes($id_campeonato, $nivel, $categoria){
+
+include_once '../includes/db.php';
+	$bd;
+	$bd = ConectarDB();
+
+$sql = "SELECT categoria.categoria, nivel.nivel, couple_categoria.id_pareja, couple_categoria.id_campeonato, COUPLE.login1, COUPLE.login2 FROM couple_categoria INNER JOIN couple ON couple.id_pareja=couple_categoria.id_pareja INNER JOIN couple_nivel ON couple_nivel.id_pareja=couple_categoria.id_pareja INNER JOIN categoria on categoria.id_categoria=couple_categoria.id_categoria INNER JOIN nivel on nivel.id_nivel=couple_nivel.id_nivel and couple_categoria.id_campeonato='".$id_campeonato."' and categoria.categoria='".$categoria."' AND nivel.nivel='".$nivel."' ORDER BY couple_categoria.id_pareja DESC";
+
+	 if (!($resultado = $bd->query($sql))){
+		return 'Error en la consulta sobre la base de datos';
+	}
+    else{ 
+		return $resultado;
+	}
+	
+
+ }
+
+
+
+function getGruposAsc($id_campeonato, $nivel, $categoria){
+
+
+	include_once '../includes/db.php';
+	$bd;
+	$bd = ConectarDB();
+
+$sql= "SELECT categoria.categoria, nivel.nivel, couple_categoria.id_pareja, couple_categoria.id_campeonato, COUPLE.login1, COUPLE.login2 FROM couple_categoria INNER JOIN couple ON couple.id_pareja=couple_categoria.id_pareja INNER JOIN couple_nivel ON couple_nivel.id_pareja=couple_categoria.id_pareja INNER JOIN categoria on categoria.id_categoria=couple_categoria.id_categoria INNER JOIN nivel on nivel.id_nivel=couple_nivel.id_nivel and couple_categoria.id_campeonato='".$id_campeonato."' and categoria.categoria='".$categoria."' AND nivel.nivel='".$nivel."' ORDER BY couple_categoria.id_pareja ASC";
+
+	 if (!($resultado = $bd->query($sql))){
+		return 'Error en la consulta sobre la base de datos';
+	}
+    else{ 
+		return $resultado;
+	}
+
+}
+
+
+function comprobarSiExisteEnfrentamiento($id_campeonato, $id_nivel, $id_categoria){
+
+	include_once '../includes/db.php';
+	$bd;
+	$bd = ConectarDB();
+
+	$sql= "SELECT clash.id_campeonato, clash.categoria, clash.nivel FROM CLASH WHERE clash.id_campeonato = '".$id_campeonato."' and clash.nivel = '".$id_nivel."' and clash.categoria = '".$id_categoria."'";
+
+
+
+	$resultado = $bd->query($sql);
+
+	if($resultado->num_rows != 0){
+		return true;
+	}
+	else{
+		return false;
+	}
+
+
+}
+
+
+
 
 
 

@@ -54,7 +54,7 @@ class ADD_VIEW
 		   			while(($toret = mysqli_fetch_array($normativa))){	
 		   	
 		   	
-		  			echo '<option value = "'.$toret[0].'">'. $toret[1].'</option>';
+		  			echo '<option value = "'.$toret[0].'">'. $toret[0].'</option>';
 
 		  		
 		  	

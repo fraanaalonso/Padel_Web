@@ -25,16 +25,31 @@ class GENERARCALENDARIO_View{
     include '../Views/HeaderPost.php';
 ?>
 
+<div class="iconos-superiores">
 
+    <a href="../Controllers/Championship_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
 
+</div>
+
+    
+  
+    
       <?php
       for($i = 0; $i < sizeof($this->categorias); $i++){
         ?>
         <table>
+
+        <thead>
+          <tr>
+            <th colspan="4">
+              <h3 class="display-3 text-center">Campeonato: <?php echo $this->datosCampeonato['id_campeonato']; ?></h3>
+            </th>
+          </tr>
+        </thead>
           <thead>
             <tr>
               <th colspan="3">
-                <h3>Categoría: <?php echo $this->categorias[$i]; ?>
+                <h3 class="display-4 text-light text-center">Categoría: <?php echo $this->categorias[$i]; ?>
               </th>
             </tr>
             <tr>
@@ -59,16 +74,16 @@ class GENERARCALENDARIO_View{
              ?>
           </tbody>
         </table>
+
       <?php 
     } 
       ?>
-
-        <div class="text-center py-5">
-          <form method="post" action="../Controllers/Championship_Controller.php?action=GENERARCALENDARIO">
-            <input type="hidden" name="idCampeonato" value="<?php echo $this->datosCampeonato['idCampeonato']; ?>"/>
-            <input type="submit" value="Generar Calendario">
+     
+          <form method="post" action="/index.php?controller=Campeonato&amp;action=generarCalendario">
+            <input type="hidden" name="id_campeonato" value="<?php echo $this->datosCampeonato['id_campeonato']; ?>"/>
+            <input style="position: " type="submit"  value="Generar Calendario">
           </form>
-        </div>
+
 
 
 <?php

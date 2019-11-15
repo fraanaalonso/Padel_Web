@@ -26,7 +26,7 @@ include '../Views/CHAMPIONSHIP_VIEWS/SHOWGRUPOS_CAMPEONATO.php';
 include '../Views/RULE_VIEWS/SHOWRULE.php';
 include '../Views/Message_View.php';
 include '../Views/ALERT.php';
-
+include '../Views/CLASH_VIEWS/CLASH_SHOWALL.php';
 require_once '../Functions/funciones.php';
 
 function get_data(){
@@ -70,11 +70,28 @@ Switch ($_REQUEST['action']){
 				}
 				else{
 
+
+
+
 					include_once '../Models/CHAMPIONSHIP_MODEL.php';
 				 	$aux = new CHAMPIONSHIP_MODEL('','','','');
 				 	$aux2 = new CHAMPIONSHIP_MODEL('','','','');
-				 	$aux3 = new CHAMPIONSHIP_MODEL('','','','');
 					$modelo= new CHAMPIONSHIP_MODEL(' ',$_REQUEST['fecha_inicio'], $_REQUEST['fecha_limite'],$_REQUEST['id_normativa']);
+					$currentDate = strtotime(date("Y-m-d", time()));
+
+					if(checkDeadLine($_REQUEST['fecha_limite'], $_REQUEST['fecha_inicio']) <= 0){
+						new MESSAGE('Rango de fechas erróneo', './Championship_Controller.php');
+					}
+
+					else{
+
+					if($currentDate > strtotime($_REQUEST['fecha_inicio']) || $currentDate > strtotime($_REQUEST['fecha_limite'])){
+						new MESSAGE('Ha seleccionado días ya transcurridos', './Championship_Controller.php');
+					}
+
+					else{
+
+
 					$respuesta = $modelo->ADD();
 
 					$obj = new CHAMPIONSHIP_MODEL('','','','');
@@ -88,46 +105,59 @@ Switch ($_REQUEST['action']){
 					$nivel2 = $aux2->añadirNiveles($dato[0], 2);	
 					$nivel3 = $aux2->añadirNiveles($dato[0], 3);
 
-					$grupo1 = $aux3->generarGruposInscripcion('1','1', $dato[0]);
-					$grupo2 = $aux3->generarGruposInscripcion('1','2', $dato[0]);
-					$grupo3 = $aux3->generarGruposInscripcion('1','3', $dato[0]);
-					$grupo4 = $aux3->generarGruposInscripcion('2','1', $dato[0]);
-					$grupo5 = $aux3->generarGruposInscripcion('2','2', $dato[0]);
-					$grupo6 = $aux3->generarGruposInscripcion('2','3', $dato[0]);
-					$grupo7 = $aux3->generarGruposInscripcion('3','1', $dato[0]);
-					$grupo8 = $aux3->generarGruposInscripcion('3','2', $dato[0]);
-					$grupo9 = $aux3->generarGruposInscripcion('3','3', $dato[0]);
+				
 
 
 
 					new MESSAGE($respuesta,'./Championship_Controller.php');
+				}
+				}
 					
 				}
 				break;
 
 		case 'GENERARCALENDARIO':
 
+			include_once '../Models/CLASH_MODEL.php';
 			if(!$_POST){
 
-			include_once '../Models/CHAMPIONSHIP_MODEL.php';
-			include_once '../Models/COUPLE_CATEGORIA_MODEL.php';
+				
+				$arrayAscendiente = getGruposAsc($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+				$arrayDescendiente = getGruposDes($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
 
-			$currentChampinship = new CHAMPIONSHIP_MODEL('','','','');
-
-			$championshipData = $currentChampinship->getDataChampionship($_REQUEST['id_campeonato']);
-			$coupleCategoriaNivelData = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
-
-			new GENERARCALENDARIO_View($championshipData, $coupleCategoriaNivelData);
+				$array1 = array();
+				$array2 = array();
 
 
+				if(!comprobarSiExisteEnfrentamiento($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria'])){
 
-			}
+				while($array1 = $arrayAscendiente->fetch_assoc()){
+				while($array2 = $arrayAscendiente->fetch_assoc()){
 
-			else{
+				$modelo = new CLASH_MODEL('0',$_REQUEST['id_campeonato'],$array1['id_pareja'],$array2['id_pareja'],'','','','', $_REQUEST['categoria'], $_REQUEST['nivel']);
+
+				$respuesta = $modelo->ADD();
 
 				
+
+				break;
+					}
+					
+				}
+
+			}
+			else{
+
+				$modelo = new CLASH_MODEL('','','','','','','','','','');
+				$resultado = $modelo->SEARCHCLASHBYCATNIV($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+				$datos = array();
+
+
+				new CLASH_SHOWALL($datos, $resultado);
+
 			}
 
+			}
 
 
 
@@ -230,6 +260,12 @@ Switch ($_REQUEST['action']){
 
 			else{
 
+			if(esInscrito($capitan, $socio, $id_campeonato)){
+				new MESSAGE('Uno de los usuarios ya está inscrito en el campeonato', "./Championship_Controller.php?action=REGISTRAR&id_campeonato=$currentChamp[0]");
+			}
+			else{
+			$aux3 = new CHAMPIONSHIP_MODEL('','','','');
+
 			$pareja = new COUPLE_MODEL($id_pareja, $capitan, $socio);
 			$result = $pareja->REGISTRARPAREJA();
 
@@ -248,10 +284,12 @@ Switch ($_REQUEST['action']){
 			$parejaNivel = new COUPLE_NIVEL_MODEL($nivelSeleccionado, $dato[0], $id_campeonato);
 			$result4 = $parejaNivel->ADD();
 			
+			$categoriaNivel = $aux3->generarGruposInscripcion($categoriaSeleccionada,$nivelSeleccionado, $id_campeonato);
 
 			
 
 			new MESSAGE($result4, './Championship_Controller.php');
+		}
 		}
 		}
 

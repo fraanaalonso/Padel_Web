@@ -35,15 +35,20 @@ class CLASH_SHOWALL
 
 		<tr>
 			<th>Fecha</th>
+			<th>ID Enfrentamiento</th>
 			<th>Pareja 1</th>
-			<th>Resutado</th>
+			<th>Num Sets Pareja1</th>
 			<th>Pareja 2</th>
+			<th>Num Sets Pareja2</th>
+			<th>ID Categoria</th>
+			<th>ID Nivel</th>
+			<th>Opciones</th>
 		</tr>
 
 
 <?php
 
-while($fila = mysql_fetch_array($resultado)){
+while($fila = $resultado->fetch_assoc()){
 ?>
 
 			<tr>
@@ -51,19 +56,57 @@ while($fila = mysql_fetch_array($resultado)){
 					11-10-19
 				</td>
 
+
 				<td cowspan="1">
-					<!--Pareja 1-->
+				<?php	echo $fila['id_enfrentamiento'] ?>
 				</td>
 
 				<td cowspan="1">
+				<?php
+					echo $fila['id_pareja1']
+				?>
+				</td>
+
+
+				<td cowspan="1">
+				<?php 	echo $fila['numSetsPareja1'] ?>
+				</td>
+
+
+				<td cowspan="1">
+					<?php echo $fila['id_pareja2'] ?>
+				</td>
+
+
+				<td cowspan="1">
+				 <?php
+
+				 echo $fila['numSetsPareja2'];
+				 ?>
+				</td>
+
+				<td cowspan="1">
+				 <?php
+
+				 echo $fila['categoria'];
+				 ?>
+				</td>
+
+				<td cowspan="1">
+				 <?php
+
+				 echo $fila['nivel'];
+				 ?>
+				</td>
+
+
+				<td>
 					
-				</td>
-
-				<td cowspan="1">
-				<!--Pareja 2-->
+				 <a href="../Controllers/Clash_Controller.php?action=EDIT&id_enfrentamiento=<?php  echo $fila['id_enfrentamiento'] ?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 20px"></span></a>
 				</td>
 
 			</tr>
+
 
 
 

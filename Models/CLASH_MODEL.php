@@ -16,10 +16,12 @@ class CLASH_MODEL
 	var $numSetsPareja2;
 	var $hora_inicio;
 	var $fecha;
+	var $id_categoria;
+	var $id_nivel;
 
 
 
-	function __construct($id_enfrentamiento, $id_campeonato, $id_pareja1, $id_pareja2, $numSetsPareja1, $numSetsPareja2, $hora_inicio, $fecha){
+	function __construct($id_enfrentamiento, $id_campeonato, $id_pareja1, $id_pareja2, $numSetsPareja1, $numSetsPareja2, $hora_inicio, $fecha, $id_categoria, $id_nivel){
 
 		$this->id_enfrentamiento = $id_enfrentamiento;
 		$this->id_campeonato = $id_campeonato;
@@ -29,11 +31,28 @@ class CLASH_MODEL
 		$this->numSetsPareja2 = $numSetsPareja2;
 		$this->hora_inicio = $hora_inicio;
 		$this->fecha = $fecha;
+		$this->id_categoria = $id_categoria;
+		$this->id_nivel = $id_nivel;
 
 
 
 		include_once '../includes/db.php';
 		$this->bd = ConectarDB();
+	}
+
+
+	function SEARCHCLASHBYCATNIV($id_campeonato, $id_nivel, $id_categoria){
+
+		$sql = "SELECT * FROM CLASH WHERE clash.id_campeonato = '".$id_campeonato."' and clash.nivel = '".$id_nivel."' and clash.categoria = '".$id_categoria."'";
+
+		 // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+    if (!($resultado = $this->bd->query($sql))){
+		return 'Error en la consulta sobre la base de datos';
+	}
+    else{ // si la busqueda es correcta devolvemos el recordset resultado
+		return $resultado;
+	}
+
 	}
 
 
@@ -44,7 +63,6 @@ class CLASH_MODEL
 	function ADD(){
 
 
-		if (($this->id_enfrentamiento <> '')){ 
 
         $sql = "SELECT * FROM CLASH WHERE (id_enfrentamiento = '$this->id_enfrentamiento')";
 
@@ -64,7 +82,9 @@ class CLASH_MODEL
 					numSetsPareja1,
 					numSetsPareja2,
 					hora_inicio,
-					fecha
+					fecha,
+					id_categoria,
+					id_nivel
 					) 
 						VALUES (
 						'$this->id_enfrentamiento',
@@ -74,7 +94,9 @@ class CLASH_MODEL
 						'$this->numSetsPareja1',
 						'$this->numSetsPareja2',
 						'$this->hora_inicio',
-						'$this->fecha'
+						'$this->fecha',
+						'$this->id_categoria',
+						'$this->id_nivel'
 						)";
 
 
@@ -91,12 +113,7 @@ class CLASH_MODEL
 			else 
 				return 'Ya existe en la base de datos'; 
 		}
-    }
-    else{ 
-    	
-        return 'Introduzca un valor'; 
-	
-	}
+  
 
 	}
 
@@ -124,8 +141,9 @@ class CLASH_MODEL
 					numSetsPareja1 = '$this->numSetsPareja1',
 					numSetsPareja2 = '$this->numSetsPareja2',
 					hora_inicio = '$this->hora_inicio',
-					fecha = '$this->fecha'
-				
+					fecha = '$this->fecha',
+					id_categoria = '$this->id_categoria',
+					id_categoria = '$this->id_categoria'
 				WHERE ( id_enfrentamiento = '$this->id_enfrentamiento')";
 
 

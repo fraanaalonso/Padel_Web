@@ -143,16 +143,24 @@ Switch ($_REQUEST['action']){
 
 			include_once '../Models/MATCH_MODEL.php';
 			include_once '../Models/USER_MODEL.php';
+			include_once '../Models/COURT_MODEL.php';
 
 			$id_partido = $_POST['id_partido'];
 			$modelo = new MATCH_MODEL($id_partido,'','','');
-			
 
+			if(inscritoEnPromocion($_SESSION['login'], $id_partido)){
+
+				new MESSAGE('Ya está inscrito en la promoción seleccionada. No puede volver a inscribirse', "../Controllers/Match_Controller.php");
+			}
+			
+			else{
 
 			$respuesta = $modelo->inscribirPromocion($_SESSION['login']);
 
 
 			new MESSAGE($respuesta, './Match_Controller.php?action=SHOWMYPROMOTIONS');
+		
+		}
 		}
 
 

@@ -214,6 +214,19 @@ CREATE TABLE `clash` (
   `nivel` varchar(20) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+
+
+--
+-- Estructura de tabla para la tabla `clash`
+--
+
+CREATE TABLE `ranking` (
+  `id_pareja` tinyint(4) NOT NULL,
+  `p_jugados` varchar(3) NOT NULL,
+  `p_ganados` varchar(3) NOT NULL,
+  `puntos` varchar(3) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
 -- --------------------------------------------------------
 
 --
@@ -776,7 +789,7 @@ INSERT INTO `user` (`login`, `nombre`, `apellido`, `password`, `dni`, `email`, `
 ('giovana94', 'Giovanna', 'Campagna', 'root', '41221260Q', 'giovanna@outlook.com', 'Italia', 'Femenino', 635361202, '1994-11-11', 'banner2.jpg', 2),
 ('gise93', 'Gisela', 'Pereira', 'root', '44494442P', 'gisela93@outlook.com', 'España', 'Femenino', 611861111, '1993-02-27', 'banner2.jpg', 2),
 ('gomez_mario', 'Mario', 'Gomez', 'root', '95439864S', 'gomez_mario@gmail.com', 'EspaÃ±a', 'Masculino', 645657224, '1999-10-17', 'banner2.jpg', 1),
-('manzanares_alfonso', 'Vitor', 'Hugo', 'root', '85329482Y', 'hugo_vitor@gmail.com', 'EspaÃ±a', 'Masculino', 667438276, '1998-05-11', 'banner2.jpg', 1),
+('ares_alfonso', 'Vitor', 'Hugo', 'root', '85329482Y', 'hugo_vitor@gmail.com', 'EspaÃ±a', 'Masculino', 667438276, '1998-05-11', 'banner2.jpg', 1),
 ('inesga99', 'Ines', 'Garrido', 'root', '59294289M', 'inesita@outlook.com', 'España', 'Femenino', 673361633, '1999-05-30', 'banner2.jpg', 2),
 ('inma96', 'Inma', 'Verdejo', 'root', '55294000W', 'inma96@outlook.com', 'España', 'Femenino', 666861299, '1996-02-25', 'banner2.jpg', 2),
 ('ireneee', 'Irene', 'Sanchez', 'root', '55291133U', 'ire@outlook.com', 'España', 'Femenino', 684327569, '1997-12-03', 'banner2.jpg', 2),
@@ -927,6 +940,15 @@ ALTER TABLE `clash`
   ADD KEY `id_pareja1` (`id_pareja1`),
   ADD KEY `id_pareja2` (`id_pareja2`),
   ADD KEY `clash_ibfk_0` (`id_campeonato`);
+
+
+--
+-- Indices de la tabla `clash`
+--
+ALTER TABLE `ranking`
+  ADD PRIMARY KEY (`id_pareja`);
+
+
 
 --
 -- Indices de la tabla `couple`
@@ -1164,6 +1186,13 @@ ALTER TABLE `clash`
   ADD CONSTRAINT `clash_ibfk_0` FOREIGN KEY (`id_campeonato`) REFERENCES `championship` (`id_campeonato`) ON DELETE CASCADE,
   ADD CONSTRAINT `clash_ibfk_1` FOREIGN KEY (`id_pareja1`) REFERENCES `couple` (`id_pareja`) ON DELETE CASCADE,
   ADD CONSTRAINT `clash_ibfk_2` FOREIGN KEY (`id_pareja2`) REFERENCES `couple` (`id_pareja`) ON DELETE CASCADE;
+
+
+--
+-- Filtros para la tabla `clash`
+--
+ALTER TABLE `ranking`
+  ADD CONSTRAINT `ranking_ifbk_1` FOREIGN KEY (`id_pareja`) REFERENCES `couple` (`id_pareja`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `couple`

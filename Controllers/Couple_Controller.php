@@ -89,7 +89,7 @@ Switch ($_REQUEST['action']){
 
 
 					
-                    $datos = $all->SEARCHCURRENTCOUPLES($_REQUEST['id_campeonato']);
+                    $datos = $all->joinCouples($_REQUEST['id_campeonato']);
 					$lista = array();
 
 				

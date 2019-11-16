@@ -56,8 +56,15 @@ class SHOWGRUPOS_CAMPEONATO
 
 
 <td colspan="12">
-  <a href="../Controllers/Championship_Controller.php?action=GENERARCALENDARIO&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-eye iconCalendar"></span></a>
+  <a href="../Controllers/Championship_Controller.php?action=GENERARCALENDARIO&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-calendar-full iconCalendar"></span></a>
+
+  <a href="../Controllers/Championship_Controller.php?action=SHOWENFRENTAMIENTOS&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-eye borrar"></span></a>
 </span></a>
+
+<a href="../Controllers/Clash_Controller.php?action=SHOWRANKING&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-list editar"></span></a>
+</span></a>
+
+
 </td>
 
 
@@ -101,7 +108,13 @@ echo "</tr>";
 ?>
 
 <td colspan="12">
+
   <a href="../Controllers/Championship_Controller.php?action=GENERARCALENDARIO&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-eye iconCalendar"></span></a>
+
+  <a href="../Controllers/Championship_Controller.php?action=SHOWENFRENTAMIENTOS&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-eye borrar"></span></a>
+
+
+  <a href="../Controllers/Clash_Controller.php?action=SHOWRANKING&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-list editar"></span></a>
 </span></a>
 </td>
 <?php
@@ -137,6 +150,8 @@ echo "</tr>";
 
 <td colspan="12">
   <a href="../Controllers/Championship_Controller.php?action=GENERARCALENDARIO&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-eye iconCalendar"></span></a>
+
+  <a href="../Controllers/Championship_Controller.php?action=SHOWENFRENTAMIENTOS&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-eye borrar"></span></a>
 </span></a>
 </td>
 <?php
@@ -172,6 +187,8 @@ echo "</tr>";
 
 <td colspan="12">
   <a href="../Controllers/Championship_Controller.php?action=GENERARCALENDARIO&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-eye iconCalendar"></span></a>
+
+  <a href="../Controllers/Championship_Controller.php?action=SHOWENFRENTAMIENTOS&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-eye borrar"></span></a>
 </span></a>
 </td>
 <?php
@@ -208,6 +225,8 @@ echo "</tr>";
 
 <td colspan="12">
   <a href="../Controllers/Championship_Controller.php?action=GENERARCALENDARIO&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-eye iconCalendar"></span></a>
+
+  <a href="../Controllers/Championship_Controller.php?action=SHOWENFRENTAMIENTOS&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-eye borrar"></span></a>
 </span></a>
 </td>
 <?php
@@ -243,6 +262,9 @@ echo "</tr>";
 
 <td colspan="12">
   <a href="../Controllers/Championship_Controller.php?action=GENERARCALENDARIO&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-eye iconCalendar"></span></a>
+
+
+  <a href="../Controllers/Championship_Controller.php?action=SHOWENFRENTAMIENTOS&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-eye borrar"></span></a>
 </span></a>
 </td>
 <?php
@@ -278,6 +300,8 @@ echo "</tr>";
 
 <td colspan="12">
   <a href="../Controllers/Championship_Controller.php?action=GENERARCALENDARIO&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-eye iconCalendar"></span></a>
+
+  <a href="../Controllers/Championship_Controller.php?action=SHOWENFRENTAMIENTOS&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-eye borrar"></span></a>
 </span></a>
 </td>
 <?php
@@ -313,6 +337,8 @@ echo "</tr>";
 
 <td colspan="12">
   <a href="../Controllers/Championship_Controller.php?action=GENERARCALENDARIO&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-eye iconCalendar"></span></a>
+
+  <a href="../Controllers/Championship_Controller.php?action=SHOWENFRENTAMIENTOS&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-eye borrar"></span></a>
 </span></a>
 </td>
 <?php
@@ -348,6 +374,8 @@ echo "</tr>";
 
 <td colspan="12">
   <a href="../Controllers/Championship_Controller.php?action=GENERARCALENDARIO&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-eye iconCalendar"></span></a>
+
+  <a href="../Controllers/Championship_Controller.php?action=SHOWENFRENTAMIENTOS&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-eye borrar"></span></a>
 </span></a>
 </td>
 <?php

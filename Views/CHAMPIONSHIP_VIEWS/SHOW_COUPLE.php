@@ -68,7 +68,7 @@ class SHOWALL_COUPLE
         <a href="../Controllers/Couple_Controller.php?action=SHOWCURRENT&id_pareja=<?php  echo $fila['id_pareja'] ?>&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-eye añadir"></span></a>
 
 <?php
-if(comprobarPermisos($_SESSION['login']) == 1){
+if(comprobarPermisos($_SESSION['login']) == 1 || ($_SESSION['login'] == $fila['login1']) ||($_SESSION['login'] == $fila['login2'])){
 ?>
         <a href="../Controllers/Couple_Controller.php?action=DELETE&id_pareja=<?php  echo $fila['id_pareja'] ?>&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-trash borrar"></span></a>
       

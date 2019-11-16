@@ -10,25 +10,18 @@ include_once '../includes/db.php';
 */
 class RANKING_MODEL
 {
-	var $login;
+	var $id_pareja;
+	var $p_jugados;
+	var $p_ganados;
 	var $puntos;
-	var $partidos_ganados;
-	var $partidos_perdidos;
-	var $partidos_jugados;
-	var $partidos_empatados;
 	var $bd;
 	
-	function __construct($login,$puntos, $partidos_ganados, $partidos_perdidos, $partidos_jugados, $partidos_empatados)
+	function __construct($id_pareja,$p_jugados, $p_ganados, $puntos)
 	{
-		$this->login = $login;
+		$this->id_pareja = $id_pareja;
+		$this->p_jugados = $p_jugados;
+		$this->p_ganados = $p_ganados;
 		$this->puntos = $puntos;
-		$this->partidos_ganados = $partidos_ganados;
-		$this->partidos_perdidos = $partidos_perdidos;
-
-		$this->partidos_jugados = $partidos_jugados;
-
-		$this->partidos_empatados = $partidos_empatados;		
-		
 
 		$this->bd = ConectarDB();
 	}
@@ -36,35 +29,22 @@ class RANKING_MODEL
 
 
 
-	function ADD(){
+	function anhadirRanking($pareja){
 
-		if (($this->login <> '')){ 
 
-        $sql = "SELECT * FROM RANKING WHERE (login = '$this->login')";
-
-		if (!$result = $this->bd->query($sql)){ 
-			return 'No se ha podido conectar con la base de datos';
-		}
-		else { 
-
-			if ($result->num_rows == 0){ 
-				
+     	
 
 				$sql = "INSERT INTO RANKING (
-					login,
-					puntos,
-					partidos_ganados,
-					partidos_jugados,
-					partidos_perdidos
+					id_pareja,
+					p_jugados,
+					p_ganados,
+					puntos
 					) 
 						VALUES (
-						'$this->login',
-						'$this->puntos',
-						'$this->partidos_ganados',
-						'$this->partidos_perdidos',
-						'$this->partidos_jugados',
-						'$this->partidos_empatados'
-
+						'".$pareja."',
+						'0',
+						'0',
+						'0'
 						)";
 					
 				
@@ -75,29 +55,21 @@ class RANKING_MODEL
 					return 'Inserción realizada con éxito'; 
 				}
 				
-			}
-			else 
-				return 'Ya existe en la base de datos'; 
-		}
-    }
-    else{ 
-    	
-        return 'Introduzca un valor'; 
-	
-	}
+		
+   
 
 	}
 
 
 
 
-}
+
 
 
 
 function EDIT(){
 
-	$sql = "SELECT * FROM RANKING  WHERE (login = '$this->login') ";
+	$sql = "SELECT * FROM RANKING  WHERE (id_pareja = '$this->id_pareja') ";
     
 
     $result = $this->bd->query($sql);
@@ -107,14 +79,12 @@ function EDIT(){
     {	
     	
 		$sql = "UPDATE RANKING  SET 
-				login = '$this->login',
-				puntos = '$this->puntos',
-				partidos_ganados = '$this->partidos_ganados',
-				partidos_perdidos = '$this->partidos_perdidos',
-				partidos_jugados = '$this->partidos_jugados',
-				partidos_empatados = '$this->partidos_empatados'
+				id_pareja = '$this->id_pareja',
+				p_jugados = '$this->p_jugados',
+				p_ganados = '$this->p_ganados',
+				puntos = '$this->puntos'
 				
-				WHERE ( login = '$this->login')";
+				WHERE ( id_pareja = '$this->id_pareja')";
 
         if (!($resultado = $this->bd->query($sql))){
 			return 'Error en la modificación'; 
@@ -134,73 +104,27 @@ function EDIT(){
 
 
 
-function SEARCH(){
 
-	$sql = "select
-					login,
-					puntos,
-					partidos_ganados,
-					partidos_perdidos,
-					partidos_jugados,
-					partidos_empatados
-					
-					FROM RANKING WHERE
 
-					
-						((login LIKE '$this->login') &&
-						(puntos LIKE'$this->puntos') &&
-						(partidos_ganados LIKE'$this->partidos_ganados')  &&
-						(partidos_perdidos LIKE '$this->partidos_perdidos') && (partidos_jugados LIKE '$this->partidos_jugados') && (partidos_empatados LIKE '$this->partidos_empatados'))";
 
-   
-    if (!($resultado = $this->bd->query($sql))){
+
+function getRanking($id_campeonato, $categoria, $nivel){
+
+	$sql = "SELECT PA.id_pareja as pareja  FROM couple_categoria PC, championship_categoria CC, categoria CA, nivel NA, couple PA, couple_nivel N WHERE CC.id_campeonato = '".$id_campeonato."' AND CC.id_categoria = PC.id_categoria AND PC.id_campeonato = '".$id_campeonato."' AND N.id_campeonato='".$id_campeonato."' AND PC.id_categoria = CA.id_categoria and NA.id_nivel=N.id_nivel AND PC.id_pareja = PA.id_pareja and N.id_pareja=PA.id_pareja AND NA.nivel='".$nivel."' and CA.categoria= '".$categoria."' ORDER BY PA.id_pareja";
+
+
+	  if (!($resultado = $this->bd->query($sql))){
 		return 'Error en la consulta sobre la base de datos';
 	}
     else{ 
 		return $resultado;
 	}
-}
-
-
-
-
-function DELETE()
-		{	
-		   $sql = "SELECT * FROM RANKING  WHERE 
-		   (login = '$this->login')";
-		    
-		    $result = $this->bd->query($sql);
-		    
-		    if ($result->num_rows == 1)
-		    {
-		    
-		       $sql = "DELETE FROM RANKING  WHERE 
-		       (login = '$this->login')";
-		       
-		        $this->bd->query($sql);
-		        
-		    	return "Borrado correctamente";
-		    } 
-		    else
-		        return "No existe";
-		} 
-
-
-
-function RellenaDatos()
-		{	
-		    $sql = "SELECT * FROM RANKING  WHERE (login = '$this->login')";
-
-		    if (!($resultado = $this->bd->query($sql))){
-				return 'No existe en la base de datos'; 
-			}
-
-		    else{ 
-
-			$result = $resultado->fetch_array();
-				return $result;
-			}
 		}
+
+
+
+
+}
 
 
 

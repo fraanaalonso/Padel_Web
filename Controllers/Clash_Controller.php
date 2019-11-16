@@ -17,6 +17,7 @@ require_once '../Functions/funciones.php';
 include_once '../Views/CLASH_VIEWS/CLASH_SHOWALL.php';
 include_once '../Views/CLASH_VIEWS/EDIT_VIEW.php';
 include_once '../Views/Message_View.php';
+include_once '../Views/CLASH_VIEWS/SHOWRANKING.php';
 
 function get_data(){
 	$id_enfrentamiento = $_REQUEST['id_enfrentamiento'];
@@ -76,10 +77,23 @@ Switch ($_REQUEST['action']){
 					$respuesta = $modelo->EDIT();
 					new MESSAGE($respuesta, "./Championship_Controller.php?action=GENERARCALENDARIO&id_enfrentamiento=$valores[0]&id_campeonato=$valores[1]&categoria=$valores[8]&nivel=$valores[9]");
 				}
+		break;
 
 
 
-	break;
+		case 'SHOWRANKING':
+
+					 include_once '../Models/CLASH_MODEL.php';
+					$modelo= new CLASH_MODEL('','','','','','','','','','');
+					$valores= $modelo ->obtenerClasificacionGrupo($_REQUEST['id_campeonato'], $_REQUEST['categoria'], $_REQUEST['nivel']);
+					$miembros = array();
+					new SHOWRANKING($miembros, $valores, $_REQUEST['id_campeonato'], $_REQUEST['categoria'], $_REQUEST['nivel']);
+			
+
+
+		break;
+
+
 
 
 

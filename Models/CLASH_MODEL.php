@@ -217,6 +217,26 @@ class CLASH_MODEL
 
 
 
+function obtenerClasificacionGrupo($id_campeonato, $categoria, $nivel){
+
+	$sql = "SELECT ranking.id_pareja as pareja,  ranking.p_jugados as jugados, ranking.p_ganados as ganados, ranking.puntos as puntos, nivel.nivel as nivel, categoria.categoria as categoria, championship_couple.id_campeonato as campeonato FROM ranking INNER JOIN championship_couple ON championship_couple.id_pareja=ranking.id_pareja AND championship_couple.id_campeonato='".$id_campeonato."' INNER JOIN couple_categoria ON couple_categoria.id_pareja=ranking.id_pareja INNER JOIN categoria ON categoria.id_categoria=couple_categoria.id_categoria AND categoria.categoria='".$categoria."' INNER JOIN couple_nivel ON couple_nivel.id_pareja=ranking.id_pareja INNER JOIN NIVEL ON nivel.id_nivel=couple_nivel.id_nivel AND nivel.nivel='".$nivel."'";
+
+
+
+    // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+    if (!($resultado = $this->bd->query($sql))){
+		return 'Error en la consulta sobre la base de datos';
+	}
+    else{ // si la busqueda es correcta devolvemos el recordset resultado
+		return $resultado;
+	}
+
+
+
+}
+
+
+
 
 
 		

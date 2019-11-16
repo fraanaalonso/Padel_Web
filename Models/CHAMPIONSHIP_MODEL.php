@@ -272,15 +272,57 @@ function getDBDatosCampeonato($id_campeonato){
 function combinarParejas($id_campeonato, $nivel, $categoria){
 
 
-	$sql = "SELECT PA.id_pareja as nombrePareja, PA.login1, PA.login2, PC.*, CA.id_categoria as nombreCategoria FROM couple_categoria PC, championship_categoria CC, categoria CA, couple PA, couple_nivel N WHERE CC.id_campeonato = '1' AND CC.id_categoria = PC.id_categoria AND PC.id_campeonato = '1' and N.id_campeonato='1' AND PC.id_categoria = CA.id_categoria AND PC.id_pareja = PA.id_pareja and N.id_pareja=PA.id_pareja AND N.id_nivel='1' and PC.id_categoria= '1' ORDER BY PA.id_pareja DESC";
-
+	$sql = "SELECT PA.id_pareja, PA.login1, PA.login2, n.id_campeonato, CA.categoria, NA.nivel FROM couple_categoria PC, championship_categoria CC, categoria CA, nivel NA, couple PA, couple_nivel N WHERE CC.id_campeonato = '".$id_campeonato."' AND CC.id_categoria = PC.id_categoria AND PC.id_campeonato = '".$id_campeonato."' AND N.id_campeonato='".$id_campeonato."' AND PC.id_categoria = CA.id_categoria and NA.id_nivel=N.id_nivel AND PC.id_pareja = PA.id_pareja and N.id_pareja=PA.id_pareja AND NA.nivel='".$nivel."' and CA.categoria= '".$categoria."' ORDER BY PA.id_pareja";
 
 		$resultado = $this->bd->query($sql);
+		$fila = $resultado->fetch_row();
+		
+		$gruposSeleccionado;
+		$i = 0;
 
-		$result = $resultado->fetch_array();
+		while($fila = $resultado->fetch_row()){
+			$gruposSeleccionado[$i] = $fila[0];
+			$i++;
+		}
 
-		return $result;
+		$x=0;
+		$longitud = count($gruposSeleccionado);
+		for($i = 0; $i < ($longitud - 1); $i++){
+			for($j = ($i + 1); $j < $longitud; $j++){
+
+
+				$id_pareja1 = $gruposSeleccionado[$i];
+				$id_pareja2 = $gruposSeleccionado[$j];
+
+				$consulta = "INSERT INTO CLASH (
+					id_enfrentamiento,
+					id_campeonato,
+					id_pareja1,
+					id_pareja2,
+					numSetsPareja1,
+					numSetsPareja2,
+					hora_inicio,
+					fecha,
+					categoria,
+					nivel
+					) 
+						VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."', '0', '0', '0', '0', '".$categoria."', '".$nivel."')";
+
+				$this->bd->query($consulta);
+
+			}
+		}
+
+		 if (!($resultado = $this->bd->query($consulta))){
+			return 'Error en la inserción'; 
+		}
+		else{ 
+
+			return 'Enfrentamientos correctamente creados';
+		}
 }
+
+
 
 
 

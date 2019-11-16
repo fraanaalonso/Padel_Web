@@ -78,7 +78,7 @@ Switch ($_REQUEST['action']){
 					$modelo= new CHAMPIONSHIP_MODEL(' ',$_REQUEST['fecha_inicio'], $_REQUEST['fecha_limite'],$_REQUEST['id_normativa']);
 					$currentDate = strtotime(date("Y-m-d", time()));
 
-					if(checkDeadLine($_REQUEST['fecha_limite'], $_REQUEST['fecha_inicio']) <= 0){
+					if(checkDeadLine($_REQUEST['fecha_limite'], $_REQUEST['fecha_inicio']) >= 0){
 						new MESSAGE('Rango de fechas erróneo', './Championship_Controller.php');
 					}
 
@@ -119,12 +119,13 @@ Switch ($_REQUEST['action']){
 
 			include_once '../Models/CLASH_MODEL.php';
 			include_once '../Models/CHAMPIONSHIP_MODEL.php';
+			include_once '../Models/RANKING_MODEL.php';
 
 			$camp = new CHAMPIONSHIP_MODEL($_REQUEST['id_campeonato'], '','','','');
 			$volver = $camp->RellenaDatos();
 
 			if(!$_POST){
-
+				/*
 				
 				$arrayAscendiente = getGruposAsc($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
 				$arrayDescendiente = getGruposDes($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
@@ -147,10 +148,28 @@ Switch ($_REQUEST['action']){
 				break;
 					}
 					
+				}*/
+
+				$currChampionship = new CHAMPIONSHIP_MODEL($_REQUEST['id_campeonato'], '','','','');
+				$respuesta = $currChampionship->combinarParejas($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+
+				$ranking = new RANKING_MODEL('','','','');
+				$regRanking = new RANKING_MODEL('','','','');
+				$result = $ranking->getRanking($_REQUEST['id_campeonato'], $_REQUEST['categoria'], $_REQUEST['nivel']);
+				$fila = array();
+
+
+				while($fila = $result->fetch_assoc()){
+					$regRanking->anhadirRanking($fila['pareja']);
 				}
 
-				new MESSAGE('Se han generado los enfrentamientos', "../Controllers/Championship_Controller.php?action=GENERARGRUPOS&id_campeonato=$volver[0]");
 
+
+				new MESSAGE($respuesta, "../Controllers/Championship_Controller.php?action=GENERARGRUPOS&id_campeonato=$volver[0]");
+
+			}
+
+/*
 			}
 			else{
 
@@ -161,12 +180,20 @@ Switch ($_REQUEST['action']){
 
 				new CLASH_SHOWALL($datos, $resultado);
 
-			}
+			}*/
 
-			}
+			break;
 
 
+	case 'SHOWENFRENTAMIENTOS':
+			include_once '../Models/CLASH_MODEL.php';
 
+			$modelo = new CLASH_MODEL('','','','','','','','','','');
+				$resultado = $modelo->SEARCHCLASHBYCATNIV($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+				$datos = array();
+
+
+				new CLASH_SHOWALL($datos, $resultado);
 
 		break;
 

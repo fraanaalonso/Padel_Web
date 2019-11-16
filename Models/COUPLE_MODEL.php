@@ -95,6 +95,7 @@ class COUPLE_MODEL
 		return $resultado;
 	}
 }
+/*
 
 function SEARCHCURRENTCOUPLES($id_campeonato){
 
@@ -109,7 +110,7 @@ function SEARCHCURRENTCOUPLES($id_campeonato){
 		return $resultado;
 	}
 }
-
+*/
 
 
 function SEARCHMYCHAMPIONSHIPS(){

@@ -35,11 +35,11 @@ class ADD_VIEW
 		  	<input type="hidden" id="id_campeonato" name="id_campeonato" class="form-control" placeholder="Identificador Campeonato" >
 		   </div>	
 
-		  <div class="form-group">
+		  <div class="form-group">Fecha Límite Inscripción
 		  	<input type="date" id="fecha_limite" name="fecha_limite" required class="form-control" placeholder="Inicio del Campeonato" >
 		   </div> 
 
-		  <div class="form-group">
+		  <div class="form-group">Fecha Comienzo 
 		  	<input type="date" id="fecha_inicio" name="fecha_inicio" required class="form-control" placeholder="Límite de Inscripción" >
 		   </div>
 

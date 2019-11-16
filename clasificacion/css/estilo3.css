@@ -1,0 +1,51 @@
+*{
+	margin:8px;
+	padding:0;
+
+}
+table{
+	width:98%;
+	background-color: white;
+	border-collapse: collapse;
+	border-radius: 0;
+	 border-radius: 25px;  
+	
+
+
+}
+th{
+	background-color: #FF8A00;
+	padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  
+
+
+}
+th:hover{background-color: grey;}
+td{
+	padding:8px;
+	background-color: #2EDDCE;
+}
+td:hover{background-color: grey;}
+#puesto{
+	
+	width: 5%;
+	font-weight: bold;
+}
+#puesto:hover{
+	background-color: white;
+}
+#equipo{
+	width: 20%;
+	font-weight: bold;
+}
+#equipo:hover{
+	background-color: yellow;
+}
+#ganar:hover{
+	background-color: green;
+}
+#perder:hover{
+	background-color: red;
+}

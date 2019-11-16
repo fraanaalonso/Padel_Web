@@ -90,7 +90,7 @@ else{
             <div class="input_msg_write">
               <form method="post" action="../Controllers/Chat_Controller.php?action=ADD">
                 <input type="hidden"  name="id_chat" value="" />
-              <input type="text" class="write_msg" name="mensaje" placeholder="Escribe un mensaje" />
+              <input type="text" class="write_msg" name="mensaje" placeholder="Escribe un mensaje" padding='2'/>
               <input type="hidden"  name="login" value="<?php echo $_SESSION['login']; ?>" />
               <input type="hidden"  name="fecha_mensaje" size="10" value="<?php echo date("d/m/Y", time())?>"  />
               <input type="hidden"  name="hora_mensaje" size="5" value="<?php echo date('G:i');?>"  />

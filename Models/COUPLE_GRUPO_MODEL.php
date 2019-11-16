@@ -11,12 +11,14 @@ class COUPLE_GRUPO_MODEL
 {
 	var $id_pareja;
 	var $id_grupo;
+	var $id_campeonato;
 	var $bd;
 	
-	function __construct($id_pareja,$id_grupo)
+	function __construct($id_pareja,$id_grupo, $id_campeonato)
 	{
 		$this->id_pareja = $id_pareja;
 		$this->id_grupo = $id_grupo;
+		$this->id_campeonato = $id_campeonato;
 	
 
 
@@ -26,13 +28,26 @@ class COUPLE_GRUPO_MODEL
 	}
 
 
+	function obtenerUltimoGrupo(){
+	$sql = "SELECT id_grupo FROM GRUPO ORDER BY id_grupo DESC LIMIT 1";
+	if (!($resultado = $this->bd->query($sql))){
+				return 'No existe en la base de datos'; 
+			}
+			
+		    else{ 
+
+			$result = $resultado->fetch_array();
+				return $result;
+			}
+}
 
 
-	function ADD(){
 
-		if (($this->id_grupo <> '') && ($this->id_pareja <> '')){ 
 
-        $sql = "SELECT * FROM COUPLE_GRUPO WHERE (id_grupo = '$this->id_grupo') AND (id_pareja = '$this->id_pareja')";
+	function añadirGrupoPareja($x, $y, $z){
+
+
+        $sql = "SELECT * FROM COUPLE_GRUPO WHERE (id_grupo = '$this->id_grupo') AND (id_pareja = '$this->id_pareja') AND (id_campeonato = '$this->id_campeonato')";
 
 		if (!$result = $this->bd->query($sql)){ 
 			return 'No se ha podido conectar con la base de datos';
@@ -44,11 +59,13 @@ class COUPLE_GRUPO_MODEL
 
 				$sql = "INSERT INTO COUPLE_GRUPO (
 					id_grupo,
-					id_pareja
+					id_pareja,
+					id_campeonato
 					) 
 						VALUES (
-						'$this->id_grupo',
-						'$this->id_pareja'
+						'".$x."',
+						'".$y."',
+						'".$z."'
 						
 						)";
 					
@@ -64,12 +81,7 @@ class COUPLE_GRUPO_MODEL
 			else 
 				return 'Ya existe en la base de datos'; 
 		}
-    }
-    else{ 
-    	
-        return 'Introduzca un valor'; 
-	
-	}
+    
 
 	}
 
@@ -98,7 +110,7 @@ class COUPLE_GRUPO_MODEL
 
 function RellenaDatos()
 		{	
-		    $sql = "SELECT * FROM COUPLE_GRUPO  WHERE (id_grupo = '$this->id_grupo') AND (id_pareja = '$this->id_pareja') ";
+		    $sql = "SELECT * FROM COUPLE_GRUPO  WHERE (id_grupo = '$this->id_grupo') AND (id_pareja = '$this->id_pareja') AND (id_campeonato = '$this->id_campeonato')";
 
 		    if (!($resultado = $this->bd->query($sql))){
 		return 'Error en la consulta sobre la base de datos';

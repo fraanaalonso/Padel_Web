@@ -118,6 +118,11 @@ Switch ($_REQUEST['action']){
 		case 'GENERARCALENDARIO':
 
 			include_once '../Models/CLASH_MODEL.php';
+			include_once '../Models/CHAMPIONSHIP_MODEL.php';
+
+			$camp = new CHAMPIONSHIP_MODEL($_REQUEST['id_campeonato'], '','','','');
+			$volver = $camp->RellenaDatos();
+
 			if(!$_POST){
 
 				
@@ -143,6 +148,8 @@ Switch ($_REQUEST['action']){
 					}
 					
 				}
+
+				new MESSAGE('Se han generado los enfrentamientos', "../Controllers/Championship_Controller.php?action=GENERARGRUPOS&id_campeonato=$volver[0]");
 
 			}
 			else{
@@ -214,7 +221,7 @@ Switch ($_REQUEST['action']){
 			include_once '../Models/USER_MODEL.php';
 			include_once '../Models/CHAMPIONSHIP_MODEL.php';
 			include_once '../Models/COUPLE_CATEGORIA_MODEL.php';
-			//include_once '../Models/COUPLE_GRUPO_MODEL.php';
+			include_once '../Models/COUPLE_GRUPO_MODEL.php';
 			include_once '../Models/COUPLE_NIVEL_MODEL.php';
 
 			$id_pareja = $_POST['id_pareja'];
@@ -282,10 +289,27 @@ Switch ($_REQUEST['action']){
 			
 			$parejaNivel = new COUPLE_NIVEL_MODEL($nivelSeleccionado, $dato[0], $id_campeonato);
 			$result4 = $parejaNivel->ADD();
+
+			if(comprobarSiExisteGrupo($categoriaSeleccionada, $nivelSeleccionado, $id_campeonato)){
 			
 			$categoriaNivel = $aux3->generarGruposInscripcion($categoriaSeleccionada,$nivelSeleccionado, $id_campeonato);
+			
+
+			}
+
+			$grupoPareja = new COUPLE_GRUPO_MODEL('','','');
+
+			$dato2 =$grupoPareja->obtenerUltimoGrupo();
+
+			$obj3 = new COUPLE_GRUPO_MODEL('','','');			
+
+			$grupoParejaIncrito = $obj3->añadirGrupoPareja($dato2[0], $dato[0], $id_campeonato);
 
 			
+
+			
+
+
 
 			new MESSAGE($result4, './Championship_Controller.php');
 		}
@@ -405,8 +429,7 @@ Switch ($_REQUEST['action']){
 
 		 include_once '../Functions/funciones.php';
 
-		 if(!comprobarTablaCampeonato()){
-
+		
 			
 
 				if (!$_POST){
@@ -429,11 +452,7 @@ Switch ($_REQUEST['action']){
 				
 				new SHOWALL_VIEW($lista, $datos);
 
-		}	
-
-		else{
-			new ALERT('No hay campeonatos activos');
-		}
+		
 
 		
 

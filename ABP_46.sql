@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-11-2019 a las 08:48:34
+-- Tiempo de generación: 16-11-2019 a las 14:13:38
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.10
 
@@ -11,6 +11,20 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
+
+
+
+
+-- CREAR LA BD BORRANDOLA SI YA EXISTIESE
+--
+DROP DATABASE IF EXISTS `abp46`;
+CREATE DATABASE `abp46` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+--
+-- SELECCIONAMOS LA BD A USAR
+--
+USE `abp46`;
+
+
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -21,13 +35,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `abp46`
 --
-
-
-DROP DATABASE IF EXISTS `abp46`;
-CREATE DATABASE `abp46` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
-USE `abp46`;
-
-
 
 -- --------------------------------------------------------
 
@@ -67,9 +74,7 @@ CREATE TABLE `championship` (
 --
 
 INSERT INTO `championship` (`id_campeonato`, `fecha_inicio`, `fecha_limite`, `id_normativa`) VALUES
-(1, '2019-12-17', '2019-12-15', 2),
-(5, '2019-11-14', '2019-11-25', 3),
-(6, '2019-11-16', '2019-11-20', 3);
+(1, '2019-11-20', '2019-11-22', 2);
 
 -- --------------------------------------------------------
 
@@ -89,13 +94,7 @@ CREATE TABLE `championship_categoria` (
 INSERT INTO `championship_categoria` (`id_campeonato`, `id_categoria`) VALUES
 (1, 1),
 (1, 2),
-(1, 3),
-(5, 1),
-(5, 2),
-(5, 3),
-(6, 1),
-(6, 2),
-(6, 3);
+(1, 3);
 
 -- --------------------------------------------------------
 
@@ -120,14 +119,17 @@ INSERT INTO `championship_couple` (`id_pareja`, `id_campeonato`) VALUES
 (5, 1),
 (6, 1),
 (7, 1),
+(8, 1),
 (9, 1),
 (10, 1),
+(11, 1),
 (12, 1),
 (13, 1),
 (14, 1),
 (15, 1),
 (16, 1),
-(18, 5),
+(17, 1),
+(18, 1),
 (19, 1),
 (20, 1),
 (21, 1),
@@ -140,7 +142,7 @@ INSERT INTO `championship_couple` (`id_pareja`, `id_campeonato`) VALUES
 (28, 1),
 (29, 1),
 (30, 1),
-(31, 6);
+(31, 1);
 
 -- --------------------------------------------------------
 
@@ -160,13 +162,7 @@ CREATE TABLE `championship_nivel` (
 INSERT INTO `championship_nivel` (`id_campeonato`, `id_nivel`) VALUES
 (1, 1),
 (1, 2),
-(1, 3),
-(5, 1),
-(5, 2),
-(5, 3),
-(6, 1),
-(6, 2),
-(6, 3);
+(1, 3);
 
 -- --------------------------------------------------------
 
@@ -218,20 +214,6 @@ CREATE TABLE `clash` (
   `nivel` varchar(20) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `clash`
---
-
-INSERT INTO `clash` (`id_enfrentamiento`, `id_campeonato`, `id_pareja1`, `id_pareja2`, `numSetsPareja1`, `numSetsPareja2`, `hora_inicio`, `fecha`, `categoria`, `nivel`) VALUES
-(45, 1, 12, 19, 6, 2, '17', '2019', 'Masculino', 'Intermedio'),
-(46, 1, 20, 21, 0, 0, '', '', 'Masculino', 'Intermedio'),
-(47, 1, 22, 23, 0, 0, '', '', 'Masculino', 'Intermedio'),
-(48, 1, 24, 25, 1, 1, '', '', 'Masculino', 'Intermedio'),
-(49, 1, 26, 27, 0, 0, '', '', 'Masculino', 'Intermedio'),
-(50, 1, 28, 29, 0, 0, '', '', 'Masculino', 'Intermedio'),
-(51, 1, 1, 6, 0, 0, '', '', 'Masculino', 'Principiante'),
-(52, 1, 7, 16, 0, 0, '', '', 'Masculino', 'Principiante');
-
 -- --------------------------------------------------------
 
 --
@@ -249,35 +231,37 @@ CREATE TABLE `couple` (
 --
 
 INSERT INTO `couple` (`id_pareja`, `login1`, `login2`) VALUES
-(1, 'fer_rv', 'delinha'),
-(2, 'mdolores', 'jmartinez'),
-(3, 'mdolores', 'root'),
-(4, 'anita32', 'mvarela'),
-(5, 'fer_rv', 'lucia_atm'),
-(6, 'jmartinez', 'csmartinez'),
-(7, 'mvarela', 'carlosm'),
-(9, 'antiavazquez', 'lucia_atm'),
-(10, 'antiavazquez', 'delinha'),
-(11, 'admin', 'antonio_v'),
-(12, 'santos_leon', 'santi_abascal'),
-(13, 'ivan_espinosa', 'merxearz'),
-(14, 'joan_roda', 'laura_vega'),
-(15, 'Luis_Clemente_Guadil', 'mariohermida'),
-(16, 'admin', 'root'),
-(18, 'admin', 'root'),
-(19, 'torres_xoan', 'novoneira_uxi'),
-(20, 'canto_toni', 'castro_romulo'),
-(21, 'pimentel_luis', 'garcia_manuel'),
-(22, 'abeijon_antonio', 'seoane_luis'),
-(23, 'osborne_jordi', 'antelo_esteban'),
-(24, 'esteban_aitor', 'varela_pepe'),
-(25, 'camino_antonio', 'cela_jose'),
-(26, 'dacuÃ±a_jose', 'vilanova_pedro'),
-(27, 'dasilva_perico', 'aurelio_marco'),
-(28, 'novoa_jesus', 'blas_fernando'),
-(29, 'miranda_daniel', 'somoza_mateo'),
-(30, 'maldonado_javier', 'castro_ze'),
-(31, 'maldonado_javier', 'santi_abascal');
+(1, 'acarmen', 'lucia_atm'),
+(2, 'abeijon_antonio', 'acarmen'),
+(3, 'admin', 'aine'),
+(4, 'andreita', 'anita32'),
+(5, 'antelo_esteban', 'antia12'),
+(6, 'antiavazquez', 'antonio_v'),
+(7, 'apasionado_roberto', 'aurelio_marco'),
+(8, 'barbi', 'belenchu'),
+(9, 'blas_fernando', 'bros_mario'),
+(10, 'camino_antonio', 'candela11'),
+(11, 'cantalapiedra_jorge', 'canto_toni'),
+(12, 'carla95', 'carol'),
+(13, 'casteldefels_lluis', 'carlosm'),
+(14, 'castro_ze', 'cela_jose'),
+(15, 'celiag', 'clau96'),
+(16, 'charlie', 'csmartinez'),
+(17, 'eli', 'csousa'),
+(18, 'dacuÃ±a_jose', 'cuevillas_floro'),
+(19, 'dasilva_perico', 'delapenha_jesus'),
+(20, 'delinha', 'esteban_aitor'),
+(21, 'estere', 'eli'),
+(22, 'fati', 'fer_rv'),
+(23, 'figueira_luis', 'flores_antorio'),
+(24, 'francesca', 'gema123'),
+(25, 'lara', 'ireneee'),
+(26, 'gise93', 'jessi'),
+(27, 'juliaaa', 'gallego_xaquin'),
+(28, 'laura_vega', 'laura66'),
+(29, 'libertad_franco', 'lola'),
+(30, 'lucilu', 'Luis_Clemente_Guadil'),
+(31, 'maldonado_javier', 'manzanares_alberto');
 
 -- --------------------------------------------------------
 
@@ -296,34 +280,37 @@ CREATE TABLE `couple_categoria` (
 --
 
 INSERT INTO `couple_categoria` (`id_categoria`, `id_pareja`, `id_campeonato`) VALUES
-(1, 1, 1),
-(1, 6, 1),
 (1, 7, 1),
-(1, 12, 1),
-(1, 15, 1),
+(1, 9, 1),
+(1, 11, 1),
+(1, 13, 1),
+(1, 14, 1),
 (1, 16, 1),
-(1, 18, 5),
+(1, 18, 1),
 (1, 19, 1),
 (1, 20, 1),
-(1, 21, 1),
-(1, 22, 1),
 (1, 23, 1),
-(1, 24, 1),
-(1, 25, 1),
-(1, 26, 1),
-(1, 27, 1),
-(1, 28, 1),
-(1, 29, 1),
-(1, 30, 1),
-(1, 31, 6),
-(2, 9, 1),
+(1, 31, 1),
+(2, 1, 1),
+(2, 4, 1),
+(2, 8, 1),
+(2, 12, 1),
+(2, 15, 1),
+(2, 17, 1),
+(2, 21, 1),
+(2, 22, 1),
+(2, 24, 1),
+(2, 25, 1),
+(2, 26, 1),
+(2, 28, 1),
 (3, 2, 1),
 (3, 3, 1),
-(3, 4, 1),
 (3, 5, 1),
+(3, 6, 1),
 (3, 10, 1),
-(3, 13, 1),
-(3, 14, 1);
+(3, 27, 1),
+(3, 29, 1),
+(3, 30, 1);
 
 -- --------------------------------------------------------
 
@@ -333,23 +320,46 @@ INSERT INTO `couple_categoria` (`id_categoria`, `id_pareja`, `id_campeonato`) VA
 
 CREATE TABLE `couple_grupo` (
   `id_grupo` tinyint(4) NOT NULL,
-  `id_pareja` tinyint(4) NOT NULL
+  `id_pareja` tinyint(4) NOT NULL,
+  `id_campeonato` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `couple_grupo`
 --
 
-INSERT INTO `couple_grupo` (`id_grupo`, `id_pareja`) VALUES
-(1, 1),
-(1, 2),
-(1, 3),
-(1, 4),
-(1, 5),
-(1, 6),
-(1, 7),
-(1, 9),
-(1, 10);
+INSERT INTO `couple_grupo` (`id_grupo`, `id_pareja`, `id_campeonato`) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 1),
+(3, 4, 1),
+(4, 5, 1),
+(4, 6, 1),
+(5, 7, 1),
+(6, 8, 1),
+(7, 9, 1),
+(7, 10, 1),
+(7, 11, 1),
+(7, 12, 1),
+(7, 13, 1),
+(7, 14, 1),
+(7, 15, 1),
+(7, 16, 1),
+(8, 17, 1),
+(8, 18, 1),
+(9, 19, 1),
+(9, 20, 1),
+(9, 21, 1),
+(9, 22, 1),
+(9, 23, 1),
+(9, 24, 1),
+(9, 25, 1),
+(9, 26, 1),
+(9, 27, 1),
+(9, 28, 1),
+(9, 29, 1),
+(9, 30, 1),
+(9, 31, 1);
 
 -- --------------------------------------------------------
 
@@ -369,33 +379,36 @@ CREATE TABLE `couple_nivel` (
 
 INSERT INTO `couple_nivel` (`id_nivel`, `id_pareja`, `id_campeonato`) VALUES
 (1, 1, 1),
-(1, 2, 1),
 (1, 3, 1),
 (1, 4, 1),
-(1, 5, 1),
-(1, 6, 1),
 (1, 7, 1),
-(1, 9, 1),
-(1, 10, 1),
-(1, 16, 1),
-(1, 18, 5),
+(1, 11, 1),
+(1, 12, 1),
+(1, 14, 1),
+(1, 15, 1),
+(1, 18, 1),
+(1, 22, 1),
+(1, 26, 1),
+(1, 27, 1),
+(1, 29, 1),
 (1, 30, 1),
-(1, 31, 6),
-(2, 12, 1),
+(1, 31, 1),
+(2, 2, 1),
+(2, 8, 1),
+(2, 9, 1),
 (2, 13, 1),
-(2, 19, 1),
-(2, 20, 1),
+(2, 16, 1),
 (2, 21, 1),
-(2, 22, 1),
-(2, 23, 1),
 (2, 24, 1),
-(2, 25, 1),
-(2, 26, 1),
-(2, 27, 1),
 (2, 28, 1),
-(2, 29, 1),
-(3, 14, 1),
-(3, 15, 1);
+(3, 5, 1),
+(3, 6, 1),
+(3, 10, 1),
+(3, 17, 1),
+(3, 19, 1),
+(3, 20, 1),
+(3, 23, 1),
+(3, 25, 1);
 
 -- --------------------------------------------------------
 
@@ -469,16 +482,15 @@ CREATE TABLE `grupo` (
 --
 
 INSERT INTO `grupo` (`id_grupo`, `id_categoria`, `id_nivel`, `id_campeonato`) VALUES
-(1, 1, 1, 1),
-(2, 1, 2, 1),
-(3, 1, 3, 1),
-(4, 2, 1, 1),
-(5, 2, 2, 1),
-(6, 2, 3, 1),
-(7, 3, 1, 1),
-(8, 3, 2, 1),
-(9, 3, 3, 1),
-(19, 1, 1, 6);
+(1, 2, 1, 1),
+(2, 3, 2, 1),
+(3, 3, 1, 1),
+(4, 3, 3, 1),
+(5, 1, 1, 1),
+(6, 2, 2, 1),
+(7, 1, 2, 1),
+(8, 2, 3, 1),
+(9, 1, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -936,8 +948,9 @@ ALTER TABLE `couple_categoria`
 -- Indices de la tabla `couple_grupo`
 --
 ALTER TABLE `couple_grupo`
-  ADD PRIMARY KEY (`id_grupo`,`id_pareja`),
-  ADD KEY `couple_grupo_ibfk_2` (`id_pareja`);
+  ADD PRIMARY KEY (`id_grupo`,`id_pareja`,`id_campeonato`),
+  ADD KEY `couple_grupo_ibfk_2` (`id_pareja`),
+  ADD KEY `couple_grupo_ibfk_3` (`id_campeonato`);
 
 --
 -- Indices de la tabla `couple_nivel`
@@ -1045,7 +1058,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `championship`
 --
 ALTER TABLE `championship`
-  MODIFY `id_campeonato` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_campeonato` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `chat`
@@ -1057,7 +1070,7 @@ ALTER TABLE `chat`
 -- AUTO_INCREMENT de la tabla `clash`
 --
 ALTER TABLE `clash`
-  MODIFY `id_enfrentamiento` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id_enfrentamiento` tinyint(4) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `couple`
@@ -1075,7 +1088,7 @@ ALTER TABLE `game`
 -- AUTO_INCREMENT de la tabla `grupo`
 --
 ALTER TABLE `grupo`
-  MODIFY `id_grupo` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_grupo` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `new`
@@ -1172,7 +1185,8 @@ ALTER TABLE `couple_categoria`
 --
 ALTER TABLE `couple_grupo`
   ADD CONSTRAINT `couple_grupo_ibfk_1` FOREIGN KEY (`id_grupo`) REFERENCES `grupo` (`id_grupo`) ON DELETE CASCADE,
-  ADD CONSTRAINT `couple_grupo_ibfk_2` FOREIGN KEY (`id_pareja`) REFERENCES `couple` (`id_pareja`) ON DELETE CASCADE;
+  ADD CONSTRAINT `couple_grupo_ibfk_2` FOREIGN KEY (`id_pareja`) REFERENCES `couple` (`id_pareja`) ON DELETE CASCADE,
+  ADD CONSTRAINT `couple_grupo_ibfk_3` FOREIGN KEY (`id_campeonato`) REFERENCES `championship` (`id_campeonato`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `couple_nivel`

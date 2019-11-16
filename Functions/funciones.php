@@ -420,6 +420,24 @@ $sql= "SELECT categoria.categoria, nivel.nivel, couple_categoria.id_pareja, coup
 
 }
 
+function comprobarSiExisteGrupo($categoria, $nivel, $campeonato){
+
+		include_once '../includes/db.php';
+	$bd;
+	$bd = ConectarDB();
+
+	$sql = "SELECT * FROM GRUPO WHERE id_categoria='".$categoria."' and id_nivel='".$nivel."' and id_campeonato='".$campeonato."'";
+
+	$resultado = $bd->query($sql);
+
+	if($resultado->num_rows == 1){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
 
 function comprobarSiExisteEnfrentamiento($id_campeonato, $id_nivel, $id_categoria){
 

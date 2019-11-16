@@ -269,6 +269,21 @@ function getDBDatosCampeonato($id_campeonato){
 
 
 
+function combinarParejas($id_campeonato, $nivel, $categoria){
+
+
+	$sql = "SELECT PA.id_pareja as nombrePareja, PA.login1, PA.login2, PC.*, CA.id_categoria as nombreCategoria FROM couple_categoria PC, championship_categoria CC, categoria CA, couple PA, couple_nivel N WHERE CC.id_campeonato = '1' AND CC.id_categoria = PC.id_categoria AND PC.id_campeonato = '1' and N.id_campeonato='1' AND PC.id_categoria = CA.id_categoria AND PC.id_pareja = PA.id_pareja and N.id_pareja=PA.id_pareja AND N.id_nivel='1' and PC.id_categoria= '1' ORDER BY PA.id_pareja DESC";
+
+
+		$resultado = $this->bd->query($sql);
+
+		$result = $resultado->fetch_array();
+
+		return $result;
+}
+
+
+
 
 
 

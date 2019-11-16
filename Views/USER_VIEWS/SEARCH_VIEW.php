@@ -122,7 +122,7 @@ class SEARCH_VIEW
 		   </div>
 
 		   <div class="form-group" id="telefono-group">
-		  	<input type="file" id="foto" name="foto" class="form-control" placeholder="Foto de Perfil">
+		  	<input type="text" id="foto" name="foto" class="form-control" placeholder="Foto de Perfil">
 		   </div>
 
 		    <div class="form-group" id="telefono-group">

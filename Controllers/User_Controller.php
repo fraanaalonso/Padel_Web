@@ -127,7 +127,7 @@ Switch ($_REQUEST['action']){
 				else{
 					 include_once '../Models/USER_MODEL.php';
 					$modelo= new User_Modelo($_REQUEST['login'],$_REQUEST['nombre'],$_REQUEST['apellido'], $_REQUEST['password'], $_REQUEST['dni'], $_REQUEST['email'], $_REQUEST['pais'], $_REQUEST['sexo'], $_REQUEST['telefono'],
-				   $_REQUEST['fecha'], $_FILES['foto']['name'],  $_REQUEST['rol_id']);
+				   $_REQUEST['fecha'], $_REQUEST['foto'],  $_REQUEST['rol_id']);
 
                      $respuesta = $modelo->BUSCAR();
 					$lista = array('Login ', 'Nombre ', 'Apellido ', 'Password ', 'Dni ','Email ','Pais ','Telefono ','Email ','Pais ','Sexo ', 'Telefono ', 'Fecha', 'Foto de Perfil', 'Rol del Usuario', 'Opciones ');

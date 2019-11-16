@@ -189,30 +189,19 @@ class User_Modelo
 
 	function BUSCAR()
 { 	// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-    $sql = "select login,
-					nombre,
-					apellido,
-					password,
-					dni,
-					email,
-					pais,
-					sexo,
-					telefono,
-					fecha,
-					foto,
-					rol_id from USER WHERE
+    $sql = "select * from USER WHERE
 
-   					((login LIKE '%$this->login%') &&
-   					(nombre LIKE '%$this->nombre%') &&
-   					(apellido LIKE '%$this->apellido%') &&
-   					(password LIKE '%$this->password%') &&
-   					(dni LIKE '%$this->dni%') &&
-    				(email LIKE '%$this->email%') &&
-    				(pais LIKE '%$this->pais%') &&
-	 				(sexo LIKE '%$this->sexo%') &&
-	 				(telefono LIKE '%$this->telefono%') &&
-	 				(fecha LIKE '%$this->fecha%') &&
-	 				(foto LIKE '%$this->foto%') &&
+   					((login LIKE '%$this->login%') AND
+   					(nombre LIKE '%$this->nombre%') AND
+   					(apellido LIKE '%$this->apellido%') AND
+   					(password LIKE '%$this->password%') AND
+   					(dni LIKE '%$this->dni%') AND
+    				(email LIKE '%$this->email%') AND
+    				(pais LIKE '%$this->pais%') AND
+	 				(sexo LIKE '%$this->sexo%') AND
+	 				(telefono LIKE '%$this->telefono%') AND
+	 				(fecha LIKE '%$this->fecha%') AND
+	 				(foto LIKE '%$this->foto%') AND
 	 				(rol_id LIKE '%$this->rol_id%'))";
 
     // si se produce un error en la busqueda mandamos el mensaje de error en la consulta

@@ -36,11 +36,11 @@ class ADD_VIEW
 		   </div>	
 
 		  <div class="form-group">
-		  	<input type="date" id="fecha_inicio" name="fecha_inicio" required class="form-control" placeholder="Inicio del Campeonato" >
+		  	<input type="date" id="fecha_limite" name="fecha_limite" required class="form-control" placeholder="Inicio del Campeonato" >
 		   </div> 
 
 		  <div class="form-group">
-		  	<input type="date" id="fecha_limite" name="fecha_limite" required class="form-control" placeholder="Límite de Inscripción" >
+		  	<input type="date" id="fecha_inicio" name="fecha_inicio" required class="form-control" placeholder="Límite de Inscripción" >
 		   </div>
 
 

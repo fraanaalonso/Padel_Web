@@ -38,7 +38,9 @@ class SEARCH_VIEW
 			<br>
 			<br>
 
-		 	
+		 	<div class="form-group" id="titulo-group">
+		  	<input type="hidden" id="id_noticia" name="id_noticia" class="form-control" placeholder="ID Noticia" >
+		   </div>
 
 		   <div class="form-group" id="titulo-group">
 		  	<input type="text" id="titulo" name="titulo" class="form-control" placeholder="Titulo" >

@@ -28,8 +28,8 @@ class COUPLE_GRUPO_MODEL
 	}
 
 
-	function obtenerUltimoGrupo(){
-	$sql = "SELECT id_grupo FROM GRUPO ORDER BY id_grupo DESC LIMIT 1";
+	function obtenerUltimoGrupo($categoria, $nivel){
+	$sql = "SELECT id_grupo FROM GRUPO WHERE id_categoria = '".$categoria."' AND id_nivel = '".$nivel."'";
 	if (!($resultado = $this->bd->query($sql))){
 				return 'No existe en la base de datos'; 
 			}

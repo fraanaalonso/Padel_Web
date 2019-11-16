@@ -299,7 +299,7 @@ Switch ($_REQUEST['action']){
 
 			$grupoPareja = new COUPLE_GRUPO_MODEL('','','');
 
-			$dato2 =$grupoPareja->obtenerUltimoGrupo();
+			$dato2 =$grupoPareja->obtenerUltimoGrupo($categoriaSeleccionada, $nivelSeleccionado);
 
 			$obj3 = new COUPLE_GRUPO_MODEL('','','');			
 

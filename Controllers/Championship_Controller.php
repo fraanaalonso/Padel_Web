@@ -247,9 +247,9 @@ Switch ($_REQUEST['action']){
 			$getChampionship = new CHAMPIONSHIP_MODEL('','','','');
 			$currentGroupSelected = $getChampionship->testNumMaxMembers($id_campeonato, $nivelSeleccionado, $categoriaSeleccionada);
 
-			if($currentChamp == 'true'){
+			if($currentGroupSelected == 'true'){
 
-				new MESSAGE('Se ha llegado al número máximo de inscritos', "./Championship_Controller.php?action=REGISTRAR&id_campeonato=$currentChamp[0]");
+				new MESSAGE('Se ha llegado al número máximo de inscritos. No es posible inscribirse al grupo seleccionado', "./Championship_Controller.php?action=REGISTRAR&id_campeonato=$currentChamp[0]");
 			}
 
 			else{

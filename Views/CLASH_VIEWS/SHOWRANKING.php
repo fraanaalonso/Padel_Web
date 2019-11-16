@@ -21,15 +21,43 @@ class SHOWRANKING
 ?>
 
 
+<?php
+
+$id = $campeonato;
+$cat = $categoria;
+$niv = $nivel;
+
+
+?>
 
 <div class="iconos-superiores">
-   <a href="../Controllers/Championship_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+   <a href="../Controllers/Championship_Controller.php?action=GENERARGRUPOS&id_campeonato=<?php echo $id?>"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
 
+
+</div>
+
+<div style="font-size: 20px; text-align: center; position: absolute; top: 70px; left: 200px;">
+ Campeonato: 
+ <?php
+  echo $id;
+
+   ?>
+
+  <br>Categoria: 
+  <?php
+  echo $cat;
+  ?>
+
+  <br>Nivel: 
+  <?php
+  echo $niv;
+  ?>
 </div>
 
 
 	<table border="1">
 
+	
 		
 	<tr>
 			<th id="equipo">Puesto</th>

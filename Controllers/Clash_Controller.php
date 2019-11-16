@@ -60,6 +60,7 @@ Switch ($_REQUEST['action']){
 
 		if (!$_POST) {
 					 include_once '../Models/CLASH_MODEL.php';
+					 include_once '../Models/RANKING_MODEL.php';
 					$modelo= get_data();
 					$valores= $modelo ->RellenaDatos();
 					new EDIT_VIEW($valores);
@@ -68,6 +69,7 @@ Switch ($_REQUEST['action']){
 				else{
 
 					include '../Models/CLASH_MODEL.php';
+					include_once '../Models/RANKING_MODEL.php';
 					$x= get_data();
 					$valores= $x ->RellenaDatos();
 
@@ -75,7 +77,29 @@ Switch ($_REQUEST['action']){
 					$modelo = new CLASH_MODEL($_REQUEST['id_enfrentamiento'],$_REQUEST['id_campeonato'], $_REQUEST['id_pareja1'],$_REQUEST['id_pareja2'], $_REQUEST['numSetsPareja1'], $_REQUEST['numSetsPareja2'], $_REQUEST['hora_inicio'], $_REQUEST['fecha'], $_REQUEST['categoria'], $_REQUEST['nivel']);
 
 					$respuesta = $modelo->EDIT();
-					new MESSAGE($respuesta, "./Championship_Controller.php?action=GENERARCALENDARIO&id_enfrentamiento=$valores[0]&id_campeonato=$valores[1]&categoria=$valores[8]&nivel=$valores[9]");
+
+					if($_REQUEST['numSetsPareja1'] > $_REQUEST['numSetsPareja2']){
+						include_once '../Models/RANKING_MODEL.php';
+						$ranking = new RANKING_MODEL('','','','');
+						$pareja = $ranking->modificarResultado($_REQUEST['id_pareja1']);
+
+
+					}
+
+					elseif ($_REQUEST['numSetsPareja2'] > $_REQUEST['numSetsPareja1']) {
+						include_once '../Models/RANKING_MODEL.php';
+						$ranking = new RANKING_MODEL('','','','');
+						$pareja = $ranking->modificarResultado($_REQUEST['id_pareja2']);
+					}
+
+					else{
+						include_once '../Models/RANKING_MODEL.php';
+						$ranking = new RANKING_MODEL('','','','');
+						$pareja = $ranking->establecerEmpate($_REQUEST['id_pareja2'], $_REQUEST['id_pareja1']);
+					}
+
+
+					new MESSAGE($respuesta, "./Championship_Controller.php?action=GENERARGRUPOS&id_campeonato=$valores[1]");
 				}
 		break;
 

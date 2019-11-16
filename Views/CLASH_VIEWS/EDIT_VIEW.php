@@ -23,7 +23,7 @@ class EDIT_VIEW
 
 
 <div class="iconos-superiores">
-            <a href="./Championship_Controller.php?action=GENERARCALENDARIO&id_enfrentamiento=<?php echo $valores[0] ?>&id_campeonato=<?php echo $valores[1] ?>&categoria=<?php echo $valores[8] ?>&nivel=<?php echo $valores[9] ?>"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+            <a href="./Championship_Controller.php?action=GENERARGRUPOS&id_campeonato=<?php echo $valores[1] ?>"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
 
 
 
@@ -72,7 +72,7 @@ class EDIT_VIEW
             <th>Numero de Sets Pareja 1</th>
             <td>
 
-              <input type="text"  name="numSetsPareja1" value="<?php echo $valores[6] ?>">
+              <input type="text"  name="numSetsPareja1" value="<?php echo $valores[4] ?>">
               
             </td>
           </tr>
@@ -81,7 +81,7 @@ class EDIT_VIEW
             <th>Numero de Sets Pareja 2</th>
             <td>
 
-              <input type="text"  name="numSetsPareja2" value="<?php echo $valores[7] ?>">
+              <input type="text"  name="numSetsPareja2" value="<?php echo $valores[5] ?>">
               
             </td>
           </tr>
@@ -90,7 +90,7 @@ class EDIT_VIEW
             <th>Hora Comienzo</th>
             <td>
 
-                <input type="text"  name="hora_inicio" value="<?php echo $valores[4] ?>">
+                <input type="text"  name="hora_inicio" value="<?php echo $valores[6] ?>">
             </td>
           </tr>
 
@@ -98,7 +98,7 @@ class EDIT_VIEW
             <th>Fecha</th>
             <td>
 
-               <input type="text"  name="fecha" value="<?php echo $valores[5] ?>">
+               <input type="text"  name="fecha" value="<?php echo $valores[7] ?>">
             </td>
           </tr>
 

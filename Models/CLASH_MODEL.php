@@ -165,6 +165,8 @@ class CLASH_MODEL
 
 
 
+
+
 	function SEARCH()
 { 	// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
     $sql = "select * from CLASH ";

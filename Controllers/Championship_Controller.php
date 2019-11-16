@@ -150,6 +150,8 @@ Switch ($_REQUEST['action']){
 					
 				}*/
 
+				if(!comprobarSiExistenEnfrentamiento($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria'])){
+
 				$currChampionship = new CHAMPIONSHIP_MODEL($_REQUEST['id_campeonato'], '','','','');
 				$respuesta = $currChampionship->combinarParejas($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
 
@@ -166,21 +168,12 @@ Switch ($_REQUEST['action']){
 
 
 				new MESSAGE($respuesta, "../Controllers/Championship_Controller.php?action=GENERARGRUPOS&id_campeonato=$volver[0]");
-
-			}
-
-/*
 			}
 			else{
+				new MESSAGE('El Calendario ya ha sido generado previamente', "../Controllers/Championship_Controller.php?action=GENERARGRUPOS&id_campeonato=$volver[0]" );
+			}
 
-				$modelo = new CLASH_MODEL('','','','','','','','','','');
-				$resultado = $modelo->SEARCHCLASHBYCATNIV($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
-				$datos = array();
-
-
-				new CLASH_SHOWALL($datos, $resultado);
-
-			}*/
+			}
 
 			break;
 

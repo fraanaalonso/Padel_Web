@@ -124,6 +124,55 @@ function getRanking($id_campeonato, $categoria, $nivel){
 
 
 
+
+
+
+function modificarResultado($id_pareja){
+
+
+		
+    	
+		$sql = "UPDATE RANKING SET puntos = puntos + 3 WHERE id_pareja='".$id_pareja."'";
+		$sql1 = "UPDATE RANKING SET p_ganados = p_ganados + 1 WHERE id_pareja='".$id_pareja."'";
+		$sql2 = "UPDATE RANKING SET p_jugados = p_jugados + 1 WHERE id_pareja='".$id_pareja."'";
+
+		$this->bd->query($sql1);
+		$this->bd->query($sql2);
+
+
+        if (!($resultado = $this->bd->query($sql))){
+			return 'Error en la modificación'; 
+		}
+		else{
+
+
+			return 'Modificado correctamente';
+		}
+    
+
+
+}
+
+
+function establecerEmpate($id_pareja1, $id_pareja2){
+
+
+	$sql1 = "UPDATE RANKING SET puntos = puntos + 1 WHERE id_pareja='".$id_pareja1."'";
+	$sql2 = "UPDATE RANKING SET puntos = puntos + 1 WHERE id_pareja='".$id_pareja2."'";
+	$sql3 = "UPDATE RANKING SET p_ganados = p_ganados + 1 WHERE id_pareja='".$id_pareja."'";
+	$sql4 = "UPDATE RANKING SET p_jugados = p_jugados + 1 WHERE id_pareja='".$id_pareja."'";
+
+
+	$this->bd->query($sql3);
+	$this->bd->query($sql4);
+    $resultado = $this->bd->query($sql1);
+    $result = $this->bd->query($sql2);
+		
+
+
+}
+
+
 }
 
 

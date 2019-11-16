@@ -486,6 +486,25 @@ function inscritoEnPromocion($login, $id_partido){
 }
 
 
+function comprobarSiExistenEnfrentamiento($campeonato, $nivel, $categoria){
+	include_once '../includes/db.php';
+	$bd;
+	$bd = ConectarDB();
+
+	$sql = "SELECT id_campeonato, categoria, nivel from clash where nivel = '".$nivel."' and categoria= '".$categoria."' and id_campeonato='".$campeonato."'";
+
+	$resultado = $bd->query($sql);
+
+	if($resultado->num_rows > 0){
+		return true;
+	}
+	else{
+		return false;
+	}
+
+}
+
+
 
 
 

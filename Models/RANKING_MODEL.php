@@ -161,8 +161,8 @@ function establecerEmpate($id_pareja1, $id_pareja2){
 
 	$sql1 = "UPDATE RANKING SET puntos = puntos + 1 WHERE id_pareja='".$id_pareja1."'";
 	$sql2 = "UPDATE RANKING SET puntos = puntos + 1 WHERE id_pareja='".$id_pareja2."'";
-	$sql3 = "UPDATE RANKING SET p_ganados = p_ganados + 1 WHERE id_pareja='".$id_pareja."'";
-	$sql4 = "UPDATE RANKING SET p_jugados = p_jugados + 1 WHERE id_pareja='".$id_pareja."'";
+	$sql3 = "UPDATE RANKING SET p_jugados = p_jugados + 1 WHERE id_pareja='".$id_pareja."'";
+	$sql4 = "UPDATE RANKING SET p_jugados = p_jugados + 1 WHERE id_pareja='".$id_pareja2."'";
 
 
 	$this->bd->query($sql3);
@@ -172,6 +172,23 @@ function establecerEmpate($id_pareja1, $id_pareja2){
 		
 
 
+}
+
+
+
+function RellenaDatos(){
+
+	 $sql = "SELECT * FROM RANKING  WHERE (id_pareja = '$this->id_pareja')";
+
+		    if (!($resultado = $this->bd->query($sql))){
+				return 'No existe en la base de datos'; 
+			}
+
+		    else{ 
+
+			$result = $resultado->fetch_array();
+				return $result;
+			}
 }
 
 

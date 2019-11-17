@@ -18,6 +18,7 @@ include_once '../Views/CLASH_VIEWS/CLASH_SHOWALL.php';
 include_once '../Views/CLASH_VIEWS/EDIT_VIEW.php';
 include_once '../Views/Message_View.php';
 include_once '../Views/CLASH_VIEWS/SHOWRANKING.php';
+//include_once '../Views/CLASH_VIEWS/SHOWCURRENT.php';
 
 function get_data(){
 	$id_enfrentamiento = $_REQUEST['id_enfrentamiento'];
@@ -116,6 +117,8 @@ Switch ($_REQUEST['action']){
 
 
 		break;
+
+		
 
 
 

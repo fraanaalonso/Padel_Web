@@ -290,7 +290,6 @@ function combinarParejas($id_campeonato, $nivel, $categoria){
 			$i++;
 		}
 
-		$x=0;
 		$longitud = count($gruposSeleccionado);
 		$fechas = $fechaComienzo;
 		$horas = array('09:00', '10:30', '12:00', '13:30', '17:00', '18:30', '20:00', '21:30');

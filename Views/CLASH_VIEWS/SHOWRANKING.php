@@ -95,7 +95,7 @@ while($fila = $resultado->fetch_assoc()){
 		<td id="ganar"cowspan="1"><?php echo $fila['ganados'];?></td>
 		<td id="perder"cowspan="1"><?php echo $fila['puntos']; ?></td>
 		<td>
-			 <a href="../Controllers/Ranking_Controller.php?action=SHOWCURRENT&id_pareja=<?php  echo $fila['id_pareja'] ?>"><span class="lnr lnr-eye añadir"></span></a>
+			 <a href="../Controllers/Ranking_Controller.php?action=SHOWCURRENT&id_pareja=<?php  echo $fila['pareja'] ?>"><span class="lnr lnr-eye añadir"></span></a>
 		</td>
 		</tr>
 

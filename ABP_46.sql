@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-11-2019 a las 14:13:38
+-- Tiempo de generación: 17-11-2019 a las 17:51:59
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.10
 
@@ -11,7 +11,6 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
-
 
 
 
@@ -23,6 +22,7 @@ CREATE DATABASE `abp46` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 -- SELECCIONAMOS LA BD A USAR
 --
 USE `abp46`;
+
 
 
 
@@ -74,7 +74,9 @@ CREATE TABLE `championship` (
 --
 
 INSERT INTO `championship` (`id_campeonato`, `fecha_inicio`, `fecha_limite`, `id_normativa`) VALUES
-(1, '2019-11-20', '2019-11-22', 2);
+(1, '2019-11-20', '2019-11-22', 2),
+(2, '2019-11-20', '2019-11-17', 4),
+(3, '2019-11-20', '2019-11-18', 3);
 
 -- --------------------------------------------------------
 
@@ -94,7 +96,13 @@ CREATE TABLE `championship_categoria` (
 INSERT INTO `championship_categoria` (`id_campeonato`, `id_categoria`) VALUES
 (1, 1),
 (1, 2),
-(1, 3);
+(1, 3),
+(2, 1),
+(2, 2),
+(2, 3),
+(3, 1),
+(3, 2),
+(3, 3);
 
 -- --------------------------------------------------------
 
@@ -142,7 +150,20 @@ INSERT INTO `championship_couple` (`id_pareja`, `id_campeonato`) VALUES
 (28, 1),
 (29, 1),
 (30, 1),
-(31, 1);
+(31, 1),
+(32, 1),
+(33, 1),
+(34, 1),
+(35, 1),
+(36, 1),
+(37, 1),
+(38, 1),
+(39, 1),
+(40, 1),
+(41, 1),
+(42, 1),
+(43, 1),
+(44, 1);
 
 -- --------------------------------------------------------
 
@@ -162,7 +183,13 @@ CREATE TABLE `championship_nivel` (
 INSERT INTO `championship_nivel` (`id_campeonato`, `id_nivel`) VALUES
 (1, 1),
 (1, 2),
-(1, 3);
+(1, 3),
+(2, 1),
+(2, 2),
+(2, 3),
+(3, 1),
+(3, 2),
+(3, 3);
 
 -- --------------------------------------------------------
 
@@ -214,19 +241,6 @@ CREATE TABLE `clash` (
   `nivel` varchar(20) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
-
-
---
--- Estructura de tabla para la tabla `clash`
---
-
-CREATE TABLE `ranking` (
-  `id_pareja` tinyint(4) NOT NULL,
-  `p_jugados` varchar(3) NOT NULL,
-  `p_ganados` varchar(3) NOT NULL,
-  `puntos` varchar(3) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
 -- --------------------------------------------------------
 
 --
@@ -274,7 +288,20 @@ INSERT INTO `couple` (`id_pareja`, `login1`, `login2`) VALUES
 (28, 'laura_vega', 'laura66'),
 (29, 'libertad_franco', 'lola'),
 (30, 'lucilu', 'Luis_Clemente_Guadil'),
-(31, 'maldonado_javier', 'manzanares_alberto');
+(31, 'maldonado_javier', 'manzanares_alberto'),
+(32, 'vilanova_pedro', 'velasco_dionisio'),
+(33, 'torres_xoan', 'torres_xan'),
+(34, 'torra_quim', 'somoza_mateo'),
+(35, 'sesto_camilo', 'seoane_luis'),
+(36, 'santos_leon', 'santos_leon'),
+(37, 'santi_abascal', 'rodriguez_suso'),
+(38, 'roca_tino', 'rego_nestor'),
+(39, 'pantoja_enrique', 'osborne_jordi'),
+(40, 'terelu91', 'vicky'),
+(41, 'varela_pepe', 'sormaria'),
+(42, 'paula', 'rosio96'),
+(43, 'nuria77', 'pradi'),
+(44, 'nerea34', 'nata64');
 
 -- --------------------------------------------------------
 
@@ -304,6 +331,14 @@ INSERT INTO `couple_categoria` (`id_categoria`, `id_pareja`, `id_campeonato`) VA
 (1, 20, 1),
 (1, 23, 1),
 (1, 31, 1),
+(1, 32, 1),
+(1, 33, 1),
+(1, 34, 1),
+(1, 35, 1),
+(1, 36, 1),
+(1, 37, 1),
+(1, 38, 1),
+(1, 39, 1),
 (2, 1, 1),
 (2, 4, 1),
 (2, 8, 1),
@@ -316,6 +351,10 @@ INSERT INTO `couple_categoria` (`id_categoria`, `id_pareja`, `id_campeonato`) VA
 (2, 25, 1),
 (2, 26, 1),
 (2, 28, 1),
+(2, 40, 1),
+(2, 42, 1),
+(2, 43, 1),
+(2, 44, 1),
 (3, 2, 1),
 (3, 3, 1),
 (3, 5, 1),
@@ -323,7 +362,8 @@ INSERT INTO `couple_categoria` (`id_categoria`, `id_pareja`, `id_campeonato`) VA
 (3, 10, 1),
 (3, 27, 1),
 (3, 29, 1),
-(3, 30, 1);
+(3, 30, 1),
+(3, 41, 1);
 
 -- --------------------------------------------------------
 
@@ -343,12 +383,21 @@ CREATE TABLE `couple_grupo` (
 
 INSERT INTO `couple_grupo` (`id_grupo`, `id_pareja`, `id_campeonato`) VALUES
 (1, 1, 1),
+(1, 40, 1),
 (2, 2, 1),
 (3, 3, 1),
 (3, 4, 1),
+(3, 41, 1),
 (4, 5, 1),
 (4, 6, 1),
 (5, 7, 1),
+(5, 32, 1),
+(5, 33, 1),
+(5, 34, 1),
+(5, 35, 1),
+(5, 36, 1),
+(5, 37, 1),
+(5, 38, 1),
 (6, 8, 1),
 (7, 9, 1),
 (7, 10, 1),
@@ -358,8 +407,12 @@ INSERT INTO `couple_grupo` (`id_grupo`, `id_pareja`, `id_campeonato`) VALUES
 (7, 14, 1),
 (7, 15, 1),
 (7, 16, 1),
+(7, 39, 1),
 (8, 17, 1),
 (8, 18, 1),
+(8, 42, 1),
+(8, 43, 1),
+(8, 44, 1),
 (9, 19, 1),
 (9, 20, 1),
 (9, 21, 1),
@@ -406,6 +459,15 @@ INSERT INTO `couple_nivel` (`id_nivel`, `id_pareja`, `id_campeonato`) VALUES
 (1, 29, 1),
 (1, 30, 1),
 (1, 31, 1),
+(1, 32, 1),
+(1, 33, 1),
+(1, 34, 1),
+(1, 35, 1),
+(1, 36, 1),
+(1, 37, 1),
+(1, 38, 1),
+(1, 40, 1),
+(1, 41, 1),
 (2, 2, 1),
 (2, 8, 1),
 (2, 9, 1),
@@ -414,6 +476,7 @@ INSERT INTO `couple_nivel` (`id_nivel`, `id_pareja`, `id_campeonato`) VALUES
 (2, 21, 1),
 (2, 24, 1),
 (2, 28, 1),
+(2, 39, 1),
 (3, 5, 1),
 (3, 6, 1),
 (3, 10, 1),
@@ -421,7 +484,10 @@ INSERT INTO `couple_nivel` (`id_nivel`, `id_pareja`, `id_campeonato`) VALUES
 (3, 19, 1),
 (3, 20, 1),
 (3, 23, 1),
-(3, 25, 1);
+(3, 25, 1),
+(3, 42, 1),
+(3, 43, 1),
+(3, 44, 1);
 
 -- --------------------------------------------------------
 
@@ -559,6 +625,19 @@ CREATE TABLE `payment` (
   `id_pago` tinyint(4) NOT NULL,
   `concepto` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `login` varchar(20) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ranking`
+--
+
+CREATE TABLE `ranking` (
+  `id_pareja` tinyint(4) NOT NULL,
+  `p_jugados` varchar(3) COLLATE utf8_spanish_ci NOT NULL,
+  `p_ganados` varchar(3) COLLATE utf8_spanish_ci NOT NULL,
+  `puntos` varchar(3) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -747,6 +826,7 @@ INSERT INTO `user` (`login`, `nombre`, `apellido`, `password`, `dni`, `email`, `
 ('antiavazquez', 'Antia', 'Vazquez', 'root', '17219555F', 'antiavaz@outlook.es', 'España', 'Femenino', 659224908, '1997-06-04', 'banner2.jpg', 2),
 ('antonio_v', 'Antonio', 'Velazquez', 'root', '22751863X', 'antonio_v@outlook.com', 'España', 'Masculino', 754291002, '1997-09-12', 'iconUser.jpg', 2),
 ('apasionado_roberto', 'Roberto', 'Apasionado', 'root', '78583920X', 'apasionado_roberto@gmail.com', 'EspaÃ±a', 'Masculino', 675453433, '1999-08-01', 'banner2.jpg', 1),
+('ares_alfonso', 'Vitor', 'Hugo', 'root', '85329482Y', 'hugo_vitor@gmail.com', 'EspaÃ±a', 'Masculino', 667438276, '1998-05-11', 'banner2.jpg', 1),
 ('aurelio_marco', 'Marco', 'Aurelio', 'root', '03265386Q', 'aurelio_marco@gmail.com', 'EspaÃ±a', 'Masculino', 689169644, '1987-08-23', 'banner2.jpg', 1),
 ('barbi', 'Barbara', 'Vidal', 'root', '53294353H', 'barbi@outlook.com', 'España', 'Femenino', 635555202, '1998-06-18', 'banner2.jpg', 2),
 ('belenchu', 'Belen', 'Roman', 'root', '494260D', 'belenchu@outlook.com', 'España', 'Femenino', 689861212, '1999-06-12', 'banner2.jpg', 2),
@@ -789,7 +869,6 @@ INSERT INTO `user` (`login`, `nombre`, `apellido`, `password`, `dni`, `email`, `
 ('giovana94', 'Giovanna', 'Campagna', 'root', '41221260Q', 'giovanna@outlook.com', 'Italia', 'Femenino', 635361202, '1994-11-11', 'banner2.jpg', 2),
 ('gise93', 'Gisela', 'Pereira', 'root', '44494442P', 'gisela93@outlook.com', 'España', 'Femenino', 611861111, '1993-02-27', 'banner2.jpg', 2),
 ('gomez_mario', 'Mario', 'Gomez', 'root', '95439864S', 'gomez_mario@gmail.com', 'EspaÃ±a', 'Masculino', 645657224, '1999-10-17', 'banner2.jpg', 1),
-('ares_alfonso', 'Vitor', 'Hugo', 'root', '85329482Y', 'hugo_vitor@gmail.com', 'EspaÃ±a', 'Masculino', 667438276, '1998-05-11', 'banner2.jpg', 1),
 ('inesga99', 'Ines', 'Garrido', 'root', '59294289M', 'inesita@outlook.com', 'España', 'Femenino', 673361633, '1999-05-30', 'banner2.jpg', 2),
 ('inma96', 'Inma', 'Verdejo', 'root', '55294000W', 'inma96@outlook.com', 'España', 'Femenino', 666861299, '1996-02-25', 'banner2.jpg', 2),
 ('ireneee', 'Irene', 'Sanchez', 'root', '55291133U', 'ire@outlook.com', 'España', 'Femenino', 684327569, '1997-12-03', 'banner2.jpg', 2),
@@ -941,15 +1020,6 @@ ALTER TABLE `clash`
   ADD KEY `id_pareja2` (`id_pareja2`),
   ADD KEY `clash_ibfk_0` (`id_campeonato`);
 
-
---
--- Indices de la tabla `clash`
---
-ALTER TABLE `ranking`
-  ADD PRIMARY KEY (`id_pareja`);
-
-
-
 --
 -- Indices de la tabla `couple`
 --
@@ -1024,6 +1094,12 @@ ALTER TABLE `payment`
   ADD KEY `login` (`login`);
 
 --
+-- Indices de la tabla `ranking`
+--
+ALTER TABLE `ranking`
+  ADD PRIMARY KEY (`id_pareja`);
+
+--
 -- Indices de la tabla `reservation`
 --
 ALTER TABLE `reservation`
@@ -1080,7 +1156,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `championship`
 --
 ALTER TABLE `championship`
-  MODIFY `id_campeonato` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_campeonato` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `chat`
@@ -1092,13 +1168,13 @@ ALTER TABLE `chat`
 -- AUTO_INCREMENT de la tabla `clash`
 --
 ALTER TABLE `clash`
-  MODIFY `id_enfrentamiento` tinyint(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_enfrentamiento` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `couple`
 --
 ALTER TABLE `couple`
-  MODIFY `id_pareja` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_pareja` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de la tabla `game`
@@ -1187,13 +1263,6 @@ ALTER TABLE `clash`
   ADD CONSTRAINT `clash_ibfk_1` FOREIGN KEY (`id_pareja1`) REFERENCES `couple` (`id_pareja`) ON DELETE CASCADE,
   ADD CONSTRAINT `clash_ibfk_2` FOREIGN KEY (`id_pareja2`) REFERENCES `couple` (`id_pareja`) ON DELETE CASCADE;
 
-
---
--- Filtros para la tabla `clash`
---
-ALTER TABLE `ranking`
-  ADD CONSTRAINT `ranking_ifbk_1` FOREIGN KEY (`id_pareja`) REFERENCES `couple` (`id_pareja`) ON DELETE CASCADE;
-
 --
 -- Filtros para la tabla `couple`
 --
@@ -1244,6 +1313,12 @@ ALTER TABLE `grupo`
 --
 ALTER TABLE `payment`
   ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`login`) REFERENCES `user` (`login`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `ranking`
+--
+ALTER TABLE `ranking`
+  ADD CONSTRAINT `ranking_ifbk_1` FOREIGN KEY (`id_pareja`) REFERENCES `couple` (`id_pareja`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `reservation`

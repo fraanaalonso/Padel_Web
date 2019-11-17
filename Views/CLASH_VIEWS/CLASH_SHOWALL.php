@@ -39,6 +39,7 @@ class CLASH_SHOWALL
 
 		<tr>
 			<th>Fecha</th>
+			<th>Hora Comienzo</th>
 			<th>ID Campeonato</th>>
 			<th>ID Enfrentamiento</th>
 			<th>Pareja 1</th>
@@ -58,7 +59,11 @@ while($fila = $resultado->fetch_assoc()){
 
 			<tr>
 				<td cowspan="1">
-					11-10-19
+					<?php	echo $fila['fecha'] ?>
+				</td>
+
+				<td cowspan="1">
+					<?php	echo $fila['hora_inicio'] ?>
 				</td>
 
 				<td cowspan="1">

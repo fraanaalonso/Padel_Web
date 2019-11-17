@@ -274,6 +274,11 @@ function combinarParejas($id_campeonato, $nivel, $categoria){
 
 	$sql = "SELECT PA.id_pareja, PA.login1, PA.login2, n.id_campeonato, CA.categoria, NA.nivel FROM couple_categoria PC, championship_categoria CC, categoria CA, nivel NA, couple PA, couple_nivel N WHERE CC.id_campeonato = '".$id_campeonato."' AND CC.id_categoria = PC.id_categoria AND PC.id_campeonato = '".$id_campeonato."' AND N.id_campeonato='".$id_campeonato."' AND PC.id_categoria = CA.id_categoria and NA.id_nivel=N.id_nivel AND PC.id_pareja = PA.id_pareja and N.id_pareja=PA.id_pareja AND NA.nivel='".$nivel."' and CA.categoria= '".$categoria."' ORDER BY PA.id_pareja";
 
+	$sqlFecha = "SELECT fecha_inicio FROM CHAMPIONSHIP WHERE id_campeonato = '".$id_campeonato."'";
+	$resulFecha = $this->bd->query($sqlFecha);
+	$fetch_fecha = $resulFecha->fetch_row();
+	$fechaComienzo = $fetch_fecha[0];
+
 		$resultado = $this->bd->query($sql);
 		$fila = $resultado->fetch_row();
 		
@@ -287,10 +292,14 @@ function combinarParejas($id_campeonato, $nivel, $categoria){
 
 		$x=0;
 		$longitud = count($gruposSeleccionado);
+		$fechas = $fechaComienzo;
+		$horas = array('09:00', '10:30', '12:00', '13:30', '17:00', '18:30', '20:00', '21:30');
+		
 		for($i = 0; $i < ($longitud - 1); $i++){
 			for($j = ($i + 1); $j < $longitud; $j++){
 
-
+				$fechas = date("Y-m-d",strtotime($fechas)+86400);
+				$horaSeleccionada =  $horas[array_rand($horas)];
 				$id_pareja1 = $gruposSeleccionado[$i];
 				$id_pareja2 = $gruposSeleccionado[$j];
 
@@ -306,7 +315,7 @@ function combinarParejas($id_campeonato, $nivel, $categoria){
 					categoria,
 					nivel
 					) 
-						VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."', '0', '0', '0', '0', '".$categoria."', '".$nivel."')";
+						VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."', '0', '0', '".$horaSeleccionada."', '".$fechas."', '".$categoria."', '".$nivel."')";
 
 				$this->bd->query($consulta);
 

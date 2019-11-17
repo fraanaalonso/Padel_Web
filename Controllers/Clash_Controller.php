@@ -81,7 +81,7 @@ Switch ($_REQUEST['action']){
 					if($_REQUEST['numSetsPareja1'] > $_REQUEST['numSetsPareja2']){
 						include_once '../Models/RANKING_MODEL.php';
 						$ranking = new RANKING_MODEL('','','','');
-						$pareja = $ranking->modificarResultado($_REQUEST['id_pareja1']);
+						$pareja = $ranking->modificarResultado($_REQUEST['id_pareja1'], $_REQUEST['id_pareja2']);
 
 
 					}
@@ -89,7 +89,7 @@ Switch ($_REQUEST['action']){
 					elseif ($_REQUEST['numSetsPareja2'] > $_REQUEST['numSetsPareja1']) {
 						include_once '../Models/RANKING_MODEL.php';
 						$ranking = new RANKING_MODEL('','','','');
-						$pareja = $ranking->modificarResultado($_REQUEST['id_pareja2']);
+						$pareja = $ranking->modificarResultado($_REQUEST['id_pareja2'], $_REQUEST['id_pareja1']);
 					}
 
 					else{

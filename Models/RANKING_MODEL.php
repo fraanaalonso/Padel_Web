@@ -127,7 +127,7 @@ function getRanking($id_campeonato, $categoria, $nivel){
 
 
 
-function modificarResultado($id_pareja){
+function modificarResultado($id_pareja, $id_pareja2){
 
 
 		
@@ -135,9 +135,11 @@ function modificarResultado($id_pareja){
 		$sql = "UPDATE RANKING SET puntos = puntos + 3 WHERE id_pareja='".$id_pareja."'";
 		$sql1 = "UPDATE RANKING SET p_ganados = p_ganados + 1 WHERE id_pareja='".$id_pareja."'";
 		$sql2 = "UPDATE RANKING SET p_jugados = p_jugados + 1 WHERE id_pareja='".$id_pareja."'";
+		$sql3 = "UPDATE RANKING SET p_jugados = p_jugados + 1 WHERE id_pareja='".$id_pareja2."'";
 
 		$this->bd->query($sql1);
 		$this->bd->query($sql2);
+		$this->bd->query($sql3);
 
 
         if (!($resultado = $this->bd->query($sql))){

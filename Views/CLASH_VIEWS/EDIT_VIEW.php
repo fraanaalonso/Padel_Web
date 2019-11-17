@@ -37,7 +37,7 @@ class EDIT_VIEW
             <th>ID Entrenamiento</th>
             <td>
 
-              <input type="text"  name="id_enfrentamiento" value="<?php echo $valores[0] ?>">
+              <input type="text" readonly  name="id_enfrentamiento" value="<?php echo $valores[0] ?>">
               
             </td>
           </tr>
@@ -45,7 +45,7 @@ class EDIT_VIEW
             <th>ID Campeonato</th>
             <td>
 
-                <input type="text"  name="id_campeonato" value="<?php echo $valores[1] ?>">
+                <input type="text" readonly  name="id_campeonato" value="<?php echo $valores[1] ?>">
               
             </td>
           </tr>
@@ -54,7 +54,7 @@ class EDIT_VIEW
             <th>Pareja 1</th>
             <td>
 
-               <input type="text"  name="id_pareja1" value="<?php echo $valores[2] ?>">
+               <input type="text" readonly  name="id_pareja1" value="<?php echo $valores[2] ?>">
               
             </td>
           </tr>
@@ -63,7 +63,7 @@ class EDIT_VIEW
             <th>Pareja 2</th>
             <td>
 
-                <input type="text"  name="id_pareja2" value="<?php echo $valores[3] ?>">
+                <input type="text" readonly  name="id_pareja2" value="<?php echo $valores[3] ?>">
               
             </td>
           </tr>
@@ -90,7 +90,7 @@ class EDIT_VIEW
             <th>Hora Comienzo</th>
             <td>
 
-                <input type="text"  name="hora_inicio" value="<?php echo $valores[6] ?>">
+                <input type="text" readonly name="hora_inicio" value="<?php echo $valores[6] ?>">
             </td>
           </tr>
 
@@ -98,7 +98,7 @@ class EDIT_VIEW
             <th>Fecha</th>
             <td>
 
-               <input type="text"  name="fecha" value="<?php echo $valores[7] ?>">
+               <input type="text" readonly name="fecha" value="<?php echo $valores[7] ?>">
             </td>
           </tr>
 
@@ -106,7 +106,7 @@ class EDIT_VIEW
             <th>Categoria</th>
             <td>
 
-                <input type="text"  name="categoria" value="<?php echo $valores[8] ?>">
+                <input type="text" readonly name="categoria" value="<?php echo $valores[8] ?>">
             </td>
           </tr>
 
@@ -115,7 +115,7 @@ class EDIT_VIEW
             <th>Nivel</th>
             <td>
 
-                <input type="text"  name="nivel" value="<?php echo $valores[9] ?>">
+                <input type="text" readonly name="nivel" value="<?php echo $valores[9] ?>">
             </td>
           </tr>
 

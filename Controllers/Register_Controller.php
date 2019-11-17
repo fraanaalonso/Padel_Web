@@ -32,15 +32,15 @@ session_start();
         $respuesta = $usuario->register();
 
             
-          if ($respuesta == true) {
+          if ($respuesta == 'true') {
 
             $respuesta = $usuario->registrar();
 
-            include '../Views/Message_View.php';
+            include '../Views/Message_View_Prev.php';
             new MESSAGE($respuesta, './Login_Controller.php');
                       }
           else{
-            include '../Views/Message_View.php';
+            include '../Views/Message_View_Prev.php';
             new MESSAGE($respuesta, './Login_Controller.php');
           }
 

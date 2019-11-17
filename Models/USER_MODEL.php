@@ -397,7 +397,7 @@ function registrar(){
 			return 'Error en la inserción';
 		}
 		else{
-			return 'Inserción realizada con éxito'; //operacion de insertado correcta
+			return 'Registro Completado'; //operacion de insertado correcta
 		}		
 	}
 

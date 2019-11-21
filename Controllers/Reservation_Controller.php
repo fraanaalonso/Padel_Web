@@ -22,6 +22,7 @@ include '../Views/RESERVATION_VIEWS/SEARCH_VIEW.php';
 include '../Views/RESERVATION_VIEWS/SHOWCURRENT_VIEW.php';
 include '../Views/RESERVATION_VIEWS/EDIT_VIEW.php';
 include '../Views/Message_View.php';
+include '../Views/PAYMENT_VIEWS/ADD_VIEW.php';
 require_once '../Functions/funciones.php';
 
 
@@ -75,6 +76,9 @@ Switch ($_REQUEST['action']){
 
 
 		if($_REQUEST['hora_inicio'] != ""){
+			include_once '../Models/PAYMENT_MODEL.php';
+
+			/*
 
 			include_once '../Models/RESERVATION_MODEL.php';
 			
@@ -88,11 +92,16 @@ Switch ($_REQUEST['action']){
 			include_once '../Models/MATCH_MODEL.php';
 			$borrado = new MATCH_MODEL($promoCoincidentes[0], '','','');
 			$respuesta = $borrado->DELETE();
+	    */
 
-			
+			$id_pista = $_REQUEST['id_pista'];
+			$login = $_REQUEST['login'];
+			$hora_inicio = $_REQUEST['hora_inicio'];
+			$fecha = $_REQUEST['fecha'];
+			$precio = $_REQUEST['precio'];
 
 
-			new MESSAGE($resultado, '../Controllers/Reservation_Controller.php');
+			new ADD_PAY($id_pista, $login, $hora_inicio, $fecha, $precio);
 		}else{
 
 			include_once '../Models/COURT_MODEL.php';
@@ -104,6 +113,28 @@ Switch ($_REQUEST['action']){
 		}
 		break;
 
+		case 'PAY':
+
+		include_once '../Models/RESERVATION_MODEL.php';
+		include_once '../Models/PAYMENT_MODEL.php';
+			
+			$reserva = new RESERVATION_MODEL(' ', $_REQUEST['id_pista'],$_REQUEST['login'], $_REQUEST['hora_inicio'],$_REQUEST['fecha'], $_REQUEST['precio']);
+			$pay = new PAYMENT_MODEL('','Reserva', $_SESSION['login']);
+
+			$pago = $pay->añadirPago();
+			$resultado = $reserva->ADD();
+
+
+			$promoCoincidentes = consultarPromocion();
+
+			include_once '../Models/MATCH_MODEL.php';
+			$borrado = new MATCH_MODEL($promoCoincidentes[0], '','','');
+			$respuesta = $borrado->DELETE();
+
+			new MESSAGE($pay, '../Controllers/Reservation_Controller.php');
+
+
+		break;
 
 
 		

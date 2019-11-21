@@ -331,6 +331,72 @@ function combinarParejas($id_campeonato, $nivel, $categoria){
 }
 
 
+function combinarPlayOffs($id_campeonato, $nivel, $categoria){
+
+	$sql = "SELECT ranking.id_pareja from ranking inner join championship_couple on ranking.id_pareja = championship_couple.id_pareja INNER join championship_categoria on championship_couple.id_campeonato=championship_categoria.id_campeonato inner join categoria on championship_categoria.id_categoria=categoria.id_categoria inner join championship_nivel on championship_couple.id_campeonato=championship_nivel.id_campeonato inner join nivel on championship_nivel.id_nivel=nivel.id_nivel and championship_couple.id_campeonato='".$id_campeonato."' and nivel.nivel='".$nivel."' and categoria.categoria='".$categoria."' ORDER BY ranking.puntos DESC LIMIT 0,4"; //obtenemos las 4 primeras tuplas de la clasificación 
+
+
+	$sql2 = "SELECT ranking.id_pareja from ranking inner join championship_couple on ranking.id_pareja = championship_couple.id_pareja INNER join championship_categoria on championship_couple.id_campeonato=championship_categoria.id_campeonato inner join categoria on championship_categoria.id_categoria=categoria.id_categoria inner join championship_nivel on championship_couple.id_campeonato=championship_nivel.id_campeonato inner join nivel on championship_nivel.id_nivel=nivel.id_nivel and championship_couple.id_campeonato='".$id_campeonato."' and nivel.nivel='".$nivel."' and categoria.categoria='".$categoria."' ORDER BY ranking.puntos DESC LIMIT 0,4"; //obtenemos las 4 primeras tuplas de la clasificación 
+
+
+		$sqlFecha = "SELECT clash.fecha from clash ORDER BY fecha DESC LIMIT 1";
+		$resulFecha = $this->bd->query($sqlFecha);
+		$fetch_fecha = $resulFecha->fetch_row();
+		$fechaComienzo = $fetch_fecha[0];
+
+
+		$resultado = $this->bd->query($sql);
+		$fila = $resultado->fetch_row();
+
+		$resultado2 = $this->bd->query($sql);
+		$fila2 = $resultado2->fetch_row();
+		
+		
+		$playoffs = array_combine($fila, $fila2);
+		
+		$fechas = $fechaComienzo;
+		$horas = array('09:00', '10:30', '12:00', '13:30', '17:00', '18:30', '20:00', '21:30');
+		
+		foreach ($playoffs as $key => $value) {
+			
+
+				$fechas = date("Y-m-d",strtotime($fechas)+86400);
+				$horaSeleccionada =  $horas[array_rand($horas)];
+				$id_pareja1 = $key;
+				$id_pareja2 = $value;
+
+				$consulta = "INSERT INTO CLASH (
+					id_enfrentamiento,
+					id_campeonato,
+					id_pareja1,
+					id_pareja2,
+					numSetsPareja1,
+					numSetsPareja2,
+					hora_inicio,
+					fecha,
+					categoria,
+					nivel
+					) 
+						VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."', '0', '0', '".$horaSeleccionada."', '".$fechas."', '".$categoria."', '".$nivel."')";
+
+				$this->bd->query($consulta);
+
+			
+		}
+
+		 if (!($resultado = $this->bd->query($consulta))){
+			return 'Error en la inserción'; 
+		}
+		else{ 
+
+			return 'Enfrentamientos correctamente creados';
+		}
+
+
+
+}
+
+
 
 
 

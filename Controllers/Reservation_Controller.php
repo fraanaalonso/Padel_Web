@@ -67,7 +67,7 @@ Switch ($_REQUEST['action']){
 			}		
 				break;
 
-		case 'RESERVAR':
+		case 'PAY':
 
 		if (!isset($_REQUEST['hora_inicio'])){
 		$_REQUEST['hora_inicio'] = '';
@@ -113,7 +113,7 @@ Switch ($_REQUEST['action']){
 		}
 		break;
 
-		case 'PAY':
+		case 'RESERVAR':
 
 		include_once '../Models/RESERVATION_MODEL.php';
 		include_once '../Models/PAYMENT_MODEL.php';
@@ -131,7 +131,7 @@ Switch ($_REQUEST['action']){
 			$borrado = new MATCH_MODEL($promoCoincidentes[0], '','','');
 			$respuesta = $borrado->DELETE();
 
-			new MESSAGE($pay, '../Controllers/Reservation_Controller.php');
+			new MESSAGE($resultado, '../Controllers/Reservation_Controller.php');
 
 
 		break;

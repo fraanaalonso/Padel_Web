@@ -26,29 +26,24 @@ class ADD_PAY
 </div>
 
 
-<form method="post" action="../Controllers/Reservation_Controller.php?action=PAY">
+<form method="post" action="../Controllers/Reservation_Controller.php?action=RESERVAR">
 <div class="formulario">
 
         <div class="col-xs-12 col-md-18">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        Payment Details
+                        DETALLES DE PAGO
                     </h3>
-                    <div class="checkbox pull-right">
-                        <label>
-                            <input type="checkbox" />
-                            Remember
-                        </label>
-                    </div>
+                    
                 </div>
                 <div class="panel-body">
                     <form role="form">
                     <div class="form-group">
                         <label for="cardNumber">
-                            CARD NUMBER</label>
+                            NÚMERO DE TARJETA</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number"
+                            <input type="text" class="form-control" id="cardNumber" placeholder="8888 7777 6666 5555"
                                 required autofocus />
                             <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                         </div>
@@ -57,7 +52,7 @@ class ADD_PAY
                         <div class="col-xs-7 col-md-7">
                             <div class="form-group">
                                 <label for="expityMonth">
-                                    EXPIRY DATE</label>
+                                    FECHA DE EXPIRACIÓN</label>
                                 <div class="col-xs-6 col-lg-6 pl-ziro">
                                     <input type="text" class="form-control" id="expityMonth" placeholder="MM" required />
                                 </div>
@@ -68,7 +63,7 @@ class ADD_PAY
                         <div class="col-xs-5 col-md-5 pull-right">
                             <div class="form-group">
                                 <label for="cvCode">
-                                    CV CODE</label>
+                                    CÓDIGO CV</label>
                                 <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
                             </div>
                         </div>

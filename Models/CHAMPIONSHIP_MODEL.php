@@ -268,6 +268,14 @@ function getDBDatosCampeonato($id_campeonato){
 	}
 
 
+function obtenerGrupis($id_campeonato){
+	$sql = "SELECT nivel.nivel, categoria.categoria FROM championship_nivel INNER JOIN NIVEL ON championship_nivel.id_nivel=nivel.id_nivel INNER join championship_categoria on championship_nivel.id_campeonato=championship_categoria.id_campeonato INNER join categoria on championship_categoria.id_categoria=categoria.id_categoria AND championship_nivel.id_campeonato='".$id_campeonato."'";
+
+	 $resultado = $this->bd->query($sql);
+	 return $resultado;
+}
+
+
 
 function combinarParejas($id_campeonato, $nivel, $categoria){
 

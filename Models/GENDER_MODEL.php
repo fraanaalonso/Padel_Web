@@ -46,8 +46,8 @@ function RellenaDatos()
 
 
 
-function getDBDatosCategorias(){
-	$sql = "SELECT * FROM categoria";
+function getDBDatosCategorias($id_campeonato){
+	$sql = "SELECT championship_categoria.id_categoria, categoria.categoria FROM championship_categoria INNER JOIN categoria ON championship_categoria.id_categoria=categoria.id_categoria AND championship_categoria.id_campeonato='".$id_campeonato."'";
 	 $resultado = $this->bd->query($sql);
 	 return $resultado;
 }

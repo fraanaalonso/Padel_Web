@@ -43,6 +43,35 @@ class ADD_VIEW
 		  	<input type="date" id="fecha_inicio" name="fecha_inicio" required class="form-control" placeholder="Límite de Inscripción" >
 		   </div>
 
+		   <div class="checkbox">Seleccione Categoría(s)
+		   	<br>
+		   	<br>
+			  <label><input type="checkbox" value="1" name="id_categoria[]">Masculino</label>
+			</div>
+			<div class="checkbox">
+			  <label><input type="checkbox" value="2" name="id_categoria[]">Femenino</label>
+			</div>
+			<div class="checkbox">
+			  <label><input type="checkbox" value="3" name="id_categoria[]">Mixto</label>
+			</div>
+
+			<br>
+			<br>
+
+		  <div class="checkbox">Seleccione Nivel(es)
+		  	<br>
+		  	<br>
+			  <label><input type="checkbox" value="1" name="id_nivel[]">Principiante</label>
+			</div>
+			<div class="checkbox">
+			  <label><input type="checkbox" value="2" name="id_nivel[]">Intermedio</label>
+			</div>
+			<div class="checkbox">
+			  <label><input type="checkbox" value="3" name="id_nivel[]">Avanzado</label>
+			</div>
+
+
+
 
 		   <div class="form-group" >
 		  	<select id="id_normativa" name="id_normativa" class="form-control" required>

@@ -46,8 +46,8 @@ function RellenaDatos()
 
 
 
-function getDBDatosNivel(){
-	 $sql = "SELECT * FROM nivel";
+function getDBDatosNivel($id_campeonato){
+   $sql = "SELECT championship_nivel.id_nivel, nivel.nivel FROM championship_nivel INNER JOIN NIVEL ON championship_nivel.id_nivel=nivel.id_nivel AND championship_nivel.id_campeonato='".$id_campeonato."'";
 	 $resultado = $this->bd->query($sql);
 	 return $resultado;
 }

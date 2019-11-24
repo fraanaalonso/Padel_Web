@@ -90,29 +90,33 @@ Switch ($_REQUEST['action']){
 
 					else{
 
+				
 
 					$respuesta = $modelo->ADD();
 
 					$obj = new CHAMPIONSHIP_MODEL('','','','');
 					$dato =$obj->obtenerUltimoCampeonato();
 
-					$masculino= $aux->añadirCategoria($dato[0], 1);
-					$femenino=$aux->añadirCategoria($dato[0], 2);
-					$mixto=$aux->añadirCategoria($dato[0], 3);
 
-					$nivel1 = $aux2->añadirNiveles($dato[0], 1);
-					$nivel2 = $aux2->añadirNiveles($dato[0], 2);	
-					$nivel3 = $aux2->añadirNiveles($dato[0], 3);
+					while (list($key, $value) = each($_POST['id_categoria'])) {
+						$var= $aux->añadirCategoria($dato[0], $value);
+					}
 
-				
-
+					while (list($key, $value) = each($_POST['id_nivel'])) {
+						$var= $aux->añadirNiveles($dato[0], $value);
+					}
+					
 
 
 					new MESSAGE($respuesta,'./Championship_Controller.php');
 				}
+
+				
+
+				}
 				}
 					
-				}
+				
 				break;
 
 		case 'GENERARCALENDARIO':
@@ -193,6 +197,7 @@ Switch ($_REQUEST['action']){
 		case 'GENERARGRUPOS':
 
 		if(!$_POST){
+
 		  
 		  $grupo1 = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], 'Principiante', 'Masculino');
 		  $grupo2 = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], 'Intermedio', 'Masculino');
@@ -227,9 +232,10 @@ Switch ($_REQUEST['action']){
 					$modelo3 = new GENDER_MODEL('','');
 					$aux = new User_Modelo('','','','','','','','','','','','');
 
-					$niveles = $modelo2->getDBDatosNivel();
-					$categorias = $modelo3->getDBDatosCategorias();
-					$valores= $modelo ->RellenaDatos(); 
+					
+					$valores= $modelo->RellenaDatos(); 
+					$niveles = $modelo2->getDBDatosNivel($valores[0]);
+					$categorias = $modelo3->getDBDatosCategorias($valores[0]);
 
 					new InscribirCampeonatoView($valores,$niveles, $categorias);
 			}

@@ -28,6 +28,8 @@ class SHOWGRUPOS_CAMPEONATO
 
 <div>
 <table border="1">
+
+
 	
 	<tr bgcolor="red">
 	 <th>ID  Pareja</th>

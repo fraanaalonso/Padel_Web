@@ -16,6 +16,7 @@ class ADD_VIEW
 	function execution($normativa){
 		include '../Views/HeaderPost.php';
 
+
 ?>
 
 
@@ -43,34 +44,56 @@ class ADD_VIEW
 		  	<input type="date" id="fecha_inicio" name="fecha_inicio" required class="form-control" placeholder="Límite de Inscripción" >
 		   </div>
 
-		   <div class="checkbox">Seleccione Categoría(s)
-		   	<br>
-		   	<br>
-			  <label><input type="checkbox" value="1" name="id_categoria[]">Masculino</label>
-			</div>
-			<div class="checkbox">
-			  <label><input type="checkbox" value="2" name="id_categoria[]">Femenino</label>
-			</div>
-			<div class="checkbox">
-			  <label><input type="checkbox" value="3" name="id_categoria[]">Mixto</label>
-			</div>
+
+<!--
+ <input type="checkbox" id="box1">
+  <label for="box1">Checkbox 1</label>
+-->
+		     <strong style="font-size: 22px;">Seleccione Categoría(s)</strong>
+		     	<br>
+		     	<br>
+			  <input type="checkbox" id="box1" value="1" name="id_categoria[]">
+			  <label for="box1"><strong style="font-size: 18px">Masculino</strong></label>
+		    
+		     <br>
+		     <br>
+			
+			   <input type="checkbox" id="box2" value="2" name="id_categoria[]">
+			   <label for="box2"><strong style="font-size: 18px">Femenino</strong></label>
+		
+			<br>
+			<br>
+
+	
+			  <input type="checkbox" id="box3" value="3" name="id_categoria[]">
+			  <label for="box3"><strong style="font-size: 18px">Mixto</strong></label>
+			
 
 			<br>
 			<br>
 
-		  <div class="checkbox">Seleccione Nivel(es)
-		  	<br>
-		  	<br>
-			  <label><input type="checkbox" value="1" name="id_nivel[]">Principiante</label>
-			</div>
-			<div class="checkbox">
-			  <label><input type="checkbox" value="2" name="id_nivel[]">Intermedio</label>
-			</div>
-			<div class="checkbox">
-			  <label><input type="checkbox" value="3" name="id_nivel[]">Avanzado</label>
-			</div>
+		  <strong style="font-size: 22px;">Seleccione Nivel(es)</strong>
+		     	<br>
+		     	<br>
+			  <input type="checkbox" id="box4" value="1" name="id_nivel[]">
+			  <label for="box4"><strong style="font-size: 18px">Principiante</strong></label>
+		    
+		     <br>
+		     <br>
+			
+			   <input type="checkbox" id="box5" value="2" name="id_nivel[]">
+			   <label for="box5"><strong style="font-size: 18px">Intermedio</strong></label>
+		
+			<br>
+			<br>
 
+	
+			  <input type="checkbox" id="box6" value="3" name="id_nivel[]">
+			  <label for="box6"><strong style="font-size: 18px">Avanzado</strong></label>
+			
 
+		    <br>
+			<br>
 
 
 		   <div class="form-group" >

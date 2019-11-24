@@ -28,6 +28,7 @@ if (session_status() == PHP_SESSION_NONE) {//Sino existe la sesion, se comienza
     <link rel="stylesheet" type="text/css" href="../img/icon/style.css">
     <link rel="stylesheet" type="text/css" href="../css/chat.css">
     <link rel="stylesheet" type="text/css" href="../css/pay.css">
+    <link rel="stylesheet" type="text/css" href="../css/check.css">
     <script src="../Functions/js/validaciones.js"></script>
     <script src="../Functions/js/chat.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

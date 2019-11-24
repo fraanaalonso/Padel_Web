@@ -1,0 +1,57 @@
+@import url('//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css');
+
+
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+input[type*='checkbox'] {
+    opacity: 0;
+}
+
+label {
+    line-height: 2em;
+
+    position: absolute;
+    left: 0;
+
+    margin-bottom: 10em;
+    padding: 0 1.5em 0 2.5em;
+}
+
+label:before {
+    font-size: 2em;
+    line-height: .5em;
+
+    position: absolute;
+    left: 0;
+
+    width: 1em;
+    height: 1em;
+
+    content: '';
+    text-align: center;
+
+    border: .2em solid #eb7260;
+}
+
+input[type*='checkbox']:checked + label:before {
+    font-family: FontAwesome;
+
+    content: '\f00c';
+}
+
+input[type*='checkbox']:focus + label:after {
+    font-family: FontAwesome;
+
+    position: absolute;
+    right: 0;
+
+    content: '\f177';
+}

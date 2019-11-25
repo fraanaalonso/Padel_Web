@@ -172,7 +172,7 @@ class User_Modelo
 
 	function SEARCH()
 { 	// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-    $sql = "select * from USER ";
+    $sql = "SELECT USER.login, user.nombre, user.apellido, user.password, user.dni, USER.email, USER.pais, USER.pais, USER.sexo, USER.telefono, USER.fecha, USER.foto, ROL.rol AS rol FROM USER INNER JOIN rol ON USER.rol_id = ROL.id_rol";
 
     // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
     if (!($resultado = $this->bd->query($sql))){

@@ -53,20 +53,20 @@ class ADD_VIEW
 		     	<br>
 		     	<br>
 			  <input type="checkbox" id="box1" value="1" name="id_categoria[]">
-			  <label for="box1"><strong style="font-size: 18px">Masculino</strong></label>
+			  <label for="box1" style="margin: 10 100" align="justify""><strong style="font-size: 18px">Masculino</strong></label>
 		    
 		     <br>
 		     <br>
 			
 			   <input type="checkbox" id="box2" value="2" name="id_categoria[]">
-			   <label for="box2"><strong style="font-size: 18px">Femenino</strong></label>
+			   <label for="box2" style="margin: 10 100" align="justify""><strong style="font-size: 18px">Femenino</strong></label>
 		
 			<br>
 			<br>
 
 	
 			  <input type="checkbox" id="box3" value="3" name="id_categoria[]">
-			  <label for="box3"><strong style="font-size: 18px">Mixto</strong></label>
+			  <label for="box3" style="margin: 10 100" align="justify""><strong style="font-size: 18px">Mixto</strong></label>
 			
 
 			<br>
@@ -76,23 +76,24 @@ class ADD_VIEW
 		     	<br>
 		     	<br>
 			  <input type="checkbox" id="box4" value="1" name="id_nivel[]">
-			  <label for="box4"><strong style="font-size: 18px">Principiante</strong></label>
+			  <label for="box4" style="margin: 10 100" align="justify""><strong style="font-size: 18px">Principiante</strong></label>
 		    
 		     <br>
 		     <br>
 			
 			   <input type="checkbox" id="box5" value="2" name="id_nivel[]">
-			   <label for="box5"><strong style="font-size: 18px">Intermedio</strong></label>
+			   <label for="box5" style="margin: 10 100" align="justify""><strong style="font-size: 18px">Intermedio</strong></label>
 		
 			<br>
 			<br>
 
 	
 			  <input type="checkbox" id="box6" value="3" name="id_nivel[]">
-			  <label for="box6"><strong style="font-size: 18px">Avanzado</strong></label>
+			  <label for="box6" style="margin: 10 100" align="justify""><strong style="font-size: 18px">Avanzado</strong></label>
 			
 
 		    <br>
+			<br>
 			<br>
 
 
@@ -106,7 +107,7 @@ class ADD_VIEW
 		   			while(($toret = mysqli_fetch_array($normativa))){	
 		   	
 		   	
-		  			echo '<option value = "'.$toret[0].'">'. $toret[0].'</option>';
+		  			echo '<option value = "'.$toret[0].'">'. substr($toret[1],0,250).'</option>';
 
 		  		
 		  	

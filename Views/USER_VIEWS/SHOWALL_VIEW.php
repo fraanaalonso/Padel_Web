@@ -99,7 +99,7 @@ if(comprobarPermisos($_SESSION['login'])==1){
   }
 </script>
   <?php    
-      echo "<td>".$fila["rol_id"]."</td>";
+      echo "<td>".$fila["rol"]."</td>";
     
 
 

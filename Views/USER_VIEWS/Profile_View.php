@@ -43,22 +43,22 @@ class Profile_View
 <form method="post"  class="edicion" action="../Controllers/User_Controller.php?action=SHOWPROFILE" enctype="multipart/form-data">
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Login</label>
+      <a for="inputEmail4">Login</a>
      <input type="text" id="login" name="login" required class="form-control" readonly value="<?php echo $datos_usuario['login']; ?>"  >
     </div>
     <div class="form-group col-md-6">
-      <label for="inputPassword4">Password</label>
+      <a for="inputPassword4">Password</a>
      <input type="password" id="password" name="password" required class="form-control" value="<?php echo $datos_usuario['password']; ?>" >
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Nombre</label>
+      <a for="inputEmail4">Nombre</a>
      <input type="text" id="nombre" name="nombre" required class="form-control" value="<?php echo $datos_usuario['nombre']; ?>" >
     </div>
     <div class="form-group col-md-6">
-      <label for="inputPassword4">Apellido</label>
+      <a for="inputPassword4">Apellido</a>
      <input type="text" id="apellido" name="apellido" required class="form-control" value="<?php echo $datos_usuario['apellido']; ?>" >
     </div>
   </div>
@@ -66,32 +66,32 @@ class Profile_View
  
 <div class="form-row">
   <div class="form-group col-md-6">
-    <label for="inputAddress">DNI</label>
+    <a for="inputAddress">DNI</a>
     <input type="text" id="dni" name="dni" required class="form-control" value="<?php echo $datos_usuario['dni']; ?>" >
   </div>
 
    <div class="form-group col-md-6">
-    <label for="inputAddress">Fecha de Nacimiento</label>
+    <a for="inputAddress">Fecha de Nacimiento</a>
     <input type="date" id="fecha" name="fecha" required class="form-control" value="<?php echo $datos_usuario['fecha']; ?>" >
   </div>
  </div>
 
 <div class="form-row">
   <div class="form-group col-md-6">
-    <label for="inputAddress2">Telefono </label>
+    <a for="inputAddress2">Telefono </a>
     <input type="text" id="telefono" name="telefono" required class="form-control" value="<?php echo $datos_usuario['telefono']; ?>" >
   </div>
 
 
   <div class="form-group col-md-6">
-    <label for="inputAddress2">Email </label>
+    <a for="inputAddress2">Email </a>
     <input type="text" id="email" name="email" required class="form-control" value="<?php echo $datos_usuario['email']; ?>" >
   </div>
 </div>  
 
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputCity">Sexo</label>
+      <a for="inputCity">Sexo</a>
        <select  id="sexo" name ="sexo" required class="form-control" >
               <option  value="<?php echo $datos_usuario['sexo'];?>" selected>Seleccione el sexo</option>
               <option value = 'Masculino' <?php if ($datos_usuario['sexo'] == 'Masculino') echo 'selected'; ?>>Masculino</option><br>
@@ -99,7 +99,7 @@ class Profile_View
         </select>
     </div>
     <div class="form-group col-md-4">
-      <label for="inputState">Pais</label>
+      <a for="inputState">Pais</a>
      <select  id="pais" name ="pais" required class="form-control" >
               <option  value="<?php echo $datos_usuario['pais'];?>" selected>Seleccione el pais</option>
               <option value = 'España' <?php if ($datos_usuario['pais'] == 'España') echo 'selected'; ?>>España</option><br>
@@ -123,7 +123,7 @@ class Profile_View
           </select>
     </div>
     <div class="form-group col-md-2">
-      <label for="inputZip">Foto Perfil</label>
+      <a for="inputZip">Foto Perfil</a>
      <input type="file" id="foto" name="foto" class="form-control" required value="<?php echo $datos_usuario['foto']; ?>" >
     </div>
   </div>

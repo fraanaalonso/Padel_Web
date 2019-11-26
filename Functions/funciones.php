@@ -362,14 +362,14 @@ function maxCouplesAllowed($id_campeonato){
 
 
 
-function obtenerGrupoCampeonato($id_campeonato, $nivel, $categoria){
+function obtenerGrupoCampeonato($id_campeonato){
 
 	include_once '../includes/db.php';
 	$bd;
 	$bd = ConectarDB();
 
 
-	$sql = "SELECT categoria.categoria, nivel.nivel, couple_categoria.id_pareja, couple_categoria.id_campeonato, COUPLE.login1, COUPLE.login2 FROM couple_categoria INNER JOIN couple ON couple.id_pareja=couple_categoria.id_pareja INNER JOIN couple_nivel ON couple_nivel.id_pareja=couple_categoria.id_pareja INNER JOIN categoria on categoria.id_categoria=couple_categoria.id_categoria INNER JOIN nivel on nivel.id_nivel=couple_nivel.id_nivel and couple_categoria.id_campeonato='".$id_campeonato."' and categoria.categoria='".$categoria."' AND nivel.nivel='".$nivel."'";
+	$sql = "SELECT couple_grupo.id_pareja as pareja, couple.login1 as capitan, couple.login2 as socio, couple_grupo.id_grupo as grupo, couple_grupo.id_campeonato, categoria.categoria as categoria, nivel.nivel as nivel FROM couple_grupo INNER JOIN GRUPO ON couple_grupo.id_grupo=grupo.id_grupo INNER JOIN categoria ON grupo.id_categoria=categoria.id_categoria INNER JOIN niveL ON grupo.id_nivel=nivel.id_nivel inner join couple on couple_grupo.id_pareja=couple.id_pareja and couple_grupo.id_campeonato='".$id_campeonato."' ORDER by grupo asc";
 
 
 		 if (!($resultado = $bd->query($sql))){
@@ -420,24 +420,29 @@ $sql= "SELECT categoria.categoria, nivel.nivel, couple_categoria.id_pareja, coup
 
 }
 
-function comprobarSiExisteGrupo($categoria, $nivel, $campeonato){
+function obtenerGrupo($categoria, $nivel, $campeonato){
 
-		include_once '../includes/db.php';
+	include_once '../includes/db.php';
 	$bd;
 	$bd = ConectarDB();
 
-	$sql = "SELECT * FROM GRUPO WHERE id_categoria='".$categoria."' and id_nivel='".$nivel."' and id_campeonato='".$campeonato."'";
+	$sql = "SELECT GRUPO.id_grupo FROM GRUPO INNER JOIN championship_categoria ON grupo.id_categoria=championship_categoria.id_categoria and grupo.id_campeonato=championship_categoria.id_campeonato INNER JOIN championship_nivel ON grupo.id_nivel=championship_nivel.id_nivel and grupo.id_campeonato=championship_nivel.id_campeonato AND championship_nivel.id_nivel='".$nivel."' AND championship_categoria.id_categoria='".$categoria."' AND grupo.id_campeonato='".$campeonato."'";
 
-	$resultado = $bd->query($sql);
 
-	if($resultado->num_rows == 1){
-		return false;
-	}
-	else{
-		return true;
-	}
+	if (!($resultado = $bd->query($sql))){
+				return 'No existe en la base de datos'; 
+			}
+			
+		    else{ 
+
+			$result = $resultado->fetch_array();
+				return $result;
+			}
+
+
+
+
 }
-
 
 function comprobarSiExisteEnfrentamiento($id_campeonato, $id_nivel, $id_categoria){
 
@@ -507,6 +512,25 @@ function comprobarSiExistenEnfrentamiento($campeonato, $nivel, $categoria){
 
 
 
+function mostrarGrupo($id_campeonato, $id_categoria, $id_nivel){
+
+	include_once '../includes/db.php';
+	$bd;
+	$bd = ConectarDB();
+
+
+	$sql = "SELECT championship_nivel.id_nivel, championship_categoria.id_categoria FROM championship_nivel INNER JOIN championship_categoria on championship_nivel.id_campeonato=championship_categoria.id_campeonato and championship_categoria.id_campeonato='".$id_campeonato."' and championship_nivel.id_nivel='".$id_nivel."' and championship_categoria.id_categoria='".$id_categoria."'";
+
+
+	$resultado = $bd->query($sql);
+
+	if($resultado->num_rows > 0){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
 
 
 

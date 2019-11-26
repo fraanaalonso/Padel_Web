@@ -105,7 +105,22 @@ Switch ($_REQUEST['action']){
 					while (list($key, $value) = each($_POST['id_nivel'])) {
 						$var= $aux->añadirNiveles($dato[0], $value);
 					}
+
+
+					$categorias = $_POST['id_categoria'];
+					$niveles  = $_POST['id_nivel'];
+
+					for($i = 0; $i < count($categorias); $i++){
+						for($j = 0; $j < count($niveles); $j++){
+							$categoria = $categorias[$i];
+							$nivel = $niveles[$j];
+
+							$var = $aux2->generarGruposInscripcion($categoria, $nivel, $dato[0]);
+						}
+					}
+
 					
+
 
 
 					new MESSAGE($respuesta,'./Championship_Controller.php');
@@ -199,18 +214,11 @@ Switch ($_REQUEST['action']){
 		if(!$_POST){
 
 		  
-		  $grupo1 = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], 'Principiante', 'Masculino');
-		  $grupo2 = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], 'Intermedio', 'Masculino');
-		  $grupo3 = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], 'Avanzado', 'Masculino');
-		  $grupo4 = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], 'Principiante', 'Femenino');
-		  $grupo5 = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], 'Intermedio', 'Femenino');
-		  $grupo6 = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], 'Avanzado', 'Femenino');
-		  $grupo7 = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], 'Principiante', 'Mixto');
-		  $grupo8 = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], 'Intermedio', 'Mixto');
-		  $grupo9 = obtenerGrupoCampeonato($_REQUEST['id_campeonato'], 'Avanzado', 'Mixto');
+		  $grupo1 = obtenerGrupoCampeonato($_REQUEST['id_campeonato']);
+		
 
 		  $lista = array();
-		  new SHOWGRUPOS_CAMPEONATO($lista, $grupo1, $grupo2, $grupo3, $grupo4, $grupo5, $grupo6, $grupo7, $grupo8, $grupo9);
+		  new SHOWGRUPOS_CAMPEONATO($lista, $grupo1);
 		}
 
 		break;
@@ -316,28 +324,16 @@ Switch ($_REQUEST['action']){
 			$parejaNivel = new COUPLE_NIVEL_MODEL($nivelSeleccionado, $dato[0], $id_campeonato);
 			$result4 = $parejaNivel->ADD();
 
-			if(comprobarSiExisteGrupo($categoriaSeleccionada, $nivelSeleccionado, $id_campeonato)){
 			
-			$categoriaNivel = $aux3->generarGruposInscripcion($categoriaSeleccionada,$nivelSeleccionado, $id_campeonato);
-			
+			$grupo = obtenerGrupo($categoriaSeleccionada, $nivelSeleccionado, $id_campeonato);
 
-			}
-
-			$grupoPareja = new COUPLE_GRUPO_MODEL('','','');
-
-			$dato2 =$grupoPareja->obtenerUltimoGrupo($categoriaSeleccionada, $nivelSeleccionado);
-
-			$obj3 = new COUPLE_GRUPO_MODEL('','','');			
-
-			$grupoParejaIncrito = $obj3->añadirGrupoPareja($dato2[0], $dato[0], $id_campeonato);
-
-			
-
+			$parejaGrupo = new COUPLE_GRUPO_MODEL($dato[0], $grupo[0], $id_campeonato);
+			$result5 = $parejaGrupo->ADD();
 			
 
 
 
-			new MESSAGE($result4, './Championship_Controller.php');
+			new MESSAGE($result5, './Championship_Controller.php');
 		}
 		}
 		}

@@ -534,5 +534,25 @@ function mostrarGrupo($id_campeonato, $id_categoria, $id_nivel){
 
 
 
+function minInscritos($campeonato,$nivel,$categoria){
+
+	include_once '../includes/db.php';
+	$bd;
+	$bd = ConectarDB();
+
+	$sql = "SELECT GRUPO.id_grupo, categoria.categoria, NIVEL.nivel FROM GRUPO INNER JOIN couple_grupo ON grupo.id_grupo=couple_grupo.id_grupo INNER JOIN categoria ON GRUPO.id_categoria=categoria.id_categoria INNER JOIN NIVEL ON GRUPO.id_nivel=NIVEL.id_nivel AND GRUPO.id_campeonato='".$campeonato."' AND categoria.categoria = '".$categoria."' and nivel.nivel='".$nivel."'";
+
+
+	$resultado = $bd->query($sql);
+
+	if($resultado->num_rows < 8){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
+
 
 ?>

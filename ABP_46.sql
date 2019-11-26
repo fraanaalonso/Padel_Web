@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2019 a las 17:51:59
+-- Tiempo de generación: 26-11-2019 a las 16:14:53
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.10
 
@@ -13,24 +13,14 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-
--- CREAR LA BD BORRANDOLA SI YA EXISTIESE
---
-DROP DATABASE IF EXISTS `abp46`;
-CREATE DATABASE `abp46` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
---
--- SELECCIONAMOS LA BD A USAR
---
-USE `abp46`;
-
-
-
-
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
+
+
+DROP DATABASE IF EXISTS `abp46`;
+CREATE DATABASE `abp46` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 --
 -- Base de datos: `abp46`
@@ -74,9 +64,7 @@ CREATE TABLE `championship` (
 --
 
 INSERT INTO `championship` (`id_campeonato`, `fecha_inicio`, `fecha_limite`, `id_normativa`) VALUES
-(1, '2019-11-20', '2019-11-22', 2),
-(2, '2019-11-20', '2019-11-17', 4),
-(3, '2019-11-20', '2019-11-18', 3);
+(1, '2019-12-05', '2019-11-30', 4);
 
 -- --------------------------------------------------------
 
@@ -95,14 +83,7 @@ CREATE TABLE `championship_categoria` (
 
 INSERT INTO `championship_categoria` (`id_campeonato`, `id_categoria`) VALUES
 (1, 1),
-(1, 2),
-(1, 3),
-(2, 1),
-(2, 2),
-(2, 3),
-(3, 1),
-(3, 2),
-(3, 3);
+(1, 2);
 
 -- --------------------------------------------------------
 
@@ -120,50 +101,20 @@ CREATE TABLE `championship_couple` (
 --
 
 INSERT INTO `championship_couple` (`id_pareja`, `id_campeonato`) VALUES
-(1, 1),
-(2, 1),
-(3, 1),
-(4, 1),
-(5, 1),
-(6, 1),
-(7, 1),
-(8, 1),
-(9, 1),
-(10, 1),
-(11, 1),
-(12, 1),
-(13, 1),
-(14, 1),
-(15, 1),
-(16, 1),
-(17, 1),
-(18, 1),
-(19, 1),
-(20, 1),
-(21, 1),
-(22, 1),
-(23, 1),
-(24, 1),
-(25, 1),
-(26, 1),
-(27, 1),
-(28, 1),
-(29, 1),
-(30, 1),
-(31, 1),
-(32, 1),
-(33, 1),
-(34, 1),
-(35, 1),
-(36, 1),
-(37, 1),
-(38, 1),
-(39, 1),
-(40, 1),
-(41, 1),
-(42, 1),
-(43, 1),
-(44, 1);
+(51, 1),
+(52, 1),
+(53, 1),
+(54, 1),
+(55, 1),
+(56, 1),
+(57, 1),
+(58, 1),
+(59, 1),
+(60, 1),
+(61, 1),
+(62, 1),
+(63, 1),
+(64, 1);
 
 -- --------------------------------------------------------
 
@@ -181,15 +132,8 @@ CREATE TABLE `championship_nivel` (
 --
 
 INSERT INTO `championship_nivel` (`id_campeonato`, `id_nivel`) VALUES
-(1, 1),
 (1, 2),
-(1, 3),
-(2, 1),
-(2, 2),
-(2, 3),
-(3, 1),
-(3, 2),
-(3, 3);
+(1, 3);
 
 -- --------------------------------------------------------
 
@@ -240,6 +184,34 @@ CREATE TABLE `clash` (
   `categoria` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `nivel` varchar(20) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `clash`
+--
+
+INSERT INTO `clash` (`id_enfrentamiento`, `id_campeonato`, `id_pareja1`, `id_pareja2`, `numSetsPareja1`, `numSetsPareja2`, `hora_inicio`, `fecha`, `categoria`, `nivel`) VALUES
+(1, 1, 52, 53, 0, 0, '17:00', '2019-12-06', 'Masculino', 'Intermedio'),
+(2, 1, 52, 54, 0, 0, '18:30', '2019-12-07', 'Masculino', 'Intermedio'),
+(3, 1, 52, 55, 0, 0, '09:00', '2019-12-08', 'Masculino', 'Intermedio'),
+(4, 1, 52, 56, 0, 0, '18:30', '2019-12-09', 'Masculino', 'Intermedio'),
+(5, 1, 52, 63, 0, 0, '12:00', '2019-12-10', 'Masculino', 'Intermedio'),
+(6, 1, 52, 64, 0, 0, '12:00', '2019-12-11', 'Masculino', 'Intermedio'),
+(7, 1, 53, 54, 0, 0, '13:30', '2019-12-12', 'Masculino', 'Intermedio'),
+(8, 1, 53, 55, 0, 0, '20:00', '2019-12-13', 'Masculino', 'Intermedio'),
+(9, 1, 53, 56, 0, 0, '10:30', '2019-12-14', 'Masculino', 'Intermedio'),
+(10, 1, 53, 63, 0, 0, '12:00', '2019-12-15', 'Masculino', 'Intermedio'),
+(11, 1, 53, 64, 0, 0, '18:30', '2019-12-16', 'Masculino', 'Intermedio'),
+(12, 1, 54, 55, 0, 0, '10:30', '2019-12-17', 'Masculino', 'Intermedio'),
+(13, 1, 54, 56, 0, 0, '10:30', '2019-12-18', 'Masculino', 'Intermedio'),
+(14, 1, 54, 63, 0, 0, '10:30', '2019-12-19', 'Masculino', 'Intermedio'),
+(15, 1, 54, 64, 0, 0, '20:00', '2019-12-20', 'Masculino', 'Intermedio'),
+(16, 1, 55, 56, 0, 0, '12:00', '2019-12-21', 'Masculino', 'Intermedio'),
+(17, 1, 55, 63, 0, 0, '20:00', '2019-12-22', 'Masculino', 'Intermedio'),
+(18, 1, 55, 64, 0, 0, '20:00', '2019-12-23', 'Masculino', 'Intermedio'),
+(19, 1, 56, 63, 0, 0, '09:00', '2019-12-24', 'Masculino', 'Intermedio'),
+(20, 1, 56, 64, 0, 0, '21:30', '2019-12-25', 'Masculino', 'Intermedio'),
+(21, 1, 63, 64, 0, 0, '09:00', '2019-12-26', 'Masculino', 'Intermedio'),
+(22, 1, 63, 64, 0, 0, '09:00', '2019-12-26', 'Masculino', 'Intermedio');
 
 -- --------------------------------------------------------
 
@@ -301,7 +273,24 @@ INSERT INTO `couple` (`id_pareja`, `login1`, `login2`) VALUES
 (41, 'varela_pepe', 'sormaria'),
 (42, 'paula', 'rosio96'),
 (43, 'nuria77', 'pradi'),
-(44, 'nerea34', 'nata64');
+(44, 'nerea34', 'nata64'),
+(45, 'admin', 'cela_jose'),
+(48, 'lucia_atm', 'laura_vega'),
+(50, 'lara', 'sormaria'),
+(51, 'admin', 'root'),
+(52, 'santos_leon', 'santi_abascal'),
+(53, 'abeijon_antonio', 'antonio_v'),
+(54, 'apasionado_roberto', 'ares_alfonso'),
+(55, 'antelo_esteban', 'aurelio_marco'),
+(56, 'blas_fernando', 'bros_mario'),
+(57, 'camino_antonio', 'mariohermida'),
+(58, 'carla95', 'lucia_atm'),
+(59, 'acarmen', 'aine'),
+(60, 'andreita', 'anita32'),
+(61, 'antiavazquez', 'barbi'),
+(62, 'candela11', 'celiag'),
+(63, 'cela_jose', 'charlie'),
+(64, 'esteban_aitor', 'figueira_luis');
 
 -- --------------------------------------------------------
 
@@ -320,50 +309,20 @@ CREATE TABLE `couple_categoria` (
 --
 
 INSERT INTO `couple_categoria` (`id_categoria`, `id_pareja`, `id_campeonato`) VALUES
-(1, 7, 1),
-(1, 9, 1),
-(1, 11, 1),
-(1, 13, 1),
-(1, 14, 1),
-(1, 16, 1),
-(1, 18, 1),
-(1, 19, 1),
-(1, 20, 1),
-(1, 23, 1),
-(1, 31, 1),
-(1, 32, 1),
-(1, 33, 1),
-(1, 34, 1),
-(1, 35, 1),
-(1, 36, 1),
-(1, 37, 1),
-(1, 38, 1),
-(1, 39, 1),
-(2, 1, 1),
-(2, 4, 1),
-(2, 8, 1),
-(2, 12, 1),
-(2, 15, 1),
-(2, 17, 1),
-(2, 21, 1),
-(2, 22, 1),
-(2, 24, 1),
-(2, 25, 1),
-(2, 26, 1),
-(2, 28, 1),
-(2, 40, 1),
-(2, 42, 1),
-(2, 43, 1),
-(2, 44, 1),
-(3, 2, 1),
-(3, 3, 1),
-(3, 5, 1),
-(3, 6, 1),
-(3, 10, 1),
-(3, 27, 1),
-(3, 29, 1),
-(3, 30, 1),
-(3, 41, 1);
+(1, 51, 1),
+(1, 52, 1),
+(1, 53, 1),
+(1, 54, 1),
+(1, 55, 1),
+(1, 56, 1),
+(1, 57, 1),
+(1, 63, 1),
+(1, 64, 1),
+(2, 58, 1),
+(2, 59, 1),
+(2, 60, 1),
+(2, 61, 1),
+(2, 62, 1);
 
 -- --------------------------------------------------------
 
@@ -382,50 +341,20 @@ CREATE TABLE `couple_grupo` (
 --
 
 INSERT INTO `couple_grupo` (`id_grupo`, `id_pareja`, `id_campeonato`) VALUES
-(1, 1, 1),
-(1, 40, 1),
-(2, 2, 1),
-(3, 3, 1),
-(3, 4, 1),
-(3, 41, 1),
-(4, 5, 1),
-(4, 6, 1),
-(5, 7, 1),
-(5, 32, 1),
-(5, 33, 1),
-(5, 34, 1),
-(5, 35, 1),
-(5, 36, 1),
-(5, 37, 1),
-(5, 38, 1),
-(6, 8, 1),
-(7, 9, 1),
-(7, 10, 1),
-(7, 11, 1),
-(7, 12, 1),
-(7, 13, 1),
-(7, 14, 1),
-(7, 15, 1),
-(7, 16, 1),
-(7, 39, 1),
-(8, 17, 1),
-(8, 18, 1),
-(8, 42, 1),
-(8, 43, 1),
-(8, 44, 1),
-(9, 19, 1),
-(9, 20, 1),
-(9, 21, 1),
-(9, 22, 1),
-(9, 23, 1),
-(9, 24, 1),
-(9, 25, 1),
-(9, 26, 1),
-(9, 27, 1),
-(9, 28, 1),
-(9, 29, 1),
-(9, 30, 1),
-(9, 31, 1);
+(1, 51, 1),
+(1, 52, 1),
+(1, 53, 1),
+(1, 54, 1),
+(1, 55, 1),
+(1, 56, 1),
+(1, 63, 1),
+(1, 64, 1),
+(2, 57, 1),
+(3, 60, 1),
+(3, 61, 1),
+(4, 58, 1),
+(4, 59, 1),
+(4, 62, 1);
 
 -- --------------------------------------------------------
 
@@ -444,50 +373,20 @@ CREATE TABLE `couple_nivel` (
 --
 
 INSERT INTO `couple_nivel` (`id_nivel`, `id_pareja`, `id_campeonato`) VALUES
-(1, 1, 1),
-(1, 3, 1),
-(1, 4, 1),
-(1, 7, 1),
-(1, 11, 1),
-(1, 12, 1),
-(1, 14, 1),
-(1, 15, 1),
-(1, 18, 1),
-(1, 22, 1),
-(1, 26, 1),
-(1, 27, 1),
-(1, 29, 1),
-(1, 30, 1),
-(1, 31, 1),
-(1, 32, 1),
-(1, 33, 1),
-(1, 34, 1),
-(1, 35, 1),
-(1, 36, 1),
-(1, 37, 1),
-(1, 38, 1),
-(1, 40, 1),
-(1, 41, 1),
-(2, 2, 1),
-(2, 8, 1),
-(2, 9, 1),
-(2, 13, 1),
-(2, 16, 1),
-(2, 21, 1),
-(2, 24, 1),
-(2, 28, 1),
-(2, 39, 1),
-(3, 5, 1),
-(3, 6, 1),
-(3, 10, 1),
-(3, 17, 1),
-(3, 19, 1),
-(3, 20, 1),
-(3, 23, 1),
-(3, 25, 1),
-(3, 42, 1),
-(3, 43, 1),
-(3, 44, 1);
+(2, 51, 1),
+(2, 52, 1),
+(2, 53, 1),
+(2, 54, 1),
+(2, 55, 1),
+(2, 56, 1),
+(2, 60, 1),
+(2, 61, 1),
+(2, 63, 1),
+(2, 64, 1),
+(3, 57, 1),
+(3, 58, 1),
+(3, 59, 1),
+(3, 62, 1);
 
 -- --------------------------------------------------------
 
@@ -561,15 +460,10 @@ CREATE TABLE `grupo` (
 --
 
 INSERT INTO `grupo` (`id_grupo`, `id_categoria`, `id_nivel`, `id_campeonato`) VALUES
-(1, 2, 1, 1),
-(2, 3, 2, 1),
-(3, 3, 1, 1),
-(4, 3, 3, 1),
-(5, 1, 1, 1),
-(6, 2, 2, 1),
-(7, 1, 2, 1),
-(8, 2, 3, 1),
-(9, 1, 3, 1);
+(1, 1, 2, 1),
+(2, 1, 3, 1),
+(3, 2, 2, 1),
+(4, 2, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -592,8 +486,7 @@ CREATE TABLE `new` (
 
 INSERT INTO `new` (`id_noticia`, `titulo`, `subtitulo`, `cuerpo`, `fecha`, `hora`) VALUES
 (1, 'Nueva Pista en O polígono', 'cccccc', 'A pradeira ruxía verde e leda', '10/08/2018', '15:41'),
-(2, 'XXIII Carreira Paseo do Miño', 'iiiiii', 'A pradeira ruxía verde e leda', '03/02/2017', '08:34'),
-(3, 'Deporte como forma de vida', 'eeeeeee', 'A pradeira ruxía verde e leda', '18/09/2019', '17:16');
+(2, 'XXIII Carreira Paseo do Miño', 'iiiiii', 'A pradeira ruxía verde e leda', '03/02/2017', '08:34');
 
 -- --------------------------------------------------------
 
@@ -627,6 +520,16 @@ CREATE TABLE `payment` (
   `login` varchar(20) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `payment`
+--
+
+INSERT INTO `payment` (`id_pago`, `concepto`, `login`) VALUES
+(1, 'Reserva', 'admin'),
+(2, 'Reserva', 'admin'),
+(3, 'Reserva', 'admin'),
+(4, 'Reserva', 'admin');
+
 -- --------------------------------------------------------
 
 --
@@ -639,6 +542,32 @@ CREATE TABLE `ranking` (
   `p_ganados` varchar(3) COLLATE utf8_spanish_ci NOT NULL,
   `puntos` varchar(3) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `ranking`
+--
+
+INSERT INTO `ranking` (`id_pareja`, `p_jugados`, `p_ganados`, `puntos`) VALUES
+(7, '0', '0', '0'),
+(11, '3', '2', '6'),
+(14, '4', '2', '6'),
+(18, '6', '2', '6'),
+(31, '2', '1', '3'),
+(32, '1', '1', '3'),
+(33, '2', '1', '3'),
+(34, '2', '1', '3'),
+(35, '3', '2', '6'),
+(36, '1', '0', '0'),
+(37, '0', '0', '0'),
+(38, '0', '0', '0'),
+(51, '0', '0', '0'),
+(52, '0', '0', '0'),
+(53, '0', '0', '0'),
+(54, '0', '0', '0'),
+(55, '0', '0', '0'),
+(56, '0', '0', '0'),
+(63, '0', '0', '0'),
+(64, '0', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -654,6 +583,15 @@ CREATE TABLE `reservation` (
   `fecha` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `precio` varchar(5) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `reservation`
+--
+
+INSERT INTO `reservation` (`id_reserva`, `id_pista`, `login`, `hora_inicio`, `fecha`, `precio`) VALUES
+(6, 'P0', 'admin', '09:00', '2019-11-22', '5.5'),
+(7, 'P0', 'admin', '10:30', '2019-11-22', '5.5'),
+(8, 'P0', 'admin', '18:30', '2019-11-23', '5.5');
 
 -- --------------------------------------------------------
 
@@ -817,7 +755,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`login`, `nombre`, `apellido`, `password`, `dni`, `email`, `pais`, `sexo`, `telefono`, `fecha`, `foto`, `rol_id`) VALUES
 ('abeijon_antonio', 'Antonio', 'Abeijon', 'root', '99116644H', 'abeijon_antonio@gmail.com', 'EspaÃ±a', 'Masculino', 633170771, '1946-01-01', 'ABP46_Diagrma Lógico.png', 1),
 ('acarmen', 'Carmen', 'Agueda', 'root', '43464269P', 'carminha@outlook.com', 'España', 'Femenino', 766661242, '1992-07-05', 'banner2.jpg', 2),
-('admin', 'Charles', 'Somoziña', 'admin', '46110791T', 'flalonso17@esei.uvigo.es', 'Alemania', 'Masculino', 666133017, '1997-09-15', 'user1.jpg', 1),
+('admin', 'Charles', 'Somoziña', 'admin', '46110791T', 'flalonso17@esei.uvigo.es', 'Suiza', 'Masculino', 666133017, '1997-09-15', 'cancel.png', 1),
 ('aine', 'Aine', 'Rocha', 'root', '43509260I', 'aine@outlook.com', 'España', 'Femenino', 786861231, '1998-08-26', 'banner2.jpg', 2),
 ('andreita', 'Andrea', 'Calleja', 'root', '44554222L', 'andreita@outlook.com', 'España', 'Femenino', 666661201, '1997-12-07', 'banner2.jpg', 2),
 ('anita32', 'Ana', 'Fernandez', 'root', '44294260D', 'anafer_32@outlook.com', 'España', 'Femenino', 733861201, '1997-09-15', 'banner2.jpg', 2),
@@ -885,6 +823,7 @@ INSERT INTO `user` (`login`, `nombre`, `apellido`, `password`, `dni`, `email`, `
 ('leti96', 'Ana', 'Medina', 'root', '84294260D', 'leti96@outlook.com', 'España', 'Femenino', 789866788, '1996-01-08', 'banner2.jpg', 2),
 ('libertad_franco', 'Franco', 'Libertad', 'root', '38248189J', 'libertad_franco@gmail.com', 'EspaÃ±a', 'Masculino', 690275369, '1974-09-29', 'banner2.jpg', 1),
 ('lola', 'Lola', 'Agra', 'root', '45674232E', 'lola68@outlook.com', 'España', 'Femenino', 698861201, '1968-03-11', 'banner2.jpg', 2),
+('loser', 'Antonio', 'López', 'root', '32901894S', 'antonio_lr@yahoo.es', 'España', 'Masculino', 663009701, '1962-09-29', 'banner1.jpg', 2),
 ('lucia_atm', 'Lucia', 'Puga', 'root', '35340416L', 'luciatm@gmail.com', 'España', 'Femenino', 655399823, '1994-12-20', 'banner2.jpg', 2),
 ('lucilu', 'Lucia', 'Ramirez', 'root', '54294765G', 'lucilu56@outlook.com', 'España', 'Femenino', 634461539, '1996-05-06', 'banner2.jpg', 2),
 ('Luis_Clemente_Guadil', 'Luis', 'Clemente', 'root', '78836661S', 'luis_guadilla_rral@gmail.com', 'España', 'Masculino', 966723402, '1998-12-11', 'banner2.jpg', 2),
@@ -1156,7 +1095,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `championship`
 --
 ALTER TABLE `championship`
-  MODIFY `id_campeonato` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_campeonato` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `chat`
@@ -1168,13 +1107,13 @@ ALTER TABLE `chat`
 -- AUTO_INCREMENT de la tabla `clash`
 --
 ALTER TABLE `clash`
-  MODIFY `id_enfrentamiento` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_enfrentamiento` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `couple`
 --
 ALTER TABLE `couple`
-  MODIFY `id_pareja` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_pareja` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT de la tabla `game`
@@ -1186,7 +1125,7 @@ ALTER TABLE `game`
 -- AUTO_INCREMENT de la tabla `grupo`
 --
 ALTER TABLE `grupo`
-  MODIFY `id_grupo` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_grupo` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `new`
@@ -1204,13 +1143,13 @@ ALTER TABLE `nivel`
 -- AUTO_INCREMENT de la tabla `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id_pago` tinyint(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pago` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id_reserva` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_reserva` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`

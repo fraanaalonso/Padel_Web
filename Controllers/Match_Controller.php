@@ -306,9 +306,7 @@ Switch ($_REQUEST['action']){
 
 		 default:
 
-		 //include_once '../Functions/funciones.php';
 
-		
 
 				if (!$_POST){
 					include_once '../Models/MATCH_MODEL.php';
@@ -316,14 +314,27 @@ Switch ($_REQUEST['action']){
 				}
 				else{
 					  include_once '../Models/MATCH_MODEL.php';
+					  
 				}
 
-
+				include_once '../Models/PAYMENT_MODEL.php';
+				$pay = new PAYMENT_MODEL('','Promocion',$_SESSION['login'], '5.5', 'Pendiente');
 				$datos = $modelo->SEARCH();
 				$lista = array('Identificador Partido','Identificador de Pista', 'Hora Inicio', 'Fecha Promoción');
 
+				while($lista = $datos->fetch_assoc()){
+					if(cerrarPromocion($lista['id_pista'], $lista['hora_inicio'], $lista['fecha'])){
+						$pendiente = $pay->ADD();
+					}
+
+				}
+
+
+
+				$resul = $modelo->SEARCH();
+				$arreglo = array('Identificador Partido','Identificador de Pista', 'Hora Inicio', 'Fecha Promoción');
 				
-				new SHOWALL_VIEW($lista, $datos);
+				new SHOWALL_VIEW($arreglo, $resul);
 
 		
 

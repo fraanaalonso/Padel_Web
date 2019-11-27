@@ -304,6 +304,16 @@ Switch ($_REQUEST['action']){
 				new MESSAGE('Uno de los usuarios ya está inscrito en el campeonato', "./Championship_Controller.php?action=REGISTRAR&id_campeonato=$currentChamp[0]");
 			}
 			else{
+
+				if(($sexoCapitan[7] == 'Masculino' && $sexoSocio[7] == 'Masculino' && $categoriaSeleccionada=='3') || ($sexoCapitan[7] == 'Femenino' && $sexoSocio[7] == 'Femenino' && $categoriaSeleccionada=='3')){
+					new MESSAGE('Para la categoría Mixta los sexos de los participantes deben ser opuestos', "./Championship_Controller.php?action=REGISTRAR&id_campeonato=$currentChamp[0]" );
+				}
+				else{
+
+				if($socio == $_SESSION['login']){
+					new MESSAGE('Emparejamiento incorrecto', "./Championship_Controller.php?action=REGISTRAR&id_campeonato=$currentChamp[0]");
+				}
+				else{
 			$aux3 = new CHAMPIONSHIP_MODEL('','','','');
 
 			$pareja = new COUPLE_MODEL($id_pareja, $capitan, $socio);
@@ -334,6 +344,8 @@ Switch ($_REQUEST['action']){
 
 
 			new MESSAGE($result5, './Championship_Controller.php');
+		}
+		}
 		}
 		}
 		}
@@ -377,7 +389,7 @@ Switch ($_REQUEST['action']){
 
 					
                      $respuesta = $modelo->SEARCH();
-					$lista = array('Identificador de Pista','Inicio Campeonato', 'Límite de Inscripción', 'ID Normativa');
+					$lista = array('Identificador de Campeonato','Inicio Campeonato', 'Límite de Inscripción', 'ID Normativa');
 					new SHOWALL_VIEW($lista, $respuesta);
 					
 				}

@@ -31,6 +31,7 @@ class SHOWALL_VIEW
    
     <a href="../Controllers/Match_Controller.php?action=SEARCH"><span class="lnr lnr-magnifier" style="font-size: 35px"></span></a>
     <a href="../Controllers/Match_Controller.php?action=SHOWMYPROMOTIONS"><span class="lnr lnr-list" style="font-size: 35px"></span></a>
+    <a href="../Controllers/Payment_Controller.php?action=SHOWMYPAYMENTS"><span class="lnr lnr-cart" style="font-size: 35px"></span></a>
     <a href="../Controllers/Match_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
 
 </div>

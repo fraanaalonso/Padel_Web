@@ -119,7 +119,7 @@ Switch ($_REQUEST['action']){
 		include_once '../Models/PAYMENT_MODEL.php';
 			
 			$reserva = new RESERVATION_MODEL(' ', $_REQUEST['id_pista'],$_REQUEST['login'], $_REQUEST['hora_inicio'],$_REQUEST['fecha'], $_REQUEST['precio']);
-			$pay = new PAYMENT_MODEL('','Reserva', $_SESSION['login']);
+			$pay = new PAYMENT_MODEL('','Reserva', $_SESSION['login'], $_REQUEST['precio'], 'Pagado');
 
 			$pago = $pay->añadirPago();
 			$resultado = $reserva->ADD();

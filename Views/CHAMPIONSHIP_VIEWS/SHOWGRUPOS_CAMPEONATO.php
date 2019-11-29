@@ -69,6 +69,9 @@ class SHOWGRUPOS_CAMPEONATO
 <a href="../Controllers/Clash_Controller.php?action=SHOWRANKING&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-list editar"></span></a>
 </span></a>
 
+<a href="../Controllers/Championship_Controller.php?action=OCTAVOS&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-chevron-right-circle editar"></span></a>
+</span></a>
+
 
 </td>
 

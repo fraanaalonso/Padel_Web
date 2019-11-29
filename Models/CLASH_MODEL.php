@@ -43,7 +43,7 @@ class CLASH_MODEL
 
 	function SEARCHCLASHBYCATNIV($id_campeonato, $id_nivel, $id_categoria){
 
-		$sql = "SELECT * FROM CLASH WHERE clash.id_campeonato = '".$id_campeonato."' and clash.nivel = '".$id_nivel."' and clash.categoria = '".$id_categoria."'";
+		$sql = "SELECT * FROM CLASH WHERE clash.id_campeonato = '".$id_campeonato."' and clash.nivel = '".$id_nivel."' and clash.categoria = '".$id_categoria."' and clash.tipo = 'liga'";
 
 		 // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
     if (!($resultado = $this->bd->query($sql))){
@@ -52,6 +52,22 @@ class CLASH_MODEL
     else{ // si la busqueda es correcta devolvemos el recordset resultado
 		return $resultado;
 	}
+
+	}
+
+
+	function SEARCHOCTAVOS($id_campeonato, $id_nivel, $id_categoria){
+
+		$sql = "SELECT * FROM CLASH WHERE clash.id_campeonato = '".$id_campeonato."' and clash.nivel = '".$id_nivel."' and clash.categoria = '".$id_categoria."' and clash.tipo = 'octavos'";
+
+		 // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+    if (!($resultado = $this->bd->query($sql))){
+		return 'Error en la consulta sobre la base de datos';
+	}
+    else{ // si la busqueda es correcta devolvemos el recordset resultado
+		return $resultado;
+	}
+
 
 	}
 

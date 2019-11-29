@@ -288,7 +288,7 @@ function combinarParejas($id_campeonato, $nivel, $categoria){
 	$fechaComienzo = $fetch_fecha[0];
 
 		$resultado = $this->bd->query($sql);
-		$fila = $resultado->fetch_row();
+		//$fila = $resultado->fetch_row();
 		
 		$gruposSeleccionado;
 		$i = 0;
@@ -320,9 +320,10 @@ function combinarParejas($id_campeonato, $nivel, $categoria){
 					hora_inicio,
 					fecha,
 					categoria,
-					nivel
+					nivel,
+					tipo
 					) 
-						VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."', '0', '0', '".$horaSeleccionada."', '".$fechas."', '".$categoria."', '".$nivel."')";
+						VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."', '0', '0', '".$horaSeleccionada."', '".$fechas."', '".$categoria."', '".$nivel."','liga')";
 
 				$this->bd->query($consulta);
 
@@ -339,31 +340,70 @@ function combinarParejas($id_campeonato, $nivel, $categoria){
 }
 
 
-function combinarPlayOffs($id_campeonato, $nivel, $categoria){
-
-	$sql = "SELECT ranking.id_pareja from ranking inner join championship_couple on ranking.id_pareja = championship_couple.id_pareja INNER join championship_categoria on championship_couple.id_campeonato=championship_categoria.id_campeonato inner join categoria on championship_categoria.id_categoria=categoria.id_categoria inner join championship_nivel on championship_couple.id_campeonato=championship_nivel.id_campeonato inner join nivel on championship_nivel.id_nivel=nivel.id_nivel and championship_couple.id_campeonato='".$id_campeonato."' and nivel.nivel='".$nivel."' and categoria.categoria='".$categoria."' ORDER BY ranking.puntos DESC LIMIT 0,4"; //obtenemos las 4 primeras tuplas de la clasificación 
-
-
-	$sql2 = "SELECT ranking.id_pareja from ranking inner join championship_couple on ranking.id_pareja = championship_couple.id_pareja INNER join championship_categoria on championship_couple.id_campeonato=championship_categoria.id_campeonato inner join categoria on championship_categoria.id_categoria=categoria.id_categoria inner join championship_nivel on championship_couple.id_campeonato=championship_nivel.id_campeonato inner join nivel on championship_nivel.id_nivel=nivel.id_nivel and championship_couple.id_campeonato='".$id_campeonato."' and nivel.nivel='".$nivel."' and categoria.categoria='".$categoria."' ORDER BY ranking.puntos DESC LIMIT 0,4"; //obtenemos las 4 primeras tuplas de la clasificación 
+function octavosPlayoffs($id_campeonato, $nivel, $categoria){
+ 
 
 
-		$sqlFecha = "SELECT clash.fecha from clash ORDER BY fecha DESC LIMIT 1";
+	$sql = "SELECT ranking.id_pareja from ranking inner join championship_couple on ranking.id_pareja = championship_couple.id_pareja INNER join championship_categoria on championship_couple.id_campeonato=championship_categoria.id_campeonato inner join categoria on championship_categoria.id_categoria=categoria.id_categoria inner join championship_nivel on championship_couple.id_campeonato=championship_nivel.id_campeonato inner join nivel on championship_nivel.id_nivel=nivel.id_nivel and championship_couple.id_campeonato='".$id_campeonato."' and nivel.nivel='".$nivel."' and categoria.categoria='".$categoria."' ORDER BY ranking.puntos DESC LIMIT 0,8"; //obtenemos las 4 primeras tuplas de la clasificación 
+
+
+	$sqlFecha = "SELECT clash.fecha from clash ORDER BY fecha DESC LIMIT 1";
 		$resulFecha = $this->bd->query($sqlFecha);
 		$fetch_fecha = $resulFecha->fetch_row();
 		$fechaComienzo = $fetch_fecha[0];
 
 
-		$resultado = $this->bd->query($sql);
-		$fila = $resultado->fetch_row();
 
-		$resultado2 = $this->bd->query($sql);
-		$fila2 = $resultado2->fetch_row();
+
+
+		$resultado = $this->bd->query($sql);
+		//$fila = $resultado->fetch_array();
+
+
+		$gruposSeleccionado = array();
+		$k = 0;
+
+		while($fila = $resultado->fetch_array(MYSQLI_NUM)){
+			$gruposSeleccionado[$k] = $fila[0];
+			$k++;
+
+
+		}
+
+
 		
 		
-		$playoffs = array_combine($fila, $fila2);
 		
 		$fechas = $fechaComienzo;
 		$horas = array('09:00', '10:30', '12:00', '13:30', '17:00', '18:30', '20:00', '21:30');
+
+
+		$array1 = array();
+		$array2 = array();
+
+
+		for($i = 0; $i <= (count($gruposSeleccionado)-1)/2; $i++){
+			
+		$array1[] = $gruposSeleccionado[$i];
+			
+	
+		}
+
+
+		
+
+		for($j = count($gruposSeleccionado)-1; $j >=4; $j--){
+	
+		$array2[] = $gruposSeleccionado[$j];
+
+	
+	}
+
+
+
+
+	$playoffs = array_combine($array1, $array2);
+	
 		
 		foreach ($playoffs as $key => $value) {
 			
@@ -383,9 +423,10 @@ function combinarPlayOffs($id_campeonato, $nivel, $categoria){
 					hora_inicio,
 					fecha,
 					categoria,
-					nivel
+					nivel,
+					tipo
 					) 
-						VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."', '0', '0', '".$horaSeleccionada."', '".$fechas."', '".$categoria."', '".$nivel."')";
+					VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."', '0', '0', '".$horaSeleccionada."', '".$fechas."', '".$categoria."', '".$nivel."','octavos')";
 
 				$this->bd->query($consulta);
 
@@ -397,7 +438,7 @@ function combinarPlayOffs($id_campeonato, $nivel, $categoria){
 		}
 		else{ 
 
-			return 'Enfrentamientos correctamente creados';
+			return 'Fase de Octavos creada';
 		}
 
 

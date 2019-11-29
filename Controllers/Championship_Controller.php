@@ -18,8 +18,9 @@ include '../Views/CHAMPIONSHIP_VIEWS/SHOWALL_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/ADD_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/SEARCH_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/SHOWCURRENT_VIEW.php';
-include '../Views/CLASH_VIEWS/SHOWOCTAVOS.php';
 include '../Views/CLASH_VIEWS/SHOWCUARTOS.php';
+include '../Views/CLASH_VIEWS/SHOWSEMIS.php';
+include '../Views/CLASH_VIEWS/SHOWFINAL.php';
 include '../Views/CHAMPIONSHIP_VIEWS/DELETE_CHAMPIONSHIP_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/EDIT_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/InscribirCampeonatoView.php';
@@ -146,30 +147,6 @@ Switch ($_REQUEST['action']){
 			$volver = $camp->RellenaDatos();
 
 			if(!$_POST){
-				/*
-				
-				$arrayAscendiente = getGruposAsc($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
-				$arrayDescendiente = getGruposDes($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
-
-				$array1 = array();
-				$array2 = array();
-
-
-				if(!comprobarSiExisteEnfrentamiento($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria'])){
-
-				while($array1 = $arrayAscendiente->fetch_assoc()){
-				while($array2 = $arrayAscendiente->fetch_assoc()){
-
-				$modelo = new CLASH_MODEL('0',$_REQUEST['id_campeonato'],$array1['id_pareja'],$array2['id_pareja'],'','','','', $_REQUEST['categoria'], $_REQUEST['nivel']);
-
-				$respuesta = $modelo->ADD();
-
-				
-
-				break;
-					}
-					
-				}*/
 
 				if(!comprobarSiExistenEnfrentamiento($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria'], 'liga')){
 
@@ -198,35 +175,6 @@ Switch ($_REQUEST['action']){
 
 			break;
 
-	case 'OCTAVOS':
-
-	include_once '../Models/CLASH_MODEL.php';
-	include_once '../Models/CHAMPIONSHIP_MODEL.php';
-
-	if(!comprobarSiExistenEnfrentamiento($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria'], 'octavos')){
-
-	$champ = new CHAMPIONSHIP_MODEL('','','','');
-	$octavos = $champ->octavosPlayoffs($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
-	$modelo = new CLASH_MODEL('','','','','','','','','','');
-	$resultado = $modelo->SEARCHOCTAVOS($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
-	$datos = array();
-
-
-	new SHOWOCTAVOS($datos, $resultado, $_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
-	}
-	else{
-
-	$modelo = new CLASH_MODEL('','','','','','','','','','');
-	$resultado = $modelo->SEARCHOCTAVOS($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
-	$datos = array();
-
-
-	new SHOWOCTAVOS($datos, $resultado, $_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
-	}
-
-	break;
-
-
 	case 'CUARTOS':
 
 	include_once '../Models/CLASH_MODEL.php';
@@ -236,24 +184,89 @@ Switch ($_REQUEST['action']){
 
 	$champ = new CHAMPIONSHIP_MODEL('','','','');
 	$octavos = $champ->cuartosPlayoffs($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
-	}
-	else{
-
-	$modelo = new CLASH_MODEL('','','','','','','','','','');
+	$modelo = new CLASH_MODEL('','','','','','','','','','','','');
 	$resultado = $modelo->SEARCHCUARTOS($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
 	$datos = array();
 
 
 	new SHOWCUARTOS($datos, $resultado, $_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
 	}
+	else{
+
+	$modelo = new CLASH_MODEL('','','','','','','','','','','','');
+	$resultado = $modelo->SEARCHCUARTOS($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	$datos = array();
+
+
+	new SHOWCUARTOS($datos, $resultado, $_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	}
+
+	break;
+
+
+	case 'SEMIS':
+
+	include_once '../Models/CLASH_MODEL.php';
+	include_once '../Models/CHAMPIONSHIP_MODEL.php';
+
+	if(!comprobarSiExistenEnfrentamiento($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria'], 'semifinales')){
+
+	$champ = new CHAMPIONSHIP_MODEL('','','','');
+	$cuartos = $champ->semisPlayoffs($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	$modelo = new CLASH_MODEL('','','','','','','','','','','','');
+	$resultado = $modelo->SEARCHSEMIS($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	$datos = array();
+
+
+	new SHOWSEMIS($datos, $resultado,  $_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	}
+	else{
+
+	$modelo = new CLASH_MODEL('','','','','','','','','','','','');
+	$resultado = $modelo->SEARCHSEMIS($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	$datos = array();
+
+
+	new SHOWSEMIS($datos, $resultado,  $_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	}
 		
+	break;
+
+	case 'FINAL':
+
+	include_once '../Models/CLASH_MODEL.php';
+	include_once '../Models/CHAMPIONSHIP_MODEL.php';
+
+	if(!comprobarSiExistenEnfrentamiento($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria'], 'final')){
+
+	$champ = new CHAMPIONSHIP_MODEL('','','','');
+	$cuartos = $champ->finalPlayoffs($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	$modelo = new CLASH_MODEL('','','','','','','','','','','','');
+	$resultado = $modelo->SEARCHFINAL($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	$datos = array();
+
+
+	new SHOWFINAL($datos, $resultado,  $_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	}
+	else{
+
+	$modelo = new CLASH_MODEL('','','','','','','','','','','','');
+	$resultado = $modelo->SEARCHFINAL($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	$datos = array();
+
+
+	new SHOWFINAL($datos, $resultado,  $_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	}
+
+
+
 	break;
 
 
 	case 'SHOWENFRENTAMIENTOS':
 			include_once '../Models/CLASH_MODEL.php';
 
-			$modelo = new CLASH_MODEL('','','','','','','','','','');
+			$modelo = new CLASH_MODEL('','','','','','','','','','','','');
 				$resultado = $modelo->SEARCHCLASHBYCATNIV($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
 				$datos = array();
 

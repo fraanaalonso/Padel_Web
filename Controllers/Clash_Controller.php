@@ -25,12 +25,14 @@ function get_data(){
 	$id_campeonato = $_REQUEST['id_campeonato'];
 	$id_pareja1 ='';
 	$id_pareja2 = '' ;
+	$resultado = '';
 	$numSetsPareja1='';
 	$numSetsPareja2 ='';
 	$hora_inicio ='';
 	$fecha = '';
 	$categoria = '';
 	$nivel='';
+	$tipo ='';
 	$action = $_REQUEST['action'];
 
 	$CLASH = new CLASH_MODEL(
@@ -38,12 +40,14 @@ function get_data(){
 		$id_campeonato,
 		$id_pareja1,
 		$id_pareja2,
+		$resultado,
 		$numSetsPareja1,
 		$numSetsPareja2,
 		$hora_inicio,
 		$fecha,
 		$categoria,
 		$nivel,
+		$tipo,
 		$action
 	);
 
@@ -75,9 +79,11 @@ Switch ($_REQUEST['action']){
 					$valores= $x ->RellenaDatos();
 
 					 
-					$modelo = new CLASH_MODEL($_REQUEST['id_enfrentamiento'],$_REQUEST['id_campeonato'], $_REQUEST['id_pareja1'],$_REQUEST['id_pareja2'], $_REQUEST['numSetsPareja1'], $_REQUEST['numSetsPareja2'], $_REQUEST['hora_inicio'], $_REQUEST['fecha'], $_REQUEST['categoria'], $_REQUEST['nivel']);
+					$modelo = new CLASH_MODEL($_REQUEST['id_enfrentamiento'],$_REQUEST['id_campeonato'], $_REQUEST['id_pareja1'],$_REQUEST['id_pareja2'], $_REQUEST['resultado'], $_REQUEST['numSetsPareja1'], $_REQUEST['numSetsPareja2'], $_REQUEST['hora_inicio'], $_REQUEST['fecha'], $_REQUEST['categoria'], $_REQUEST['nivel'], $_REQUEST['tipo']);
 
 					$respuesta = $modelo->EDIT();
+
+					if($_REQUEST['tipo'] == 'liga'){
 
 					if($_REQUEST['numSetsPareja1'] > $_REQUEST['numSetsPareja2']){
 						include_once '../Models/RANKING_MODEL.php';
@@ -98,6 +104,7 @@ Switch ($_REQUEST['action']){
 						$ranking = new RANKING_MODEL('','','','');
 						$pareja = $ranking->establecerEmpate($_REQUEST['id_pareja2'], $_REQUEST['id_pareja1']);
 					}
+				}
 
 
 					new MESSAGE($respuesta, "./Championship_Controller.php?action=GENERARGRUPOS&id_campeonato=$valores[1]");
@@ -109,7 +116,7 @@ Switch ($_REQUEST['action']){
 		case 'SHOWRANKING':
 
 					 include_once '../Models/CLASH_MODEL.php';
-					$modelo= new CLASH_MODEL('','','','','','','','','','');
+					$modelo= new CLASH_MODEL('','','','','','','','','','','','');
 					$valores= $modelo ->obtenerClasificacionGrupo($_REQUEST['id_campeonato'], $_REQUEST['categoria'], $_REQUEST['nivel']);
 					$miembros = array();
 					new SHOWRANKING($miembros, $valores, $_REQUEST['id_campeonato'], $_REQUEST['categoria'], $_REQUEST['nivel']);

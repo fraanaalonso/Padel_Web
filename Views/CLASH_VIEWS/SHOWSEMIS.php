@@ -9,13 +9,13 @@
 class SHOWSEMIS
 {
 	
-	function __construct($fila, $resultado)
+	function __construct($fila, $resultado, $campeonato, $nivel, $categoria)
 	{
-		$this->execute($fila, $resultado);
+		$this->execute($fila, $resultado, $campeonato, $nivel, $categoria);
 	}
 
 
-	function execute($fila, $resultado){
+	function execute($fila, $resultado, $campeonato, $nivel, $categoria){
 		include '../Views/HeaderPost.php';
 
 ?>
@@ -24,6 +24,7 @@ class SHOWSEMIS
 
 <div class="iconos-superiores">
    <a href="../Controllers/Championship_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+   <a href="../Controllers/Championship_Controller.php?action=FINAL&id_campeonato=<?php echo $campeonato?>&categoria=<?php echo $categoria?>&nivel=<?php echo $nivel?>"><span class="lnr lnr-list" style="font-size: 35px"></span></a>
 
 </div>
 

@@ -1,21 +1,18 @@
 
 <?php
-
-
-
 /**
 * 
 */
-class SHOWOCTAVOS
+class SHOWFINAL
 {
 	
-	function __construct($fila, $resultado, $campeonato,$nivel, $categoria)
+	function __construct($fila, $resultado)
 	{
-		$this->execute($fila, $resultado, $campeonato,$nivel, $categoria);
+		$this->execute($fila, $resultado);
 	}
 
 
-	function execute($fila, $resultado, $campeonato,$nivel, $categoria){
+	function execute($fila, $resultado){
 		include '../Views/HeaderPost.php';
 
 ?>
@@ -24,8 +21,6 @@ class SHOWOCTAVOS
 
 <div class="iconos-superiores">
    <a href="../Controllers/Championship_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
-   <a href="../Controllers/Championship_Controller.php?action=CUARTOS&id_campeonato=<?php echo $campeonato?>&nivel=<?php echo $nivel?>&categoria=<?php echo $categoria?>"><span class="lnr lnr-list" style="font-size: 35px"></span></a>
-
 
 </div>
 
@@ -35,7 +30,7 @@ class SHOWOCTAVOS
 
 
 		<tr>
-			<th>Octavos de Final</th>
+			<th>Final</th>
 		</tr>
 
 

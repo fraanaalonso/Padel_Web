@@ -340,7 +340,7 @@ function combinarParejas($id_campeonato, $nivel, $categoria){
 }
 
 
-function octavosPlayoffs($id_campeonato, $nivel, $categoria){
+function cuartosPlayoffs($id_campeonato, $nivel, $categoria){
  
 
 
@@ -352,13 +352,7 @@ function octavosPlayoffs($id_campeonato, $nivel, $categoria){
 		$fetch_fecha = $resulFecha->fetch_row();
 		$fechaComienzo = $fetch_fecha[0];
 
-
-
-
-
 		$resultado = $this->bd->query($sql);
-		//$fila = $resultado->fetch_array();
-
 
 		$gruposSeleccionado = array();
 		$k = 0;
@@ -368,39 +362,24 @@ function octavosPlayoffs($id_campeonato, $nivel, $categoria){
 			$k++;
 
 
-		}
-
-
-		
-		
+		}	
 		
 		$fechas = $fechaComienzo;
 		$horas = array('09:00', '10:30', '12:00', '13:30', '17:00', '18:30', '20:00', '21:30');
-
-
 		$array1 = array();
 		$array2 = array();
-
 
 		for($i = 0; $i <= (count($gruposSeleccionado)-1)/2; $i++){
 			
 		$array1[] = $gruposSeleccionado[$i];
 			
-	
 		}
-
-
-		
 
 		for($j = count($gruposSeleccionado)-1; $j >=4; $j--){
 	
 		$array2[] = $gruposSeleccionado[$j];
-
 	
 	}
-
-
-
 
 	$playoffs = array_combine($array1, $array2);
 	
@@ -426,7 +405,7 @@ function octavosPlayoffs($id_campeonato, $nivel, $categoria){
 					nivel,
 					tipo
 					) 
-					VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."', '0', '0', '".$horaSeleccionada."', '".$fechas."', '".$categoria."', '".$nivel."','octavos')";
+					VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."', '0', '0', '".$horaSeleccionada."', '".$fechas."', '".$categoria."', '".$nivel."','cuartos')";
 
 				$this->bd->query($consulta);
 
@@ -446,9 +425,119 @@ function octavosPlayoffs($id_campeonato, $nivel, $categoria){
 }
 
 
+function semisPlayoffs($id_campeonato, $nivel, $categoria){
+
+	$sql = "SELECT * from clash where clash.numSetsPareja1 > clash.numSetsPareja2 || clash.numSetsPareja2 > clash.numSetsPareja1 and clash.tipo = 'cuartos'";
+	$resultado = $this->bd->query($sql);
+	$sqlFecha = "SELECT clash.fecha from clash where clash.tipo = 'cuartos' ORDER BY fecha DESC LIMIT 1";
+	$resulFecha = $this->bd->query($sqlFecha);
+	$fetch_fecha = $resulFecha->fetch_row();
+	$fechaComienzo = $fetch_fecha[0];
+	$fechas = $fechaComienzo;
+	$horas = array('09:00', '10:30', '12:00', '13:30', '17:00', '18:30', '20:00', '21:30');
+
+
+	while ($fila = $resultado->fetch_assoc()){
+		if($fila['numSetsPareja1'] > $fila['numSetsPareja2']){
+
+				$id_pareja1[] = $fila['id_pareja1'];
+
+
+		}
+
+		if( $fila['numSetsPareja2'] > $fila['numSetsPareja1']){
+				$id_pareja2[] = $fila['id_pareja2'];
+
+		}
+
+	
+	}
+	$cuartos = array_combine($id_pareja1, $id_pareja2);
+
+
+	foreach ($cuartos as $key => $value) {
+		
+		$fechas = date("Y-m-d",strtotime($fechas)+86400);
+		$horaSeleccionada =  $horas[array_rand($horas)];
+
+		$consulta = "INSERT INTO CLASH (
+					id_enfrentamiento,
+					id_campeonato,
+					id_pareja1,
+					id_pareja2,
+					numSetsPareja1,
+					numSetsPareja2,
+					hora_inicio,
+					fecha,
+					categoria,
+					nivel,
+					tipo
+					) 
+					VALUES (DEFAULT, '".$id_campeonato."', '".$key."', '".$value."', '0', '0', '".$horaSeleccionada."', '".$fechas."', '".$categoria."', '".$nivel."','semifinales')";
+
+				$this->bd->query($consulta);
+	}
+
+}
 
 
 
+
+function finalPlayoffs($id_campeonato, $nivel, $categoria){
+
+	$sql = "SELECT * from clash where clash.numSetsPareja1 > clash.numSetsPareja2 || clash.numSetsPareja2 > clash.numSetsPareja1 and clash.tipo = 'semifinales'";
+	$resultado = $this->bd->query($sql);
+	$sqlFecha = "SELECT clash.fecha from clash where clash.tipo = 'semifinales' ORDER BY fecha DESC LIMIT 1";
+	$resulFecha = $this->bd->query($sqlFecha);
+	$fetch_fecha = $resulFecha->fetch_row();
+	$fechaComienzo = $fetch_fecha[0];
+	$fechas = $fechaComienzo;
+	$horas = array('09:00', '10:30', '12:00', '13:30', '17:00', '18:30', '20:00', '21:30');
+
+
+	while ($fila = $resultado->fetch_assoc()){
+		if($fila['numSetsPareja1'] > $fila['numSetsPareja2']){
+
+				$id_pareja1[] = $fila['id_pareja1'];
+
+
+		}
+
+		if( $fila['numSetsPareja2'] > $fila['numSetsPareja1']){
+				$id_pareja2[] = $fila['id_pareja2'];
+
+		}
+
+	
+	}
+	$cuartos = array_combine($id_pareja1, $id_pareja2);
+
+
+	foreach ($cuartos as $key => $value) {
+		
+		$fechas = date("Y-m-d",strtotime($fechas)+86400);
+		$horaSeleccionada =  $horas[array_rand($horas)];
+
+		$consulta = "INSERT INTO CLASH (
+					id_enfrentamiento,
+					id_campeonato,
+					id_pareja1,
+					id_pareja2,
+					numSetsPareja1,
+					numSetsPareja2,
+					hora_inicio,
+					fecha,
+					categoria,
+					nivel,
+					tipo
+					) 
+					VALUES (DEFAULT, '".$id_campeonato."', '".$key."', '".$value."', '0', '0', '".$horaSeleccionada."', '".$fechas."', '".$categoria."', '".$nivel."','final')";
+
+				$this->bd->query($consulta);
+	}
+
+
+}
 
 
 

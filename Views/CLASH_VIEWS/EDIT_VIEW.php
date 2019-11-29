@@ -68,11 +68,21 @@ class EDIT_VIEW
             </td>
           </tr>
 
+
+          <tr>
+            <th>Resultado</th>
+            <td>
+
+                <input type="text" readonly  name="resultado" value="<?php echo $valores[4] ?>">
+              
+            </td>
+          </tr>
+
           <tr>
             <th>Numero de Sets Pareja 1</th>
             <td>
 
-              <input type="text"  name="numSetsPareja1" value="<?php echo $valores[4] ?>">
+              <input type="text"  name="numSetsPareja1" value="<?php echo $valores[5] ?>">
               
             </td>
           </tr>
@@ -81,7 +91,7 @@ class EDIT_VIEW
             <th>Numero de Sets Pareja 2</th>
             <td>
 
-              <input type="text"  name="numSetsPareja2" value="<?php echo $valores[5] ?>">
+              <input type="text"  name="numSetsPareja2" value="<?php echo $valores[6] ?>">
               
             </td>
           </tr>
@@ -90,7 +100,7 @@ class EDIT_VIEW
             <th>Hora Comienzo</th>
             <td>
 
-                <input type="text" readonly name="hora_inicio" value="<?php echo $valores[6] ?>">
+                <input type="text" readonly name="hora_inicio" value="<?php echo $valores[7] ?>">
             </td>
           </tr>
 
@@ -98,7 +108,7 @@ class EDIT_VIEW
             <th>Fecha</th>
             <td>
 
-               <input type="text" readonly name="fecha" value="<?php echo $valores[7] ?>">
+               <input type="text" readonly name="fecha" value="<?php echo $valores[8] ?>">
             </td>
           </tr>
 
@@ -106,7 +116,7 @@ class EDIT_VIEW
             <th>Categoria</th>
             <td>
 
-                <input type="text" readonly name="categoria" value="<?php echo $valores[8] ?>">
+                <input type="text" readonly name="categoria" value="<?php echo $valores[9] ?>">
             </td>
           </tr>
 
@@ -115,10 +125,14 @@ class EDIT_VIEW
             <th>Nivel</th>
             <td>
 
-                <input type="text" readonly name="nivel" value="<?php echo $valores[9] ?>">
+                <input type="text" readonly name="nivel" value="<?php echo $valores[10] ?>">
             </td>
           </tr>
 
+          
+
+        <input type="hidden" readonly name="tipo" value="<?php echo $valores[11] ?>">
+           
 
 
 
@@ -133,6 +147,13 @@ class EDIT_VIEW
 
          <button type="submit" style=" width: 20%; position: absolute; top: 800px; left: 700px; " class="btn btn-light"><span class="lnr lnr-pencil" style="font-size: 35px; text-align: center;"></span></button>
               
+
+
+<script type="text/javascript">
+  
+
+
+</script>
 
 
 

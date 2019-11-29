@@ -18,22 +18,24 @@ class CLASH_MODEL
 	var $fecha;
 	var $id_categoria;
 	var $id_nivel;
+	var $tipo;
 
 
 
-	function __construct($id_enfrentamiento, $id_campeonato, $id_pareja1, $id_pareja2, $numSetsPareja1, $numSetsPareja2, $hora_inicio, $fecha, $id_categoria, $id_nivel){
+	function __construct($id_enfrentamiento, $id_campeonato, $id_pareja1, $id_pareja2, $resultado, $numSetsPareja1, $numSetsPareja2, $hora_inicio, $fecha, $id_categoria, $id_nivel, $tipo){
 
 		$this->id_enfrentamiento = $id_enfrentamiento;
 		$this->id_campeonato = $id_campeonato;
 		$this->id_pareja1 = $id_pareja1;
 		$this->id_pareja2 = $id_pareja2;
+		$this->resultado = $resultado;
 		$this->numSetsPareja1 = $numSetsPareja1;
 		$this->numSetsPareja2 = $numSetsPareja2;
 		$this->hora_inicio = $hora_inicio;
 		$this->fecha = $fecha;
 		$this->id_categoria = $id_categoria;
 		$this->id_nivel = $id_nivel;
-
+		$this->tipo = $tipo;
 
 
 		include_once '../includes/db.php';
@@ -56,9 +58,9 @@ class CLASH_MODEL
 	}
 
 
-	function SEARCHOCTAVOS($id_campeonato, $id_nivel, $id_categoria){
+	function SEARCHCUARTOS($id_campeonato, $id_nivel, $id_categoria){
 
-		$sql = "SELECT * FROM CLASH WHERE clash.id_campeonato = '".$id_campeonato."' and clash.nivel = '".$id_nivel."' and clash.categoria = '".$id_categoria."' and clash.tipo = 'octavos'";
+		$sql = "SELECT * FROM CLASH WHERE clash.id_campeonato = '".$id_campeonato."' and clash.nivel = '".$id_nivel."' and clash.categoria = '".$id_categoria."' and clash.tipo = 'cuartos'";
 
 		 // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
     if (!($resultado = $this->bd->query($sql))){
@@ -72,66 +74,41 @@ class CLASH_MODEL
 	}
 
 
-	
+	function SEARCHSEMIS($id_campeonato, $id_nivel, $id_categoria){
+
+		$sql = "SELECT * FROM CLASH WHERE clash.id_campeonato = '".$id_campeonato."' and clash.nivel = '".$id_nivel."' and clash.categoria = '".$id_categoria."' and clash.tipo = 'semifinales'";
+
+		 // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+    if (!($resultado = $this->bd->query($sql))){
+		return 'Error en la consulta sobre la base de datos';
+	}
+    else{ // si la busqueda es correcta devolvemos el recordset resultado
+		return $resultado;
+	}
 
 
-
-	function ADD(){
-
-
-
-        $sql = "SELECT * FROM CLASH WHERE (id_enfrentamiento = '$this->id_enfrentamiento')";
-
-		if (!$result = $this->bd->query($sql)){ 
-			return 'No se ha podido conectar con la base de datos';
-		}
-		else { 
-
-			if ($result->num_rows == 0){ 
-				
-
-				$sql = "INSERT INTO CLASH (
-					id_enfrentamiento,
-					id_campeonato,
-					id_pareja1,
-					id_pareja2,
-					numSetsPareja1,
-					numSetsPareja2,
-					hora_inicio,
-					fecha,
-					categoria,
-					nivel
-					) 
-						VALUES (
-						'$this->id_enfrentamiento',
-						'$this->id_campeonato',
-						'$this->id_pareja1',
-						'$this->id_pareja2',
-						'$this->numSetsPareja1',
-						'$this->numSetsPareja2',
-						'$this->hora_inicio',
-						'$this->fecha',
-						'$this->id_categoria',
-						'$this->id_nivel'
-						)";
-
-
-					
-				
-				if (!$this->bd->query($sql)) { 
-					return 'Error en la inserción';
-				}
-				else{ 
-					return 'Inserción realizada con éxito'; 
-				}
-				
-			}
-			else 
-				return 'Ya existe en la base de datos'; 
-		}
-  
 
 	}
+
+
+	
+
+function SEARCHFINAL($id_campeonato, $id_nivel, $id_categoria){
+
+		$sql = "SELECT * FROM CLASH WHERE clash.id_campeonato = '".$id_campeonato."' and clash.nivel = '".$id_nivel."' and clash.categoria = '".$id_categoria."' and clash.tipo = 'final'";
+
+		 // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+    if (!($resultado = $this->bd->query($sql))){
+		return 'Error en la consulta sobre la base de datos';
+	}
+    else{ // si la busqueda es correcta devolvemos el recordset resultado
+		return $resultado;
+	}
+
+
+	}
+
+
 
 
 
@@ -154,12 +131,15 @@ class CLASH_MODEL
 					id_campeonato = '$this->id_campeonato',
 					id_pareja1 = '$this->id_pareja1',
 					id_pareja2 = '$this->id_pareja2',
+					resultado = '$this->resultado',
 					numSetsPareja1 = '$this->numSetsPareja1',
 					numSetsPareja2 = '$this->numSetsPareja2',
 					hora_inicio = '$this->hora_inicio',
 					fecha = '$this->fecha',
 					categoria = '$this->id_categoria',
-					nivel = '$this->id_nivel'
+					nivel = '$this->id_nivel',
+					tipo = '$this->tipo'
+
 				WHERE ( id_enfrentamiento = '$this->id_enfrentamiento') && (id_campeonato = '$this->id_campeonato') ";
 
 

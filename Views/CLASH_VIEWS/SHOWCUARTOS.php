@@ -23,8 +23,8 @@ class SHOWCUARTOS
 
 
 <div class="iconos-superiores">
-   <a href="../Controllers/Championship_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
-   <a href="../Controllers/Championship_Controller.php?action=SEMIS&id_campeonato=<?php echo $campeonato?>&categoria=<?php echo $categoria?>&nivel=<?php echo $nivel?>"><span class="lnr lnr-list" style="font-size: 35px"></span></a>
+   <a href="../Controllers/Championship_Controller.php?action=SHOWENFRENTAMIENTOS&id_campeonato=<?php echo $campeonato?>&categoria=<?php echo $categoria?>&nivel=<?php echo $nivel?>"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+   <a href="../Controllers/Championship_Controller.php?action=SEMIS&id_campeonato=<?php echo $campeonato?>&categoria=<?php echo $categoria?>&nivel=<?php echo $nivel?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 35px"></span></a>
 
 </div>
 

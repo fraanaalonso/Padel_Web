@@ -241,7 +241,7 @@ function obtenerClasificacionGrupo($id_campeonato, $categoria, $nivel){
 
 	
 
-		function RellenaDatos()
+function RellenaDatos()
 		{	// se construye la sentencia de busqueda de la tupla
 		    $sql = "SELECT * FROM CLASH  WHERE (id_enfrentamiento = '$this->id_enfrentamiento') &&  (id_campeonato = '$this->id_campeonato')";
 		    // Si la busqueda no da resultados, se devuelve el mensaje de que no existe
@@ -252,7 +252,24 @@ function obtenerClasificacionGrupo($id_campeonato, $categoria, $nivel){
 				$result = $resultado->fetch_array();
 				return $result;
 			}
-		} 
+		}
+
+
+
+function accesoPlayoffs(){
+	$sql = "SELECT * FROM CLASH WHERE CLASH.numSetsPareja1 != 0 and CLASH.numSetsPareja2 != 0 and CLASH.tipo='$this->tipo' and CLASH.categoria='$this->id_categoria' and CLASH.nivel='$this->id_nivel' and CLASH.id_campeonato='$this->id_campeonato'";
+
+	$resultado = $this->bd->query($sql);
+
+	if($resultado->num_rows != 0){
+		return 'true';
+	}
+	else{
+		return 'false';
+	}
+
+	
+} 
 
 
 

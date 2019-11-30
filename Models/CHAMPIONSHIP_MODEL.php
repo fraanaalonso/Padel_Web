@@ -357,7 +357,7 @@ function cuartosPlayoffs($id_campeonato, $nivel, $categoria){
 		$gruposSeleccionado = array();
 		$k = 0;
 
-		while($fila = $resultado->fetch_array(MYSQLI_NUM)){
+		while($fila = $resultado->fetch_row()){
 			$gruposSeleccionado[$k] = $fila[0];
 			$k++;
 

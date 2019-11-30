@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2019 a las 23:52:49
+-- Tiempo de generación: 01-12-2019 a las 00:14:39
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.10
 
@@ -26,6 +26,8 @@ DROP DATABASE IF EXISTS `abp46`;
 CREATE DATABASE `abp46` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 USE `abp46`;
+
+
 -- --------------------------------------------------------
 
 --
@@ -177,7 +179,7 @@ INSERT INTO `chat` (`id_chat`, `login`, `mensaje`, `fecha_mensaje`, `hora_mensaj
 --
 
 CREATE TABLE `clash` (
-  `id_enfrentamiento` tinyint(4) NOT NULL,
+  `id_enfrentamiento` bigint(7) NOT NULL,
   `id_campeonato` tinyint(4) NOT NULL,
   `id_pareja1` tinyint(4) NOT NULL,
   `id_pareja2` tinyint(4) NOT NULL,
@@ -412,14 +414,10 @@ CREATE TABLE `game` (
 --
 
 INSERT INTO `game` (`id_partido`, `id_pista`, `hora_inicio`, `fecha`) VALUES
-(2, 'P2', '09:00', '2019-12-18'),
-(3, 'P3', '17:00', '2019-12-14'),
-(4, 'P4', '10:30', '2019-11-14'),
-(5, 'P3', '20:00', '2019-12-17'),
-(6, 'P6', '21:30', '2019-11-17'),
-(7, 'P7', '18:30', '2019-12-10'),
-(8, 'P0', '17:00', '2019-11-20'),
-(9, 'P0', '09:00', '2019-11-27');
+(1, 'P2', '09:00', '2019-12-18'),
+(2, 'P3', '17:00', '2019-12-14'),
+(3, 'P3', '20:00', '2019-12-17');
+
 
 -- --------------------------------------------------------
 
@@ -516,31 +514,7 @@ CREATE TABLE `ranking` (
   `puntos` varchar(3) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `ranking`
---
 
-INSERT INTO `ranking` (`id_pareja`, `p_jugados`, `p_ganados`, `puntos`) VALUES
-(7, '0', '0', '0'),
-(11, '3', '2', '6'),
-(14, '4', '2', '6'),
-(18, '6', '2', '6'),
-(31, '2', '1', '3'),
-(32, '1', '1', '3'),
-(33, '2', '1', '3'),
-(34, '2', '1', '3'),
-(35, '3', '2', '6'),
-(36, '1', '0', '0'),
-(37, '0', '0', '0'),
-(38, '0', '0', '0'),
-(52, '0', '0', '0'),
-(53, '0', '0', '0'),
-(54, '0', '0', '0'),
-(55, '0', '0', '0'),
-(56, '0', '0', '0'),
-(63, '0', '0', '0'),
-(64, '0', '0', '0'),
-(68, '0', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -556,15 +530,6 @@ CREATE TABLE `reservation` (
   `fecha` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `precio` varchar(5) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `reservation`
---
-
-INSERT INTO `reservation` (`id_reserva`, `id_pista`, `login`, `hora_inicio`, `fecha`, `precio`) VALUES
-(6, 'P0', 'admin', '09:00', '2019-11-22', '5.5'),
-(7, 'P0', 'admin', '10:30', '2019-11-22', '5.5'),
-(8, 'P0', 'admin', '18:30', '2019-11-23', '5.5');
 
 -- --------------------------------------------------------
 
@@ -871,17 +836,15 @@ CREATE TABLE `user_game` (
 --
 
 INSERT INTO `user_game` (`login`, `id_partido`) VALUES
-('admin', 2),
-('admin', 9),
-('bros_mario', 8),
-('camino_antonio', 9),
-('carlosm', 3),
+('bros_mario', 1),
+('camino_antonio', 1),
+('carlosm', 1),
 ('fer_rv', 2),
-('jmartinez', 6),
-('lucia_atm', 9),
-('mdolores', 4),
-('mvarela', 5),
-('root', 9);
+('jmartinez', 2),
+('lucia_atm', 2),
+('mdolores', 3),
+('mvarela', 3),
+('root', 3);
 
 --
 -- Índices para tablas volcadas
@@ -1084,7 +1047,7 @@ ALTER TABLE `chat`
 -- AUTO_INCREMENT de la tabla `clash`
 --
 ALTER TABLE `clash`
-  MODIFY `id_enfrentamiento` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_enfrentamiento` bigint(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `couple`
@@ -1096,7 +1059,7 @@ ALTER TABLE `couple`
 -- AUTO_INCREMENT de la tabla `game`
 --
 ALTER TABLE `game`
-  MODIFY `id_partido` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_partido` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `grupo`

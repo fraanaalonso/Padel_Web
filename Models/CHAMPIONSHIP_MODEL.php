@@ -347,7 +347,7 @@ function cuartosPlayoffs($id_campeonato, $nivel, $categoria){
 	$sql = "SELECT ranking.id_pareja from ranking inner join championship_couple on ranking.id_pareja = championship_couple.id_pareja INNER join championship_categoria on championship_couple.id_campeonato=championship_categoria.id_campeonato inner join categoria on championship_categoria.id_categoria=categoria.id_categoria inner join championship_nivel on championship_couple.id_campeonato=championship_nivel.id_campeonato inner join nivel on championship_nivel.id_nivel=nivel.id_nivel and championship_couple.id_campeonato='".$id_campeonato."' and nivel.nivel='".$nivel."' and categoria.categoria='".$categoria."' ORDER BY ranking.puntos DESC LIMIT 0,8"; //obtenemos las 4 primeras tuplas de la clasificación 
 
 
-	$sqlFecha = "SELECT clash.fecha from clash ORDER BY fecha DESC LIMIT 1";
+	$sqlFecha = "SELECT clash.fecha from clash where clash.tipo = 'liga' and clash.id_campeonato = '".$id_campeonato."' and clash.categoria='".$categoria."' and clash.nivel='".$nivel."' ORDER BY fecha DESC LIMIT 1";
 		$resulFecha = $this->bd->query($sqlFecha);
 		$fetch_fecha = $resulFecha->fetch_row();
 		$fechaComienzo = $fetch_fecha[0];
@@ -427,16 +427,17 @@ function cuartosPlayoffs($id_campeonato, $nivel, $categoria){
 
 function semisPlayoffs($id_campeonato, $nivel, $categoria){
 
-	$sql = "SELECT * from clash where clash.numSetsPareja1 > clash.numSetsPareja2 || clash.numSetsPareja2 > clash.numSetsPareja1 and clash.tipo = 'cuartos'";
+	$sql = "SELECT * from clash where clash.id_campeonato='".$id_campeonato."' and clash.categoria='".$categoria."' and clash.nivel='".$nivel."' and (clash.numSetsPareja1 > clash.numSetsPareja2 || clash.numSetsPareja2 > clash.numSetsPareja1) and clash.tipo = 'cuartos'";
 	$resultado = $this->bd->query($sql);
-	$sqlFecha = "SELECT clash.fecha from clash where clash.tipo = 'cuartos' ORDER BY fecha DESC LIMIT 1";
+	$sqlFecha = "SELECT clash.fecha from clash where clash.tipo = 'cuartos' and clash.id_campeonato = '".$id_campeonato."' and clash.categoria='".$categoria."' and clash.nivel='".$nivel."' ORDER BY fecha DESC LIMIT 1";
 	$resulFecha = $this->bd->query($sqlFecha);
 	$fetch_fecha = $resulFecha->fetch_row();
 	$fechaComienzo = $fetch_fecha[0];
 	$fechas = $fechaComienzo;
 	$horas = array('09:00', '10:30', '12:00', '13:30', '17:00', '18:30', '20:00', '21:30');
 
-
+	$id_pareja1 = array();
+	$id_pareja2 = array();
 	while ($fila = $resultado->fetch_assoc()){
 		if($fila['numSetsPareja1'] > $fila['numSetsPareja2']){
 
@@ -452,10 +453,50 @@ function semisPlayoffs($id_campeonato, $nivel, $categoria){
 
 	
 	}
-	$cuartos = array_combine($id_pareja1, $id_pareja2);
 
+	if(count($id_pareja1) == count($id_pareja2)){
+	$semifinales = array_combine($id_pareja1, $id_pareja2);
+	}
+	elseif (count($id_pareja1) > count($id_pareja2) and count($id_pareja2) == 1) {
+	
+	for ($i=0; $i <= count($id_pareja1)-1 ; $i++) { 
+		
+		$id_pareja2[] = $id_pareja1[$i];
+		unset($id_pareja1[$i]);
+		break;
+	}
 
-	foreach ($cuartos as $key => $value) {
+	$semifinales = array_combine($id_pareja1, $id_pareja2);
+	
+	}
+	elseif (count($id_pareja1) < count($id_pareja2) and count($id_pareja1) == 1) {
+		for ($i=0; $i <= count($id_pareja2)-1 ; $i++) { 
+		
+		$id_pareja1[] = $id_pareja2[$i];
+		unset($id_pareja2[$i]);
+		break;
+	}
+
+	$semifinales = array_combine($id_pareja1, $id_pareja2);
+	}
+	elseif (count($id_pareja1) > count($id_pareja2) and count($id_pareja2) == 0) {
+		for ($i=0; $i <= (count($id_pareja1)/2) ; $i++) { 
+		
+		$id_pareja2[] = $id_pareja1[$i];
+		unset($id_pareja1[$i]);
+	}
+	$semifinales = array_combine($id_pareja1, $id_pareja2);
+	}
+	elseif (count($id_pareja1) < count($id_pareja2) and count($id_pareja1) == 0) {
+		for ($i=0; $i <= (count($id_pareja2)/2) ; $i++) { 
+		
+		$id_pareja1[] = $id_pareja2[$i];
+		unset($id_pareja2[$i]);
+	}
+	$semifinales = array_combine($id_pareja1, $id_pareja2);
+	}
+
+	foreach ($semifinales as $key => $value) {
 		
 		$fechas = date("Y-m-d",strtotime($fechas)+86400);
 		$horaSeleccionada =  $horas[array_rand($horas)];
@@ -485,15 +526,16 @@ function semisPlayoffs($id_campeonato, $nivel, $categoria){
 
 function finalPlayoffs($id_campeonato, $nivel, $categoria){
 
-	$sql = "SELECT * from clash where clash.numSetsPareja1 > clash.numSetsPareja2 || clash.numSetsPareja2 > clash.numSetsPareja1 and clash.tipo = 'semifinales'";
+	$sql = "SELECT * from clash where clash.id_campeonato='".$id_campeonato."' and clash.categoria='".$categoria."' and clash.nivel='".$nivel."' and (clash.numSetsPareja1 > clash.numSetsPareja2 || clash.numSetsPareja2 > clash.numSetsPareja1) and clash.tipo = 'semifinales'";
 	$resultado = $this->bd->query($sql);
-	$sqlFecha = "SELECT clash.fecha from clash where clash.tipo = 'semifinales' ORDER BY fecha DESC LIMIT 1";
+	$sqlFecha = "SELECT clash.fecha from clash where clash.tipo = 'semifinales' and clash.id_campeonato = '".$id_campeonato."' and clash.categoria='".$categoria."' and clash.nivel='".$nivel."' ORDER BY fecha DESC LIMIT 1";
 	$resulFecha = $this->bd->query($sqlFecha);
 	$fetch_fecha = $resulFecha->fetch_row();
 	$fechaComienzo = $fetch_fecha[0];
 	$fechas = $fechaComienzo;
 	$horas = array('09:00', '10:30', '12:00', '13:30', '17:00', '18:30', '20:00', '21:30');
-
+	$id_pareja1 = array();
+	$id_pareja2 = array();
 
 	while ($fila = $resultado->fetch_assoc()){
 		if($fila['numSetsPareja1'] > $fila['numSetsPareja2']){
@@ -510,10 +552,31 @@ function finalPlayoffs($id_campeonato, $nivel, $categoria){
 
 	
 	}
-	$cuartos = array_combine($id_pareja1, $id_pareja2);
 
 
-	foreach ($cuartos as $key => $value) {
+	if(count($id_pareja1) == count($id_pareja2)){
+	$final = array_combine($id_pareja1, $id_pareja2);
+	}
+	elseif (count($id_pareja1) > count($id_pareja2)) {
+		for ($i=0; $i <= (count($id_pareja1)/2) ; $i++) { 
+		
+		$id_pareja2[] = $id_pareja1[$i];
+		unset($id_pareja1[$i]);
+	}
+		$final = array_combine($id_pareja1, $id_pareja2);
+	}
+	elseif (count($id_pareja1) < count($id_pareja2)) {
+		for ($i=0; $i <= (count($id_pareja2)/2) ; $i++) { 
+		
+		$id_pareja1[] = $id_pareja2[$i];
+		unset($id_pareja2[$i]);
+	}
+		$final = array_combine($id_pareja1, $id_pareja2);
+	}
+
+
+
+	foreach ($final as $key => $value) {
 		
 		$fechas = date("Y-m-d",strtotime($fechas)+86400);
 		$horaSeleccionada =  $horas[array_rand($horas)];

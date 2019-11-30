@@ -23,7 +23,7 @@ class EDIT_VIEW
 
 
 <div class="iconos-superiores">
-            <a href="./Championship_Controller.php?action=GENERARGRUPOS&id_campeonato=<?php echo $valores[1] ?>"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+            <a href="./Championship_Controller.php?action=CUARTOS&id_campeonato=<?php echo $valores[1] ?>&categoria=<?php echo $valores[9] ?>&nivel=<?php echo $valores[10] ?>"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
 
 
 

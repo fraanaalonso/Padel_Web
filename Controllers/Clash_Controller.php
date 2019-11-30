@@ -106,8 +106,18 @@ Switch ($_REQUEST['action']){
 					}
 				}
 
+				elseif ($_REQUEST['tipo'] == 'cuartos') {
+					new MESSAGE($respuesta, "./Championship_Controller.php?action=CUARTOS&id_campeonato=$valores[1]&categoria=$valores[9]&nivel=$valores[10]");
+				}
+				elseif ($_REQUEST['tipo'] == 'semifinales') {
+					new MESSAGE($respuesta, "./Championship_Controller.php?action=SEMIS&id_campeonato=$valores[1]&categoria=$valores[9]&nivel=$valores[10]");
+				}
+				elseif ($_REQUEST['tipo'] == 'final') {
+					new MESSAGE($respuesta, "./Championship_Controller.php?action=FINAL&id_campeonato=$valores[1]&categoria=$valores[9]&nivel=$valores[10]");
+				}
 
-					new MESSAGE($respuesta, "./Championship_Controller.php?action=GENERARGRUPOS&id_campeonato=$valores[1]");
+
+					
 				}
 		break;
 

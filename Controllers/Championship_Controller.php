@@ -302,16 +302,16 @@ Switch ($_REQUEST['action']){
 
 
 	case 'SHOWENFRENTAMIENTOS':
-			include_once '../Models/CLASH_MODEL.php';
+	include_once '../Models/CLASH_MODEL.php';
 
-			$modelo = new CLASH_MODEL('','','','','','','','','','','','');
-				$resultado = $modelo->SEARCHCLASHBYCATNIV($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
-				$datos = array();
+	$modelo = new CLASH_MODEL('','','','','','','','','','','','');
+	$resultado = $modelo->SEARCHCLASHBYCATNIV($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	$datos = array();
 
 
-				new CLASH_SHOWALL($datos, $resultado, $_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	new CLASH_SHOWALL($datos, $resultado, $_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
 
-		break;
+	break;
 
 	case 'GENERARGRUPOS':
 

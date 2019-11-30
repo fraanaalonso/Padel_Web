@@ -48,6 +48,7 @@ function comprobarTablaCampeonato(){
 }
 
 
+
 function comprobarTablaNoticias(){
 
 	include_once '../includes/db.php';
@@ -552,8 +553,6 @@ function minInscritos($campeonato,$nivel,$categoria){
 		return true;
 	}
 }
-
-
 
 
 

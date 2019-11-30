@@ -42,7 +42,7 @@ class CLASH_SHOWALL
 			<th>Fecha</th>
 			<th>Hora Comienzo</th>
 			<th>ID Campeonato</th>>
-			<th>ID Enfrentamiento</th>
+			<th>Resultado</th>
 			<th>Pareja 1</th>
 			<th>Num Sets Pareja1</th>
 			<th>Pareja 2</th>
@@ -74,7 +74,7 @@ while($fila = $resultado->fetch_assoc()){
 
 
 				<td cowspan="1">
-				<?php	echo $fila['id_enfrentamiento'] ?>
+				<?php	echo $fila['resultado'] ?>
 				</td>
 
 				<td cowspan="1">

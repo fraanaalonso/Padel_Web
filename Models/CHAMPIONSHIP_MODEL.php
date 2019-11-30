@@ -1,14 +1,6 @@
 <?php
 
 
-
-
-
-
-
-/**
-* 
-*/
 class CHAMPIONSHIP_MODEL
 {
 	var $id_campeonato;
@@ -298,23 +290,27 @@ function combinarParejas($id_campeonato, $nivel, $categoria){
 			$i++;
 		}
 
+
 		$longitud = count($gruposSeleccionado);
 		$fechas = $fechaComienzo;
 		$horas = array('09:00', '10:30', '12:00', '13:30', '17:00', '18:30', '20:00', '21:30');
 		
-		for($i = 0; $i < ($longitud - 1); $i++){
-			for($j = ($i + 1); $j < $longitud; $j++){
+		for($s = 0; $s < ($longitud - 1); $s++){
+			for($j = ($s + 1); $j < $longitud; $j++){
 
 				$fechas = date("Y-m-d",strtotime($fechas)+86400);
 				$horaSeleccionada =  $horas[array_rand($horas)];
-				$id_pareja1 = $gruposSeleccionado[$i];
+				$id_pareja1 = $gruposSeleccionado[$s];
 				$id_pareja2 = $gruposSeleccionado[$j];
+			
+
 
 				$consulta = "INSERT INTO CLASH (
 					id_enfrentamiento,
 					id_campeonato,
 					id_pareja1,
 					id_pareja2,
+					resultado,
 					numSetsPareja1,
 					numSetsPareja2,
 					hora_inicio,
@@ -323,12 +319,18 @@ function combinarParejas($id_campeonato, $nivel, $categoria){
 					nivel,
 					tipo
 					) 
-						VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."', '0', '0', '".$horaSeleccionada."', '".$fechas."', '".$categoria."', '".$nivel."','liga')";
+						VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."','0', '0', '0', '".$horaSeleccionada."', '".$fechas."', '".$categoria."', '".$nivel."','liga')";
 
 				$this->bd->query($consulta);
+				
 
 			}
 		}
+
+	
+		$borrado = "DELETE FROM CLASH where id_campeonato='".$id_campeonato."' and categoria='".$categoria."' and nivel = '".$nivel."' and clash.id_pareja1='".$id_pareja1."' and clash.id_pareja2='".$id_pareja2."' and clash.tipo='liga' LIMIT 1 ";
+		 $this->bd->query($borrado);
+
 
 		 if (!($resultado = $this->bd->query($consulta))){
 			return 'Error en la inserción'; 
@@ -397,6 +399,7 @@ function cuartosPlayoffs($id_campeonato, $nivel, $categoria){
 					id_campeonato,
 					id_pareja1,
 					id_pareja2,
+					resultado,
 					numSetsPareja1,
 					numSetsPareja2,
 					hora_inicio,
@@ -405,19 +408,21 @@ function cuartosPlayoffs($id_campeonato, $nivel, $categoria){
 					nivel,
 					tipo
 					) 
-					VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."', '0', '0', '".$horaSeleccionada."', '".$fechas."', '".$categoria."', '".$nivel."','cuartos')";
+					VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."','0', '0', '0', '".$horaSeleccionada."', '".$fechas."', '".$categoria."', '".$nivel."','cuartos')";
 
 				$this->bd->query($consulta);
 
 			
 		}
+		$borrado = "DELETE FROM CLASH where id_campeonato='".$id_campeonato."' and categoria='".$categoria."' and nivel = '".$nivel."' and clash.id_pareja1='".$id_pareja1."' and clash.id_pareja2='".$id_pareja2."' and clash.tipo='cuartos' LIMIT 1 ";
+		 $this->bd->query($borrado);
 
 		 if (!($resultado = $this->bd->query($consulta))){
 			return 'Error en la inserción'; 
 		}
 		else{ 
 
-			return 'Fase de Octavos creada';
+			return 'Fase de Cuartos creada';
 		}
 
 
@@ -506,6 +511,7 @@ function semisPlayoffs($id_campeonato, $nivel, $categoria){
 					id_campeonato,
 					id_pareja1,
 					id_pareja2,
+					resultado,
 					numSetsPareja1,
 					numSetsPareja2,
 					hora_inicio,
@@ -514,7 +520,7 @@ function semisPlayoffs($id_campeonato, $nivel, $categoria){
 					nivel,
 					tipo
 					) 
-					VALUES (DEFAULT, '".$id_campeonato."', '".$key."', '".$value."', '0', '0', '".$horaSeleccionada."', '".$fechas."', '".$categoria."', '".$nivel."','semifinales')";
+					VALUES (DEFAULT, '".$id_campeonato."', '".$key."', '".$value."','0', '0', '0', '".$horaSeleccionada."', '".$fechas."', '".$categoria."', '".$nivel."','semifinales')";
 
 				$this->bd->query($consulta);
 	}

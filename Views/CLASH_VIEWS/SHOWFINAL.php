@@ -20,7 +20,7 @@ class SHOWFINAL
 
 
 <div class="iconos-superiores">
-   <a href="../Controllers/Championship_Controller.php?action=FINAL&id_campeonato=<?php echo $campeonato?>&categoria=<?php echo $categoria?>&nivel=<?php echo $nivel?>"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+   <a href="../Controllers/Championship_Controller.php?action=SEMIS&id_campeonato=<?php echo $campeonato?>&categoria=<?php echo $categoria?>&nivel=<?php echo $nivel?>"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
 
 </div>
 

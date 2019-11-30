@@ -28,10 +28,10 @@ class EDIT_VIEW
         <form method="post" action="../Controllers/Clash_Controller.php?action=EDIT">
           <table>
            <tr>
-            <th>ID Entrenamiento</th>
+            <th>Resultado</th>
             <td>
 
-              <input type="text" readonly  name="id_enfrentamiento" value="<?php echo $valores[0] ?>">
+              <input type="text"   name="resultado" value="<?php echo $valores[4] ?>">
               
             </td>
           </tr>
@@ -58,16 +58,6 @@ class EDIT_VIEW
             <td>
 
                 <input type="text" readonly  name="id_pareja2" value="<?php echo $valores[3] ?>">
-              
-            </td>
-          </tr>
-
-
-          <tr>
-            <th>Resultado</th>
-            <td>
-
-                <input type="text" readonly  name="resultado" value="<?php echo $valores[4] ?>">
               
             </td>
           </tr>

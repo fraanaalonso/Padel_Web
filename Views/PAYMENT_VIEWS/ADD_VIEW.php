@@ -40,8 +40,8 @@ class ADD_PAY
                 <div class="panel-body">
                     <form role="form">
                     <div class="form-group">
-                        <label for="cardNumber">
-                            NÚMERO DE TARJETA</label>
+                        <a for="cardNumber">
+                            NÚMERO DE TARJETA</a>
                         <div class="input-group">
                             <input type="text" class="form-control" id="cardNumber" placeholder="8888 7777 6666 5555"
                                 required autofocus />
@@ -51,8 +51,8 @@ class ADD_PAY
                     <div class="row">
                         <div class="col-xs-7 col-md-7">
                             <div class="form-group">
-                                <label for="expityMonth">
-                                    FECHA DE EXPIRACIÓN</label>
+                                <a for="expityMonth">
+                                    FECHA DE EXPIRACIÓN</a>
                                 <div class="col-xs-6 col-lg-6 pl-ziro">
                                     <input type="text" class="form-control" id="expityMonth" placeholder="MM" required />
                                 </div>
@@ -62,8 +62,8 @@ class ADD_PAY
                         </div>
                         <div class="col-xs-5 col-md-5 pull-right">
                             <div class="form-group">
-                                <label for="cvCode">
-                                    CÓDIGO CV</label>
+                                <a for="cvCode">
+                                    CÓDIGO CV</a>
                                 <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
                             </div>
                         </div>

@@ -33,7 +33,7 @@ class CLASH_SHOWALL
 
 
 		<tr>
-			<th>Jornada</th>
+			<th>Liga Regular</th>
 		</tr>
 
 
@@ -78,7 +78,15 @@ while($fila = $resultado->fetch_assoc()){
 
 				<td cowspan="1">
 				<?php
-					echo $fila['id_pareja1']
+					echo "[";
+					echo $fila['id_pareja1'];
+					echo "]";
+					echo "-";
+					echo "<strong>";
+					echo $fila['l1p1'];
+					echo "/";
+					echo $fila['l2p1'];
+					echo "</strong>";
 				?>
 				</td>
 
@@ -89,7 +97,18 @@ while($fila = $resultado->fetch_assoc()){
 
 
 				<td cowspan="1">
-					<?php echo $fila['id_pareja2'] ?>
+					<?php 
+					echo "[";
+					echo $fila['id_pareja2'];
+					echo "]";
+					echo "-";
+					echo "<strong>";
+					echo $fila['l1p2'];
+					echo "/";
+					echo $fila['l2p2'];
+					echo "</strong>";
+					?>
+
 				</td>
 
 

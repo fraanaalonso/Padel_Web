@@ -104,6 +104,8 @@ Switch ($_REQUEST['action']){
 						$ranking = new RANKING_MODEL('','','','');
 						$pareja = $ranking->establecerEmpate($_REQUEST['id_pareja2'], $_REQUEST['id_pareja1']);
 					}
+					new MESSAGE($respuesta, "./Championship_Controller.php?action=SHOWENFRENTAMIENTOS&id_campeonato=$valores[1]&categoria=$valores[9]&nivel=$valores[10]");
+
 				}
 
 				elseif ($_REQUEST['tipo'] == 'cuartos') {

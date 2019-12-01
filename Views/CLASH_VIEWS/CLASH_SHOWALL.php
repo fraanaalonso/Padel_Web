@@ -23,7 +23,7 @@ class CLASH_SHOWALL
 
 
 <div class="iconos-superiores">
-   <a href="../Controllers/Championship_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+   <a href="../Controllers/Championship_Controller.php?action=GENERARGRUPOS&id_campeonato=<?php echo $campeonato?>"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
    <a href="../Controllers/Championship_Controller.php?action=CUARTOS&id_campeonato=<?php  echo $campeonato ?>&id_grupo=<?php  echo $grupo ?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 35px"></span></a>
 
 </div>
@@ -123,9 +123,26 @@ while($fila = $resultado->fetch_assoc()){
 
 				<td>
 
+				<?php
+				if($_SESSION['login'] == $fila['l1p1'] || $_SESSION['login'] == $fila['l2p1'] || $_SESSION['login'] == $fila['l1p2'] || $_SESSION['login'] == $fila['l2p2']){
+				?>	
+
 				 
-				 <a href="../Controllers/Clash_Controller.php?action=CONFIRMACION&id_enfrentamiento=<?php echo $fila['id_enfrentamiento']?>&fecha=<?php echo $fila['fecha']?>&hora_inicio=<?php echo $fila['hora_inicio']?>&l1p1=<?php echo $fila['l1p1']?>&l2p1=<?php echo $fila['l2p1']?>&l1p2=<?php echo $fila['l1p2']?>&l2p2=<?php echo $fila['l2p2']?>&confirmacion=no"><span style="font-size: 35px" class="lnr lnr-thumbs-down borrar"></span></a>
+				 <a href="../Controllers/Clash_Controller.php?action=CONFIRMACION&id_enfrentamiento=<?php echo $fila['id_enfrentamiento']?>&fecha=<?php echo $fila['fecha']?>&hora_inicio=<?php echo $fila['hora_inicio']?>&l1p1=<?php echo $fila['l1p1']?>&l2p1=<?php echo $fila['l2p1']?>&l1p2=<?php echo $fila['l1p2']?>&l2p2=<?php echo $fila['l2p2']?>&confirmacion=no"><span style="font-size: 35px" class="lnr lnr-thumbs-down editar"></span></a>
+
+				 <?php
+				}
+				else{
+				?>
+
+				<a href=""><span style="font-size: 35px" class="lnr lnr-thumbs-down borrar"></span></a>
+
+
+				<?php
+				}
+				?>
 				</td>
+				
 
 				<td cowspan="1">
 				 <?php

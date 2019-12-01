@@ -142,8 +142,8 @@ Switch ($_REQUEST['action']){
 		include_once '../Models/RESERVATION_MODEL.php';
 
 		$x= get_data();
-		$valores= $x ->RellenaDatos();
-
+		$valores= $x->RellenaDatos();
+/*
 		$id_enfrentamiento = $_POST['id_enfrentamiento'];
 		$fecha = $_POST['fecha'];
 		$hora = $_POST['hora_inicio'];
@@ -159,11 +159,14 @@ Switch ($_REQUEST['action']){
 			/*Borrado de reserva y enfrentamiento*/
 
 
-		}
-
+		
+/*
 		else{
 			new MESSAGE('No tiene permisos para realizar esta acción', "./Championship_Controller.php?action=SHOWENFRENTAMIENTOS&id_campeonato=$valores[1]&categoria=$valores[9]&nivel=$valores[10]");
-		}
+		}*/
+
+
+		new MESSAGE('Aún no lo he hecho Delamaister/Somozape', "./Championship_Controller.php");
 
 		break;
 

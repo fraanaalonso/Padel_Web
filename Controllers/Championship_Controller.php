@@ -211,7 +211,7 @@ Switch ($_REQUEST['action']){
 	}
 	}
 	else{
-		new MESSAGE('La Fase de Liga Regular no ha terminado todavía.', "../Controllers/Clash_Controller.php?action=SHOWENFRENTAMIENTOS&id_campeonato=$volver[0]&id_grupo=$grupo");
+		new MESSAGE('La Fase de Liga Regular no ha terminado todavía.', "../Controllers/Championship_Controller.php?action=SHOWENFRENTAMIENTOS&id_campeonato=$volver[0]&id_grupo=$grupo");
 	}
 
 	break;

@@ -34,6 +34,10 @@ class EDIT_VIEW
               <input type="text"   name="resultado" value="<?php echo $valores[4] ?>">
               
             </td>
+
+            <input type="hidden"   name="id_enfrentamiento" value="<?php echo $valores[0] ?>">
+
+
           </tr>
            <tr>
             <th>ID Campeonato</th>
@@ -97,25 +101,12 @@ class EDIT_VIEW
           </tr>
 
           <tr>
-            <th>Categoria</th>
-            <td>
-
-                <input type="text" readonly name="categoria" value="<?php echo $valores[9] ?>">
-            </td>
-          </tr>
-
-
-          <tr>
-            <th>Nivel</th>
-            <td>
-
-                <input type="text" readonly name="nivel" value="<?php echo $valores[10] ?>">
-            </td>
-          </tr>
+           
 
           
 
-        <input type="hidden" readonly name="tipo" value="<?php echo $valores[11] ?>">
+        <input type="hidden" readonly name="tipo" value="<?php echo $valores[9] ?>">
+        <input type="hidden" readonly name="id_grupo" value="<?php echo $valores[10] ?>">
            
 
 

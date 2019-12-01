@@ -6,13 +6,13 @@
 class SHOWFINAL
 {
 	
-	function __construct($fila, $resultado, $campeonato, $categoria, $nivel)
+	function __construct($fila, $resultado, $campeonato, $grupo)
 	{
-		$this->execute($fila, $resultado, $campeonato, $categoria, $nivel);
+		$this->execute($fila, $resultado, $campeonato, $grupo);
 	}
 
 
-	function execute($fila, $resultado, $campeonato, $categoria, $nivel){
+	function execute($fila, $resultado, $campeonato, $grupo){
 		include '../Views/HeaderPost.php';
 
 ?>
@@ -20,7 +20,7 @@ class SHOWFINAL
 
 
 <div class="iconos-superiores">
-   <a href="../Controllers/Championship_Controller.php?action=SEMIS&id_campeonato=<?php echo $campeonato?>&categoria=<?php echo $categoria?>&nivel=<?php echo $nivel?>"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+   <a href="../Controllers/Championship_Controller.php?action=SEMIS&id_campeonato=<?php echo $campeonato?>&id_grupo=<?php echo $grupo?>"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
 
 </div>
 

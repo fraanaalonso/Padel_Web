@@ -148,14 +148,14 @@ Switch ($_REQUEST['action']){
 
 			if(!$_POST){
 
-				if(!comprobarSiExistenEnfrentamiento($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria'], 'liga')){
+				if(!comprobarSiExistenEnfrentamiento($_REQUEST['id_campeonato'], $_REQUEST['id_grupo'], 'liga')){
 
 				$currChampionship = new CHAMPIONSHIP_MODEL($_REQUEST['id_campeonato'], '','','','');
-				$respuesta = $currChampionship->combinarParejas($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+				$respuesta = $currChampionship->combinarParejas($_REQUEST['id_campeonato'], $_REQUEST['id_grupo']);
 
 				$ranking = new RANKING_MODEL('','','','');
 				$regRanking = new RANKING_MODEL('','','','');
-				$result = $ranking->getRanking($_REQUEST['id_campeonato'], $_REQUEST['categoria'], $_REQUEST['nivel']);
+				$result = $ranking->getRanking($_REQUEST['id_campeonato'], $_REQUEST['id_grupo']);
 				$fila = array();
 
 
@@ -177,39 +177,41 @@ Switch ($_REQUEST['action']){
 
 	case 'CUARTOS':
 
+	$grupo = $_REQUEST['id_grupo'];
+
 	include_once '../Models/CLASH_MODEL.php';
 	include_once '../Models/CHAMPIONSHIP_MODEL.php';
 	$camp = new CHAMPIONSHIP_MODEL($_REQUEST['id_campeonato'], '','','','');
 	$volver = $camp->RellenaDatos();
 
-	$fase = new CLASH_MODEL('', $_REQUEST['id_campeonato'], '','','','','','','',$_REQUEST['categoria'],$_REQUEST['nivel'],'liga');
+	$fase = new CLASH_MODEL('', $_REQUEST['id_campeonato'], '','','','','','','','liga', $_REQUEST['id_grupo']);
 	$objeto = $fase->accesoPlayoffs();
 
-	if ($objeto == 'true') {
+	if ($objeto == 'false') {
 
-	if(!comprobarSiExistenEnfrentamiento($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria'], 'cuartos')){
+	if(!comprobarSiExistenEnfrentamiento($_REQUEST['id_campeonato'], $_REQUEST['id_grupo'], 'cuartos')){
 
 	$champ = new CHAMPIONSHIP_MODEL('','','','');
-	$octavos = $champ->cuartosPlayoffs($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	$octavos = $champ->cuartosPlayoffs($_REQUEST['id_campeonato'], $_REQUEST['id_grupo'] );
 	$modelo = new CLASH_MODEL('','','','','','','','','','','','');
-	$resultado = $modelo->SEARCHCUARTOS($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	$resultado = $modelo->SEARCHCUARTOS($_REQUEST['id_campeonato'],  $_REQUEST['id_grupo']);
 	$datos = array();
 
 
-	new SHOWCUARTOS($datos, $resultado, $_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	new SHOWCUARTOS($datos, $resultado, $_REQUEST['id_campeonato'], $_REQUEST['id_grupo']);
 	}
 	else{
 
 	$modelo = new CLASH_MODEL('','','','','','','','','','','','');
-	$resultado = $modelo->SEARCHCUARTOS($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	$resultado = $modelo->SEARCHCUARTOS($_REQUEST['id_campeonato'],  $_REQUEST['id_grupo']);
 	$datos = array();
 
 
-	new SHOWCUARTOS($datos, $resultado, $_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	new SHOWCUARTOS($datos, $resultado, $_REQUEST['id_campeonato'],  $_REQUEST['id_grupo']);
 	}
 	}
 	else{
-		new MESSAGE('La Fase de Liga Regular no ha terminado todavía.', "../Controllers/Championship_Controller.php?action=GENERARGRUPOS&id_campeonato=$volver[0]");
+		new MESSAGE('La Fase de Liga Regular no ha terminado todavía.', "../Controllers/Clash_Controller.php?action=SHOWENFRENTAMIENTOS&id_campeonato=$volver[0]&id_grupo=$grupo");
 	}
 
 	break;
@@ -220,38 +222,40 @@ Switch ($_REQUEST['action']){
 	include_once '../Models/CLASH_MODEL.php';
 	include_once '../Models/CHAMPIONSHIP_MODEL.php';
 
+	$grupo = $_REQUEST['id_grupo'];
+
 	$camp = new CHAMPIONSHIP_MODEL($_REQUEST['id_campeonato'], '','','','');
 	$volver = $camp->RellenaDatos();
 
-	$fase = new CLASH_MODEL('', $_REQUEST['id_campeonato'], '','','','','','','',$_REQUEST['categoria'],$_REQUEST['nivel'],'cuartos');
+	$fase = new CLASH_MODEL('', $_REQUEST['id_campeonato'], '','','','','','','','cuartos', $_REQUEST['id_grupo']);
 	$objeto = $fase->accesoPlayoffs();
 
-	if ($objeto == 'true') {
+	if ($objeto == 'false') {
 
-	if(!comprobarSiExistenEnfrentamiento($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria'], 'semifinales')){
+	if(!comprobarSiExistenEnfrentamiento($_REQUEST['id_campeonato'],  $_REQUEST['id_grupo'], 'semifinales')){
 
 	$champ = new CHAMPIONSHIP_MODEL('','','','');
-	$cuartos = $champ->semisPlayoffs($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	$cuartos = $champ->semisPlayoffs($_REQUEST['id_campeonato'],  $_REQUEST['id_grupo']);
 	$modelo = new CLASH_MODEL('','','','','','','','','','','','');
-	$resultado = $modelo->SEARCHSEMIS($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	$resultado = $modelo->SEARCHSEMIS($_REQUEST['id_campeonato'],  $_REQUEST['id_grupo']);
 	$datos = array();
 
 
-	new SHOWSEMIS($datos, $resultado,  $_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	new SHOWSEMIS($datos, $resultado,  $_REQUEST['id_campeonato'],  $_REQUEST['id_grupo']);
 	}
 	else{
 
 	$modelo = new CLASH_MODEL('','','','','','','','','','','','');
-	$resultado = $modelo->SEARCHSEMIS($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	$resultado = $modelo->SEARCHSEMIS($_REQUEST['id_campeonato'],  $_REQUEST['id_grupo']);
 	$datos = array();
 
 
-	new SHOWSEMIS($datos, $resultado,  $_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	new SHOWSEMIS($datos, $resultado,  $_REQUEST['id_campeonato'],  $_REQUEST['id_grupo']);
 	}
 
 	}
 	else{
-		new MESSAGE('La Fase de Cuartos no ha terminado todavía', "../Controllers/Championship_Controller.php?action=GENERARGRUPOS&id_campeonato=$volver[0]");
+		new MESSAGE('La Fase de Cuartos no ha terminado todavía', "../Controllers/Championship_Controller.php?action=CUARTOS&id_campeonato=$volver[0]&id_grupo=$grupo");
 	}
 		
 	break;
@@ -261,39 +265,41 @@ Switch ($_REQUEST['action']){
 	include_once '../Models/CLASH_MODEL.php';
 	include_once '../Models/CHAMPIONSHIP_MODEL.php';
 
+	$grupo = $_REQUEST['id_grupo'];
+
 	$camp = new CHAMPIONSHIP_MODEL($_REQUEST['id_campeonato'], '','','','');
 	$volver = $camp->RellenaDatos();
 
-	$fase = new CLASH_MODEL('', $_REQUEST['id_campeonato'], '','','','','','','',$_REQUEST['categoria'],$_REQUEST['nivel'],'semifinales');
+	$fase = new CLASH_MODEL('', $_REQUEST['id_campeonato'], '','','','','','','','semifinales', $_REQUEST['id_grupo'] );
 	$objeto = $fase->accesoPlayoffs();
 
-	if ($objeto == 'true') {
+	if ($objeto == 'false') {
 
 
 
-	if(!comprobarSiExistenEnfrentamiento($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria'], 'final')){
+	if(!comprobarSiExistenEnfrentamiento($_REQUEST['id_campeonato'], $_REQUEST['id_grupo'], 'final')){
 
 	$champ = new CHAMPIONSHIP_MODEL('','','','');
-	$cuartos = $champ->finalPlayoffs($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	$cuartos = $champ->finalPlayoffs($_REQUEST['id_campeonato'], $_REQUEST['id_grupo']);
 	$modelo = new CLASH_MODEL('','','','','','','','','','','','');
-	$resultado = $modelo->SEARCHFINAL($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	$resultado = $modelo->SEARCHFINAL($_REQUEST['id_campeonato'], $_REQUEST['id_grupo']);
 	$datos = array();
 
 
-	new SHOWFINAL($datos, $resultado,  $_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	new SHOWFINAL($datos, $resultado,  $_REQUEST['id_campeonato'], $_REQUEST['id_grupo']);
 	}
 	else{
 
 	$modelo = new CLASH_MODEL('','','','','','','','','','','','');
-	$resultado = $modelo->SEARCHFINAL($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	$resultado = $modelo->SEARCHFINAL($_REQUEST['id_campeonato'], $_REQUEST['id_grupo']);
 	$datos = array();
 
 
-	new SHOWFINAL($datos, $resultado,  $_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	new SHOWFINAL($datos, $resultado,  $_REQUEST['id_campeonato'], $_REQUEST['id_grupo']);
 	}
 	}
 	else{
-		new MESSAGE('La Fase de Semifinales no ha terminado todavía', "../Controllers/Championship_Controller.php?action=GENERARGRUPOS&id_campeonato=$volver[0]");
+		new MESSAGE('La Fase de Semifinales no ha terminado todavía', "../Controllers/Championship_Controller.php?action=SEMIS&id_campeonato=$volver[0]&id_grupo=$grupo");
 	}
 
 
@@ -305,11 +311,11 @@ Switch ($_REQUEST['action']){
 	include_once '../Models/CLASH_MODEL.php';
 
 	$modelo = new CLASH_MODEL('','','','','','','','','','','','');
-	$resultado = $modelo->SEARCHCLASHBYCATNIV($_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	$resultado = $modelo->SEARCHCLASHBYCATNIV($_REQUEST['id_campeonato'], $_REQUEST['id_grupo']);
 	$datos = array();
 
 
-	new CLASH_SHOWALL($datos, $resultado, $_REQUEST['id_campeonato'], $_REQUEST['nivel'], $_REQUEST['categoria']);
+	new CLASH_SHOWALL($datos, $resultado, $_REQUEST['id_campeonato'], $_REQUEST['id_grupo']);
 
 	break;
 

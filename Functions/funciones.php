@@ -492,12 +492,12 @@ function inscritoEnPromocion($login, $id_partido){
 }
 
 
-function comprobarSiExistenEnfrentamiento($campeonato, $nivel, $categoria, $tipo){
+function comprobarSiExistenEnfrentamiento($campeonato, $grupo, $tipo){
 	include_once '../includes/db.php';
 	$bd;
 	$bd = ConectarDB();
 
-	$sql = "SELECT id_campeonato, categoria, nivel from clash where nivel = '".$nivel."' and categoria= '".$categoria."' and id_campeonato='".$campeonato."' and tipo = '".$tipo."'";
+	$sql = "SELECT id_campeonato, id_grupo from clash where id_grupo = '".$grupo."' and id_campeonato='".$campeonato."' and tipo = '".$tipo."'";
 
 	$resultado = $bd->query($sql);
 

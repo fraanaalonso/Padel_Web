@@ -108,9 +108,9 @@ function EDIT(){
 
 
 
-function getRanking($id_campeonato, $categoria, $nivel){
+function getRanking($id_campeonato, $grupo){
 
-	$sql = "SELECT PA.id_pareja as pareja  FROM couple_categoria PC, championship_categoria CC, categoria CA, nivel NA, couple PA, couple_nivel N WHERE CC.id_campeonato = '".$id_campeonato."' AND CC.id_categoria = PC.id_categoria AND PC.id_campeonato = '".$id_campeonato."' AND N.id_campeonato='".$id_campeonato."' AND PC.id_categoria = CA.id_categoria and NA.id_nivel=N.id_nivel AND PC.id_pareja = PA.id_pareja and N.id_pareja=PA.id_pareja AND NA.nivel='".$nivel."' and CA.categoria= '".$categoria."' ORDER BY PA.id_pareja";
+	$sql = "SELECT couple_grupo.id_pareja as pareja FROM couple_grupo INNER JOIN GRUPO ON couple_grupo.id_grupo=grupo.id_grupo AND grupo.id_campeonato='".$id_campeonato."' AND grupo.id_grupo='".$grupo."'";
 
 
 	  if (!($resultado = $this->bd->query($sql))){

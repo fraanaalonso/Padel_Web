@@ -16,13 +16,12 @@ class CLASH_MODEL
 	var $numSetsPareja2;
 	var $hora_inicio;
 	var $fecha;
-	var $id_categoria;
-	var $id_nivel;
 	var $tipo;
+	var $grupo;
 
 
 
-	function __construct($id_enfrentamiento, $id_campeonato, $id_pareja1, $id_pareja2, $resultado, $numSetsPareja1, $numSetsPareja2, $hora_inicio, $fecha, $id_categoria, $id_nivel, $tipo){
+	function __construct($id_enfrentamiento, $id_campeonato, $id_pareja1, $id_pareja2, $resultado, $numSetsPareja1, $numSetsPareja2, $hora_inicio, $fecha, $tipo, $grupo){
 
 		$this->id_enfrentamiento = $id_enfrentamiento;
 		$this->id_campeonato = $id_campeonato;
@@ -33,9 +32,8 @@ class CLASH_MODEL
 		$this->numSetsPareja2 = $numSetsPareja2;
 		$this->hora_inicio = $hora_inicio;
 		$this->fecha = $fecha;
-		$this->id_categoria = $id_categoria;
-		$this->id_nivel = $id_nivel;
 		$this->tipo = $tipo;
+		$this->grupo = $grupo;
 
 
 		include_once '../includes/db.php';
@@ -43,24 +41,9 @@ class CLASH_MODEL
 	}
 
 
-	function SEARCHCLASHBYCATNIV($id_campeonato, $id_nivel, $id_categoria){
+	function SEARCHCLASHBYCATNIV($id_campeonato, $grupo){
 
-		$sql = "SELECT *, C.login1 as l1p1, C.login2 as l2p1, D.login1 as l1p2, D.login2 as l2p2 FROM CLASH inner join couple C on C.id_pareja=clash.id_pareja1 inner join couple D on D.id_pareja=clash.id_pareja2 WHERE clash.id_campeonato = '".$id_campeonato."' and clash.nivel = '".$id_nivel."' and clash.categoria = '".$id_categoria."' and clash.tipo = 'liga'";
-
-		 // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
-    if (!($resultado = $this->bd->query($sql))){
-		return 'Error en la consulta sobre la base de datos';
-	}
-    else{ // si la busqueda es correcta devolvemos el recordset resultado
-		return $resultado;
-	}
-
-	}
-
-
-	function SEARCHCUARTOS($id_campeonato, $id_nivel, $id_categoria){
-
-		$sql = "SELECT *, C.login1 as l1p1, C.login2 as l2p1, D.login1 as l1p2, D.login2 as l2p2 FROM CLASH inner join couple C on C.id_pareja=clash.id_pareja1 inner join couple D on D.id_pareja=clash.id_pareja2  WHERE clash.id_campeonato = '".$id_campeonato."' and clash.nivel = '".$id_nivel."' and clash.categoria = '".$id_categoria."' and clash.tipo = 'cuartos'";
+		$sql = "SELECT *, C.login1 as l1p1, C.login2 as l2p1, D.login1 as l1p2, D.login2 as l2p2, categoria.categoria, nivel.nivel FROM CLASH inner join couple C on C.id_pareja=clash.id_pareja1 inner join couple D on D.id_pareja=clash.id_pareja2 inner join grupo on clash.id_grupo=grupo.id_grupo inner join categoria on grupo.id_categoria=categoria.id_categoria INNER join nivel on grupo.id_nivel=nivel.id_nivel WHERE clash.id_campeonato = '".$id_campeonato."' and clash.id_grupo = '".$grupo."' and clash.tipo = 'liga'";
 
 		 // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
     if (!($resultado = $this->bd->query($sql))){
@@ -70,13 +53,28 @@ class CLASH_MODEL
 		return $resultado;
 	}
 
+	}
+
+
+	function SEARCHCUARTOS($id_campeonato, $grupo){
+
+		$sql = "SELECT *, C.login1 as l1p1, C.login2 as l2p1, D.login1 as l1p2, D.login2 as l2p2, categoria.categoria, nivel.nivel FROM CLASH inner join couple C on C.id_pareja=clash.id_pareja1 inner join couple D on D.id_pareja=clash.id_pareja2 inner join grupo on clash.id_grupo=grupo.id_grupo inner join categoria on grupo.id_categoria=categoria.id_categoria INNER join nivel on grupo.id_nivel=nivel.id_nivel WHERE clash.id_campeonato = '".$id_campeonato."' and clash.id_grupo = '".$grupo."' and clash.tipo = 'cuartos'";
+
+		 // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+    if (!($resultado = $this->bd->query($sql))){
+		return 'Error en la consulta sobre la base de datos';
+	}
+    else{ // si la busqueda es correcta devolvemos el recordset resultado
+		return $resultado;
+	}
+
 
 	}
 
 
-	function SEARCHSEMIS($id_campeonato, $id_nivel, $id_categoria){
+	function SEARCHSEMIS($id_campeonato, $grupo){
 
-		$sql = "SELECT *, C.login1 as l1p1, C.login2 as l2p1, D.login1 as l1p2, D.login2 as l2p2 FROM CLASH inner join couple C on C.id_pareja=clash.id_pareja1 inner join couple D on D.id_pareja=clash.id_pareja2  WHERE clash.id_campeonato = '".$id_campeonato."' and clash.nivel = '".$id_nivel."' and clash.categoria = '".$id_categoria."' and clash.tipo = 'semifinales'";
+		$sql = "SELECT *, C.login1 as l1p1, C.login2 as l2p1, D.login1 as l1p2, D.login2 as l2p2, categoria.categoria, nivel.nivel FROM CLASH inner join couple C on C.id_pareja=clash.id_pareja1 inner join couple D on D.id_pareja=clash.id_pareja2 inner join grupo on clash.id_grupo=grupo.id_grupo inner join categoria on grupo.id_categoria=categoria.id_categoria INNER join nivel on grupo.id_nivel=nivel.id_nivel WHERE clash.id_campeonato = '".$id_campeonato."' and clash.id_grupo = '".$grupo."' and clash.tipo = 'semifinales'";
 
 		 // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
     if (!($resultado = $this->bd->query($sql))){
@@ -95,7 +93,7 @@ class CLASH_MODEL
 
 function SEARCHFINAL($id_campeonato, $id_nivel, $id_categoria){
 
-		$sql = "SELECT *, C.login1 as l1p1, C.login2 as l2p1, D.login1 as l1p2, D.login2 as l2p2 FROM CLASH inner join couple C on C.id_pareja=clash.id_pareja1 inner join couple D on D.id_pareja=clash.id_pareja2 WHERE clash.id_campeonato = '".$id_campeonato."' and clash.nivel = '".$id_nivel."' and clash.categoria = '".$id_categoria."' and clash.tipo = 'final'";
+		$sql = "SELECT *, C.login1 as l1p1, C.login2 as l2p1, D.login1 as l1p2, D.login2 as l2p2, categoria.categoria, nivel.nivel FROM CLASH inner join couple C on C.id_pareja=clash.id_pareja1 inner join couple D on D.id_pareja=clash.id_pareja2 inner join grupo on clash.id_grupo=grupo.id_grupo inner join categoria on grupo.id_categoria=categoria.id_categoria INNER join nivel on grupo.id_nivel=nivel.id_nivel WHERE clash.id_campeonato = '".$id_campeonato."' and clash.id_grupo = '".$grupo."' and clash.tipo = 'final'";
 
 		 // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
     if (!($resultado = $this->bd->query($sql))){
@@ -136,9 +134,8 @@ function SEARCHFINAL($id_campeonato, $id_nivel, $id_categoria){
 					numSetsPareja2 = '$this->numSetsPareja2',
 					hora_inicio = '$this->hora_inicio',
 					fecha = '$this->fecha',
-					categoria = '$this->id_categoria',
-					nivel = '$this->id_nivel',
-					tipo = '$this->tipo'
+					tipo = '$this->tipo',
+					id_grupo = '$this->grupo'
 
 				WHERE ( id_enfrentamiento = '$this->id_enfrentamiento') && (id_campeonato = '$this->id_campeonato') ";
 
@@ -180,44 +177,15 @@ function SEARCHFINAL($id_campeonato, $id_nivel, $id_categoria){
 
 
 
-	function BUSCAR()
-{ 	// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-    $sql = "select id_enfrentamiento,
-					id_campeonato,
-					id_pareja1,
-					id_pareja2,
-					numSetsPareja1,
-					numSetsPareja2,
-					hora_inicio,
-					fecha from CLASH WHERE
-
-   					((id_enfrentamiento LIKE '%$this->id_enfrentamiento%') &&
-   					(id_campeonato LIKE '%$this->id_campeonato%') &&
-   					(id_pareja1 LIKE '%$this->id_pareja1%') &&
-   					(id_pareja2 LIKE '%$this->id_pareja2%') &&
-   					(numSetsPareja1 LIKE '%$this->numSetsPareja1%') &&
-    				(numSetsPareja2 LIKE '%$this->numSetsPareja2%') &&
-    				(hora_inicio LIKE '%$this->hora_inicio%') &&
-	 				(fecha LIKE '%$this->fecha%'))";
-
-    // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
-    if (!($resultado = $this->bd->query($sql))){
-		return 'Error en la consulta sobre la base de datos';
-	}
-    else{ // si la busqueda es correcta devolvemos el recordset resultado
-		return $resultado;
-	}
-
-
-} // fin metodo SEARCH
 
 
 
 
 
-function obtenerClasificacionGrupo($id_campeonato, $categoria, $nivel){
 
-	$sql = "SELECT ranking.id_pareja as pareja,  ranking.p_jugados as jugados, ranking.p_ganados as ganados, ranking.puntos as puntos, nivel.nivel as nivel, categoria.categoria as categoria, championship_couple.id_campeonato as campeonato FROM ranking INNER JOIN championship_couple ON championship_couple.id_pareja=ranking.id_pareja AND championship_couple.id_campeonato='".$id_campeonato."' INNER JOIN couple_categoria ON couple_categoria.id_pareja=ranking.id_pareja INNER JOIN categoria ON categoria.id_categoria=couple_categoria.id_categoria AND categoria.categoria='".$categoria."' INNER JOIN couple_nivel ON couple_nivel.id_pareja=ranking.id_pareja INNER JOIN NIVEL ON nivel.id_nivel=couple_nivel.id_nivel AND nivel.nivel='".$nivel."' ORDER BY puntos DESC";
+function obtenerClasificacionGrupo($id_campeonato, $grupo){
+
+	$sql = "SELECT ranking.id_pareja as pareja, ranking.p_jugados as jugados, ranking.p_ganados as ganados, ranking.puntos as puntos, nivel.nivel as nivel, categoria.categoria as categoria FROM RANKING INNER JOIN couple_grupo ON couple_grupo.id_pareja=ranking.id_pareja INNER JOIN grupo ON couple_grupo.id_grupo=GRUPO.id_grupo INNER JOIN categoria ON GRUPO.id_categoria=categoria.id_categoria INNER JOIN NIVEL ON grupo.id_nivel=NIVEL.id_nivel and grupo.id_grupo='".$grupo."' and grupo.id_campeonato='".$id_campeonato."' ORDER BY puntos DESC";
 
 
 
@@ -257,11 +225,11 @@ function RellenaDatos()
 
 
 function accesoPlayoffs(){
-	$sql = "SELECT * FROM CLASH WHERE CLASH.numSetsPareja1 != 0 and CLASH.numSetsPareja2 != 0 and CLASH.tipo='$this->tipo' and CLASH.categoria='$this->id_categoria' and CLASH.nivel='$this->id_nivel' and CLASH.id_campeonato='$this->id_campeonato'";
+	$sql = "SELECT * FROM CLASH WHERE CLASH.numSetsPareja1 = 0 and CLASH.numSetsPareja2 = 0 and CLASH.tipo='$this->tipo' and CLASH.id_grupo='$this->grupo' and CLASH.id_campeonato='$this->id_campeonato'";
 
 	$resultado = $this->bd->query($sql);
 
-	if($resultado->num_rows != 0){
+	if($resultado->num_rows >= 1){
 		return 'true';
 	}
 	else{

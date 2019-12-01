@@ -9,13 +9,13 @@
 class SHOWRANKING
 {
 	
-	function __construct($fila, $resultado, $campeonato, $categoria, $nivel)
+	function __construct($fila, $resultado, $campeonato, $grupo)
 	{
-		$this->execute($fila, $resultado, $campeonato, $categoria, $nivel);
+		$this->execute($fila, $resultado, $campeonato, $grupo);
 	}
 
 
-	function execute($fila, $resultado, $campeonato, $categoria, $nivel){
+	function execute($fila, $resultado, $campeonato, $grupo){
 		include '../Views/HeaderPost.php';
 
 ?>
@@ -36,23 +36,7 @@ $niv = $nivel;
 
 </div>
 
-<div style="font-size: 20px; text-align: center; position: absolute; top: 70px; left: 200px;">
- Campeonato: 
- <?php
-  echo $id;
 
-   ?>
-
-  <br>Categoria: 
-  <?php
-  echo $cat;
-  ?>
-
-  <br>Nivel: 
-  <?php
-  echo $niv;
-  ?>
-</div>
 
 
 	<table border="1">

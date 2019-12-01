@@ -269,10 +269,10 @@ function obtenerGrupis($id_campeonato){
 
 
 
-function combinarParejas($id_campeonato, $nivel, $categoria){
+function combinarParejas($id_campeonato, $grupo){
 
 
-	$sql = "SELECT PA.id_pareja, PA.login1, PA.login2, n.id_campeonato, CA.categoria, NA.nivel FROM couple_categoria PC, championship_categoria CC, categoria CA, nivel NA, couple PA, couple_nivel N WHERE CC.id_campeonato = '".$id_campeonato."' AND CC.id_categoria = PC.id_categoria AND PC.id_campeonato = '".$id_campeonato."' AND N.id_campeonato='".$id_campeonato."' AND PC.id_categoria = CA.id_categoria and NA.id_nivel=N.id_nivel AND PC.id_pareja = PA.id_pareja and N.id_pareja=PA.id_pareja AND NA.nivel='".$nivel."' and CA.categoria= '".$categoria."' ORDER BY PA.id_pareja";
+	$sql = "SELECT couple_grupo.id_pareja FROM couple_grupo INNER JOIN GRUPO ON couple_grupo.id_grupo=grupo.id_grupo AND grupo.id_campeonato='".$id_campeonato."' AND grupo.id_grupo='".$grupo."'";
 
 	$sqlFecha = "SELECT fecha_inicio FROM CHAMPIONSHIP WHERE id_campeonato = '".$id_campeonato."'";
 	$resulFecha = $this->bd->query($sqlFecha);
@@ -315,11 +315,10 @@ function combinarParejas($id_campeonato, $nivel, $categoria){
 					numSetsPareja2,
 					hora_inicio,
 					fecha,
-					categoria,
-					nivel,
-					tipo
+					tipo,
+					id_grupo
 					) 
-						VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."','0', '0', '0', '".$horaSeleccionada."', '".$fechas."', '".$categoria."', '".$nivel."','liga')";
+						VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."','0', '0', '0', '".$horaSeleccionada."', '".$fechas."','liga', '".$grupo."')";
 
 				$this->bd->query($consulta);
 				
@@ -328,7 +327,7 @@ function combinarParejas($id_campeonato, $nivel, $categoria){
 		}
 
 	
-		$borrado = "DELETE FROM CLASH where id_campeonato='".$id_campeonato."' and categoria='".$categoria."' and nivel = '".$nivel."' and clash.id_pareja1='".$id_pareja1."' and clash.id_pareja2='".$id_pareja2."' and clash.tipo='liga' LIMIT 1 ";
+		$borrado = "DELETE FROM CLASH where id_campeonato='".$id_campeonato."' and id_grupo ='".$grupo."' and clash.id_pareja1='".$id_pareja1."' and clash.id_pareja2='".$id_pareja2."' and clash.tipo='liga' LIMIT 1 ";
 		 $this->bd->query($borrado);
 
 
@@ -342,14 +341,14 @@ function combinarParejas($id_campeonato, $nivel, $categoria){
 }
 
 
-function cuartosPlayoffs($id_campeonato, $nivel, $categoria){
+function cuartosPlayoffs($id_campeonato, $grupo){
  
 
 
-	$sql = "SELECT ranking.id_pareja from ranking inner join championship_couple on ranking.id_pareja = championship_couple.id_pareja INNER join championship_categoria on championship_couple.id_campeonato=championship_categoria.id_campeonato inner join categoria on championship_categoria.id_categoria=categoria.id_categoria inner join championship_nivel on championship_couple.id_campeonato=championship_nivel.id_campeonato inner join nivel on championship_nivel.id_nivel=nivel.id_nivel and championship_couple.id_campeonato='".$id_campeonato."' and nivel.nivel='".$nivel."' and categoria.categoria='".$categoria."' ORDER BY ranking.puntos DESC LIMIT 0,8"; //obtenemos las 4 primeras tuplas de la clasificación 
+	$sql = "SELECT ranking.id_pareja as pareja, ranking.p_jugados as jugados, ranking.p_ganados as ganados, ranking.puntos as puntos, nivel.nivel as nivel, categoria.categoria as categoria FROM RANKING INNER JOIN couple_grupo ON couple_grupo.id_pareja=ranking.id_pareja INNER JOIN grupo ON couple_grupo.id_grupo=GRUPO.id_grupo INNER JOIN categoria ON GRUPO.id_categoria=categoria.id_categoria INNER JOIN NIVEL ON grupo.id_nivel=NIVEL.id_nivel and grupo.id_grupo='".$grupo."' and grupo.id_campeonato='".$id_campeonato."' ORDER BY puntos DESC LIMIT 0,8"; //obtenemos las 4 primeras tuplas de la clasificación 
 
 
-	$sqlFecha = "SELECT clash.fecha from clash where clash.tipo = 'liga' and clash.id_campeonato = '".$id_campeonato."' and clash.categoria='".$categoria."' and clash.nivel='".$nivel."' ORDER BY fecha DESC LIMIT 1";
+	$sqlFecha = "SELECT clash.fecha from clash where clash.tipo = 'liga' and clash.id_campeonato = '".$id_campeonato."' and clash.id_grupo='".$grupo."' ORDER BY fecha DESC LIMIT 1";
 		$resulFecha = $this->bd->query($sqlFecha);
 		$fetch_fecha = $resulFecha->fetch_row();
 		$fechaComienzo = $fetch_fecha[0];
@@ -404,17 +403,16 @@ function cuartosPlayoffs($id_campeonato, $nivel, $categoria){
 					numSetsPareja2,
 					hora_inicio,
 					fecha,
-					categoria,
-					nivel,
-					tipo
+					tipo,
+					id_grupo
 					) 
-					VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."','0', '0', '0', '".$horaSeleccionada."', '".$fechas."', '".$categoria."', '".$nivel."','cuartos')";
+					VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."','0', '0', '0', '".$horaSeleccionada."', '".$fechas."','cuartos','".$grupo."')";
 
 				$this->bd->query($consulta);
 
 			
 		}
-		$borrado = "DELETE FROM CLASH where id_campeonato='".$id_campeonato."' and categoria='".$categoria."' and nivel = '".$nivel."' and clash.id_pareja1='".$id_pareja1."' and clash.id_pareja2='".$id_pareja2."' and clash.tipo='cuartos' LIMIT 1 ";
+		$borrado = "DELETE FROM CLASH where id_campeonato='".$id_campeonato."' and id_grupo = '".$grupo."' and clash.id_pareja1='".$id_pareja1."' and clash.id_pareja2='".$id_pareja2."' and clash.tipo='cuartos' LIMIT 1 ";
 		 $this->bd->query($borrado);
 
 		 if (!($resultado = $this->bd->query($consulta))){
@@ -430,11 +428,11 @@ function cuartosPlayoffs($id_campeonato, $nivel, $categoria){
 }
 
 
-function semisPlayoffs($id_campeonato, $nivel, $categoria){
+function semisPlayoffs($id_campeonato, $grupo){
 
-	$sql = "SELECT * from clash where clash.id_campeonato='".$id_campeonato."' and clash.categoria='".$categoria."' and clash.nivel='".$nivel."' and (clash.numSetsPareja1 > clash.numSetsPareja2 || clash.numSetsPareja2 > clash.numSetsPareja1) and clash.tipo = 'cuartos'";
+	$sql = "SELECT * from clash where clash.id_campeonato='".$id_campeonato."' and clash.id_grupo = '".$grupo."' and (clash.numSetsPareja1 > clash.numSetsPareja2 || clash.numSetsPareja2 > clash.numSetsPareja1) and clash.tipo = 'cuartos'";
 	$resultado = $this->bd->query($sql);
-	$sqlFecha = "SELECT clash.fecha from clash where clash.tipo = 'cuartos' and clash.id_campeonato = '".$id_campeonato."' and clash.categoria='".$categoria."' and clash.nivel='".$nivel."' ORDER BY fecha DESC LIMIT 1";
+	$sqlFecha = "SELECT clash.fecha from clash where clash.tipo = 'cuartos' and clash.id_campeonato = '".$id_campeonato."' and clash.id_grupo='".$grupo."' ORDER BY fecha DESC LIMIT 1";
 	$resulFecha = $this->bd->query($sqlFecha);
 	$fetch_fecha = $resulFecha->fetch_row();
 	$fechaComienzo = $fetch_fecha[0];
@@ -516,11 +514,10 @@ function semisPlayoffs($id_campeonato, $nivel, $categoria){
 					numSetsPareja2,
 					hora_inicio,
 					fecha,
-					categoria,
-					nivel,
-					tipo
+					tipo,
+					id_grupo
 					) 
-					VALUES (DEFAULT, '".$id_campeonato."', '".$key."', '".$value."','0', '0', '0', '".$horaSeleccionada."', '".$fechas."', '".$categoria."', '".$nivel."','semifinales')";
+					VALUES (DEFAULT, '".$id_campeonato."', '".$key."', '".$value."','0', '0', '0', '".$horaSeleccionada."', '".$fechas."','semifinales', '".$grupo."')";
 
 				$this->bd->query($consulta);
 	}
@@ -530,11 +527,11 @@ function semisPlayoffs($id_campeonato, $nivel, $categoria){
 
 
 
-function finalPlayoffs($id_campeonato, $nivel, $categoria){
+function finalPlayoffs($id_campeonato, $grupo){
 
-	$sql = "SELECT * from clash where clash.id_campeonato='".$id_campeonato."' and clash.categoria='".$categoria."' and clash.nivel='".$nivel."' and (clash.numSetsPareja1 > clash.numSetsPareja2 || clash.numSetsPareja2 > clash.numSetsPareja1) and clash.tipo = 'semifinales'";
+	$sql = "SELECT * from clash where clash.id_campeonato='".$id_campeonato."' and clash.id_grupo='".$grupo."' and (clash.numSetsPareja1 > clash.numSetsPareja2 || clash.numSetsPareja2 > clash.numSetsPareja1) and clash.tipo = 'semifinales'";
 	$resultado = $this->bd->query($sql);
-	$sqlFecha = "SELECT clash.fecha from clash where clash.tipo = 'semifinales' and clash.id_campeonato = '".$id_campeonato."' and clash.categoria='".$categoria."' and clash.nivel='".$nivel."' ORDER BY fecha DESC LIMIT 1";
+	$sqlFecha = "SELECT clash.fecha from clash where clash.tipo = 'semifinales' and clash.id_campeonato = '".$id_campeonato."' and clash.id_grupo='".$grupo."' ORDER BY fecha DESC LIMIT 1";
 	$resulFecha = $this->bd->query($sqlFecha);
 	$fetch_fecha = $resulFecha->fetch_row();
 	$fechaComienzo = $fetch_fecha[0];
@@ -596,11 +593,10 @@ function finalPlayoffs($id_campeonato, $nivel, $categoria){
 					numSetsPareja2,
 					hora_inicio,
 					fecha,
-					categoria,
-					nivel,
-					tipo
+					tipo,
+					id_grupo
 					) 
-					VALUES (DEFAULT, '".$id_campeonato."', '".$key."', '".$value."', '0', '0', '".$horaSeleccionada."', '".$fechas."', '".$categoria."', '".$nivel."','final')";
+					VALUES (DEFAULT, '".$id_campeonato."', '".$key."', '".$value."', '0', '0', '".$horaSeleccionada."', '".$fechas."','final', '".$grupo."')";
 
 				$this->bd->query($consulta);
 	}

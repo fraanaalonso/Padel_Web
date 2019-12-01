@@ -9,13 +9,13 @@
 class CLASH_SHOWALL
 {
 	
-	function __construct($fila, $resultado, $campeonato,$nivel, $categoria)
+	function __construct($fila, $resultado, $campeonato,$grupo)
 	{
-		$this->execute($fila, $resultado, $campeonato,$nivel, $categoria);
+		$this->execute($fila, $resultado, $campeonato,$grupo);
 	}
 
 
-	function execute($fila, $resultado, $campeonato,$nivel, $categoria){
+	function execute($fila, $resultado, $campeonato,$grupo){
 		include '../Views/HeaderPost.php';
 
 ?>
@@ -24,7 +24,7 @@ class CLASH_SHOWALL
 
 <div class="iconos-superiores">
    <a href="../Controllers/Championship_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
-   <a href="../Controllers/Championship_Controller.php?action=CUARTOS&id_campeonato=<?php  echo $campeonato ?>&categoria=<?php  echo $categoria ?>&nivel=<?php  echo $nivel ?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 35px"></span></a>
+   <a href="../Controllers/Championship_Controller.php?action=CUARTOS&id_campeonato=<?php  echo $campeonato ?>&id_grupo=<?php  echo $grupo ?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 35px"></span></a>
 
 </div>
 
@@ -47,6 +47,7 @@ class CLASH_SHOWALL
 			<th>Num Sets Pareja1</th>
 			<th>Pareja 2</th>
 			<th>Num Sets Pareja2</th>
+			<th>Confirmación</th>
 			<th>ID Categoria</th>
 			<th>ID Nivel</th>
 			<th>Opciones</th>
@@ -118,6 +119,12 @@ while($fila = $resultado->fetch_assoc()){
 
 				 echo $fila['numSetsPareja2'];
 				 ?>
+				</td>
+
+				<td>
+
+				 
+				 <a href="../Controllers/Clash_Controller.php?action=CONFIRMACION&id_enfrentamiento=<?php echo $fila['id_enfrentamiento']?>&fecha=<?php echo $fila['fecha']?>&hora_inicio=<?php echo $fila['hora_inicio']?>&l1p1=<?php echo $fila['l1p1']?>&l2p1=<?php echo $fila['l2p1']?>&l1p2=<?php echo $fila['l1p2']?>&l2p2=<?php echo $fila['l2p2']?>&confirmacion=no"><span style="font-size: 35px" class="lnr lnr-thumbs-down borrar"></span></a>
 				</td>
 
 				<td cowspan="1">

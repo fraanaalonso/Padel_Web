@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2019 a las 00:14:39
+-- Tiempo de generación: 01-12-2019 a las 17:27:17
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.10
 
@@ -21,6 +21,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `abp46`
 --
+
 
 DROP DATABASE IF EXISTS `abp46`;
 CREATE DATABASE `abp46` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -118,7 +119,8 @@ INSERT INTO `championship_couple` (`id_pareja`, `id_campeonato`) VALUES
 (62, 1),
 (63, 1),
 (64, 1),
-(68, 1);
+(68, 1),
+(69, 2);
 
 -- --------------------------------------------------------
 
@@ -188,9 +190,8 @@ CREATE TABLE `clash` (
   `numSetsPareja2` int(1) NOT NULL,
   `hora_inicio` varchar(8) COLLATE utf8_spanish_ci NOT NULL,
   `fecha` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
-  `categoria` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `nivel` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `tipo` enum('liga','octavos','cuartos','semifinales','final') COLLATE utf8_spanish_ci NOT NULL
+  `tipo` enum('liga','octavos','cuartos','semifinales','final') COLLATE utf8_spanish_ci NOT NULL,
+  `id_grupo` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -270,7 +271,8 @@ INSERT INTO `couple` (`id_pareja`, `login1`, `login2`) VALUES
 (62, 'candela11', 'celiag'),
 (63, 'cela_jose', 'charlie'),
 (64, 'esteban_aitor', 'figueira_luis'),
-(68, 'admin', 'canto_toni');
+(68, 'admin', 'canto_toni'),
+(69, 'admin', 'laura_vega');
 
 -- --------------------------------------------------------
 
@@ -302,7 +304,8 @@ INSERT INTO `couple_categoria` (`id_categoria`, `id_pareja`, `id_campeonato`) VA
 (2, 59, 1),
 (2, 60, 1),
 (2, 61, 1),
-(2, 62, 1);
+(2, 62, 1),
+(3, 69, 2);
 
 -- --------------------------------------------------------
 
@@ -334,7 +337,8 @@ INSERT INTO `couple_grupo` (`id_grupo`, `id_pareja`, `id_campeonato`) VALUES
 (3, 61, 1),
 (4, 58, 1),
 (4, 59, 1),
-(4, 62, 1);
+(4, 62, 1),
+(5, 69, 2);
 
 -- --------------------------------------------------------
 
@@ -353,6 +357,7 @@ CREATE TABLE `couple_nivel` (
 --
 
 INSERT INTO `couple_nivel` (`id_nivel`, `id_pareja`, `id_campeonato`) VALUES
+(1, 69, 2),
 (2, 52, 1),
 (2, 53, 1),
 (2, 54, 1),
@@ -416,8 +421,8 @@ CREATE TABLE `game` (
 INSERT INTO `game` (`id_partido`, `id_pista`, `hora_inicio`, `fecha`) VALUES
 (1, 'P2', '09:00', '2019-12-18'),
 (2, 'P3', '17:00', '2019-12-14'),
-(3, 'P3', '20:00', '2019-12-17');
-
+(3, 'P3', '20:00', '2019-12-17'),
+(4, 'P0', '12:00', '2019-12-02');
 
 -- --------------------------------------------------------
 
@@ -513,8 +518,6 @@ CREATE TABLE `ranking` (
   `p_ganados` varchar(3) COLLATE utf8_spanish_ci NOT NULL,
   `puntos` varchar(3) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
-
 
 -- --------------------------------------------------------
 
@@ -897,7 +900,8 @@ ALTER TABLE `clash`
   ADD PRIMARY KEY (`id_enfrentamiento`,`id_campeonato`),
   ADD KEY `id_pareja1` (`id_pareja1`),
   ADD KEY `id_pareja2` (`id_pareja2`),
-  ADD KEY `clash_ibfk_0` (`id_campeonato`);
+  ADD KEY `clash_ibfk_0` (`id_campeonato`),
+  ADD KEY `clash_ibfk_3` (`id_grupo`);
 
 --
 -- Indices de la tabla `couple`
@@ -1053,13 +1057,13 @@ ALTER TABLE `clash`
 -- AUTO_INCREMENT de la tabla `couple`
 --
 ALTER TABLE `couple`
-  MODIFY `id_pareja` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id_pareja` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT de la tabla `game`
 --
 ALTER TABLE `game`
-  MODIFY `id_partido` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_partido` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `grupo`
@@ -1140,7 +1144,8 @@ ALTER TABLE `championship_nivel`
 ALTER TABLE `clash`
   ADD CONSTRAINT `clash_ibfk_0` FOREIGN KEY (`id_campeonato`) REFERENCES `championship` (`id_campeonato`) ON DELETE CASCADE,
   ADD CONSTRAINT `clash_ibfk_1` FOREIGN KEY (`id_pareja1`) REFERENCES `couple` (`id_pareja`) ON DELETE CASCADE,
-  ADD CONSTRAINT `clash_ibfk_2` FOREIGN KEY (`id_pareja2`) REFERENCES `couple` (`id_pareja`) ON DELETE CASCADE;
+  ADD CONSTRAINT `clash_ibfk_2` FOREIGN KEY (`id_pareja2`) REFERENCES `couple` (`id_pareja`) ON DELETE CASCADE,
+  ADD CONSTRAINT `clash_ibfk_3` FOREIGN KEY (`id_grupo`) REFERENCES `grupo` (`id_grupo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `couple`

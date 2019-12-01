@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 
 /**
@@ -61,12 +61,12 @@ class SHOWGRUPOS_CAMPEONATO
 
 
 <td colspan="12">
-  <a href="../Controllers/Championship_Controller.php?action=GENERARCALENDARIO&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-calendar-full iconCalendar"></span></a>
+  <a href="../Controllers/Championship_Controller.php?action=GENERARCALENDARIO&id_grupo=<?php echo $fila['grupo']?>&id_campeonato=<?php echo $fila['id_campeonato']?>"><span class="lnr lnr-calendar-full iconCalendar"></span></a>
 
-  <a href="../Controllers/Championship_Controller.php?action=SHOWENFRENTAMIENTOS&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-eye borrar"></span></a>
+  <a href="../Controllers/Championship_Controller.php?action=SHOWENFRENTAMIENTOS&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&id_grupo=<?php  echo $fila['grupo'] ?>"><span class="lnr lnr-eye borrar"></span></a>
 </span></a>
 
-<a href="../Controllers/Clash_Controller.php?action=SHOWRANKING&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&categoria=<?php  echo $fila['categoria'] ?>&nivel=<?php  echo $fila['nivel'] ?>"><span class="lnr lnr-list editar"></span></a>
+<a href="../Controllers/Clash_Controller.php?action=SHOWRANKING&id_campeonato=<?php  echo $fila['id_campeonato'] ?>&id_grupo=<?php  echo $fila['grupo'] ?>"><span class="lnr lnr-list editar"></span></a>
 </span></a>
 
 

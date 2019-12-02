@@ -445,27 +445,31 @@ function obtenerGrupo($categoria, $nivel, $campeonato){
 
 }
 
-function comprobarSiExisteEnfrentamiento($id_campeonato, $id_nivel, $id_categoria){
+function ultimoGrupo($categoria, $nivel, $campeonato){
 
 	include_once '../includes/db.php';
 	$bd;
 	$bd = ConectarDB();
 
-	$sql= "SELECT clash.id_campeonato, clash.categoria, clash.nivel FROM CLASH WHERE clash.id_campeonato = '".$id_campeonato."' and clash.nivel = '".$id_nivel."' and clash.categoria = '".$id_categoria."'";
+	$sql = "SELECT GRUPO.id_grupo FROM GRUPO INNER JOIN championship_categoria ON grupo.id_categoria=championship_categoria.id_categoria and grupo.id_campeonato=championship_categoria.id_campeonato INNER JOIN championship_nivel ON grupo.id_nivel=championship_nivel.id_nivel and grupo.id_campeonato=championship_nivel.id_campeonato AND championship_nivel.id_nivel='".$nivel."' AND championship_categoria.id_categoria='".$categoria."' AND grupo.id_campeonato='".$campeonato."' order by id_grupo desc LIMIT 1";
 
 
+	if (!($resultado = $bd->query($sql))){
+				return 'No existe en la base de datos'; 
+			}
+			
+		    else{ 
 
-	$resultado = $bd->query($sql);
+			$result = $resultado->fetch_array();
+				return $result;
+			}
 
-	if($resultado->num_rows != 0){
-		return true;
-	}
-	else{
-		return false;
-	}
+
 
 
 }
+
+
 
 
 function inscritoEnPromocion($login, $id_partido){
@@ -535,13 +539,13 @@ function mostrarGrupo($id_campeonato, $id_categoria, $id_nivel){
 
 
 
-function minInscritos($campeonato,$nivel,$categoria){
+function minInscritos($campeonato,$grupo){
 
 	include_once '../includes/db.php';
 	$bd;
 	$bd = ConectarDB();
 
-	$sql = "SELECT GRUPO.id_grupo, categoria.categoria, NIVEL.nivel FROM GRUPO INNER JOIN couple_grupo ON grupo.id_grupo=couple_grupo.id_grupo INNER JOIN categoria ON GRUPO.id_categoria=categoria.id_categoria INNER JOIN NIVEL ON GRUPO.id_nivel=NIVEL.id_nivel AND GRUPO.id_campeonato='".$campeonato."' AND categoria.categoria = '".$categoria."' and nivel.nivel='".$nivel."'";
+	$sql = "SELECT couple_grupo.id_grupo FROM couple_grupo WHERE couple_grupo.id_grupo='".$grupo."' and couple_grupo.id_campeonato='".$campeonato."'";
 
 
 	$resultado = $bd->query($sql);

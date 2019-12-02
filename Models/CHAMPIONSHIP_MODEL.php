@@ -62,7 +62,7 @@ class CHAMPIONSHIP_MODEL
 				}
 	}
 
-
+/*
 	function generarGruposInscripcion($id_categoria, $id_nivel, $id_campeonato){
 
 		$sql = "INSERT INTO grupo (
@@ -86,7 +86,7 @@ class CHAMPIONSHIP_MODEL
 				}
 	}
 
-
+*/
 
 
 	function ADD(){
@@ -652,18 +652,18 @@ function getDataChampionship($id_campeonato){
 
 
 
-function testNumMaxMembers($id_campeonato, $nivel, $categoria){
-	$sql = "SELECT categoria.categoria, nivel.nivel, couple_categoria.id_pareja, couple_categoria.id_campeonato, COUPLE.login1, COUPLE.login2 FROM couple_categoria INNER JOIN couple ON couple.id_pareja=couple_categoria.id_pareja INNER JOIN couple_nivel ON couple_nivel.id_pareja=couple_categoria.id_pareja INNER JOIN categoria on categoria.id_categoria=couple_categoria.id_categoria INNER JOIN nivel on nivel.id_nivel=couple_nivel.id_nivel and couple_categoria.id_campeonato='".$id_campeonato."' and categoria.id_categoria='".$categoria."' AND nivel.id_nivel='".$nivel."'";
+function testNumMaxMembers($id_campeonato, $grupo){
+	$sql = "SELECT * FROM couple_grupo WHERE id_campeonato='".$id_campeonato."' AND id_grupo='".$grupo."'";
 
 
 	 $result = $this->bd->query($sql);
 
-	 if($result->num_rows == 12){
-	 	return true;
+	 if($result->num_rows < 12){
+	 	return 'true';
 	 }
 
 	 else{
-	 	return false;
+	 	return 'false';
 	 }
 }
 

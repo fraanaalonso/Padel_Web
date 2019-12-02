@@ -1,5 +1,6 @@
 
 
+
 <?php
 
 session_start();
@@ -109,6 +110,7 @@ Switch ($_REQUEST['action']){
 						$var= $aux->añadirNiveles($dato[0], $value);
 					}
 
+/*
 
 					$categorias = $_POST['id_categoria'];
 					$niveles  = $_POST['id_nivel'];
@@ -124,7 +126,7 @@ Switch ($_REQUEST['action']){
 
 					
 
-
+*/
 
 					new MESSAGE($respuesta,'./Championship_Controller.php');
 				}
@@ -346,7 +348,7 @@ Switch ($_REQUEST['action']){
 				include_once '../Models/GROUP_MODEL.php';
 				include_once '../Models/GENDER_MODEL.php';
 					$modelo= get_data();
-					$modelo2 = new GROUP_MODEL('','');
+					$modelo2 = new GROUP_MODEL('','','','');
 					$modelo3 = new GENDER_MODEL('','');
 					$aux = new User_Modelo('','','','','','','','','','','','');
 
@@ -367,6 +369,7 @@ Switch ($_REQUEST['action']){
 			include_once '../Models/COUPLE_CATEGORIA_MODEL.php';
 			include_once '../Models/COUPLE_GRUPO_MODEL.php';
 			include_once '../Models/COUPLE_NIVEL_MODEL.php';
+			include_once '../Models/GROUP_MODEL.php';
 
 			$id_pareja = $_POST['id_pareja'];
 			$id_campeonato = $_POST['id_campeonato'];
@@ -388,15 +391,7 @@ Switch ($_REQUEST['action']){
 
 			else{
 
-			$getChampionship = new CHAMPIONSHIP_MODEL('','','','');
-			$currentGroupSelected = $getChampionship->testNumMaxMembers($id_campeonato, $nivelSeleccionado, $categoriaSeleccionada);
-
-			if($currentGroupSelected == 'true'){
-
-				new MESSAGE('Se ha llegado al número máximo de inscritos. No es posible inscribirse al grupo seleccionado', "./Championship_Controller.php?action=REGISTRAR&id_campeonato=$currentChamp[0]");
-			}
-
-			else{
+		
 
 			$user1 = new User_Modelo($capitan, '','','','','','','','','','','');
 			$user2 = new User_Modelo($socio, '','','','','','','','','','','');
@@ -444,12 +439,49 @@ Switch ($_REQUEST['action']){
 			$parejaNivel = new COUPLE_NIVEL_MODEL($nivelSeleccionado, $dato[0], $id_campeonato);
 			$result4 = $parejaNivel->ADD();
 
+			$nuevo = new GROUP_MODEL('',$categoriaSeleccionada, $nivelSeleccionado, $id_campeonato);
+			$nuevo2 = new GROUP_MODEL('',$categoriaSeleccionada, $nivelSeleccionado, $id_campeonato);
+			$existe = $nuevo->siExiste();
+			$currGroup = $nuevo2->currentGroup();
+
+			if($existe == 'true'){
+
+			$grupo = new GROUP_MODEL(' ', $categoriaSeleccionada, $nivelSeleccionado, $id_campeonato);
+			$resp = $grupo->ADD();
+
+			$lastGroup = obtenerGrupo($categoriaSeleccionada, $nivelSeleccionado, $id_campeonato);
+
+			$parejaGrupo = new COUPLE_GRUPO_MODEL($dato[0], $lastGroup[0], $id_campeonato);
+			$result5 = $parejaGrupo->ADD();
+
+			}
+
+			else{
+
+			$getChampionship = new CHAMPIONSHIP_MODEL('','','','');
+			$currentGroupSelected = $getChampionship->testNumMaxMembers($id_campeonato, $currGroup[0]);
+
+
 			
-			$grupo = obtenerGrupo($categoriaSeleccionada, $nivelSeleccionado, $id_campeonato);
+			if($currentGroupSelected =='true'){
+			$grupo = ultimoGrupo($categoriaSeleccionada, $nivelSeleccionado, $id_campeonato);
 
 			$parejaGrupo = new COUPLE_GRUPO_MODEL($dato[0], $grupo[0], $id_campeonato);
 			$result5 = $parejaGrupo->ADD();
-			
+			}
+
+			else{
+			$grupo = new GROUP_MODEL(' ', $categoriaSeleccionada, $nivelSeleccionado, $id_campeonato);
+			$resp = $grupo->ADD();
+
+			$lastGroup = ultimoGrupo($categoriaSeleccionada, $nivelSeleccionado, $id_campeonato);
+
+			$parejaGrupo = new COUPLE_GRUPO_MODEL($dato[0], $lastGroup[0], $id_campeonato);
+			$result5 = $parejaGrupo->ADD();
+			}
+
+
+			}
 
 
 
@@ -458,7 +490,7 @@ Switch ($_REQUEST['action']){
 		}
 		}
 		}
-		}
+		
 
 		}
 		}

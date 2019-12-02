@@ -45,7 +45,7 @@ class SHOWGRUPOS_CAMPEONATO
 	<?php
 
 	while ($fila = $grupo1->fetch_assoc()) {
-    if(minInscritos($fila['id_campeonato'], $fila['nivel'], $fila['categoria'])){
+    if(minInscritos($fila['id_campeonato'], $fila['grupo'])){
 
 	  echo "<tr>";
       echo "<td>".$fila["pareja"]."</td>";

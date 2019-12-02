@@ -28,7 +28,6 @@ class SHOWALL_VIEW
       
     <a href="../Controllers/Championship_Controller.php?action=ADD"><span class="lnr lnr-file-add" style="font-size: 35px"></span></a>
     <a href="../Controllers/Championship_Controller.php?action=SEARCH"><span class="lnr lnr-magnifier" style="font-size: 35px"></span></a>
-    <a href="../Controllers/Couple_Controller.php?action=SHOWMYCHAMPIONSHIPS"><span class="lnr lnr-list" style="font-size: 35px"></span></a>
    <a href="../Controllers/Championship_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
 
 </div>

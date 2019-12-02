@@ -98,24 +98,6 @@ Switch ($_REQUEST['action']){
 
 
 
-		case 'SHOWMYCHAMPIONSHIPS':
-
-
-				if (!$_POST){
-					include_once '../Models/COUPLE_MODEL.php';
-					$modelo = new COUPLE_MODEL(' ' ,'','','','');
-				}
-				else{
-					  include_once '../Models/COUPLE_MODEL.php';
-				}
-
-				$datos = $modelo->SEARCHMYCHAMPIONSHIPS();
-				$lista = array();
-
-				
-				new SHOWALL_COUPLE($lista, $datos);
-
-		break;
 
 
 		

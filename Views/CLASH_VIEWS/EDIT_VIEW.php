@@ -25,20 +25,57 @@ class EDIT_VIEW
 
 
 
-        <form method="post" action="../Controllers/Clash_Controller.php?action=EDIT">
+        <form method="post" name="enfrentamiento" action="../Controllers/Clash_Controller.php?action=EDIT">
           <table>
+           
+
+              <input type="hidden" id="resultado" name="resultado"  value="<?php echo $valores[4] ?>" >
+              
+          
+
            <tr>
-            <th>Resultado</th>
+            <th>Set 1</th>
             <td>
 
-              <input type="text"   name="resultado" value="<?php echo $valores[4] ?>">
+              <input type="text" id="set1" required= name="set1" pattern="^[6]-[0-4]" value="<?php echo substr($valores[4],0,3) ?>" >
               
             </td>
 
-            <input type="hidden"   name="id_enfrentamiento" value="<?php echo $valores[0] ?>">
+
+            
 
 
           </tr>
+
+           <tr>
+            <th>Set 2</th>
+            <td>
+
+              <input type="text" id="set2" required name="set2" pattern="^[6]-[0-4]" value="<?php echo substr($valores[4],8) ?>" >
+              
+            </td>
+
+
+            
+
+
+          </tr>
+
+
+           <tr>
+            <th>Set 3</th>
+            <td>
+
+              <input type="text" required id="set3" name="set3" pattern="^[6]-[0-4]" value="<?php echo  substr($valores[4],8,9) ?>" >
+              
+            </td>
+
+
+            
+
+
+          </tr>
+          <input type="hidden"   name="id_enfrentamiento" value="<?php echo $valores[0] ?>">
            <tr>
             <th>ID Campeonato</th>
             <td>
@@ -120,22 +157,29 @@ class EDIT_VIEW
       </table>
 
 
-         <button type="submit" style=" width: 20%; position: absolute; top: 800px; left: 700px; " class="btn btn-light"><span class="lnr lnr-pencil" style="font-size: 35px; text-align: center;"></span></button>
+         <button type="submit" onclick="javascript:procesar();" style=" width: 20%; position: absolute; top: 800px; left: 700px; " class="btn btn-light"><span class="lnr lnr-pencil" style="font-size: 35px; text-align: center;"></span></button>
               
 
 
-<script type="text/javascript">
-  
-
-
-</script>
-
 
 
 
        
        
-  
+  <script type="text/javascript">
+    
+    function procesar(){
+      set1 = document.getElementById('set1').value;
+      set2 = document.getElementById('set2').value;
+      set3 = document.getElementById('set3').value;
+
+      resultado = set1 + '/' + set2 + '/' + set3;
+
+      document.getElementById('resultado').value = resultado;
+
+      //document.forms.enfrentamiento.submit();
+    }
+  </script>
 
 
 

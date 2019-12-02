@@ -161,7 +161,7 @@ function establecerEmpate($id_pareja1, $id_pareja2){
 
 	$sql1 = "UPDATE RANKING SET puntos = puntos + 1 WHERE id_pareja='".$id_pareja1."'";
 	$sql2 = "UPDATE RANKING SET puntos = puntos + 1 WHERE id_pareja='".$id_pareja2."'";
-	$sql3 = "UPDATE RANKING SET p_jugados = p_jugados + 1 WHERE id_pareja='".$id_pareja."'";
+	$sql3 = "UPDATE RANKING SET p_jugados = p_jugados + 1 WHERE id_pareja='".$id_pareja1."'";
 	$sql4 = "UPDATE RANKING SET p_jugados = p_jugados + 1 WHERE id_pareja='".$id_pareja2."'";
 
 

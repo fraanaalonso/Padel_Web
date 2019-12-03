@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2019 a las 17:27:17
+-- Tiempo de generación: 03-12-2019 a las 21:20:16
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.10
 
@@ -22,12 +22,16 @@ SET time_zone = "+00:00";
 -- Base de datos: `abp46`
 --
 
+-- --------------------------------------------------------
 
-DROP DATABASE IF EXISTS `abp46`;
-CREATE DATABASE `abp46` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+--
+-- Estructura de tabla para la tabla `agenda`
+--
 
-USE `abp46`;
-
+CREATE TABLE `agenda` (
+  `id` tinyint(3) NOT NULL,
+  `login` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -67,8 +71,7 @@ CREATE TABLE `championship` (
 --
 
 INSERT INTO `championship` (`id_campeonato`, `fecha_inicio`, `fecha_limite`, `id_normativa`) VALUES
-(1, '2019-12-05', '2019-11-30', 4),
-(2, '2020-01-01', '2019-12-12', 3);
+(1, '2020-01-10', '2020-01-09', 2);
 
 -- --------------------------------------------------------
 
@@ -87,8 +90,7 @@ CREATE TABLE `championship_categoria` (
 
 INSERT INTO `championship_categoria` (`id_campeonato`, `id_categoria`) VALUES
 (1, 1),
-(1, 2),
-(2, 3);
+(1, 2);
 
 -- --------------------------------------------------------
 
@@ -106,21 +108,17 @@ CREATE TABLE `championship_couple` (
 --
 
 INSERT INTO `championship_couple` (`id_pareja`, `id_campeonato`) VALUES
-(52, 1),
-(53, 1),
-(54, 1),
-(55, 1),
-(56, 1),
-(57, 1),
-(58, 1),
-(59, 1),
-(60, 1),
-(61, 1),
-(62, 1),
-(63, 1),
-(64, 1),
-(68, 1),
-(69, 2);
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1),
+(10, 1),
+(11, 1);
 
 -- --------------------------------------------------------
 
@@ -139,9 +137,7 @@ CREATE TABLE `championship_nivel` (
 
 INSERT INTO `championship_nivel` (`id_campeonato`, `id_nivel`) VALUES
 (1, 2),
-(1, 3),
-(2, 1),
-(2, 3);
+(1, 3);
 
 -- --------------------------------------------------------
 
@@ -177,6 +173,31 @@ INSERT INTO `chat` (`id_chat`, `login`, `mensaje`, `fecha_mensaje`, `hora_mensaj
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `clase`
+--
+
+CREATE TABLE `clase` (
+  `id_clase` tinyint(4) NOT NULL,
+  `id_nivel` tinyint(4) NOT NULL,
+  `num_max` int(3) NOT NULL,
+  `hora_comienzo` varchar(5) NOT NULL,
+  `fecha` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `clase_agenda`
+--
+
+CREATE TABLE `clase_agenda` (
+  `id_agenda` tinyint(4) NOT NULL,
+  `id_clase` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `clash`
 --
 
@@ -193,6 +214,57 @@ CREATE TABLE `clash` (
   `tipo` enum('liga','octavos','cuartos','semifinales','final') COLLATE utf8_spanish_ci NOT NULL,
   `id_grupo` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `clash`
+--
+
+INSERT INTO `clash` (`id_enfrentamiento`, `id_campeonato`, `id_pareja1`, `id_pareja2`, `resultado`, `numSetsPareja1`, `numSetsPareja2`, `hora_inicio`, `fecha`, `tipo`, `id_grupo`) VALUES
+(1, 1, 1, 3, '0', 0, 0, '21:30', '2020-01-11', 'liga', 1),
+(2, 1, 1, 4, '0', 0, 0, '21:30', '2020-01-12', 'liga', 1),
+(3, 1, 1, 5, '0', 0, 0, '17:00', '2020-01-13', 'liga', 1),
+(4, 1, 1, 6, '0', 0, 0, '21:30', '2020-01-14', 'liga', 1),
+(5, 1, 1, 7, '0', 0, 0, '09:00', '2020-01-15', 'liga', 1),
+(6, 1, 1, 8, '0', 0, 0, '13:30', '2020-01-16', 'liga', 1),
+(7, 1, 1, 9, '0', 0, 0, '13:30', '2020-01-17', 'liga', 1),
+(8, 1, 1, 10, '0', 0, 0, '12:00', '2020-01-18', 'liga', 1),
+(9, 1, 1, 11, '0', 0, 0, '12:00', '2020-01-19', 'liga', 1),
+(10, 1, 3, 4, '0', 0, 0, '17:00', '2020-01-20', 'liga', 1),
+(11, 1, 3, 5, '0', 0, 0, '13:30', '2020-01-21', 'liga', 1),
+(12, 1, 3, 6, '0', 0, 0, '10:30', '2020-01-22', 'liga', 1),
+(13, 1, 3, 7, '0', 0, 0, '13:30', '2020-01-23', 'liga', 1),
+(14, 1, 3, 8, '0', 0, 0, '09:00', '2020-01-24', 'liga', 1),
+(15, 1, 3, 9, '0', 0, 0, '12:00', '2020-01-25', 'liga', 1),
+(16, 1, 3, 10, '0', 0, 0, '17:00', '2020-01-26', 'liga', 1),
+(17, 1, 3, 11, '0', 0, 0, '18:30', '2020-01-27', 'liga', 1),
+(18, 1, 4, 5, '0', 0, 0, '10:30', '2020-01-28', 'liga', 1),
+(19, 1, 4, 6, '0', 0, 0, '17:00', '2020-01-29', 'liga', 1),
+(20, 1, 4, 7, '0', 0, 0, '20:00', '2020-01-30', 'liga', 1),
+(21, 1, 4, 8, '0', 0, 0, '09:00', '2020-01-31', 'liga', 1),
+(22, 1, 4, 9, '0', 0, 0, '12:00', '2020-02-01', 'liga', 1),
+(23, 1, 4, 10, '0', 0, 0, '09:00', '2020-02-02', 'liga', 1),
+(24, 1, 4, 11, '0', 0, 0, '20:00', '2020-02-03', 'liga', 1),
+(25, 1, 5, 6, '0', 0, 0, '12:00', '2020-02-04', 'liga', 1),
+(26, 1, 5, 7, '0', 0, 0, '13:30', '2020-02-05', 'liga', 1),
+(27, 1, 5, 8, '0', 0, 0, '18:30', '2020-02-06', 'liga', 1),
+(28, 1, 5, 9, '0', 0, 0, '17:00', '2020-02-07', 'liga', 1),
+(29, 1, 5, 10, '0', 0, 0, '13:30', '2020-02-08', 'liga', 1),
+(30, 1, 5, 11, '0', 0, 0, '09:00', '2020-02-09', 'liga', 1),
+(31, 1, 6, 7, '0', 0, 0, '13:30', '2020-02-10', 'liga', 1),
+(32, 1, 6, 8, '0', 0, 0, '21:30', '2020-02-11', 'liga', 1),
+(33, 1, 6, 9, '0', 0, 0, '20:00', '2020-02-12', 'liga', 1),
+(34, 1, 6, 10, '0', 0, 0, '21:30', '2020-02-13', 'liga', 1),
+(35, 1, 6, 11, '0', 0, 0, '10:30', '2020-02-14', 'liga', 1),
+(36, 1, 7, 8, '0', 0, 0, '20:00', '2020-02-15', 'liga', 1),
+(37, 1, 7, 9, '0', 0, 0, '12:00', '2020-02-16', 'liga', 1),
+(38, 1, 7, 10, '0', 0, 0, '12:00', '2020-02-17', 'liga', 1),
+(39, 1, 7, 11, '0', 0, 0, '20:00', '2020-02-18', 'liga', 1),
+(40, 1, 8, 9, '0', 0, 0, '17:00', '2020-02-19', 'liga', 1),
+(41, 1, 8, 10, '0', 0, 0, '13:30', '2020-02-20', 'liga', 1),
+(42, 1, 8, 11, '0', 0, 0, '17:00', '2020-02-21', 'liga', 1),
+(43, 1, 9, 10, '0', 0, 0, '21:30', '2020-02-22', 'liga', 1),
+(44, 1, 9, 11, '0', 0, 0, '10:30', '2020-02-23', 'liga', 1),
+(46, 1, 10, 11, '0', 0, 0, '18:30', '2020-02-24', 'liga', 1);
 
 -- --------------------------------------------------------
 
@@ -211,68 +283,17 @@ CREATE TABLE `couple` (
 --
 
 INSERT INTO `couple` (`id_pareja`, `login1`, `login2`) VALUES
-(1, 'acarmen', 'lucia_atm'),
-(2, 'abeijon_antonio', 'acarmen'),
-(3, 'admin', 'aine'),
-(4, 'andreita', 'anita32'),
-(5, 'antelo_esteban', 'antia12'),
-(6, 'antiavazquez', 'antonio_v'),
-(7, 'apasionado_roberto', 'aurelio_marco'),
-(8, 'barbi', 'belenchu'),
-(9, 'blas_fernando', 'bros_mario'),
-(10, 'camino_antonio', 'candela11'),
-(11, 'cantalapiedra_jorge', 'canto_toni'),
-(12, 'carla95', 'carol'),
-(13, 'casteldefels_lluis', 'carlosm'),
-(14, 'castro_ze', 'cela_jose'),
-(15, 'celiag', 'clau96'),
-(16, 'charlie', 'csmartinez'),
-(17, 'eli', 'csousa'),
-(18, 'dacuÃ±a_jose', 'cuevillas_floro'),
-(19, 'dasilva_perico', 'delapenha_jesus'),
-(20, 'delinha', 'esteban_aitor'),
-(21, 'estere', 'eli'),
-(22, 'fati', 'fer_rv'),
-(23, 'figueira_luis', 'flores_antorio'),
-(24, 'francesca', 'gema123'),
-(25, 'lara', 'ireneee'),
-(26, 'gise93', 'jessi'),
-(27, 'juliaaa', 'gallego_xaquin'),
-(28, 'laura_vega', 'laura66'),
-(29, 'libertad_franco', 'lola'),
-(30, 'lucilu', 'Luis_Clemente_Guadil'),
-(31, 'maldonado_javier', 'manzanares_alberto'),
-(32, 'vilanova_pedro', 'velasco_dionisio'),
-(33, 'torres_xoan', 'torres_xan'),
-(34, 'torra_quim', 'somoza_mateo'),
-(35, 'sesto_camilo', 'seoane_luis'),
-(36, 'santos_leon', 'santos_leon'),
-(37, 'santi_abascal', 'rodriguez_suso'),
-(38, 'roca_tino', 'rego_nestor'),
-(39, 'pantoja_enrique', 'osborne_jordi'),
-(40, 'terelu91', 'vicky'),
-(41, 'varela_pepe', 'sormaria'),
-(42, 'paula', 'rosio96'),
-(43, 'nuria77', 'pradi'),
-(44, 'nerea34', 'nata64'),
-(45, 'admin', 'cela_jose'),
-(48, 'lucia_atm', 'laura_vega'),
-(50, 'lara', 'sormaria'),
-(52, 'santos_leon', 'santi_abascal'),
-(53, 'abeijon_antonio', 'antonio_v'),
-(54, 'apasionado_roberto', 'ares_alfonso'),
-(55, 'antelo_esteban', 'aurelio_marco'),
-(56, 'blas_fernando', 'bros_mario'),
-(57, 'camino_antonio', 'mariohermida'),
-(58, 'carla95', 'lucia_atm'),
-(59, 'acarmen', 'aine'),
-(60, 'andreita', 'anita32'),
-(61, 'antiavazquez', 'barbi'),
-(62, 'candela11', 'celiag'),
-(63, 'cela_jose', 'charlie'),
-(64, 'esteban_aitor', 'figueira_luis'),
-(68, 'admin', 'canto_toni'),
-(69, 'admin', 'laura_vega');
+(1, 'admin', 'mariohermida'),
+(2, 'lara', 'lucia_atm'),
+(3, 'abeijon_antonio', 'santi_abascal'),
+(4, 'delinha', 'charlie'),
+(5, 'esteban_aitor', 'pimentel_luis'),
+(6, 'pantoja_enrique', 'libertad_franco'),
+(7, 'rego_nestor', 'torres_xan'),
+(8, 'torra_quim', 'dasilva_perico'),
+(9, 'camino_antonio', 'velasco_dionisio'),
+(10, 'canto_toni', 'rodriguez_suso'),
+(11, 'santos_leon', 'seoane_luis');
 
 -- --------------------------------------------------------
 
@@ -291,21 +312,17 @@ CREATE TABLE `couple_categoria` (
 --
 
 INSERT INTO `couple_categoria` (`id_categoria`, `id_pareja`, `id_campeonato`) VALUES
-(1, 52, 1),
-(1, 53, 1),
-(1, 54, 1),
-(1, 55, 1),
-(1, 56, 1),
-(1, 57, 1),
-(1, 63, 1),
-(1, 64, 1),
-(1, 68, 1),
-(2, 58, 1),
-(2, 59, 1),
-(2, 60, 1),
-(2, 61, 1),
-(2, 62, 1),
-(3, 69, 2);
+(1, 1, 1),
+(1, 3, 1),
+(1, 4, 1),
+(1, 5, 1),
+(1, 6, 1),
+(1, 7, 1),
+(1, 8, 1),
+(1, 9, 1),
+(1, 10, 1),
+(1, 11, 1),
+(2, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -324,21 +341,17 @@ CREATE TABLE `couple_grupo` (
 --
 
 INSERT INTO `couple_grupo` (`id_grupo`, `id_pareja`, `id_campeonato`) VALUES
-(1, 52, 1),
-(1, 53, 1),
-(1, 54, 1),
-(1, 55, 1),
-(1, 56, 1),
-(1, 63, 1),
-(1, 64, 1),
-(1, 68, 1),
-(2, 57, 1),
-(3, 60, 1),
-(3, 61, 1),
-(4, 58, 1),
-(4, 59, 1),
-(4, 62, 1),
-(5, 69, 2);
+(1, 1, 1),
+(1, 3, 1),
+(1, 4, 1),
+(1, 5, 1),
+(1, 6, 1),
+(1, 7, 1),
+(1, 8, 1),
+(1, 9, 1),
+(1, 10, 1),
+(1, 11, 1),
+(2, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -357,21 +370,17 @@ CREATE TABLE `couple_nivel` (
 --
 
 INSERT INTO `couple_nivel` (`id_nivel`, `id_pareja`, `id_campeonato`) VALUES
-(1, 69, 2),
-(2, 52, 1),
-(2, 53, 1),
-(2, 54, 1),
-(2, 55, 1),
-(2, 56, 1),
-(2, 60, 1),
-(2, 61, 1),
-(2, 63, 1),
-(2, 64, 1),
-(2, 68, 1),
-(3, 57, 1),
-(3, 58, 1),
-(3, 59, 1),
-(3, 62, 1);
+(2, 1, 1),
+(2, 2, 1),
+(2, 3, 1),
+(2, 4, 1),
+(2, 5, 1),
+(2, 6, 1),
+(2, 7, 1),
+(2, 8, 1),
+(2, 9, 1),
+(2, 10, 1),
+(2, 11, 1);
 
 -- --------------------------------------------------------
 
@@ -443,11 +452,7 @@ CREATE TABLE `grupo` (
 
 INSERT INTO `grupo` (`id_grupo`, `id_categoria`, `id_nivel`, `id_campeonato`) VALUES
 (1, 1, 2, 1),
-(2, 1, 3, 1),
-(3, 2, 2, 1),
-(4, 2, 3, 1),
-(5, 3, 1, 2),
-(6, 3, 3, 2);
+(2, 2, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -509,6 +514,28 @@ CREATE TABLE `payment` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `plan`
+--
+
+CREATE TABLE `plan` (
+  `id_plan` tinyint(4) NOT NULL,
+  `tipo` varchar(15) NOT NULL,
+  `precio` varchar(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `plan`
+--
+
+INSERT INTO `plan` (`id_plan`, `tipo`, `precio`) VALUES
+(1, 'mensual', '9.99'),
+(2, 'trimestral', '29,99'),
+(3, 'semestral', '59,95'),
+(4, 'anual', '89,99');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `ranking`
 --
 
@@ -518,6 +545,22 @@ CREATE TABLE `ranking` (
   `p_ganados` varchar(3) COLLATE utf8_spanish_ci NOT NULL,
   `puntos` varchar(3) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `ranking`
+--
+
+INSERT INTO `ranking` (`id_pareja`, `p_jugados`, `p_ganados`, `puntos`) VALUES
+(1, '0', '0', '0'),
+(3, '0', '0', '0'),
+(4, '0', '0', '0'),
+(5, '0', '0', '0'),
+(6, '0', '0', '0'),
+(7, '0', '0', '0'),
+(8, '0', '0', '0'),
+(9, '0', '0', '0'),
+(10, '0', '0', '0'),
+(11, '0', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -533,6 +576,85 @@ CREATE TABLE `reservation` (
   `fecha` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `precio` varchar(5) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `reservation`
+--
+
+INSERT INTO `reservation` (`id_reserva`, `id_pista`, `login`, `hora_inicio`, `fecha`, `precio`) VALUES
+(9, 'P3', 'santos_leon', '20:00', '2019-12-06', '0'),
+(10, 'P3', 'santos_leon', '18:30', '2019-12-07', '0'),
+(11, 'P7', 'santos_leon', '10:30', '2019-12-08', '0'),
+(12, 'P8', 'santos_leon', '13:30', '2019-12-09', '0'),
+(13, 'P6', 'santos_leon', '13:30', '2019-12-10', '0'),
+(14, 'P7', 'santos_leon', '17:00', '2019-12-11', '0'),
+(15, 'P1', 'santos_leon', '10:30', '2019-12-12', '0'),
+(16, 'P1', 'abeijon_antonio', '18:30', '2019-12-13', '0'),
+(17, 'P2', 'abeijon_antonio', '10:30', '2019-12-14', '0'),
+(18, 'P2', 'abeijon_antonio', '13:30', '2019-12-15', '0'),
+(19, 'P0', 'abeijon_antonio', '09:00', '2019-12-16', '0'),
+(20, 'P3', 'abeijon_antonio', '21:30', '2019-12-17', '0'),
+(21, 'P2', 'abeijon_antonio', '13:30', '2019-12-18', '0'),
+(22, 'P8', 'apasionado_roberto', '21:30', '2019-12-19', '0'),
+(23, 'P4', 'apasionado_roberto', '18:30', '2019-12-20', '0'),
+(24, 'P2', 'apasionado_roberto', '09:00', '2019-12-21', '0'),
+(25, 'P1', 'apasionado_roberto', '12:00', '2019-12-22', '0'),
+(26, 'P0', 'apasionado_roberto', '18:30', '2019-12-23', '0'),
+(27, 'P7', 'antelo_esteban', '21:30', '2019-12-24', '0'),
+(28, 'P3', 'antelo_esteban', '20:00', '2019-12-25', '0'),
+(29, 'P7', 'antelo_esteban', '10:30', '2019-12-26', '0'),
+(30, 'P3', 'antelo_esteban', '17:00', '2019-12-27', '0'),
+(31, 'P0', 'blas_fernando', '18:30', '2019-12-28', '0'),
+(32, 'P4', 'blas_fernando', '20:00', '2019-12-29', '0'),
+(33, 'P6', 'blas_fernando', '20:00', '2019-12-30', '0'),
+(34, 'P8', 'cela_jose', '10:30', '2019-12-31', '0'),
+(35, 'P5', 'cela_jose', '12:00', '2020-01-01', '0'),
+(36, 'P2', 'esteban_aitor', '10:30', '2020-01-02', '0'),
+(37, 'P3', 'admin', '21:30', '2020-01-11', '0'),
+(38, 'P2', 'admin', '21:30', '2020-01-12', '0'),
+(39, 'P6', 'admin', '17:00', '2020-01-13', '0'),
+(40, 'P4', 'admin', '21:30', '2020-01-14', '0'),
+(41, 'P8', 'admin', '09:00', '2020-01-15', '0'),
+(42, 'P6', 'admin', '13:30', '2020-01-16', '0'),
+(43, 'P2', 'admin', '13:30', '2020-01-17', '0'),
+(44, 'P8', 'admin', '12:00', '2020-01-18', '0'),
+(45, 'P3', 'admin', '12:00', '2020-01-19', '0'),
+(46, 'P1', 'abeijon_antonio', '17:00', '2020-01-20', '0'),
+(47, 'P5', 'abeijon_antonio', '13:30', '2020-01-21', '0'),
+(48, 'P4', 'abeijon_antonio', '10:30', '2020-01-22', '0'),
+(49, 'P0', 'abeijon_antonio', '13:30', '2020-01-23', '0'),
+(50, 'P1', 'abeijon_antonio', '09:00', '2020-01-24', '0'),
+(51, 'P7', 'abeijon_antonio', '12:00', '2020-01-25', '0'),
+(52, 'P1', 'abeijon_antonio', '17:00', '2020-01-26', '0'),
+(53, 'P3', 'abeijon_antonio', '18:30', '2020-01-27', '0'),
+(54, 'P8', 'delinha', '10:30', '2020-01-28', '0'),
+(55, 'P6', 'delinha', '17:00', '2020-01-29', '0'),
+(56, 'P4', 'delinha', '20:00', '2020-01-30', '0'),
+(57, 'P7', 'delinha', '09:00', '2020-01-31', '0'),
+(58, 'P7', 'delinha', '12:00', '2020-02-01', '0'),
+(59, 'P3', 'delinha', '09:00', '2020-02-02', '0'),
+(60, 'P2', 'delinha', '20:00', '2020-02-03', '0'),
+(61, 'P0', 'esteban_aitor', '12:00', '2020-02-04', '0'),
+(62, 'P5', 'esteban_aitor', '13:30', '2020-02-05', '0'),
+(63, 'P2', 'esteban_aitor', '18:30', '2020-02-06', '0'),
+(64, 'P2', 'esteban_aitor', '17:00', '2020-02-07', '0'),
+(65, 'P2', 'esteban_aitor', '13:30', '2020-02-08', '0'),
+(66, 'P4', 'esteban_aitor', '09:00', '2020-02-09', '0'),
+(67, 'P4', 'pantoja_enrique', '13:30', '2020-02-10', '0'),
+(68, 'P7', 'pantoja_enrique', '21:30', '2020-02-11', '0'),
+(69, 'P3', 'pantoja_enrique', '20:00', '2020-02-12', '0'),
+(70, 'P5', 'pantoja_enrique', '21:30', '2020-02-13', '0'),
+(71, 'P8', 'pantoja_enrique', '10:30', '2020-02-14', '0'),
+(72, 'P2', 'rego_nestor', '20:00', '2020-02-15', '0'),
+(73, 'P3', 'rego_nestor', '12:00', '2020-02-16', '0'),
+(74, 'P8', 'rego_nestor', '12:00', '2020-02-17', '0'),
+(75, 'P2', 'rego_nestor', '20:00', '2020-02-18', '0'),
+(76, 'P7', 'torra_quim', '17:00', '2020-02-19', '0'),
+(77, 'P7', 'torra_quim', '13:30', '2020-02-20', '0'),
+(78, 'P4', 'torra_quim', '17:00', '2020-02-21', '0'),
+(79, 'P5', 'camino_antonio', '21:30', '2020-02-22', '0'),
+(80, 'P6', 'camino_antonio', '10:30', '2020-02-23', '0'),
+(81, 'P6', 'canto_toni', '18:30', '2020-02-24', '0');
 
 -- --------------------------------------------------------
 
@@ -579,94 +701,23 @@ INSERT INTO `rule` (`id_normativa`, `bases`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `schedule`
+-- Estructura de tabla para la tabla `school`
 --
 
-CREATE TABLE `schedule` (
-  `id_horario` tinyint(4) NOT NULL,
-  `id_pista` varchar(3) COLLATE utf8_spanish_ci NOT NULL,
-  `hora_inicio` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
-  `hora_fin` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
-  `fecha_inicio` varchar(10) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+CREATE TABLE `school` (
+  `codigo` tinyint(4) NOT NULL,
+  `nombre` varchar(20) NOT NULL,
+  `ubicacion` varchar(20) NOT NULL,
+  `administrador` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `schedule`
+-- Volcado de datos para la tabla `school`
 --
 
-INSERT INTO `schedule` (`id_horario`, `id_pista`, `hora_inicio`, `hora_fin`, `fecha_inicio`) VALUES
-(0, 'P0', '09:00', '10:30', '26/11/2019'),
-(0, 'P1', '09:00', '10:30', '26/11/2019'),
-(0, 'P2', '09:00', '10:30', '26/11/2019'),
-(0, 'P3', '09:00', '10:30', '26/11/2019'),
-(0, 'P4', '09:00', '10:30', '26/11/2019'),
-(0, 'P5', '09:00', '10:30', '26/11/2019'),
-(0, 'P6', '09:00', '10:30', '26/11/2019'),
-(0, 'P7', '09:00', '10:30', '26/11/2019'),
-(0, 'P8', '09:00', '10:30', '26/11/2019'),
-(1, 'P0', '10:30', '12:00', '30/11/2019'),
-(1, 'P1', '10:30', '12:00', '30/11/2019'),
-(1, 'P2', '10:30', '12:00', '30/11/2019'),
-(1, 'P3', '10:30', '12:00', '30/11/2019'),
-(1, 'P4', '10:30', '12:00', '30/11/2019'),
-(1, 'P5', '10:30', '12:00', '30/11/2019'),
-(1, 'P6', '10:30', '12:00', '30/11/2019'),
-(1, 'P7', '10:30', '12:00', '30/11/2019'),
-(1, 'P8', '10:30', '12:00', '30/11/2019'),
-(2, 'P0', '12:00', '13:30', '02/12/2019'),
-(2, 'P1', '12:00', '13:30', '02/12/2019'),
-(2, 'P2', '12:00', '13:30', '02/12/2019'),
-(2, 'P3', '12:00', '13:30', '02/12/2019'),
-(2, 'P4', '12:00', '13:30', '02/12/2019'),
-(2, 'P5', '12:00', '13:30', '02/12/2019'),
-(2, 'P6', '12:00', '13:30', '02/12/2019'),
-(2, 'P7', '12:00', '13:30', '02/12/2019'),
-(2, 'P8', '12:00', '13:30', '02/12/2019'),
-(3, 'P0', '13:30', '15:00', '08/12/2019'),
-(3, 'P1', '13:30', '15:00', '08/12/2019'),
-(3, 'P2', '13:30', '15:00', '08/12/2019'),
-(3, 'P3', '13:30', '15:00', '08/12/2019'),
-(3, 'P4', '13:30', '15:00', '08/12/2019'),
-(3, 'P5', '13:30', '15:00', '08/12/2019'),
-(3, 'P6', '13:30', '15:00', '08/12/2019'),
-(3, 'P7', '13:30', '15:00', '08/12/2019'),
-(3, 'P8', '13:30', '15:00', '08/12/2019'),
-(4, 'P0', '17:00', '18:30', '12/12/2019'),
-(4, 'P1', '17:00', '18:30', '12/12/2019'),
-(4, 'P2', '17:00', '18:30', '12/12/2019'),
-(4, 'P3', '17:00', '18:30', '12/12/2019'),
-(4, 'P4', '17:00', '18:30', '12/12/2019'),
-(4, 'P5', '17:00', '18:30', '12/12/2019'),
-(4, 'P6', '17:00', '18:30', '12/12/2019'),
-(4, 'P7', '17:00', '18:00', '12/12/2019'),
-(4, 'P8', '17:00', '18:00', '12/12/2019'),
-(5, 'P0', '18:30', '20:00', '15/12/2019'),
-(5, 'P1', '18:30', '20:00', '15/12/2019'),
-(5, 'P2', '18:30', '20:00', '15/12/2019'),
-(5, 'P3', '18:30', '20:00', '15/12/2019'),
-(5, 'P4', '18:30', '20:00', '15/12/2019'),
-(5, 'P5', '18:30', '20:00', '15/12/2019'),
-(5, 'P6', '18:30', '20:00', '15/12/2019'),
-(5, 'P7', '18:30', '20:00', '15/12/2019'),
-(5, 'P8', '18:30', '20:00', '15/12/2019'),
-(6, 'P0', '20:00', '21:30', '18/12/2019'),
-(6, 'P1', '20:00', '21:30', '18/12/2019'),
-(6, 'P2', '20:00', '21:30', '18/12/2019'),
-(6, 'P3', '20:00', '21:30', '18/12/2019'),
-(6, 'P4', '20:00', '21:30', '18/12/2019'),
-(6, 'P5', '20:00', '21:30', '18/12/2019'),
-(6, 'P6', '20:00', '21:30', '18/12/2019'),
-(6, 'P7', '20:00', '21:30', '18/12/2019'),
-(6, 'P8', '20:00', '21:30', '18/12/2019'),
-(7, 'P0', '21:30', '23:00', '22/12/2019'),
-(7, 'P1', '21:30', '23:00', '22/12/2019'),
-(7, 'P2', '21:30', '23:00', '22/12/2019'),
-(7, 'P3', '21:30', '23:00', '22/12/2019'),
-(7, 'P4', '21:30', '23:00', '22/12/2019'),
-(7, 'P5', '21:30', '23:00', '22/12/2019'),
-(7, 'P6', '21:30', '23:00', '22/12/2019'),
-(7, 'P7', '21:30', '23:00', '22/12/2019'),
-(7, 'P8', '21:30', '23:00', '22/12/2019');
+INSERT INTO `school` (`codigo`, `nombre`, `ubicacion`, `administrador`) VALUES
+(1, 'San Patricio', 'C. Rio Mao', 'admin'),
+(2, 'ESEI', 'C Velasco', 'admin');
 
 -- --------------------------------------------------------
 
@@ -695,47 +746,47 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`login`, `nombre`, `apellido`, `password`, `dni`, `email`, `pais`, `sexo`, `telefono`, `fecha`, `foto`, `rol_id`, `socio`) VALUES
-('abeijon_antonio', 'Antonio', 'Abeijon', 'root', '99116644H', 'abeijon_antonio@gmail.com', 'EspaÃ±a', 'Masculino', 633170771, '1946-01-01', 'ABP46_Diagrma Lógico.png', 1,'0'),
-('acarmen', 'Carmen', 'Agueda', 'root', '43464269P', 'carminha@outlook.com', 'España', 'Femenino', 766661242, '1992-07-05', 'banner2.jpg', 2,'0'),
-('admin', 'Charles', 'Somoziña', 'admin', '46110791T', 'flalonso17@esei.uvigo.es', 'Suiza', 'Masculino', 666133017, '1997-09-15', 'cancel.png', 1,'0'),
-('aine', 'Aine', 'Rocha', 'root', '43509260I', 'aine@outlook.com', 'España', 'Femenino', 786861231, '1998-08-26', 'banner2.jpg', 2,'0'),
-('andreita', 'Andrea', 'Calleja', 'root', '44554222L', 'andreita@outlook.com', 'España', 'Femenino', 666661201, '1997-12-07', 'banner2.jpg', 2,'0'),
-('anita32', 'Ana', 'Fernandez', 'root', '44294260D', 'anafer_32@outlook.com', 'España', 'Femenino', 733861201, '1997-09-15', 'banner2.jpg', 2,'0'),
-('antelo_esteban', 'Esteban', 'Antelo', 'root', '59216583V', 'antelo_esteban@gmail.com', 'EspaÃ±a', 'Masculino', 617285374, '1997-07-13', 'banner2.jpg', 1,'0'),
-('antia12', 'Antia', 'Vazquez', 'root', '05561102R', 'antiavazquez@hotmail.com', 'España', 'Femenino', 698224591, '1998-12-13', 'banner3.jpg', 4,'0'),
-('antiavazquez', 'Antia', 'Vazquez', 'root', '17219555F', 'antiavaz@outlook.es', 'España', 'Femenino', 659224908, '1997-06-04', 'banner2.jpg', 2,'0'),
-('antonio_v', 'Antonio', 'Velazquez', 'root', '22751863X', 'antonio_v@outlook.com', 'España', 'Masculino', 754291002, '1997-09-12', 'iconUser.jpg', 2,'0'),
-('apasionado_roberto', 'Roberto', 'Apasionado', 'root', '78583920X', 'apasionado_roberto@gmail.com', 'EspaÃ±a', 'Masculino', 675453433, '1999-08-01', 'banner2.jpg', 1,'0'),
-('ares_alfonso', 'Vitor', 'Hugo', 'root', '85329482Y', 'hugo_vitor@gmail.com', 'EspaÃ±a', 'Masculino', 667438276, '1998-05-11', 'banner2.jpg', 1,'0'),
-('aurelio_marco', 'Marco', 'Aurelio', 'root', '03265386Q', 'aurelio_marco@gmail.com', 'EspaÃ±a', 'Masculino', 689169644, '1987-08-23', 'banner2.jpg', 1,'0'),
-('barbi', 'Barbara', 'Vidal', 'root', '53294353H', 'barbi@outlook.com', 'España', 'Femenino', 635555202, '1998-06-18', 'banner2.jpg', 2,'0'),
-('belenchu', 'Belen', 'Roman', 'root', '494260D', 'belenchu@outlook.com', 'España', 'Femenino', 689861212, '1999-06-12', 'banner2.jpg', 2,'0'),
-('blas_fernando', 'Fernando', 'Blas', 'root', '32893312X', 'blas_fernando@gmail.com', 'EspaÃ±a', 'Masculino', 623467567, '1996-04-21', 'banner2.jpg', 1,'0'),
-('bros_mario', 'Mario', 'Bros', 'root', '32516273U', 'bros_mario@gmail.com', 'EspaÃ±a', 'Masculino', 687654999, '1998-02-16', 'banner2.jpg', 1,'0'),
-('camino_antonio', 'Antonio', 'Camilo', 'root', '85432875G', 'camino_antonio@gmail.com', 'EspaÃ±a', 'Masculino', 643804721, '1982-03-14', 'banner2.jpg', 1,'0'),
-('candela11', 'Candela', 'Touriño', 'root', '43454260B', 'candela@outlook.com', 'España', 'Femenino', 633001201, '1999-09-14', 'banner2.jpg', 2,'0'),
-('cantalapiedra_jorge', 'Jorge', 'Cantalapiedra', 'root', '75592893Q', 'torres_n@gmail.com', 'EspaÃ±a', 'Masculino', 676352433, '1973-06-25', 'banner2.jpg', 1,'0'),
-('canto_toni', 'Antonio', 'Canto', 'root', '73421198K', 'canto_toni@gmail.com', 'EspaÃ±a', 'Masculino', 634298764, '1966-01-30', 'banner2.jpg', 2,'0'),
-('carla95', 'Carla', 'Suarez', 'root', '43170433Y', 'carlasuarez@outlook.com', 'España', 'Femenino', 654367762, '1987-04-15', 'banner2.jpg', 2,'0'),
-('carlosm', 'Carlos', 'Alonso', 'root', '30584021R', 'carlosm@gmail.com', 'Portugal', 'Masculino', 773299121, '2012-12-12', 'user3.jpg', 2,'0'),
-('carol', 'Carolina', 'Aguilar', 'root', '53293233Z', 'carol@outlook.com', 'España', 'Femenino', 633551255, '1996-03-18', 'banner2.jpg', 2,'0'),
-('casteldefels_lluis', 'Lluis', 'Casteldefels', 'root', '04859873L', 'casteldefels_lluis@gmail.com', 'EspaÃ±a', 'Masculino', 696584644, '1954-01-03', 'banner2.jpg', 1,'0'),
-('castro_romulo', 'Romulo', 'Castro', 'root', '74389098Y', 'castro_romulo@gmail.com', 'EspaÃ±a', 'Masculino', 622134521, '1977-07-07', 'banner2.jpg', 1,'0'),
-('castro_ze', 'Ze', 'Castro', 'root', '89432176B', 'castro_ze@gmail.com', 'EspaÃ±a', 'Masculino', 673273682, '1967-01-22', 'banner2.jpg', 1,'0'),
-('cela_jose', 'Jose', 'Cela', 'root', '49302743L', 'tres_xoan@gmail.com', 'EspaÃ±a', 'Masculino', 645939293, '1954-09-14', 'banner2.jpg', 1,'0'),
-('celiag', 'Celia', 'Gonçalves', 'root', '56793121C', 'celia99@outlook.com', 'Portugal', 'Femenino', 733861201, '1999-01-01', 'banner2.jpg', 2,'0'),
-('charlie', 'jnjn', 'jnknk', 'root', '234567', 'jnjnj@nbjnj.com', 'España', 'Masculino', 673322567, '1997-09-15', 'banner2.jpg', 2,'0'),
-('clau96', 'Claudia', 'Campelo', 'root', '45674245K', 'clauuu@outlook.com', 'España', 'Femenino', 600861200, '1996-04-19', 'banner2.jpg', 2,'0'),
-('csmartinez', 'Carlos Enrique', 'Somoza', 'csmartinez', '00289370F', 'csmartinez@gmail.com', 'Grecia', 'Masculino', 672341220, '1996-10-23', 'user1.jpg', 4,'0'),
-('csousa', 'Cristina', 'Sousa', 'root', '36294260D', 'csousa94@outlook.com', 'Portugal', 'Femenino', 744362201, '1994-05-15', 'banner2.jpg', 2,'0'),
-('cuevillas_floro', 'Florentino', 'Cuevillas', 'root', '61723450T', 'cuevillas_florentino@gmail.com', 'EspaÃ±a', 'Masculino', 603487355, '1959-01-23', 'banner2.jpg', 1,'0'),
-('dacuÃ±a_jose', 'Jose', 'DacuÃ±a', 'root', '73425162S', 'dacunha_jose@gmail.com', 'EspaÃ±a', 'Masculino', 657492839, '1955-10-25', 'banner2.jpg', 1,'0'),
-('dasilva_perico', 'Perico', 'Dasilva', 'root', '23175432A', 'dasilva_perico@gmail.com', 'EspaÃ±a', 'Masculino', 698745768, '1978-10-24', 'banner2.jpg', 1,'0'),
-('delapenha_jesus', 'Jesus', 'Delapenha', 'root', '39201839Ã', 'delapenha_jesus@gmail.com', 'EspaÃ±a', 'Masculino', 627845875, '1921-04-10', 'banner2.jpg', 1,'0'),
-('delinha', 'Miguel', 'Atrio', 'delinha', '24156629M', 'mdatrio@gmail.com', 'Suiza', 'Masculino', 658932456, '1997-03-12', 'user3.jpg', 3,'0'),
-('elenanito', 'Elena', 'Romero', 'root', '54294272A', 'elenanito@outlook.com', 'España', 'Femenino', 754863201, '1996-07-09', 'banner2.jpg', 2,'0'),
-('eli', 'Elisa', 'Albas', 'root', '4423500D', 'eli@outlook.com', 'España', 'Femenino', 744861244, '1996-09-16', 'banner2.jpg', 2,'0'),
-('esteban_aitor', 'Aitor', 'Esteban', 'root', '35462218P', 'esteban_aitor@gmail.com', 'EspaÃ±a', 'Masculino', 676324152, '1957-02-27', 'banner2.jpg', 1,'0'),
+('abeijon_antonio', 'Antonio', 'Abeijon', 'root', '99116644H', 'abeijon_antonio@gmail.com', 'EspaÃ±a', 'Masculino', 633170771, '1946-01-01', 'ABP46_Diagrma Lógico.png', 1, '0'),
+('acarmen', 'Carmen', 'Agueda', 'root', '43464269P', 'carminha@outlook.com', 'España', 'Femenino', 766661242, '1992-07-05', 'banner2.jpg', 2, '0'),
+('admin', 'Charles', 'Somoziña', 'admin', '46110791T', 'flalonso17@esei.uvigo.es', 'Suiza', 'Masculino', 666133017, '1997-09-15', 'cancel.png', 1, '0'),
+('aine', 'Aine', 'Rocha', 'root', '43509260I', 'aine@outlook.com', 'España', 'Femenino', 786861231, '1998-08-26', 'banner2.jpg', 2, '0'),
+('andreita', 'Andrea', 'Calleja', 'root', '44554222L', 'andreita@outlook.com', 'España', 'Femenino', 666661201, '1997-12-07', 'banner2.jpg', 2, '0'),
+('anita32', 'Ana', 'Fernandez', 'root', '44294260D', 'anafer_32@outlook.com', 'España', 'Femenino', 733861201, '1997-09-15', 'banner2.jpg', 2, '0'),
+('antelo_esteban', 'Esteban', 'Antelo', 'root', '59216583V', 'antelo_esteban@gmail.com', 'EspaÃ±a', 'Masculino', 617285374, '1997-07-13', 'banner2.jpg', 1, '0'),
+('antia12', 'Antia', 'Vazquez', 'root', '05561102R', 'antiavazquez@hotmail.com', 'España', 'Femenino', 698224591, '1998-12-13', 'banner3.jpg', 4, '0'),
+('antiavazquez', 'Antia', 'Vazquez', 'root', '17219555F', 'antiavaz@outlook.es', 'España', 'Femenino', 659224908, '1997-06-04', 'banner2.jpg', 2, '0'),
+('antonio_v', 'Antonio', 'Velazquez', 'root', '22751863X', 'antonio_v@outlook.com', 'España', 'Masculino', 754291002, '1997-09-12', 'iconUser.jpg', 2, '0'),
+('apasionado_roberto', 'Roberto', 'Apasionado', 'root', '78583920X', 'apasionado_roberto@gmail.com', 'EspaÃ±a', 'Masculino', 675453433, '1999-08-01', 'banner2.jpg', 1, '0'),
+('ares_alfonso', 'Vitor', 'Hugo', 'root', '85329482Y', 'hugo_vitor@gmail.com', 'EspaÃ±a', 'Masculino', 667438276, '1998-05-11', 'banner2.jpg', 1, '0'),
+('aurelio_marco', 'Marco', 'Aurelio', 'root', '03265386Q', 'aurelio_marco@gmail.com', 'EspaÃ±a', 'Masculino', 689169644, '1987-08-23', 'banner2.jpg', 1, '0'),
+('barbi', 'Barbara', 'Vidal', 'root', '53294353H', 'barbi@outlook.com', 'España', 'Femenino', 635555202, '1998-06-18', 'banner2.jpg', 2, '0'),
+('belenchu', 'Belen', 'Roman', 'root', '494260D', 'belenchu@outlook.com', 'España', 'Femenino', 689861212, '1999-06-12', 'banner2.jpg', 2, '0'),
+('blas_fernando', 'Fernando', 'Blas', 'root', '32893312X', 'blas_fernando@gmail.com', 'EspaÃ±a', 'Masculino', 623467567, '1996-04-21', 'banner2.jpg', 1, '0'),
+('bros_mario', 'Mario', 'Bros', 'root', '32516273U', 'bros_mario@gmail.com', 'EspaÃ±a', 'Masculino', 687654999, '1998-02-16', 'banner2.jpg', 1, '0'),
+('camino_antonio', 'Antonio', 'Camilo', 'root', '85432875G', 'camino_antonio@gmail.com', 'EspaÃ±a', 'Masculino', 643804721, '1982-03-14', 'banner2.jpg', 1, '0'),
+('candela11', 'Candela', 'Touriño', 'root', '43454260B', 'candela@outlook.com', 'España', 'Femenino', 633001201, '1999-09-14', 'banner2.jpg', 2, '0'),
+('cantalapiedra_jorge', 'Jorge', 'Cantalapiedra', 'root', '75592893Q', 'torres_n@gmail.com', 'EspaÃ±a', 'Masculino', 676352433, '1973-06-25', 'banner2.jpg', 1, '0'),
+('canto_toni', 'Antonio', 'Canto', 'root', '73421198K', 'canto_toni@gmail.com', 'EspaÃ±a', 'Masculino', 634298764, '1966-01-30', 'banner2.jpg', 2, '0'),
+('carla95', 'Carla', 'Suarez', 'root', '43170433Y', 'carlasuarez@outlook.com', 'España', 'Femenino', 654367762, '1987-04-15', 'banner2.jpg', 2, '0'),
+('carlosm', 'Carlos', 'Alonso', 'root', '30584021R', 'carlosm@gmail.com', 'Portugal', 'Masculino', 773299121, '2012-12-12', 'user3.jpg', 2, '0'),
+('carol', 'Carolina', 'Aguilar', 'root', '53293233Z', 'carol@outlook.com', 'España', 'Femenino', 633551255, '1996-03-18', 'banner2.jpg', 2, '0'),
+('casteldefels_lluis', 'Lluis', 'Casteldefels', 'root', '04859873L', 'casteldefels_lluis@gmail.com', 'EspaÃ±a', 'Masculino', 696584644, '1954-01-03', 'banner2.jpg', 1, '0'),
+('castro_romulo', 'Romulo', 'Castro', 'root', '74389098Y', 'castro_romulo@gmail.com', 'EspaÃ±a', 'Masculino', 622134521, '1977-07-07', 'banner2.jpg', 1, '0'),
+('castro_ze', 'Ze', 'Castro', 'root', '89432176B', 'castro_ze@gmail.com', 'EspaÃ±a', 'Masculino', 673273682, '1967-01-22', 'banner2.jpg', 1, '0'),
+('cela_jose', 'Jose', 'Cela', 'root', '49302743L', 'tres_xoan@gmail.com', 'EspaÃ±a', 'Masculino', 645939293, '1954-09-14', 'banner2.jpg', 1, '0'),
+('celiag', 'Celia', 'Gonçalves', 'root', '56793121C', 'celia99@outlook.com', 'Portugal', 'Femenino', 733861201, '1999-01-01', 'banner2.jpg', 2, '0'),
+('charlie', 'jnjn', 'jnknk', 'root', '234567', 'jnjnj@nbjnj.com', 'España', 'Masculino', 673322567, '1997-09-15', 'banner2.jpg', 2, '0'),
+('clau96', 'Claudia', 'Campelo', 'root', '45674245K', 'clauuu@outlook.com', 'España', 'Femenino', 600861200, '1996-04-19', 'banner2.jpg', 2, '0'),
+('csmartinez', 'Carlos Enrique', 'Somoza', 'csmartinez', '00289370F', 'csmartinez@gmail.com', 'Grecia', 'Masculino', 672341220, '1996-10-23', 'user1.jpg', 4, '0'),
+('csousa', 'Cristina', 'Sousa', 'root', '36294260D', 'csousa94@outlook.com', 'Portugal', 'Femenino', 744362201, '1994-05-15', 'banner2.jpg', 2, '0'),
+('cuevillas_floro', 'Florentino', 'Cuevillas', 'root', '61723450T', 'cuevillas_florentino@gmail.com', 'EspaÃ±a', 'Masculino', 603487355, '1959-01-23', 'banner2.jpg', 1, '0'),
+('dacuÃ±a_jose', 'Jose', 'DacuÃ±a', 'root', '73425162S', 'dacunha_jose@gmail.com', 'EspaÃ±a', 'Masculino', 657492839, '1955-10-25', 'banner2.jpg', 1, '0'),
+('dasilva_perico', 'Perico', 'Dasilva', 'root', '23175432A', 'dasilva_perico@gmail.com', 'EspaÃ±a', 'Masculino', 698745768, '1978-10-24', 'banner2.jpg', 1, '0'),
+('delapenha_jesus', 'Jesus', 'Delapenha', 'root', '39201839Ã', 'delapenha_jesus@gmail.com', 'EspaÃ±a', 'Masculino', 627845875, '1921-04-10', 'banner2.jpg', 1, '0'),
+('delinha', 'Miguel', 'Atrio', 'delinha', '24156629M', 'mdatrio@gmail.com', 'Suiza', 'Masculino', 658932456, '1997-03-12', 'user3.jpg', 3, '0'),
+('elenanito', 'Elena', 'Romero', 'root', '54294272A', 'elenanito@outlook.com', 'España', 'Femenino', 754863201, '1996-07-09', 'banner2.jpg', 2, '0'),
+('eli', 'Elisa', 'Albas', 'root', '4423500D', 'eli@outlook.com', 'España', 'Femenino', 744861244, '1996-09-16', 'banner2.jpg', 2, '0'),
+('esteban_aitor', 'Aitor', 'Esteban', 'root', '35462218P', 'esteban_aitor@gmail.com', 'EspaÃ±a', 'Masculino', 676324152, '1957-02-27', 'banner2.jpg', 1, '0'),
 ('estere', 'Ester', 'Miragaya', 'root', '56794260D', 'esteree@outlook.com', 'España', 'Femenino', 678961278, '1996-07-13', 'banner2.jpg', 2, '0'),
 ('fati', 'Fatima', 'Vilas', 'root', '55594255S', 'fati@outlook.com', 'España', 'Femenino', 673431201, '1995-10-05', 'banner2.jpg', 2, '0'),
 ('fer_rv', 'Fernanda', 'Pereira', 'root', '10997721H', 'fernanda_pereira@yahoo.es', 'España', 'Femenino', 665229012, '1998-03-12', 'user2.jpg', 2, '0'),
@@ -754,75 +805,75 @@ INSERT INTO `user` (`login`, `nombre`, `apellido`, `password`, `dni`, `email`, `
 ('ireneee', 'Irene', 'Sanchez', 'root', '55291133U', 'ire@outlook.com', 'España', 'Femenino', 684327569, '1997-12-03', 'banner2.jpg', 2, '0'),
 ('ivan_espinosa', 'Ivan', 'de la Concepcion', 'root', '78816661Z', 'ivanito_espi@gmail.com', 'España', 'Masculino', 2147483647, '1998-12-11', 'banner2.jpg', 2, '0'),
 ('jessi', 'Jessica', 'House', 'root', '32294320W', 'jessi@outlook.com', 'Inglaterra', 'Femenino', 666661221, '1995-04-23', 'banner2.jpg', 2, '0'),
-('jmartinez', 'Jose', 'Martinez', 'root', '28000300P', 'jmartinez@gmail.com', 'Francia', 'Masculino', 664923810, '1996-03-12', 'iconUser.jpg', 2,'0'),
-('joan_roda', 'Joan', 'Roda', 'root', '78836661M', 'joan_roda_barral@gmail.com', 'España', 'Masculino', 466723402, '1998-12-11', 'banner2.jpg', 2,'0'),
-('josefa_barea', 'Josefa', 'Barea', 'root', '78325661S', 'josefi_barral@gmail.com', 'España', 'Femenino', 266724402, '1970-12-11', 'banner2.jpg', 2,'0'),
-('juliaaa', 'Julia', 'Martinez', 'root', '56697277D', 'juliamar@outlook.com', 'España', 'Femenino', 698861232, '1996-06-06', 'banner2.jpg', 2,'0'),
-('lara', 'Lara', 'Pimentel', 'root', '47774260S', 'lara98@outlook.com', 'España', 'Femenino', 656861207, '1998-07-5', 'banner2.jpg', 2,'0'),
-('laura_borras', 'Laura', 'Borras', 'root', '78836661D', 'laura_barral@gmail.com', 'España', 'Femenino', 366723402, '1998-12-11', 'banner2.jpg', 2,'0'),
-('laura_vega', 'Laura', 'Vega', 'root', '28836661K', 'laura_vega_barral@gmail.com', 'España', 'Femenino', 566723402, '1998-12-11', 'banner2.jpg', 2,'0'),
-('laura66', 'Laura', 'Quintans', 'root', '4237260T', 'laura66@outlook.com', 'España', 'Femenino', 689447310, '1999-01-2', 'banner2.jpg', 2,'0'),
-('leti96', 'Ana', 'Medina', 'root', '84294260D', 'leti96@outlook.com', 'España', 'Femenino', 789866788, '1996-01-08', 'banner2.jpg', 2,'0'),
-('libertad_franco', 'Franco', 'Libertad', 'root', '38248189J', 'libertad_franco@gmail.com', 'EspaÃ±a', 'Masculino', 690275369, '1974-09-29', 'banner2.jpg', 1,'0'),
-('lola', 'Lola', 'Agra', 'root', '45674232E', 'lola68@outlook.com', 'España', 'Femenino', 698861201, '1968-03-11', 'banner2.jpg', 2,'0'),
-('loser', 'Antonio', 'López', 'root', '32901894S', 'antonio_lr@yahoo.es', 'España', 'Masculino', 663009701, '1962-09-29', 'banner1.jpg', 2,'0'),
-('lucia_atm', 'Lucia', 'Puga', 'root', '35340416L', 'luciatm@gmail.com', 'España', 'Femenino', 655399823, '1994-12-20', 'banner2.jpg', 2,'0'),
-('lucilu', 'Lucia', 'Ramirez', 'root', '54294765G', 'lucilu56@outlook.com', 'España', 'Femenino', 634461539, '1996-05-06', 'banner2.jpg', 2,'0'),
-('Luis_Clemente_Guadil', 'Luis', 'Clemente', 'root', '78836661S', 'luis_guadilla_rral@gmail.com', 'España', 'Masculino', 966723402, '1998-12-11', 'banner2.jpg', 2,'0'),
-('maldonado_javier', 'Javier', 'Maldonado', 'root', '47568321R', 'maldonado_javier@gmail.com', 'EspaÃ±a', 'Masculino', 619837846, '1980-06-18', 'banner2.jpg', 1,'0'),
-('manzanares_alberto', 'Alberto', 'Manzanares', 'root', '89598365R', 'manzanares_alberto@gmail.com', 'EspaÃ±a', 'Masculino', 685344223, '1963-05-07', 'banner2.jpg', 1,'0'),
-('manzanares_alfonso', 'Alfonso', 'Manzanares', 'root', '89759629E', 'manzanares_alfonso@gmail.com', 'EspaÃ±a', 'Masculino', 674325332, '1979-05-04', 'banner2.jpg', 1,'0'),
-('mariam', 'Maria', 'Mendez', 'root', '57994269N', 'mmendez@outlook.com', 'España', 'Femenino', 756861568, '1993-09-25', 'banner2.jpg', 2,'0'),
-('marina124', 'Marina', 'Cabaleiro', 'root', '43294211F', 'marina124@outlook.com', 'España', 'Femenino', 643862222, '1994-02-01', 'banner2.jpg', 2,'0'),
-('mariohermida', 'Mario', 'Campos', 'root', '53861280H', 'mario.hermida@outlook.es', 'España', 'Masculino', 698137744, '1996-10-19', 'mario.jfif', 2,'0'),
-('marlen', 'Marlen', 'Valado', 'root', '43294243B', 'valadom@outlook.com', 'España', 'Femenino', 649868301, '1996-08-24', 'banner2.jpg', 2,'0'),
-('marta45', 'Marta', 'Vila', 'root', '53192260S', 'afer_32@outlook.com', 'España', 'Femenino', 767861266, '1995-06-05', 'banner2.jpg', 2,'0'),
-('mdolores', 'Maria Dolores', 'Lopez', 'root', '89925329', 'mdolores@gmail.com', 'España', 'Femenino', 672199222, '1993-12-11', 'user2.jpg', 2,'0'),
-('medialba', 'Alba', 'Patallo', 'root', '74294260D', 'albamedina@outlook.com', 'España', 'Femenino', 643231203, '1996-12-15', 'banner2.jpg', 2,'0'),
-('mendez_carlos', 'Carlos', 'Mendez', 'root', '65437284E', 'mendez_carlos@gmail.com', 'EspaÃ±a', 'Masculino', 652783644, '1956-10-13', 'banner2.jpg', 1,'0'),
-('merxearz', 'Mertxe', 'Arzallus', 'root', '78836651K', 'mertxe_arzallus@gmail.com', 'España', 'Femenino', 666723442, '1948-12-11', 'banner2.jpg', 2,'0'),
-('mila', 'Milagros', 'Pintos', 'root', '44494320C', 'ar_32@outlook.com', 'España', 'Femenino', 654861243, '1994-05-19', 'banner2.jpg', 2,'0'),
-('miragaya_txeroki', 'Txeroki', 'Miragaya', 'root', '58392984K', 'miragaya_txeroki@gmail.com', 'EspaÃ±a', 'Masculino', 698279555, '1976-08-28', 'banner2.jpg', 1,'0'),
-('miranda_daniel', 'Daniel', 'Miranda', 'root', '98364522L', 'miranda_daniel@gmail.com', 'EspaÃ±a', 'Masculino', 673768765, '1981-12-19', 'banner2.jpg', 1,'0'),
-('mire96', 'Mirella', 'Arribas', 'root', '4429426D', 'lamire@outlook.com', 'España', 'Femenino', 689861201, '1996-05-17', 'banner2.jpg', 2,'0'),
-('miriam89', 'Miriam', 'Castro', 'root', '45554320D', 'miri@outlook.com', 'España', 'Femenino', 660861245, '1989-02-12', 'banner2.jpg', 2,'0'),
-('montes_hilario', 'Hilario', 'Montes', 'root', '38492012I', 'montes_hilario@gmail.com', 'EspaÃ±a', 'Masculino', 609876542, '1954-01-30', 'banner2.jpg', 1,'0'),
-('mvarela', 'Manuel', 'Varela', 'root', '96413471R', 'mvarela@gmail.com', 'España', 'Masculino', 773452198, '1988-12-12', 'iconUser.jpg', 2,'0'),
-('nata64', 'Natalia', 'Vazquez', 'root', '49994D', 'nata64@outlook.com', 'España', 'Femenino', 789789201, '1996-06-04', 'banner2.jpg', 2,'0'),
-('nerea34', 'Nerea', 'Ariño', 'root', '44293110R', 'nerea34@outlook.com', 'España', 'Femenino', 654861201, '1997-09-15', 'banner2.jpg', 2,'0'),
-('novoa_jesus', 'Jesus', 'Novoa', 'root', '64352175F', 'novoa_jesus@gmail.com', 'EspaÃ±a', 'Masculino', 682647434, '1976-07-22', 'banner2.jpg', 1,'0'),
-('novoneira_uxi', 'Uxio', '	Novoneira', 'root', '23751327G', 'novoneira_uxio@gmail.com', 'España', 'Masculino', 654398143, '1988-03-12', 'banner2.jpg', 4,'0'),
-('nuria77', 'Nuria', 'Miranda', 'root', '53294320B', 'nuri@outlook.com', 'España', 'Femenino', 733861201, '1977-02-19', 'banner2.jpg', 2,'0'),
-('osborne_jordi', 'Jordi', 'Osborne', 'root', '07328995I', 'osborne_jordi@gmail.com', 'EspaÃ±a', 'Masculino', 628943515, '1976-10-17', 'banner2.jpg', 1,'0'),
-('pallares_ramon', 'Ramon', 'Pallares', 'root', '89756535B', 'pallares_ramon@gmail.com', 'EspaÃ±a', 'Masculino', 647565545, '1968-01-30', 'banner2.jpg', 1,'0'),
-('pame', 'Pamela', 'Crespo', 'root', '55294265E', 'pamela@outlook.com', 'España', 'Femenino', 777861201, '1985-09-13', 'banner2.jpg', 2,'0'),
-('pantoja_enrique', 'Enrique', 'Pantoja', 'root', '32754832N', 'pantoja_enrique@gmail.com', 'EspaÃ±a', 'Masculino', 689636735, '1988-01-20', 'banner2.jpg', 1,'0'),
-('patri97', 'Patri', 'Hernandez', 'root', '54294260U', 'patriarca@outlook.com', 'España', 'Femenino', 676761201, '1997-08-18', 'banner2.jpg', 2,'0'),
-('paula', 'Paula', 'Gomez', 'root', '59294260C', 'paula@outlook.com', 'España', 'Femenino', 639861211, '1998-12-30', 'banner2.jpg', 2,'0'),
-('pimentel_luis', 'Luis', 'Pimentel', 'root', '00987620L', 'pimentel_luis@gmail.com', 'EspaÃ±a', 'Masculino', 600998877, '1996-08-23', 'banner2.jpg', 1,'0'),
-('pradi', 'Pradi', 'Mejuto', 'root', '44344232Q', 'pradi45@outlook.com', 'España', 'Femenino', 699861299, '1997-01-25', 'banner2.jpg', 2,'0'),
-('rebecape', 'Rebeca', 'Perez', 'root', '44593260D', 'rebe@outlook.com', 'España', 'Femenino', 638561202, '1998-11-1', 'banner2.jpg', 2,'0'),
-('rego_nestor', 'Nestor', 'Rego', 'root', '47382923R', 'rego_nestor@gmail.com', 'EspaÃ±a', 'Masculino', 697853265, '1999-09-07', 'banner2.jpg', 1,'0'),
-('roca_tino', 'Tino', 'Roca', 'root', '39456784W', 'roca_tino@gmail.com', 'EspaÃ±a', 'Masculino', 665434566, '1997-07-15', 'banner2.jpg', 1,'0'),
-('rodriguez_suso', 'Suso', 'Rodriguez', 'root', '12746845C', 'rodriguez_suso@gmail.com', 'EspaÃ±a', 'Masculino', 675663533, '1969-04-29', 'banner2.jpg', 1,'0'),
-('root', 'Javier', 'Alonso', 'root', '45159031A', 'paco150997@hotmail.com', 'España', 'Masculino', 673322161, '1998-12-12', 'iconUser.jpg', 2,'0'),
-('rosio96', 'Rocio', 'Garcia', 'root', '59007260D', 'rosio96@outlook.com', 'España', 'Femenino', 689061201, '1996-09-25', 'banner2.jpg', 2,'0'),
-('sabina23', 'Sabina', 'Domingo', 'root', '56294260L', 'sabina@outlook.com', 'España', 'Femenino', 630865401, '1992-10-29', 'banner2.jpg', 2,'0'),
-('sandri97', 'Sandra', 'Chamarro', 'root', '54694255J', 'chamisa@outlook.com', 'España', 'Femenino', 678861245, '1997-09-11', 'banner2.jpg', 2,'0'),
-('santi_abascal', 'Santiago', 'Abascal', 'root', '78836661L', 'santi_barral@gmail.com', 'España', 'Masculino', 636723402, '1998-12-11', 'banner2.jpg', 2,'0'),
-('santos_leon', 'Santos', 'Leon', 'root', '78836661G', 'santos_leon_barral@gmail.com', 'España', 'Masculino', 866723402, '1998-12-11', 'banner2.jpg', 2,'0'),
-('seoane_luis', 'Luis', 'Seoane', 'root', '76332211E', 'seoane_luis@gmail.com', 'EspaÃ±a', 'Masculino', 658263640, '1943-08-03', 'banner2.jpg', 1,'0'),
-('sesto_camilo', 'Camilo', 'Sesto', 'root', '47829848H', 'sesto_camilo@gmail.com', 'EspaÃ±a', 'Masculino', 690756552, '1958-07-26', 'banner2.jpg', 1,'0'),
-('somoza_mateo', 'Mateo', 'Somoza', 'root', '43829125P', 'somoza_mateo@gmail.com', 'EspaÃ±a', 'Masculino', 682364862, '1979-07-18', 'banner2.jpg', 1,'0'),
-('sormaria', 'Maria', 'de la Concepcion', 'root', '78836661K', 'maria_barral@gmail.com', 'España', 'Femenino', 666723402, '1998-12-11', 'banner2.jpg', 2,'0'),
-('terelu91', 'Teresa', 'Pacheco', 'root', '55594260M', 'terelu@outlook.com', 'España', 'Femenino', 2147483647, '1991-11-11', 'banner2.jpg', 2,'0'),
-('torra_quim', 'Quim', 'Torra', 'root', '84959393M', 'torra_quim@gmail.com', 'EspaÃ±a', 'Masculino', 609729695, '1978-07-08', 'banner2.jpg', 1,'0'),
-('torres_xan', 'Xoan', 'Torres', 'root', '4743649E', 'ores_xoan@gml.com', 'España', 'Masculino', 67850670, '1976-11-25', 'banner2.jpg', 1,'0'),
-('torres_xoan', 'Xoan', 'Torres', 'root', '47436349E', 'torres_xoan@gmail.com', 'EspaÃ±a', 'Masculino', 678546790, '1976-11-25', 'banner2.jpg', 1,'0'),
-('varela_pepe', 'Pepe', 'Varela', 'root', '54300772Z', 'varela_pepe@gmail.com', 'EspaÃ±a', 'Masculino', 678546790, '1965-04-18', 'banner2.jpg', 1,'0'),
-('velasco_dionisio', 'Dionisio', 'Velasco', 'root', '57283921D', 'velasco_dionisio@gmail.com', 'EspaÃ±a', 'Masculino', 692398525, '1977-06-12', 'banner2.jpg', 1,'0'),
-('vicky', 'Victoria', 'Beltran', 'root', '53294210F', 'vicky55@outlook.com', 'España', 'Femenino', 733861201, '1997-05-05', 'banner2.jpg', 2,'0'),
-('vilanova_pedro', 'Pedro', 'Vilanova', 'root', '21654372D', 'vilanova_pedro@gmail.com', 'EspaÃ±a', 'Masculino', 689364222, '1944-11-25', 'banner2.jpg', 1,'0');
+('jmartinez', 'Jose', 'Martinez', 'root', '28000300P', 'jmartinez@gmail.com', 'Francia', 'Masculino', 664923810, '1996-03-12', 'iconUser.jpg', 2, '0'),
+('joan_roda', 'Joan', 'Roda', 'root', '78836661M', 'joan_roda_barral@gmail.com', 'España', 'Masculino', 466723402, '1998-12-11', 'banner2.jpg', 2, '0'),
+('josefa_barea', 'Josefa', 'Barea', 'root', '78325661S', 'josefi_barral@gmail.com', 'España', 'Femenino', 266724402, '1970-12-11', 'banner2.jpg', 2, '0'),
+('juliaaa', 'Julia', 'Martinez', 'root', '56697277D', 'juliamar@outlook.com', 'España', 'Femenino', 698861232, '1996-06-06', 'banner2.jpg', 2, '0'),
+('lara', 'Lara', 'Pimentel', 'root', '47774260S', 'lara98@outlook.com', 'España', 'Femenino', 656861207, '1998-07-5', 'banner2.jpg', 2, '0'),
+('laura_borras', 'Laura', 'Borras', 'root', '78836661D', 'laura_barral@gmail.com', 'España', 'Femenino', 366723402, '1998-12-11', 'banner2.jpg', 2, '0'),
+('laura_vega', 'Laura', 'Vega', 'root', '28836661K', 'laura_vega_barral@gmail.com', 'España', 'Femenino', 566723402, '1998-12-11', 'banner2.jpg', 2, '0'),
+('laura66', 'Laura', 'Quintans', 'root', '4237260T', 'laura66@outlook.com', 'España', 'Femenino', 689447310, '1999-01-2', 'banner2.jpg', 2, '0'),
+('leti96', 'Ana', 'Medina', 'root', '84294260D', 'leti96@outlook.com', 'España', 'Femenino', 789866788, '1996-01-08', 'banner2.jpg', 2, '0'),
+('libertad_franco', 'Franco', 'Libertad', 'root', '38248189J', 'libertad_franco@gmail.com', 'EspaÃ±a', 'Masculino', 690275369, '1974-09-29', 'banner2.jpg', 1, '0'),
+('lola', 'Lola', 'Agra', 'root', '45674232E', 'lola68@outlook.com', 'España', 'Femenino', 698861201, '1968-03-11', 'banner2.jpg', 2, '0'),
+('loser', 'Antonio', 'López', 'root', '32901894S', 'antonio_lr@yahoo.es', 'España', 'Masculino', 663009701, '1962-09-29', 'banner1.jpg', 2, '0'),
+('lucia_atm', 'Lucia', 'Puga', 'root', '35340416L', 'luciatm@gmail.com', 'España', 'Femenino', 655399823, '1994-12-20', 'banner2.jpg', 2, '0'),
+('lucilu', 'Lucia', 'Ramirez', 'root', '54294765G', 'lucilu56@outlook.com', 'España', 'Femenino', 634461539, '1996-05-06', 'banner2.jpg', 2, '0'),
+('Luis_Clemente_Guadil', 'Luis', 'Clemente', 'root', '78836661S', 'luis_guadilla_rral@gmail.com', 'España', 'Masculino', 966723402, '1998-12-11', 'banner2.jpg', 2, '0'),
+('maldonado_javier', 'Javier', 'Maldonado', 'root', '47568321R', 'maldonado_javier@gmail.com', 'EspaÃ±a', 'Masculino', 619837846, '1980-06-18', 'banner2.jpg', 1, '0'),
+('manzanares_alberto', 'Alberto', 'Manzanares', 'root', '89598365R', 'manzanares_alberto@gmail.com', 'EspaÃ±a', 'Masculino', 685344223, '1963-05-07', 'banner2.jpg', 1, '0'),
+('manzanares_alfonso', 'Alfonso', 'Manzanares', 'root', '89759629E', 'manzanares_alfonso@gmail.com', 'EspaÃ±a', 'Masculino', 674325332, '1979-05-04', 'banner2.jpg', 1, '0'),
+('mariam', 'Maria', 'Mendez', 'root', '57994269N', 'mmendez@outlook.com', 'España', 'Femenino', 756861568, '1993-09-25', 'banner2.jpg', 2, '0'),
+('marina124', 'Marina', 'Cabaleiro', 'root', '43294211F', 'marina124@outlook.com', 'España', 'Femenino', 643862222, '1994-02-01', 'banner2.jpg', 2, '0'),
+('mariohermida', 'Mario', 'Campos', 'root', '53861280H', 'mario.hermida@outlook.es', 'España', 'Masculino', 698137744, '1996-10-19', 'mario.jfif', 2, '0'),
+('marlen', 'Marlen', 'Valado', 'root', '43294243B', 'valadom@outlook.com', 'España', 'Femenino', 649868301, '1996-08-24', 'banner2.jpg', 2, '0'),
+('marta45', 'Marta', 'Vila', 'root', '53192260S', 'afer_32@outlook.com', 'España', 'Femenino', 767861266, '1995-06-05', 'banner2.jpg', 2, '0'),
+('mdolores', 'Maria Dolores', 'Lopez', 'root', '89925329', 'mdolores@gmail.com', 'España', 'Femenino', 672199222, '1993-12-11', 'user2.jpg', 2, '0'),
+('medialba', 'Alba', 'Patallo', 'root', '74294260D', 'albamedina@outlook.com', 'España', 'Femenino', 643231203, '1996-12-15', 'banner2.jpg', 2, '0'),
+('mendez_carlos', 'Carlos', 'Mendez', 'root', '65437284E', 'mendez_carlos@gmail.com', 'EspaÃ±a', 'Masculino', 652783644, '1956-10-13', 'banner2.jpg', 1, '0'),
+('merxearz', 'Mertxe', 'Arzallus', 'root', '78836651K', 'mertxe_arzallus@gmail.com', 'España', 'Femenino', 666723442, '1948-12-11', 'banner2.jpg', 2, '0'),
+('mila', 'Milagros', 'Pintos', 'root', '44494320C', 'ar_32@outlook.com', 'España', 'Femenino', 654861243, '1994-05-19', 'banner2.jpg', 2, '0'),
+('miragaya_txeroki', 'Txeroki', 'Miragaya', 'root', '58392984K', 'miragaya_txeroki@gmail.com', 'EspaÃ±a', 'Masculino', 698279555, '1976-08-28', 'banner2.jpg', 1, '0'),
+('miranda_daniel', 'Daniel', 'Miranda', 'root', '98364522L', 'miranda_daniel@gmail.com', 'EspaÃ±a', 'Masculino', 673768765, '1981-12-19', 'banner2.jpg', 1, '0'),
+('mire96', 'Mirella', 'Arribas', 'root', '4429426D', 'lamire@outlook.com', 'España', 'Femenino', 689861201, '1996-05-17', 'banner2.jpg', 2, '0'),
+('miriam89', 'Miriam', 'Castro', 'root', '45554320D', 'miri@outlook.com', 'España', 'Femenino', 660861245, '1989-02-12', 'banner2.jpg', 2, '0'),
+('montes_hilario', 'Hilario', 'Montes', 'root', '38492012I', 'montes_hilario@gmail.com', 'EspaÃ±a', 'Masculino', 609876542, '1954-01-30', 'banner2.jpg', 1, '0'),
+('mvarela', 'Manuel', 'Varela', 'root', '96413471R', 'mvarela@gmail.com', 'España', 'Masculino', 773452198, '1988-12-12', 'iconUser.jpg', 2, '0'),
+('nata64', 'Natalia', 'Vazquez', 'root', '49994D', 'nata64@outlook.com', 'España', 'Femenino', 789789201, '1996-06-04', 'banner2.jpg', 2, '0'),
+('nerea34', 'Nerea', 'Ariño', 'root', '44293110R', 'nerea34@outlook.com', 'España', 'Femenino', 654861201, '1997-09-15', 'banner2.jpg', 2, '0'),
+('novoa_jesus', 'Jesus', 'Novoa', 'root', '64352175F', 'novoa_jesus@gmail.com', 'EspaÃ±a', 'Masculino', 682647434, '1976-07-22', 'banner2.jpg', 1, '0'),
+('novoneira_uxi', 'Uxio', '	Novoneira', 'root', '23751327G', 'novoneira_uxio@gmail.com', 'España', 'Masculino', 654398143, '1988-03-12', 'banner2.jpg', 4, '0'),
+('nuria77', 'Nuria', 'Miranda', 'root', '53294320B', 'nuri@outlook.com', 'España', 'Femenino', 733861201, '1977-02-19', 'banner2.jpg', 2, '0'),
+('osborne_jordi', 'Jordi', 'Osborne', 'root', '07328995I', 'osborne_jordi@gmail.com', 'EspaÃ±a', 'Masculino', 628943515, '1976-10-17', 'banner2.jpg', 1, '0'),
+('pallares_ramon', 'Ramon', 'Pallares', 'root', '89756535B', 'pallares_ramon@gmail.com', 'EspaÃ±a', 'Masculino', 647565545, '1968-01-30', 'banner2.jpg', 1, '0'),
+('pame', 'Pamela', 'Crespo', 'root', '55294265E', 'pamela@outlook.com', 'España', 'Femenino', 777861201, '1985-09-13', 'banner2.jpg', 2, '0'),
+('pantoja_enrique', 'Enrique', 'Pantoja', 'root', '32754832N', 'pantoja_enrique@gmail.com', 'EspaÃ±a', 'Masculino', 689636735, '1988-01-20', 'banner2.jpg', 1, '0'),
+('patri97', 'Patri', 'Hernandez', 'root', '54294260U', 'patriarca@outlook.com', 'España', 'Femenino', 676761201, '1997-08-18', 'banner2.jpg', 2, '0'),
+('paula', 'Paula', 'Gomez', 'root', '59294260C', 'paula@outlook.com', 'España', 'Femenino', 639861211, '1998-12-30', 'banner2.jpg', 2, '0'),
+('pimentel_luis', 'Luis', 'Pimentel', 'root', '00987620L', 'pimentel_luis@gmail.com', 'EspaÃ±a', 'Masculino', 600998877, '1996-08-23', 'banner2.jpg', 1, '0'),
+('pradi', 'Pradi', 'Mejuto', 'root', '44344232Q', 'pradi45@outlook.com', 'España', 'Femenino', 699861299, '1997-01-25', 'banner2.jpg', 2, '0'),
+('rebecape', 'Rebeca', 'Perez', 'root', '44593260D', 'rebe@outlook.com', 'España', 'Femenino', 638561202, '1998-11-1', 'banner2.jpg', 2, '0'),
+('rego_nestor', 'Nestor', 'Rego', 'root', '47382923R', 'rego_nestor@gmail.com', 'EspaÃ±a', 'Masculino', 697853265, '1999-09-07', 'banner2.jpg', 1, '0'),
+('roca_tino', 'Tino', 'Roca', 'root', '39456784W', 'roca_tino@gmail.com', 'EspaÃ±a', 'Masculino', 665434566, '1997-07-15', 'banner2.jpg', 1, '0'),
+('rodriguez_suso', 'Suso', 'Rodriguez', 'root', '12746845C', 'rodriguez_suso@gmail.com', 'EspaÃ±a', 'Masculino', 675663533, '1969-04-29', 'banner2.jpg', 1, '0'),
+('root', 'Javier', 'Alonso', 'root', '45159031A', 'paco150997@hotmail.com', 'España', 'Masculino', 673322161, '1998-12-12', 'iconUser.jpg', 2, '0'),
+('rosio96', 'Rocio', 'Garcia', 'root', '59007260D', 'rosio96@outlook.com', 'España', 'Femenino', 689061201, '1996-09-25', 'banner2.jpg', 2, '0'),
+('sabina23', 'Sabina', 'Domingo', 'root', '56294260L', 'sabina@outlook.com', 'España', 'Femenino', 630865401, '1992-10-29', 'banner2.jpg', 2, '0'),
+('sandri97', 'Sandra', 'Chamarro', 'root', '54694255J', 'chamisa@outlook.com', 'España', 'Femenino', 678861245, '1997-09-11', 'banner2.jpg', 2, '0'),
+('santi_abascal', 'Santiago', 'Abascal', 'root', '78836661L', 'santi_barral@gmail.com', 'España', 'Masculino', 636723402, '1998-12-11', 'banner2.jpg', 2, '0'),
+('santos_leon', 'Santos', 'Leon', 'root', '78836661G', 'santos_leon_barral@gmail.com', 'España', 'Masculino', 866723402, '1998-12-11', 'banner2.jpg', 2, '0'),
+('seoane_luis', 'Luis', 'Seoane', 'root', '76332211E', 'seoane_luis@gmail.com', 'EspaÃ±a', 'Masculino', 658263640, '1943-08-03', 'banner2.jpg', 1, '0'),
+('sesto_camilo', 'Camilo', 'Sesto', 'root', '47829848H', 'sesto_camilo@gmail.com', 'EspaÃ±a', 'Masculino', 690756552, '1958-07-26', 'banner2.jpg', 1, '0'),
+('somoza_mateo', 'Mateo', 'Somoza', 'root', '43829125P', 'somoza_mateo@gmail.com', 'EspaÃ±a', 'Masculino', 682364862, '1979-07-18', 'banner2.jpg', 1, '0'),
+('sormaria', 'Maria', 'de la Concepcion', 'root', '78836661K', 'maria_barral@gmail.com', 'España', 'Femenino', 666723402, '1998-12-11', 'banner2.jpg', 2, '0'),
+('terelu91', 'Teresa', 'Pacheco', 'root', '55594260M', 'terelu@outlook.com', 'España', 'Femenino', 2147483647, '1991-11-11', 'banner2.jpg', 2, '0'),
+('torra_quim', 'Quim', 'Torra', 'root', '84959393M', 'torra_quim@gmail.com', 'EspaÃ±a', 'Masculino', 609729695, '1978-07-08', 'banner2.jpg', 1, '0'),
+('torres_xan', 'Xoan', 'Torres', 'root', '4743649E', 'ores_xoan@gml.com', 'España', 'Masculino', 67850670, '1976-11-25', 'banner2.jpg', 1, '0'),
+('torres_xoan', 'Xoan', 'Torres', 'root', '47436349E', 'torres_xoan@gmail.com', 'EspaÃ±a', 'Masculino', 678546790, '1976-11-25', 'banner2.jpg', 1, '0'),
+('varela_pepe', 'Pepe', 'Varela', 'root', '54300772Z', 'varela_pepe@gmail.com', 'EspaÃ±a', 'Masculino', 678546790, '1965-04-18', 'banner2.jpg', 1, '0'),
+('velasco_dionisio', 'Dionisio', 'Velasco', 'root', '57283921D', 'velasco_dionisio@gmail.com', 'EspaÃ±a', 'Masculino', 692398525, '1977-06-12', 'banner2.jpg', 1, '0'),
+('vicky', 'Victoria', 'Beltran', 'root', '53294210F', 'vicky55@outlook.com', 'España', 'Femenino', 733861201, '1997-05-05', 'banner2.jpg', 2, '0'),
+('vilanova_pedro', 'Pedro', 'Vilanova', 'root', '21654372D', 'vilanova_pedro@gmail.com', 'EspaÃ±a', 'Masculino', 689364222, '1944-11-25', 'banner2.jpg', 1, '0');
 
 -- --------------------------------------------------------
 
@@ -853,6 +904,13 @@ INSERT INTO `user_game` (`login`, `id_partido`) VALUES
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `agenda`
+--
+ALTER TABLE `agenda`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `agenda_fk_1` (`login`);
 
 --
 -- Indices de la tabla `categoria`
@@ -893,6 +951,20 @@ ALTER TABLE `championship_nivel`
 --
 ALTER TABLE `chat`
   ADD PRIMARY KEY (`id_chat`);
+
+--
+-- Indices de la tabla `clase`
+--
+ALTER TABLE `clase`
+  ADD PRIMARY KEY (`id_clase`),
+  ADD KEY `class_fb_1` (`id_nivel`);
+
+--
+-- Indices de la tabla `clase_agenda`
+--
+ALTER TABLE `clase_agenda`
+  ADD PRIMARY KEY (`id_agenda`,`id_clase`),
+  ADD KEY `fb_2` (`id_clase`);
 
 --
 -- Indices de la tabla `clash`
@@ -978,6 +1050,12 @@ ALTER TABLE `payment`
   ADD KEY `login` (`login`);
 
 --
+-- Indices de la tabla `plan`
+--
+ALTER TABLE `plan`
+  ADD PRIMARY KEY (`id_plan`);
+
+--
 -- Indices de la tabla `ranking`
 --
 ALTER TABLE `ranking`
@@ -1004,11 +1082,11 @@ ALTER TABLE `rule`
   ADD PRIMARY KEY (`id_normativa`);
 
 --
--- Indices de la tabla `schedule`
+-- Indices de la tabla `school`
 --
-ALTER TABLE `schedule`
-  ADD PRIMARY KEY (`id_horario`,`id_pista`),
-  ADD KEY `id_pista` (`id_pista`);
+ALTER TABLE `school`
+  ADD PRIMARY KEY (`codigo`),
+  ADD KEY `school_fb_1` (`administrador`);
 
 --
 -- Indices de la tabla `user`
@@ -1031,6 +1109,12 @@ ALTER TABLE `user_game`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `agenda`
+--
+ALTER TABLE `agenda`
+  MODIFY `id` tinyint(3) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
@@ -1040,7 +1124,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `championship`
 --
 ALTER TABLE `championship`
-  MODIFY `id_campeonato` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_campeonato` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `chat`
@@ -1049,16 +1133,28 @@ ALTER TABLE `chat`
   MODIFY `id_chat` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
+-- AUTO_INCREMENT de la tabla `clase`
+--
+ALTER TABLE `clase`
+  MODIFY `id_clase` tinyint(4) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `clase_agenda`
+--
+ALTER TABLE `clase_agenda`
+  MODIFY `id_agenda` tinyint(4) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `clash`
 --
 ALTER TABLE `clash`
-  MODIFY `id_enfrentamiento` bigint(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_enfrentamiento` bigint(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `couple`
 --
 ALTER TABLE `couple`
-  MODIFY `id_pareja` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id_pareja` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `game`
@@ -1070,7 +1166,7 @@ ALTER TABLE `game`
 -- AUTO_INCREMENT de la tabla `grupo`
 --
 ALTER TABLE `grupo`
-  MODIFY `id_grupo` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_grupo` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `new`
@@ -1091,10 +1187,16 @@ ALTER TABLE `payment`
   MODIFY `id_pago` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de la tabla `plan`
+--
+ALTER TABLE `plan`
+  MODIFY `id_plan` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de la tabla `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id_reserva` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_reserva` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -1109,8 +1211,20 @@ ALTER TABLE `rule`
   MODIFY `id_normativa` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de la tabla `school`
+--
+ALTER TABLE `school`
+  MODIFY `codigo` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `agenda`
+--
+ALTER TABLE `agenda`
+  ADD CONSTRAINT `agenda_fk_1` FOREIGN KEY (`login`) REFERENCES `user` (`login`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `championship`
@@ -1138,6 +1252,19 @@ ALTER TABLE `championship_couple`
 ALTER TABLE `championship_nivel`
   ADD CONSTRAINT `championship_nivel_ibfk_1` FOREIGN KEY (`id_nivel`) REFERENCES `nivel` (`id_nivel`) ON DELETE CASCADE,
   ADD CONSTRAINT `championship_nivel_ibfk_2` FOREIGN KEY (`id_campeonato`) REFERENCES `championship` (`id_campeonato`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `clase`
+--
+ALTER TABLE `clase`
+  ADD CONSTRAINT `class_fb_1` FOREIGN KEY (`id_nivel`) REFERENCES `nivel` (`id_nivel`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `clase_agenda`
+--
+ALTER TABLE `clase_agenda`
+  ADD CONSTRAINT `fb_1` FOREIGN KEY (`id_agenda`) REFERENCES `agenda` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fb_2` FOREIGN KEY (`id_clase`) REFERENCES `clase` (`id_clase`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `clash`
@@ -1213,10 +1340,10 @@ ALTER TABLE `reservation`
   ADD CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`login`) REFERENCES `user` (`login`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `schedule`
+-- Filtros para la tabla `school`
 --
-ALTER TABLE `schedule`
-  ADD CONSTRAINT `schedule_ibfk_1` FOREIGN KEY (`id_pista`) REFERENCES `court` (`id_pista`) ON DELETE CASCADE;
+ALTER TABLE `school`
+  ADD CONSTRAINT `school_fb_1` FOREIGN KEY (`administrador`) REFERENCES `user` (`login`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `user`

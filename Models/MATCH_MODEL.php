@@ -27,6 +27,13 @@ class MATCH_MODEL
 		$this->bd = ConectarDB();
 	}
 
+		function getPromociones(){
+		$sql = "SELECT COUNT(*), count(*)/7 FROM game";
+	$resultado =$this->bd->query($sql);
+	$result = $resultado->fetch_array();
+	return $result;
+	}
+
 
 	function inscribirPromocion($login){
 		

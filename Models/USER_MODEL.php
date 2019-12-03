@@ -286,6 +286,9 @@ function getDBDatos($login){
 		} // fin del metodo RellenaDatos()
 
 
+		
+
+
 
 
 		// funcion login: realiza la comprobación de si existe el USER en la bd y despues si la pass
@@ -340,6 +343,27 @@ function loginExiste(){
 
 
 
+function getUsuarios(){
+
+	$sql = "SELECT COUNT(*) FROM USER";
+	$resultado =$this->bd->query($sql);
+	$result = $resultado->fetch_array();
+	return $result;
+}
+function getHombres(){
+
+	$sql = "SELECT COUNT(*) FROM USER  WHERE sexo='Masculino'";
+	$resultado =$this->bd->query($sql);
+	$result = $resultado->fetch_array();
+	return $result;
+}
+function getMujeres(){
+
+	$sql = "SELECT COUNT(*) FROM USER WHERE sexo='Femenino'";
+	$resultado =$this->bd->query($sql);
+	$result = $resultado->fetch_array();
+	return $result;
+}
 
 
 	

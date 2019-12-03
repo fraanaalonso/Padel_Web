@@ -32,7 +32,12 @@ class RESERVATION_MODEL
 
 	
 
-
+	function getReservas(){
+		$sql = "SELECT COUNT(*) FROM RESERVATION";
+	$resultado =$this->bd->query($sql);
+	$result = $resultado->fetch_array();
+	return $result;
+	}
 
 
 

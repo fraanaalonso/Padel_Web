@@ -47,6 +47,8 @@ if (session_status() == PHP_SESSION_NONE) {//Sino existe la sesion, se comienza
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
+
+
 </head>
 <?php
 require_once '../Functions/funciones.php';
@@ -69,7 +71,11 @@ if(autenticado()){
 
     <strong>PÁDEL ESEI</strong>
 
+ 
+
    <a href="../Controllers/User_Controller.php?action=SHOWPROFILE&login=<?php echo $meu['login'] ?>" style="right: 0; position: absolute; top: 0; "><span style="top: 0;"><?php obtenerFotoReducida($meu['foto']);?></span></a>
+
+
 
 
 
@@ -89,7 +95,8 @@ if(autenticado()){
     <a href="../Controllers/Championship_Controller.php"><li><span class="lnr lnr-license icon4"></span><h4 class="text4">Campeonatos</h4></li></a>
      <a href="../Controllers/Match_Controller.php"><li><span class="lnr lnr-rocket icon6"></span><h4 class="text6">Promociones Activas</h4></li></a> 
    <a href="../Controllers/Chat_Controller.php"><li><span class="lnr lnr-bubble icon7"></span><h4 class="text7">Mensajes</h4></li> </a>
-    <li><span class="lnr lnr-question-circle icon8"></span><h4 class="text8">FAQ</h4></li> 
+    <a href="../Controllers/User_Controller.php?action=SOCIO"><li><span class="lnr lnr-store icon8"></span><h4 class="text8">Hacerse Socio</h4></li> </a>
+    <a href="../Controllers/Stats_Controller.php?action=SHOWALL"><li><span class="lnr lnr-chart-bars icon1"></span><h4 class="text8">Estadísticas</h4></li> </a>
     <a href="../Functions/Desconect.php"><li ><span class="lnr lnr-exit icon9"></span><h4  class="text9">Salir</h4></li> </a>
   </div>
 
@@ -134,7 +141,7 @@ if(comprobarPermisos($_SESSION['login'])==2){
     <a href="../Controllers/Championship_Controller.php"><li><span class="lnr lnr-license icon4"></span><h4 class="text4">Campeonatos</h4></li></a>
     <a href="../Controllers/Match_Controller.php"><li><span class="lnr lnr-rocket icon6"></span><h4 class="text6">Promociones Activas</h4></li></a>
      <a href="../Controllers/Chat_Controller.php"><li><span class="lnr lnr-bubble icon7"></span><h4 class="text7">Mensajes</h4></li> </a>
-    <li><span class="lnr lnr-question-circle icon8"></span><h4 class="text8">FAQ</h4></li> 
+    <a href="../Controllers/User_Controller.php"><li><span class="lnr lnr-store icon8"></span><h4 class="text8">Hacerse Socio</h4></li> </a>
     <a href="../Functions/Desconect.php"><li ><span class="lnr lnr-exit icon9"></span><h4  class="text9">Salir</h4></li> </a>
 
 
@@ -169,7 +176,7 @@ if(comprobarPermisos($_SESSION['login'])==2){
      <a href="../Controllers/Championship_Controller.php"><li><span class="lnr lnr-license icon4"></span><h4 class="text4">Campeonatos</h4></li></a>
      <a href="../Controllers/Match_Controller.php"><li><span class="lnr lnr-rocket icon6"></span><h4 class="text6">Promociones Activas</h4></li></a>
      <a href="../Controllers/Chat_Controller.php"><li><span class="lnr lnr-bubble icon7"></span><h4 class="text7">Mensajes</h4></li> </a>
-    <li><span class="lnr lnr-question-circle icon8"></span><h4 class="text8">FAQ</h4></li> 
+    <a href="../Controllers/User_Controller.php"><li><span class="lnr lnr-store icon8"></span><h4 class="text8">Hacerse Socio</h4></li> </a>
     <a href="../Functions/Desconect.php"><li ><span class="lnr lnr-exit icon9"></span><h4  class="text9">Salir</h4></li> </a>
 
 

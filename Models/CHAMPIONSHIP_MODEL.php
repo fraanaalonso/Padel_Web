@@ -21,6 +21,13 @@ class CHAMPIONSHIP_MODEL
 		$this->bd = ConectarDB();
 	}
 
+			function getChampionships(){
+		$sql = "SELECT COUNT(*) FROM CHAMPIONSHIP";
+	$resultado =$this->bd->query($sql);
+	$result = $resultado->fetch_array();
+	return $result;
+	}
+
 
 
 	function añadirCategoria($id_campeonato, $id_categoria){
@@ -294,12 +301,14 @@ function combinarParejas($id_campeonato, $grupo){
 		$longitud = count($gruposSeleccionado);
 		$fechas = $fechaComienzo;
 		$horas = array('09:00', '10:30', '12:00', '13:30', '17:00', '18:30', '20:00', '21:30');
+		$pistas = array('P0', 'P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8');
 		
 		for($s = 0; $s < ($longitud - 1); $s++){
 			for($j = ($s + 1); $j < $longitud; $j++){
 
 				$fechas = date("Y-m-d",strtotime($fechas)+86400);
 				$horaSeleccionada =  $horas[array_rand($horas)];
+				$pista =  $pistas[array_rand($pistas)];
 				$id_pareja1 = $gruposSeleccionado[$s];
 				$id_pareja2 = $gruposSeleccionado[$j];
 			
@@ -321,6 +330,29 @@ function combinarParejas($id_campeonato, $grupo){
 						VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."','0', '0', '0', '".$horaSeleccionada."', '".$fechas."','liga', '".$grupo."')";
 
 				$this->bd->query($consulta);
+
+				$usuario = "SELECT login1 from couple where id_pareja = '".$id_pareja1."'";
+				$resultado = $this->bd->query($usuario);
+				$result = $resultado->fetch_array();
+
+				$reserva = "INSERT INTO RESERVATION (
+					id_reserva,
+					id_pista,
+					login,
+					hora_inicio,
+					fecha,
+					precio
+					
+					) 
+						VALUES (
+						DEFAULT,
+						'".$pista."',
+						'".$result[0]."',
+						'".$horaSeleccionada."',
+						'".$fechas."',
+						'0')";
+
+				$this->bd->query($reserva);
 				
 
 			}

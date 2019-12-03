@@ -13,6 +13,7 @@ if (!isset($_REQUEST['action'])){
 
 include '../Views/USER_VIEWS/SHOWALL_VIEW.php';
 include '../Views/USER_VIEWS/ADD_VIEW.php';
+include '../Views/PAYMENT_VIEWS/PLAN_VIEW.php';
 include '../Views/USER_VIEWS/SEARCH_VIEW.php';
 include '../Views/USER_VIEWS/SHOWCURRENT_VIEW.php';
 include '../Views/USER_VIEWS/DELETE_VIEW.php';
@@ -231,6 +232,28 @@ Switch ($_REQUEST['action']){
 
 					  $respuesta = $modelo->EDIT();
 			new MESSAGE($respuesta, './Post_Controller.php');
+
+		}
+
+		break;
+
+		case 'SOCIO':
+
+		if(!$_POST){
+
+			include_once '../Models/PLAN_MODEL.php';
+			$plan = new PLAN_MODEL('','','','');
+			$currentPlans = $plan->SEARCH();
+			$lista = array();
+			new Plan_View($lista, $currentPlans);
+		}
+
+		else{
+			include_once '../Models/USER_MODEL.php';		
+			
+			new ADD_VIEW();			
+
+			
 
 		}
 

@@ -19,6 +19,7 @@ include '../Views/USER_VIEWS/SHOWCURRENT_VIEW.php';
 include '../Views/USER_VIEWS/DELETE_VIEW.php';
 include '../Views/USER_VIEWS/EDIT_VIEW.php';
 include '../Views/USER_VIEWS/Profile_View.php';
+include '../Views/USER_VIEWS/ADD_NOTIFICATION.php';
 include '../Views/Message_View.php';
 
 
@@ -60,6 +61,12 @@ function get_data(){
 
 
 Switch ($_REQUEST['action']){
+
+
+		case 'EMAIL':
+
+			new ADD_NOTIFICATION();
+		break;
 
 	
 		case 'ADD':

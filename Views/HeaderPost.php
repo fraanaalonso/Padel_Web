@@ -88,7 +88,8 @@ if(autenticado()){
   <div class="content-menu">
 
 
-    <a href="../Controllers/Post_Controller.php"><li><span class="lnr lnr-earth icon10"></span><h4 class="text1">Novedades</h4></li></a> 
+    <a href="../Controllers/Post_Controller.php"><li><span class="lnr lnr-earth icon10"></span><h4 class="text1">Novedades</h4></li></a>
+    <a href="../Controllers/School_Controller.php"><li><span class="lnr lnr-graduation-hat icon16"></span><h4 class="text1">Escuelas Deportivas</h4></li></a>  
     <a href="../Controllers/User_Controller.php"><li><span class="lnr lnr-users icon1"></span><h4 class="text1">Deportistas</h4></li></a>  
     <a href="../Controllers/Court_Controller.php"><li><span class="lnr lnr-page-break icon2"></span><h4 class="text2">Pistas</h4></li></a>
      <a href="../Controllers/Reservation_Controller.php"><li><span class="lnr lnr-book icon3"></span><h4 class="text3">Reservas Activas</h4></li></a>
@@ -96,6 +97,7 @@ if(autenticado()){
      <a href="../Controllers/Match_Controller.php"><li><span class="lnr lnr-rocket icon6"></span><h4 class="text6">Promociones Activas</h4></li></a> 
    <a href="../Controllers/Chat_Controller.php"><li><span class="lnr lnr-bubble icon7"></span><h4 class="text7">Mensajes</h4></li> </a>
     <a href="../Controllers/User_Controller.php?action=SOCIO"><li><span class="lnr lnr-store icon8"></span><h4 class="text8">Hacerse Socio</h4></li> </a>
+    <a href="../Controllers/User_Controller.php?action=EMAIL"><li><span class="lnr lnr-envelope 1"></span><h4 class="text4">Notificar Usuarios</h4></li></a>
     <a href="../Controllers/Stats_Controller.php?action=SHOWALL"><li><span class="lnr lnr-chart-bars icon1"></span><h4 class="text8">Estadísticas</h4></li> </a>
     <a href="../Functions/Desconect.php"><li ><span class="lnr lnr-exit icon9"></span><h4  class="text9">Salir</h4></li> </a>
   </div>
@@ -130,6 +132,7 @@ if(comprobarPermisos($_SESSION['login'])==2){
 
   <div class="content-menu">
      <a href="../Controllers/Post_Controller.php"><li><span class="lnr lnr-earth icon10"></span><h4 class="text1">Novedades</h4></li></a> 
+     <a href="../Controllers/School_Controller.php"><li><span class="lnr lnr-graduation-hat icon16"></span><h4 class="text1">Escuelas Deportivas</h4></li></a> 
      <a href="../Controllers/Court_Controller.php"><li><span class="lnr lnr-page-break icon2"></span><h4 class="text2">Pistas</h4></li></a>
 
     
@@ -166,7 +169,8 @@ if(comprobarPermisos($_SESSION['login'])==2){
 
 
   <div class="content-menu">
-     <a href="../Controllers/Post_Controller.php"><li><span class="lnr lnr-earth icon10"></span><h4 class="text1">Novedades</h4></li></a> 
+     <a href="../Controllers/Post_Controller.php"><li><span class="lnr lnr-earth icon10"></span><h4 class="text1">Novedades</h4></li></a>
+     <a href="../Controllers/School_Controller.php"><li><span class="lnr lnr-graduation-hat icon16"></span><h4 class="text1">Escuelas Deportivas</h4></li></a>  
      <a href="../Controllers/Court_Controller.php"><li><span class="lnr lnr-page-break icon2"></span><h4 class="text2">Pistas</h4></li></a>
     
      <li><span class="lnr lnr-book icon3"></span><h4 class="text3">Reservas Activas</h4></li>

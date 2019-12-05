@@ -440,6 +440,14 @@ function getDBDatosUser(){
 }
 
 
+function getEmails(){
+
+	$sql = "SELECT email FROM USER";
+	$resultado = $this->bd->query($sql);
+	$result = $resultado->fetch_array();
+	return $result;
+}
+
 
 }
 

@@ -226,7 +226,7 @@ function esInscrito($login1, $login2, $id_campeonato){
 	$bd;
 	$bd = ConectarDB();
 
-	$sql = "SELECT t.login1, t.login2, t.id_campeonato FROM ( SELECT A.id_pareja, A.login1, A.login2, B.id_campeonato FROM COUPLE A INNER JOIN (SELECT id_pareja, id_campeonato FROM championship_couple GROUP BY id_pareja, id_campeonato) B ON B.id_pareja = A.id_pareja) t WHERE (t.login1 = '".$login1."' || t.login2 = '".$login2."') && t.id_campeonato = '".$id_campeonato."'";
+	$sql = "SELECT COUPLE.login1, COUPLE.login2, championship_couple.id_campeonato FROM COUPLE INNER JOIN championship_couple ON COUPLE.id_pareja=championship_couple.id_pareja AND (COUPLE.login1='".$login1."' || couple.login2='".$login2."' || COUPLE.login1='".$login2."' || couple.login2='".$login1."') and championship_couple.id_campeonato='".$id_campeonato."'";
 
 
 	$resultado = $bd->query($sql);

@@ -1,35 +1,41 @@
 
+
 <?php
+include_once '../includes/db.php';
 
 
-class CLASS_MODEL
+
+/**
+* 
+*/
+class SCHOOL_MODEL
 {
-	var $id_clase;
+	var $codigo;
+	var $nombre;
 	var $ubicacion;
-	var $num_pista;
 	var $login;
-	var $nivel;
 	var $bd;
 	
-	function __construct($id_clase,$ubicacion, $num_pista, $login, $nivel)
+	function __construct($codigo, $nombre, $ubicacion, $login)
 	{
-		$this->id_clase = $id_clase;
-		$this->ubicacion = $ubicacion;
-		$this->num_pista = $num_pista;
+		$this->codigo = $codigo;
 		$this->login = $login;
-		$this->nivel = $nivel;
+		$this->ubicacion = $ubicacion;
+		$this->nombre = $nombre;
 
+		include_once '../includes/db.php';
 		$this->bd = ConectarDB();
 	}
 
+		
 
 
 
-	function ADD(){
+function ADD(){
 
-		if (($this->id_clase <> '')){ 
+		if (($this->codigo <> '')){ 
 
-        $sql = "SELECT * FROM CLASS WHERE (id_clase = '$this->id_clase')";
+        $sql = "SELECT * FROM SCHOOL WHERE (codigo = '$this->codigo')";
 
 		if (!$result = $this->bd->query($sql)){ 
 			return 'No se ha podido conectar con la base de datos';
@@ -39,19 +45,17 @@ class CLASS_MODEL
 			if ($result->num_rows == 0){ 
 				
 
-				$sql = "INSERT INTO CLASS (
-					id_clase,
+				$sql = "INSERT INTO SCHOOL (
+					codigo,
+					nombre,
 					ubicacion,
-					num_pista,
-					login,
-					nivel
+					administrador
 					) 
 						VALUES (
-						'$this->id_noticia',
-						'$this->titulo',
-						'$this->subtitulo',
-						'$this->cuerpo',
-						'$this->nivel'
+						'$this->codigo',
+						'$this->nombre',
+						'$this->ubicacion',
+						'$this->login'
 						)";
 					
 				
@@ -82,9 +86,11 @@ class CLASS_MODEL
 
 
 
+
+
 function EDIT(){
 
-	$sql = "SELECT * FROM CLASS  WHERE (id_clase = '$this->id_clase') ";
+	$sql = "SELECT * FROM SCHOOL  WHERE (codigo = '$this->codigo') ";
     
 
     $result = $this->bd->query($sql);
@@ -93,14 +99,13 @@ function EDIT(){
     	
     {	
     	
-		$sql = "UPDATE CLASS  SET 
-				id_clase = '$this->id_clase',
+		$sql = "UPDATE SCHOOL  SET 
+				codigo = '$this->codigo',
+				nombre = '$this->nombre',
 				ubicacion = '$this->ubicacion',
-				num_pista = '$this->num_pista',
-				login = '$this->login',
-				nivel = '$this->nivel'
+				administrador = '$this->login
 				
-				WHERE ( id_clase = '$this->id_clase')";
+				WHERE ( codigo = '$this->codigo')";
 
         if (!($resultado = $this->bd->query($sql))){
 			return 'Error en la modificación'; 
@@ -123,19 +128,9 @@ function EDIT(){
 function SEARCH(){
 
 	$sql = "select
-					id_clase,
-					ubicacion,
-					num_pista,
-					login,
-					nivel
+					*
 					
-					FROM CLASS WHERE
-
-					
-						((id_clase LIKE '$this->id_clase') &&
-						(ubicacion LIKE'$this->ubicacion') &&
-						(num_pista LIKE'$this->num_pista')  &&
-						(login LIKE '$this->login') &&  (nivel LIKE '$this->nivel'))";
+					FROM SCHOOL";
 
    
     if (!($resultado = $this->bd->query($sql))){
@@ -151,16 +146,16 @@ function SEARCH(){
 
 function DELETE()
 		{	
-		   $sql = "SELECT * FROM CLASS  WHERE 
-		   (id_clase = '$this->id_clase')";
+		   $sql = "SELECT * FROM SCHOOL  WHERE 
+		   (codigo = '$this->codigo')";
 		    
 		    $result = $this->bd->query($sql);
 		    
 		    if ($result->num_rows == 1)
 		    {
 		    
-		       $sql = "DELETE FROM CLASS  WHERE 
-		       (id_clase = '$this->id_clase')";
+		       $sql = "DELETE FROM SCHOOL  WHERE 
+		       (codigo = '$this->codigo')";
 		       
 		        $this->bd->query($sql);
 		        
@@ -174,12 +169,12 @@ function DELETE()
 
 function RellenaDatos()
 		{	
-		    $sql = "SELECT * FROM CLASS  WHERE (id_clase = '$this->id_clase')";
+		    $sql = "SELECT * FROM SCHOOL  WHERE (codigo = '$this->codigo')";
 
 		    if (!($resultado = $this->bd->query($sql))){
 				return 'No existe en la base de datos'; 
 			}
-			
+
 		    else{ 
 
 			$result = $resultado->fetch_array();
@@ -189,7 +184,15 @@ function RellenaDatos()
 
 
 
+}
 
-?>
+
+
+
+
+
+
+
+
 
 ?>

@@ -39,16 +39,6 @@ Switch ($_REQUEST['action']){
 				
 			}
 
-			include_once '../Models/PAYMENT_MODEL.php';
-				
-
-			$reserva = new PAYMENT_MODEL(' ', $_REQUEST['id_pista'],$_REQUEST['login'], $_REQUEST['hora_inicio'],$_REQUEST['fecha']);
-
-			$resultado = $reserva->ADD();
-
-
-			new MESSAGE($resultado, '../Controllers/DELAMAISTER_Controller.php');
-
 				
 							
 				break;

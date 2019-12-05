@@ -5,7 +5,7 @@
 /**
 * 
 */
-class ADD_PAY
+class PAY_CHAMPIONSHIP
 {
 	
 	function __construct($datos){
@@ -21,12 +21,12 @@ class ADD_PAY
 
 <div class="iconos-superiores">
 
-    <a href="../Controllers/Reservation_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+    <a href="../Controllers/Championship_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
 
 </div>
 
 
-<form method="post" action="../Controllers/Reservation_Controller.php?action=RESERVAR">
+<form method="post" action="../Controllers/Championship_Controller.php?action=REGISTRAR">
 <div class="formulario">
 
         <div class="col-xs-12 col-md-18">
@@ -70,15 +70,20 @@ class ADD_PAY
                     </div>
 
                       <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="#"><span class="glyphicon glyphicon-eur"></span>Total a pagar: <?php echo $datos[4] ?></a>
+                <li class="active"><a href="#"><span class="glyphicon glyphicon-eur"></span>Total a pagar: 34.99 </a>
                 </li>
             </ul>
             <br/>
-            <input type="hidden" name="id_pista" value="<?php echo $datos[0]?>">
-            <input type="hidden" name="login" value="<?php echo $datos[1]?>">
-            <input type="hidden" name="hora_inicio" value="<?php echo $datos[2]?>">
-            <input type="hidden" name="fecha" value="<?php echo $datos[3]?>">
-            <input type="hidden" name="precio" value="<?php echo $datos[4]?>">
+            <input type="hidden" name="id_campeonato" value="<?php echo $datos[0]?>">
+            <input type="hidden" name="fecha_inicio" value="<?php echo $datos[1]?>">
+            <input type="hidden" name="fecha_limite" value="<?php echo $datos[2]?>">
+            <input type="hidden" name="id_normativa" value="<?php echo $datos[3]?>">
+            <input type="hidden" name="id_nivel" value="<?php echo $datos[4]?>">
+            <input type="hidden" name="id_categoria" value="<?php echo $datos[5]?>">
+            <input type="hidden" name="login1" value="<?php echo $datos[7]?>">
+            <input type="hidden" name="login2" value="<?php echo $datos[6]?>">
+            <input type="hidden" name="password" value="<?php echo $datos[8]?>">
+            <input type="hidden" id="id_pareja" name="id_pareja" value="<?php echo 0 ?>" class="form-control" >
             <button type="submit" class="btn btn-primary">Pagar</button>
 
                     </form>

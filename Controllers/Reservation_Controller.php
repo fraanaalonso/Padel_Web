@@ -100,8 +100,10 @@ Switch ($_REQUEST['action']){
 			$fecha = $_REQUEST['fecha'];
 			$precio = $_REQUEST['precio'];
 
+			$datos = array($id_pista,$login, $hora_inicio, $fecha, $precio);
 
-			new ADD_PAY($id_pista, $login, $hora_inicio, $fecha, $precio);
+
+			new ADD_PAY($datos);
 		}else{
 
 			include_once '../Models/COURT_MODEL.php';

@@ -19,6 +19,7 @@ include '../Views/CHAMPIONSHIP_VIEWS/SHOWALL_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/ADD_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/SEARCH_VIEW.php';
 include '../Views/CHAMPIONSHIP_VIEWS/SHOWCURRENT_VIEW.php';
+include '../Views/CHAMPIONSHIP_VIEWS/PAY_CHAMPIONSHIP.php';
 include '../Views/CLASH_VIEWS/SHOWCUARTOS.php';
 include '../Views/CLASH_VIEWS/SHOWSEMIS.php';
 include '../Views/CLASH_VIEWS/SHOWFINAL.php';
@@ -335,6 +336,28 @@ Switch ($_REQUEST['action']){
 
 	break;
 
+	case 'PAY':
+
+
+			$id_campeonato = $_REQUEST['id_campeonato'];
+			$fecha_inicio = $_REQUEST['fecha_inicio'];
+			$fecha_limite = $_REQUEST['fecha_limite'];
+			$id_normativa = $_REQUEST['id_normativa'];
+			$id_nivel = $_REQUEST['id_nivel'];
+			$id_categoria = $_REQUEST['id_categoria'];
+			$login2 = $_REQUEST['login2'];
+			$login1 = $_REQUEST['login1'];
+			$password = $_REQUEST['password'];
+
+			$datos = array($id_campeonato,$fecha_inicio, $fecha_limite, $id_normativa, $id_nivel, $id_categoria, $login2, $login1, $password);
+
+
+			new PAY_CHAMPIONSHIP($datos);
+
+		
+
+	break;
+
 
 
 
@@ -370,6 +393,7 @@ Switch ($_REQUEST['action']){
 			include_once '../Models/COUPLE_GRUPO_MODEL.php';
 			include_once '../Models/COUPLE_NIVEL_MODEL.php';
 			include_once '../Models/GROUP_MODEL.php';
+			include_once '../Models/PAYMENT_MODEL.php';
 
 			$id_pareja = $_POST['id_pareja'];
 			$id_campeonato = $_POST['id_campeonato'];
@@ -482,6 +506,14 @@ Switch ($_REQUEST['action']){
 
 
 			}
+
+
+
+				
+
+			$pago = new PAYMENT_MODEL('','Campeonato', '34.99', 'Pagado', $_SESSION['login']);
+
+			$resultado = $pago->añadirPago();
 
 
 

@@ -29,7 +29,7 @@ class InscribirCampeonatoView
 <div class="formulario">
 			
 			
-		<form class="col-12" method="post" action="../Controllers/Championship_Controller.php?action=REGISTRAR" onsubmit="return validar();">
+		<form class="col-12" method="post" action="../Controllers/Championship_Controller.php?action=PAY" onsubmit="return validar();">
 
 		 <div class="form-group">Campeonato Seleccionado
 		  	<input type="text" id="id_campeonato" name="id_campeonato" class="form-control" readonly  value="<?php echo $valores[0] ?>"  placeholder="Identificador Campeonato" >

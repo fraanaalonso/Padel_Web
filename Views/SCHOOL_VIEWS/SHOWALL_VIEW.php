@@ -24,6 +24,19 @@ class SHOWALL_VIEW
 ?>
 
 
+<?php
+if(comprobarPermisos($_SESSION['login'])==1){
+?>
+<div class="iconos-superiores">
+      
+    <a href="../Controllers/School_Controller.php?action=ADD"><span class="lnr lnr-file-add" style="font-size: 35px"></span></a>
+
+<?php
+}
+?>
+    <a href="../Controllers/User_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+
+</div>
 
  
 
@@ -62,7 +75,7 @@ class SHOWALL_VIEW
 
 
       <td>
-
+         <a href="../Controllers/School_Controller.php?action=INSCRIBIR&codigo=<?php  echo $fila['codigo'] ?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 20px"></span></a>
             
       </td>
 

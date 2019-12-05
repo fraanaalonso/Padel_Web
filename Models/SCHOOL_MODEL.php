@@ -33,7 +33,7 @@ class SCHOOL_MODEL
 
 function ADD(){
 
-		if (($this->codigo <> '')){ 
+
 
         $sql = "SELECT * FROM SCHOOL WHERE (codigo = '$this->codigo')";
 
@@ -46,13 +46,11 @@ function ADD(){
 				
 
 				$sql = "INSERT INTO SCHOOL (
-					codigo,
 					nombre,
 					ubicacion,
 					administrador
 					) 
 						VALUES (
-						'$this->codigo',
 						'$this->nombre',
 						'$this->ubicacion',
 						'$this->login'
@@ -70,12 +68,7 @@ function ADD(){
 			else 
 				return 'Ya existe en la base de datos'; 
 		}
-    }
-    else{ 
-    	
-        return 'Introduzca un valor'; 
-	
-	}
+   
 
 	}
 

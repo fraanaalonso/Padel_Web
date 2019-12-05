@@ -14,8 +14,9 @@ if (!isset($_REQUEST['action'])){
 
 
 
-include_once '../Views/SCHOOL_VIEWS/SHOWALL_VIEW.php';
-
+include '../Views/SCHOOL_VIEWS/SHOWALL_VIEW.php';
+include '../Views/SCHOOL_VIEWS/ADD_VIEW.php';
+include_once '../Views/Message_View.php';
 
 
 
@@ -35,10 +36,10 @@ Switch ($_REQUEST['action']){
 				}
 		else{
 			 include_once '../Models/SCHOOL_MODEL.php';
-			  $modelo= new SCHOOL_MODEL(' ',$_REQUEST['titulo'],$_REQUEST['subtitulo'], $_REQUEST['cuerpo'], $_REQUEST['fecha'], $_REQUEST['hora']);
+			  $modelo= new SCHOOL_MODEL(' ',$_REQUEST['nombre'],$_REQUEST['ubicacion'], $_REQUEST['administrador']);
 
 			$respuesta = $modelo->ADD();
-			new MESSAGE($respuesta,'./Post_Controller.php');
+			new MESSAGE($respuesta,'./School_Controller.php');
 					
 				}
 	 				

@@ -107,7 +107,7 @@ class EDIT_VIEW
             <th>Numero de Sets Pareja 1</th>
             <td>
 
-              <input type="text"  name="numSetsPareja1" value="<?php echo $valores[5] ?>">
+              <input type="text" id="setP1"  name="numSetsPareja1" pattern="^[0-3]" value="<?php echo $valores[5] ?>">
               
             </td>
           </tr>
@@ -116,7 +116,7 @@ class EDIT_VIEW
             <th>Numero de Sets Pareja 2</th>
             <td>
 
-              <input type="text"  name="numSetsPareja2" value="<?php echo $valores[6] ?>">
+              <input type="text" id="setP2"  name="numSetsPareja2" pattern="^[0-3]" value="<?php echo $valores[6] ?>">
               
             </td>
           </tr>
@@ -157,7 +157,7 @@ class EDIT_VIEW
       </table>
 
 
-         <button type="submit" onclick="javascript:procesar();" style=" width: 20%; position: absolute; top: 800px; left: 700px; " class="btn btn-light"><span class="lnr lnr-pencil" style="font-size: 35px; text-align: center;"></span></button>
+         <button type="submit" onclick="javascript:procesar(); javascript:validarNumero();"  style=" width: 20%; position: absolute; top: 800px; left: 700px; " class="btn btn-light"><span class="lnr lnr-pencil" style="font-size: 35px; text-align: center;"></span></button>
               
 
 
@@ -178,6 +178,30 @@ class EDIT_VIEW
       document.getElementById('resultado').value = resultado;
 
       //document.forms.enfrentamiento.submit();
+    }
+
+
+    function validarNumero(){
+      num1 = document.getElementById('setP1').value;
+      num2 = document.getElementById('setP2').value;
+      suma = num1+num2;
+
+      if (num1 == num2) {
+        alert('Resultado por sets no válido');
+        return false;
+      }
+      else if(num1 > num2 && suma < 3){
+        alert('Resultado no válido');
+        return false;
+      }
+      else if(num2 > num1 && suma < 3){
+        alert('Resultado no válido');
+        return false;
+      }
+
+      else{
+        return true;
+      }
     }
   </script>
 

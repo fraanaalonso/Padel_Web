@@ -91,7 +91,7 @@ class CLASH_MODEL
 
 	
 
-function SEARCHFINAL($id_campeonato, $id_nivel, $id_categoria){
+function SEARCHFINAL($id_campeonato, $grupo){
 
 		$sql = "SELECT *, C.login1 as l1p1, C.login2 as l2p1, D.login1 as l1p2, D.login2 as l2p2, categoria.categoria, nivel.nivel FROM CLASH inner join couple C on C.id_pareja=clash.id_pareja1 inner join couple D on D.id_pareja=clash.id_pareja2 inner join grupo on clash.id_grupo=grupo.id_grupo inner join categoria on grupo.id_categoria=categoria.id_categoria INNER join nivel on grupo.id_nivel=nivel.id_nivel WHERE clash.id_campeonato = '".$id_campeonato."' and clash.id_grupo = '".$grupo."' and clash.tipo = 'final'";
 

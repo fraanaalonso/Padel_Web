@@ -33,7 +33,8 @@ Switch ($_REQUEST['action']){
 					new ADD_VIEW();
 
 				
-				}
+		
+		}
 		else{
 			 include_once '../Models/SCHOOL_MODEL.php';
 			  $modelo= new SCHOOL_MODEL(' ',$_REQUEST['nombre'],$_REQUEST['ubicacion'], $_REQUEST['administrador']);
@@ -46,6 +47,12 @@ Switch ($_REQUEST['action']){
 				
 
 
+	break;
+
+	case 'INSCRIBIR':
+	if(!$_POST){
+
+	}
 	break;
 
 

@@ -543,7 +543,7 @@ CREATE TABLE `ranking` (
   `id_pareja` tinyint(4) NOT NULL,
   `p_jugados` varchar(3) COLLATE utf8_spanish_ci NOT NULL,
   `p_ganados` varchar(3) COLLATE utf8_spanish_ci NOT NULL,
-  `puntos` varchar(3) COLLATE utf8_spanish_ci NOT NULL
+  `puntos` int(3) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -551,16 +551,16 @@ CREATE TABLE `ranking` (
 --
 
 INSERT INTO `ranking` (`id_pareja`, `p_jugados`, `p_ganados`, `puntos`) VALUES
-(1, '0', '0', '0'),
-(3, '0', '0', '0'),
-(4, '0', '0', '0'),
-(5, '0', '0', '0'),
-(6, '0', '0', '0'),
-(7, '0', '0', '0'),
-(8, '0', '0', '0'),
-(9, '0', '0', '0'),
-(10, '0', '0', '0'),
-(11, '0', '0', '0');
+(1, '0', '0', 0),
+(3, '0', '0', 0),
+(4, '0', '0', 0),
+(5, '0', '0', 0),
+(6, '0', '0', 0),
+(7, '0', '0', 0),
+(8, '0', '0', 0),
+(9, '0', '0', 0),
+(10, '0', '0', 0),
+(11, '0', '0', 0);
 
 -- --------------------------------------------------------
 

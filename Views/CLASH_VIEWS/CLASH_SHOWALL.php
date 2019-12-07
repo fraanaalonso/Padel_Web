@@ -50,7 +50,14 @@ class CLASH_SHOWALL
 			<th>Confirmación</th>
 			<th>ID Categoria</th>
 			<th>ID Nivel</th>
+		<?php
+			if(comprobarPermisos($_SESSION['login']) == 1){
+		?>
 			<th>Opciones</th>
+
+		<?php
+			}
+		?>
 		</tr>
 
 
@@ -158,11 +165,19 @@ while($fila = $resultado->fetch_assoc()){
 				 ?>
 				</td>
 
+				<?php
+			if(comprobarPermisos($_SESSION['login']) == 1){
+				?>
+
 
 				<td>
 					
 				 <a href="../Controllers/Clash_Controller.php?action=EDIT&id_enfrentamiento=<?php  echo $fila['id_enfrentamiento'] ?>&id_campeonato=<?php echo $fila['id_campeonato']?>"><span class="lnr lnr-pencil" style="font-size: 20px"></span></a>
 				</td>
+
+				<?php
+				}
+				?>
 
 			</tr>
 
@@ -194,7 +209,7 @@ while($fila = $resultado->fetch_assoc()){
 
 
 <?php
-include '../Views/Footer.php';
+
 
 	}
 }

@@ -96,12 +96,7 @@ Switch ($_REQUEST['action']){
 						$ranking = new RANKING_MODEL('','','','');
 						$pareja = $ranking->modificarResultado($_REQUEST['id_pareja2'], $_REQUEST['id_pareja1']);
 					}
-
-					else{
-						include_once '../Models/RANKING_MODEL.php';
-						$ranking = new RANKING_MODEL('','','','');
-						$pareja = $ranking->establecerEmpate($_REQUEST['id_pareja2'], $_REQUEST['id_pareja1']);
-					}
+					
 					new MESSAGE($respuesta, "./Championship_Controller.php?action=SHOWENFRENTAMIENTOS&id_campeonato=$valores[1]&id_grupo=$valores[10]");
 
 				}

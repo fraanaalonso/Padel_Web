@@ -338,54 +338,7 @@ Switch ($_REQUEST['action']){
 
 	case 'PAY':
 
-
-			$id_campeonato = $_REQUEST['id_campeonato'];
-			$fecha_inicio = $_REQUEST['fecha_inicio'];
-			$fecha_limite = $_REQUEST['fecha_limite'];
-			$id_normativa = $_REQUEST['id_normativa'];
-			$id_nivel = $_REQUEST['id_nivel'];
-			$id_categoria = $_REQUEST['id_categoria'];
-			$login2 = $_REQUEST['login2'];
-			$login1 = $_REQUEST['login1'];
-			$password = $_REQUEST['password'];
-
-			$datos = array($id_campeonato,$fecha_inicio, $fecha_limite, $id_normativa, $id_nivel, $id_categoria, $login2, $login1, $password);
-
-
-			new PAY_CHAMPIONSHIP($datos);
-
-		
-
-	break;
-
-
-
-
-		case 'REGISTRAR':
-
-
-			if(!$_POST){
-
-				include_once '../Models/CHAMPIONSHIP_MODEL.php';
-				include_once '../Models/USER_MODEL.php';
-				include_once '../Models/GROUP_MODEL.php';
-				include_once '../Models/GENDER_MODEL.php';
-					$modelo= get_data();
-					$modelo2 = new GROUP_MODEL('','','','');
-					$modelo3 = new GENDER_MODEL('','');
-					$aux = new User_Modelo('','','','','','','','','','','','');
-
-					
-					$valores= $modelo->RellenaDatos(); 
-					$niveles = $modelo2->getDBDatosNivel($valores[0]);
-					$categorias = $modelo3->getDBDatosCategorias($valores[0]);
-
-					new InscribirCampeonatoView($valores,$niveles, $categorias);
-			}
-
-			else{
-
-			include_once '../Models/COUPLE_CHAMPIONSHIP_MODEL.php';
+	include_once '../Models/COUPLE_CHAMPIONSHIP_MODEL.php';
 			include_once '../Models/COUPLE_MODEL.php';
 			include_once '../Models/USER_MODEL.php';
 			include_once '../Models/CHAMPIONSHIP_MODEL.php';
@@ -443,6 +396,80 @@ Switch ($_REQUEST['action']){
 					new MESSAGE('Emparejamiento incorrecto', "./Championship_Controller.php?action=REGISTRAR&id_campeonato=$currentChamp[0]");
 				}
 				else{
+
+
+			$id_campeonato = $_REQUEST['id_campeonato'];
+			$fecha_inicio = $_REQUEST['fecha_inicio'];
+			$fecha_limite = $_REQUEST['fecha_limite'];
+			$id_normativa = $_REQUEST['id_normativa'];
+			$id_nivel = $_REQUEST['id_nivel'];
+			$id_categoria = $_REQUEST['id_categoria'];
+			$login2 = $_REQUEST['login2'];
+			$login1 = $_REQUEST['login1'];
+			$password = $_REQUEST['password'];
+
+			$datos = array($id_campeonato,$fecha_inicio, $fecha_limite, $id_normativa, $id_nivel, $id_categoria, $login2, $login1, $password);
+
+
+			new PAY_CHAMPIONSHIP($datos);
+			}
+		}
+		}
+		}
+		
+
+		}
+		
+
+		
+
+	break;
+
+
+
+
+		case 'REGISTRAR':
+
+
+			if(!$_POST){
+
+				include_once '../Models/CHAMPIONSHIP_MODEL.php';
+				include_once '../Models/USER_MODEL.php';
+				include_once '../Models/GROUP_MODEL.php';
+				include_once '../Models/GENDER_MODEL.php';
+					$modelo= get_data();
+					$modelo2 = new GROUP_MODEL('','','','');
+					$modelo3 = new GENDER_MODEL('','');
+					$aux = new User_Modelo('','','','','','','','','','','','');
+
+					
+					$valores= $modelo->RellenaDatos(); 
+					$niveles = $modelo2->getDBDatosNivel($valores[0]);
+					$categorias = $modelo3->getDBDatosCategorias($valores[0]);
+
+					new InscribirCampeonatoView($valores,$niveles, $categorias);
+			}
+
+			else{
+
+			include_once '../Models/COUPLE_CHAMPIONSHIP_MODEL.php';
+			include_once '../Models/COUPLE_MODEL.php';
+			include_once '../Models/USER_MODEL.php';
+			include_once '../Models/CHAMPIONSHIP_MODEL.php';
+			include_once '../Models/COUPLE_CATEGORIA_MODEL.php';
+			include_once '../Models/COUPLE_GRUPO_MODEL.php';
+			include_once '../Models/COUPLE_NIVEL_MODEL.php';
+			include_once '../Models/GROUP_MODEL.php';
+			include_once '../Models/PAYMENT_MODEL.php';
+
+			$id_pareja = $_POST['id_pareja'];
+			$id_campeonato = $_POST['id_campeonato'];
+			$capitan = $_POST['login1'];
+			$socio = $_POST['login2'];
+			$nivelSeleccionado = $_POST['id_nivel'];
+			$categoriaSeleccionada = $_POST['id_categoria'];
+
+			
 			$aux3 = new CHAMPIONSHIP_MODEL('','','','');
 
 			$pareja = new COUPLE_MODEL($id_pareja, $capitan, $socio);
@@ -507,6 +534,8 @@ Switch ($_REQUEST['action']){
 
 			}
 
+		}
+
 
 
 				
@@ -517,15 +546,8 @@ Switch ($_REQUEST['action']){
 
 
 
-			new MESSAGE($result5, './Championship_Controller.php');
-		}
-		}
-		}
-		}
+			new MESSAGE('Pago realizado y pareja inscrita', './Championship_Controller.php');
 		
-
-		}
-		}
 			
 		break;
 

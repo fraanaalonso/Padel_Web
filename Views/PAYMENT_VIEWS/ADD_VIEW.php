@@ -43,7 +43,7 @@ class ADD_PAY
                         <a for="cardNumber">
                             NÚMERO DE TARJETA</a>
                         <div class="input-group">
-                            <input type="text" class="form-control" id="cardNumber" placeholder="8888 7777 6666 5555"
+                            <input type="text" class="form-control" id="cardNumber" pattern="^[0-9]{16}" placeholder="8888 7777 6666 5555"
                                 required autofocus />
                             <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                         </div>
@@ -54,17 +54,17 @@ class ADD_PAY
                                 <a for="expityMonth">
                                     FECHA DE EXPIRACIÓN</a>
                                 <div class="col-xs-6 col-lg-6 pl-ziro">
-                                    <input type="text" class="form-control" id="expityMonth" placeholder="MM" required />
+                                    <input type="text" class="form-control" id="expityMonth" pattern="^[0-9]{2}" placeholder="MM" required />
                                 </div>
                                 <div class="col-xs-6 col-lg-6 pl-ziro">
-                                    <input type="text" class="form-control" id="expityYear" placeholder="YY" required /></div>
+                                    <input type="text" class="form-control" id="expityYear" pattern="^[0-9]{2}" placeholder="YY" required /></div>
                             </div>
                         </div>
                         <div class="col-xs-5 col-md-5 pull-right">
                             <div class="form-group">
                                 <a for="cvCode">
                                     CÓDIGO CV</a>
-                                <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
+                                <input type="password" class="form-control" id="cvCode" pattern="^[0-9]{3}" placeholder="CV" required />
                             </div>
                         </div>
                     </div>

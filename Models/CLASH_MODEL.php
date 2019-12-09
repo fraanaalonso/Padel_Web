@@ -185,7 +185,7 @@ function SEARCHFINAL($id_campeonato, $grupo){
 
 function obtenerClasificacionGrupo($id_campeonato, $grupo){
 
-	$sql = "SELECT ranking.id_pareja as pareja, ranking.p_jugados as jugados, ranking.p_ganados as ganados, ranking.puntos as puntos, nivel.nivel as nivel, categoria.categoria as categoria FROM RANKING INNER JOIN couple_grupo ON couple_grupo.id_pareja=ranking.id_pareja INNER JOIN grupo ON couple_grupo.id_grupo=GRUPO.id_grupo INNER JOIN categoria ON GRUPO.id_categoria=categoria.id_categoria INNER JOIN NIVEL ON grupo.id_nivel=NIVEL.id_nivel and grupo.id_grupo='".$grupo."' and grupo.id_campeonato='".$id_campeonato."' ORDER BY puntos DESC";
+	$sql = "SELECT ranking.id_pareja as pareja, couple.login1 as capitan, couple.login2 as socio, ranking.p_jugados as jugados, ranking.p_ganados as ganados, ranking.puntos as puntos, nivel.nivel as nivel, categoria.categoria as categoria FROM RANKING INNER JOIN couple_grupo ON couple_grupo.id_pareja=ranking.id_pareja INNER JOIN grupo ON couple_grupo.id_grupo=GRUPO.id_grupo INNER JOIN categoria ON GRUPO.id_categoria=categoria.id_categoria INNER JOIN NIVEL ON grupo.id_nivel=NIVEL.id_nivel inner join couple on couple.id_pareja=ranking.id_pareja and grupo.id_grupo='".$grupo."' and grupo.id_campeonato='".$id_campeonato."' ORDER BY puntos DESC";
 
 
 

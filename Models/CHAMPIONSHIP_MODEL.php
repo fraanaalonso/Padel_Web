@@ -311,7 +311,13 @@ function combinarParejas($id_campeonato, $grupo){
 				$pista =  $pistas[array_rand($pistas)];
 				$id_pareja1 = $gruposSeleccionado[$s];
 				$id_pareja2 = $gruposSeleccionado[$j];
-			
+
+/*
+				$seleccion = "SELECT * FROM CLASH WHERE fecha = '".$fecha."' and hora_inicio = '".$hora_inicio."' and id_pista='".$pista."'";
+				$result = $this->bd->query($seleccion);
+				$filas = $result->num_rows;
+
+*/
 
 
 				$consulta = "INSERT INTO CLASH (
@@ -379,6 +385,7 @@ function cuartosPlayoffs($id_campeonato, $grupo){
 		
 		$fechas = $fechaComienzo;
 		$horas = array('09:00', '10:30', '12:00', '13:30', '17:00', '18:30', '20:00', '21:30');
+		$pistas = array('P0', 'P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8');
 		$array1 = array();
 		$array2 = array();
 
@@ -402,6 +409,7 @@ function cuartosPlayoffs($id_campeonato, $grupo){
 
 				$fechas = date("Y-m-d",strtotime($fechas)+86400);
 				$horaSeleccionada =  $horas[array_rand($horas)];
+				$pista =  $pistas[array_rand($pistas)];
 				$id_pareja1 = $key;
 				$id_pareja2 = $value;
 
@@ -416,9 +424,10 @@ function cuartosPlayoffs($id_campeonato, $grupo){
 					hora_inicio,
 					fecha,
 					tipo,
-					id_grupo
+					id_grupo, 
+					id_pista
 					) 
-					VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."','0', '0', '0', '".$horaSeleccionada."', '".$fechas."','cuartos','".$grupo."')";
+					VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."','0', '0', '0', '".$horaSeleccionada."', '".$fechas."','cuartos','".$grupo."', '".$pista."')";
 
 				$this->bd->query($consulta);
 
@@ -450,7 +459,7 @@ function semisPlayoffs($id_campeonato, $grupo){
 	$fechaComienzo = $fetch_fecha[0];
 	$fechas = $fechaComienzo;
 	$horas = array('09:00', '10:30', '12:00', '13:30', '17:00', '18:30', '20:00', '21:30');
-
+	$pistas = array('P0', 'P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8');
 	$id_pareja1 = array();
 	$id_pareja2 = array();
 	while ($fila = $resultado->fetch_assoc()){
@@ -515,7 +524,7 @@ function semisPlayoffs($id_campeonato, $grupo){
 		
 		$fechas = date("Y-m-d",strtotime($fechas)+86400);
 		$horaSeleccionada =  $horas[array_rand($horas)];
-
+		$pista =  $pistas[array_rand($pistas)];
 		$consulta = "INSERT INTO CLASH (
 					id_enfrentamiento,
 					id_campeonato,
@@ -527,9 +536,10 @@ function semisPlayoffs($id_campeonato, $grupo){
 					hora_inicio,
 					fecha,
 					tipo,
-					id_grupo
+					id_grupo, 
+					id_pista
 					) 
-					VALUES (DEFAULT, '".$id_campeonato."', '".$key."', '".$value."','0', '0', '0', '".$horaSeleccionada."', '".$fechas."','semifinales', '".$grupo."')";
+					VALUES (DEFAULT, '".$id_campeonato."', '".$key."', '".$value."','0', '0', '0', '".$horaSeleccionada."', '".$fechas."','semifinales', '".$grupo."', '".$pista."')";
 
 				$this->bd->query($consulta);
 	}
@@ -549,6 +559,7 @@ function finalPlayoffs($id_campeonato, $grupo){
 	$fechaComienzo = $fetch_fecha[0];
 	$fechas = $fechaComienzo;
 	$horas = array('09:00', '10:30', '12:00', '13:30', '17:00', '18:30', '20:00', '21:30');
+	$pistas = array('P0', 'P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8');
 	$id_pareja1 = array();
 	$id_pareja2 = array();
 
@@ -595,7 +606,7 @@ function finalPlayoffs($id_campeonato, $grupo){
 		
 		$fechas = date("Y-m-d",strtotime($fechas)+86400);
 		$horaSeleccionada =  $horas[array_rand($horas)];
-
+		$pista =  $pistas[array_rand($pistas)];
 		$consulta = "INSERT INTO CLASH (
 					id_enfrentamiento,
 					id_campeonato,
@@ -606,9 +617,10 @@ function finalPlayoffs($id_campeonato, $grupo){
 					hora_inicio,
 					fecha,
 					tipo,
-					id_grupo
+					id_grupo,
+					id_pista
 					) 
-					VALUES (DEFAULT, '".$id_campeonato."', '".$key."', '".$value."', '0', '0', '".$horaSeleccionada."', '".$fechas."','final', '".$grupo."')";
+					VALUES (DEFAULT, '".$id_campeonato."', '".$key."', '".$value."', '0', '0', '".$horaSeleccionada."', '".$fechas."','final', '".$grupo."', '".$pista."')";
 
 				$this->bd->query($consulta);
 	}

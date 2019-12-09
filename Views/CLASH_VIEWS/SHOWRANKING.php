@@ -67,7 +67,17 @@ while($fila = $resultado->fetch_assoc()){
 				
 		<tr>
 		<td id="puesto"cowspan="1"><?php echo $i ?></td>
-		<td id="equipo" cowspan="1"><?php	echo $fila['pareja']; ?></td>
+		<td id="equipo" cowspan="1">
+
+			<?php	
+			echo "<strong>";
+			echo $fila['capitan'];
+			echo "/";
+			echo $fila['socio'];
+			echo "</strong>";
+
+
+		 ?></td>
 		<td cowspan="1"><?php	echo $fila['jugados']; ?></td>
 		<td id="ganar"cowspan="1"><?php echo $fila['ganados'];?></td>
 		<td id="perder"cowspan="1"><?php echo $fila['puntos']; ?></td>

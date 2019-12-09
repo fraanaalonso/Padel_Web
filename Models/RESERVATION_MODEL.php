@@ -46,8 +46,6 @@ class RESERVATION_MODEL
 
 	function ADD(){
 
-		if (($this->id_reserva <> '')){ 
-
         $sql = "SELECT * FROM RESERVATION WHERE (id_reserva = '$this->id_reserva') AND (id_pista = '$this->id_pista')";
 
 		if (!$result = $this->bd->query($sql)){ 
@@ -59,7 +57,7 @@ class RESERVATION_MODEL
 				
 
 				$sql = "INSERT INTO RESERVATION (
-					
+					id_reserva,
 					id_pista,
 					login,
 					hora_inicio,
@@ -68,7 +66,7 @@ class RESERVATION_MODEL
 					
 					) 
 						VALUES (
-						
+						'$this->id_reserva',
 						'$this->id_pista',
 						'$this->login',
 						'$this->hora_inicio',
@@ -88,12 +86,7 @@ class RESERVATION_MODEL
 			else 
 				return 'Ya existe en la base de datos'; 
 		}
-    }
-    else{ 
-    	
-        return 'Introduzca un valor'; 
-	
-	}
+  
 
 	}
 

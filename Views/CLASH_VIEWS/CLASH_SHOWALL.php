@@ -48,8 +48,10 @@ class CLASH_SHOWALL
 			<th>Pareja 2</th>
 			<th>Num Sets Pareja2</th>
 			<th>Confirmación</th>
-			<th>ID Categoria</th>
-			<th>ID Nivel</th>
+			<th>Categoria</th>
+			<th>Nivel</th>
+			<th>Pista</th>
+
 		<?php
 			if(comprobarPermisos($_SESSION['login']) == 1){
 		?>
@@ -130,24 +132,10 @@ while($fila = $resultado->fetch_assoc()){
 
 				<td>
 
-				<?php
-				if($_SESSION['login'] == $fila['l1p1'] || $_SESSION['login'] == $fila['l2p1'] || $_SESSION['login'] == $fila['l1p2'] || $_SESSION['login'] == $fila['l2p2']){
-				?>	
-
 				 
-				 <a href="../Controllers/Clash_Controller.php?action=CONFIRMACION&id_enfrentamiento=<?php echo $fila['id_enfrentamiento']?>&fecha=<?php echo $fila['fecha']?>&hora_inicio=<?php echo $fila['hora_inicio']?>&l1p1=<?php echo $fila['l1p1']?>&l2p1=<?php echo $fila['l2p1']?>&l1p2=<?php echo $fila['l1p2']?>&l2p2=<?php echo $fila['l2p2']?>&confirmacion=no"><span style="font-size: 35px" class="lnr lnr-thumbs-down editar"></span></a>
+				 <a href="../Controllers/Clash_Controller.php?action=CONFIRMACION&id_enfrentamiento=<?php echo $fila['id_enfrentamiento']?>&id_campeonato=<?php echo $fila['id_campeonato']?>&id_pareja1=<?php echo $fila['id_pareja1']?>&id_pareja2=<?php echo $fila['id_pareja2']?>&l1p1=<?php echo $fila['l1p1']?>&l2p1=<?php echo $fila['l2p1']?>&l1p2=<?php echo $fila['l1p2']?>&l2p2=<?php echo $fila['l2p2']?>&tipo=<?php echo $fila['tipo'] ?>&hora_inicio=<?php echo $fila['hora_inicio'] ?>&fecha=<?php echo $fila['fecha'] ?>&id_pista=<?php echo $fila['id_pista'] ?>"><span style="font-size: 35px" class="lnr lnr-thumbs-up editar"></span></a>
 
-				 <?php
-				}
-				else{
-				?>
-
-				<a href=""><span style="font-size: 35px" class="lnr lnr-thumbs-down borrar"></span></a>
-
-
-				<?php
-				}
-				?>
+				
 				</td>
 				
 
@@ -162,6 +150,13 @@ while($fila = $resultado->fetch_assoc()){
 				 <?php
 
 				 echo $fila['nivel'];
+				 ?>
+				</td>
+
+				<td cowspan="1">
+				 <?php
+
+				 echo $fila['id_pista'];
 				 ?>
 				</td>
 

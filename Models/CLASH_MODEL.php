@@ -237,9 +237,58 @@ function accesoPlayoffs(){
 	}
 
 	
-} 
+}
 
 
+function addConfirm($id_pareja, $id_enfrentamiento){
+	$sql = "INSERT INTO clash_confirm (
+					id_enfrentamiento,
+					id_pareja
+					) 
+						VALUES (
+						'".$id_enfrentamiento."',
+						'".$id_pareja."'
+						)";
+	$resultado = $this->bd->query($sql);
+
+	if($resultado){
+		return 'Se ha confirmado su asistencia';
+	}
+	else{
+		return 'Su asistencia ya ha sido confirmada';
+	}
+
+}
+/*
+
+function comprobarSiAsiste($id_pareja, $id_enfrentamiento, $id_campeonato){
+
+	$sql = "SELECT * FROM CLASH WHERE  (id_pareja1 = '".$id_pareja."' && id_pareja2 = '".$id_pareja."') and id_enfrentamiento = '".$id_enfrentamiento."' and id_campeonato = '".$id_campeonato."'";
+
+	$resultado = $this->bd->query($sql);
+
+	if($resultado->num_rows == 1){
+		return 'true';
+	}
+	else{
+		return 'false';
+	}
+
+}*/
+
+function reservarPista(){
+
+	$sql = "SELECT * FROM clash_confirm WHERE (id_pareja = '$this->id_pareja1' or id_pareja = '$this->id_pareja2') and id_enfrentamiento = '$this->id_enfrentamiento'";
+
+	$resultado = $this->bd->query($sql);
+
+	if($resultado->num_rows == 2){
+		return 'true';
+	}
+	else{
+		return 'false';
+	}
+}
 
 }
 

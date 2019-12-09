@@ -325,34 +325,14 @@ function combinarParejas($id_campeonato, $grupo){
 					hora_inicio,
 					fecha,
 					tipo,
-					id_grupo
+					id_grupo,
+					id_pista
 					) 
-						VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."','0', '0', '0', '".$horaSeleccionada."', '".$fechas."','liga', '".$grupo."')";
+						VALUES (DEFAULT, '".$id_campeonato."', '".$id_pareja1."', '".$id_pareja2."','0', '0', '0', '".$horaSeleccionada."', '".$fechas."','liga', '".$grupo."', '".$pista."')";
 
 				$this->bd->query($consulta);
 
-				$usuario = "SELECT login1 from couple where id_pareja = '".$id_pareja1."'";
-				$resultado = $this->bd->query($usuario);
-				$result = $resultado->fetch_array();
-
-				$reserva = "INSERT INTO RESERVATION (
-					id_reserva,
-					id_pista,
-					login,
-					hora_inicio,
-					fecha,
-					precio
-					
-					) 
-						VALUES (
-						DEFAULT,
-						'".$pista."',
-						'".$result[0]."',
-						'".$horaSeleccionada."',
-						'".$fechas."',
-						'0')";
-
-				$this->bd->query($reserva);
+				
 				
 
 			}

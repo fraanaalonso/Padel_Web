@@ -47,8 +47,9 @@ class SHOWCUARTOS
 			<th>Num Sets Pareja1</th>
 			<th>Pareja 2</th>
 			<th>Num Sets Pareja2</th>
-			<th>ID Categoria</th>
-			<th>ID Nivel</th>
+			<th>Categoria</th>
+			<th>Nivel</th>
+			<th>Pista</th>
 			<th>Opciones</th>
 		</tr>
 
@@ -130,6 +131,13 @@ while($fila = $resultado->fetch_assoc()){
 				 <?php
 
 				 echo $fila['nivel'];
+				 ?>
+				</td>
+
+				<td cowspan="1">
+				 <?php
+
+				 echo $fila['id_pista'];
 				 ?>
 				</td>
 

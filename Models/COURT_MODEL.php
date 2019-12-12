@@ -2,7 +2,7 @@
 
 <?php
 
-
+require_once '../Functions/funciones.php';
 class COURT_MODEL
 {
 	var $id_pista;
@@ -137,8 +137,10 @@ function EDIT(){
 
 function SEARCH(){
 
+	if(esSocio($_SESSION['login'])){
+
 	$sql = "select
-					*
+					id_pista, descripcion, ubicacion, round(precio/1.3,1) as precio
 					
 					FROM COURT";
 
@@ -150,6 +152,24 @@ function SEARCH(){
     else{ 
 		return $resultado;
 	}
+
+}
+else{
+
+	$sql = "select
+					*
+					FROM COURT";
+
+   
+   
+    if (!($resultado = $this->bd->query($sql))){
+		return 'Error en la consulta sobre la base de datos';
+	}
+    else{ 
+		return $resultado;
+	}
+
+}
 }
 
 

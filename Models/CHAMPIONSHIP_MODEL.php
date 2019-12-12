@@ -1,5 +1,6 @@
 <?php
 
+require_once '../Functions/funciones.php';
 
 class CHAMPIONSHIP_MODEL
 {
@@ -188,6 +189,29 @@ function EDIT(){
 
 function SEARCH(){
 
+
+if(esSocio($_SESSION['login'])){
+
+	$sql = "select
+					id_campeonato, fecha_inicio,fecha_limite,id_normativa, ROUND(precio/1.25) as precio
+					
+					FROM CHAMPIONSHIP";
+
+   
+    if (!($resultado = $this->bd->query($sql))){
+		return 'Error en la consulta sobre la base de datos';
+	}
+    else{ 
+		return $resultado;
+	}
+
+}
+
+else{
+
+
+
+
 	$sql = "select
 					*
 					
@@ -200,6 +224,8 @@ function SEARCH(){
     else{ 
 		return $resultado;
 	}
+
+}
 }
 
 
@@ -229,7 +255,27 @@ function DELETE()
 
 
 function RellenaDatos()
-		{	
+		{
+
+
+		if(esSocio($_SESSION['login'])){
+
+			$sql = "SELECT id_campeonato, fecha_inicio,fecha_limite,id_normativa, ROUND(precio/1.25) FROM CHAMPIONSHIP  WHERE (id_campeonato = '$this->id_campeonato')";
+
+		    if (!($resultado = $this->bd->query($sql))){
+				return 'No existe en la base de datos'; 
+			}
+			
+		    else{ 
+
+			$result = $resultado->fetch_array();
+				return $result;
+			}
+
+
+		}	
+
+		else{
 		    $sql = "SELECT * FROM CHAMPIONSHIP  WHERE (id_campeonato = '$this->id_campeonato')";
 
 		    if (!($resultado = $this->bd->query($sql))){
@@ -241,6 +287,7 @@ function RellenaDatos()
 			$result = $resultado->fetch_array();
 				return $result;
 			}
+		}
 		}
 
 

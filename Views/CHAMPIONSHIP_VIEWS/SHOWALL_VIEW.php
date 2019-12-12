@@ -43,6 +43,7 @@ class SHOWALL_VIEW
     <th>Fecha Inicio</th>
     <th>Fecha Límite</th>
     <th>ID Normativa</th>
+    <th>Precio</th>
     <th>Opciones</th>
 
   </tr>
@@ -59,6 +60,7 @@ class SHOWALL_VIEW
       echo "<td>".$fila["fecha_inicio"]."</td>";
       echo "<td>".$fila["fecha_limite"]."</td>";
      echo "<td> <a href=\"../Controllers/Championship_Controller.php?action=SHOWNORMATIVA&id_normativa=" . $fila['id_normativa'] . "\"> " . $fila['id_normativa'] . " </a> </td>";
+     echo "<td>".$fila["precio"]."</td>";
 ?>
 
 

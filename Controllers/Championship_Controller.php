@@ -397,7 +397,6 @@ Switch ($_REQUEST['action']){
 				}
 				else{
 
-
 			$id_campeonato = $_REQUEST['id_campeonato'];
 			$fecha_inicio = $_REQUEST['fecha_inicio'];
 			$fecha_limite = $_REQUEST['fecha_limite'];
@@ -407,8 +406,10 @@ Switch ($_REQUEST['action']){
 			$login2 = $_REQUEST['login2'];
 			$login1 = $_REQUEST['login1'];
 			$password = $_REQUEST['password'];
+			$p = new CHAMPIONSHIP_MODEL($id_campeonato,'','','');
+			$precio = $p->RellenaDatos(); 
 
-			$datos = array($id_campeonato,$fecha_inicio, $fecha_limite, $id_normativa, $id_nivel, $id_categoria, $login2, $login1, $password);
+			$datos = array($id_campeonato,$fecha_inicio, $fecha_limite, $id_normativa, $id_nivel, $id_categoria, $login2, $login1, $password, $precio[4]);
 
 
 			new PAY_CHAMPIONSHIP($datos);

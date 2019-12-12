@@ -21,7 +21,7 @@ class Plan_View
 ?>
 
 
-<form method="post" action="../Controllers/User_Controller.php?action=SOCIO">
+
 
 <div class="formulario">
 
@@ -44,19 +44,18 @@ while ($fila = $resultado->fetch_assoc()){
                 </div>
                 <div class="panel-body">
                     <div class="the-price">
-                        <h1>
-                            <?php echo $fila['precio']?><span class="subscript">/mes</span></h1>
+                        <h1><?php echo $fila['precio']?>€</h1>
                         
                     </div>
                    
                 </div>
 
-                
+         <form method="post" action="../Controllers/User_Controller.php?action=PAY&id_plan=<?php echo $fila['id_plan'] ?>">       
                 <div class="panel-footer">
 
                     <button type="submit" class="btn btn-success">Suscríbete</button>
                 </div>
-
+        </form>
 
             </div>
 
@@ -74,7 +73,7 @@ while ($fila = $resultado->fetch_assoc()){
   
 </div>
 
-</form>
+
 
 
 

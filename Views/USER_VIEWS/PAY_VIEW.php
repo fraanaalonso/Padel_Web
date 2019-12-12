@@ -5,7 +5,7 @@
 /**
 * 
 */
-class PAY_CHAMPIONSHIP
+class ADD_PAY
 {
 	
 	function __construct($datos){
@@ -21,12 +21,12 @@ class PAY_CHAMPIONSHIP
 
 <div class="iconos-superiores">
 
-    <a href="../Controllers/Championship_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
+    <a href="../Controllers/User_Controller.php?action=PLAN"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
 
 </div>
 
 
-<form method="post" action="../Controllers/Championship_Controller.php?action=REGISTRAR">
+<form method="post" action="../Controllers/User_Controller.php?action=SOCIO">
 <div class="formulario">
 
         <div class="col-xs-12 col-md-18">
@@ -43,7 +43,7 @@ class PAY_CHAMPIONSHIP
                         <a for="cardNumber">
                             NÚMERO DE TARJETA</a>
                         <div class="input-group">
-                            <input type="text" class="form-control" id="cardNumber" placeholder="8888 7777 6666 5555"
+                            <input type="text" class="form-control" id="cardNumber" pattern="^[0-9]{16}" placeholder="8888 7777 6666 5555"
                                 required autofocus />
                             <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                         </div>
@@ -54,36 +54,28 @@ class PAY_CHAMPIONSHIP
                                 <a for="expityMonth">
                                     FECHA DE EXPIRACIÓN</a>
                                 <div class="col-xs-6 col-lg-6 pl-ziro">
-                                    <input type="text" class="form-control" id="expityMonth" placeholder="MM" required />
+                                    <input type="text" class="form-control" id="expityMonth" pattern="^[0-9]{2}" placeholder="MM" required />
                                 </div>
                                 <div class="col-xs-6 col-lg-6 pl-ziro">
-                                    <input type="text" class="form-control" id="expityYear" placeholder="YY" required /></div>
+                                    <input type="text" class="form-control" id="expityYear" pattern="^[0-9]{2}" placeholder="YY" required /></div>
                             </div>
                         </div>
                         <div class="col-xs-5 col-md-5 pull-right">
                             <div class="form-group">
                                 <a for="cvCode">
                                     CÓDIGO CV</a>
-                                <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
+                                <input type="password" class="form-control" id="cvCode" pattern="^[0-9]{3}" placeholder="CV" required />
                             </div>
                         </div>
                     </div>
 
                       <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="#"><span class="glyphicon glyphicon-eur"></span>Total a pagar: <?php echo $datos[9]?> </a>
+                <li class="active"><a href="#"><span class="glyphicon glyphicon-eur"></span>Total a pagar: <?php echo $datos[2] ?></a>
                 </li>
             </ul>
             <br/>
-            <input type="hidden" name="id_campeonato" value="<?php echo $datos[0]?>">
-            <input type="hidden" name="fecha_inicio" value="<?php echo $datos[1]?>">
-            <input type="hidden" name="fecha_limite" value="<?php echo $datos[2]?>">
-            <input type="hidden" name="id_normativa" value="<?php echo $datos[3]?>">
-            <input type="hidden" name="id_nivel" value="<?php echo $datos[4]?>">
-            <input type="hidden" name="id_categoria" value="<?php echo $datos[5]?>">
-            <input type="hidden" name="login1" value="<?php echo $datos[7]?>">
-            <input type="hidden" name="login2" value="<?php echo $datos[6]?>">
-            <input type="hidden" name="password" value="<?php echo $datos[8]?>">
-            <input type="hidden" id="id_pareja" name="id_pareja" value="<?php echo 0 ?>" class="form-control" >
+           <input type="hidden" name="fecha" value="<?php echo date("Y/m/d", time()) ?>">
+           <input type="hidden" name="plan" value="<?php echo $datos[0] ?>">
             <button type="submit" class="btn btn-primary">Pagar</button>
 
                     </form>

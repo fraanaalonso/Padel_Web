@@ -180,6 +180,24 @@ function DELETE()
 
 function RellenaDatos()
 		{	
+
+			if(esSocio($_SESSION['login'])){
+
+				$sql = "SELECT id_pista, descripcion, ubicacion, ROUND(precio/1.3, 1) as precio FROM COURT  WHERE (id_pista = '$this->id_pista')";
+
+		    if (!($resultado = $this->bd->query($sql))){
+				return 'No existe en la base de datos'; 
+			}
+			
+		    else{ 
+
+			$result = $resultado->fetch_array();
+				return $result;
+			}
+
+
+			}
+			else{
 		    $sql = "SELECT * FROM COURT  WHERE (id_pista = '$this->id_pista')";
 
 		    if (!($resultado = $this->bd->query($sql))){
@@ -191,7 +209,11 @@ function RellenaDatos()
 			$result = $resultado->fetch_array();
 				return $result;
 			}
+
 		}
+		}
+
+
 
 
 

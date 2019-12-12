@@ -48,6 +48,28 @@ function comprobarTablaCampeonato(){
 }
 
 
+function esSocio($login){
+
+	include_once '../includes/db.php';
+	$bd;
+	$bd = ConectarDB();
+
+	$sql = "SELECT * FROM USER WHERE login = '".$login."' and socio = '1'";
+
+	$result = $bd->query($sql);
+
+	if($result->num_rows == 1){
+	return true;
+	}
+
+		else{
+	return false;
+	}
+
+
+}
+
+
 
 function comprobarTablaNoticias(){
 

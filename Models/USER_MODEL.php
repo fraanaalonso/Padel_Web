@@ -168,6 +168,64 @@ class User_Modelo
 }
 
 
+function modificarSocio($dato){
+
+	// se construye la sentencia de busqueda de la tupla en la bd
+    $sql = "SELECT * FROM USER  WHERE (login = '$this->login') ";
+    // se ejecuta la query
+    $result = $this->bd->query($sql);
+    // si el numero de filas es igual a uno es que lo encuentra
+    
+    if ($result->num_rows == 1)
+    	
+    {	// se construye la sentencia de modificacion en base a los atributos de la clase
+    	
+		$sql = "UPDATE USER  SET 
+						
+
+					socio = '".$dato."'
+				
+				WHERE ( login = '$this->login')";
+
+
+		// si hay un problema con la query se envia un mensaje de error en la modificacion
+        if (!($resultado = $this->bd->query($sql))){
+			return 'Error en la modificación'; 
+		}
+		else{ // si no hay problemas con la modificación se indica que se ha modificado
+			return 'Bienvenido al Club';
+		}
+    }
+
+    else{ // si no se encuentra la tupla se manda el mensaje de que no existe la tupla
+    	
+    	return 'No existe en la base de datos';
+    }
+
+
+}
+
+function DELETE_PLAN(){
+
+	$sql = "SELECT * FROM USER_PLAN  WHERE (login = '$this->login')";
+		    // se ejecuta la query
+		    $result = $this->bd->query($sql);
+		    // si existe una tupla con ese valor de clave
+		    if ($result->num_rows == 1)
+		    {
+		    	// se construye la sentencia sql de borrado
+		        $sql = "DELETE FROM USER_PLAN  WHERE (login = '$this->login')";
+		        // se ejecuta la query
+		        $this->bd->query($sql);
+		        // se devuelve el mensaje de borrado correcto
+		    	return "Borrado correctamente";
+		    } // si no existe el login a borrar se devuelve el mensaje de que no existe
+		    else
+		        return "No existe";
+
+}
+
+
 
 
 	function SEARCH()
@@ -337,7 +395,33 @@ function loginExiste(){
 			else{
 				return false;
 			}
-		}		
+		}
+
+
+
+function ADD_SOCIO($id_plan, $fecha){
+
+	$sql = "INSERT INTO USER_PLAN ( login, id_plan, caducacion ) VALUES ( '$this->login', ".$id_plan.", '".$fecha."' )";
+	$resultado = $this->bd->query($sql);
+
+	if ($resultado) {
+		return 'Bienvenido al club';
+	}
+	else{
+		return 'Error en la BD';
+	}
+}
+
+function obtenerPlan(){
+	$sql = "SELECT tipo, precio, login, caducacion FROM user_plan INNER JOIN PLAN ON PLAN.id_plan=user_plan.id_plan AND USER_PLAN.login='$this->login'";
+	 // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+    if (!($resultado = $this->bd->query($sql))){
+		return 'Error en la consulta sobre la base de datos';
+	}
+    else{ // si la busqueda es correcta devolvemos el recordset resultado
+		return $resultado;
+	}
+}		
 
 
 

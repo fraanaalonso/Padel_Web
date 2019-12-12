@@ -183,6 +183,10 @@ function DELETE()
 
 function RellenaDatos()
 		{	
+
+
+
+
 		    $sql = "SELECT * FROM RESERVATION  WHERE (id_reserva = '$this->id_reserva') AND (id_pista = '$this->id_pista')";
 
 		    if (!($resultado = $this->bd->query($sql))){
@@ -194,6 +198,8 @@ function RellenaDatos()
 			$result = $resultado->fetch_array();
 				return $result;
 			}
+
+		
 		}
 
 

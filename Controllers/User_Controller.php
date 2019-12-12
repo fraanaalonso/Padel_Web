@@ -14,14 +14,16 @@ if (!isset($_REQUEST['action'])){
 include '../Views/USER_VIEWS/SHOWALL_VIEW.php';
 include '../Views/USER_VIEWS/ADD_VIEW.php';
 include '../Views/PAYMENT_VIEWS/PLAN_VIEW.php';
+include '../Views/USER_VIEWS/PAY_VIEW.php';
 include '../Views/USER_VIEWS/SEARCH_VIEW.php';
 include '../Views/USER_VIEWS/SHOWCURRENT_VIEW.php';
 include '../Views/USER_VIEWS/DELETE_VIEW.php';
 include '../Views/USER_VIEWS/EDIT_VIEW.php';
 include '../Views/USER_VIEWS/Profile_View.php';
 include '../Views/USER_VIEWS/ADD_NOTIFICATION.php';
+include '../Views/USER_VIEWS/SHOWMYPLAN.php';
 include '../Views/Message_View.php';
-
+require_once '../Functions/funciones.php';
 
 
 function get_data(){
@@ -244,7 +246,22 @@ Switch ($_REQUEST['action']){
 
 		break;
 
-		case 'SOCIO':
+		case 'PLAN':
+
+		if(esSocio($_SESSION['login'])){
+			 include_once '../Models/USER_MODEL.php';
+			$userPlan = new User_Modelo($_SESSION['login'],'','','','','','','','','','','');
+			$datos = $userPlan->obtenerPlan();
+			$array = array();
+
+			new SHOWMYPLAN($array, $datos);
+
+
+		}
+
+		else{
+
+		
 
 		if(!$_POST){
 
@@ -254,15 +271,65 @@ Switch ($_REQUEST['action']){
 			$lista = array();
 			new Plan_View($lista, $currentPlans);
 		}
+	}
 
-		else{
-			include_once '../Models/USER_MODEL.php';		
-			
-			new ADD_VIEW();			
+		
 
-			
+		break;
 
+		case 'SOCIO':
+		 include_once '../Models/USER_MODEL.php';
+
+		$modelo = new User_Modelo($_SESSION['login'], '','','','','','','','','','','');
+		$indice = '1';
+		$result = $modelo->modificarSocio($indice);
+		$fecha = $_REQUEST['fecha'];
+		$currentPlan = $_REQUEST['plan'];
+		if($currentPlan == '1'){
+			$fechaFinal = date("Y-m-d",strtotime($fecha)+(86400*31));
+			$insercion = $modelo->ADD_SOCIO($currentPlan, $fechaFinal);
 		}
+		elseif($currentPlan == '2'){
+			$fechaFinal = date("Y-m-d", strtotime($fecha)+(86400*90));
+			$insercion = $modelo->ADD_SOCIO($currentPlan, $fechaFinal);
+		}
+		elseif($currentPlan == '3'){
+			$fechaFinal = date("Y-m-d", strtotime($fecha)+(86400*180));
+			$insercion = $modelo->ADD_SOCIO($currentPlan, $fechaFinal);
+		}
+		elseif($currentPlan == '4'){
+			$fechaFinal = date("Y-m-d", strtotime($fecha)+(86400*365));
+			$insercion = $modelo->ADD_SOCIO($currentPlan, $fechaFinal);
+		}
+
+
+		new MESSAGE($insercion, '../Controllers/User_Controller.php?action=PLAN');
+
+		break;
+
+
+		case 'PAY':
+		include_once '../Models/PLAN_MODEL.php';
+		$planSeleccionado = new PLAN_MODEL($_REQUEST['id_plan'],'','','');
+		$respuesta = $planSeleccionado->RellenaDatos();
+		new ADD_PAY($respuesta);
+
+		break;
+
+		case 'DELETE_PLAN':
+
+
+
+			 include_once '../Models/USER_MODEL.php';
+			 $tipo = $_REQUEST['tipo'];
+			 $login = $_REQUEST['login'];
+			$modelo =new User_Modelo($login, '','','','','','','','','','','');
+			$respuesta = $modelo->DELETE_PLAN($tipo);
+			$indice = '0';
+			$respuesta = $modelo->modificarSocio($indice);
+			new MESSAGE('La inscripción como socio ha concluído','./User_Controller.php?action=PLAN');
+		
+
 
 		break;
 

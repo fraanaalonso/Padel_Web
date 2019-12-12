@@ -53,6 +53,20 @@ class PLAN_MODEL
 
 	}
 
+
+		function RellenaDatos()
+		{	// se construye la sentencia de busqueda de la tupla
+		    $sql = "SELECT * FROM PLAN  WHERE (id_plan = '$this->id_plan')";
+		    // Si la busqueda no da resultados, se devuelve el mensaje de que no existe
+		    if (!($resultado = $this->bd->query($sql))){
+				return 'No existe en la base de datos'; // 
+			}
+		    else{ // si existe se devuelve la tupla resultado
+				$result = $resultado->fetch_array();
+				return $result;
+			}
+		} // fin del metodo RellenaDatos()
+
 }
 
 ?>

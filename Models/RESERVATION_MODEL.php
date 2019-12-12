@@ -203,6 +203,14 @@ function RellenaDatos()
 		}
 
 
+function promedioSemanal(){
+	$sql = "SELECT COUNT(*)/7 FROM RESERVATION";
+	$resultado = $this->bd->query($sql);
+	$result = $resultado->fetch_array();
+	return $result;
+}
+
+
 
 
 

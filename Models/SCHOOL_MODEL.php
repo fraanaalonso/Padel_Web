@@ -14,15 +14,18 @@ class SCHOOL_MODEL
 	var $nombre;
 	var $ubicacion;
 	var $login;
+	var $capacidad;
+	var $num_clases;
 	var $bd;
 	
-	function __construct($codigo, $nombre, $ubicacion, $login)
+	function __construct($codigo, $nombre, $ubicacion, $login, $capacidad, $num_clases)
 	{
 		$this->codigo = $codigo;
 		$this->login = $login;
 		$this->ubicacion = $ubicacion;
 		$this->nombre = $nombre;
-
+		$this->capacidad = $capacidad;
+		$this->num_clases = $num_clases;
 		include_once '../includes/db.php';
 		$this->bd = ConectarDB();
 	}
@@ -48,12 +51,16 @@ function ADD(){
 				$sql = "INSERT INTO SCHOOL (
 					nombre,
 					ubicacion,
-					administrador
+					administrador,
+					capacidad,
+					num_clases
 					) 
 						VALUES (
 						'$this->nombre',
 						'$this->ubicacion',
-						'$this->login'
+						'$this->login', 
+						'$this->capacidad',
+						'$this->num_clases'
 						)";
 					
 				
@@ -96,7 +103,9 @@ function EDIT(){
 				codigo = '$this->codigo',
 				nombre = '$this->nombre',
 				ubicacion = '$this->ubicacion',
-				administrador = '$this->login
+				administrador = '$this->login',
+				capacidad = '$this->capacidad',
+				num_clases = '$this->num_clases'
 				
 				WHERE ( codigo = '$this->codigo')";
 

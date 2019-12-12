@@ -43,6 +43,7 @@ Switch ($_REQUEST['action']){
 
 				$reservas = new RESERVATION_MODEL('','','','','','');
 				$activas = $reservas->getReservas();
+				$promedio = $reservas->promedioSemanal();
 
 				$promocion = new MATCH_MODEL('','','','');
 				$p_activas = $promocion->getPromociones();
@@ -54,7 +55,7 @@ Switch ($_REQUEST['action']){
 
 
 
-				$stats = array($totales[0], $activas[0], $p_activas[0], $c_activos[0], $p_activas[1], $hombres[0], $mujeres[0]);
+				$stats = array($totales[0], $activas[0], $p_activas[0], $c_activos[0], $p_activas[1], $hombres[0], $mujeres[0], $promedio[0]);
 
 				new SHOWALLSTATS($stats);
 

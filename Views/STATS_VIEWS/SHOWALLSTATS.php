@@ -49,12 +49,8 @@ class SHOWALLSTATS
            <tr>
 
            <tr>
-            <th>Socios</th>
-            <td></td>
-          </tr>
-           <tr>
             <th>Promedio de Reservas Semanales</th>
-            <td></td>
+            <td><?php echo $valores[7];?></td>
           </tr>
 
           <tr>
@@ -70,14 +66,7 @@ class SHOWALLSTATS
             <th>Numero de Mujeres Registradas</th>
             <td><?php echo $valores[6];?></td>
             </tr>
-           <tr>
-            <th>Promedio de Edades Hombre</th>
-            <td></td>
-            </tr> 
-            <tr>
-            <th>Promedio de Edades Mujer</th>
-            <td><</td>
-            </tr> 
+ 
 
            <tr>
         </table>

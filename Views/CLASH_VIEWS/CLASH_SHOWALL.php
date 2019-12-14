@@ -25,6 +25,7 @@ class CLASH_SHOWALL
 <div class="iconos-superiores">
    <a href="../Controllers/Championship_Controller.php?action=GENERARGRUPOS&id_campeonato=<?php echo $campeonato?>"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
    <a href="../Controllers/Championship_Controller.php?action=CUARTOS&id_campeonato=<?php  echo $campeonato ?>&id_grupo=<?php  echo $grupo ?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 35px"></span></a>
+   <a href="../Controllers/Clash_Controller.php?action=SHOWCONFIRM&id_campeonato=<?php  echo $campeonato ?>&id_grupo=<?php  echo $grupo ?>"><span class="lnr lnr-hand" style="font-size: 35px"></span></a>
 
 </div>
 

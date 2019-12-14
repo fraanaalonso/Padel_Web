@@ -190,11 +190,11 @@ class EDIT_VIEW
         alert('Resultado por sets no válido');
         return false;
       }
-      else if(num1 > num2 && suma < 3){
+     if(num1 > num2 && suma < 3){
         alert('Resultado no válido');
         return false;
       }
-      else if(num2 > num1 && suma < 3){
+     if(num2 > num1 && suma < 3){
         alert('Resultado no válido');
         return false;
       }

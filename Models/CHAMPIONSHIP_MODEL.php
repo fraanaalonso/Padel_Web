@@ -114,12 +114,14 @@ class CHAMPIONSHIP_MODEL
 				$sql = "INSERT INTO CHAMPIONSHIP (
 					fecha_inicio,
 					fecha_limite,
-					id_normativa
+					id_normativa,
+					precio
 					) 
 						VALUES (
 						'$this->fecha_inicio',
 						'$this->fecha_limite',
-						'$this->id_normativa'
+						'$this->id_normativa',
+						'34.99'
 						)";
 					
 				

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-12-2019 a las 20:38:21
+-- Tiempo de generación: 14-12-2019 a las 14:24:06
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.10
 
@@ -22,13 +22,16 @@ SET time_zone = "+00:00";
 -- Base de datos: `abp46`
 --
 
+-- --------------------------------------------------------
+
+
+
 DROP DATABASE IF EXISTS `abp46`;
 CREATE DATABASE `abp46` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 USE `abp46`;
 
 
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `categoria`
@@ -68,7 +71,12 @@ CREATE TABLE `championship` (
 
 INSERT INTO `championship` (`id_campeonato`, `fecha_inicio`, `fecha_limite`, `id_normativa`, `precio`) VALUES
 (1, '2020-01-10', '2020-01-09', 2, '34.99'),
-(2, '2020-02-03', '2020-02-02', 3, '34.99');
+(2, '2020-02-03', '2020-02-02', 3, '34.99'),
+(3, '2020-02-04', '2020-02-02', 3, '34.99'),
+(4, '2020-03-02', '2020-03-01', 3, '34.99'),
+(5, '2020-01-04', '2020-01-02', 3, '34.99'),
+(6, '2020-01-16', '2020-01-15', 4, '34.99'),
+(7, '2020-01-20', '2020-01-19', 4, '34.99');
 
 -- --------------------------------------------------------
 
@@ -89,7 +97,15 @@ INSERT INTO `championship_categoria` (`id_campeonato`, `id_categoria`) VALUES
 (1, 1),
 (1, 2),
 (2, 1),
-(2, 2);
+(2, 2),
+(3, 1),
+(3, 2),
+(3, 3),
+(4, 1),
+(4, 2),
+(5, 3),
+(6, 1),
+(7, 2);
 
 -- --------------------------------------------------------
 
@@ -155,7 +171,21 @@ INSERT INTO `championship_nivel` (`id_campeonato`, `id_nivel`) VALUES
 (1, 2),
 (1, 3),
 (2, 1),
-(2, 3);
+(2, 3),
+(3, 1),
+(3, 3),
+(4, 1),
+(4, 2),
+(4, 3),
+(5, 1),
+(5, 2),
+(5, 3),
+(6, 1),
+(6, 2),
+(6, 3),
+(7, 1),
+(7, 2),
+(7, 3);
 
 -- --------------------------------------------------------
 
@@ -280,7 +310,7 @@ INSERT INTO `clash` (`id_enfrentamiento`, `id_campeonato`, `id_pareja1`, `id_par
 (185, 1, 11, 14, '0', 0, 0, '09:00', '2020-03-14', 'liga', 1, 'P6'),
 (186, 1, 11, 16, '0', 0, 0, '21:30', '2020-03-15', 'liga', 1, 'P8'),
 (188, 1, 14, 16, '0', 0, 0, '20:00', '2020-03-16', 'liga', 1, 'P2'),
-(189, 2, 20, 21, '0', 0, 0, '09:00', '2020-02-04', 'liga', 4, 'P8'),
+(189, 2, 20, 21, '6-3/6-2/6-1', 3, 0, '09:00', '2020-02-04', 'liga', 4, 'P8'),
 (190, 2, 20, 22, '0', 0, 0, '10:30', '2020-02-05', 'liga', 4, 'P6'),
 (191, 2, 20, 23, '0', 0, 0, '12:00', '2020-02-06', 'liga', 4, 'P4'),
 (192, 2, 20, 24, '0', 0, 0, '09:00', '2020-02-07', 'liga', 4, 'P6'),
@@ -373,6 +403,11 @@ INSERT INTO `clash_confirm` (`id_enfrentamiento`, `id_pareja`) VALUES
 (127, 1),
 (130, 1),
 (133, 3),
+(134, 3),
+(139, 3),
+(140, 3),
+(141, 3),
+(142, 3),
 (189, 20),
 (189, 21),
 (190, 20),
@@ -382,7 +417,12 @@ INSERT INTO `clash_confirm` (`id_enfrentamiento`, `id_pareja`) VALUES
 (195, 20),
 (200, 21),
 (201, 21),
-(204, 21);
+(204, 21),
+(234, 25),
+(235, 25),
+(237, 25),
+(238, 25),
+(239, 25);
 
 -- --------------------------------------------------------
 
@@ -775,8 +815,8 @@ INSERT INTO `ranking` (`id_pareja`, `p_jugados`, `p_ganados`, `puntos`) VALUES
 (11, '0', '0', 0),
 (14, '0', '0', 0),
 (16, '0', '0', 0),
-(20, '0', '0', 0),
-(21, '0', '0', 0),
+(20, '1', '1', 3),
+(21, '1', '0', 1),
 (22, '0', '0', 0),
 (23, '0', '0', 0),
 (24, '0', '0', 0),
@@ -811,7 +851,12 @@ INSERT INTO `reservation` (`id_reserva`, `id_pista`, `login`, `hora_inicio`, `fe
 (128, 'P4', 'root', '18:00', '1997-12-11', '5'),
 (129, 'P7', 'admin', '13:30', '2020-01-11', '0'),
 (131, 'P7', 'pantoja_enrique', '10:30', '2020-01-14', '0'),
-(132, 'P8', 'santi_abascal', '09:00', '2020-02-04', '0');
+(132, 'P8', 'santi_abascal', '09:00', '2020-02-04', '0'),
+(133, 'P0', 'camino_antonio', '09:00', '2019-12-17', '5.5'),
+(134, 'P0', 'camino_antonio', '10:30', '2019-12-17', '5.5'),
+(135, 'P0', 'camino_antonio', '12:00', '2019-12-17', '5.5'),
+(136, 'P0', 'camino_antonio', '13:30', '2019-12-17', '5.5'),
+(137, 'P0', 'camino_antonio', '09:00', '2019-12-18', '5.5');
 
 -- --------------------------------------------------------
 
@@ -875,9 +920,8 @@ CREATE TABLE `school` (
 --
 
 INSERT INTO `school` (`codigo`, `nombre`, `ubicacion`, `administrador`, `capacidad`, `num_clases`) VALUES
-(1, 'San Patricio', 'C. Rio Mao', 'admin', '', ''),
-(2, 'ESEI', 'C Velasco', 'admin', '', ''),
-(3, 'ESEI2', 'Barcelona', 'admin', '', '');
+(2, 'ESEI', 'C Velasco', 'admin', '125', '55'),
+(3, 'ESEI2', 'Barcelona', 'admin', '120', '20');
 
 -- --------------------------------------------------------
 
@@ -908,7 +952,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`login`, `nombre`, `apellido`, `password`, `dni`, `email`, `pais`, `sexo`, `telefono`, `fecha`, `foto`, `rol_id`, `socio`) VALUES
 ('abeijon_antonio', 'Antonio', 'Abeijon', 'root', '99116644H', 'abeijon_antonio@gmail.com', 'EspaÃ±a', 'Masculino', 633170771, '1946-01-01', 'ABP46_Diagrma Lógico.png', 1, '0'),
 ('acarmen', 'Carmen', 'Agueda', 'root', '43464269P', 'carminha@outlook.com', 'España', 'Femenino', 766661242, '1992-07-05', 'banner2.jpg', 2, '0'),
-('admin', 'Charles', 'Somoziña', 'admin', '46110791T', 'flalonso17@esei.uvigo.es', 'Suiza', 'Masculino', 666133017, '1997-09-15', 'cancel.png', 1, '0'),
+('admin', 'Charles', 'Somoziña', 'admin', '46110791T', 'flalonso17@esei.uvigo.es', 'Suiza', 'Masculino', 666133017, '1997-09-15', 'cancel.png', 1, '1'),
 ('aine', 'Aine', 'Rocha', 'root', '43509260I', 'aine@outlook.com', 'España', 'Femenino', 786861231, '1998-08-26', 'banner2.jpg', 2, '0'),
 ('andreita', 'Andrea', 'Calleja', 'root', '44554222L', 'andreita@outlook.com', 'España', 'Femenino', 666661201, '1997-12-07', 'banner2.jpg', 2, '0'),
 ('anita32', 'Ana', 'Fernandez', 'root', '44294260D', 'anafer_32@outlook.com', 'España', 'Femenino', 733861201, '1997-09-15', 'banner2.jpg', 2, '0'),
@@ -1073,6 +1117,13 @@ CREATE TABLE `user_plan` (
   `id_plan` tinyint(4) NOT NULL,
   `caducacion` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `user_plan`
+--
+
+INSERT INTO `user_plan` (`login`, `id_plan`, `caducacion`) VALUES
+('admin', 3, '2020-06-11');
 
 -- --------------------------------------------------------
 
@@ -1304,7 +1355,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `championship`
 --
 ALTER TABLE `championship`
-  MODIFY `id_campeonato` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_campeonato` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `chat`
@@ -1352,7 +1403,7 @@ ALTER TABLE `nivel`
 -- AUTO_INCREMENT de la tabla `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id_pago` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_pago` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `plan`
@@ -1364,7 +1415,7 @@ ALTER TABLE `plan`
 -- AUTO_INCREMENT de la tabla `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id_reserva` bigint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+  MODIFY `id_reserva` bigint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`

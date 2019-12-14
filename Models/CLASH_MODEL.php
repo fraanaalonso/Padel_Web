@@ -259,22 +259,13 @@ function addConfirm($id_pareja, $id_enfrentamiento){
 	}
 
 }
-/*
 
-function comprobarSiAsiste($id_pareja, $id_enfrentamiento, $id_campeonato){
+function showConfirms(){
+	$consulta = "SELECT CLASH_CONFIRM.id_pareja as pareja, CLASH_CONFIRM.id_enfrentamiento as enfrentamiento, couple.login1 as capitan, couple.login2 as socio from clash_confirm inner join couple on couple.id_pareja=clash_confirm.id_pareja inner join clash on clash.id_enfrentamiento=clash_confirm.id_enfrentamiento and clash.id_campeonato='$this->id_campeonato' and clash.id_grupo = '$this->grupo'";
 
-	$sql = "SELECT * FROM CLASH WHERE  (id_pareja1 = '".$id_pareja."' && id_pareja2 = '".$id_pareja."') and id_enfrentamiento = '".$id_enfrentamiento."' and id_campeonato = '".$id_campeonato."'";
-
-	$resultado = $this->bd->query($sql);
-
-	if($resultado->num_rows == 1){
-		return 'true';
-	}
-	else{
-		return 'false';
-	}
-
-}*/
+	$resultado = $this->bd->query($consulta);
+	return $resultado;
+}
 
 function reservarPista(){
 

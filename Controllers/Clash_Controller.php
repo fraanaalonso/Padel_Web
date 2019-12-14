@@ -18,7 +18,7 @@ include_once '../Views/CLASH_VIEWS/CLASH_SHOWALL.php';
 include_once '../Views/CLASH_VIEWS/EDIT_VIEW.php';
 include_once '../Views/Message_View.php';
 include_once '../Views/CLASH_VIEWS/SHOWRANKING.php';
-//include_once '../Views/CLASH_VIEWS/SHOWCURRENT.php';
+include_once '../Views/CLASH_VIEWS/SHOWCONFIRM.php';
 
 function get_data(){
 	$id_enfrentamiento = $_REQUEST['id_enfrentamiento'];
@@ -128,6 +128,18 @@ Switch ($_REQUEST['action']){
 			
 
 
+		break;
+
+
+		case 'SHOWCONFIRM':
+
+			include_once '../Models/CLASH_MODEL.php';
+			$grupo = $_REQUEST['id_grupo'];
+			$campeonato = $_REQUEST['id_campeonato'];
+			$modelo = new CLASH_MODEL('',$campeonato,'','','','','','','','',$grupo);
+			$confirmaciones = $modelo->showConfirms();
+			$lista = array();
+			new SHOWCONFIRM($lista, $confirmaciones);
 		break;
 
 

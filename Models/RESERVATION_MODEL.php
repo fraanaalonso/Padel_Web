@@ -180,6 +180,22 @@ function DELETE()
 
 
 
+function getReservation(){
+
+	$sql = "SELECT * FROM reservation where hora_inicio = '$this->hora_inicio' and fecha ='$this->fecha' and id_pista = '$this->id_pista'";
+
+	$result = $this->bd->query($sql);
+		    
+    if ($result->num_rows == 1){
+    	return false;
+    }
+    else{
+    	return true;
+    }
+
+
+}
+
 
 function RellenaDatos()
 		{	

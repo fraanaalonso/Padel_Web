@@ -1066,7 +1066,7 @@ else{
 
 				<?php
 					if(validarHoraReserva("21:30", $clave[0], $fecha)){
-						if(!cerrarPromocion($clave[0], $fecha, "21:00")){
+						if(!cerrarPromocion($clave[0], $fecha, "21:30")){
 				?>
 				<tr style="background-color: #6EFF33">
 					<th>

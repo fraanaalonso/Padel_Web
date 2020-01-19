@@ -14,9 +14,7 @@ $longitud = count($respuesta);
 $asunto = $_POST['asunto'];
 $msg = $_POST['cuerpo'];
 
-// Instantiation and passing `true` enables exceptions
 
-for($i = 0; $i < $longitud-1; $i++){
 $mail = new PHPMailer(true);
 
 
@@ -32,7 +30,9 @@ $mail = new PHPMailer(true);
 
     //Recipients
     $mail->setFrom('eseipadel19@gmail.com', 'ESEI PADEL');
-    $mail->addAddress($respuesta[$i]);     // Add a recipient
+    $mail->addAddress('miguel.miguel.96@gmail.com'); 
+    $mail->addAddress('fraloal97@gmail.com'); 
+    $mail->addAddress('csmartinez1996@gmail.com'); 
 
 
 
@@ -43,7 +43,7 @@ $mail = new PHPMailer(true);
 
     $mail->send();
 
-}
+
 
 if($mail){
     new MESSAGE('Mensaje Enviado', '../Controllers/User_Controller.php?action=EMAIL');

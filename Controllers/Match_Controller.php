@@ -18,6 +18,7 @@ require_once '../Functions/funciones.php';
 include '../Views/MATCH_VIEWS/SHOWALL_VIEW.php';
 include '../Views/MATCH_VIEWS/ADD_VIEW.php';
 include '../Views/MATCH_VIEWS/SEARCH_VIEW.php';
+include '../Views/MATCH_VIEWS/ADD_PAY.php';
 include '../Views/MATCH_VIEWS/SHOWCURRENT_VIEW.php';
 include '../Views/MATCH_VIEWS/DELETE_MATCH_VIEW.php';
 include '../Views/MATCH_VIEWS/EDIT_VIEW.php';
@@ -82,7 +83,7 @@ Switch ($_REQUEST['action']){
 			include_once '../Models/MATCH_MODEL.php';
 			$game = new MATCH_MODEL(' ', $_REQUEST['id_pista'],$_REQUEST['hora_inicio'],$_REQUEST['fecha']);
 			$resultado = $game->añadirPromocion();
-
+			
 
 			
 
@@ -144,7 +145,7 @@ Switch ($_REQUEST['action']){
 			include_once '../Models/MATCH_MODEL.php';
 			include_once '../Models/USER_MODEL.php';
 			include_once '../Models/COURT_MODEL.php';
-
+			include_once '../Models/PAYMENT_MODEL.php';
 			$id_partido = $_POST['id_partido'];
 			$modelo = new MATCH_MODEL($id_partido,'','','');
 
@@ -156,6 +157,12 @@ Switch ($_REQUEST['action']){
 			else{
 
 			$respuesta = $modelo->inscribirPromocion($_SESSION['login']);
+
+			if(comprobarNumeroInscritos($id_partido)){
+				$pago = new PAYMENT_MODEL('',"Promocion partido".$id_partido."", '5.5', 'Pendiente', $_SESSION['login']);
+				$insert = $pago->añadirPago();
+			}
+
 
 
 			new MESSAGE($respuesta, './Match_Controller.php?action=SHOWMYPROMOTIONS');
@@ -272,6 +279,30 @@ Switch ($_REQUEST['action']){
 					
 					break;
 
+		case 'TRAMITE':
+
+		include_once '../Models/PAYMENT_MODEL.php';
+
+		
+		$idpago = $_REQUEST['id_pago'];
+		new ADD_PAY($idpago);
+		break;
+
+
+		case 'PAY':
+		include_once '../Models/PAYMENT_MODEL.php';
+
+		$idpago = $_REQUEST['id_pago'];
+
+		$pago = new PAYMENT_MODEL($idpago,'','','','');
+		$insert = $pago->changeStatus();
+
+			
+		new MESSAGE($insert, './Match_Controller.php');
+
+
+		break;
+
 
 		case 'DELETEMYPROMOTION':
 
@@ -316,21 +347,7 @@ Switch ($_REQUEST['action']){
 					  include_once '../Models/MATCH_MODEL.php';
 					  
 				}
-/*
-				include_once '../Models/PAYMENT_MODEL.php';
-				$pay = new PAYMENT_MODEL('','Promocion',$_SESSION['login'], '5.5', 'Pendiente');
-				$datos = $modelo->SEARCH();
-				$lista = array();
 
-				while($lista = $datos->fetch_assoc()){
-					if(cerrarPromocion($lista['id_pista'], $lista['hora_inicio'], $lista['fecha'])){
-						$pendiente = $pay->ADD();
-					}
-
-				}
-
-
-*/
 				$resul = $modelo->SEARCH();
 				$arreglo = array('Identificador Partido','Identificador de Pista', 'Hora Inicio', 'Fecha Promoción');
 				

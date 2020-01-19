@@ -33,6 +33,7 @@ class SHOWALL_PAYMENTS
   <tr>
     <th>Login    </th>
     <th>Estado   </th>
+    <th>Concepto   </th>
     <th>Cantidad </th>
     <th>Opciones </th>
    
@@ -49,15 +50,16 @@ class SHOWALL_PAYMENTS
     if($_SESSION['login'] == $fila['login'] || comprobarPermisos($fila['login'] == 1)){
       echo "<tr>";
       echo "<td>".$fila['login']."</td>";
+      echo "<td>".$fila['estado']."</td>";
       echo "<td>".$fila["concepto"]."</td>";
-      echo "<td>".$fila["precio"]."</td>";
-      echo "<td>".$fila["estado"]."</td>";
+      echo "<td>".$fila["cantidad"]."</td>";
+  
 
 
 
 ?>
 <td>  
-<a href="../Controllers/Match_Controller.php?action=EDIT&id_pago<?php  echo $fila['id_pago'] ?>"><span class="lnr lnr-cart borrar"></span></a>
+<a href="../Controllers/Match_Controller.php?action=TRAMITE&id_pago=<?php  echo $fila['id_pago'] ?>"><span class="lnr lnr-cart borrar"></span></a>
 </td>
 <?php
 

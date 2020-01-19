@@ -44,6 +44,15 @@ class ADD_VIEW
 		  	<input type="text" id="administrador" name="administrador" readonly required value="<?php echo $_SESSION['login'] ?>"  class="form-control" placeholder="Administrador" >
 		   </div>
 
+		   <div class="form-group">
+		  	<input type="text" id="ubi" name="capacidad" class="form-control" required  placeholder="Capacidad Escuela" >
+		   </div>
+
+
+		   <div class="form-group">
+		  	<input type="text" id="ubi" name="num_clases" class="form-control" required  placeholder="Número de Clases Escuela" >
+		   </div>
+
 		    
 		  
 

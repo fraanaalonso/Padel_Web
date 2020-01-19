@@ -92,6 +92,21 @@ class COURT_MODEL
 	}
 
 
+function getAllReservations(){
+
+	$sql = "SELECT RESERVATION.id_reserva as reserva, RESERVATION.fecha as fecha, RESERVATION.hora_inicio as hora, RESERVATION.login as login, RESERVATION.precio as precio FROM COURT INNER JOIN RESERVATION ON COURT.id_pista=RESERVATION.id_pista and COURT.id_pista = '$this->id_pista'";
+	$resultado = $this->bd->query($sql);
+	return $resultado;
+}
+
+
+function getPistas(){
+	$sql = "SELECT id_pista FROM COURT";
+	$resultado = $this->bd->query($sql);
+	return $resultado;
+}
+
+
 
 
 

@@ -84,12 +84,47 @@ class PAYMENT_MODEL
 
 
 
+
+
+	function changeStatus(){
+		$sql = "SELECT id_pago FROM PAYMENT WHERE id_pago = '$this->id_pago'";
+
+
+		 $result = $this->bd->query($sql);
+    
+    if ($result->num_rows == 1)
+    	
+    {	
+    	
+		$sql = "UPDATE PAYMENT  SET 
+				estado = 'Pagado'
+				
+				WHERE ( id_pago = '$this->id_pago')";
+
+        if (!($resultado = $this->bd->query($sql))){
+			return 'Error en la modificación'; 
+		}
+		else{ 
+
+			return 'Pago Realizado';
+		}
+    }
+
+    else{ 
+    	
+    	return 'No existe en la base de datos';
+    }
+	}
+
+
+
+
 	function SEARCHPAY(){
 
 	$sql = "select
 					*
 					
-					FROM PAYMENT";
+					FROM PAYMENT where estado = 'Pendiente'";
 
    
    

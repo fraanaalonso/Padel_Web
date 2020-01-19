@@ -24,6 +24,26 @@ function comprobarTabla(){
 }
 
 
+	function comprobarPendiente(){
+
+	include_once '../includes/db.php';
+	$sominhoestabaledo;
+ 	$sominhoestabaledo = ConectarDB();
+
+		$sql = "SELECT * FROM PAYMENT WHERE estado = 'Pendiente' and login = '".$_SESSION['login']."'";
+		$resultado =  $sominhoestabaledo->query($sql);
+
+		if($resultado->num_rows != 0){
+			return false;
+
+		}
+
+		else{
+			return true;
+		}
+	}
+
+
 function comprobarTablaCampeonato(){
 
 	include_once '../includes/db.php';
@@ -493,6 +513,24 @@ function ultimoGrupo($categoria, $nivel, $campeonato){
 
 
 
+function inscritoEscuela($login){
+
+	include_once '../includes/db.php';
+	$bd;
+	$bd = ConectarDB();
+
+	$sql = "SELECT * FROM USER_SCHOOL WHERE login = '".$login."'";
+	$result = $bd->query($sql);
+
+	if ($result->num_rows == 1){
+		return true;
+	}
+
+	else{
+		return false;
+	}
+
+}
 
 function inscritoEnPromocion($login, $id_partido){
 

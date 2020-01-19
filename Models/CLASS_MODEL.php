@@ -5,20 +5,19 @@
 class CLASS_MODEL
 {
 	var $id_clase;
-	var $ubicacion;
-	var $num_pista;
+	var $descripcion;
 	var $login;
 	var $nivel;
 	var $bd;
 	
-	function __construct($id_clase,$ubicacion, $num_pista, $login, $nivel)
+	function __construct($id_clase, $descripcion, $login, $nivel)
 	{
 		$this->id_clase = $id_clase;
-		$this->ubicacion = $ubicacion;
-		$this->num_pista = $num_pista;
+		$this->descripcion = $descripcion;
 		$this->login = $login;
 		$this->nivel = $nivel;
 
+		include_once '../includes/db.php';
 		$this->bd = ConectarDB();
 	}
 
@@ -29,7 +28,7 @@ class CLASS_MODEL
 
 		if (($this->id_clase <> '')){ 
 
-        $sql = "SELECT * FROM CLASS WHERE (id_clase = '$this->id_clase')";
+        $sql = "SELECT * FROM CLASE WHERE (id_clase = '$this->id_clase')";
 
 		if (!$result = $this->bd->query($sql)){ 
 			return 'No se ha podido conectar con la base de datos';
@@ -39,18 +38,16 @@ class CLASS_MODEL
 			if ($result->num_rows == 0){ 
 				
 
-				$sql = "INSERT INTO CLASS (
+				$sql = "INSERT INTO CLASE (
 					id_clase,
-					ubicacion,
-					num_pista,
+					descripcion,
 					login,
 					nivel
 					) 
 						VALUES (
-						'$this->id_noticia',
-						'$this->titulo',
-						'$this->subtitulo',
-						'$this->cuerpo',
+						'$this->id_clase',
+						'$this->descripcion',
+						'$this->login',
 						'$this->nivel'
 						)";
 					
@@ -82,9 +79,25 @@ class CLASS_MODEL
 
 
 
+	function SEARCH()
+{ 	
+    $sql = "select * from CLASE ";
+
+    // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+    if (!($resultado = $this->bd->query($sql))){
+		return 'Error en la consulta sobre la base de datos';
+	}
+    else{ // si la busqueda es correcta devolvemos el recordset resultado
+		return $resultado;
+	}
+
+
+} // fin metodo SEARCH
+
+
 function EDIT(){
 
-	$sql = "SELECT * FROM CLASS  WHERE (id_clase = '$this->id_clase') ";
+	$sql = "SELECT * FROM CLASE  WHERE (id_clase = '$this->id_clase') ";
     
 
     $result = $this->bd->query($sql);
@@ -93,10 +106,9 @@ function EDIT(){
     	
     {	
     	
-		$sql = "UPDATE CLASS  SET 
+		$sql = "UPDATE CLASE  SET 
 				id_clase = '$this->id_clase',
-				ubicacion = '$this->ubicacion',
-				num_pista = '$this->num_pista',
+				descripcion = '$this->descripcion',
 				login = '$this->login',
 				nivel = '$this->nivel'
 				
@@ -120,38 +132,11 @@ function EDIT(){
 
 
 
-function SEARCH(){
-
-	$sql = "select
-					id_clase,
-					ubicacion,
-					num_pista,
-					login,
-					nivel
-					
-					FROM CLASS WHERE
-
-					
-						((id_clase LIKE '$this->id_clase') &&
-						(ubicacion LIKE'$this->ubicacion') &&
-						(num_pista LIKE'$this->num_pista')  &&
-						(login LIKE '$this->login') &&  (nivel LIKE '$this->nivel'))";
-
-   
-    if (!($resultado = $this->bd->query($sql))){
-		return 'Error en la consulta sobre la base de datos';
-	}
-    else{ 
-		return $resultado;
-	}
-}
-
-
 
 
 function DELETE()
 		{	
-		   $sql = "SELECT * FROM CLASS  WHERE 
+		   $sql = "SELECT * FROM CLASE  WHERE 
 		   (id_clase = '$this->id_clase')";
 		    
 		    $result = $this->bd->query($sql);
@@ -159,7 +144,7 @@ function DELETE()
 		    if ($result->num_rows == 1)
 		    {
 		    
-		       $sql = "DELETE FROM CLASS  WHERE 
+		       $sql = "DELETE FROM CLASE  WHERE 
 		       (id_clase = '$this->id_clase')";
 		       
 		        $this->bd->query($sql);
@@ -174,7 +159,7 @@ function DELETE()
 
 function RellenaDatos()
 		{	
-		    $sql = "SELECT * FROM CLASS  WHERE (id_clase = '$this->id_clase')";
+		    $sql = "SELECT * FROM CLASE  WHERE (id_clase = '$this->id_clase')";
 
 		    if (!($resultado = $this->bd->query($sql))){
 				return 'No existe en la base de datos'; 
@@ -190,6 +175,6 @@ function RellenaDatos()
 
 
 
-?>
+}
 
 ?>

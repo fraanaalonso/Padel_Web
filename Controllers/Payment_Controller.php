@@ -17,7 +17,7 @@ include_once '../Models/COURT_MODEL.php';
 include '../Views/PAYMENT_VIEWS/SHOWALL_PAYMENTS.php';
 include '../Views/PAYMENT_VIEWS/ADD_VIEW.php';
 include '../Views/Message_View.php';
-
+require_once '../Functions/funciones.php';
 
 
 
@@ -47,6 +47,15 @@ Switch ($_REQUEST['action']){
 
 		case 'SHOWMYPAYMENTS':
 
+		if(comprobarPendiente()){
+
+			new MESSAGE('No tiene pagos pendientes', './Match_Controller.php');
+		}
+
+		else{
+
+
+
 		if (!$_POST){
 					include_once '../Models/PAYMENT_MODEL.php';
 					$modelo = new PAYMENT_MODEL(' ' ,' ' ,' ', ' ', ' ');
@@ -61,6 +70,8 @@ Switch ($_REQUEST['action']){
 				$datos = $modelo->SEARCHPAY();
 				$lista = array();
 				new SHOWALL_PAYMENTS($lista, $datos);
+
+		}
 
 		break;
 

@@ -34,6 +34,21 @@ class SCHOOL_MODEL
 
 
 
+function mostrarClases(){
+
+	$sql = "select login, tipo, clase.descripcion, nivel.nivel FROM CLASE INNER join class_school ON clase.id_clase=class_school.id_clase inner join nivel on clase.nivel=nivel.id_nivel and class_school.codigo = '$this->codigo'";
+
+   
+    if (!($resultado = $this->bd->query($sql))){
+		return 'Error en la consulta sobre la base de datos';
+	}
+    else{ 
+		return $resultado;
+	}
+
+
+}
+
 function ADD(){
 
 
@@ -84,7 +99,45 @@ function ADD(){
 
 
 
+function añadirClase($codigo, $id_clase){
 
+
+
+        $sql = "SELECT * FROM CLASS_SCHOOL WHERE (codigo = '".$codigo."') AND (id_clase = '".$id_clase."')";
+
+		if (!$result = $this->bd->query($sql)){ 
+			return 'No se ha podido conectar con la base de datos';
+		}
+		else { 
+
+			if ($result->num_rows == 0){ 
+				
+
+				$sql = "INSERT INTO CLASS_SCHOOL (
+					codigo,
+					id_clase
+					) 
+						VALUES (
+						'".$codigo."',
+						'".$id_clase."'
+						)";
+					
+				
+				if (!$this->bd->query($sql)) { 
+					return 'Error en la inserción';
+				}
+				else{ 
+					return 'Clases Añadidas'; 
+				}
+				
+			}
+			else 
+				return 'Ya existe en la base de datos'; 
+		}
+   
+
+
+}
 
 
 

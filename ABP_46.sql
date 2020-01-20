@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-01-2020 a las 21:54:35
+-- Tiempo de generación: 20-01-2020 a las 22:27:21
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -73,7 +73,8 @@ INSERT INTO `championship` (`id_campeonato`, `fecha_inicio`, `fecha_limite`, `id
 (4, '2020-03-02', '2020-03-01', 3, '34.99'),
 (5, '2020-01-04', '2020-01-02', 3, '34.99'),
 (6, '2020-01-16', '2020-01-15', 4, '34.99'),
-(7, '2020-01-20', '2020-01-19', 4, '34.99');
+(7, '2020-01-20', '2020-01-19', 4, '34.99'),
+(8, '2020-01-22', '2020-01-21', 3, '34.99');
 
 -- --------------------------------------------------------
 
@@ -102,7 +103,9 @@ INSERT INTO `championship_categoria` (`id_campeonato`, `id_categoria`) VALUES
 (4, 2),
 (5, 3),
 (6, 1),
-(7, 2);
+(7, 2),
+(8, 1),
+(8, 3);
 
 -- --------------------------------------------------------
 
@@ -183,7 +186,10 @@ INSERT INTO `championship_nivel` (`id_campeonato`, `id_nivel`) VALUES
 (6, 3),
 (7, 1),
 (7, 2),
-(7, 3);
+(7, 3),
+(8, 1),
+(8, 2),
+(8, 3);
 
 -- --------------------------------------------------------
 
@@ -1421,7 +1427,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `championship`
 --
 ALTER TABLE `championship`
-  MODIFY `id_campeonato` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_campeonato` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `chat`

@@ -22,6 +22,55 @@ class CLASS_MODEL
 	}
 
 
+	
+
+
+
+	function inscribirClase($usuario, $clase){
+
+		if (($clase <> '') && ($usuario <> '')){ 
+
+        $sql = "SELECT * FROM USER_CLASS WHERE (id_clase = '".$clase."') && (login = '".$usuario."')";
+
+		if (!$result = $this->bd->query($sql)){ 
+			return 'No se ha podido conectar con la base de datos';
+		}
+		else { 
+
+			if ($result->num_rows == 0){ 
+				
+
+				$sql = "INSERT INTO USER_CLASS (
+					id_clase,
+					login
+					) 
+						VALUES (
+						'".$clase."',
+						'".$usuario."'
+						)";
+					
+				
+				if (!$this->bd->query($sql)) { 
+					return 'Error en la inserción';
+				}
+				else{ 
+					return "Inscripción en clase '".$clase."' realizada" ; 
+				}
+				
+			}
+			else 
+				return 'Ya está inscrito en esta clase'; 
+		}
+    }
+    else{ 
+    	
+        return 'Introduzca un valor'; 
+	
+	}
+
+	}
+
+
 
 
 	function ADD(){

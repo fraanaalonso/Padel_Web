@@ -88,6 +88,8 @@ if(comprobarPermisos($_SESSION['login'])==1){
         <a href="../Controllers/School_Controller.php?action=SHOWCURRENT&codigo=<?php  echo $fila['codigo'] ?>"><span class="lnr lnr-eye añadir"></span></a>
 
         <a href="../Controllers/School_Controller.php?action=ADDCLASE&codigo=<?php  echo $fila['codigo'] ?>"><span class="lnr lnr-plus-circle" style="font-size: 20px"></span></a>
+
+        <a href="../Controllers/Class_Controller.php?action=SHOW_CLASS&codigo=<?php  echo $fila['codigo'] ?>"><span class="lnr lnr-bookmark" style="font-size: 20px"></span></a>
             
       </td>
 

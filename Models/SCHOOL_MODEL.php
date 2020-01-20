@@ -30,13 +30,30 @@ class SCHOOL_MODEL
 		$this->bd = ConectarDB();
 	}
 
+
+
+	function SHOWMYCLASSES(){
+
+		$sql = "SELECT user_school.login, clase.titulo, school.nombre, user_school.codigo, user_class.id_clase FROM user_school INNER JOIN user_class on user_school.login=user_class.login inner join clase on clase.id_clase = user_class.id_clase inner join school on school.codigo = user_school.codigo and user_school.codigo='$this->codigo' and user_school.login = '".$_SESSION['login']."'";
+
+
+		if (!($resultado = $this->bd->query($sql))){
+		return 'Error en la consulta sobre la base de datos';
+		}
+		else{ 
+			return $resultado;
+		}
+
+
+	}
+
 		
 
 
 
 function mostrarClases(){
 
-	$sql = "select login, tipo, clase.descripcion, nivel.nivel FROM CLASE INNER join class_school ON clase.id_clase=class_school.id_clase inner join nivel on clase.nivel=nivel.id_nivel and class_school.codigo = '$this->codigo'";
+	$sql = "select login, tipo, clase.descripcion, nivel.nivel, clase.id_clase FROM CLASE INNER join class_school ON clase.id_clase=class_school.id_clase inner join nivel on clase.nivel=nivel.id_nivel and class_school.codigo = '$this->codigo'";
 
    
     if (!($resultado = $this->bd->query($sql))){

@@ -58,7 +58,7 @@ while($fila = $resultado->fetch_assoc()){
 
 ?>
         <input type="checkbox" value="<?php echo $i ?>" id="box<?php echo $i ?>" name="id_clase[]">
-        <label for="box<?php echo $i ?>" align="justify"><strong style="font-size: 60px"><?php echo $fila['id_clase']?></strong>
+        <label for="box<?php echo $i ?>" align="justify"><strong style="font-size: 60px"><?php echo $fila['titulo']?></strong>
         </label> <br><br> <strong ><?php echo $fila['descripcion']?></strong>
   
         <br>

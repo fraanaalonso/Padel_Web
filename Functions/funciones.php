@@ -513,13 +513,13 @@ function ultimoGrupo($categoria, $nivel, $campeonato){
 
 
 
-function inscritoEscuela($login){
+function inscritoEscuela($login, $codigo){
 
 	include_once '../includes/db.php';
 	$bd;
 	$bd = ConectarDB();
 
-	$sql = "SELECT * FROM USER_SCHOOL WHERE login = '".$login."'";
+	$sql = "SELECT * FROM USER_SCHOOL WHERE login = '".$login."' and codigo = '".$codigo."' ";
 	$result = $bd->query($sql);
 
 	if ($result->num_rows == 1){

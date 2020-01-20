@@ -77,7 +77,7 @@ class SHOWSCHOOL_CLASS
 
       <td>
 
-        
+        <a href="../Controllers/Class_Controller.php?action=INSCRIBIR&id_clase=<?php  echo $fila['id_clase'] ?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 20px"></span></a>
              
       </td>
 

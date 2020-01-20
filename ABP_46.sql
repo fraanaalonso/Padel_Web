@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-12-2019 a las 14:24:06
--- Versión del servidor: 10.4.8-MariaDB
--- Versión de PHP: 7.3.10
+-- Tiempo de generación: 20-01-2020 a las 21:54:35
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -22,16 +22,13 @@ SET time_zone = "+00:00";
 -- Base de datos: `abp46`
 --
 
--- --------------------------------------------------------
-
-
 
 DROP DATABASE IF EXISTS `abp46`;
 CREATE DATABASE `abp46` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 USE `abp46`;
 
-
+-- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `categoria`
@@ -150,7 +147,8 @@ INSERT INTO `championship_couple` (`id_pareja`, `id_campeonato`) VALUES
 (29, 2),
 (30, 2),
 (31, 2),
-(32, 2);
+(32, 2),
+(33, 3);
 
 -- --------------------------------------------------------
 
@@ -216,7 +214,38 @@ INSERT INTO `chat` (`id_chat`, `login`, `mensaje`, `fecha_mensaje`, `hora_mensaj
 (26, 'jmartinez', 'Como digáis vosotros', '03/11/2019', '18:01'),
 (27, 'bros_mario', 'Hola', '16/11/2019', '8:47'),
 (28, 'bros_mario', 'Hola', '16/11/2019', '8:47'),
-(29, 'bros_mario', 'Hola', '16/11/2019', '8:47');
+(29, 'bros_mario', 'Hola', '16/11/2019', '8:47'),
+(30, 'onlycalde', 'os dese mucha suerte. Os va a hacer falta', '30/12/2019', '10:18'),
+(31, 'abeijon_antonio', 'Hooolaa', '20/01/2020', '10:32');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `clase`
+--
+
+CREATE TABLE `clase` (
+  `id_clase` tinyint(4) NOT NULL,
+  `titulo` varchar(100) NOT NULL,
+  `descripcion` text NOT NULL,
+  `nivel` tinyint(4) NOT NULL,
+  `login` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `tipo` enum('Particular','General','','') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `clase`
+--
+
+INSERT INTO `clase` (`id_clase`, `titulo`, `descripcion`, `nivel`, `login`, `tipo`) VALUES
+(1, 'Golpeo', 'orem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum. ¿Por qué lo usamos? Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aquí, contenido aquí\". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda de \"Lorem Ipsum\" va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras veces a propósito (por ejemplo insertándole humor y cosas por el estilo).', 1, 'vilanova_pedro', 'General'),
+(2, 'Saque', 'orem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.\r\n\r\n¿Por qué lo usamos?\r\nEs un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aquí, contenido aquí\". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda de \"Lorem Ipsum\" va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras veces a propósito (por ejemplo insertándole humor y cosas por el estilo).\r\n\r\n', 2, 'vilanova_pedro', 'Particular'),
+(3, 'Ejercicios de Control', 'orem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.\r\n\r\n¿Por qué lo usamos?\r\nEs un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aquí, contenido aquí\". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda de \"Lorem Ipsum\" va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras veces a propósito (por ejemplo insertándole humor y cosas por el estilo).\r\n\r\n', 3, 'vilanova_pedro', 'Particular'),
+(4, 'Teoría del Padel', 'orem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.\r\n\r\n¿Por qué lo usamos?\r\nEs un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aquí, contenido aquí\". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda de \"Lorem Ipsum\" va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras veces a propósito (por ejemplo insertándole humor y cosas por el estilo).\r\n\r\n', 3, 'vilanova_pedro', 'Particular'),
+(5, 'Anticipación y volea', 'orem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.\r\n\r\n¿Por qué lo usamos?\r\nEs un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aquí, contenido aquí\". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda de \"Lorem Ipsum\" va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras veces a propósito (por ejemplo insertándole humor y cosas por el estilo).\r\n\r\n', 1, 'vilanova_pedro', 'Particular'),
+(6, 'Psicología del deporte', 'orem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.\r\n\r\n¿Por qué lo usamos?\r\nEs un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aquí, contenido aquí\". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda de \"Lorem Ipsum\" va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras veces a propósito (por ejemplo insertándole humor y cosas por el estilo).\r\n\r\n', 3, 'vilanova_pedro', 'Particular'),
+(7, 'Smash o remate', 'Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aquí, contenido aquí\". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda de \"Lorem Ipsum\" va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras veces a propósito (por ejemplo insertándole humor y cosas por el estilo).\r\n', 1, 'vilanova_pedro', 'Particular'),
+(8, 'Posicionamiento en pista', 'Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño. El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aquí, contenido aquí\". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqueda de \"Lorem Ipsum\" va a dar por resultado muchos sitios web que usan este texto si se encuentran en estado de desarrollo. Muchas versiones han evolucionado a través de los años, algunas veces por accidente, otras veces a propósito (por ejemplo insertándole humor y cosas por el estilo).\r\n', 2, 'vilanova_pedro', 'Particular');
 
 -- --------------------------------------------------------
 
@@ -244,7 +273,7 @@ CREATE TABLE `clash` (
 --
 
 INSERT INTO `clash` (`id_enfrentamiento`, `id_campeonato`, `id_pareja1`, `id_pareja2`, `resultado`, `numSetsPareja1`, `numSetsPareja2`, `hora_inicio`, `fecha`, `tipo`, `id_grupo`, `id_pista`) VALUES
-(122, 1, 1, 3, '0', 0, 0, '13:30', '2020-01-11', 'liga', 1, 'P7'),
+(122, 1, 1, 3, '6-1/6-1/6-1', 3, 0, '13:30', '2020-01-11', 'liga', 1, 'P7'),
 (123, 1, 1, 4, '0', 0, 0, '18:30', '2020-01-12', 'liga', 1, 'P2'),
 (124, 1, 1, 5, '0', 0, 0, '12:00', '2020-01-13', 'liga', 1, 'P7'),
 (125, 1, 1, 6, '0', 0, 0, '10:30', '2020-01-14', 'liga', 1, 'P7'),
@@ -255,11 +284,9 @@ INSERT INTO `clash` (`id_enfrentamiento`, `id_campeonato`, `id_pareja1`, `id_par
 (130, 1, 1, 11, '0', 0, 0, '13:30', '2020-01-19', 'liga', 1, 'P2'),
 (131, 1, 1, 14, '0', 0, 0, '13:30', '2020-01-20', 'liga', 1, 'P8'),
 (132, 1, 1, 16, '0', 0, 0, '21:30', '2020-01-21', 'liga', 1, 'P8'),
-(133, 1, 3, 4, '0', 0, 0, '18:30', '2020-01-22', 'liga', 1, 'P0'),
 (134, 1, 3, 5, '0', 0, 0, '13:30', '2020-01-23', 'liga', 1, 'P6'),
 (135, 1, 3, 6, '0', 0, 0, '12:00', '2020-01-24', 'liga', 1, 'P1'),
 (136, 1, 3, 7, '0', 0, 0, '13:30', '2020-01-25', 'liga', 1, 'P2'),
-(137, 1, 3, 8, '0', 0, 0, '09:00', '2020-01-26', 'liga', 1, 'P0'),
 (138, 1, 3, 9, '0', 0, 0, '10:30', '2020-01-27', 'liga', 1, 'P5'),
 (139, 1, 3, 10, '0', 0, 0, '21:30', '2020-01-28', 'liga', 1, 'P3'),
 (140, 1, 3, 11, '0', 0, 0, '13:30', '2020-01-29', 'liga', 1, 'P3'),
@@ -367,7 +394,6 @@ INSERT INTO `clash` (`id_enfrentamiento`, `id_campeonato`, `id_pareja1`, `id_par
 (243, 2, 26, 30, '0', 0, 0, '21:30', '2020-03-29', 'liga', 4, 'P7'),
 (244, 2, 26, 31, '0', 0, 0, '12:00', '2020-03-30', 'liga', 4, 'P8'),
 (245, 2, 27, 28, '0', 0, 0, '18:30', '2020-03-31', 'liga', 4, 'P6'),
-(246, 2, 27, 29, '0', 0, 0, '21:30', '2020-04-01', 'liga', 4, 'P0'),
 (247, 2, 27, 30, '0', 0, 0, '20:00', '2020-04-02', 'liga', 4, 'P2'),
 (248, 2, 27, 31, '0', 0, 0, '20:00', '2020-04-03', 'liga', 4, 'P1'),
 (249, 2, 28, 29, '0', 0, 0, '21:30', '2020-04-04', 'liga', 4, 'P8'),
@@ -402,7 +428,6 @@ INSERT INTO `clash_confirm` (`id_enfrentamiento`, `id_pareja`) VALUES
 (126, 1),
 (127, 1),
 (130, 1),
-(133, 3),
 (134, 3),
 (139, 3),
 (140, 3),
@@ -423,6 +448,32 @@ INSERT INTO `clash_confirm` (`id_enfrentamiento`, `id_pareja`) VALUES
 (237, 25),
 (238, 25),
 (239, 25);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `class_school`
+--
+
+CREATE TABLE `class_school` (
+  `codigo` tinyint(4) NOT NULL,
+  `id_clase` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `class_school`
+--
+
+INSERT INTO `class_school` (`codigo`, `id_clase`) VALUES
+(2, 1),
+(2, 2),
+(2, 3),
+(7, 1),
+(7, 2),
+(7, 6),
+(8, 1),
+(8, 2),
+(8, 3);
 
 -- --------------------------------------------------------
 
@@ -468,7 +519,8 @@ INSERT INTO `couple` (`id_pareja`, `login1`, `login2`) VALUES
 (29, 'vilanova_pedro', 'garcia_manuel'),
 (30, 'torra_quim', 'roca_tino'),
 (31, 'joan_roda', 'loser'),
-(32, 'libertad_franco', 'velasco_dionisio');
+(32, 'libertad_franco', 'velasco_dionisio'),
+(33, 'admin', 'antonio_v');
 
 -- --------------------------------------------------------
 
@@ -513,6 +565,7 @@ INSERT INTO `couple_categoria` (`id_categoria`, `id_pareja`, `id_campeonato`) VA
 (1, 30, 2),
 (1, 31, 2),
 (1, 32, 2),
+(1, 33, 3),
 (2, 2, 1),
 (2, 19, 1);
 
@@ -560,7 +613,8 @@ INSERT INTO `couple_grupo` (`id_grupo`, `id_pareja`, `id_campeonato`) VALUES
 (4, 29, 2),
 (4, 30, 2),
 (4, 31, 2),
-(5, 32, 2);
+(5, 32, 2),
+(6, 33, 3);
 
 -- --------------------------------------------------------
 
@@ -592,6 +646,7 @@ INSERT INTO `couple_nivel` (`id_nivel`, `id_pareja`, `id_campeonato`) VALUES
 (1, 30, 2),
 (1, 31, 2),
 (1, 32, 2),
+(1, 33, 3),
 (2, 1, 1),
 (2, 2, 1),
 (2, 3, 1),
@@ -626,8 +681,7 @@ CREATE TABLE `court` (
 --
 
 INSERT INTO `court` (`id_pista`, `descripcion`, `ubicacion`, `precio`) VALUES
-('P0', 'Cubierta y cristaleras de 50 metros', 'Ala Norte', '5.5'),
-('P1', 'Cubierta y cristaleras de 50 metros', 'Ala Norte', '5.5'),
+('P1', 'Cubierta y cristaleras de 50 metros', 'Ala Norte', '5.6'),
 ('P2', 'Descubierta y reglamentaria', 'Ala Sur', '5.5'),
 ('P3', 'Hierba natural', 'Ala Norte', '5.5'),
 ('P4', 'Hierba artificial', 'Ala Oeste', '5.5'),
@@ -648,15 +702,6 @@ CREATE TABLE `game` (
   `hora_inicio` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
   `fecha` varchar(10) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `game`
---
-
-INSERT INTO `game` (`id_partido`, `id_pista`, `hora_inicio`, `fecha`) VALUES
-(1, 'P2', '09:00', '2019-12-18'),
-(2, 'P3', '17:00', '2019-12-14'),
-(3, 'P3', '20:00', '2019-12-17');
 
 -- --------------------------------------------------------
 
@@ -680,7 +725,8 @@ INSERT INTO `grupo` (`id_grupo`, `id_categoria`, `id_nivel`, `id_campeonato`) VA
 (2, 2, 2, 1),
 (3, 1, 2, 1),
 (4, 1, 1, 2),
-(5, 1, 1, 2);
+(5, 1, 1, 2),
+(6, 1, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -744,7 +790,7 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`id_pago`, `concepto`, `cantidad`, `estado`, `login`) VALUES
-(5, 'Campeonato', '34.99', 'Pagado', 'joan_roda'),
+(5, 'Campeonato', '34.99', 'Pendiente', 'joan_roda'),
 (6, 'Campeonato', '34.99', 'Pagado', 'joan_roda'),
 (7, 'Campeonato', '34.99', 'Pagado', 'fati'),
 (8, 'Campeonato', '34.99', 'Pagado', 'mvarela'),
@@ -761,7 +807,11 @@ INSERT INTO `payment` (`id_pago`, `concepto`, `cantidad`, `estado`, `login`) VAL
 (19, 'Campeonato', '34.99', 'Pagado', 'vilanova_pedro'),
 (20, 'Campeonato', '34.99', 'Pagado', 'torra_quim'),
 (21, 'Campeonato', '34.99', 'Pagado', 'joan_roda'),
-(22, 'Campeonato', '34.99', 'Pagado', 'libertad_franco');
+(22, 'Campeonato', '34.99', 'Pagado', 'libertad_franco'),
+(29, 'Promocion partido1', '5.5', 'Pagado', 'admin'),
+(30, 'Campeonato', '34.99', 'Pagado', 'admin'),
+(31, 'Promocion partido6', '5.5', 'Pendiente', 'fer_rv'),
+(32, 'Promocion partido8', '5.5', 'Pagado', 'abeijon_antonio');
 
 -- --------------------------------------------------------
 
@@ -803,8 +853,8 @@ CREATE TABLE `ranking` (
 --
 
 INSERT INTO `ranking` (`id_pareja`, `p_jugados`, `p_ganados`, `puntos`) VALUES
-(1, '1', '1', 3),
-(3, '1', '0', 1),
+(1, '2', '2', 6),
+(3, '2', '0', 2),
 (4, '0', '0', 0),
 (5, '0', '0', 0),
 (6, '0', '0', 0),
@@ -852,11 +902,7 @@ INSERT INTO `reservation` (`id_reserva`, `id_pista`, `login`, `hora_inicio`, `fe
 (129, 'P7', 'admin', '13:30', '2020-01-11', '0'),
 (131, 'P7', 'pantoja_enrique', '10:30', '2020-01-14', '0'),
 (132, 'P8', 'santi_abascal', '09:00', '2020-02-04', '0'),
-(133, 'P0', 'camino_antonio', '09:00', '2019-12-17', '5.5'),
-(134, 'P0', 'camino_antonio', '10:30', '2019-12-17', '5.5'),
-(135, 'P0', 'camino_antonio', '12:00', '2019-12-17', '5.5'),
-(136, 'P0', 'camino_antonio', '13:30', '2019-12-17', '5.5'),
-(137, 'P0', 'camino_antonio', '09:00', '2019-12-18', '5.5');
+(138, 'P1', 'abeijon_antonio', '21:30', '2020-01-19', '5.5');
 
 -- --------------------------------------------------------
 
@@ -921,7 +967,8 @@ CREATE TABLE `school` (
 
 INSERT INTO `school` (`codigo`, `nombre`, `ubicacion`, `administrador`, `capacidad`, `num_clases`) VALUES
 (2, 'ESEI', 'C Velasco', 'admin', '125', '55'),
-(3, 'ESEI2', 'Barcelona', 'admin', '120', '20');
+(7, 'Escuela Caldevilla', 'Av. Santiago', 'abeijon_antonio', '25', '4'),
+(8, 'Caldevilla Asociadod', 'Ourense', 'abeijon_antonio', '120', '5');
 
 -- --------------------------------------------------------
 
@@ -952,7 +999,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`login`, `nombre`, `apellido`, `password`, `dni`, `email`, `pais`, `sexo`, `telefono`, `fecha`, `foto`, `rol_id`, `socio`) VALUES
 ('abeijon_antonio', 'Antonio', 'Abeijon', 'root', '99116644H', 'abeijon_antonio@gmail.com', 'EspaÃ±a', 'Masculino', 633170771, '1946-01-01', 'ABP46_Diagrma Lógico.png', 1, '0'),
 ('acarmen', 'Carmen', 'Agueda', 'root', '43464269P', 'carminha@outlook.com', 'España', 'Femenino', 766661242, '1992-07-05', 'banner2.jpg', 2, '0'),
-('admin', 'Charles', 'Somoziña', 'admin', '46110791T', 'flalonso17@esei.uvigo.es', 'Suiza', 'Masculino', 666133017, '1997-09-15', 'cancel.png', 1, '1'),
+('admin', 'Charles', 'Somoziña', 'admin', '46110791T', 'flalonso17@esei.uvigo.es', 'Suiza', 'Masculino', 666133017, '1997-09-15', 'cancel.png', 1, '0'),
 ('aine', 'Aine', 'Rocha', 'root', '43509260I', 'aine@outlook.com', 'España', 'Femenino', 786861231, '1998-08-26', 'banner2.jpg', 2, '0'),
 ('andreita', 'Andrea', 'Calleja', 'root', '44554222L', 'andreita@outlook.com', 'España', 'Femenino', 666661201, '1997-12-07', 'banner2.jpg', 2, '0'),
 ('anita32', 'Ana', 'Fernandez', 'root', '44294260D', 'anafer_32@outlook.com', 'España', 'Femenino', 733861201, '1997-09-15', 'banner2.jpg', 2, '0'),
@@ -1022,7 +1069,7 @@ INSERT INTO `user` (`login`, `nombre`, `apellido`, `password`, `dni`, `email`, `
 ('libertad_franco', 'Franco', 'Libertad', 'root', '38248189J', 'libertad_franco@gmail.com', 'EspaÃ±a', 'Masculino', 690275369, '1974-09-29', 'banner2.jpg', 1, '0'),
 ('lola', 'Lola', 'Agra', 'root', '45674232E', 'lola68@outlook.com', 'España', 'Femenino', 698861201, '1968-03-11', 'banner2.jpg', 2, '0'),
 ('loser', 'Antonio', 'López', 'root', '32901894S', 'antonio_lr@yahoo.es', 'España', 'Masculino', 663009701, '1962-09-29', 'banner1.jpg', 2, '0'),
-('lucia_atm', 'Lucia', 'Puga', 'root', '35340416L', 'luciatm@gmail.com', 'España', 'Femenino', 655399823, '1994-12-20', 'banner2.jpg', 2, '0'),
+('lucia_atm', 'Lucia', 'Puga', 'root', '35340416L', 'luciatm@gmail.com', 'España', 'Femenino', 655399823, '1994-12-20', 'banner2.jpg', 2, '1'),
 ('lucilu', 'Lucia', 'Ramirez', 'root', '54294765G', 'lucilu56@outlook.com', 'España', 'Femenino', 634461539, '1996-05-06', 'banner2.jpg', 2, '0'),
 ('Luis_Clemente_Guadil', 'Luis', 'Clemente', 'root', '78836661S', 'luis_guadilla_rral@gmail.com', 'España', 'Masculino', 966723402, '1998-12-11', 'banner2.jpg', 2, '0'),
 ('maldonado_javier', 'Javier', 'Maldonado', 'root', '47568321R', 'maldonado_javier@gmail.com', 'EspaÃ±a', 'Masculino', 619837846, '1980-06-18', 'banner2.jpg', 1, '0'),
@@ -1049,6 +1096,7 @@ INSERT INTO `user` (`login`, `nombre`, `apellido`, `password`, `dni`, `email`, `
 ('novoa_jesus', 'Jesus', 'Novoa', 'root', '64352175F', 'novoa_jesus@gmail.com', 'EspaÃ±a', 'Masculino', 682647434, '1976-07-22', 'banner2.jpg', 1, '0'),
 ('novoneira_uxi', 'Uxio', '	Novoneira', 'root', '23751327G', 'novoneira_uxio@gmail.com', 'España', 'Masculino', 654398143, '1988-03-12', 'banner2.jpg', 4, '0'),
 ('nuria77', 'Nuria', 'Miranda', 'root', '53294320B', 'nuri@outlook.com', 'España', 'Femenino', 733861201, '1977-02-19', 'banner2.jpg', 2, '0'),
+('onlycalde', 'Alberto', 'Caldevilla', 'root', '45141540S', 'alberto7cp@gmail.com', 'España', 'Masculino', 2147483647, '1995-03-14', 'profile_pic.jpg', 2, ''),
 ('osborne_jordi', 'Jordi', 'Osborne', 'root', '07328995I', 'osborne_jordi@gmail.com', 'EspaÃ±a', 'Masculino', 628943515, '1976-10-17', 'banner2.jpg', 1, '0'),
 ('pallares_ramon', 'Ramon', 'Pallares', 'root', '89756535B', 'pallares_ramon@gmail.com', 'EspaÃ±a', 'Masculino', 647565545, '1968-01-30', 'banner2.jpg', 1, '0'),
 ('pame', 'Pamela', 'Crespo', 'root', '55294265E', 'pamela@outlook.com', 'España', 'Femenino', 777861201, '1985-09-13', 'banner2.jpg', 2, '0'),
@@ -1078,7 +1126,18 @@ INSERT INTO `user` (`login`, `nombre`, `apellido`, `password`, `dni`, `email`, `
 ('varela_pepe', 'Pepe', 'Varela', 'root', '54300772Z', 'varela_pepe@gmail.com', 'EspaÃ±a', 'Masculino', 678546790, '1965-04-18', 'banner2.jpg', 1, '0'),
 ('velasco_dionisio', 'Dionisio', 'Velasco', 'root', '57283921D', 'velasco_dionisio@gmail.com', 'EspaÃ±a', 'Masculino', 692398525, '1977-06-12', 'banner2.jpg', 1, '0'),
 ('vicky', 'Victoria', 'Beltran', 'root', '53294210F', 'vicky55@outlook.com', 'España', 'Femenino', 733861201, '1997-05-05', 'banner2.jpg', 2, '0'),
-('vilanova_pedro', 'Pedro', 'Vilanova', 'root', '21654372D', 'vilanova_pedro@gmail.com', 'EspaÃ±a', 'Masculino', 689364222, '1944-11-25', 'banner2.jpg', 1, '0');
+('vilanova_pedro', 'Pedro', 'Vilanova', 'root', '21654372D', 'vilanova_pedro@gmail.com', 'EspaÃ±a', 'Masculino', 689364222, '1944-11-25', 'banner2.jpg', 3, '0');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `user_class`
+--
+
+CREATE TABLE `user_class` (
+  `login` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_clase` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -1090,21 +1149,6 @@ CREATE TABLE `user_game` (
   `login` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `id_partido` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `user_game`
---
-
-INSERT INTO `user_game` (`login`, `id_partido`) VALUES
-('bros_mario', 1),
-('camino_antonio', 1),
-('carlosm', 1),
-('fer_rv', 2),
-('jmartinez', 2),
-('lucia_atm', 2),
-('mdolores', 3),
-('mvarela', 3),
-('root', 3);
 
 -- --------------------------------------------------------
 
@@ -1123,7 +1167,7 @@ CREATE TABLE `user_plan` (
 --
 
 INSERT INTO `user_plan` (`login`, `id_plan`, `caducacion`) VALUES
-('admin', 3, '2020-06-11');
+('lucia_atm', 1, '2020-01-29');
 
 -- --------------------------------------------------------
 
@@ -1181,6 +1225,14 @@ ALTER TABLE `chat`
   ADD PRIMARY KEY (`id_chat`);
 
 --
+-- Indices de la tabla `clase`
+--
+ALTER TABLE `clase`
+  ADD PRIMARY KEY (`id_clase`),
+  ADD KEY `fbk_class_1` (`nivel`),
+  ADD KEY `fbk_class_2` (`login`);
+
+--
 -- Indices de la tabla `clash`
 --
 ALTER TABLE `clash`
@@ -1198,6 +1250,13 @@ ALTER TABLE `clash_confirm`
   ADD PRIMARY KEY (`id_enfrentamiento`,`id_pareja`),
   ADD KEY `confirm_fk_1` (`id_enfrentamiento`),
   ADD KEY `confirm_fk_2` (`id_pareja`);
+
+--
+-- Indices de la tabla `class_school`
+--
+ALTER TABLE `class_school`
+  ADD PRIMARY KEY (`codigo`,`id_clase`),
+  ADD KEY `fbk_school_class_1` (`id_clase`);
 
 --
 -- Indices de la tabla `couple`
@@ -1321,6 +1380,13 @@ ALTER TABLE `user`
   ADD KEY `rol_id` (`rol_id`);
 
 --
+-- Indices de la tabla `user_class`
+--
+ALTER TABLE `user_class`
+  ADD PRIMARY KEY (`login`,`id_clase`),
+  ADD KEY `fk_user_class_1` (`id_clase`);
+
+--
 -- Indices de la tabla `user_game`
 --
 ALTER TABLE `user_game`
@@ -1361,7 +1427,13 @@ ALTER TABLE `championship`
 -- AUTO_INCREMENT de la tabla `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id_chat` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_chat` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT de la tabla `clase`
+--
+ALTER TABLE `clase`
+  MODIFY `id_clase` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `clash`
@@ -1373,19 +1445,19 @@ ALTER TABLE `clash`
 -- AUTO_INCREMENT de la tabla `couple`
 --
 ALTER TABLE `couple`
-  MODIFY `id_pareja` bigint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_pareja` bigint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `game`
 --
 ALTER TABLE `game`
-  MODIFY `id_partido` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_partido` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `grupo`
 --
 ALTER TABLE `grupo`
-  MODIFY `id_grupo` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_grupo` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `new`
@@ -1403,7 +1475,7 @@ ALTER TABLE `nivel`
 -- AUTO_INCREMENT de la tabla `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id_pago` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_pago` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `plan`
@@ -1415,7 +1487,7 @@ ALTER TABLE `plan`
 -- AUTO_INCREMENT de la tabla `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id_reserva` bigint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+  MODIFY `id_reserva` bigint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -1433,7 +1505,7 @@ ALTER TABLE `rule`
 -- AUTO_INCREMENT de la tabla `school`
 --
 ALTER TABLE `school`
-  MODIFY `codigo` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `codigo` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
@@ -1467,6 +1539,13 @@ ALTER TABLE `championship_nivel`
   ADD CONSTRAINT `championship_nivel_ibfk_2` FOREIGN KEY (`id_campeonato`) REFERENCES `championship` (`id_campeonato`) ON DELETE CASCADE;
 
 --
+-- Filtros para la tabla `clase`
+--
+ALTER TABLE `clase`
+  ADD CONSTRAINT `fbk_class_1` FOREIGN KEY (`nivel`) REFERENCES `nivel` (`id_nivel`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fbk_class_2` FOREIGN KEY (`login`) REFERENCES `user` (`login`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `clash`
 --
 ALTER TABLE `clash`
@@ -1482,6 +1561,13 @@ ALTER TABLE `clash`
 ALTER TABLE `clash_confirm`
   ADD CONSTRAINT `confirm_fk_1` FOREIGN KEY (`id_enfrentamiento`) REFERENCES `clash` (`id_enfrentamiento`) ON DELETE CASCADE,
   ADD CONSTRAINT `confirm_fk_2` FOREIGN KEY (`id_pareja`) REFERENCES `couple` (`id_pareja`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `class_school`
+--
+ALTER TABLE `class_school`
+  ADD CONSTRAINT `fbk_school_class_1` FOREIGN KEY (`id_clase`) REFERENCES `clase` (`id_clase`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fbk_school_class_2` FOREIGN KEY (`codigo`) REFERENCES `school` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `couple`
@@ -1558,6 +1644,13 @@ ALTER TABLE `school`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`rol_id`) REFERENCES `rol` (`id_rol`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `user_class`
+--
+ALTER TABLE `user_class`
+  ADD CONSTRAINT `fk_user_class_1` FOREIGN KEY (`id_clase`) REFERENCES `clase` (`id_clase`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_user_class_2` FOREIGN KEY (`login`) REFERENCES `user` (`login`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `user_game`

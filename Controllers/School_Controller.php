@@ -113,7 +113,7 @@ Switch ($_REQUEST['action']){
 
 
 
-	if(!inscritoEscuela($_SESSION['login'])){
+	if(!inscritoEscuela($_SESSION['login'], $_REQUEST['codigo'])){
 	if(!$_POST){
 		include_once '../Models/SCHOOL_MODEL.php';
 		include_once '../Models/USER_MODEL.php';

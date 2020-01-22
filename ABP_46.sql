@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-01-2020 a las 22:27:21
+-- Tiempo de generación: 22-01-2020 a las 15:31:30
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -27,6 +27,7 @@ DROP DATABASE IF EXISTS `abp46`;
 CREATE DATABASE `abp46` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 USE `abp46`;
+
 
 -- --------------------------------------------------------
 
@@ -67,14 +68,7 @@ CREATE TABLE `championship` (
 --
 
 INSERT INTO `championship` (`id_campeonato`, `fecha_inicio`, `fecha_limite`, `id_normativa`, `precio`) VALUES
-(1, '2020-01-10', '2020-01-09', 2, '34.99'),
-(2, '2020-02-03', '2020-02-02', 3, '34.99'),
-(3, '2020-02-04', '2020-02-02', 3, '34.99'),
-(4, '2020-03-02', '2020-03-01', 3, '34.99'),
-(5, '2020-01-04', '2020-01-02', 3, '34.99'),
-(6, '2020-01-16', '2020-01-15', 4, '34.99'),
-(7, '2020-01-20', '2020-01-19', 4, '34.99'),
-(8, '2020-01-22', '2020-01-21', 3, '34.99');
+(1, '2020-01-27', '2020-01-25', 2, '34.99');
 
 -- --------------------------------------------------------
 
@@ -93,19 +87,7 @@ CREATE TABLE `championship_categoria` (
 
 INSERT INTO `championship_categoria` (`id_campeonato`, `id_categoria`) VALUES
 (1, 1),
-(1, 2),
-(2, 1),
-(2, 2),
-(3, 1),
-(3, 2),
-(3, 3),
-(4, 1),
-(4, 2),
-(5, 3),
-(6, 1),
-(7, 2),
-(8, 1),
-(8, 3);
+(1, 2);
 
 -- --------------------------------------------------------
 
@@ -130,28 +112,7 @@ INSERT INTO `championship_couple` (`id_pareja`, `id_campeonato`) VALUES
 (5, 1),
 (6, 1),
 (7, 1),
-(8, 1),
-(9, 1),
-(10, 1),
-(11, 1),
-(14, 1),
-(16, 1),
-(18, 1),
-(19, 1),
-(20, 2),
-(21, 2),
-(22, 2),
-(23, 2),
-(24, 2),
-(25, 2),
-(26, 2),
-(27, 2),
-(28, 2),
-(29, 2),
-(30, 2),
-(31, 2),
-(32, 2),
-(33, 3);
+(8, 1);
 
 -- --------------------------------------------------------
 
@@ -169,27 +130,8 @@ CREATE TABLE `championship_nivel` (
 --
 
 INSERT INTO `championship_nivel` (`id_campeonato`, `id_nivel`) VALUES
-(1, 2),
-(1, 3),
-(2, 1),
-(2, 3),
-(3, 1),
-(3, 3),
-(4, 1),
-(4, 2),
-(4, 3),
-(5, 1),
-(5, 2),
-(5, 3),
-(6, 1),
-(6, 2),
-(6, 3),
-(7, 1),
-(7, 2),
-(7, 3),
-(8, 1),
-(8, 2),
-(8, 3);
+(1, 1),
+(1, 2);
 
 -- --------------------------------------------------------
 
@@ -279,135 +221,34 @@ CREATE TABLE `clash` (
 --
 
 INSERT INTO `clash` (`id_enfrentamiento`, `id_campeonato`, `id_pareja1`, `id_pareja2`, `resultado`, `numSetsPareja1`, `numSetsPareja2`, `hora_inicio`, `fecha`, `tipo`, `id_grupo`, `id_pista`) VALUES
-(122, 1, 1, 3, '6-1/6-1/6-1', 3, 0, '13:30', '2020-01-11', 'liga', 1, 'P7'),
-(123, 1, 1, 4, '0', 0, 0, '18:30', '2020-01-12', 'liga', 1, 'P2'),
-(124, 1, 1, 5, '0', 0, 0, '12:00', '2020-01-13', 'liga', 1, 'P7'),
-(125, 1, 1, 6, '0', 0, 0, '10:30', '2020-01-14', 'liga', 1, 'P7'),
-(126, 1, 1, 7, '0', 0, 0, '10:30', '2020-01-15', 'liga', 1, 'P1'),
-(127, 1, 1, 8, '0', 0, 0, '20:00', '2020-01-16', 'liga', 1, 'P8'),
-(128, 1, 1, 9, '0', 0, 0, '17:00', '2020-01-17', 'liga', 1, 'P3'),
-(129, 1, 1, 10, '0', 0, 0, '20:00', '2020-01-18', 'liga', 1, 'P5'),
-(130, 1, 1, 11, '0', 0, 0, '13:30', '2020-01-19', 'liga', 1, 'P2'),
-(131, 1, 1, 14, '0', 0, 0, '13:30', '2020-01-20', 'liga', 1, 'P8'),
-(132, 1, 1, 16, '0', 0, 0, '21:30', '2020-01-21', 'liga', 1, 'P8'),
-(134, 1, 3, 5, '0', 0, 0, '13:30', '2020-01-23', 'liga', 1, 'P6'),
-(135, 1, 3, 6, '0', 0, 0, '12:00', '2020-01-24', 'liga', 1, 'P1'),
-(136, 1, 3, 7, '0', 0, 0, '13:30', '2020-01-25', 'liga', 1, 'P2'),
-(138, 1, 3, 9, '0', 0, 0, '10:30', '2020-01-27', 'liga', 1, 'P5'),
-(139, 1, 3, 10, '0', 0, 0, '21:30', '2020-01-28', 'liga', 1, 'P3'),
-(140, 1, 3, 11, '0', 0, 0, '13:30', '2020-01-29', 'liga', 1, 'P3'),
-(141, 1, 3, 14, '0', 0, 0, '10:30', '2020-01-30', 'liga', 1, 'P6'),
-(142, 1, 3, 16, '0', 0, 0, '17:00', '2020-01-31', 'liga', 1, 'P1'),
-(143, 1, 4, 5, '0', 0, 0, '13:30', '2020-02-01', 'liga', 1, 'P1'),
-(144, 1, 4, 6, '0', 0, 0, '09:00', '2020-02-02', 'liga', 1, 'P3'),
-(145, 1, 4, 7, '0', 0, 0, '20:00', '2020-02-03', 'liga', 1, 'P6'),
-(146, 1, 4, 8, '0', 0, 0, '20:00', '2020-02-04', 'liga', 1, 'P5'),
-(147, 1, 4, 9, '0', 0, 0, '09:00', '2020-02-05', 'liga', 1, 'P2'),
-(148, 1, 4, 10, '0', 0, 0, '21:30', '2020-02-06', 'liga', 1, 'P3'),
-(149, 1, 4, 11, '0', 0, 0, '09:00', '2020-02-07', 'liga', 1, 'P7'),
-(150, 1, 4, 14, '0', 0, 0, '17:00', '2020-02-08', 'liga', 1, 'P2'),
-(151, 1, 4, 16, '0', 0, 0, '17:00', '2020-02-09', 'liga', 1, 'P4'),
-(152, 1, 5, 6, '0', 0, 0, '09:00', '2020-02-10', 'liga', 1, 'P7'),
-(153, 1, 5, 7, '0', 0, 0, '20:00', '2020-02-11', 'liga', 1, 'P8'),
-(154, 1, 5, 8, '0', 0, 0, '21:30', '2020-02-12', 'liga', 1, 'P8'),
-(155, 1, 5, 9, '0', 0, 0, '20:00', '2020-02-13', 'liga', 1, 'P7'),
-(156, 1, 5, 10, '0', 0, 0, '17:00', '2020-02-14', 'liga', 1, 'P3'),
-(157, 1, 5, 11, '0', 0, 0, '13:30', '2020-02-15', 'liga', 1, 'P4'),
-(158, 1, 5, 14, '0', 0, 0, '09:00', '2020-02-16', 'liga', 1, 'P5'),
-(159, 1, 5, 16, '0', 0, 0, '09:00', '2020-02-17', 'liga', 1, 'P1'),
-(160, 1, 6, 7, '0', 0, 0, '12:00', '2020-02-18', 'liga', 1, 'P4'),
-(161, 1, 6, 8, '0', 0, 0, '10:30', '2020-02-19', 'liga', 1, 'P1'),
-(162, 1, 6, 9, '0', 0, 0, '09:00', '2020-02-20', 'liga', 1, 'P6'),
-(163, 1, 6, 10, '0', 0, 0, '18:30', '2020-02-21', 'liga', 1, 'P7'),
-(164, 1, 6, 11, '0', 0, 0, '20:00', '2020-02-22', 'liga', 1, 'P8'),
-(165, 1, 6, 14, '0', 0, 0, '13:30', '2020-02-23', 'liga', 1, 'P2'),
-(166, 1, 6, 16, '0', 0, 0, '17:00', '2020-02-24', 'liga', 1, 'P7'),
-(167, 1, 7, 8, '0', 0, 0, '10:30', '2020-02-25', 'liga', 1, 'P3'),
-(168, 1, 7, 9, '0', 0, 0, '09:00', '2020-02-26', 'liga', 1, 'P1'),
-(169, 1, 7, 10, '0', 0, 0, '21:30', '2020-02-27', 'liga', 1, 'P7'),
-(170, 1, 7, 11, '0', 0, 0, '13:30', '2020-02-28', 'liga', 1, 'P7'),
-(171, 1, 7, 14, '0', 0, 0, '13:30', '2020-02-29', 'liga', 1, 'P2'),
-(172, 1, 7, 16, '0', 0, 0, '12:00', '2020-03-01', 'liga', 1, 'P2'),
-(173, 1, 8, 9, '0', 0, 0, '10:30', '2020-03-02', 'liga', 1, 'P8'),
-(174, 1, 8, 10, '0', 0, 0, '18:30', '2020-03-03', 'liga', 1, 'P5'),
-(175, 1, 8, 11, '0', 0, 0, '17:00', '2020-03-04', 'liga', 1, 'P4'),
-(176, 1, 8, 14, '0', 0, 0, '13:30', '2020-03-05', 'liga', 1, 'P4'),
-(177, 1, 8, 16, '0', 0, 0, '17:00', '2020-03-06', 'liga', 1, 'P5'),
-(178, 1, 9, 10, '0', 0, 0, '13:30', '2020-03-07', 'liga', 1, 'P7'),
-(179, 1, 9, 11, '0', 0, 0, '18:30', '2020-03-08', 'liga', 1, 'P8'),
-(180, 1, 9, 14, '0', 0, 0, '21:30', '2020-03-09', 'liga', 1, 'P6'),
-(181, 1, 9, 16, '0', 0, 0, '18:30', '2020-03-10', 'liga', 1, 'P1'),
-(182, 1, 10, 11, '0', 0, 0, '09:00', '2020-03-11', 'liga', 1, 'P2'),
-(183, 1, 10, 14, '0', 0, 0, '09:00', '2020-03-12', 'liga', 1, 'P8'),
-(184, 1, 10, 16, '0', 0, 0, '10:30', '2020-03-13', 'liga', 1, 'P8'),
-(185, 1, 11, 14, '0', 0, 0, '09:00', '2020-03-14', 'liga', 1, 'P6'),
-(186, 1, 11, 16, '0', 0, 0, '21:30', '2020-03-15', 'liga', 1, 'P8'),
-(188, 1, 14, 16, '0', 0, 0, '20:00', '2020-03-16', 'liga', 1, 'P2'),
-(189, 2, 20, 21, '6-3/6-2/6-1', 3, 0, '09:00', '2020-02-04', 'liga', 4, 'P8'),
-(190, 2, 20, 22, '0', 0, 0, '10:30', '2020-02-05', 'liga', 4, 'P6'),
-(191, 2, 20, 23, '0', 0, 0, '12:00', '2020-02-06', 'liga', 4, 'P4'),
-(192, 2, 20, 24, '0', 0, 0, '09:00', '2020-02-07', 'liga', 4, 'P6'),
-(193, 2, 20, 25, '0', 0, 0, '18:30', '2020-02-08', 'liga', 4, 'P2'),
-(194, 2, 20, 26, '0', 0, 0, '18:30', '2020-02-09', 'liga', 4, 'P3'),
-(195, 2, 20, 27, '0', 0, 0, '18:30', '2020-02-10', 'liga', 4, 'P2'),
-(196, 2, 20, 28, '0', 0, 0, '20:00', '2020-02-11', 'liga', 4, 'P4'),
-(197, 2, 20, 29, '0', 0, 0, '09:00', '2020-02-12', 'liga', 4, 'P6'),
-(198, 2, 20, 30, '0', 0, 0, '21:30', '2020-02-13', 'liga', 4, 'P2'),
-(199, 2, 20, 31, '0', 0, 0, '10:30', '2020-02-14', 'liga', 4, 'P8'),
-(200, 2, 21, 22, '0', 0, 0, '12:00', '2020-02-15', 'liga', 4, 'P8'),
-(201, 2, 21, 23, '0', 0, 0, '18:30', '2020-02-16', 'liga', 4, 'P8'),
-(202, 2, 21, 24, '0', 0, 0, '10:30', '2020-02-17', 'liga', 4, 'P6'),
-(203, 2, 21, 25, '0', 0, 0, '20:00', '2020-02-18', 'liga', 4, 'P8'),
-(204, 2, 21, 26, '0', 0, 0, '18:30', '2020-02-19', 'liga', 4, 'P2'),
-(205, 2, 21, 27, '0', 0, 0, '21:30', '2020-02-20', 'liga', 4, 'P5'),
-(206, 2, 21, 28, '0', 0, 0, '09:00', '2020-02-21', 'liga', 4, 'P2'),
-(207, 2, 21, 29, '0', 0, 0, '20:00', '2020-02-22', 'liga', 4, 'P5'),
-(208, 2, 21, 30, '0', 0, 0, '12:00', '2020-02-23', 'liga', 4, 'P6'),
-(209, 2, 21, 31, '0', 0, 0, '18:30', '2020-02-24', 'liga', 4, 'P1'),
-(210, 2, 22, 23, '0', 0, 0, '10:30', '2020-02-25', 'liga', 4, 'P3'),
-(211, 2, 22, 24, '0', 0, 0, '21:30', '2020-02-26', 'liga', 4, 'P1'),
-(212, 2, 22, 25, '0', 0, 0, '18:30', '2020-02-27', 'liga', 4, 'P4'),
-(213, 2, 22, 26, '0', 0, 0, '20:00', '2020-02-28', 'liga', 4, 'P4'),
-(214, 2, 22, 27, '0', 0, 0, '13:30', '2020-02-29', 'liga', 4, 'P2'),
-(215, 2, 22, 28, '0', 0, 0, '10:30', '2020-03-01', 'liga', 4, 'P6'),
-(216, 2, 22, 29, '0', 0, 0, '21:30', '2020-03-02', 'liga', 4, 'P6'),
-(217, 2, 22, 30, '0', 0, 0, '18:30', '2020-03-03', 'liga', 4, 'P1'),
-(218, 2, 22, 31, '0', 0, 0, '21:30', '2020-03-04', 'liga', 4, 'P6'),
-(219, 2, 23, 24, '0', 0, 0, '09:00', '2020-03-05', 'liga', 4, 'P2'),
-(220, 2, 23, 25, '0', 0, 0, '20:00', '2020-03-06', 'liga', 4, 'P6'),
-(221, 2, 23, 26, '0', 0, 0, '10:30', '2020-03-07', 'liga', 4, 'P2'),
-(222, 2, 23, 27, '0', 0, 0, '13:30', '2020-03-08', 'liga', 4, 'P4'),
-(223, 2, 23, 28, '0', 0, 0, '21:30', '2020-03-09', 'liga', 4, 'P3'),
-(224, 2, 23, 29, '0', 0, 0, '09:00', '2020-03-10', 'liga', 4, 'P1'),
-(225, 2, 23, 30, '0', 0, 0, '18:30', '2020-03-11', 'liga', 4, 'P8'),
-(226, 2, 23, 31, '0', 0, 0, '10:30', '2020-03-12', 'liga', 4, 'P8'),
-(227, 2, 24, 25, '0', 0, 0, '17:00', '2020-03-13', 'liga', 4, 'P8'),
-(228, 2, 24, 26, '0', 0, 0, '12:00', '2020-03-14', 'liga', 4, 'P8'),
-(229, 2, 24, 27, '0', 0, 0, '21:30', '2020-03-15', 'liga', 4, 'P3'),
-(230, 2, 24, 28, '0', 0, 0, '10:30', '2020-03-16', 'liga', 4, 'P3'),
-(231, 2, 24, 29, '0', 0, 0, '20:00', '2020-03-17', 'liga', 4, 'P5'),
-(232, 2, 24, 30, '0', 0, 0, '10:30', '2020-03-18', 'liga', 4, 'P1'),
-(233, 2, 24, 31, '0', 0, 0, '10:30', '2020-03-19', 'liga', 4, 'P7'),
-(234, 2, 25, 26, '0', 0, 0, '12:00', '2020-03-20', 'liga', 4, 'P1'),
-(235, 2, 25, 27, '0', 0, 0, '09:00', '2020-03-21', 'liga', 4, 'P1'),
-(236, 2, 25, 28, '0', 0, 0, '09:00', '2020-03-22', 'liga', 4, 'P5'),
-(237, 2, 25, 29, '0', 0, 0, '20:00', '2020-03-23', 'liga', 4, 'P8'),
-(238, 2, 25, 30, '0', 0, 0, '20:00', '2020-03-24', 'liga', 4, 'P4'),
-(239, 2, 25, 31, '0', 0, 0, '09:00', '2020-03-25', 'liga', 4, 'P8'),
-(240, 2, 26, 27, '0', 0, 0, '21:30', '2020-03-26', 'liga', 4, 'P2'),
-(241, 2, 26, 28, '0', 0, 0, '12:00', '2020-03-27', 'liga', 4, 'P7'),
-(242, 2, 26, 29, '0', 0, 0, '12:00', '2020-03-28', 'liga', 4, 'P3'),
-(243, 2, 26, 30, '0', 0, 0, '21:30', '2020-03-29', 'liga', 4, 'P7'),
-(244, 2, 26, 31, '0', 0, 0, '12:00', '2020-03-30', 'liga', 4, 'P8'),
-(245, 2, 27, 28, '0', 0, 0, '18:30', '2020-03-31', 'liga', 4, 'P6'),
-(247, 2, 27, 30, '0', 0, 0, '20:00', '2020-04-02', 'liga', 4, 'P2'),
-(248, 2, 27, 31, '0', 0, 0, '20:00', '2020-04-03', 'liga', 4, 'P1'),
-(249, 2, 28, 29, '0', 0, 0, '21:30', '2020-04-04', 'liga', 4, 'P8'),
-(250, 2, 28, 30, '0', 0, 0, '10:30', '2020-04-05', 'liga', 4, 'P5'),
-(251, 2, 28, 31, '0', 0, 0, '20:00', '2020-04-06', 'liga', 4, 'P8'),
-(252, 2, 29, 30, '0', 0, 0, '18:30', '2020-04-07', 'liga', 4, 'P3'),
-(253, 2, 29, 31, '0', 0, 0, '18:30', '2020-04-08', 'liga', 4, 'P7'),
-(255, 2, 30, 31, '0', 0, 0, '12:00', '2020-04-09', 'liga', 4, 'P6');
+(1, 1, 1, 2, '0', 0, 0, '17:00', '2020-01-28', 'liga', 7, 'P5'),
+(2, 1, 1, 3, '0', 0, 0, '21:30', '2020-01-29', 'liga', 7, 'P5'),
+(3, 1, 1, 4, '0', 0, 0, '20:00', '2020-01-30', 'liga', 7, 'P4'),
+(4, 1, 1, 5, '0', 0, 0, '20:00', '2020-01-31', 'liga', 7, 'P7'),
+(5, 1, 1, 6, '0', 0, 0, '21:30', '2020-02-01', 'liga', 7, 'P5'),
+(6, 1, 1, 7, '0', 0, 0, '21:30', '2020-02-02', 'liga', 7, 'P3'),
+(7, 1, 1, 8, '0', 0, 0, '10:30', '2020-02-03', 'liga', 7, 'P8'),
+(8, 1, 2, 3, '0', 0, 0, '10:30', '2020-02-04', 'liga', 7, 'P5'),
+(9, 1, 2, 4, '0', 0, 0, '18:30', '2020-02-05', 'liga', 7, 'P2'),
+(10, 1, 2, 5, '0', 0, 0, '09:00', '2020-02-06', 'liga', 7, 'P6'),
+(11, 1, 2, 6, '0', 0, 0, '09:00', '2020-02-07', 'liga', 7, 'P1'),
+(12, 1, 2, 7, '0', 0, 0, '17:00', '2020-02-08', 'liga', 7, 'P6'),
+(13, 1, 2, 8, '0', 0, 0, '21:30', '2020-02-09', 'liga', 7, 'P6'),
+(14, 1, 3, 4, '0', 0, 0, '17:00', '2020-02-10', 'liga', 7, 'P1'),
+(15, 1, 3, 5, '0', 0, 0, '09:00', '2020-02-11', 'liga', 7, 'P7'),
+(16, 1, 3, 6, '0', 0, 0, '10:30', '2020-02-12', 'liga', 7, 'P5'),
+(17, 1, 3, 7, '0', 0, 0, '09:00', '2020-02-13', 'liga', 7, 'P2'),
+(18, 1, 3, 8, '0', 0, 0, '20:00', '2020-02-14', 'liga', 7, 'P2'),
+(19, 1, 4, 5, '0', 0, 0, '10:30', '2020-02-15', 'liga', 7, 'P2'),
+(20, 1, 4, 6, '0', 0, 0, '20:00', '2020-02-16', 'liga', 7, 'P4'),
+(21, 1, 4, 7, '0', 0, 0, '21:30', '2020-02-17', 'liga', 7, 'P3'),
+(22, 1, 4, 8, '0', 0, 0, '12:00', '2020-02-18', 'liga', 7, 'P4'),
+(23, 1, 5, 6, '0', 0, 0, '13:30', '2020-02-19', 'liga', 7, 'P5'),
+(24, 1, 5, 7, '0', 0, 0, '18:30', '2020-02-20', 'liga', 7, 'P6'),
+(25, 1, 5, 8, '0', 0, 0, '09:00', '2020-02-21', 'liga', 7, 'P7'),
+(26, 1, 6, 7, '0', 0, 0, '12:00', '2020-02-22', 'liga', 7, 'P7'),
+(27, 1, 6, 8, '0', 0, 0, '12:00', '2020-02-23', 'liga', 7, 'P0'),
+(29, 1, 7, 8, '0', 0, 0, '18:30', '2020-02-24', 'liga', 7, 'P5');
 
 -- --------------------------------------------------------
 
@@ -425,35 +266,7 @@ CREATE TABLE `clash_confirm` (
 --
 
 INSERT INTO `clash_confirm` (`id_enfrentamiento`, `id_pareja`) VALUES
-(122, 1),
-(122, 3),
-(123, 1),
-(124, 1),
-(125, 1),
-(125, 6),
-(126, 1),
-(127, 1),
-(130, 1),
-(134, 3),
-(139, 3),
-(140, 3),
-(141, 3),
-(142, 3),
-(189, 20),
-(189, 21),
-(190, 20),
-(191, 20),
-(192, 20),
-(193, 20),
-(195, 20),
-(200, 21),
-(201, 21),
-(204, 21),
-(234, 25),
-(235, 25),
-(237, 25),
-(238, 25),
-(239, 25);
+(25, 8);
 
 -- --------------------------------------------------------
 
@@ -473,13 +286,10 @@ CREATE TABLE `class_school` (
 INSERT INTO `class_school` (`codigo`, `id_clase`) VALUES
 (2, 1),
 (2, 2),
-(2, 3),
 (7, 1),
-(7, 2),
-(7, 6),
-(8, 1),
-(8, 2),
-(8, 3);
+(7, 3),
+(7, 4),
+(7, 6);
 
 -- --------------------------------------------------------
 
@@ -498,35 +308,14 @@ CREATE TABLE `couple` (
 --
 
 INSERT INTO `couple` (`id_pareja`, `login1`, `login2`) VALUES
-(1, 'admin', 'mariohermida'),
-(2, 'lara', 'lucia_atm'),
-(3, 'abeijon_antonio', 'santi_abascal'),
-(4, 'delinha', 'charlie'),
-(5, 'esteban_aitor', 'pimentel_luis'),
-(6, 'pantoja_enrique', 'libertad_franco'),
-(7, 'rego_nestor', 'torres_xan'),
-(8, 'torra_quim', 'dasilva_perico'),
-(9, 'camino_antonio', 'velasco_dionisio'),
-(10, 'canto_toni', 'rodriguez_suso'),
-(11, 'santos_leon', 'seoane_luis'),
-(14, 'loser', 'somoza_mateo'),
-(16, 'joan_roda', 'Luis_Clemente_Guadil'),
-(18, 'mvarela', 'miranda_daniel'),
-(19, 'terelu91', 'laura_vega'),
-(20, 'admin', 'charlie'),
-(21, 'santi_abascal', 'mariohermida'),
-(22, 'esteban_aitor', 'santos_leon'),
-(23, 'seoane_luis', 'somoza_mateo'),
-(24, 'rego_nestor', 'rodriguez_suso'),
-(25, 'abeijon_antonio', 'sesto_camilo'),
-(26, 'pantoja_enrique', 'dasilva_perico'),
-(27, 'dacuÃ±a_jose', 'bros_mario'),
-(28, 'blas_fernando', 'gallego_xaquin'),
-(29, 'vilanova_pedro', 'garcia_manuel'),
-(30, 'torra_quim', 'roca_tino'),
-(31, 'joan_roda', 'loser'),
-(32, 'libertad_franco', 'velasco_dionisio'),
-(33, 'admin', 'antonio_v');
+(1, 'admin', 'antonio_v'),
+(2, 'abeijon_antonio', 'delinha'),
+(3, 'apasionado_roberto', 'aurelio_marco'),
+(4, 'ares_alfonso', 'canto_toni'),
+(5, 'antelo_esteban', 'carlosm'),
+(6, 'blas_fernando', 'bros_mario'),
+(7, 'cantalapiedra_jorge', 'casteldefels_lluis'),
+(8, 'castro_romulo', 'castro_ze');
 
 -- --------------------------------------------------------
 
@@ -546,34 +335,13 @@ CREATE TABLE `couple_categoria` (
 
 INSERT INTO `couple_categoria` (`id_categoria`, `id_pareja`, `id_campeonato`) VALUES
 (1, 1, 1),
+(1, 2, 1),
 (1, 3, 1),
 (1, 4, 1),
 (1, 5, 1),
 (1, 6, 1),
 (1, 7, 1),
-(1, 8, 1),
-(1, 9, 1),
-(1, 10, 1),
-(1, 11, 1),
-(1, 14, 1),
-(1, 16, 1),
-(1, 18, 1),
-(1, 20, 2),
-(1, 21, 2),
-(1, 22, 2),
-(1, 23, 2),
-(1, 24, 2),
-(1, 25, 2),
-(1, 26, 2),
-(1, 27, 2),
-(1, 28, 2),
-(1, 29, 2),
-(1, 30, 2),
-(1, 31, 2),
-(1, 32, 2),
-(1, 33, 3),
-(2, 2, 1),
-(2, 19, 1);
+(1, 8, 1);
 
 -- --------------------------------------------------------
 
@@ -592,35 +360,14 @@ CREATE TABLE `couple_grupo` (
 --
 
 INSERT INTO `couple_grupo` (`id_grupo`, `id_pareja`, `id_campeonato`) VALUES
-(1, 1, 1),
-(1, 3, 1),
-(1, 4, 1),
-(1, 5, 1),
-(1, 6, 1),
-(1, 7, 1),
-(1, 8, 1),
-(1, 9, 1),
-(1, 10, 1),
-(1, 11, 1),
-(1, 14, 1),
-(1, 16, 1),
-(2, 2, 1),
-(2, 19, 1),
-(3, 18, 1),
-(4, 20, 2),
-(4, 21, 2),
-(4, 22, 2),
-(4, 23, 2),
-(4, 24, 2),
-(4, 25, 2),
-(4, 26, 2),
-(4, 27, 2),
-(4, 28, 2),
-(4, 29, 2),
-(4, 30, 2),
-(4, 31, 2),
-(5, 32, 2),
-(6, 33, 3);
+(7, 1, 1),
+(7, 2, 1),
+(7, 3, 1),
+(7, 4, 1),
+(7, 5, 1),
+(7, 6, 1),
+(7, 7, 1),
+(7, 8, 1);
 
 -- --------------------------------------------------------
 
@@ -639,35 +386,14 @@ CREATE TABLE `couple_nivel` (
 --
 
 INSERT INTO `couple_nivel` (`id_nivel`, `id_pareja`, `id_campeonato`) VALUES
-(1, 20, 2),
-(1, 21, 2),
-(1, 22, 2),
-(1, 23, 2),
-(1, 24, 2),
-(1, 25, 2),
-(1, 26, 2),
-(1, 27, 2),
-(1, 28, 2),
-(1, 29, 2),
-(1, 30, 2),
-(1, 31, 2),
-(1, 32, 2),
-(1, 33, 3),
-(2, 1, 1),
-(2, 2, 1),
-(2, 3, 1),
-(2, 4, 1),
-(2, 5, 1),
-(2, 6, 1),
-(2, 7, 1),
-(2, 8, 1),
-(2, 9, 1),
-(2, 10, 1),
-(2, 11, 1),
-(2, 14, 1),
-(2, 16, 1),
-(2, 18, 1),
-(2, 19, 1);
+(1, 1, 1),
+(1, 2, 1),
+(1, 3, 1),
+(1, 4, 1),
+(1, 5, 1),
+(1, 6, 1),
+(1, 7, 1),
+(1, 8, 1);
 
 -- --------------------------------------------------------
 
@@ -687,6 +413,7 @@ CREATE TABLE `court` (
 --
 
 INSERT INTO `court` (`id_pista`, `descripcion`, `ubicacion`, `precio`) VALUES
+('P0', 'aaaaaaaaa', 'Ala Norte', '5.5'),
 ('P1', 'Cubierta y cristaleras de 50 metros', 'Ala Norte', '5.6'),
 ('P2', 'Descubierta y reglamentaria', 'Ala Sur', '5.5'),
 ('P3', 'Hierba natural', 'Ala Norte', '5.5'),
@@ -727,12 +454,7 @@ CREATE TABLE `grupo` (
 --
 
 INSERT INTO `grupo` (`id_grupo`, `id_categoria`, `id_nivel`, `id_campeonato`) VALUES
-(1, 1, 2, 1),
-(2, 2, 2, 1),
-(3, 1, 2, 1),
-(4, 1, 1, 2),
-(5, 1, 1, 2),
-(6, 1, 1, 3);
+(7, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -754,7 +476,7 @@ CREATE TABLE `new` (
 --
 
 INSERT INTO `new` (`id_noticia`, `titulo`, `subtitulo`, `cuerpo`, `fecha`, `hora`) VALUES
-(1, 'Nueva Pista en O polígono', 'cccccc', 'A pradeira ruxía verde e leda', '10/08/2018', '15:41'),
+(1, 'Nueva Pista en O polígono', 'cccccc', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla scelerisque diam cursus massa porttitor, in aliquam nisl gravida. Vivamus nec elit massa. Nulla luctus enim a augue maximus, dictum interdum metus suscipit. Sed congue accumsan risus quis blandit. Donec eget sollicitudin lacus, nec elementum tellus. Cras lobortis porta lorem, ut sollicitudin lectus. Vestibulum at egestas justo, sed iaculis lectus.\r\n\r\nInteger aliquam elit et elit aliquet scelerisque. Morbi ultricies eleifend interdum. Curabitur sed placerat tellus, sed tempus libero. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis laoreet mollis velit, in efficitur ipsum posuere vitae. Praesent erat augue, hendrerit sed ipsum a, placerat tristique quam. Donec at tincidunt nisi. Vivamus ultrices nulla enim. Nulla in consequat ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam at dui sed nisl dignissim consectetur vitae ac ipsum. Mauris ac sem vulputate, lacinia lacus vel, pharetra tortor. Sed pharetra tempus vestibulum.\r\n\r\nUt vitae dapibus tellus. Sed vehicula suscipit quam ac sodales. Curabitur quis felis sit amet tellus pellentesque accumsan lacinia vel arcu. Nam ac dui dignissim, finibus augue nec, scelerisque ante. Ut nec dapibus mauris. Pellentesque at sem nisl. Sed consequat lectus massa, a tristique nisl porta eget. Integer venenatis cursus quam, vitae lacinia felis posuere a. Nullam at dapibus nisl, eget semper nulla. Proin ut enim efficitur, venenatis magna sed, varius lectus. Aenean lorem mauris, tempor sed sollicitudin sed, tristique eu nunc. Quisque dictum mi a libero feugiat posuere. Sed suscipit tempus velit eu blandit. Pellentesque at dolor ut nisl molestie luctus sit amet quis purus. Mauris id cursus ipsum. Duis sit amet dui ornare, consequat mi sit amet, sagittis dui.\r\n\r\nEtiam ut varius dolor. Vestibulum non commodo felis, quis dictum nulla. Fusce enim nisl, porttitor ac justo sit amet, vestibulum aliquet leo. Nullam urna leo, vehicula quis blandit vitae, vulputate vitae nibh. In vitae elit placerat, fringilla ligula vel, lobortis metus. Nunc et gravida mauris. Proin facilisis sed sem ac dictum. Curabitur blandit, tortor non convallis consectetur, augue urna sollicitudin nunc, eget aliquet tellus lorem ut leo. Quisque iaculis, enim et feugiat imperdiet, metus leo posuere augue, sit amet egestas elit ante nec orci. Aliquam sodales urna sit amet maximus blandit. Fusce ornare metus ac nibh molestie tincidunt. Ut consequat velit vitae consequat volutpat. Nullam ornare mi magna, quis maximus eros sodales fringilla. Donec diam metus, suscipit ac bibendum eget, egestas sed arcu. Cras accumsan dignissim neque, at venenatis neque mattis congue. Suspendisse potenti.\r\n\r\nDonec lacinia nulla eget lorem commodo interdum. Fusce et commodo purus. Vestibulum consequat sagittis sapien et maximus. Ut in tellus augue. In vulputate ligula id lectus viverra venenatis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent accumsan ante auctor sem finibus, vehicula tristique felis pellentesque. Duis ac nulla ipsum. Nunc non nunc a elit placerat semper. Vestibulum ac volutpat purus, vel dignissim ante. Morbi cursus nibh ut felis rhoncus consequat. Etiam ut suscipit nunc. Phasellus vehicula, metus sed egestas laoreet, leo dolor feugiat ipsum, ut laoreet nulla diam at ipsum. In blandit diam consequat fringilla imperdiet. Nam dolor nibh, sagittis et consectetur ac, volutpat eu augue. Phasellus non dolor ac nulla lacinia elementum.\r\n\r\nSuspendisse et elit ligula. Vivamus ac tortor porttitor, commodo sem id, elementum magna. Suspendisse magna quam, pretium in maximus in, commodo a sapien. Donec aliquam ex in leo lacinia, ut imperdiet quam porta. Etiam euismod tortor aliquet lacus commodo sollicitudin. Pellentesque congue tincidunt nulla, eget convallis augue faucibus vel. Maecenas varius urna nec libero faucibus tincidunt. Vestibulum euismod, tellus eu eleifend fermentum, neque odio sagittis ligula, ut pulvinar sem enim eu libero. Fusce augue justo, malesuada nec gravida vel, vulputate et tellus. Sed vitae orci justo.\r\n\r\nMorbi porttitor vehicula metus, sit amet vehicula lectus molestie sit amet. In molestie urna id augue scelerisque placerat. Vivamus sed facilisis elit, eu consectetur urna. Sed porttitor justo vel risus imperdiet bibendum nec eu lectus. Phasellus et convallis massa, sed dictum eros. Fusce augue sem, feugiat non magna quis, interdum scelerisque sem. Donec placerat, orci vitae pretium volutpat, sapien eros scelerisque diam, nec porta neque sem ut orci. Nulla dignissim velit at consequat aliquam.\r\n\r\nVestibulum nisl nulla, aliquam ut sem eget, pretium dignissim lectus. Sed egestas nisi dolor. Etiam vitae libero varius, ullamcorper ipsum in, pellentesque dui. Mauris iaculis commodo mi eu luctus. Aliquam non dolor sit amet tellus dapibus pulvinar. Morbi consectetur nulla vestibulum, dictum massa vel, finibus quam. Nullam nec risus ut risus pulvinar suscipit. In facilisis pretium ligula et tristique. Pellentesque odio nibh, lacinia vitae lacus congue, sodales tristique quam. Curabitur condimentum lacinia quam at pretium. Vivamus ac sapien ac mauris pharetra posuere sit amet efficitur ante. Integer lacus urna, pharetra a odio ac, porta gravida lorem.\r\n\r\nUt tincidunt, mi eget tempor finibus, nisl arcu tempus ex, a hendrerit sapien dolor a elit. Nullam in diam mi. Cras consequat dolor non enim feugiat, at iaculis purus aliquam. Duis fringilla lacus nulla, quis fringilla quam aliquam non. Fusce quis euismod lectus. Praesent porttitor in eros non tincidunt. Morbi egestas lorem nibh, sed ultricies lacus hendrerit ac. In hac habitasse platea dictumst. Proin ac elit sagittis dolor ultrices venenatis at hendrerit libero. Nunc porttitor felis sit amet augue suscipit volutpat. Praesent semper cursus ultrices. Ut bibendum congue augue. Etiam sit amet maximus nisi. Sed convallis tincidunt libero eget eleifend. Aliquam lacinia mauris sit amet hendrerit elementum.\r\n\r\nNulla enim metus, volutpat quis dapibus ut, vestibulum sed enim. Maecenas felis lectus, pretium at quam pulvinar, convallis eleifend odio. Vivamus sit amet mi ligula. Praesent feugiat non quam ac rutrum. Ut vel nisl fermentum lectus ultricies accumsan et sit amet est. Quisque sit amet quam a dui bibendum imperdiet hendrerit ac erat. Donec laoreet congue tellus, ut finibus nisl. Quisque venenatis erat eu quam porttitor bibendum sed laoreet metus. Fusce interdum rhoncus est vitae congue. Morbi consectetur ultricies mi et vehicula. Suspendisse ut est et eros molestie accumsan. Aliquam porttitor mi nulla, et elementum ligula ultrices ac. Nam malesuada venenatis turpis non rhoncus. Sed vel hendrerit massa. Ut fermentum pretium tincidunt. Sed finibus ipsum sit amet nunc vestibulum, vitae varius velit ultricies.', '22/01/2020', '15:03'),
 (2, 'XXIII Carreira Paseo do Miño', 'iiiiii', 'A pradeira ruxía verde e leda', '03/02/2017', '08:34');
 
 -- --------------------------------------------------------
@@ -796,28 +518,14 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`id_pago`, `concepto`, `cantidad`, `estado`, `login`) VALUES
-(5, 'Campeonato', '34.99', 'Pendiente', 'joan_roda'),
-(6, 'Campeonato', '34.99', 'Pagado', 'joan_roda'),
-(7, 'Campeonato', '34.99', 'Pagado', 'fati'),
-(8, 'Campeonato', '34.99', 'Pagado', 'mvarela'),
-(9, 'Campeonato', '34.99', 'Pagado', 'terelu91'),
-(10, 'Campeonato', '34.99', 'Pagado', 'admin'),
-(11, 'Campeonato', '34.99', 'Pagado', 'santi_abascal'),
-(12, 'Campeonato', '34.99', 'Pagado', 'esteban_aitor'),
-(13, 'Campeonato', '34.99', 'Pagado', 'seoane_luis'),
-(14, 'Campeonato', '34.99', 'Pagado', 'rego_nestor'),
-(15, 'Campeonato', '34.99', 'Pagado', 'abeijon_antonio'),
-(16, 'Campeonato', '34.99', 'Pagado', 'pantoja_enrique'),
-(17, 'Campeonato', '34.99', 'Pagado', 'dacuÃ±a_jose'),
-(18, 'Campeonato', '34.99', 'Pagado', 'blas_fernando'),
-(19, 'Campeonato', '34.99', 'Pagado', 'vilanova_pedro'),
-(20, 'Campeonato', '34.99', 'Pagado', 'torra_quim'),
-(21, 'Campeonato', '34.99', 'Pagado', 'joan_roda'),
-(22, 'Campeonato', '34.99', 'Pagado', 'libertad_franco'),
-(29, 'Promocion partido1', '5.5', 'Pagado', 'admin'),
-(30, 'Campeonato', '34.99', 'Pagado', 'admin'),
-(31, 'Promocion partido6', '5.5', 'Pendiente', 'fer_rv'),
-(32, 'Promocion partido8', '5.5', 'Pagado', 'abeijon_antonio');
+(1, 'Campeonato', '34.99', 'Pagado', 'admin'),
+(9, 'Campeonato', '34.99', 'Pagado', 'abeijon_antonio'),
+(10, 'Campeonato', '34.99', 'Pagado', 'apasionado_roberto'),
+(11, 'Campeonato', '34.99', 'Pagado', 'ares_alfonso'),
+(12, 'Campeonato', '34.99', 'Pagado', 'antelo_esteban'),
+(13, 'Campeonato', '34.99', 'Pagado', 'blas_fernando'),
+(14, 'Campeonato', '34.99', 'Pagado', 'cantalapiedra_jorge'),
+(15, 'Campeonato', '34.99', 'Pagado', 'castro_romulo');
 
 -- --------------------------------------------------------
 
@@ -859,30 +567,14 @@ CREATE TABLE `ranking` (
 --
 
 INSERT INTO `ranking` (`id_pareja`, `p_jugados`, `p_ganados`, `puntos`) VALUES
-(1, '2', '2', 6),
-(3, '2', '0', 2),
+(1, '0', '0', 0),
+(2, '0', '0', 0),
+(3, '0', '0', 0),
 (4, '0', '0', 0),
 (5, '0', '0', 0),
 (6, '0', '0', 0),
 (7, '0', '0', 0),
-(8, '0', '0', 0),
-(9, '0', '0', 0),
-(10, '0', '0', 0),
-(11, '0', '0', 0),
-(14, '0', '0', 0),
-(16, '0', '0', 0),
-(20, '1', '1', 3),
-(21, '1', '0', 1),
-(22, '0', '0', 0),
-(23, '0', '0', 0),
-(24, '0', '0', 0),
-(25, '0', '0', 0),
-(26, '0', '0', 0),
-(27, '0', '0', 0),
-(28, '0', '0', 0),
-(29, '0', '0', 0),
-(30, '0', '0', 0),
-(31, '0', '0', 0);
+(8, '0', '0', 0);
 
 -- --------------------------------------------------------
 
@@ -904,11 +596,11 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`id_reserva`, `id_pista`, `login`, `hora_inicio`, `fecha`, `precio`) VALUES
-(128, 'P4', 'root', '18:00', '1997-12-11', '5'),
-(129, 'P7', 'admin', '13:30', '2020-01-11', '0'),
-(131, 'P7', 'pantoja_enrique', '10:30', '2020-01-14', '0'),
-(132, 'P8', 'santi_abascal', '09:00', '2020-02-04', '0'),
-(138, 'P1', 'abeijon_antonio', '21:30', '2020-01-19', '5.5');
+(1, 'P0', 'admin', '13:30', '2020-01-25', '4.2'),
+(2, 'P1', 'admin', '18:30', '2020-01-25', '4.3'),
+(3, 'P2', 'admin', '12:00', '2020-01-25', '4.2'),
+(4, 'P0', 'admin', '21:30', '2020-01-25', '4.2'),
+(7, 'P0', 'admin', '12:00', '2020-01-25', '4.2');
 
 -- --------------------------------------------------------
 
@@ -1005,7 +697,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`login`, `nombre`, `apellido`, `password`, `dni`, `email`, `pais`, `sexo`, `telefono`, `fecha`, `foto`, `rol_id`, `socio`) VALUES
 ('abeijon_antonio', 'Antonio', 'Abeijon', 'root', '99116644H', 'abeijon_antonio@gmail.com', 'EspaÃ±a', 'Masculino', 633170771, '1946-01-01', 'ABP46_Diagrma Lógico.png', 1, '0'),
 ('acarmen', 'Carmen', 'Agueda', 'root', '43464269P', 'carminha@outlook.com', 'España', 'Femenino', 766661242, '1992-07-05', 'banner2.jpg', 2, '0'),
-('admin', 'Charles', 'Somoziña', 'admin', '46110791T', 'flalonso17@esei.uvigo.es', 'Suiza', 'Masculino', 666133017, '1997-09-15', 'cancel.png', 1, '0'),
+('admin', 'Charles', 'Somoziña', 'admin', '46110791T', 'flalonso17@esei.uvigo.es', 'Suiza', 'Masculino', 666133017, '1997-09-15', 'cancel.png', 1, '1'),
 ('aine', 'Aine', 'Rocha', 'root', '43509260I', 'aine@outlook.com', 'España', 'Femenino', 786861231, '1998-08-26', 'banner2.jpg', 2, '0'),
 ('andreita', 'Andrea', 'Calleja', 'root', '44554222L', 'andreita@outlook.com', 'España', 'Femenino', 666661201, '1997-12-07', 'banner2.jpg', 2, '0'),
 ('anita32', 'Ana', 'Fernandez', 'root', '44294260D', 'anafer_32@outlook.com', 'España', 'Femenino', 733861201, '1997-09-15', 'banner2.jpg', 2, '0'),
@@ -1142,8 +834,17 @@ INSERT INTO `user` (`login`, `nombre`, `apellido`, `password`, `dni`, `email`, `
 
 CREATE TABLE `user_class` (
   `login` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `id_clase` tinyint(4) NOT NULL
+  `id_clase` tinyint(4) NOT NULL,
+  `codigo` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `user_class`
+--
+
+INSERT INTO `user_class` (`login`, `id_clase`, `codigo`) VALUES
+('admin', 1, 2),
+('admin', 4, 7);
 
 -- --------------------------------------------------------
 
@@ -1173,6 +874,7 @@ CREATE TABLE `user_plan` (
 --
 
 INSERT INTO `user_plan` (`login`, `id_plan`, `caducacion`) VALUES
+('admin', 2, '2020-04-20'),
 ('lucia_atm', 1, '2020-01-29');
 
 -- --------------------------------------------------------
@@ -1185,6 +887,14 @@ CREATE TABLE `user_school` (
   `login` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `codigo` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `user_school`
+--
+
+INSERT INTO `user_school` (`login`, `codigo`) VALUES
+('admin', 2),
+('admin', 7);
 
 --
 -- Índices para tablas volcadas
@@ -1390,7 +1100,8 @@ ALTER TABLE `user`
 --
 ALTER TABLE `user_class`
   ADD PRIMARY KEY (`login`,`id_clase`),
-  ADD KEY `fk_user_class_1` (`id_clase`);
+  ADD KEY `fk_user_class_1` (`id_clase`),
+  ADD KEY `fk_user_class_3` (`codigo`);
 
 --
 -- Indices de la tabla `user_game`
@@ -1427,7 +1138,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `championship`
 --
 ALTER TABLE `championship`
-  MODIFY `id_campeonato` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_campeonato` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `chat`
@@ -1445,25 +1156,25 @@ ALTER TABLE `clase`
 -- AUTO_INCREMENT de la tabla `clash`
 --
 ALTER TABLE `clash`
-  MODIFY `id_enfrentamiento` bigint(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=256;
+  MODIFY `id_enfrentamiento` bigint(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `couple`
 --
 ALTER TABLE `couple`
-  MODIFY `id_pareja` bigint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_pareja` bigint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `game`
 --
 ALTER TABLE `game`
-  MODIFY `id_partido` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_partido` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `grupo`
 --
 ALTER TABLE `grupo`
-  MODIFY `id_grupo` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_grupo` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `new`
@@ -1481,7 +1192,7 @@ ALTER TABLE `nivel`
 -- AUTO_INCREMENT de la tabla `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id_pago` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_pago` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `plan`
@@ -1493,7 +1204,7 @@ ALTER TABLE `plan`
 -- AUTO_INCREMENT de la tabla `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id_reserva` bigint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+  MODIFY `id_reserva` bigint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -1656,7 +1367,8 @@ ALTER TABLE `user`
 --
 ALTER TABLE `user_class`
   ADD CONSTRAINT `fk_user_class_1` FOREIGN KEY (`id_clase`) REFERENCES `clase` (`id_clase`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_user_class_2` FOREIGN KEY (`login`) REFERENCES `user` (`login`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_user_class_2` FOREIGN KEY (`login`) REFERENCES `user` (`login`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_user_class_3` FOREIGN KEY (`codigo`) REFERENCES `school` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `user_game`

@@ -126,14 +126,17 @@ Switch ($_REQUEST['action']){
 			$pago = $pay->añadirPago();
 			$resultado = $reserva->ADD();
 
+			new MESSAGE($resultado, '../Controllers/Reservation_Controller.php');
 
+			if(consultarPromo()){
 			$promoCoincidentes = consultarPromocion();
 
 			include_once '../Models/MATCH_MODEL.php';
 			$borrado = new MATCH_MODEL($promoCoincidentes[0], '','','');
 			$respuesta = $borrado->DELETE();
+		}
 
-			new MESSAGE($resultado, '../Controllers/Reservation_Controller.php');
+			
 
 
 		break;

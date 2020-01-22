@@ -125,38 +125,49 @@ Switch ($_REQUEST['action']){
 					 include_once '../Models/COURT_MODEL.php';
 					  include_once '../Models/RESERVATION_MODEL.php';
 					$modelo =get_data();
-					$respuesta = $modelo->DELETE();
+					$valores= $modelo ->RellenaDatos();
+					/*
 					$reservas = $modelo->getAllReservations();
 
 					$pistas_assoc = $modelo->getPistas();
-					while ($resp = $pistas_assoc->fetch_assoc()){
+					while ($resp = $pistas_assoc->fetch_array()){
 						$array [] = $resp['id_pista'];
 					}
 
 					$num_pistas = count($array);
 					$fetch = $reservas->fetch_array();
+					$j = 0;
 					while(count($fetch) != 0){
+
+
 					for ($i = 0; $i < $num_pistas - 1; $i++){
 
 					while ($actual = $reservas->fetch_assoc()){
 
-					$currentReserva = new RESERVATION_MODEL('',$array[$i], $actual[3] ,$actual[2],$actual[1],$actual[4]);
+					$currentReserva = new RESERVATION_MODEL($actual[0],$array[$i], $actual[3] ,$actual[2],$actual[1],$actual[4]);
 					$confirmacion = $currentReserva->getReservation();
 
 					if ($confirmacion) {
 						$currentReserva->ADD();
-						unset($fetch[0]);
-						unset($fetch[0]);
-						unset($fetch[0]);
-						unset($fetch[0]);
+						
 					}
+					}
+					}
+
+					unset($fetch[$j]);
+					$j++;
+					}
+					*/
+					$respuesta = $modelo->DELETE();
+
+
+
 					
-					}
-				}
-				}
+				new MESSAGE($respuesta,'./Court_Controller.php');
+				
 			}
 					
-					new MESSAGE($mensaje,'./Court_Controller.php');
+					
 				
 					
 					break;

@@ -38,7 +38,7 @@ class EDIT_VIEW
 			<br>
 
 			 <div class="form-group" id="titulo-group">
-		  	<input type="hidden" id="codigo" name="codigo" class="form-control" required value="<?php echo $valores[0]?>" >
+		  	<input type="hidden" id="codigo" name="codigo" class="form-control" readonly required value="<?php echo $valores[0]?>" >
 		   </div>
 
 			<div class="form-group" id="titulo-group">

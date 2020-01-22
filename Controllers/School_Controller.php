@@ -160,7 +160,7 @@ Switch ($_REQUEST['action']){
 	$resultado = $clases->mostrarClases();
 	$lista = array();
 
-	new SHOWSCHOOL_CLASS($lista, $resultado);
+	new SHOWSCHOOL_CLASS($lista, $resultado, $_REQUEST['codigo']);
 
 }
 
@@ -188,14 +188,12 @@ Switch ($_REQUEST['action']){
 
 	else{
 		include_once '../Models/SCHOOL_MODEL.php';
-
-		$obj = new SCHOOL_MODEL($_REQUEST['codigo'],'','','','','');
 		$aux = new SCHOOL_MODEL('','','','','','');
-		$dato =$obj->RellenaDatos();
+		
 
 
 		while (list($key, $value) = each($_POST['id_clase'])) {
-		$var= $aux->añadirClase($dato[0], $value);
+		$var= $aux->añadirClase($_REQUEST['codigo'], $value);
 		}
 
 		new MESSAGE($var, '../Controllers/School_Controller.php');

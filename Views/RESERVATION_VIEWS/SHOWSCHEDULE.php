@@ -1144,7 +1144,7 @@ else{
 
 		
 
-		   <div style="position: absolute; top: 550px; min-width: 100%; text-align: center;"><button type="submit" class="btn btn-primary"  style="font-size: 20px;">Reservar Pista</button></div>
+		   <div style="position: absolute; top: 570px; min-width: 100%; text-align: center;"><button type="submit" class="btn btn-primary"  style="font-size: 20px;">Reservar Pista</button></div>
 		   
 		</form>
 

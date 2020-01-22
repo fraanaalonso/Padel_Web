@@ -37,8 +37,8 @@ class SHOWGRUPOS_CAMPEONATO
      <th>Grupo</th>
      <th>Login Capitan</th>
      <th>Login Acompañante</th>
-     <th>ID Categoria</th>
-     <th>ID Nivel</th>
+     <th>Categoria</th>
+     <th>Nivel</th>
      <th>Calendario</th>
 
 

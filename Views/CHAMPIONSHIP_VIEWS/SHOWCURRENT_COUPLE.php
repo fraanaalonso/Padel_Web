@@ -34,7 +34,7 @@ class SHOWCURRENT_COUPLE
       <table>
 
          <tr>
-            <th>ID Categoria</th>
+            <th> Categoria</th>
             <td><?php echo $valores['categoria'];?></td>
           </tr>
 
@@ -61,7 +61,7 @@ class SHOWCURRENT_COUPLE
           </tr>
 
           <tr>
-            <th>ID Nivel</th>
+            <th> Nivel</th>
             <td><?php echo $valores['nivel'];?></td>
           </tr>
      

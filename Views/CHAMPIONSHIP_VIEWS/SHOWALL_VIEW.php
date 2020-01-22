@@ -42,7 +42,7 @@ class SHOWALL_VIEW
     <th>Identificador Campeonato</th>
     <th>Fecha Inicio</th>
     <th>Fecha Límite</th>
-    <th>ID Normativa</th>
+    <th>Normativa</th>
     <th>Precio</th>
     <th>Opciones</th>
 
@@ -102,7 +102,7 @@ if(!esInscrito($_SESSION['login'], $_SESSION['login'], $fila['id_campeonato'])){
 else{
 
 ?>
-  <a href="../Controllers/Championship_Controller.php?action=GENERARGRUPOS&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-upload" style="font-size: 20px"></span></a>  
+  
 
 <?php
 }

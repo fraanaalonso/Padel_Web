@@ -26,11 +26,11 @@ class CLASS_MODEL
 
 
 
-	function inscribirClase($usuario, $clase){
+	function inscribirClase($usuario, $clase, $codigo){
 
 		if (($clase <> '') && ($usuario <> '')){ 
 
-        $sql = "SELECT * FROM USER_CLASS WHERE (id_clase = '".$clase."') && (login = '".$usuario."')";
+        $sql = "SELECT * FROM USER_CLASS WHERE (id_clase = '".$clase."') && (login = '".$usuario."') && (codigo = '".$codigo."')";
 
 		if (!$result = $this->bd->query($sql)){ 
 			return 'No se ha podido conectar con la base de datos';
@@ -42,11 +42,13 @@ class CLASS_MODEL
 
 				$sql = "INSERT INTO USER_CLASS (
 					id_clase,
-					login
+					login,
+					codigo
 					) 
 						VALUES (
 						'".$clase."',
-						'".$usuario."'
+						'".$usuario."',
+						'".$codigo."'
 						)";
 					
 				

@@ -26,15 +26,7 @@ class SHOWALLL_VIEW
 
 <div class="iconos-superiores">
      
-     <?php 
-      if(comprobarPermisos($_SESSION['login']) == 1){
-     ?>
-    <a href="../Controllers/Reservation_Controller.php?action=SEARCH"><span class="lnr lnr-magnifier" style="font-size: 35px"></span></a>
-
-
-    <?php
-  }
-    ?>
+    
     <a href="../Controllers/Reservation_Controller.php"><span class="lnr lnr-exit" style="font-size: 35px"></span></a>
 
 </div>
@@ -47,15 +39,10 @@ class SHOWALLL_VIEW
   <thead>
   <tr>
 
-<?php 
-if(comprobarPermisos($_SESSION['login']) == 1){
-?>   
-    <th>Identificador de Reserva</th>
-    <th>Identificador de Pista</th>
-<?php
+  
+    <th>Reserva</th>
+    <th>Pista</th>
 
-}
-?>
     <th>Login</th>
     <th>Comienzo del Partido</th>
     <th>Fecha de Reserva</th>

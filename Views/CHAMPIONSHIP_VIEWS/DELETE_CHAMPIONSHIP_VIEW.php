@@ -61,7 +61,7 @@ class DELETE_CHAMPIONSHIP_VIEW
 
 
            <tr>
-            <th>ID Normativa</th>
+            <th>Normativa</th>
             <td><?php echo $valores[3];?></td>
           </tr>
      

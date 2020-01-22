@@ -49,7 +49,7 @@ class SHOWALL_VIEW
   <thead>
   <tr>
    
-    <th>Identificador de Pista</th>
+    <th>Pista</th>
     <th>Descripcion</th>
     <th>Ubicación</th>
     <th>Precio</th>

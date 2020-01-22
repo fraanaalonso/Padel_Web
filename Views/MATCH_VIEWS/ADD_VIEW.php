@@ -31,11 +31,11 @@ class ADD_VIEW
 			
 		<form class="col-12" method="post" action="../Controllers/Match_Controller.php?action=SHOWSCHEDULE" onsubmit="return validar();">
 
-		 <div class="form-group">
+		 <div class="form-group">Partido
 		  	<input type="hidden" id="id_partido" name="id_partido"  class="form-control" placeholder="Identificador Partido" >
 		   </div>	
 
-		  <div class="form-group">
+		  <div class="form-group">Pista seleccionada
 		  	<input type="text" id="id_pista" name="id_pista" readonly value="<?php echo $clave[0] ?>"  class="form-control" placeholder="Identificador Pista" >
 		   </div> 
 

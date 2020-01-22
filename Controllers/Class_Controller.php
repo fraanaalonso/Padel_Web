@@ -42,7 +42,7 @@ Switch ($_REQUEST['action']){
 	$user = $usuario->RellenaDatos();
 	$class = $clase->RellenaDatos();
 
-	$respuesta = $clase->inscribirClase($user[0], $class[0]);
+	$respuesta = $clase->inscribirClase($user[0], $class[0], $_REQUEST['codigo']);
 
 	new MESSAGE($respuesta, '../Controllers/School_Controller.php');
 

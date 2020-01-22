@@ -34,7 +34,7 @@ class SHOWCONFIRM
 
 
 		<tr>
-			<th>ID Enfrentamiento</th>
+			<th>Enfrentamiento</th>
 			<th>Pareja</th>
 			<th>Capitán</th>
 			<th>Socio</th>>

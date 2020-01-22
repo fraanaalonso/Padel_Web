@@ -6,12 +6,12 @@ class SHOWSCHOOL_CLASS
 
 
   
-  function __construct($fila, $resultado)
+  function __construct($fila, $resultado, $codigo)
   {
-    $this->mostrarDatos($fila, $resultado);
+    $this->mostrarDatos($fila, $resultado, $codigo);
   }
   
-  function mostrarDatos($fila, $resultado){
+  function mostrarDatos($fila, $resultado, $codigo){
     include '../Views/HeaderPost.php';
 
 
@@ -77,7 +77,7 @@ class SHOWSCHOOL_CLASS
 
       <td>
 
-        <a href="../Controllers/Class_Controller.php?action=INSCRIBIR&id_clase=<?php  echo $fila['id_clase'] ?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 20px"></span></a>
+        <a href="../Controllers/Class_Controller.php?action=INSCRIBIR&id_clase=<?php  echo $fila['id_clase'] ?>&codigo=<?php echo $codigo?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 20px"></span></a>
              
       </td>
 

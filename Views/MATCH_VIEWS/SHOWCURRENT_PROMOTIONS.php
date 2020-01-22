@@ -39,7 +39,7 @@ class SHOWCURRENT_PROMOTIONS
   <thead>
   <tr>
     <th>Login</th>
-    <th>ID Partido</th>
+    <th>Partido</th>
     <th>Opciones</th>
 
   </tr>

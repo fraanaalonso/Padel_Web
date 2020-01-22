@@ -31,20 +31,20 @@ class EDIT_VIEW
 			
 		<form class="col-12" method="post" action="../Controllers/Championship_Controller.php?action=EDIT" onsubmit="return validar();">
 
-		 <div class="form-group">
+		 <div class="form-group">Campeonato
 		  	<input type="text" id="id_campeonato" name="id_campeonato" class="form-control" readonly value="<?php echo $valores[0] ?>" placeholder="Identificador Campeonato" >
 		   </div>	
 
-		  <div class="form-group">
+		  <div class="form-group">Fecha de Comienzo
 		  	<input type="date" id="fecha_inicio" name="fecha_inicio" required class="form-control" value="<?php echo $valores[1] ?>" placeholder="Inicio del Campeonato" >
 		   </div> 
 
-		  <div class="form-group">
+		  <div class="form-group">Fecha Límite
 		  	<input type="date" id="fecha_limite" name="fecha_limite" required class="form-control" value="<?php echo $valores[2] ?>" placeholder="Límite de Inscripción" >
 		   </div>
 
 
-		      <div class="form-group" >
+		      <div class="form-group" >Normativa
 		  	<select id="id_normativa" name="id_normativa" class="form-control" required>
 			<option>Seleccion Normativa</option>
 

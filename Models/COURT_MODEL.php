@@ -100,11 +100,6 @@ function getAllReservations(){
 }
 
 
-function getPistas(){
-	$sql = "SELECT id_pista FROM COURT";
-	$resultado = $this->bd->query($sql);
-	return $resultado;
-}
 
 
 

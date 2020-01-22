@@ -31,25 +31,25 @@ class ADD_VIEW
 		<form class="col-12" method="post" action="../Controllers/School_Controller.php?action=ADD">
 	
 
-		  <div class="form-group">
+		  <div class="form-group">Nombre Escuela
 		  	<input type="text" id="nombre" name="nombre" class="form-control" required placeholder="Nombre Escuela" >
 		   </div> 
 
-		  <div class="form-group">
+		  <div class="form-group">Ubicacion
 		  	<input type="text" id="ubi" name="ubicacion" class="form-control" required  placeholder="Ubicación" >
 		   </div>
 
 
-		   <div class="form-group" >
+		   <div class="form-group" >Administrador
 		  	<input type="text" id="administrador" name="administrador" readonly required value="<?php echo $_SESSION['login'] ?>"  class="form-control" placeholder="Administrador" >
 		   </div>
 
-		   <div class="form-group">
+		   <div class="form-group">Capacidad
 		  	<input type="text" id="ubi" name="capacidad" class="form-control" required  placeholder="Capacidad Escuela" >
 		   </div>
 
 
-		   <div class="form-group">
+		   <div class="form-group">Número clases
 		  	<input type="text" id="ubi" name="num_clases" class="form-control" required  placeholder="Número de Clases Escuela" >
 		   </div>
 

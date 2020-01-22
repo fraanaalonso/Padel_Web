@@ -27,21 +27,21 @@ class EDIT_VIEW
 			
 	<form class="col-12" method="post" action="../Controllers/Court_Controller.php?action=EDIT" >
 
-		 <div class="form-group">
-		  	<input type="text" id="id_pista" name="id_pista" class="form-control" readonly value="<?php echo $valores['id_pista'];?>" >
+		 <div class="form-group">Pista
+		  	<input type="text" id="id_pista" name="id_pista" class="form-control" pattern="P[0-9]" readonly value="<?php echo $valores['id_pista'];?>" >
 		   </div>
 
-		   <div class="form-group">
+		   <div class="form-group">Descripcion
 		  	<input type="text" id="descripcion" name="descripcion" class="form-control" readonly value="<?php echo $valores['descripcion'];?>" >
 		   </div>	
 
-		  <div class="form-group">
+		  <div class="form-group">Ubicación
 		  	<input type="text" id="ubica" name="ubicacion" class="form-control" value="<?php echo $valores['ubicacion'];?>">
 		   </div>
 
 
 
-		    <div class="form-group">
+		    <div class="form-group">Precio
 		  	<input type="text" id="precio" name="precio" class="form-control" value="<?php echo $valores['precio'];?>" placeholder="Precio" >
 		   </div>
 

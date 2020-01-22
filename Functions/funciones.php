@@ -306,6 +306,25 @@ function consultarPromocion(){
 
 }
 
+function consultarPromo(){
+
+	include_once '../includes/db.php';
+	$bd;
+	$bd = ConectarDB();
+	$sql = "SELECT G.id_partido, R.hora_inicio, R.fecha FROM game G, reservation R where G.hora_inicio = R.hora_inicio AND G.fecha=R.fecha AND G.id_pista=R.id_pista";
+
+	
+	if (!($resultado = $bd->query($sql))){
+		return false;
+	}
+
+    else{ 
+
+	return true;
+	}
+
+}
+
 
 function cerrarPromocion($id_pista, $fecha, $hora){
 

@@ -35,7 +35,7 @@ class SHOWCURRENT_VIEW
        
         <table>
            <tr>
-            <th>Identificador de Pista</th>
+            <th>Pista</th>
             <td><?php echo $valores[0];?></td>
           </tr>
           <tr>

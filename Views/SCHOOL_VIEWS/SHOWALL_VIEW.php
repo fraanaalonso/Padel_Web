@@ -81,13 +81,28 @@ if(comprobarPermisos($_SESSION['login'])==1){
       <td>
          <a href="../Controllers/School_Controller.php?action=INSCRIBIR&codigo=<?php  echo $fila['codigo'] ?>"><span class="lnr lnr-chevron-right-circle" style="font-size: 20px"></span></a>
 
+
+         <a href="../Controllers/School_Controller.php?action=SHOWCURRENT&codigo=<?php  echo $fila['codigo'] ?>"><span class="lnr lnr-eye añadir"></span></a>
+
+<?php
+if(comprobarPermisos($_SESSION['login']) == 1){
+?>
+
+
          <a href="../Controllers/School_Controller.php?action=EDIT&codigo=<?php  echo $fila['codigo'] ?>"><span class="lnr lnr-pencil editar"></span></a>
 
         <a href="../Controllers/School_Controller.php?action=DELETE&codigo=<?php  echo $fila['codigo'] ?>"><span class="lnr lnr-trash borrar"></span></a>
 
-        <a href="../Controllers/School_Controller.php?action=SHOWCURRENT&codigo=<?php  echo $fila['codigo'] ?>"><span class="lnr lnr-eye añadir"></span></a>
+
+
+
+        
 
         <a href="../Controllers/School_Controller.php?action=ADDCLASE&codigo=<?php  echo $fila['codigo'] ?>"><span class="lnr lnr-plus-circle" style="font-size: 20px"></span></a>
+
+<?php
+}
+?>
 
         <a href="../Controllers/Class_Controller.php?action=SHOW_CLASS&codigo=<?php  echo $fila['codigo'] ?>"><span class="lnr lnr-bookmark" style="font-size: 20px"></span></a>
             

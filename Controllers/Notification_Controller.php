@@ -30,9 +30,9 @@ $mail = new PHPMailer(true);
 
     //Recipients
     $mail->setFrom('eseipadel19@gmail.com', 'ESEI PADEL');
-    $mail->addAddress('albertocaldevilla7@gmail.com'); 
-    $mail->addAddress('mario.hermida@outlook.es');
-    $mail->addAddress('gugoan.1994@gmail.com');
+    $mail->addAddress('fraloal97@gmail.com'); 
+    $mail->addAddress('csmartinez1996@gmail.com');
+    $mail->addAddress('miguel.miguel96@gmail.com');
 
 
 

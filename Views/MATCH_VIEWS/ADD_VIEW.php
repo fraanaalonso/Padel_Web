@@ -58,7 +58,7 @@ class ADD_VIEW
 		
 		
 
-		   <div style="position: absolute; top: 150px; min-width: 100%; text-align: center;"><button type="submit" class="btn btn-primary">Consultar Horarios</button></div>
+		   <div style="position: absolute; top: 170px; min-width: 100%; text-align: center;"><button type="submit" class="btn btn-primary">Consultar Horarios</button></div>
 		   <p>
 		  
 		   </p>

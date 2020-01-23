@@ -109,9 +109,17 @@ else{
 ?>
         <a href="../Controllers/Couple_Controller.php?action=SHOWCOUPLES&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-users editar" style="font-size: 20px"></span></a>
 
+<?php
+if(comprobarPermisos($_SESSION['login'])==1){
+?>
         <a href="../Controllers/Championship_Controller.php?action=GENERARGRUPOS&id_campeonato=<?php  echo $fila['id_campeonato'] ?>"><span class="lnr lnr-upload" style="font-size: 20px"></span></a>
       
       </td>
+
+<?php
+
+}
+?>
 
 <?php
 

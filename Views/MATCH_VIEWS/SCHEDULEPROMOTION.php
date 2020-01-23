@@ -765,7 +765,7 @@ else{
 
 		
 
-		   <div style="position: absolute; top: 570px; min-width: 100%; text-align: center;"><button type="submit" class="btn btn-primary"  style="font-size: 20px;">Promocionar Pista</button></div>
+		   <div style="position: absolute; top: 570px; min-width: 100%; text-align: center;"><button type="submit" class="btn btn-primary"  style="font-size: 20px;">Promocionar</button></div>
 		   
 		</form>
 
